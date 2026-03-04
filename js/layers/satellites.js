@@ -148,17 +148,52 @@ export function createSensorFootprint(viewer, lon, lat, altM) {
   return footprintEntities;
 }
 
-function updateSensorFootprint(viewer, record, lon, lat, altM, activeScenario) {
-  if (record.footprintEntities) {
-    record.footprintEntities.forEach(e => viewer.entities.remove(e));
+function computeFootprintGeometry(lon, lat, altM) {
+  const R = LIMITS.EARTH_RADIUS_M;
+  const halfAngle = Math.atan(R * Math.sin(Math.acos(R / (R + altM))) / altM) * 0.6;
+  const radiusDeg = Cesium.Math.toDegrees(halfAngle);
+  const cosLat = Math.cos(Cesium.Math.toRadians(lat));
+
+  // Cone positions (nadir + 4 edges)
+  const cone = [lon, lat, altM, lon, lat, 0];
+  for (const ang of [0, 90, 180, 270]) {
+    const rad = Cesium.Math.toRadians(ang);
+    cone.push(lon, lat, altM, lon + radiusDeg * Math.cos(rad) / cosLat, lat + radiusDeg * Math.sin(rad), 0);
   }
+
+  // Ground circle
+  const circle = [];
+  for (let i = 0; i <= 24; i++) {
+    const a = (i / 24) * 2 * Math.PI;
+    circle.push(lon + radiusDeg * Math.cos(a) / cosLat, lat + radiusDeg * Math.sin(a));
+  }
+
+  return { cone, circle };
+}
+
+function updateSensorFootprint(viewer, record, lon, lat, altM, activeScenario) {
   const sc = SCENARIOS[activeScenario];
   const centerLon = sc ? sc.camera.lon : 0;
   const centerLat = sc ? sc.camera.lat : 0;
   const dLon = Math.abs(lon - centerLon);
   const dLat = Math.abs(lat - centerLat);
-  record.footprintEntities = (dLon < LIMITS.FOOTPRINT_RANGE_DEG && dLat < LIMITS.FOOTPRINT_RANGE_DEG)
-    ? createSensorFootprint(viewer, lon, lat, altM) : [];
+  const nearScenario = dLon < LIMITS.FOOTPRINT_RANGE_DEG && dLat < LIMITS.FOOTPRINT_RANGE_DEG;
+
+  if (nearScenario && record.footprintEntities && record.footprintEntities.length === 2) {
+    // Update existing entity positions in-place (no destroy/recreate)
+    const geo = computeFootprintGeometry(lon, lat, altM);
+    record.footprintEntities[0].polyline.positions = Cesium.Cartesian3.fromDegreesArrayHeights(geo.cone);
+    record.footprintEntities[1].polyline.positions = Cesium.Cartesian3.fromDegreesArray(geo.circle);
+  } else if (nearScenario) {
+    // First time or entity count mismatch — create fresh
+    if (record.footprintEntities) record.footprintEntities.forEach(e => viewer.entities.remove(e));
+    record.footprintEntities = createSensorFootprint(viewer, lon, lat, altM);
+  } else {
+    // Out of range — remove
+    if (record.footprintEntities) record.footprintEntities.forEach(e => viewer.entities.remove(e));
+    record.footprintEntities = [];
+  }
+
   record.lon = lon;
   record.lat = lat;
   record.altM = altM;

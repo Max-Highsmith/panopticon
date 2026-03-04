@@ -10,6 +10,20 @@ import { layers, entityMaps } from '../globe.js';
 const entities = entityMaps.commercial;
 let interval = null;
 
+// Compute a bounding box from the camera's current view rectangle,
+// with generous padding so aircraft aren't popping in at edges.
+function getViewBounds(viewer) {
+  const rect = viewer.camera.computeViewRectangle();
+  if (!rect) return null; // fallback: no culling
+  const PAD = 0.35; // ~20 degrees padding
+  return {
+    lonMin: Cesium.Math.toDegrees(rect.west) - PAD * 180,
+    lonMax: Cesium.Math.toDegrees(rect.east) + PAD * 180,
+    latMin: Cesium.Math.toDegrees(rect.south) - PAD * 90,
+    latMax: Cesium.Math.toDegrees(rect.north) + PAD * 90,
+  };
+}
+
 export async function fetchCommercial(viewer) {
   try {
     const res = await fetch(API.OPENSKY);
@@ -19,6 +33,7 @@ export async function fetchCommercial(viewer) {
 
     const seen = new Set();
     let count = 0;
+    const bounds = getViewBounds(viewer);
 
     for (const s of states) {
       const hex = s[0];
@@ -26,8 +41,19 @@ export async function fetchCommercial(viewer) {
       if (lat == null || lon == null) continue;
       if (entityMaps.military.has(hex)) continue; // skip duplicates
 
+      count++; // count total before culling
+
+      // Viewport culling: skip entity creation for aircraft far outside view
+      if (bounds && (lon < bounds.lonMin || lon > bounds.lonMax || lat < bounds.latMin || lat > bounds.latMax)) {
+        // Remove if it was previously visible
+        if (entities.has(hex)) {
+          viewer.entities.remove(entities.get(hex).entity);
+          entities.delete(hex);
+        }
+        continue;
+      }
+
       seen.add(hex);
-      count++;
 
       const altMeters = s[7] ?? 10000 * 0.3048;
       const velocity = s[9];

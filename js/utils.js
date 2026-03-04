@@ -84,35 +84,40 @@ export function extrapolate(lat, lon, gs, track, dtSec) {
 
 // --- Trace Interpolation (Replay) ---
 
+// Reusable result object to avoid allocation per call
+const _interpResult = { lat: 0, lon: 0, alt: 0, gs: 0, track: 0 };
+
+function lerpSafe(va, vb, frac, fallback) {
+  const na = typeof va === 'number' && !isNaN(va) ? va : null;
+  const nb = typeof vb === 'number' && !isNaN(vb) ? vb : null;
+  if (na != null && nb != null) return na + (nb - na) * frac;
+  return na ?? nb ?? fallback;
+}
+
 export function interpolateTrace(trace, absTime) {
   if (trace.length === 0) return null;
   if (absTime <= trace[0].t) return trace[0];
   if (absTime >= trace[trace.length - 1].t) return trace[trace.length - 1];
 
-  for (let i = 0; i < trace.length - 1; i++) {
-    if (trace[i].t <= absTime && absTime <= trace[i + 1].t) {
-      const a = trace[i], b = trace[i + 1];
-      const dt = b.t - a.t;
-      if (dt === 0) return a;
-      const frac = (absTime - a.t) / dt;
-
-      const lerp = (va, vb, fallback) => {
-        const na = typeof va === 'number' && !isNaN(va) ? va : null;
-        const nb = typeof vb === 'number' && !isNaN(vb) ? vb : null;
-        if (na != null && nb != null) return na + (nb - na) * frac;
-        return na ?? nb ?? fallback;
-      };
-
-      return {
-        lat:   lerp(a.lat, b.lat, 0),
-        lon:   lerp(a.lon, b.lon, 0),
-        alt:   lerp(a.alt, b.alt, 10000),
-        gs:    lerp(a.gs, b.gs, 0),
-        track: lerp(a.track, b.track, 0),
-      };
-    }
+  // Binary search for the bracketing interval
+  let lo = 0, hi = trace.length - 1;
+  while (hi - lo > 1) {
+    const mid = (lo + hi) >> 1;
+    if (trace[mid].t <= absTime) lo = mid;
+    else hi = mid;
   }
-  return trace[trace.length - 1];
+
+  const a = trace[lo], b = trace[hi];
+  const dt = b.t - a.t;
+  if (dt === 0) return a;
+  const frac = (absTime - a.t) / dt;
+
+  _interpResult.lat   = lerpSafe(a.lat, b.lat, frac, 0);
+  _interpResult.lon   = lerpSafe(a.lon, b.lon, frac, 0);
+  _interpResult.alt   = lerpSafe(a.alt, b.alt, frac, 10000);
+  _interpResult.gs    = lerpSafe(a.gs, b.gs, frac, 0);
+  _interpResult.track = lerpSafe(a.track, b.track, frac, 0);
+  return _interpResult;
 }
 
 // --- Cached DOM References ---

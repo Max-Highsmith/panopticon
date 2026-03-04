@@ -42,6 +42,15 @@ let liveExtrapolateHandler = null;
 
 const replayEntities = entityMaps.replay;
 
+// Pre-allocated color constants (avoid per-frame allocation)
+const COLOR_MIL      = Cesium.Color.fromCssColorString('#00ff41');
+const COLOR_CIV      = Cesium.Color.fromCssColorString('#4488ff');
+const COLOR_MIL_TRAIL = COLOR_MIL.withAlpha(0.4);
+const COLOR_CIV_TRAIL = COLOR_CIV.withAlpha(0.4);
+
+// Reusable set to avoid allocation every frame
+const _seenHexes = new Set();
+
 // =====================================================
 // EXPOSE GLOBALS (for inline onclick handlers in HTML)
 // =====================================================
@@ -153,7 +162,7 @@ function renderReplayFrame() {
   $('time-current').textContent = secsToUTC(absTime);
   $('time-irst').textContent = secsToLocal(absTime, activeScenario);
 
-  const seen = new Set();
+  _seenHexes.clear();
   let visibleCount = 0;
 
   for (const ac of replayData.aircraft) {
@@ -163,52 +172,49 @@ function renderReplayFrame() {
     const pt = interpolateTrace(ac.trace, absTime);
     if (!pt || isNaN(pt.lat) || isNaN(pt.lon)) continue;
 
-    seen.add(ac.hex);
+    _seenHexes.add(ac.hex);
     visibleCount++;
 
     const rawAlt = pt.alt === 'ground' ? 100 : (typeof pt.alt === 'number' && !isNaN(pt.alt) ? pt.alt : 10000);
     const altMeters = rawAlt * 0.3048;
     const position = Cesium.Cartesian3.fromDegrees(pt.lon, pt.lat, altMeters);
-    const callsign = ac.r || ac.hex;
     const isMil = ac.mil;
-    const color = isMil ? Cesium.Color.fromCssColorString('#00ff41') : Cesium.Color.fromCssColorString('#4488ff');
 
     if (replayEntities.has(ac.hex)) {
       const record = replayEntities.get(ac.hex);
       record.entity.position = position;
       if (pt.track != null) record.entity.billboard.rotation = -Cesium.Math.toRadians(pt.track);
-      record.trail.push({ lon: pt.lon, lat: pt.lat, alt: altMeters });
-      if (record.trail.length > 200) record.trail.shift();
-      const coords = [];
-      for (const tp of record.trail) {
-        if (!isNaN(tp.lon) && !isNaN(tp.lat) && !isNaN(tp.alt)) {
-          coords.push(tp.lon, tp.lat, tp.alt);
-        }
-      }
-      if (coords.length >= 6) {
-        record.trailEntity.polyline.positions = Cesium.Cartesian3.fromDegreesArrayHeights(coords);
+
+      // Append to trail coords buffer directly (flat array: lon, lat, alt, ...)
+      const buf = record.trailCoords;
+      buf.push(pt.lon, pt.lat, altMeters);
+      // Cap at 200 points (600 floats)
+      if (buf.length > 600) buf.splice(0, 3);
+      if (buf.length >= 6) {
+        record.trailEntity.polyline.positions = Cesium.Cartesian3.fromDegreesArrayHeights(buf);
       }
     } else {
       const heading = pt.track != null ? Cesium.Math.toRadians(pt.track) : 0;
+      const color = isMil ? COLOR_MIL : COLOR_CIV;
       const entity = viewer.entities.add({
         position,
         billboard: { image: isMil ? icons.planeGreen : icons.planeBlue, width: 42, height: 42, rotation: -heading, alignedAxis: Cesium.Cartesian3.ZERO, disableDepthTestDistance: 0 },
-        label: { text: callsign, font: '11px Courier New', fillColor: color, outlineColor: Cesium.Color.BLACK, outlineWidth: 2, style: Cesium.LabelStyle.FILL_AND_OUTLINE, pixelOffset: new Cesium.Cartesian2(16, -4), disableDepthTestDistance: 0, distanceDisplayCondition: new Cesium.DistanceDisplayCondition(0, 8_000_000), scale: 0.9 },
+        label: { text: ac.r || ac.hex, font: '11px Courier New', fillColor: color, outlineColor: Cesium.Color.BLACK, outlineWidth: 2, style: Cesium.LabelStyle.FILL_AND_OUTLINE, pixelOffset: new Cesium.Cartesian2(16, -4), disableDepthTestDistance: 0, distanceDisplayCondition: new Cesium.DistanceDisplayCondition(0, 8_000_000), scale: 0.9 },
       });
       entity.acData = { hex: ac.hex, r: ac.r, t: ac.t, flight: ac.r, alt_baro: pt.alt, gs: pt.gs, track: pt.track, desc: ac.desc, mil: isMil };
       const layerVisible = isMil ? layers.military : layers.commercial;
       entity.show = layerVisible;
       const trailEntity = viewer.entities.add({
-        polyline: { positions: [position], width: 1.5, material: color.withAlpha(0.4), clampToGround: false },
+        polyline: { positions: [position], width: 1.5, material: (isMil ? COLOR_MIL_TRAIL : COLOR_CIV_TRAIL), clampToGround: false },
       });
       trailEntity.show = layerVisible;
-      replayEntities.set(ac.hex, { entity, trailEntity, trail: [{ lon: pt.lon, lat: pt.lat, alt: altMeters }] });
+      replayEntities.set(ac.hex, { entity, trailEntity, trailCoords: [pt.lon, pt.lat, altMeters] });
     }
   }
 
   // Remove entities no longer visible
   for (const [hex, record] of replayEntities) {
-    if (!seen.has(hex)) {
+    if (!_seenHexes.has(hex)) {
       viewer.entities.remove(record.entity);
       if (record.trailEntity) viewer.entities.remove(record.trailEntity);
       replayEntities.delete(hex);
@@ -309,7 +315,7 @@ function changeSpeed() {
 $('timeline-slider').addEventListener('input', (e) => {
   replayTime = Number(e.target.value);
   for (const [, record] of replayEntities) {
-    record.trail = [];
+    record.trailCoords.length = 0;
   }
   renderReplayFrame();
 });
