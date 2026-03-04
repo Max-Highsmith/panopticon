@@ -405,19 +405,19 @@
     <div class="scenario-card active" id="sc-iran" onclick="selectScenario('iran')">
       <div class="sc-title">IRAN</div>
       <div class="sc-region">PERSIAN GULF / STRAIT OF HORMUZ</div>
-      <div class="sc-desc">ADS-B surveillance coverage over Iran and Persian Gulf. Mar 1, 2026 16:02-16:32 UTC.</div>
+      <div class="sc-desc">ADS-B surveillance coverage over Iran and Persian Gulf. Feb 28, 2026 16:02-16:32 UTC.</div>
       <span class="sc-badge ready">DATA READY</span>
     </div>
     <div class="scenario-card" id="sc-venezuela" onclick="selectScenario('venezuela')">
       <div class="sc-title">VENEZUELA</div>
       <div class="sc-region">CARIBBEAN / MARACAIBO</div>
-      <div class="sc-desc">ADS-B surveillance over Venezuela and Caribbean airspace. Mar 1, 2026 21:00-21:30 UTC.</div>
+      <div class="sc-desc">ADS-B surveillance over Venezuela and Caribbean airspace. Jan 3, 2026 08:00-08:30 UTC.</div>
       <span class="sc-badge ready">DATA READY</span>
     </div>
     <div class="scenario-card" id="sc-jalisco" onclick="selectScenario('jalisco')">
       <div class="sc-title">JALISCO</div>
       <div class="sc-region">WESTERN MEXICO / PACIFIC COAST</div>
-      <div class="sc-desc">Military and commercial tracking over Jalisco and Pacific approaches. Mar 1, 2026 19:00-19:30 UTC.</div>
+      <div class="sc-desc">Military and commercial tracking over Jalisco and Pacific approaches. Feb 22, 2026 11:00-11:30 UTC.</div>
       <span class="sc-badge ready">DATA READY</span>
     </div>
   </div>
@@ -432,7 +432,7 @@
       <button id="btn-play" onclick="togglePlay()">PLAY</button>
       <button onclick="changeSpeed()">SPEED</button>
       <span id="speed-label">1x</span>
-      <span style="margin-left: auto; font-size: 11px; opacity: 0.5;">MAR 1, 2026 // 16:02 - 16:32 UTC</span>
+      <span style="margin-left: auto; font-size: 11px; opacity: 0.5;">FEB 28, 2026 // 16:02 - 16:32 UTC</span>
     </div>
   </div>
 
@@ -1365,10 +1365,10 @@
       iran: {
         file: 'military_feb28.json',
         label: 'IRAN',
-        subtitle: 'HISTORICAL REPLAY // IRAN // MAR 1, 2026',
-        dateLabel: 'MAR 1, 2026',
-        timeLabel: 'MAR 1, 2026 // 16:02 - 16:32 UTC',
-        date: '2026-03-01',
+        subtitle: 'HISTORICAL REPLAY // IRAN // FEB 28, 2026',
+        dateLabel: 'FEB 28, 2026',
+        timeLabel: 'FEB 28, 2026 // 16:02 - 16:32 UTC',
+        date: '2026-02-28',
         timeStartUTC: 57720, // 16:02 UTC in seconds since midnight
         camera: { lon: 53, lat: 32, alt: 5_000_000 },
         localTz: { name: 'IRST', offset: 3.5 },
@@ -1400,9 +1400,9 @@
         label: 'VENEZUELA',
         subtitle: 'HISTORICAL REPLAY // VENEZUELA // JAN 3, 2026',
         dateLabel: 'JAN 3, 2026',
-        timeLabel: 'JAN 3, 2026 // 21:00 - 21:30 UTC',
+        timeLabel: 'JAN 3, 2026 // 08:00 - 08:30 UTC',
         date: '2026-01-03',
-        timeStartUTC: 75600, // 21:00 UTC in seconds since midnight
+        timeStartUTC: 28800, // 08:00 UTC in seconds since midnight (04:00 AM VET, pre-dawn)
         camera: { lon: -66.9, lat: 10.5, alt: 4_000_000 },
         localTz: { name: 'VET', offset: -4 },
         dataBounds: { latMin: 0.0, latMax: 18.0, lonMin: -78.0, lonMax: -55.0 },
@@ -1433,9 +1433,9 @@
         label: 'JALISCO',
         subtitle: 'HISTORICAL REPLAY // JALISCO // FEB 22, 2026',
         dateLabel: 'FEB 22, 2026',
-        timeLabel: 'FEB 22, 2026 // 19:00 - 19:30 UTC',
+        timeLabel: 'FEB 22, 2026 // 11:00 - 11:30 UTC',
         date: '2026-02-22',
-        timeStartUTC: 68400, // 19:00 UTC in seconds since midnight
+        timeStartUTC: 39600, // 11:00 UTC in seconds since midnight (05:00 AM CST, predawn)
         camera: { lon: -103.5, lat: 20.7, alt: 3_500_000 },
         localTz: { name: 'CST', offset: -6 },
         dataBounds: { latMin: 12.0, latMax: 28.0, lonMin: -112.0, lonMax: -95.0 },
