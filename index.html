@@ -273,6 +273,28 @@
       -webkit-text-stroke: 0.3px currentColor;
     }
 
+    /* BORDER political map — flat desaturated map look */
+    .filter-border #filter-overlay::before {
+      content: ''; position: absolute; inset: 0;
+      background: rgba(220, 215, 200, 0.15);
+      mix-blend-mode: overlay;
+      opacity: var(--fi);
+      z-index: 1;
+    }
+    .filter-border #filter-overlay::after {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse at center, transparent 55%, rgba(40, 35, 25, 0.35) 100%);
+      opacity: var(--fi);
+      z-index: 2;
+    }
+    .filter-border #hud, .filter-border #mode-bar,
+    .filter-border #layer-toggles, .filter-border #filter-bar,
+    .filter-border #info-panel {
+      color: #cc4444;
+      text-shadow: 0 0 8px rgba(200, 60, 60, 0.6);
+    }
+    .filter-border #title { text-shadow: 0 0 10px rgba(200, 60, 60, 0.6); }
+
     /* Audio player widget */
     #audio-player {
       position: absolute; bottom: 16px; left: 16px;
@@ -329,6 +351,7 @@
   </style>
 </head>
 <body>
+  <script src="config.local.js" onerror="console.log('No local config, using CI-injected keys')"></script>
   <audio id="bg-music" src="etc we go to war.wmv.mp3" loop preload="auto"></audio>
   <div id="cesiumContainer"></div>
 
@@ -374,6 +397,7 @@
     <button onclick="setVisualFilter('nvg')">NVG</button>
     <button onclick="setVisualFilter('flir')">FLIR</button>
     <button onclick="setVisualFilter('anime')">ANIME</button>
+    <button onclick="setVisualFilter('border')">BORDER</button>
   </div>
 
   <div id="scenario-sidebar">
@@ -483,12 +507,12 @@
     // =====================================================
     // CONFIGURATION
     // =====================================================
-    Cesium.Ion.defaultAccessToken = '%%CESIUM_TOKEN%%';
+    Cesium.Ion.defaultAccessToken = window.CESIUM_TOKEN || '%%CESIUM_TOKEN%%';
 
     const ADSB_MIL_URL = 'https://api.adsb.one/v2/mil';
     const OPENSKY_URL = 'https://opensky-network.org/api/states/all';
     const CELESTRAK_TLE_URL = 'https://celestrak.org/NORAD/elements/gp.php?GROUP=visual&FORMAT=tle';
-    const AIS_API_KEY = '%%AIS_API_KEY%%';
+    const AIS_API_KEY = window.AIS_API_KEY || '%%AIS_API_KEY%%';
 
     // =====================================================
     // GLOBE SETUP
@@ -710,13 +734,21 @@
             : `contrast(${ct}) saturate(${sa}) brightness(${br})`;
           break;
         }
+        case 'border': {
+          const sa = 1 - 0.7 * fi;   // 1.0 .. 0.3 (mostly desaturated)
+          const br = 1 + 0.15 * fi;  // 1.0 .. 1.15 (slightly brighter)
+          const ct = 1 + 0.2 * fi;   // 1.0 .. 1.2
+          const sep = 0.3 * fi;      // 0 .. 0.3 (warm paper tint)
+          el.style.filter = `saturate(${sa}) brightness(${br}) contrast(${ct}) sepia(${sep})`;
+          break;
+        }
         default:
           el.style.filter = '';
       }
     }
 
     function setVisualFilter(filter) {
-      document.body.classList.remove('filter-crt', 'filter-nvg', 'filter-flir', 'filter-anime');
+      document.body.classList.remove('filter-crt', 'filter-nvg', 'filter-flir', 'filter-anime', 'filter-border');
       activeFilter = filter;
       if (filter !== 'none') {
         document.body.classList.add('filter-' + filter);

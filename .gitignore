@@ -9,6 +9,9 @@ data/traces/
 data/*.py
 data/*.json
 
+# Local dev config (contains API keys)
+config.local.js
+
 # macOS
 .DS_Store
 
