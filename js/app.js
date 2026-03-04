@@ -55,7 +55,14 @@ const _seenHexes = new Set();
 // EXPOSE GLOBALS (for inline onclick handlers in HTML)
 // =====================================================
 window.switchMode     = switchMode;
-window.toggleLayer    = (layer) => toggleLayer(viewer, layer, currentMode);
+window.toggleLayer    = (layer) => {
+  toggleLayer(viewer, layer, currentMode);
+  // Lazy-start deferred layers when user enables them in live mode
+  if (currentMode === 'live' && layers[layer]) {
+    if (layer === 'ships' && entityMaps.ships.size === 0) startAIS(viewer);
+    if (layer === 'pokemon' && entityMaps.pokemon.size === 0) fetchPogoStops(viewer);
+  }
+};
 window.setVisualFilter = (f) => setVisualFilter(f, viewer);
 window.flyToCity       = flyToCity;
 window.selectScenario  = selectScenario;
@@ -84,14 +91,16 @@ function startLive() {
   $('subtitle').textContent = 'LIVE TRACKING // ADS-B + OPENSKY + CELESTRAK + AIS + POGO';
   $('layer-toggles').style.display = 'flex';
 
-  startMilitary(viewer);
-  startCommercial(viewer);
-
+  // Priority order: satellites → military → commercial
   if (!isSatLoaded()) loadSatellites().then(() => createSatelliteEntities(viewer, activeScenario));
   else createSatelliteEntities(viewer, activeScenario);
 
-  startAIS(viewer);
-  fetchPogoStops(viewer);
+  startMilitary(viewer);
+  startCommercial(viewer);
+
+  // Ships and POGO are off by default — only start if user has toggled them on
+  if (layers.ships) startAIS(viewer);
+  if (layers.pokemon) fetchPogoStops(viewer);
 
   liveExtrapolateHandler = () => {
     extrapolateMilitaryPositions();

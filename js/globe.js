@@ -40,8 +40,8 @@ export const layers = {
   military: true,
   commercial: true,
   satellites: true,
-  ships: true,
-  pokemon: true,
+  ships: false,
+  pokemon: false,
 };
 
 // Entity registries — each maps an ID to a record with { entity, ... }
