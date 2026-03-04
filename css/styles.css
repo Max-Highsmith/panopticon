@@ -1,0 +1,466 @@
+/* ===================================================================
+   PANOPTICON — Global Surveillance Visualization
+   Core Styles
+   =================================================================== */
+
+/* --- Reset & Base --- */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: #000;
+  color: #00ff41;
+  font-family: 'Courier New', monospace;
+  overflow: hidden;
+}
+
+#cesiumContainer { width: 100vw; height: 100vh; }
+
+/* --- HUD (Heads-Up Display) --- */
+#hud {
+  position: absolute; top: 0; left: 0; right: 0;
+  pointer-events: none; z-index: 10;
+  padding: 16px 24px;
+  display: flex; justify-content: space-between; align-items: flex-start;
+}
+
+#title {
+  font-size: 18px; font-weight: bold; letter-spacing: 4px;
+  text-shadow: 0 0 10px #00ff41;
+}
+#title span {
+  font-size: 11px; opacity: 0.6; letter-spacing: 1px;
+  display: block; margin-top: 2px;
+}
+
+#stats {
+  text-align: right; font-size: 13px;
+  text-shadow: 0 0 8px #00ff41;
+}
+#stats div { margin-bottom: 4px; }
+
+/* --- Info Panel --- */
+#info-panel {
+  position: absolute; bottom: 100px; right: 16px;
+  background: rgba(0, 0, 0, 0.85);
+  border: 1px solid #00ff4180;
+  padding: 16px 20px;
+  font-size: 13px; line-height: 1.7;
+  z-index: 10; display: none;
+  min-width: 260px;
+  box-shadow: 0 0 20px rgba(0, 255, 65, 0.15);
+}
+#info-panel .label { opacity: 0.5; }
+#info-panel .callsign {
+  font-size: 18px; font-weight: bold;
+  margin-bottom: 6px; letter-spacing: 2px;
+}
+
+/* --- Mode Switcher --- */
+#mode-bar {
+  position: absolute; top: 16px; left: 50%; transform: translateX(-50%);
+  z-index: 10; display: flex; gap: 0;
+}
+#mode-bar button {
+  background: rgba(0, 0, 0, 0.7); color: #00ff41;
+  border: 1px solid #00ff4140; padding: 6px 16px;
+  font-family: 'Courier New', monospace; font-size: 12px;
+  cursor: pointer; letter-spacing: 2px;
+}
+#mode-bar button:first-child { border-radius: 4px 0 0 4px; }
+#mode-bar button:last-child  { border-radius: 0 4px 4px 0; }
+#mode-bar button.active {
+  background: #00ff41; color: #000; font-weight: bold;
+}
+
+/* --- Layer Toggles --- */
+#layer-toggles {
+  position: absolute; top: 52px; left: 50%; transform: translateX(-50%);
+  z-index: 10; display: flex; gap: 14px;
+  background: rgba(0, 0, 0, 0.75);
+  padding: 6px 18px; border-radius: 4px;
+  border: 1px solid #00ff4125;
+}
+#layer-toggles label {
+  color: #00ff41; font-size: 11px; letter-spacing: 1px; cursor: pointer;
+  display: flex; align-items: center; gap: 4px;
+  user-select: none;
+}
+#layer-toggles label.mil-label  { color: #00ff41; }
+#layer-toggles label.civ-label  { color: #cccccc; }
+#layer-toggles label.sat-label  { color: #ffaa00; }
+#layer-toggles label.ship-label { color: #4488ff; }
+#layer-toggles label.pogo-label { color: #ff4444; }
+#layer-toggles input[type="checkbox"] { accent-color: #00ff41; }
+
+/* --- Timeline Scrubber --- */
+#timeline-bar {
+  position: absolute; bottom: 0; left: 260px; right: 0;
+  z-index: 10; display: none;
+  background: rgba(0, 0, 0, 0.85);
+  border-top: 1px solid #00ff4140;
+  padding: 12px 24px;
+}
+#timeline-bar .time-label {
+  font-size: 13px; margin-bottom: 6px;
+  display: flex; justify-content: space-between;
+}
+#timeline-bar input[type="range"] {
+  width: 100%; cursor: pointer;
+  -webkit-appearance: none; appearance: none;
+  height: 4px; background: #00ff4130; border-radius: 2px; outline: none;
+}
+#timeline-bar input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none; appearance: none;
+  width: 14px; height: 14px; border-radius: 50%;
+  background: #00ff41; cursor: pointer;
+}
+#timeline-controls {
+  display: flex; align-items: center; gap: 12px; margin-top: 8px;
+}
+#timeline-controls button {
+  background: none; border: 1px solid #00ff4160; color: #00ff41;
+  font-family: 'Courier New', monospace; font-size: 13px;
+  padding: 4px 12px; cursor: pointer; border-radius: 3px;
+}
+#timeline-controls button:hover { background: #00ff4120; }
+#speed-label { font-size: 11px; opacity: 0.6; }
+
+/* --- Scenario Sidebar --- */
+#scenario-sidebar {
+  position: absolute; top: 80px; left: 0; bottom: 0;
+  width: 260px; z-index: 10; display: none;
+  background: rgba(0, 0, 0, 0.9);
+  border-right: 1px solid #00ff4130;
+  padding: 16px;
+  overflow-y: auto;
+}
+#scenario-sidebar h3 {
+  font-size: 12px; letter-spacing: 3px; opacity: 0.5;
+  margin-bottom: 14px; font-weight: normal;
+}
+.scenario-card {
+  background: rgba(0, 255, 65, 0.05);
+  border: 1px solid #00ff4130;
+  border-radius: 4px;
+  padding: 12px 14px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s;
+}
+.scenario-card:hover {
+  border-color: #00ff4180;
+  background: rgba(0, 255, 65, 0.1);
+}
+.scenario-card.active {
+  border-color: #00ff41;
+  background: rgba(0, 255, 65, 0.15);
+}
+.scenario-card.stub { opacity: 0.4; cursor: default; }
+.scenario-card.stub:hover {
+  border-color: #00ff4130;
+  background: rgba(0, 255, 65, 0.05);
+}
+.scenario-card .sc-title {
+  font-size: 14px; font-weight: bold; letter-spacing: 2px;
+  margin-bottom: 4px;
+}
+.scenario-card .sc-region { font-size: 10px; opacity: 0.5; margin-bottom: 6px; }
+.scenario-card .sc-desc   { font-size: 11px; opacity: 0.7; line-height: 1.5; }
+.scenario-card .sc-badge  {
+  display: inline-block; font-size: 9px; letter-spacing: 1px;
+  padding: 2px 6px; border-radius: 2px; margin-top: 6px;
+}
+.sc-badge.ready  { background: #00ff4130; color: #00ff41; }
+.sc-badge.coming { background: #ffffff15; color: #666; }
+
+/* --- Visual Filter Selector --- */
+#filter-bar {
+  position: absolute; top: 82px; left: 50%; transform: translateX(-50%);
+  z-index: 10; display: flex; gap: 0;
+}
+#filter-bar button {
+  background: rgba(0, 0, 0, 0.7); color: #00ff41;
+  border: 1px solid #00ff4140; padding: 4px 12px;
+  font-family: 'Courier New', monospace; font-size: 10px;
+  cursor: pointer; letter-spacing: 1px;
+}
+#filter-bar button:first-child { border-radius: 3px 0 0 3px; }
+#filter-bar button:last-child  { border-radius: 0 3px 3px 0; }
+#filter-bar button.active {
+  background: #00ff41; color: #000; font-weight: bold;
+}
+
+/* --- City Jump Bar --- */
+#city-bar {
+  position: absolute; top: 106px; left: 50%; transform: translateX(-50%);
+  z-index: 10; display: flex; gap: 0;
+}
+#city-bar button {
+  background: rgba(0, 0, 0, 0.7); color: #ff4444;
+  border: 1px solid #ff444440; padding: 4px 12px;
+  font-family: 'Courier New', monospace; font-size: 10px;
+  cursor: pointer; letter-spacing: 1px;
+}
+#city-bar button:first-child { border-radius: 3px 0 0 3px; }
+#city-bar button:last-child  { border-radius: 0 3px 3px 0; }
+#city-bar button:hover { background: #ff444430; }
+
+
+/* ===================================================================
+   Visual Filter Overlays
+   Intensity driven by CSS custom property --fi (0..1) set from JS
+   =================================================================== */
+:root { --fi: 1; }
+
+#filter-overlay {
+  position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+  pointer-events: none; z-index: 5;
+}
+
+/* CRT scanlines */
+.filter-crt #filter-overlay::before {
+  content: ''; position: absolute; inset: 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0px, transparent 2px,
+    rgba(0, 0, 0, var(--fi)) 2px, rgba(0, 0, 0, var(--fi)) 4px
+  );
+  opacity: var(--fi); z-index: 1;
+}
+.filter-crt #filter-overlay::after {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse at center, transparent 60%, rgba(0, 0, 0, 0.45) 100%);
+  opacity: var(--fi); z-index: 2;
+}
+
+/* NVG night vision */
+.filter-nvg #filter-overlay::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse at center, transparent 40%, rgba(0, 20, 0, 0.7) 100%);
+  opacity: var(--fi); z-index: 1;
+}
+.filter-nvg #filter-overlay::after {
+  content: ''; position: absolute; inset: 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0px, transparent 3px,
+    rgba(0, 255, 0, 0.03) 3px, rgba(0, 255, 0, 0.03) 6px
+  );
+  opacity: var(--fi);
+  animation: nvg-noise 0.1s steps(3) infinite;
+  z-index: 2;
+}
+@keyframes nvg-noise {
+  0%   { transform: translateY(0); }
+  33%  { transform: translateY(-2px); }
+  66%  { transform: translateY(1px); }
+  100% { transform: translateY(-1px); }
+}
+
+/* FLIR thermal */
+.filter-flir #filter-overlay::before {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 80, 0.25) 0%, rgba(0, 0, 40, 0.15) 30%,
+    rgba(80, 0, 80, 0.15) 50%, rgba(120, 40, 0, 0.2) 70%,
+    rgba(180, 80, 0, 0.25) 100%
+  );
+  mix-blend-mode: color; opacity: var(--fi); z-index: 1;
+}
+.filter-flir #filter-overlay::after {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse at center, transparent 50%, rgba(0, 0, 0, 0.5) 100%);
+  opacity: var(--fi); z-index: 2;
+}
+.filter-flir .cesium-credit-logoContainer,
+.filter-flir #hud, .filter-flir #mode-bar,
+.filter-flir #layer-toggles, .filter-flir #filter-bar {
+  filter: sepia(0.6) hue-rotate(-30deg) saturate(2);
+}
+
+/* Anime cel-shading */
+.filter-anime #hud, .filter-anime #mode-bar,
+.filter-anime #layer-toggles, .filter-anime #filter-bar,
+.filter-anime #info-panel {
+  font-weight: bold;
+  text-shadow: 0 0 0 transparent;
+  -webkit-text-stroke: 0.3px currentColor;
+}
+
+/* BORDER political map — flat desaturated map look */
+.filter-border #filter-overlay::before {
+  content: ''; position: absolute; inset: 0;
+  background: rgba(220, 215, 200, 0.15);
+  mix-blend-mode: overlay; opacity: var(--fi); z-index: 1;
+}
+.filter-border #filter-overlay::after {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse at center, transparent 55%, rgba(40, 35, 25, 0.35) 100%);
+  opacity: var(--fi); z-index: 2;
+}
+.filter-border #hud, .filter-border #mode-bar,
+.filter-border #layer-toggles, .filter-border #filter-bar,
+.filter-border #info-panel {
+  color: #cc4444;
+  text-shadow: 0 0 8px rgba(200, 60, 60, 0.6);
+}
+.filter-border #title { text-shadow: 0 0 10px rgba(200, 60, 60, 0.6); }
+
+
+/* ===================================================================
+   Audio Player Widget
+   =================================================================== */
+#audio-player {
+  position: absolute; bottom: 16px; left: 16px;
+  z-index: 20; background: rgba(0, 0, 0, 0.85);
+  border: 1px solid #00ff4140;
+  padding: 10px 14px; border-radius: 6px;
+  display: flex; align-items: center; gap: 10px;
+  box-shadow: 0 0 20px rgba(0, 255, 65, 0.1);
+  min-width: 280px;
+}
+#audio-player .ap-btn {
+  background: none; border: 1px solid #00ff4160; color: #00ff41;
+  font-family: 'Courier New', monospace; font-size: 16px;
+  width: 32px; height: 32px; cursor: pointer;
+  border-radius: 50%; display: flex; align-items: center;
+  justify-content: center; flex-shrink: 0; padding: 0;
+}
+#audio-player .ap-btn:hover { background: #00ff4120; }
+#audio-player .ap-info {
+  display: flex; flex-direction: column; gap: 2px;
+  flex: 1; min-width: 0; overflow: hidden;
+}
+#audio-player .ap-title {
+  font-size: 11px; color: #00ff41; letter-spacing: 1px;
+  font-weight: bold; white-space: nowrap;
+  overflow: hidden; text-overflow: ellipsis;
+}
+#audio-player .ap-artist {
+  font-size: 9px; color: #00ff41; opacity: 0.5;
+  letter-spacing: 1px; white-space: nowrap;
+}
+#audio-player .ap-progress-wrap {
+  width: 100%; height: 4px; background: #00ff4120;
+  border-radius: 2px; cursor: pointer; margin-top: 3px;
+}
+#audio-player .ap-progress {
+  height: 100%; background: #00ff41; border-radius: 2px;
+  width: 0%; transition: width 0.3s linear;
+}
+#audio-player .ap-time {
+  font-size: 9px; color: #00ff41; opacity: 0.4;
+  flex-shrink: 0;
+}
+
+
+/* ===================================================================
+   Satellite Aerial View Panel
+   =================================================================== */
+#sat-view-panel {
+  position: absolute; top: 0; right: 0; bottom: 0;
+  width: 0; z-index: 15;
+  background: #000;
+  border-left: 2px solid #ffaa0060;
+  transition: width 0.35s ease;
+  overflow: hidden;
+  display: flex; flex-direction: column;
+}
+#sat-view-panel.open { width: 45vw; }
+
+/* Horizontal profile view */
+#sat-horizon-view {
+  width: 100%; height: 200px; flex-shrink: 0;
+  position: relative;
+  border-bottom: 1px solid #ffaa0030;
+  background: #000;
+}
+#sat-horizon-canvas { width: 100%; height: 100%; display: block; }
+#sat-horizon-label {
+  position: absolute; top: 8px; left: 12px;
+  font-size: 9px; letter-spacing: 2px;
+  color: #ffaa00; opacity: 0.5;
+  pointer-events: none;
+}
+
+#sat-view-container { width: 100%; flex: 1; min-height: 0; }
+
+#sat-view-hud {
+  position: absolute; top: 0; left: 0; right: 0;
+  pointer-events: none; z-index: 16;
+  padding: 12px 16px;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.8) 0%, transparent 100%);
+}
+#sat-view-hud .sv-title {
+  font-size: 14px; font-weight: bold; letter-spacing: 3px;
+  color: #ffaa00; text-shadow: 0 0 10px #ffaa00;
+}
+#sat-view-hud .sv-subtitle {
+  font-size: 10px; opacity: 0.6; letter-spacing: 1px;
+  color: #ffaa00; margin-top: 2px;
+}
+#sat-view-hud .sv-info {
+  font-size: 11px; color: #ffaa00; margin-top: 8px;
+  line-height: 1.6; opacity: 0.8;
+}
+#sat-view-hud .sv-label { opacity: 0.5; }
+
+#sat-view-close {
+  position: absolute; top: 10px; right: 12px;
+  z-index: 17; pointer-events: all;
+  background: rgba(0,0,0,0.7); border: 1px solid #ffaa0060;
+  color: #ffaa00; font-family: 'Courier New', monospace;
+  font-size: 14px; padding: 4px 10px; cursor: pointer;
+  border-radius: 3px; letter-spacing: 2px;
+}
+#sat-view-close:hover { background: #ffaa0020; }
+
+/* Crosshair overlay */
+#sat-view-crosshair {
+  position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+  pointer-events: none; z-index: 16;
+}
+#sat-view-crosshair::before {
+  content: ''; position: absolute;
+  top: 50%; left: 0; right: 0; height: 1px;
+  background: linear-gradient(to right,
+    transparent 0%, #ffaa0030 20%, #ffaa0050 50%, #ffaa0030 80%, transparent 100%);
+}
+#sat-view-crosshair::after {
+  content: ''; position: absolute;
+  left: 50%; top: 0; bottom: 0; width: 1px;
+  background: linear-gradient(to bottom,
+    transparent 0%, #ffaa0030 20%, #ffaa0050 50%, #ffaa0030 80%, transparent 100%);
+}
+#sat-view-scope {
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60%; height: 60%;
+  border: 1px solid #ffaa0025;
+  border-radius: 50%;
+  pointer-events: none; z-index: 16;
+  box-shadow: 0 0 40px rgba(255,170,0,0.08) inset;
+}
+#sat-view-scope::after {
+  content: ''; position: absolute; inset: 12%;
+  border: 1px dashed #ffaa0015;
+  border-radius: 50%;
+}
+
+/* Resize main viewer when satellite panel is open */
+body.sat-panel-open #cesiumContainer       { width: 55vw; }
+body.sat-panel-open #hud                   { right: 45vw; }
+body.sat-panel-open #mode-bar              { left: 27.5vw; }
+body.sat-panel-open #layer-toggles         { left: 27.5vw; }
+body.sat-panel-open #filter-bar            { left: 27.5vw; }
+body.sat-panel-open #info-panel            { right: calc(45vw + 16px); }
+body.sat-panel-open #timeline-bar          { right: 45vw; }
+
+/* Hide Cesium default UI */
+.cesium-viewer-toolbar,
+.cesium-viewer-animationContainer,
+.cesium-viewer-timelineContainer,
+.cesium-viewer-fullscreenContainer,
+.cesium-viewer-bottom { display: none !important; }
+.cesium-credit-logoContainer { opacity: 0.4; }
