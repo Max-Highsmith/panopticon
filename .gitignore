@@ -1,0 +1,16 @@
+# Large data archives
+data/v2026*.tar.*
+data/traces/
+
+# Screenshots (not needed for site)
+*.png
+
+# Python scripts and duplicate data
+data/*.py
+data/*.json
+
+# macOS
+.DS_Store
+
+# Claude
+.claude/
