@@ -32,10 +32,36 @@ export const REFRESH = {
 export const DISPLAY = {
   MIL_ICON_SIZE:  42,
   CIV_ICON_SIZE:  28,
-  SAT_ICON_SIZE:  18,
+  SAT_ICON_SIZE:  24,
   SHIP_ICON_SIZE: 42,
   POGO_ICON_SIZE: 22,
+  MINE_ICON_SIZE:  28,
+  INFRA_ICON_SIZE: 28,
+  CUSTOM_ICON_SIZE: 18,
+  AIRPORT_ICON_SIZE_LG: 24,
+  AIRPORT_ICON_SIZE_MD: 18,
 };
+
+// Custom datasets — add entries here to load your own data layers.
+// Each entry creates a toggle in the UI and loads point data onto the globe.
+//
+// Supported formats: .geojson, .csv, .kml
+//
+// Example:
+// {
+//   id: 'my_data',                          // Unique ID (used for toggle, entity map)
+//   label: 'MY DATA',                       // Toggle label in the HUD
+//   file: 'data/custom/my_data.geojson',    // Path to data file
+//   color: '#ff00ff',                        // Marker color
+//   iconType: 'circle',                      // 'circle' | 'diamond' | 'server' | 'radiation'
+//   iconSize: 20,                            // Optional (default: CUSTOM_ICON_SIZE)
+//   altitude: 200,                           // Optional display altitude in meters (default: 0)
+// }
+//
+// GeoJSON: FeatureCollection with Point geometries. Feature.properties shown on click.
+// CSV:     Must have lat/lon or latitude/longitude columns. First row = headers.
+// KML:     Standard KML with <Placemark> elements containing <Point> coordinates.
+export const CUSTOM_DATASETS = [];
 
 export const REPLAY_SPEEDS = [1, 2, 5, 10, 30, 60, 100];
 export const DEFAULT_SPEED_INDEX = 4; // 30x

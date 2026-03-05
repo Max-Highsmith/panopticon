@@ -47,7 +47,7 @@
       <span id="subtitle">LIVE TRACKING // ADS-B + OPENSKY + CELESTRAK + AIS</span>
     </div>
     <div id="stats">
-      <div>MIL: <span id="mil-count">---</span> // CIV: <span id="civ-count">---</span> // SAT: <span id="sat-count">---</span> // SHIPS: <span id="ship-count">---</span> // POGO: <span id="pogo-count">---</span></div>
+      <div>MIL: <span id="mil-count">---</span> // CIV: <span id="civ-count">---</span> // SAT: <span id="sat-count">---</span> // SHIPS: <span id="ship-count">---</span> // POGO: <span id="pogo-count">---</span> // MINES: <span id="mines-count">---</span> // INFRA: <span id="infra-count">---</span> // AIRPORTS: <span id="airport-count">---</span></div>
       <div>UPDATED: <span id="updated">---</span></div>
     </div>
   </div>
@@ -65,6 +65,16 @@
     <label class="sat-label"><input type="checkbox" id="chk-satellites" checked onchange="toggleLayer('satellites')"> SAT</label>
     <label class="ship-label"><input type="checkbox" id="chk-ships" onchange="toggleLayer('ships')"> SHIPS</label>
     <label class="pogo-label"><input type="checkbox" id="chk-pokemon" onchange="toggleLayer('pokemon')"> POGO</label>
+    <label class="mines-label"><input type="checkbox" id="chk-mines" onchange="toggleLayer('mines')"> MINES</label>
+    <label class="infra-label"><input type="checkbox" id="chk-infra" onchange="toggleLayer('infra')"> INFRA</label>
+    <label class="airport-label"><input type="checkbox" id="chk-airports" onchange="toggleLayer('airports')"> AIRPORTS</label>
+  </div>
+
+  <div id="mines-legend">
+    <div class="ml-title">MINES KEY</div>
+    <div class="ml-item"><span class="ml-swatch" style="background:#cc44ff"></span> COBALT</div>
+    <div class="ml-item"><span class="ml-swatch" style="background:#00ddcc"></span> LITHIUM</div>
+    <div class="ml-item"><span class="ml-swatch" style="background:#f7931a"></span> BITCOIN</div>
   </div>
 
   <div id="filter-bar">
@@ -153,6 +163,7 @@
   <!-- ==================== Satellite View Panel ==================== -->
 
   <div id="sat-view-panel">
+    <div class="panel-resize-handle"></div>
     <div id="sat-horizon-view">
       <canvas id="sat-horizon-canvas"></canvas>
       <div id="sat-horizon-label">ORBITAL PROFILE</div>
@@ -172,6 +183,71 @@
     <button id="sat-view-close" onclick="closeSatView()">CLOSE ✕</button>
     <div id="sat-view-crosshair"></div>
     <div id="sat-view-scope"></div>
+  </div>
+
+  <!-- ==================== Plane View Panel ==================== -->
+
+  <div id="plane-view-panel">
+    <div class="panel-resize-handle"></div>
+    <!-- Stats bar at top -->
+    <div id="plane-view-stats">
+      <div class="pv-stats-row">
+        <div class="pv-title" id="pv-callsign">---</div>
+        <span class="pv-stats-tag" id="pv-type">---</span>
+      </div>
+      <div class="pv-stats-grid">
+        <div><span class="pv-label">ALT </span><span id="pv-alt">---</span></div>
+        <div><span class="pv-label">SPD </span><span id="pv-spd">---</span></div>
+        <div><span class="pv-label">LAT </span><span id="pv-lat">---</span></div>
+        <div><span class="pv-label">LON </span><span id="pv-lon">---</span></div>
+        <div><span class="pv-label">FPT </span><span id="pv-footprint">---</span></div>
+      </div>
+    </div>
+    <!-- Flight profile canvas -->
+    <div id="plane-horizon-view">
+      <canvas id="plane-horizon-canvas"></canvas>
+      <div id="plane-horizon-label">FLIGHT PROFILE</div>
+    </div>
+    <!-- Cesium ground view with military camera overlay -->
+    <div id="plane-view-wrapper">
+      <div id="plane-view-container"></div>
+      <canvas id="plane-view-overlay"></canvas>
+      <div id="plane-view-crosshair"></div>
+      <div id="plane-view-scope"></div>
+    </div>
+    <button id="plane-view-close" onclick="closePlaneView()">CLOSE ✕</button>
+  </div>
+
+  <!-- ==================== Site Recon View Panel ==================== -->
+
+  <div id="site-view-panel">
+    <div class="panel-resize-handle"></div>
+    <!-- Site info canvas (coordinate grid + orbit indicator + dossier) -->
+    <div id="site-info-view">
+      <canvas id="site-info-canvas"></canvas>
+      <div id="site-info-label">SITE RECONNAISSANCE</div>
+    </div>
+    <!-- Site details bar -->
+    <div id="site-view-stats">
+      <div class="stv-stats-row">
+        <div class="stv-title" id="stv-site-name">---</div>
+        <span class="stv-stats-tag" id="stv-type">---</span>
+      </div>
+      <div class="stv-stats-grid">
+        <div><span class="stv-label">OPERATOR </span><span id="stv-operator">---</span></div>
+        <div><span class="stv-label">COUNTRY </span><span id="stv-country">---</span></div>
+        <div><span class="stv-label">LAT </span><span id="stv-lat">---</span></div>
+        <div><span class="stv-label">LON </span><span id="stv-lon">---</span></div>
+        <div class="stv-notes-row"><span class="stv-label">NOTES </span><span id="stv-notes">---</span></div>
+      </div>
+    </div>
+    <!-- Cesium 3D view with recon overlay -->
+    <div id="site-view-wrapper">
+      <div id="site-view-container"></div>
+      <canvas id="site-view-overlay"></canvas>
+      <div id="site-view-crosshair"></div>
+    </div>
+    <button id="site-view-close" onclick="closeSiteView()">CLOSE ✕</button>
   </div>
 
   <!-- Application Logic (ES Modules) -->

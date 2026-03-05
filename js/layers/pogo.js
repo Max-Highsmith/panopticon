@@ -42,7 +42,7 @@ out 300;`;
       const name = (el.tags && (el.tags.name || el.tags.description)) || 'PokéStop';
       const entity = viewer.entities.add({
         position: Cesium.Cartesian3.fromDegrees(el.lon, el.lat, 200),
-        billboard: { image: icons.pogo, width: DISPLAY.POGO_ICON_SIZE, height: DISPLAY.POGO_ICON_SIZE, alignedAxis: Cesium.Cartesian3.ZERO, disableDepthTestDistance: Number.POSITIVE_INFINITY },
+        billboard: { image: icons.pogo, width: DISPLAY.POGO_ICON_SIZE, height: DISPLAY.POGO_ICON_SIZE, alignedAxis: Cesium.Cartesian3.ZERO, disableDepthTestDistance: 0 },
       });
       entity.show = layers.pokemon;
       entity.acData = { hex: id, r: name, t: 'POKESTOP', flight: name, alt_baro: 0, gs: 0, track: 0 };

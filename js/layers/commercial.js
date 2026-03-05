@@ -60,7 +60,17 @@ export async function fetchCommercial(viewer) {
       const track = s[10];
       const callsign = (s[1] || hex).trim();
       const onGround = s[8];
-      const position = Cesium.Cartesian3.fromDegrees(lon, lat, onGround ? 100 : altMeters);
+
+      // Skip parked/taxiing aircraft (on ground or very low & slow)
+      if (onGround || (altMeters < 50 && (velocity == null || velocity < 5))) {
+        if (entities.has(hex)) {
+          viewer.entities.remove(entities.get(hex).entity);
+          entities.delete(hex);
+        }
+        continue;
+      }
+
+      const position = Cesium.Cartesian3.fromDegrees(lon, lat, altMeters);
 
       const acData = {
         hex, r: callsign, t: s[2] || '', flight: callsign,

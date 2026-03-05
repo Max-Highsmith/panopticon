@@ -26,9 +26,20 @@ export async function fetchMilitary(viewer) {
     for (const ac of aircraft) {
       if (ac.lat == null || ac.lon == null) continue;
       const hex = ac.hex;
-      seen.add(hex);
 
-      const altMeters = ac.alt_baro === 'ground' ? 100 : (ac.alt_baro || 10000) * 0.3048;
+      // Skip parked/taxiing aircraft
+      const isGround = ac.alt_baro === 'ground';
+      const altMeters = isGround ? 100 : (ac.alt_baro || 10000) * 0.3048;
+      if (isGround || (altMeters < 50 && (!ac.gs || ac.gs < 5))) {
+        if (entities.has(hex)) {
+          viewer.entities.remove(entities.get(hex).entity);
+          if (entities.get(hex).trailEntity) viewer.entities.remove(entities.get(hex).trailEntity);
+          entities.delete(hex);
+        }
+        continue;
+      }
+
+      seen.add(hex);
       const position = Cesium.Cartesian3.fromDegrees(ac.lon, ac.lat, altMeters);
       const callsign = (ac.flight || ac.r || hex).trim();
 

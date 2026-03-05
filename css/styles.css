@@ -89,8 +89,37 @@ body {
 #layer-toggles label.civ-label  { color: #cccccc; }
 #layer-toggles label.sat-label  { color: #ffaa00; }
 #layer-toggles label.ship-label { color: #4488ff; }
-#layer-toggles label.pogo-label { color: #ff4444; }
+#layer-toggles label.pogo-label  { color: #ff4444; }
+#layer-toggles label.mines-label { color: #cc44ff; }
+#layer-toggles label.infra-label { color: #ff8800; }
+#layer-toggles label.custom-label { color: #ff00ff; }
+#layer-toggles label.airport-label { color: #00ccff; }
 #layer-toggles input[type="checkbox"] { accent-color: #00ff41; }
+
+/* --- Mines Legend --- */
+#mines-legend {
+  position: absolute; top: 52px; right: 24px;
+  z-index: 10; display: none;
+  background: rgba(0, 0, 0, 0.85);
+  border: 1px solid #cc44ff40;
+  padding: 8px 14px; border-radius: 4px;
+  font-size: 10px; letter-spacing: 1px;
+  box-shadow: 0 0 12px rgba(204, 68, 255, 0.1);
+}
+#mines-legend .ml-title {
+  color: #cc44ff; opacity: 0.6;
+  margin-bottom: 6px; font-size: 9px;
+  letter-spacing: 2px;
+}
+#mines-legend .ml-item {
+  display: flex; align-items: center; gap: 8px;
+  color: #ccc; margin-bottom: 3px;
+  line-height: 1.6;
+}
+#mines-legend .ml-swatch {
+  display: inline-block; width: 10px; height: 10px;
+  transform: rotate(45deg); flex-shrink: 0;
+}
 
 /* --- Timeline Scrubber --- */
 #timeline-bar {
@@ -210,7 +239,7 @@ body {
    Visual Filter Overlays
    Intensity driven by CSS custom property --fi (0..1) set from JS
    =================================================================== */
-:root { --fi: 1; }
+:root { --fi: 1; --panel-width: 45vw; }
 
 #filter-overlay {
   position: absolute; top: 0; left: 0; right: 0; bottom: 0;
@@ -367,12 +396,12 @@ body {
   overflow: hidden;
   display: flex; flex-direction: column;
 }
-#sat-view-panel.open { width: 45vw; }
+#sat-view-panel.open { width: var(--panel-width); }
 
 /* Horizontal profile view */
 #sat-horizon-view {
-  width: 100%; height: 200px; flex-shrink: 0;
-  position: relative;
+  width: 100%; height: 250px; flex-shrink: 0;
+  position: relative; z-index: 18;
   border-bottom: 1px solid #ffaa0030;
   background: #000;
 }
@@ -387,7 +416,7 @@ body {
 #sat-view-container { width: 100%; flex: 1; min-height: 0; }
 
 #sat-view-hud {
-  position: absolute; top: 0; left: 0; right: 0;
+  position: absolute; top: 250px; left: 0; right: 0;
   pointer-events: none; z-index: 16;
   padding: 12px 16px;
   background: linear-gradient(to bottom, rgba(0,0,0,0.8) 0%, transparent 100%);
@@ -408,7 +437,7 @@ body {
 
 #sat-view-close {
   position: absolute; top: 10px; right: 12px;
-  z-index: 17; pointer-events: all;
+  z-index: 19; pointer-events: all;
   background: rgba(0,0,0,0.7); border: 1px solid #ffaa0060;
   color: #ffaa00; font-family: 'Courier New', monospace;
   font-size: 14px; padding: 4px 10px; cursor: pointer;
@@ -449,13 +478,269 @@ body {
 }
 
 /* Resize main viewer when satellite panel is open */
-body.sat-panel-open #cesiumContainer       { width: 55vw; }
-body.sat-panel-open #hud                   { right: 45vw; }
-body.sat-panel-open #mode-bar              { left: 27.5vw; }
-body.sat-panel-open #layer-toggles         { left: 27.5vw; }
-body.sat-panel-open #filter-bar            { left: 27.5vw; }
-body.sat-panel-open #info-panel            { right: calc(45vw + 16px); }
-body.sat-panel-open #timeline-bar          { right: 45vw; }
+body.sat-panel-open #cesiumContainer       { width: calc(100vw - var(--panel-width)); }
+body.sat-panel-open #hud                   { right: var(--panel-width); }
+body.sat-panel-open #mode-bar              { left: calc((100vw - var(--panel-width)) / 2); }
+body.sat-panel-open #layer-toggles         { left: calc((100vw - var(--panel-width)) / 2); }
+body.sat-panel-open #filter-bar            { left: calc((100vw - var(--panel-width)) / 2); }
+body.sat-panel-open #info-panel            { right: calc(var(--panel-width) + 16px); }
+body.sat-panel-open #timeline-bar          { right: var(--panel-width); }
+
+
+/* ===================================================================
+   Aircraft Aerial View Panel — Military Camera Footage Style
+   =================================================================== */
+#plane-view-panel {
+  position: absolute; top: 0; right: 0; bottom: 0;
+  width: 0; z-index: 15;
+  background: #000;
+  border-left: 2px solid #00ff4160;
+  transition: width 0.35s ease;
+  overflow: hidden;
+  display: flex; flex-direction: column;
+}
+#plane-view-panel.open { width: var(--panel-width); }
+
+/* --- Stats bar at top --- */
+#plane-view-stats {
+  width: 100%; flex-shrink: 0;
+  background: rgba(0, 8, 0, 0.95);
+  border-bottom: 1px solid #00ff4140;
+  padding: 10px 16px;
+  z-index: 18;
+}
+.pv-stats-row {
+  display: flex; align-items: center; gap: 10px;
+  margin-bottom: 6px;
+}
+#plane-view-stats .pv-title {
+  font-size: 15px; font-weight: bold; letter-spacing: 3px;
+  color: #00ff41; text-shadow: 0 0 8px #00ff41;
+}
+.pv-stats-tag {
+  font-size: 9px; letter-spacing: 1px;
+  color: #00ff41; opacity: 0.6;
+  border: 1px solid #00ff4140;
+  padding: 1px 6px; border-radius: 2px;
+}
+.pv-stats-grid {
+  display: flex; flex-wrap: wrap; gap: 4px 16px;
+  font-size: 11px; color: #00ff41; opacity: 0.85;
+  line-height: 1.5;
+}
+.pv-stats-grid .pv-label {
+  opacity: 0.45; font-size: 10px;
+}
+
+/* --- Flight profile canvas --- */
+#plane-horizon-view {
+  width: 100%; height: 220px; flex-shrink: 0;
+  position: relative; z-index: 18;
+  border-bottom: 1px solid #00ff4130;
+  background: #000;
+}
+#plane-horizon-canvas { width: 100%; height: 100%; display: block; }
+#plane-horizon-label {
+  position: absolute; top: 8px; left: 12px;
+  font-size: 9px; letter-spacing: 2px;
+  color: #00ff41; opacity: 0.5;
+  pointer-events: none;
+}
+
+/* --- Cesium viewer wrapper (military camera area) --- */
+#plane-view-wrapper {
+  position: relative; flex: 1; min-height: 0;
+  overflow: hidden;
+}
+#plane-view-container { width: 100%; height: 100%; }
+
+/* Green-tinted overlay canvas for HUD elements drawn in JS */
+#plane-view-overlay {
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+  pointer-events: none; z-index: 17;
+}
+
+/* Close button */
+#plane-view-close {
+  position: absolute; top: 10px; right: 12px;
+  z-index: 19; pointer-events: all;
+  background: rgba(0,8,0,0.7); border: 1px solid #00ff4160;
+  color: #00ff41; font-family: 'Courier New', monospace;
+  font-size: 14px; padding: 4px 10px; cursor: pointer;
+  border-radius: 3px; letter-spacing: 2px;
+}
+#plane-view-close:hover { background: #00ff4120; }
+
+/* Crosshair overlay — mil green */
+#plane-view-crosshair {
+  position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+  pointer-events: none; z-index: 16;
+}
+#plane-view-crosshair::before {
+  content: ''; position: absolute;
+  top: 50%; left: 0; right: 0; height: 1px;
+  background: linear-gradient(to right,
+    transparent 0%, #00ff4125 20%, #00ff4145 50%, #00ff4125 80%, transparent 100%);
+}
+#plane-view-crosshair::after {
+  content: ''; position: absolute;
+  left: 50%; top: 0; bottom: 0; width: 1px;
+  background: linear-gradient(to bottom,
+    transparent 0%, #00ff4125 20%, #00ff4145 50%, #00ff4125 80%, transparent 100%);
+}
+#plane-view-scope {
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60%; height: 60%;
+  border: 1px solid #00ff4120;
+  border-radius: 50%;
+  pointer-events: none; z-index: 16;
+  box-shadow: 0 0 40px rgba(0,255,65,0.06) inset;
+}
+#plane-view-scope::after {
+  content: ''; position: absolute; inset: 12%;
+  border: 1px dashed #00ff4112;
+  border-radius: 50%;
+}
+
+/* Resize main viewer when plane panel is open */
+body.plane-panel-open #cesiumContainer       { width: calc(100vw - var(--panel-width)); }
+body.plane-panel-open #hud                   { right: var(--panel-width); }
+body.plane-panel-open #mode-bar              { left: calc((100vw - var(--panel-width)) / 2); }
+body.plane-panel-open #layer-toggles         { left: calc((100vw - var(--panel-width)) / 2); }
+body.plane-panel-open #filter-bar            { left: calc((100vw - var(--panel-width)) / 2); }
+body.plane-panel-open #info-panel            { right: calc(var(--panel-width) + 16px); }
+body.plane-panel-open #timeline-bar          { right: var(--panel-width); }
+
+/* ===================================================================
+   Site Reconnaissance View Panel — Intelligence Recon Style
+   =================================================================== */
+#site-view-panel {
+  position: absolute; top: 0; right: 0; bottom: 0;
+  width: 0; z-index: 15;
+  background: #000;
+  border-left: 2px solid #b4dcff60;
+  transition: width 0.35s ease;
+  overflow: hidden;
+  display: flex; flex-direction: column;
+}
+#site-view-panel.open { width: var(--panel-width); }
+
+/* --- Site info canvas (top section) --- */
+#site-info-view {
+  width: 100%; height: 200px; flex-shrink: 0;
+  position: relative; z-index: 18;
+  border-bottom: 1px solid #b4dcff30;
+  background: #000;
+}
+#site-info-canvas { width: 100%; height: 100%; display: block; }
+#site-info-label {
+  position: absolute; top: 8px; right: 12px;
+  font-size: 9px; letter-spacing: 2px;
+  color: #b4dcff; opacity: 0.5;
+  pointer-events: none;
+  font-family: 'Courier New', monospace;
+}
+
+/* --- Stats bar --- */
+#site-view-stats {
+  width: 100%; flex-shrink: 0;
+  background: rgba(0, 8, 20, 0.95);
+  border-bottom: 1px solid #b4dcff40;
+  padding: 10px 16px;
+  z-index: 18;
+}
+.stv-stats-row {
+  display: flex; align-items: center; gap: 10px;
+  margin-bottom: 6px;
+}
+#site-view-stats .stv-title {
+  font-size: 15px; font-weight: bold; letter-spacing: 3px;
+  color: #b4dcff; text-shadow: 0 0 8px #b4dcff;
+}
+.stv-stats-tag {
+  font-size: 9px; letter-spacing: 1px;
+  color: #b4dcff; opacity: 0.6;
+  border: 1px solid #b4dcff40;
+  padding: 1px 6px; border-radius: 2px;
+  font-family: 'Courier New', monospace;
+}
+.stv-stats-grid {
+  display: flex; flex-wrap: wrap; gap: 4px 16px;
+  font-size: 11px; color: #b4dcff; opacity: 0.85;
+  line-height: 1.5;
+}
+.stv-stats-grid .stv-label {
+  opacity: 0.45; font-size: 10px;
+}
+.stv-notes-row {
+  width: 100%;
+}
+
+/* --- Cesium viewer wrapper --- */
+#site-view-wrapper {
+  position: relative; flex: 1; min-height: 0;
+  overflow: hidden;
+}
+#site-view-container { width: 100%; height: 100%; }
+
+#site-view-overlay {
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+  pointer-events: none; z-index: 17;
+}
+
+/* Close button */
+#site-view-close {
+  position: absolute; top: 10px; right: 12px;
+  z-index: 19; pointer-events: all;
+  background: rgba(0,8,20,0.7); border: 1px solid #b4dcff60;
+  color: #b4dcff; font-family: 'Courier New', monospace;
+  font-size: 14px; padding: 4px 10px; cursor: pointer;
+  border-radius: 3px; letter-spacing: 2px;
+}
+#site-view-close:hover { background: #b4dcff20; }
+
+/* Crosshair overlay */
+#site-view-crosshair {
+  position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+  pointer-events: none; z-index: 16;
+}
+#site-view-crosshair::before {
+  content: ''; position: absolute;
+  top: 50%; left: 0; right: 0; height: 1px;
+  background: linear-gradient(to right,
+    transparent 0%, #b4dcff25 20%, #b4dcff45 50%, #b4dcff25 80%, transparent 100%);
+}
+#site-view-crosshair::after {
+  content: ''; position: absolute;
+  left: 50%; top: 0; bottom: 0; width: 1px;
+  background: linear-gradient(to bottom,
+    transparent 0%, #b4dcff25 20%, #b4dcff45 50%, #b4dcff25 80%, transparent 100%);
+}
+
+/* Resize main viewer when site panel is open */
+body.site-panel-open #cesiumContainer       { width: calc(100vw - var(--panel-width)); }
+body.site-panel-open #hud                   { right: var(--panel-width); }
+body.site-panel-open #mode-bar              { left: calc((100vw - var(--panel-width)) / 2); }
+body.site-panel-open #layer-toggles         { left: calc((100vw - var(--panel-width)) / 2); }
+body.site-panel-open #filter-bar            { left: calc((100vw - var(--panel-width)) / 2); }
+body.site-panel-open #info-panel            { right: calc(var(--panel-width) + 16px); }
+body.site-panel-open #timeline-bar          { right: var(--panel-width); }
+
+/* --- Panel Resize Handle --- */
+.panel-resize-handle {
+  position: absolute; left: 0; top: 0; bottom: 0; width: 6px;
+  cursor: col-resize; z-index: 20;
+  background: transparent;
+  transition: background 0.15s;
+}
+.panel-resize-handle:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Disable transitions & lock cursor during panel drag resize */
+body.resizing { cursor: col-resize !important; user-select: none !important; }
+body.resizing * { transition: none !important; cursor: col-resize !important; }
 
 /* Hide Cesium default UI */
 .cesium-viewer-toolbar,

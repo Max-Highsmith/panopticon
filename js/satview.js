@@ -4,6 +4,7 @@
 
 import { entityMaps } from './globe.js';
 import { $ } from './utils.js';
+import { drawEarthGlobe } from './earthmap.js';
 
 const satEntities = entityMaps.satellites;
 let satViewer = null;
@@ -14,6 +15,18 @@ let satViewFootprintEntities = [];
 let frameCounter = 0;
 
 export function isSatViewOpen() { return satViewOpen; }
+export function resizeSatView() { if (satViewer) satViewer.resize(); }
+
+// --- Geometric line-of-sight footprint ---
+// Returns the ground-distance radius (km) a satellite can see from altitude altM (meters).
+// This is the arc distance from nadir to the geometric horizon on Earth's surface.
+function computeFootprintKm(altM) {
+  const R = 6371; // Earth radius in km
+  const altKm = altM / 1000;
+  // Angular radius from Earth center to the satellite's horizon
+  const angularRadius = Math.acos(R / (R + altKm));
+  return R * angularRadius;
+}
 
 // --- Second Cesium Viewer ---
 
@@ -97,9 +110,7 @@ function updateSatViewCamera(record) {
   if (!satViewer || !record) return;
 
   const { lon, lat, altM } = record;
-  const R = 6371000;
-  const halfAngle = Math.atan(R * Math.sin(Math.acos(R / (R + altM))) / altM) * 0.6;
-  const footprintRadiusKm = (R * halfAngle) / 1000;
+  const footprintRadiusKm = computeFootprintKm(altM);
 
   frameCounter++;
   if (frameCounter % 30 === 0) {
@@ -181,7 +192,7 @@ function updateSatViewFootprintPositions(lon, lat, radiusKm) {
   if (satViewFootprintEntities[4]) satViewFootprintEntities[4].position = Cesium.Cartesian3.fromDegrees(lon, lat, 100);
 }
 
-// --- Horizontal Profile Canvas Rendering ---
+// --- Orbital Profile Canvas Rendering (Earth Map + Scope of Sight) ---
 
 function renderSatHorizonView(record) {
   const canvas = $('sat-horizon-canvas');
@@ -200,135 +211,70 @@ function renderSatHorizonView(record) {
 
   const R_EARTH = 6371;
   const altKm = (record.altM || 400000) / 1000;
-  const halfAngle = Math.acos(R_EARTH / (R_EARTH + altKm)) * 0.6;
-  const footprintKm = R_EARTH * halfAngle;
+  const footprintKm = computeFootprintKm(record.altM || 400000);
+  const footprintAngle = footprintKm / R_EARTH;
 
-  // Layout
-  const earthRadius = W * 0.8;
-  const earthCenterY = H + earthRadius - 45;
+  // Layout — globe in lower portion, satellite above
+  const earthRadius = H * 0.35;
   const earthCenterX = W * 0.5;
-  const surfaceY = earthCenterY - earthRadius;
-  const satScale = Math.min(altKm / 1200, 1);
-  const satY = surfaceY - 20 - satScale * (H - 80);
+  const earthCenterY = H * 0.66;
+  const satScale = Math.min(altKm / 800, 1);
+  const satY = 14 + satScale * 16;
   const satX = W * 0.5;
+  const surfaceY = earthCenterY - earthRadius;
 
   // Stars
   ctx.save();
   const starSeed = Math.floor(record.lon * 10);
-  for (let i = 0; i < 40; i++) {
+  for (let i = 0; i < 50; i++) {
     const sx = ((starSeed * 13 + i * 97) % 1000) / 1000 * W;
-    const sy = ((starSeed * 7 + i * 53) % 1000) / 1000 * (surfaceY - 10);
-    ctx.fillStyle = `rgba(255, 255, 255, ${0.15 + ((i * 37) % 100) / 200})`;
+    const sy = ((starSeed * 7 + i * 53) % 1000) / 1000 * H;
+    ctx.fillStyle = `rgba(255, 255, 255, ${0.12 + ((i * 37) % 100) / 250})`;
     ctx.fillRect(sx, sy, 1, 1);
   }
   ctx.restore();
 
-  // Earth arc
-  ctx.save();
-  ctx.beginPath();
-  ctx.arc(earthCenterX, earthCenterY, earthRadius, 0, Math.PI * 2);
-  ctx.fillStyle = '#050e08';
-  ctx.fill();
+  // Draw Earth globe with orthographic map
+  drawEarthGlobe(ctx, earthCenterX, earthCenterY, earthRadius, record.lon, record.lat, footprintAngle);
 
-  // Atmosphere glow
-  const atmosGrad = ctx.createRadialGradient(earthCenterX, earthCenterY, earthRadius - 3, earthCenterX, earthCenterY, earthRadius + 12);
-  atmosGrad.addColorStop(0, 'rgba(60, 140, 255, 0)');
-  atmosGrad.addColorStop(0.5, 'rgba(60, 140, 255, 0.08)');
-  atmosGrad.addColorStop(1, 'rgba(60, 140, 255, 0)');
-  ctx.beginPath();
-  ctx.arc(earthCenterX, earthCenterY, earthRadius + 12, 0, Math.PI * 2);
-  ctx.fillStyle = atmosGrad;
-  ctx.fill();
+  // Viewing cone — scope-of-sight lines from satellite to footprint edges
+  const fpPixelRadius = earthRadius * Math.sin(Math.min(footprintAngle, Math.PI / 3));
+  const fpLeftX = earthCenterX - fpPixelRadius;
+  const fpRightX = earthCenterX + fpPixelRadius;
+  const fpTargetY = earthCenterY;
 
-  // Surface line
-  const arcStart = Math.PI + 0.3;
-  const arcEnd = 2 * Math.PI - 0.3;
-  ctx.beginPath();
-  ctx.arc(earthCenterX, earthCenterY, earthRadius, arcStart, arcEnd);
-  ctx.strokeStyle = 'rgba(0, 180, 80, 0.35)';
-  ctx.lineWidth = 1.5;
-  ctx.stroke();
-
-  // Terrain texture
-  for (let i = 0; i < 8; i++) {
-    const a1 = arcStart + (arcEnd - arcStart) * (i / 8) + 0.05;
-    ctx.beginPath();
-    ctx.arc(earthCenterX, earthCenterY, earthRadius - 2 - i * 2, a1, a1 + (arcEnd - arcStart) / 12);
-    ctx.strokeStyle = `rgba(0, 120, 50, ${0.08 + i * 0.01})`;
-    ctx.lineWidth = 0.5;
-    ctx.stroke();
-  }
-  ctx.restore();
-
-  // Footprint
-  const footprintAngularSpan = footprintKm / R_EARTH;
-  const fpVisualSpan = footprintAngularSpan * earthRadius * 0.8;
-  const fpY = surfaceY;
-
-  // Ground glow
-  ctx.save();
-  const fpGlow = ctx.createRadialGradient(earthCenterX, fpY + 5, 0, earthCenterX, fpY + 5, fpVisualSpan * 1.5);
-  fpGlow.addColorStop(0, 'rgba(255, 60, 40, 0.18)');
-  fpGlow.addColorStop(0.5, 'rgba(255, 100, 40, 0.06)');
-  fpGlow.addColorStop(1, 'rgba(255, 100, 40, 0)');
-  ctx.fillStyle = fpGlow;
-  ctx.fillRect(earthCenterX - fpVisualSpan * 2, fpY - 10, fpVisualSpan * 4, 40);
-
-  // Target boxes
-  const targets = [-0.3, 0.15, 0.5, -0.6, 0.05];
-  for (const offset of targets) {
-    const tx = earthCenterX + fpVisualSpan * offset;
-    const ty = fpY + 2 + Math.abs(offset) * 4;
-    ctx.strokeStyle = 'rgba(255, 60, 40, 0.7)';
-    ctx.lineWidth = 1;
-    ctx.strokeRect(tx - 4, ty - 4, 8, 8);
-    ctx.fillStyle = 'rgba(255, 80, 40, 0.5)';
-    ctx.fillRect(tx - 1, ty - 1, 2, 2);
-  }
-  ctx.restore();
-
-  // Viewing cone
   ctx.save();
   ctx.setLineDash([4, 4]);
   ctx.lineWidth = 1;
-  const fpLeft = earthCenterX - fpVisualSpan;
-  const fpRight = earthCenterX + fpVisualSpan;
 
-  for (const [targetX, gradTarget] of [[fpLeft, fpLeft], [fpRight, fpRight]]) {
-    const grad = ctx.createLinearGradient(satX, satY, gradTarget, fpY);
-    grad.addColorStop(0, 'rgba(255, 170, 0, 0.6)');
-    grad.addColorStop(1, 'rgba(255, 170, 0, 0.15)');
-    ctx.strokeStyle = grad;
-    ctx.beginPath();
-    ctx.moveTo(satX, satY);
-    ctx.lineTo(targetX, fpY);
-    ctx.stroke();
-  }
+  // Left scope line
+  let grad = ctx.createLinearGradient(satX, satY, fpLeftX, fpTargetY);
+  grad.addColorStop(0, 'rgba(255, 170, 0, 0.6)');
+  grad.addColorStop(1, 'rgba(255, 170, 0, 0.15)');
+  ctx.strokeStyle = grad;
+  ctx.beginPath();
+  ctx.moveTo(satX, satY);
+  ctx.lineTo(fpLeftX, fpTargetY);
+  ctx.stroke();
 
+  // Right scope line
+  grad = ctx.createLinearGradient(satX, satY, fpRightX, fpTargetY);
+  grad.addColorStop(0, 'rgba(255, 170, 0, 0.6)');
+  grad.addColorStop(1, 'rgba(255, 170, 0, 0.15)');
+  ctx.strokeStyle = grad;
+  ctx.beginPath();
+  ctx.moveTo(satX, satY);
+  ctx.lineTo(fpRightX, fpTargetY);
+  ctx.stroke();
+
+  // Center nadir line (dashed)
   ctx.setLineDash([2, 6]);
   ctx.strokeStyle = 'rgba(255, 170, 0, 0.2)';
   ctx.beginPath();
   ctx.moveTo(satX, satY);
-  ctx.lineTo(earthCenterX, fpY);
+  ctx.lineTo(earthCenterX, earthCenterY);
   ctx.stroke();
   ctx.setLineDash([]);
-  ctx.restore();
-
-  // Footprint brackets
-  ctx.save();
-  ctx.strokeStyle = 'rgba(255, 170, 0, 0.4)';
-  ctx.lineWidth = 1;
-  for (const x of [fpLeft, fpRight]) {
-    ctx.beginPath();
-    ctx.moveTo(x, fpY - 6);
-    ctx.lineTo(x, fpY + 6);
-    ctx.stroke();
-  }
-  ctx.strokeStyle = 'rgba(255, 170, 0, 0.15)';
-  ctx.beginPath();
-  ctx.moveTo(fpLeft, fpY);
-  ctx.lineTo(fpRight, fpY);
-  ctx.stroke();
   ctx.restore();
 
   // Satellite icon
@@ -368,7 +314,7 @@ function renderSatHorizonView(record) {
   ctx.fillText(Math.round(altKm) + ' km ALT', satX + 20, satY + 8);
   ctx.restore();
 
-  // Altitude scale
+  // Altitude scale (right side)
   ctx.save();
   ctx.font = '8px Courier New';
   ctx.textAlign = 'right';
@@ -389,12 +335,12 @@ function renderSatHorizonView(record) {
   ctx.stroke();
   ctx.restore();
 
-  // Footprint label
+  // Footprint radius label
   ctx.save();
   ctx.font = '8px Courier New';
   ctx.fillStyle = 'rgba(255, 170, 0, 0.4)';
   ctx.textAlign = 'center';
-  ctx.fillText(Math.round(footprintKm) + ' km', earthCenterX, fpY + 18);
+  ctx.fillText(Math.round(footprintKm) + ' km', earthCenterX, earthCenterY + earthRadius + 14);
   ctx.restore();
 
   // Scan line animation

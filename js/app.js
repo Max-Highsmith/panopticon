@@ -13,8 +13,14 @@ import { startCommercial, stopCommercial } from './layers/commercial.js';
 import { loadSatellites, isSatLoaded, getSatRecords, createSatelliteEntities, updateSatellitePositions } from './layers/satellites.js';
 import { startAIS, stopAIS } from './layers/ships.js';
 import { fetchPogoStops, isPogoLoaded, resetPogo } from './layers/pogo.js';
+import { fetchMines, isMinesLoaded, resetMines, MINES_FLY_TO } from './layers/mines.js';
+import { fetchInfra, isInfraLoaded, resetInfra, INFRA_FLY_TO } from './layers/infrastructure.js';
+import { fetchAirports, isAirportsLoaded, resetAirports } from './layers/airports.js';
+import { loadCustomDatasets } from './layers/custom.js';
 import { createBlackoutOverlays, removeBlackoutOverlays, createDataBoundsOverlay, removeDataBoundsOverlay } from './overlays.js';
-import { openSatView, closeSatView, isSatViewOpen } from './satview.js';
+import { openSatView, closeSatView, isSatViewOpen, resizeSatView } from './satview.js';
+import { openPlaneView, closePlaneView, isPlaneViewOpen, resizePlaneView } from './planeview.js';
+import { openSiteView, closeSiteView, isSiteViewOpen, resizeSiteView } from './siteview.js';
 
 // --- Globe ---
 const viewer = createViewer('cesiumContainer');
@@ -57,10 +63,23 @@ const _seenHexes = new Set();
 window.switchMode     = switchMode;
 window.toggleLayer    = (layer) => {
   toggleLayer(viewer, layer, currentMode);
-  // Lazy-start deferred layers when user enables them in live mode
-  if (currentMode === 'live' && layers[layer]) {
-    if (layer === 'ships' && entityMaps.ships.size === 0) startAIS(viewer);
-    if (layer === 'pokemon' && entityMaps.pokemon.size === 0) fetchPogoStops(viewer);
+  if (layer === 'mines' && !layers[layer]) {
+    $('mines-legend').style.display = 'none';
+  }
+  // Lazy-start deferred layers when user enables them
+  if (layers[layer]) {
+    if (layer === 'ships' && currentMode === 'live' && entityMaps.ships.size === 0) startAIS(viewer);
+    if (layer === 'pokemon' && currentMode === 'live' && entityMaps.pokemon.size === 0) fetchPogoStops(viewer);
+    if (layer === 'mines') {
+      if (entityMaps.mines.size === 0) fetchMines(viewer);
+      viewer.camera.flyTo({ destination: Cesium.Cartesian3.fromDegrees(MINES_FLY_TO.lon, MINES_FLY_TO.lat, MINES_FLY_TO.alt), duration: 1.5 });
+      $('mines-legend').style.display = 'block';
+    }
+    if (layer === 'infra') {
+      if (entityMaps.infra.size === 0) fetchInfra(viewer);
+      viewer.camera.flyTo({ destination: Cesium.Cartesian3.fromDegrees(INFRA_FLY_TO.lon, INFRA_FLY_TO.lat, INFRA_FLY_TO.alt), duration: 1.5 });
+    }
+    if (layer === 'airports' && entityMaps.airports.size === 0) fetchAirports(viewer);
   }
 };
 window.setVisualFilter = (f) => setVisualFilter(f, viewer);
@@ -70,6 +89,8 @@ window.togglePlay      = togglePlay;
 window.changeSpeed     = changeSpeed;
 window.toggleAudio     = toggleAudio;
 window.closeSatView    = () => closeSatView(viewer);
+window.closePlaneView  = () => closePlaneView(viewer);
+window.closeSiteView   = () => closeSiteView(viewer);
 
 // =====================================================
 // CITY JUMP
@@ -118,6 +139,7 @@ function stopLive() {
   }
   stopAIS(viewer);
   resetPogo();
+  resetAirports();
 }
 
 // =====================================================
@@ -126,6 +148,8 @@ function stopLive() {
 function selectScenario(id) {
   if (!SCENARIOS[id]) return;
   if (isSatViewOpen()) closeSatView(viewer);
+  if (isPlaneViewOpen()) closePlaneView(viewer);
+  if (isSiteViewOpen()) closeSiteView(viewer);
   activeScenario = id;
 
   document.querySelectorAll('.scenario-card').forEach(c => c.classList.remove('active'));
@@ -181,11 +205,14 @@ function renderReplayFrame() {
     const pt = interpolateTrace(ac.trace, absTime);
     if (!pt || isNaN(pt.lat) || isNaN(pt.lon)) continue;
 
-    _seenHexes.add(ac.hex);
-    visibleCount++;
-
     const rawAlt = pt.alt === 'ground' ? 100 : (typeof pt.alt === 'number' && !isNaN(pt.alt) ? pt.alt : 10000);
     const altMeters = rawAlt * 0.3048;
+
+    // Skip parked/taxiing aircraft (on ground or very low & slow)
+    if (pt.alt === 'ground' || (altMeters < 50 && (!pt.gs || pt.gs < 5))) continue;
+
+    _seenHexes.add(ac.hex);
+    visibleCount++;
     const position = Cesium.Cartesian3.fromDegrees(pt.lon, pt.lat, altMeters);
     const isMil = ac.mil;
 
@@ -193,6 +220,9 @@ function renderReplayFrame() {
       const record = replayEntities.get(ac.hex);
       record.entity.position = position;
       if (pt.track != null) record.entity.billboard.rotation = -Cesium.Math.toRadians(pt.track);
+      // Keep acData in sync so plane view reads current values
+      const acd = record.entity.acData;
+      if (acd) { acd.alt_baro = pt.alt; acd.gs = pt.gs; acd.track = pt.track; acd.lat = pt.lat; acd.lon = pt.lon; }
 
       // Append to trail coords buffer directly (flat array: lon, lat, alt, ...)
       const buf = record.trailCoords;
@@ -340,6 +370,8 @@ function switchMode(mode) {
   $('btn-replay').classList.toggle('active', mode === 'replay');
   $('info-panel').style.display = 'none';
   if (isSatViewOpen()) closeSatView(viewer);
+  if (isPlaneViewOpen()) closePlaneView(viewer);
+  if (isSiteViewOpen()) closeSiteView(viewer);
 
   if (mode === 'live') {
     stopReplay();
@@ -362,10 +394,54 @@ function switchMode(mode) {
 }
 
 // =====================================================
-// CLICK INTERACTION
+// CLICK INTERACTION — Selection Reticle
 // =====================================================
 const handler = new Cesium.ScreenSpaceEventHandler(viewer.scene.canvas);
 const infoPanel = $('info-panel');
+let selectedEntity = null;
+
+// Persistent reticle overlay that tracks the selected entity
+const reticleEntity = viewer.entities.add({
+  position: Cesium.Cartesian3.ZERO,
+  billboard: {
+    image: icons.reticle,
+    width: 64,
+    height: 64,
+    alignedAxis: Cesium.Cartesian3.ZERO,
+    disableDepthTestDistance: 0,
+    color: Cesium.Color.WHITE,
+  },
+  show: false,
+});
+
+// Follow selected entity + pulse each frame
+viewer.scene.preRender.addEventListener(() => {
+  if (!selectedEntity || !reticleEntity.show) return;
+  let pos = selectedEntity.position;
+  if (!pos) { reticleEntity.show = false; return; }
+  if (typeof pos.getValue === 'function') pos = pos.getValue(Cesium.JulianDate.now());
+  if (!pos) { reticleEntity.show = false; return; }
+  reticleEntity.position = pos;
+  const pulse = 1.0 + 0.12 * Math.sin(Date.now() / 150);
+  const baseW = selectedEntity.billboard?.width?._value ?? selectedEntity.billboard?.width ?? 42;
+  const baseSize = Math.max(baseW * 1.8, 56);
+  reticleEntity.billboard.width = baseSize * pulse;
+  reticleEntity.billboard.height = baseSize * pulse;
+});
+
+function deselectEntity() {
+  if (!selectedEntity) return;
+  selectedEntity = null;
+  reticleEntity.show = false;
+}
+
+function selectEntity(entity) {
+  if (selectedEntity === entity) return;
+  deselectEntity();
+  if (!entity || !entity.billboard) return;
+  selectedEntity = entity;
+  reticleEntity.show = true;
+}
 
 handler.setInputAction((click) => {
   const picked = viewer.scene.pick(click.position);
@@ -381,20 +457,86 @@ handler.setInputAction((click) => {
     $('info-squawk').textContent = ac.squawk || '---';
     infoPanel.style.display = 'block';
 
+    selectEntity(picked.id);
+
+    const SITE_TYPES = new Set(['COBALT MINE', 'LITHIUM MINE', 'BITCOIN MINE', 'DATACENTER', 'NUCLEAR TEST SITE']);
+
     if (ac.t === 'SATELLITE') {
+      if (isPlaneViewOpen()) closePlaneView(viewer);
+      if (isSiteViewOpen()) closeSiteView(viewer);
       openSatView(viewer, ac.hex);
-    } else if (isSatViewOpen()) {
-      closeSatView(viewer);
+    } else if (SITE_TYPES.has(ac.t)) {
+      if (isSatViewOpen()) closeSatView(viewer);
+      if (isPlaneViewOpen()) closePlaneView(viewer);
+      if (isSiteViewOpen()) closeSiteView(viewer);
+      openSiteView(viewer, picked.id);
+    } else if (ac.t === 'MAJOR AIRPORT' || ac.t === 'AIRPORT') {
+      if (isSatViewOpen()) closeSatView(viewer);
+      if (isPlaneViewOpen()) closePlaneView(viewer);
+      if (isSiteViewOpen()) closeSiteView(viewer);
+    } else {
+      if (isSatViewOpen()) closeSatView(viewer);
+      if (isSiteViewOpen()) closeSiteView(viewer);
+      openPlaneView(viewer, picked.id);
     }
   } else {
+    deselectEntity();
     infoPanel.style.display = 'none';
     if (isSatViewOpen()) closeSatView(viewer);
+    if (isPlaneViewOpen()) closePlaneView(viewer);
+    if (isSiteViewOpen()) closeSiteView(viewer);
   }
 }, Cesium.ScreenSpaceEventType.LEFT_CLICK);
 
 // =====================================================
-// BOOT — Start in Replay Mode (Iran Scenario)
+// PANEL RESIZE — Drag the left edge of any detail panel
 // =====================================================
+{
+  let resizeRAF = null;
+  const scheduleResize = () => {
+    if (resizeRAF) return;
+    resizeRAF = requestAnimationFrame(() => {
+      viewer.resize();
+      resizeSatView();
+      resizePlaneView();
+      resizeSiteView();
+      resizeRAF = null;
+    });
+  };
+
+  document.querySelectorAll('.panel-resize-handle').forEach(handle => {
+    handle.addEventListener('mousedown', (e) => {
+      e.preventDefault();
+      document.body.classList.add('resizing');
+
+      const onMove = (ev) => {
+        const width = window.innerWidth - ev.clientX;
+        const clamped = Math.max(250, Math.min(width, window.innerWidth * 0.8));
+        document.documentElement.style.setProperty('--panel-width', clamped + 'px');
+        scheduleResize();
+      };
+
+      const onUp = () => {
+        document.removeEventListener('mousemove', onMove);
+        document.removeEventListener('mouseup', onUp);
+        document.body.classList.remove('resizing');
+        viewer.resize();
+        resizeSatView();
+        resizePlaneView();
+        resizeSiteView();
+      };
+
+      document.addEventListener('mousemove', onMove);
+      document.addEventListener('mouseup', onUp);
+    });
+  });
+}
+
+// =====================================================
+// BOOT — Register Custom Datasets & Start in Replay Mode
+// =====================================================
+loadCustomDatasets(viewer);
+
 $('btn-live').classList.remove('active');
 $('btn-replay').classList.add('active');
 startReplay();

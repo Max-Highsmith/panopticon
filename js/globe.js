@@ -42,6 +42,9 @@ export const layers = {
   satellites: true,
   ships: false,
   pokemon: false,
+  mines: false,
+  infra: false,
+  airports: false,
 };
 
 // Entity registries — each maps an ID to a record with { entity, ... }
@@ -51,7 +54,10 @@ export const entityMaps = {
   satellites: new Map(),
   ships:      new Map(),
   pokemon:    new Map(),
+  mines:      new Map(),
+  infra:      new Map(),
   replay:     new Map(),
+  airports:   new Map(),
 };
 
 // --- Layer Operations ---
@@ -60,13 +66,8 @@ export function toggleLayer(viewer, layer, currentMode) {
   const chkId = 'chk-' + layer;
   layers[layer] = document.getElementById(chkId).checked;
 
-  const mapKey = layer === 'military'   ? 'military'
-               : layer === 'commercial' ? 'commercial'
-               : layer === 'satellites' ? 'satellites'
-               : layer === 'pokemon'    ? 'pokemon'
-               : 'ships';
-
-  const entityMap = entityMaps[mapKey];
+  const entityMap = entityMaps[layer];
+  if (!entityMap) return;
   for (const [, record] of entityMap) {
     record.entity.show = layers[layer];
     if (record.trailEntity)      record.trailEntity.show = layers[layer];

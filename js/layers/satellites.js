@@ -94,8 +94,8 @@ export function createSatelliteEntities(viewer, activeScenario, atDate) {
       const position = Cesium.Cartesian3.fromDegrees(lon, lat, altM);
       const entity = viewer.entities.add({
         position,
-        billboard: { image: icons.satYellow, width: DISPLAY.SAT_ICON_SIZE, height: DISPLAY.SAT_ICON_SIZE, alignedAxis: Cesium.Cartesian3.ZERO, disableDepthTestDistance: Number.POSITIVE_INFINITY },
-        label: { text: sat.name, font: '9px Courier New', fillColor: Cesium.Color.fromCssColorString('#ffaa00'), outlineColor: Cesium.Color.BLACK, outlineWidth: 2, style: Cesium.LabelStyle.FILL_AND_OUTLINE, pixelOffset: new Cesium.Cartesian2(8, -3), disableDepthTestDistance: Number.POSITIVE_INFINITY, distanceDisplayCondition: new Cesium.DistanceDisplayCondition(0, 15_000_000), scale: 0.8 },
+        billboard: { image: icons.satYellow, width: DISPLAY.SAT_ICON_SIZE, height: DISPLAY.SAT_ICON_SIZE, alignedAxis: Cesium.Cartesian3.ZERO, disableDepthTestDistance: 0 },
+        label: { text: sat.name, font: '9px Courier New', fillColor: Cesium.Color.fromCssColorString('#ffaa00'), outlineColor: Cesium.Color.BLACK, outlineWidth: 2, style: Cesium.LabelStyle.FILL_AND_OUTLINE, pixelOffset: new Cesium.Cartesian2(8, -3), disableDepthTestDistance: 0, distanceDisplayCondition: new Cesium.DistanceDisplayCondition(0, 15_000_000), scale: 0.8 },
       });
       entity.show = isSatelliteVisible(viewer, position) && layers.satellites;
       entity.acData = { hex: sat.noradId, r: sat.name, t: 'SATELLITE', flight: sat.name, alt_baro: Math.round(gd.height * 3280.84), gs: null, track: null };
