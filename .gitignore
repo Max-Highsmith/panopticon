@@ -5,9 +5,11 @@ data/traces/
 # Screenshots (not needed for site)
 *.png
 
-# Python scripts and duplicate data
+# Python scripts
 data/*.py
-data/*.json
+
+# Large raw data (keep app data files tracked)
+data/v2026*.json
 
 # Local dev config (contains API keys)
 config.local.js
