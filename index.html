@@ -12,6 +12,9 @@
   <!-- Satellite Orbit Propagation -->
   <script src="https://cdn.jsdelivr.net/npm/satellite.js@5.0.0/dist/satellite.min.js"></script>
 
+  <!-- HLS Stream Playback -->
+  <script src="https://cdn.jsdelivr.net/npm/hls.js@1.5.7/dist/hls.min.js"></script>
+
   <!-- Application Styles -->
   <link href="css/styles.css" rel="stylesheet">
 </head>
@@ -47,7 +50,7 @@
       <span id="subtitle">LIVE TRACKING // ADS-B + OPENSKY + CELESTRAK + AIS</span>
     </div>
     <div id="stats">
-      <div>MIL: <span id="mil-count">---</span> // CIV: <span id="civ-count">---</span> // SAT: <span id="sat-count">---</span> // SHIPS: <span id="ship-count">---</span> // POGO: <span id="pogo-count">---</span> // MINES: <span id="mines-count">---</span> // INFRA: <span id="infra-count">---</span> // AIRPORTS: <span id="airport-count">---</span></div>
+      <div>MIL: <span id="mil-count">---</span> // CIV: <span id="civ-count">---</span> // SAT: <span id="sat-count">---</span> // SHIPS: <span id="ship-count">---</span> // POGO: <span id="pogo-count">---</span> // MINES: <span id="mines-count">---</span> // INFRA: <span id="infra-count">---</span> // NUCLEAR: <span id="nuclear-count">---</span> // AIRPORTS: <span id="airport-count">---</span> // BASES: <span id="bases-count">---</span> // CAMS: <span id="webcam-count">---</span> // ARCTIC: <span id="arcticmining-count">---</span> // REE: <span id="rareearth-count">---</span> // DRILL: <span id="drilling-count">---</span></div>
       <div>UPDATED: <span id="updated">---</span></div>
     </div>
   </div>
@@ -57,6 +60,7 @@
   <div id="mode-bar">
     <button id="btn-live" class="active" onclick="switchMode('live')">LIVE</button>
     <button id="btn-replay" onclick="switchMode('replay')">REPLAY</button>
+    <button id="btn-wargame" onclick="switchMode('wargame')">WARGAME</button>
   </div>
 
   <div id="layer-toggles">
@@ -67,7 +71,13 @@
     <label class="pogo-label"><input type="checkbox" id="chk-pokemon" onchange="toggleLayer('pokemon')"> POGO</label>
     <label class="mines-label"><input type="checkbox" id="chk-mines" onchange="toggleLayer('mines')"> MINES</label>
     <label class="infra-label"><input type="checkbox" id="chk-infra" onchange="toggleLayer('infra')"> INFRA</label>
+    <label class="nuclear-label"><input type="checkbox" id="chk-nuclear" onchange="toggleLayer('nuclear')"> NUCLEAR</label>
     <label class="airport-label"><input type="checkbox" id="chk-airports" onchange="toggleLayer('airports')"> AIRPORTS</label>
+    <label class="bases-label"><input type="checkbox" id="chk-bases" onchange="toggleLayer('bases')"> BASES</label>
+    <label class="webcam-label"><input type="checkbox" id="chk-webcams" onchange="toggleLayer('webcams')"> CAMS</label>
+    <label class="arcticmining-label"><input type="checkbox" id="chk-arcticmining" onchange="toggleLayer('arcticmining')"> ARCTIC</label>
+    <label class="rareearth-label"><input type="checkbox" id="chk-rareearth" onchange="toggleLayer('rareearth')"> REE</label>
+    <label class="drilling-label"><input type="checkbox" id="chk-drilling" onchange="toggleLayer('drilling')"> DRILL</label>
   </div>
 
   <div id="mines-legend">
@@ -96,7 +106,10 @@
   <!-- ==================== Scenario Sidebar ==================== -->
 
   <div id="scenario-sidebar">
-    <h3>SCENARIOS</h3>
+    <div id="scenario-header">
+      <h3>SCENARIOS</h3>
+      <button id="scenario-toggle" onclick="toggleScenarioSidebar()">◀</button>
+    </div>
     <div class="scenario-card active" id="sc-iran" onclick="selectScenario('iran')">
       <div class="sc-title">IRAN</div>
       <div class="sc-region">PERSIAN GULF / STRAIT OF HORMUZ</div>
@@ -114,6 +127,19 @@
       <div class="sc-region">WESTERN MEXICO / PACIFIC COAST</div>
       <div class="sc-desc">Military and commercial tracking over Jalisco and Pacific approaches. Feb 22, 2026 11:00-11:30 UTC.</div>
       <span class="sc-badge ready">DATA READY</span>
+    </div>
+
+    <!-- Audio Player (nestled at bottom of sidebar) -->
+    <div id="audio-player">
+      <button class="ap-btn" id="ap-play-btn" onclick="toggleAudio()">&#9654;</button>
+      <div class="ap-info">
+        <div class="ap-title">WE GO TO WAR</div>
+        <div class="ap-artist">ESCAPE THE CYCLE</div>
+        <div class="ap-progress-wrap" id="ap-progress-wrap">
+          <div class="ap-progress" id="ap-progress"></div>
+        </div>
+      </div>
+      <span class="ap-time" id="ap-time">0:00</span>
     </div>
   </div>
 
@@ -133,19 +159,6 @@
     </div>
   </div>
 
-  <!-- ==================== Audio Player ==================== -->
-
-  <div id="audio-player">
-    <button class="ap-btn" id="ap-play-btn" onclick="toggleAudio()">&#9654;</button>
-    <div class="ap-info">
-      <div class="ap-title">WE GO TO WAR</div>
-      <div class="ap-artist">ESCAPE THE CYCLE</div>
-      <div class="ap-progress-wrap" id="ap-progress-wrap">
-        <div class="ap-progress" id="ap-progress"></div>
-      </div>
-    </div>
-    <span class="ap-time" id="ap-time">0:00</span>
-  </div>
 
   <!-- ==================== Info Panel ==================== -->
 
@@ -248,6 +261,96 @@
       <div id="site-view-crosshair"></div>
     </div>
     <button id="site-view-close" onclick="closeSiteView()">CLOSE ✕</button>
+  </div>
+
+  <!-- ==================== Airport View Panel ==================== -->
+
+  <div id="airport-view-panel">
+    <div class="panel-resize-handle"></div>
+    <!-- Flight schedule (FIDS) canvas -->
+    <div id="airport-schedule-view">
+      <canvas id="airport-schedule-canvas"></canvas>
+      <div id="airport-schedule-label">FLIGHT SCHEDULE</div>
+    </div>
+    <!-- Airport stats bar -->
+    <div id="airport-view-stats">
+      <div class="apv-stats-row">
+        <div class="apv-title" id="apv-airport-name">---</div>
+        <span class="apv-stats-tag" id="apv-type">---</span>
+      </div>
+      <div class="apv-stats-grid">
+        <div><span class="apv-label">COUNTRY </span><span id="apv-country">---</span></div>
+        <div><span class="apv-label">ELEV </span><span id="apv-elev">---</span></div>
+        <div><span class="apv-label">LAT </span><span id="apv-lat">---</span></div>
+        <div><span class="apv-label">LON </span><span id="apv-lon">---</span></div>
+      </div>
+    </div>
+    <!-- Cesium aerial view with overlay -->
+    <div id="airport-view-wrapper">
+      <div id="airport-view-container"></div>
+      <canvas id="airport-view-overlay"></canvas>
+      <div id="airport-view-crosshair"></div>
+    </div>
+    <button id="airport-view-close" onclick="closeAirportView()">CLOSE ✕</button>
+  </div>
+
+  <!-- ==================== Webcam View Panel ==================== -->
+
+  <div id="webcam-view-panel">
+    <div class="panel-resize-handle"></div>
+    <!-- Info canvas (military HUD) -->
+    <div id="webcam-info-view">
+      <canvas id="webcam-info-canvas"></canvas>
+      <div id="webcam-info-label">LIVE CAMERA FEED</div>
+    </div>
+    <!-- Stats bar -->
+    <div id="webcam-view-stats">
+      <div class="wcv-stats-row">
+        <div class="wcv-title" id="wcv-cam-name">---</div>
+        <span class="wcv-stats-tag" id="wcv-type">---</span>
+      </div>
+      <div class="wcv-stats-grid">
+        <div><span class="wcv-label">CITY </span><span id="wcv-city">---</span></div>
+        <div><span class="wcv-label">COUNTRY </span><span id="wcv-country">---</span></div>
+        <div><span class="wcv-label">LAT </span><span id="wcv-lat">---</span></div>
+        <div><span class="wcv-label">LON </span><span id="wcv-lon">---</span></div>
+      </div>
+    </div>
+    <!-- Video / Iframe embed -->
+    <div id="webcam-embed-wrapper">
+      <video id="webcam-hls-video" autoplay muted playsinline></video>
+      <iframe id="webcam-embed-iframe" src="about:blank" frameborder="0" allowfullscreen allow="autoplay"></iframe>
+    </div>
+    <button id="webcam-view-close" onclick="closeWebcamView()">CLOSE ✕</button>
+  </div>
+
+  <!-- ==================== Wargame Agent Panel ==================== -->
+
+  <div id="wargame-panel">
+    <h3>WARGAME</h3>
+    <div class="wg-config">
+      <label>SCENARIO<select id="wg-scenario"></select></label>
+      <label>VARIANT<select id="wg-variant"></select></label>
+      <label>FRAMING<select id="wg-framing"></select></label>
+      <label>PROVIDER
+        <select id="wg-provider">
+          <option value="anthropic">ANTHROPIC</option>
+          <option value="openai">OPENAI</option>
+          <option value="google">GOOGLE</option>
+          <option value="xai">XAI</option>
+          <option value="baseline">BASELINE</option>
+        </select>
+      </label>
+      <label>MODEL (optional)<input type="text" id="wg-model" placeholder="e.g. claude-sonnet-4-5-20250929"></label>
+    </div>
+    <div class="wg-controls">
+      <button id="wg-start" onclick="wgStart()">START</button>
+      <button id="wg-stop" onclick="wgStop()" style="display:none">STOP</button>
+      <span id="wg-tick"></span>
+    </div>
+    <div id="wg-status" class="wg-status"></div>
+    <div id="wg-result" class="wg-result"></div>
+    <div id="wg-feed" class="wg-feed"></div>
   </div>
 
   <!-- Application Logic (ES Modules) -->

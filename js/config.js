@@ -40,6 +40,8 @@ export const DISPLAY = {
   CUSTOM_ICON_SIZE: 18,
   AIRPORT_ICON_SIZE_LG: 24,
   AIRPORT_ICON_SIZE_MD: 18,
+  BASE_ICON_SIZE: 28,
+  WEBCAM_ICON_SIZE: 22,
 };
 
 // Custom datasets — add entries here to load your own data layers.

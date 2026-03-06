@@ -5,7 +5,7 @@
 import { SCENARIOS, CITIES, REPLAY_SPEEDS, DEFAULT_SPEED_INDEX } from './config.js';
 import { formatAlt, formatSpd, formatHdg, secsToUTC, secsToLocal, replayAbsDate, interpolateTrace, $ } from './utils.js';
 import { icons } from './icons.js';
-import { createViewer, layers, entityMaps, toggleLayer, clearLayer, clearAllLayers } from './globe.js';
+import { createViewer, layers, entityMaps, toggleLayer, clearAllLayers } from './globe.js';
 import { setVisualFilter, initFilterUpdater } from './filters.js';
 import { initAudioPlayer, toggleAudio } from './audio.js';
 import { startMilitary, stopMilitary, extrapolateMilitaryPositions } from './layers/military.js';
@@ -13,14 +13,22 @@ import { startCommercial, stopCommercial } from './layers/commercial.js';
 import { loadSatellites, isSatLoaded, getSatRecords, createSatelliteEntities, updateSatellitePositions } from './layers/satellites.js';
 import { startAIS, stopAIS } from './layers/ships.js';
 import { fetchPogoStops, isPogoLoaded, resetPogo } from './layers/pogo.js';
-import { fetchMines, isMinesLoaded, resetMines, MINES_FLY_TO } from './layers/mines.js';
-import { fetchInfra, isInfraLoaded, resetInfra, INFRA_FLY_TO } from './layers/infrastructure.js';
-import { fetchAirports, isAirportsLoaded, resetAirports } from './layers/airports.js';
+import { fetchMines, MINES_FLY_TO } from './layers/mines.js';
+import { fetchInfra, INFRA_FLY_TO, fetchNuclear, NUCLEAR_FLY_TO } from './layers/infrastructure.js';
+import { fetchAirports, resetAirports } from './layers/airports.js';
+import { fetchMilitaryBases, resetMilitaryBases, BASES_FLY_TO } from './layers/militarybases.js';
 import { loadCustomDatasets } from './layers/custom.js';
 import { createBlackoutOverlays, removeBlackoutOverlays, createDataBoundsOverlay, removeDataBoundsOverlay } from './overlays.js';
 import { openSatView, closeSatView, isSatViewOpen, resizeSatView } from './satview.js';
 import { openPlaneView, closePlaneView, isPlaneViewOpen, resizePlaneView } from './planeview.js';
 import { openSiteView, closeSiteView, isSiteViewOpen, resizeSiteView } from './siteview.js';
+import { openAirportView, closeAirportView, isAirportViewOpen, resizeAirportView } from './airportview.js';
+import { fetchWebcams, WEBCAMS_FLY_TO } from './layers/webcams.js';
+import { openWebcamView, closeWebcamView, isWebcamViewOpen, resizeWebcamView } from './webcamview.js';
+import { fetchArcticMining, resetArcticMining, ARCTIC_MINING_FLY_TO } from './layers/arcticmining.js';
+import { fetchRareEarth, resetRareEarth, RARE_EARTH_FLY_TO } from './layers/rareearth.js';
+import { fetchDrilling, resetDrilling, DRILLING_FLY_TO } from './layers/drillingleases.js';
+import { startWargameMode, stopWargameMode } from './wargame.js';
 
 // --- Globe ---
 const viewer = createViewer('cesiumContainer');
@@ -35,6 +43,35 @@ initAudioPlayer();
 // --- State ---
 let currentMode = 'replay';
 let activeScenario = 'iran';
+
+// --- Detail-panel helpers (avoid repeating close/resize calls) ---
+function closeAllDetailPanels() {
+  if (isSatViewOpen()) closeSatView(viewer);
+  if (isPlaneViewOpen()) closePlaneView(viewer);
+  if (isSiteViewOpen()) closeSiteView(viewer);
+  if (isAirportViewOpen()) closeAirportView(viewer);
+  if (isWebcamViewOpen()) closeWebcamView(viewer);
+}
+function resizeAllPanels() {
+  resizeSatView();
+  resizePlaneView();
+  resizeSiteView();
+  resizeAirportView();
+  resizeWebcamView();
+}
+
+// --- Layer lazy-loader registry ---
+const LAYER_LOADERS = {
+  mines:        { load: () => fetchMines(viewer),          flyTo: MINES_FLY_TO },
+  infra:        { load: () => fetchInfra(viewer),          flyTo: INFRA_FLY_TO },
+  nuclear:      { load: () => fetchNuclear(viewer),        flyTo: NUCLEAR_FLY_TO },
+  airports:     { load: () => fetchAirports(viewer) },
+  bases:        { load: () => fetchMilitaryBases(viewer),  flyTo: BASES_FLY_TO },
+  webcams:      { load: () => fetchWebcams(viewer),        flyTo: WEBCAMS_FLY_TO },
+  arcticmining: { load: () => fetchArcticMining(viewer),   flyTo: ARCTIC_MINING_FLY_TO },
+  rareearth:    { load: () => fetchRareEarth(viewer),      flyTo: RARE_EARTH_FLY_TO },
+  drilling:     { load: () => fetchDrilling(viewer),       flyTo: DRILLING_FLY_TO },
+};
 
 // Replay state
 let replayData = null;
@@ -63,23 +100,22 @@ const _seenHexes = new Set();
 window.switchMode     = switchMode;
 window.toggleLayer    = (layer) => {
   toggleLayer(viewer, layer, currentMode);
-  if (layer === 'mines' && !layers[layer]) {
-    $('mines-legend').style.display = 'none';
-  }
-  // Lazy-start deferred layers when user enables them
+  $('mines-legend').style.display = (layer === 'mines' && layers.mines) ? 'block' : (layer === 'mines' ? 'none' : $('mines-legend').style.display);
+
   if (layers[layer]) {
+    // Live-only auto-start layers
     if (layer === 'ships' && currentMode === 'live' && entityMaps.ships.size === 0) startAIS(viewer);
     if (layer === 'pokemon' && currentMode === 'live' && entityMaps.pokemon.size === 0) fetchPogoStops(viewer);
-    if (layer === 'mines') {
-      if (entityMaps.mines.size === 0) fetchMines(viewer);
-      viewer.camera.flyTo({ destination: Cesium.Cartesian3.fromDegrees(MINES_FLY_TO.lon, MINES_FLY_TO.lat, MINES_FLY_TO.alt), duration: 1.5 });
-      $('mines-legend').style.display = 'block';
+
+    // Data layers with lazy loading + optional flyTo
+    const loader = LAYER_LOADERS[layer];
+    if (loader) {
+      if (entityMaps[layer].size === 0) loader.load();
+      if (loader.flyTo) {
+        const { lon, lat, alt } = loader.flyTo;
+        viewer.camera.flyTo({ destination: Cesium.Cartesian3.fromDegrees(lon, lat, alt), duration: 1.5 });
+      }
     }
-    if (layer === 'infra') {
-      if (entityMaps.infra.size === 0) fetchInfra(viewer);
-      viewer.camera.flyTo({ destination: Cesium.Cartesian3.fromDegrees(INFRA_FLY_TO.lon, INFRA_FLY_TO.lat, INFRA_FLY_TO.alt), duration: 1.5 });
-    }
-    if (layer === 'airports' && entityMaps.airports.size === 0) fetchAirports(viewer);
   }
 };
 window.setVisualFilter = (f) => setVisualFilter(f, viewer);
@@ -91,6 +127,14 @@ window.toggleAudio     = toggleAudio;
 window.closeSatView    = () => closeSatView(viewer);
 window.closePlaneView  = () => closePlaneView(viewer);
 window.closeSiteView   = () => closeSiteView(viewer);
+window.closeAirportView = () => closeAirportView(viewer);
+window.closeWebcamView  = () => closeWebcamView(viewer);
+window.toggleScenarioSidebar = () => {
+  const sb = document.getElementById('scenario-sidebar');
+  const btn = document.getElementById('scenario-toggle');
+  sb.classList.toggle('collapsed');
+  btn.textContent = sb.classList.contains('collapsed') ? '▶' : '◀';
+};
 
 // =====================================================
 // CITY JUMP
@@ -140,6 +184,10 @@ function stopLive() {
   stopAIS(viewer);
   resetPogo();
   resetAirports();
+  resetMilitaryBases();
+  resetArcticMining();
+  resetRareEarth();
+  resetDrilling();
 }
 
 // =====================================================
@@ -147,9 +195,7 @@ function stopLive() {
 // =====================================================
 function selectScenario(id) {
   if (!SCENARIOS[id]) return;
-  if (isSatViewOpen()) closeSatView(viewer);
-  if (isPlaneViewOpen()) closePlaneView(viewer);
-  if (isSiteViewOpen()) closeSiteView(viewer);
+  closeAllDetailPanels();
   activeScenario = id;
 
   document.querySelectorAll('.scenario-card').forEach(c => c.classList.remove('active'));
@@ -287,7 +333,7 @@ function startReplay() {
   $('subtitle').textContent = sc ? sc.subtitle : 'HISTORICAL REPLAY';
   $('timeline-bar').style.display = 'block';
   $('layer-toggles').style.display = 'flex';
-  $('scenario-sidebar').style.display = 'block';
+  $('scenario-sidebar').style.display = 'flex';
 
   createBlackoutOverlays(viewer, sc);
   createDataBoundsOverlay(viewer, sc);
@@ -368,21 +414,23 @@ function switchMode(mode) {
 
   $('btn-live').classList.toggle('active', mode === 'live');
   $('btn-replay').classList.toggle('active', mode === 'replay');
+  $('btn-wargame').classList.toggle('active', mode === 'wargame');
   $('info-panel').style.display = 'none';
-  if (isSatViewOpen()) closeSatView(viewer);
-  if (isPlaneViewOpen()) closePlaneView(viewer);
-  if (isSiteViewOpen()) closeSiteView(viewer);
+  closeAllDetailPanels();
+
+  // Always stop prior modes
+  if (currentMode !== 'live') stopLive();
+  if (currentMode !== 'replay') stopReplay();
+  if (currentMode !== 'wargame') stopWargameMode();
 
   if (mode === 'live') {
-    stopReplay();
     startLive();
     $('updated').textContent = '---';
     $('civ-count').textContent = '---';
     $('sat-count').textContent = isSatLoaded() ? entityMaps.satellites.size : '---';
     $('ship-count').textContent = '---';
     $('pogo-count').textContent = isPogoLoaded() ? entityMaps.pokemon.size : '---';
-  } else {
-    stopLive();
+  } else if (mode === 'replay') {
     const sc = SCENARIOS[activeScenario];
     $('updated').textContent = sc ? sc.dateLabel : '---';
     $('civ-count').textContent = '---';
@@ -390,6 +438,13 @@ function switchMode(mode) {
     $('ship-count').textContent = '---';
     $('pogo-count').textContent = '---';
     startReplay();
+  } else if (mode === 'wargame') {
+    clearAllLayers(viewer, () => removeDataBoundsOverlay(viewer));
+    $('subtitle').textContent = 'WARGAME // AI DECISION EVALUATION';
+    $('layer-toggles').style.display = 'none';
+    $('timeline-bar').style.display = 'none';
+    $('scenario-sidebar').style.display = 'none';
+    startWargameMode(viewer);
   }
 }
 
@@ -459,32 +514,28 @@ handler.setInputAction((click) => {
 
     selectEntity(picked.id);
 
-    const SITE_TYPES = new Set(['COBALT MINE', 'LITHIUM MINE', 'BITCOIN MINE', 'DATACENTER', 'NUCLEAR TEST SITE']);
+    const SITE_TYPES = new Set(['COBALT MINE', 'LITHIUM MINE', 'BITCOIN MINE', 'DATACENTER', 'NUCLEAR TEST SITE', 'MILITARY BASE',
+      'IRON MINE', 'RARE EARTH MINE', 'ZINC MINE', 'GOLD MINE',
+      'HEAVY REE DEPOSIT', 'LIGHT REE DEPOSIT', 'STRATEGIC MINERAL',
+      'US ARCTIC LEASE', 'NORWAY BARENTS LEASE', 'RUSSIA ARCTIC FIELD', 'CANADA ARCTIC FIELD']);
+
+    closeAllDetailPanels();
 
     if (ac.t === 'SATELLITE') {
-      if (isPlaneViewOpen()) closePlaneView(viewer);
-      if (isSiteViewOpen()) closeSiteView(viewer);
       openSatView(viewer, ac.hex);
+    } else if (ac.t === 'WEBCAM') {
+      openWebcamView(viewer, picked.id);
     } else if (SITE_TYPES.has(ac.t)) {
-      if (isSatViewOpen()) closeSatView(viewer);
-      if (isPlaneViewOpen()) closePlaneView(viewer);
-      if (isSiteViewOpen()) closeSiteView(viewer);
       openSiteView(viewer, picked.id);
     } else if (ac.t === 'MAJOR AIRPORT' || ac.t === 'AIRPORT') {
-      if (isSatViewOpen()) closeSatView(viewer);
-      if (isPlaneViewOpen()) closePlaneView(viewer);
-      if (isSiteViewOpen()) closeSiteView(viewer);
+      openAirportView(viewer, picked.id);
     } else {
-      if (isSatViewOpen()) closeSatView(viewer);
-      if (isSiteViewOpen()) closeSiteView(viewer);
       openPlaneView(viewer, picked.id);
     }
   } else {
     deselectEntity();
     infoPanel.style.display = 'none';
-    if (isSatViewOpen()) closeSatView(viewer);
-    if (isPlaneViewOpen()) closePlaneView(viewer);
-    if (isSiteViewOpen()) closeSiteView(viewer);
+    closeAllDetailPanels();
   }
 }, Cesium.ScreenSpaceEventType.LEFT_CLICK);
 
@@ -497,9 +548,7 @@ handler.setInputAction((click) => {
     if (resizeRAF) return;
     resizeRAF = requestAnimationFrame(() => {
       viewer.resize();
-      resizeSatView();
-      resizePlaneView();
-      resizeSiteView();
+      resizeAllPanels();
       resizeRAF = null;
     });
   };
@@ -521,9 +570,7 @@ handler.setInputAction((click) => {
         document.removeEventListener('mouseup', onUp);
         document.body.classList.remove('resizing');
         viewer.resize();
-        resizeSatView();
-        resizePlaneView();
-        resizeSiteView();
+        resizeAllPanels();
       };
 
       document.addEventListener('mousemove', onMove);

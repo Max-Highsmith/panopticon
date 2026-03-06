@@ -1,0 +1,36 @@
+{
+  "alaska_ocs": [
+    { "name": "Beaufort Sea Lease Sale 258", "lat": 71.20, "lon": -146.50, "country": "USA", "operator": "BOEM", "notes": "Beaufort Sea OCS planning area, estimated 8.2B bbl oil" },
+    { "name": "Chukchi Sea Planning Area", "lat": 70.50, "lon": -165.00, "country": "USA", "operator": "BOEM", "notes": "Chukchi Sea OCS, estimated 15.4B bbl oil; Shell abandoned 2015" },
+    { "name": "Cook Inlet Lease Sale 258", "lat": 60.30, "lon": -152.50, "country": "USA", "operator": "BOEM", "notes": "Cook Inlet planning area, active exploration" },
+    { "name": "Burger Prospect", "lat": 71.28, "lon": -163.16, "country": "USA", "operator": "Shell (abandoned)", "notes": "Former Shell exploration well, Chukchi Sea; $7B invested" },
+    { "name": "Liberty Project", "lat": 70.25, "lon": -147.97, "country": "USA", "operator": "Hilcorp Alaska", "notes": "Offshore Beaufort Sea development, artificial island drill site" },
+    { "name": "Prudhoe Bay", "lat": 70.30, "lon": -148.72, "country": "USA", "operator": "ConocoPhillips / BP", "notes": "Largest US oil field, 13B bbl recoverable; anchor of TAPS" },
+    { "name": "Kuparuk River Field", "lat": 70.38, "lon": -149.87, "country": "USA", "operator": "ConocoPhillips", "notes": "2nd largest US oil field, ~2.9B bbl produced" },
+    { "name": "Willow Project", "lat": 70.13, "lon": -152.90, "country": "USA", "operator": "ConocoPhillips", "notes": "NPR-A; approved 2023; est. 600M bbl over 30 years" },
+    { "name": "Point Thomson", "lat": 70.17, "lon": -146.37, "country": "USA", "operator": "ExxonMobil", "notes": "Gas condensate field, North Slope; large gas reserves" },
+    { "name": "Nikaitchuq Field", "lat": 70.52, "lon": -150.10, "country": "USA", "operator": "Eni / Hilcorp", "notes": "Offshore Beaufort nearshore, artificial island production" }
+  ],
+  "norway_barents": [
+    { "name": "Goliat Field", "lat": 71.30, "lon": 22.30, "country": "Norway", "operator": "Vår Energi", "notes": "Norway's northernmost producing oil field, Barents Sea" },
+    { "name": "Snøhvit LNG", "lat": 71.60, "lon": 21.00, "country": "Norway", "operator": "Equinor", "notes": "First Barents Sea development; subsea to onshore LNG at Hammerfest" },
+    { "name": "Johan Castberg", "lat": 72.50, "lon": 20.52, "country": "Norway", "operator": "Equinor", "notes": "FPSO development in Barents Sea; 450-650M bbl recoverable" },
+    { "name": "Wisting Discovery", "lat": 73.50, "lon": 24.30, "country": "Norway", "operator": "Equinor", "notes": "Northernmost oil discovery on Norwegian shelf; under evaluation" },
+    { "name": "Alta Discovery", "lat": 72.40, "lon": 22.80, "country": "Norway", "operator": "Lundin Energy", "notes": "Barents Sea oil discovery, carbonate reservoir" }
+  ],
+  "russia_arctic": [
+    { "name": "Prirazlomnoye Field", "lat": 69.25, "lon": 57.35, "country": "Russia", "operator": "Gazprom Neft", "notes": "Russia's only Arctic offshore oil platform, Pechora Sea" },
+    { "name": "Shtokman Field", "lat": 73.00, "lon": 44.00, "country": "Russia", "operator": "Gazprom", "notes": "Giant gas field in Barents Sea; development suspended" },
+    { "name": "Novoportovskoye Field", "lat": 69.00, "lon": 67.80, "country": "Russia", "operator": "Gazprom Neft", "notes": "Yamal Peninsula onshore field, arctic pipeline infrastructure" },
+    { "name": "Vankor Field", "lat": 67.80, "lon": 83.50, "country": "Russia", "operator": "Rosneft", "notes": "Major West Siberian Arctic oil field; pipeline to NSR" },
+    { "name": "Bovanenkovo Gas Field", "lat": 70.37, "lon": 68.38, "country": "Russia", "operator": "Gazprom", "notes": "Yamal megaproject, 4.9 tcm gas; railway + pipeline access" },
+    { "name": "Yamal LNG", "lat": 71.27, "lon": 72.99, "country": "Russia", "operator": "Novatek", "notes": "Sabetta terminal, 17.4 mtpa LNG; Northern Sea Route exports" },
+    { "name": "Arctic LNG 2", "lat": 71.35, "lon": 75.50, "country": "Russia", "operator": "Novatek", "notes": "Gydan Peninsula, 19.8 mtpa LNG; gravity-based platforms" }
+  ],
+  "canada_arctic": [
+    { "name": "Amauligak Discovery", "lat": 69.97, "lon": -133.78, "country": "Canada", "operator": "Imperial Oil", "notes": "Beaufort Sea, largest Canadian Arctic offshore discovery" },
+    { "name": "Norman Wells Field", "lat": 65.28, "lon": -126.85, "country": "Canada", "operator": "Imperial Oil", "notes": "Onshore NWT production since 1932; pipeline to Alberta" },
+    { "name": "Cameron Hills", "lat": 60.22, "lon": -117.38, "country": "Canada", "operator": "Paramount Resources", "notes": "NWT onshore oil/gas; southernmost Arctic production" },
+    { "name": "Mackenzie Delta Gas", "lat": 69.30, "lon": -135.50, "country": "Canada", "operator": "Imperial / ConocoPhillips", "notes": "Multiple gas discoveries; pipeline proposed but stalled" }
+  ]
+}

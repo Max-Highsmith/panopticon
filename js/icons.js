@@ -191,35 +191,51 @@ export function makePogoIcon(size) {
   const { canvas, ctx, cx, cy } = createCanvas(size);
   const r = size / 2 * 0.7;
 
-  // Bottom half (white)
+  // Bottom half (dark gray)
   ctx.beginPath();
   ctx.arc(cx, cy, r, 0, Math.PI);
-  ctx.fillStyle = '#ffffff';
+  ctx.fillStyle = '#1a1a2e';
   ctx.fill();
 
-  // Top half (red)
+  // Top half (surveillance green)
   ctx.beginPath();
   ctx.arc(cx, cy, r, Math.PI, 0);
-  ctx.fillStyle = '#ff4444';
+  ctx.fillStyle = '#00ff41';
   ctx.fill();
 
   // Center band
-  ctx.fillStyle = '#222';
-  ctx.fillRect(cx - r, cy - r * 0.08, r * 2, r * 0.16);
+  ctx.fillStyle = '#111';
+  ctx.fillRect(cx - r, cy - r * 0.09, r * 2, r * 0.18);
 
-  // Center button
+  // Eye white (instead of button)
   ctx.beginPath();
-  ctx.arc(cx, cy, r * 0.22, 0, Math.PI * 2);
-  ctx.fillStyle = '#ffffff';
+  ctx.ellipse(cx, cy, r * 0.32, r * 0.18, 0, 0, Math.PI * 2);
+  ctx.fillStyle = '#e0e0e0';
   ctx.fill();
-  ctx.strokeStyle = '#222';
-  ctx.lineWidth = size * 0.04;
+
+  // Iris
+  ctx.beginPath();
+  ctx.arc(cx, cy, r * 0.13, 0, Math.PI * 2);
+  ctx.fillStyle = '#00cc33';
+  ctx.fill();
+
+  // Pupil
+  ctx.beginPath();
+  ctx.arc(cx, cy, r * 0.06, 0, Math.PI * 2);
+  ctx.fillStyle = '#000';
+  ctx.fill();
+
+  // Eye outline
+  ctx.beginPath();
+  ctx.ellipse(cx, cy, r * 0.32, r * 0.18, 0, 0, Math.PI * 2);
+  ctx.strokeStyle = '#111';
+  ctx.lineWidth = size * 0.03;
   ctx.stroke();
 
   // Outer ring
   ctx.beginPath();
   ctx.arc(cx, cy, r, 0, Math.PI * 2);
-  ctx.strokeStyle = '#222';
+  ctx.strokeStyle = '#111';
   ctx.lineWidth = size * 0.05;
   ctx.stroke();
 
@@ -364,6 +380,187 @@ export function makeAirportIcon(color, size) {
   return canvas;
 }
 
+export function makeMilitaryBaseIcon(color, size) {
+  const { canvas, ctx, cx, cy } = createCanvas(size);
+  const r = size / 2 * 0.7;
+
+  // Shield / pentagon shape
+  ctx.beginPath();
+  ctx.moveTo(cx, cy - r);                       // top center
+  ctx.lineTo(cx + r * 0.9, cy - r * 0.3);       // top right
+  ctx.lineTo(cx + r * 0.7, cy + r * 0.8);       // bottom right
+  ctx.lineTo(cx, cy + r);                        // bottom point
+  ctx.lineTo(cx - r * 0.7, cy + r * 0.8);       // bottom left
+  ctx.lineTo(cx - r * 0.9, cy - r * 0.3);       // top left
+  ctx.closePath();
+  strokeAndFill(ctx, color, size * 0.06);
+
+  // Inner star
+  const sy = cy - r * 0.05;
+  const starR = r * 0.35;
+  const innerR = starR * 0.4;
+  ctx.beginPath();
+  for (let i = 0; i < 10; i++) {
+    const angle = (i * 36 - 90) * Math.PI / 180;
+    const rad = i % 2 === 0 ? starR : innerR;
+    ctx[i === 0 ? 'moveTo' : 'lineTo'](cx + Math.cos(angle) * rad, sy + Math.sin(angle) * rad);
+  }
+  ctx.closePath();
+  ctx.fillStyle = '#ffffff50';
+  ctx.fill();
+
+  return canvas;
+}
+
+export function makeWebcamIcon(color, size) {
+  const { canvas, ctx, cx, cy } = createCanvas(size);
+  const r = size / 2 * 0.7;
+
+  // Glow
+  const glow = ctx.createRadialGradient(cx, cy, r * 0.3, cx, cy, r * 1.3);
+  glow.addColorStop(0, color + '40');
+  glow.addColorStop(1, color + '00');
+  ctx.fillStyle = glow;
+  ctx.fillRect(0, 0, size, size);
+
+  // Camera body (rounded rectangle)
+  const bw = r * 0.9;
+  const bh = r * 0.65;
+  const br = r * 0.12;
+  ctx.beginPath();
+  ctx.moveTo(cx - bw + br, cy - bh * 0.3);
+  ctx.lineTo(cx + bw - br, cy - bh * 0.3);
+  ctx.arcTo(cx + bw, cy - bh * 0.3, cx + bw, cy - bh * 0.3 + br, br);
+  ctx.lineTo(cx + bw, cy + bh * 0.7 - br);
+  ctx.arcTo(cx + bw, cy + bh * 0.7, cx + bw - br, cy + bh * 0.7, br);
+  ctx.lineTo(cx - bw + br, cy + bh * 0.7);
+  ctx.arcTo(cx - bw, cy + bh * 0.7, cx - bw, cy + bh * 0.7 - br, br);
+  ctx.lineTo(cx - bw, cy - bh * 0.3 + br);
+  ctx.arcTo(cx - bw, cy - bh * 0.3, cx - bw + br, cy - bh * 0.3, br);
+  ctx.closePath();
+  strokeAndFill(ctx, color, size * 0.04);
+
+  // Lens circle
+  ctx.beginPath();
+  ctx.arc(cx, cy + bh * 0.1, r * 0.3, 0, Math.PI * 2);
+  ctx.fillStyle = '#000';
+  ctx.fill();
+  ctx.strokeStyle = color;
+  ctx.lineWidth = size * 0.03;
+  ctx.stroke();
+
+  // Lens inner highlight
+  ctx.beginPath();
+  ctx.arc(cx - r * 0.08, cy + bh * 0.1 - r * 0.08, r * 0.08, 0, Math.PI * 2);
+  ctx.fillStyle = '#ffffff50';
+  ctx.fill();
+
+  // Viewfinder bump on top
+  ctx.beginPath();
+  ctx.moveTo(cx + r * 0.1, cy - bh * 0.3);
+  ctx.lineTo(cx + r * 0.35, cy - bh * 0.3 - r * 0.25);
+  ctx.lineTo(cx + r * 0.6, cy - bh * 0.3 - r * 0.25);
+  ctx.lineTo(cx + r * 0.6, cy - bh * 0.3);
+  ctx.closePath();
+  strokeAndFill(ctx, color, size * 0.03);
+
+  return canvas;
+}
+
+export function makePickaxeIcon(color, size) {
+  const { canvas, ctx, cx, cy } = createCanvas(size);
+  const r = size / 2 * 0.7;
+
+  // Pick head — angled slash
+  ctx.strokeStyle = color;
+  ctx.lineWidth = size * 0.1;
+  ctx.lineCap = 'round';
+  ctx.beginPath();
+  ctx.moveTo(cx - r * 0.7, cy - r * 0.5);
+  ctx.lineTo(cx + r * 0.4, cy + r * 0.2);
+  ctx.stroke();
+
+  // Handle
+  ctx.lineWidth = size * 0.06;
+  ctx.beginPath();
+  ctx.moveTo(cx - r * 0.1, cy - r * 0.1);
+  ctx.lineTo(cx + r * 0.3, cy + r * 0.8);
+  ctx.stroke();
+
+  // Pick point
+  ctx.beginPath();
+  ctx.arc(cx - r * 0.7, cy - r * 0.5, size * 0.06, 0, Math.PI * 2);
+  ctx.fillStyle = color;
+  ctx.fill();
+
+  return canvas;
+}
+
+export function makeHexIcon(color, size) {
+  const { canvas, ctx, cx, cy } = createCanvas(size);
+  const r = size / 2 * 0.65;
+
+  // Hexagon
+  ctx.beginPath();
+  for (let i = 0; i < 6; i++) {
+    const angle = (i * 60 - 30) * Math.PI / 180;
+    ctx[i === 0 ? 'moveTo' : 'lineTo'](cx + Math.cos(angle) * r, cy + Math.sin(angle) * r);
+  }
+  ctx.closePath();
+  strokeAndFill(ctx, color, size * 0.06);
+
+  // Inner dot
+  ctx.beginPath();
+  ctx.arc(cx, cy, r * 0.25, 0, Math.PI * 2);
+  ctx.fillStyle = '#ffffff40';
+  ctx.fill();
+
+  return canvas;
+}
+
+export function makeDerrickIcon(color, size) {
+  const { canvas, ctx, cx, cy } = createCanvas(size);
+  const r = size / 2 * 0.8;
+
+  // Tower — triangle
+  ctx.beginPath();
+  ctx.moveTo(cx, cy - r);
+  ctx.lineTo(cx + r * 0.4, cy + r * 0.7);
+  ctx.lineTo(cx - r * 0.4, cy + r * 0.7);
+  ctx.closePath();
+  ctx.fillStyle = color + '44';
+  ctx.fill();
+  ctx.strokeStyle = color;
+  ctx.lineWidth = size * 0.04;
+  ctx.stroke();
+
+  // Cross braces
+  ctx.strokeStyle = color + '88';
+  ctx.lineWidth = size * 0.025;
+  ctx.beginPath();
+  ctx.moveTo(cx - r * 0.2, cy);
+  ctx.lineTo(cx + r * 0.2, cy);
+  ctx.moveTo(cx - r * 0.28, cy + r * 0.3);
+  ctx.lineTo(cx + r * 0.28, cy + r * 0.3);
+  ctx.stroke();
+
+  // Platform base
+  ctx.strokeStyle = color;
+  ctx.lineWidth = size * 0.05;
+  ctx.beginPath();
+  ctx.moveTo(cx - r * 0.55, cy + r * 0.7);
+  ctx.lineTo(cx + r * 0.55, cy + r * 0.7);
+  ctx.stroke();
+
+  // Flame tip
+  ctx.beginPath();
+  ctx.arc(cx, cy - r * 0.85, size * 0.04, 0, Math.PI * 2);
+  ctx.fillStyle = color;
+  ctx.fill();
+
+  return canvas;
+}
+
 export function makeReticleIcon(color, size) {
   const { canvas, ctx, cx, cy } = createCanvas(size);
   const r = size / 2 * 0.85;
@@ -427,8 +624,24 @@ export const icons = {
   mineBitcoin:  makeDiamondIcon('#f7931a', 48),
   datacenter:   makeServerIcon('#ff8800', 48),
   nuclear:      makeRadiationIcon('#ff2222', 48),
+  militaryBase: makeMilitaryBaseIcon('#ff6644', 48),
   customDot:    makeCircleIcon('#ff00ff', 48),
   airportLarge: makeAirportIcon('#00ccff', 48),
   airportMedium:makeAirportIcon('#00ccff88', 48),
+  webcam:       makeWebcamIcon('#00ddff', 48),
   reticle:      makeReticleIcon('#ffffff', 128),
+  // Arctic mining
+  mineIron:      makePickaxeIcon('#cc6633', 48),
+  mineRareEarth: makePickaxeIcon('#ff44cc', 48),
+  mineZinc:      makePickaxeIcon('#88aadd', 48),
+  mineGold:      makePickaxeIcon('#ffcc00', 48),
+  // Rare earth deposits
+  reeHeavy:      makeHexIcon('#ff44cc', 48),
+  reeLight:      makeHexIcon('#cc88ff', 48),
+  reeStrategic:  makeHexIcon('#ffaa44', 48),
+  // Drilling leases
+  drillUS:       makeDerrickIcon('#ff8844', 48),
+  drillNorway:   makeDerrickIcon('#44aaff', 48),
+  drillRussia:   makeDerrickIcon('#ff4444', 48),
+  drillCanada:   makeDerrickIcon('#ff6688', 48),
 };

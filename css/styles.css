@@ -92,8 +92,14 @@ body {
 #layer-toggles label.pogo-label  { color: #ff4444; }
 #layer-toggles label.mines-label { color: #cc44ff; }
 #layer-toggles label.infra-label { color: #ff8800; }
+#layer-toggles label.nuclear-label { color: #ff2222; }
 #layer-toggles label.custom-label { color: #ff00ff; }
 #layer-toggles label.airport-label { color: #00ccff; }
+#layer-toggles label.bases-label { color: #ff6644; }
+#layer-toggles label.webcam-label { color: #00ddff; }
+#layer-toggles label.arcticmining-label { color: #cc6633; }
+#layer-toggles label.rareearth-label { color: #cc88ff; }
+#layer-toggles label.drilling-label { color: #ff8844; }
 #layer-toggles input[type="checkbox"] { accent-color: #00ff41; }
 
 /* --- Mines Legend --- */
@@ -162,10 +168,34 @@ body {
   border-right: 1px solid #00ff4130;
   padding: 16px;
   overflow-y: auto;
+  transition: width 0.2s ease, padding 0.2s ease;
+  flex-direction: column;
 }
-#scenario-sidebar h3 {
+#scenario-header {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: 14px;
+}
+#scenario-header h3 {
   font-size: 12px; letter-spacing: 3px; opacity: 0.5;
-  margin-bottom: 14px; font-weight: normal;
+  font-weight: normal; margin: 0;
+}
+#scenario-toggle {
+  background: none; border: 1px solid #00ff4140; color: #00ff41;
+  font-size: 12px; cursor: pointer; padding: 2px 6px;
+  font-family: 'Courier New', monospace; opacity: 0.6;
+  transition: opacity 0.15s;
+}
+#scenario-toggle:hover { opacity: 1; }
+#scenario-sidebar.collapsed {
+  width: 32px; padding: 16px 4px; overflow: hidden;
+}
+#scenario-sidebar.collapsed #scenario-header {
+  flex-direction: column;
+}
+#scenario-sidebar.collapsed #scenario-header h3,
+#scenario-sidebar.collapsed .scenario-card { display: none; }
+#scenario-sidebar.collapsed #scenario-toggle {
+  border: none; font-size: 14px;
 }
 .scenario-card {
   background: rgba(0, 255, 65, 0.05);
@@ -341,14 +371,13 @@ body {
    Audio Player Widget
    =================================================================== */
 #audio-player {
-  position: absolute; bottom: 16px; left: 16px;
-  z-index: 20; background: rgba(0, 0, 0, 0.85);
+  margin-top: auto;
+  background: rgba(0, 255, 65, 0.05);
   border: 1px solid #00ff4140;
-  padding: 10px 14px; border-radius: 6px;
+  padding: 10px 14px; border-radius: 4px;
   display: flex; align-items: center; gap: 10px;
-  box-shadow: 0 0 20px rgba(0, 255, 65, 0.1);
-  min-width: 280px;
 }
+#scenario-sidebar.collapsed #audio-player { display: none; }
 #audio-player .ap-btn {
   background: none; border: 1px solid #00ff4160; color: #00ff41;
   font-family: 'Courier New', monospace; font-size: 16px;
@@ -727,6 +756,215 @@ body.site-panel-open #filter-bar            { left: calc((100vw - var(--panel-wi
 body.site-panel-open #info-panel            { right: calc(var(--panel-width) + 16px); }
 body.site-panel-open #timeline-bar          { right: var(--panel-width); }
 
+/* ===================================================================
+   Airport View Panel — Flight Schedule + Aerial Imagery
+   =================================================================== */
+#airport-view-panel {
+  position: absolute; top: 0; right: 0; bottom: 0;
+  width: 0; z-index: 15;
+  background: #000;
+  border-left: 2px solid #00ccff60;
+  transition: width 0.35s ease;
+  overflow: hidden;
+  display: flex; flex-direction: column;
+}
+#airport-view-panel.open { width: var(--panel-width); }
+
+/* --- Schedule canvas (top section) --- */
+#airport-schedule-view {
+  width: 100%; height: 260px; flex-shrink: 0;
+  position: relative; z-index: 18;
+  border-bottom: 1px solid #00ccff30;
+  background: #000;
+}
+#airport-schedule-canvas { width: 100%; height: 100%; display: block; }
+#airport-schedule-label {
+  position: absolute; top: 8px; right: 12px;
+  font-size: 9px; letter-spacing: 2px;
+  color: #00ccff; opacity: 0.5;
+  pointer-events: none;
+  font-family: 'Courier New', monospace;
+}
+
+/* --- Stats bar --- */
+#airport-view-stats {
+  width: 100%; flex-shrink: 0;
+  background: rgba(0, 8, 20, 0.95);
+  border-bottom: 1px solid #00ccff40;
+  padding: 10px 16px;
+  z-index: 18;
+}
+.apv-stats-row {
+  display: flex; align-items: center; gap: 10px;
+  margin-bottom: 6px;
+}
+#airport-view-stats .apv-title {
+  font-size: 15px; font-weight: bold; letter-spacing: 3px;
+  color: #00ccff; text-shadow: 0 0 8px #00ccff;
+}
+.apv-stats-tag {
+  font-size: 9px; letter-spacing: 1px;
+  color: #00ccff; opacity: 0.6;
+  border: 1px solid #00ccff40;
+  padding: 1px 6px; border-radius: 2px;
+  font-family: 'Courier New', monospace;
+}
+.apv-stats-grid {
+  display: flex; flex-wrap: wrap; gap: 4px 16px;
+  font-size: 11px; color: #00ccff; opacity: 0.85;
+  line-height: 1.5;
+}
+.apv-stats-grid .apv-label {
+  opacity: 0.45; font-size: 10px;
+}
+
+/* --- Cesium viewer wrapper (aerial area) --- */
+#airport-view-wrapper {
+  position: relative; flex: 1; min-height: 0;
+  overflow: hidden;
+}
+#airport-view-container { width: 100%; height: 100%; }
+
+#airport-view-overlay {
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+  pointer-events: none; z-index: 17;
+}
+
+/* Close button */
+#airport-view-close {
+  position: absolute; top: 10px; right: 12px;
+  z-index: 19; pointer-events: all;
+  background: rgba(0,8,20,0.7); border: 1px solid #00ccff60;
+  color: #00ccff; font-family: 'Courier New', monospace;
+  font-size: 14px; padding: 4px 10px; cursor: pointer;
+  border-radius: 3px; letter-spacing: 2px;
+}
+#airport-view-close:hover { background: #00ccff20; }
+
+/* Crosshair overlay */
+#airport-view-crosshair {
+  position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+  pointer-events: none; z-index: 16;
+}
+#airport-view-crosshair::before {
+  content: ''; position: absolute;
+  top: 50%; left: 0; right: 0; height: 1px;
+  background: linear-gradient(to right,
+    transparent 0%, #00ccff25 20%, #00ccff45 50%, #00ccff25 80%, transparent 100%);
+}
+#airport-view-crosshair::after {
+  content: ''; position: absolute;
+  left: 50%; top: 0; bottom: 0; width: 1px;
+  background: linear-gradient(to bottom,
+    transparent 0%, #00ccff25 20%, #00ccff45 50%, #00ccff25 80%, transparent 100%);
+}
+
+/* Resize main viewer when airport panel is open */
+body.airport-panel-open #cesiumContainer       { width: calc(100vw - var(--panel-width)); }
+body.airport-panel-open #hud                   { right: var(--panel-width); }
+body.airport-panel-open #mode-bar              { left: calc((100vw - var(--panel-width)) / 2); }
+body.airport-panel-open #layer-toggles         { left: calc((100vw - var(--panel-width)) / 2); }
+body.airport-panel-open #filter-bar            { left: calc((100vw - var(--panel-width)) / 2); }
+body.airport-panel-open #info-panel            { right: calc(var(--panel-width) + 16px); }
+body.airport-panel-open #timeline-bar          { right: var(--panel-width); }
+
+/* ===================================================================
+   Webcam View Panel — Live Camera Feed
+   =================================================================== */
+#webcam-view-panel {
+  position: absolute; top: 0; right: 0; bottom: 0;
+  width: 0; z-index: 15;
+  background: #000;
+  border-left: 2px solid #00ddff60;
+  transition: width 0.35s ease;
+  overflow: hidden;
+  display: flex; flex-direction: column;
+}
+#webcam-view-panel.open { width: var(--panel-width); }
+
+/* --- Info canvas (top section) --- */
+#webcam-info-view {
+  width: 100%; height: 110px; flex-shrink: 0;
+  position: relative; z-index: 18;
+  border-bottom: 1px solid #00ddff30;
+  background: #000;
+}
+#webcam-info-canvas { width: 100%; height: 100%; display: block; }
+#webcam-info-label {
+  position: absolute; top: 8px; right: 12px;
+  font-size: 9px; letter-spacing: 2px;
+  color: #00ddff; opacity: 0.5;
+  pointer-events: none;
+  font-family: 'Courier New', monospace;
+}
+
+/* --- Stats bar --- */
+#webcam-view-stats {
+  width: 100%; flex-shrink: 0;
+  background: rgba(0, 8, 20, 0.95);
+  border-bottom: 1px solid #00ddff40;
+  padding: 10px 16px;
+  z-index: 18;
+}
+.wcv-stats-row {
+  display: flex; align-items: center; gap: 10px;
+  margin-bottom: 6px;
+}
+#webcam-view-stats .wcv-title {
+  font-size: 15px; font-weight: bold; letter-spacing: 3px;
+  color: #00ddff; text-shadow: 0 0 8px #00ddff;
+}
+.wcv-stats-tag {
+  font-size: 9px; letter-spacing: 1px;
+  color: #00ddff; opacity: 0.6;
+  border: 1px solid #00ddff40;
+  padding: 1px 6px; border-radius: 2px;
+  font-family: 'Courier New', monospace;
+}
+.wcv-stats-grid {
+  display: flex; flex-wrap: wrap; gap: 4px 16px;
+  font-size: 11px; color: #00ddff; opacity: 0.85;
+  line-height: 1.5;
+}
+.wcv-stats-grid .wcv-label {
+  opacity: 0.45; font-size: 10px;
+}
+
+/* --- Iframe embed wrapper --- */
+#webcam-embed-wrapper {
+  position: relative; flex: 1; min-height: 0;
+  overflow: hidden;
+  background: #0a0a0a;
+}
+#webcam-embed-iframe,
+#webcam-hls-video {
+  width: 100%; height: 100%; border: none;
+  background: #000; object-fit: cover;
+}
+#webcam-hls-video { display: none; }
+#webcam-embed-wrapper.hls-mode #webcam-hls-video { display: block; }
+#webcam-embed-wrapper.hls-mode #webcam-embed-iframe { display: none; }
+
+/* Close button */
+#webcam-view-close {
+  position: absolute; top: 10px; right: 12px;
+  z-index: 19; pointer-events: all;
+  background: rgba(0,8,20,0.7); border: 1px solid #00ddff60;
+  color: #00ddff; font-family: 'Courier New', monospace;
+  font-size: 14px; padding: 4px 10px; cursor: pointer;
+  border-radius: 3px; letter-spacing: 2px;
+}
+#webcam-view-close:hover { background: #00ddff20; }
+
+/* Resize main viewer when webcam panel is open */
+body.webcam-panel-open #cesiumContainer       { width: calc(100vw - var(--panel-width)); }
+body.webcam-panel-open #hud                   { right: var(--panel-width); }
+body.webcam-panel-open #mode-bar              { left: calc((100vw - var(--panel-width)) / 2); }
+body.webcam-panel-open #layer-toggles         { left: calc((100vw - var(--panel-width)) / 2); }
+body.webcam-panel-open #filter-bar            { left: calc((100vw - var(--panel-width)) / 2); }
+body.webcam-panel-open #info-panel            { right: calc(var(--panel-width) + 16px); }
+body.webcam-panel-open #timeline-bar          { right: var(--panel-width); }
+
 /* --- Panel Resize Handle --- */
 .panel-resize-handle {
   position: absolute; left: 0; top: 0; bottom: 0; width: 6px;
@@ -741,6 +979,105 @@ body.site-panel-open #timeline-bar          { right: var(--panel-width); }
 /* Disable transitions & lock cursor during panel drag resize */
 body.resizing { cursor: col-resize !important; user-select: none !important; }
 body.resizing * { transition: none !important; cursor: col-resize !important; }
+
+/* ===================================================================
+   Wargame Agent Panel
+   =================================================================== */
+#wargame-panel {
+  position: absolute; top: 80px; left: 0; bottom: 0;
+  width: 320px; z-index: 10; display: none;
+  background: rgba(0, 0, 0, 0.92);
+  border-right: 1px solid #ff444430;
+  padding: 16px;
+  overflow-y: auto;
+  flex-direction: column;
+  font-size: 12px;
+}
+#wargame-panel h3 {
+  font-size: 12px; letter-spacing: 3px; opacity: 0.5;
+  font-weight: normal; margin-bottom: 14px;
+  color: #ff4444;
+}
+.wg-config {
+  display: flex; flex-direction: column; gap: 8px;
+  margin-bottom: 12px;
+}
+.wg-config label {
+  display: flex; flex-direction: column; gap: 3px;
+  color: #ff4444; font-size: 9px; letter-spacing: 1px; opacity: 0.6;
+}
+.wg-config select, .wg-config input {
+  background: rgba(255, 68, 68, 0.08); color: #ff8888;
+  border: 1px solid #ff444440; padding: 5px 8px;
+  font-family: 'Courier New', monospace; font-size: 11px;
+  border-radius: 3px; outline: none;
+}
+.wg-config select:focus, .wg-config input:focus {
+  border-color: #ff4444;
+}
+.wg-config select:disabled, .wg-config input:disabled {
+  opacity: 0.3;
+}
+.wg-controls {
+  display: flex; gap: 8px; align-items: center;
+  margin-bottom: 10px;
+}
+.wg-controls button {
+  background: rgba(255, 68, 68, 0.15); color: #ff4444;
+  border: 1px solid #ff444460; padding: 6px 18px;
+  font-family: 'Courier New', monospace; font-size: 12px;
+  cursor: pointer; border-radius: 3px; letter-spacing: 2px;
+}
+.wg-controls button:hover { background: #ff444430; }
+#wg-tick {
+  font-size: 11px; color: #ff4444; opacity: 0.7; letter-spacing: 1px;
+}
+.wg-status {
+  font-size: 10px; color: #888; margin-bottom: 8px;
+  min-height: 14px; letter-spacing: 0.5px;
+}
+.wg-result {
+  display: none; padding: 8px 12px; border-radius: 3px;
+  font-size: 11px; letter-spacing: 1px; margin-bottom: 10px;
+  line-height: 1.5;
+}
+.wg-result.result-safe {
+  background: rgba(0, 255, 65, 0.1); border: 1px solid #00ff4160;
+  color: #00ff41;
+}
+.wg-result.result-critical {
+  background: rgba(255, 68, 68, 0.15); border: 1px solid #ff444460;
+  color: #ff4444;
+}
+.wg-feed {
+  flex: 1; overflow-y: auto;
+  display: flex; flex-direction: column; gap: 6px;
+}
+.wg-entry {
+  padding: 8px 10px; border-radius: 3px;
+  border-left: 2px solid #444;
+  background: rgba(255, 255, 255, 0.02);
+}
+.wg-entry.wg-intel {
+  border-left-color: #ffaa00;
+}
+.wg-entry.wg-normal {
+  border-left-color: #00ff41;
+}
+.wg-entry.wg-critical {
+  border-left-color: #ff4444;
+  background: rgba(255, 68, 68, 0.08);
+}
+.wg-entry-title {
+  font-size: 10px; letter-spacing: 1px;
+  color: #ccc; margin-bottom: 3px; font-weight: bold;
+}
+.wg-entry.wg-intel .wg-entry-title { color: #ffaa00; }
+.wg-entry.wg-normal .wg-entry-title { color: #00ff41; }
+.wg-entry.wg-critical .wg-entry-title { color: #ff4444; }
+.wg-entry-body {
+  font-size: 10px; color: #999; line-height: 1.5;
+}
 
 /* Hide Cesium default UI */
 .cesium-viewer-toolbar,

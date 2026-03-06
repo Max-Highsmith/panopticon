@@ -17,5 +17,10 @@ config.local.js
 # macOS
 .DS_Store
 
+# Wargame server
+server/node_modules/
+server/.env
+results/
+
 # Claude
 .claude/

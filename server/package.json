@@ -1,0 +1,14 @@
+{
+  "name": "panopticon-server",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "express": "^4.21.0",
+    "ws": "^8.18.0",
+    "dotenv": "^16.4.0"
+  }
+}

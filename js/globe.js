@@ -44,7 +44,13 @@ export const layers = {
   pokemon: false,
   mines: false,
   infra: false,
+  nuclear: false,
   airports: false,
+  bases: false,
+  webcams: false,
+  arcticmining: false,
+  rareearth: false,
+  drilling: false,
 };
 
 // Entity registries — each maps an ID to a record with { entity, ... }
@@ -56,8 +62,14 @@ export const entityMaps = {
   pokemon:    new Map(),
   mines:      new Map(),
   infra:      new Map(),
+  nuclear:    new Map(),
   replay:     new Map(),
   airports:   new Map(),
+  bases:      new Map(),
+  webcams:      new Map(),
+  arcticmining: new Map(),
+  rareearth:    new Map(),
+  drilling:     new Map(),
 };
 
 // --- Layer Operations ---
