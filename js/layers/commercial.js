@@ -2,10 +2,10 @@
    PANOPTICON — Live Commercial Aircraft (OpenSky Network)
    =================================================================== */
 
-import { API, REFRESH, DISPLAY } from '../config.js';
+import { API, REFRESH } from '../config.js';
 import { $ } from '../utils.js';
-import { icons } from '../icons.js';
-import { layers, entityMaps } from '../globe.js';
+import { entityMaps } from '../globe.js';
+import { createLiveEntity, updateLiveEntity, removeLiveEntity, pruneStale, LIVE_STYLES } from './livelayer.js';
 
 const entities = entityMaps.commercial;
 let interval = null;
@@ -45,11 +45,7 @@ export async function fetchCommercial(viewer) {
 
       // Viewport culling: skip entity creation for aircraft far outside view
       if (bounds && (lon < bounds.lonMin || lon > bounds.lonMax || lat < bounds.latMin || lat > bounds.latMax)) {
-        // Remove if it was previously visible
-        if (entities.has(hex)) {
-          viewer.entities.remove(entities.get(hex).entity);
-          entities.delete(hex);
-        }
+        if (entities.has(hex)) removeLiveEntity(viewer, entities, hex);
         continue;
       }
 
@@ -63,10 +59,7 @@ export async function fetchCommercial(viewer) {
 
       // Skip parked/taxiing aircraft (on ground or very low & slow)
       if (onGround || (altMeters < 50 && (velocity == null || velocity < 5))) {
-        if (entities.has(hex)) {
-          viewer.entities.remove(entities.get(hex).entity);
-          entities.delete(hex);
-        }
+        if (entities.has(hex)) removeLiveEntity(viewer, entities, hex);
         continue;
       }
 
@@ -81,29 +74,18 @@ export async function fetchCommercial(viewer) {
 
       if (entities.has(hex)) {
         const record = entities.get(hex);
-        record.entity.position = position;
-        if (track != null) record.entity.billboard.rotation = -Cesium.Math.toRadians(track);
-        record.entity.acData = acData;
+        updateLiveEntity(record.entity, { position, heading: track, callsign, acData });
       } else {
-        const heading = track != null ? Cesium.Math.toRadians(track) : 0;
-        const entity = viewer.entities.add({
-          position,
-          billboard: { image: icons.planeBlue, width: DISPLAY.CIV_ICON_SIZE, height: DISPLAY.CIV_ICON_SIZE, rotation: -heading, alignedAxis: Cesium.Cartesian3.ZERO, disableDepthTestDistance: 0 },
-          label: { text: callsign, font: '10px Courier New', fillColor: Cesium.Color.fromCssColorString('#4488ff'), outlineColor: Cesium.Color.BLACK, outlineWidth: 2, style: Cesium.LabelStyle.FILL_AND_OUTLINE, pixelOffset: new Cesium.Cartesian2(10, -3), disableDepthTestDistance: 0, distanceDisplayCondition: new Cesium.DistanceDisplayCondition(0, 3_000_000), scale: 0.8 },
+        const entity = createLiveEntity(viewer, {
+          position, heading: track, callsign,
+          layerKey: 'commercial', acData, style: LIVE_STYLES.commercial,
         });
-        entity.show = layers.commercial;
-        entity.acData = acData;
         entities.set(hex, { entity });
       }
     }
 
     // Remove stale
-    for (const [hex, record] of entities) {
-      if (!seen.has(hex)) {
-        viewer.entities.remove(record.entity);
-        entities.delete(hex);
-      }
-    }
+    pruneStale(viewer, entities, seen);
 
     $('civ-count').textContent = count;
   } catch (err) {

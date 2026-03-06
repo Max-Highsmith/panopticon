@@ -2,10 +2,10 @@
    PANOPTICON — Live Military Aircraft (ADS-B Exchange)
    =================================================================== */
 
-import { API, REFRESH, DISPLAY } from '../config.js';
+import { API, REFRESH } from '../config.js';
 import { extrapolate, $ } from '../utils.js';
-import { icons } from '../icons.js';
-import { layers, entityMaps } from '../globe.js';
+import { entityMaps } from '../globe.js';
+import { createLiveEntity, updateLiveEntity, removeLiveEntity, pruneStale, LIVE_STYLES } from './livelayer.js';
 
 const entities = entityMaps.military;
 let interval = null;
@@ -31,11 +31,7 @@ export async function fetchMilitary(viewer) {
       const isGround = ac.alt_baro === 'ground';
       const altMeters = isGround ? 100 : (ac.alt_baro || 10000) * 0.3048;
       if (isGround || (altMeters < 50 && (!ac.gs || ac.gs < 5))) {
-        if (entities.has(hex)) {
-          viewer.entities.remove(entities.get(hex).entity);
-          if (entities.get(hex).trailEntity) viewer.entities.remove(entities.get(hex).trailEntity);
-          entities.delete(hex);
-        }
+        if (entities.has(hex)) removeLiveEntity(viewer, entities, hex);
         continue;
       }
 
@@ -46,30 +42,18 @@ export async function fetchMilitary(viewer) {
       if (entities.has(hex)) {
         const record = entities.get(hex);
         Object.assign(record, { lat: ac.lat, lon: ac.lon, alt: altMeters, gs: ac.gs, track: ac.track, timestamp: now });
-        if (ac.track != null) record.entity.billboard.rotation = -Cesium.Math.toRadians(ac.track);
-        record.entity.label.text = callsign;
-        record.entity.acData = ac;
+        updateLiveEntity(record.entity, { position, heading: ac.track, callsign, acData: ac });
       } else {
-        const heading = ac.track != null ? Cesium.Math.toRadians(ac.track) : 0;
-        const entity = viewer.entities.add({
-          position,
-          billboard: { image: icons.planeMilLive, width: DISPLAY.MIL_ICON_SIZE, height: DISPLAY.MIL_ICON_SIZE, rotation: -heading, alignedAxis: Cesium.Cartesian3.ZERO, disableDepthTestDistance: 0 },
-          label: { text: callsign, font: '11px Courier New', fillColor: Cesium.Color.fromCssColorString('#00ff41'), outlineColor: Cesium.Color.BLACK, outlineWidth: 2, style: Cesium.LabelStyle.FILL_AND_OUTLINE, pixelOffset: new Cesium.Cartesian2(14, -4), disableDepthTestDistance: 0, distanceDisplayCondition: new Cesium.DistanceDisplayCondition(0, 8_000_000), scale: 0.9 },
+        const entity = createLiveEntity(viewer, {
+          position, heading: ac.track, callsign,
+          layerKey: 'military', acData: ac, style: LIVE_STYLES.military,
         });
-        entity.show = layers.military;
-        entity.acData = ac;
         entities.set(hex, { entity, trailEntity: null, lat: ac.lat, lon: ac.lon, alt: altMeters, gs: ac.gs, track: ac.track, timestamp: now });
       }
     }
 
     // Remove stale entries
-    for (const [hex, record] of entities) {
-      if (!seen.has(hex)) {
-        viewer.entities.remove(record.entity);
-        if (record.trailEntity) viewer.entities.remove(record.trailEntity);
-        entities.delete(hex);
-      }
-    }
+    pruneStale(viewer, entities, seen);
   } catch (err) {
     console.error('Military fetch error:', err);
   }

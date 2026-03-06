@@ -2,10 +2,10 @@
    PANOPTICON — Live AIS Ship Tracking
    =================================================================== */
 
-import { API, LIMITS, DISPLAY } from '../config.js';
+import { API, LIMITS } from '../config.js';
 import { $ } from '../utils.js';
-import { icons } from '../icons.js';
-import { layers, entityMaps, clearLayer } from '../globe.js';
+import { entityMaps, clearLayer } from '../globe.js';
+import { createLiveEntity, updateLiveEntity, pruneByAge, LIVE_STYLES } from './livelayer.js';
 
 const entities = entityMaps.ships;
 let socket = null;
@@ -50,19 +50,13 @@ export function startAIS(viewer) {
 
       if (entities.has(mmsi)) {
         const record = entities.get(mmsi);
-        record.entity.position = position;
+        updateLiveEntity(record.entity, { position, heading: cog, acData });
         record.lastUpdate = Date.now();
-        if (cog != null) record.entity.billboard.rotation = -Cesium.Math.toRadians(cog);
-        record.entity.acData = acData;
       } else {
-        const heading = cog != null ? Cesium.Math.toRadians(cog) : 0;
-        const entity = viewer.entities.add({
-          position,
-          billboard: { image: icons.shipBlue, width: DISPLAY.SHIP_ICON_SIZE, height: DISPLAY.SHIP_ICON_SIZE, rotation: -heading, alignedAxis: Cesium.Cartesian3.ZERO, disableDepthTestDistance: 0 },
-          label: { text: name, font: '10px Courier New', fillColor: Cesium.Color.fromCssColorString('#4488ff'), outlineColor: Cesium.Color.BLACK, outlineWidth: 2, style: Cesium.LabelStyle.FILL_AND_OUTLINE, pixelOffset: new Cesium.Cartesian2(10, -3), disableDepthTestDistance: 0, distanceDisplayCondition: new Cesium.DistanceDisplayCondition(0, 2_000_000), scale: 0.8 },
+        const entity = createLiveEntity(viewer, {
+          position, heading: cog, callsign: name,
+          layerKey: 'ships', acData, style: LIVE_STYLES.ships,
         });
-        entity.show = layers.ships;
-        entity.acData = acData;
         entities.set(mmsi, { entity, lastUpdate: Date.now() });
       }
 
@@ -75,13 +69,7 @@ export function startAIS(viewer) {
 
   // Prune stale ships
   setInterval(() => {
-    const cutoff = Date.now() - LIMITS.SHIP_STALE_MS;
-    for (const [mmsi, record] of entities) {
-      if (record.lastUpdate < cutoff) {
-        viewer.entities.remove(record.entity);
-        entities.delete(mmsi);
-      }
-    }
+    pruneByAge(viewer, entities, LIMITS.SHIP_STALE_MS);
     $('ship-count').textContent = entities.size;
   }, LIMITS.SHIP_PRUNE_INTERVAL);
 }

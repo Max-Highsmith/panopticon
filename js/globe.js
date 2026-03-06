@@ -82,8 +82,9 @@ export function toggleLayer(viewer, layer, currentMode) {
   if (!entityMap) return;
   for (const [, record] of entityMap) {
     record.entity.show = layers[layer];
-    if (record.trailEntity)      record.trailEntity.show = layers[layer];
-    if (record.orbitEntities)    record.orbitEntities.forEach(e => e.show = layers[layer]);
+    if (record.trailEntity)       record.trailEntity.show = layers[layer];
+    if (record.labelEntity)       record.labelEntity.show = layers[layer];
+    if (record.orbitEntities)     record.orbitEntities.forEach(e => e.show = layers[layer]);
     if (record.footprintEntities) record.footprintEntities.forEach(e => e.show = layers[layer]);
   }
 
@@ -102,8 +103,9 @@ export function toggleLayer(viewer, layer, currentMode) {
 export function clearLayer(viewer, entityMap) {
   for (const [, record] of entityMap) {
     viewer.entities.remove(record.entity);
-    if (record.trailEntity)      viewer.entities.remove(record.trailEntity);
-    if (record.orbitEntities)    record.orbitEntities.forEach(e => viewer.entities.remove(e));
+    if (record.trailEntity)       viewer.entities.remove(record.trailEntity);
+    if (record.labelEntity)       viewer.entities.remove(record.labelEntity);
+    if (record.orbitEntities)     record.orbitEntities.forEach(e => viewer.entities.remove(e));
     if (record.footprintEntities) record.footprintEntities.forEach(e => viewer.entities.remove(e));
   }
   entityMap.clear();
