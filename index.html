@@ -64,20 +64,12 @@
   </div>
 
   <div id="layer-toggles">
-    <label class="mil-label"><input type="checkbox" id="chk-military" checked onchange="toggleLayer('military')"> MIL</label>
-    <label class="civ-label"><input type="checkbox" id="chk-commercial" checked onchange="toggleLayer('commercial')"> CIV</label>
-    <label class="sat-label"><input type="checkbox" id="chk-satellites" checked onchange="toggleLayer('satellites')"> SAT</label>
-    <label class="ship-label"><input type="checkbox" id="chk-ships" onchange="toggleLayer('ships')"> SHIPS</label>
-    <label class="pogo-label"><input type="checkbox" id="chk-pokemon" onchange="toggleLayer('pokemon')"> POGO</label>
-    <label class="mines-label"><input type="checkbox" id="chk-mines" onchange="toggleLayer('mines')"> MINES</label>
-    <label class="infra-label"><input type="checkbox" id="chk-infra" onchange="toggleLayer('infra')"> INFRA</label>
-    <label class="nuclear-label"><input type="checkbox" id="chk-nuclear" onchange="toggleLayer('nuclear')"> NUCLEAR</label>
-    <label class="airport-label"><input type="checkbox" id="chk-airports" onchange="toggleLayer('airports')"> AIRPORTS</label>
-    <label class="bases-label"><input type="checkbox" id="chk-bases" onchange="toggleLayer('bases')"> BASES</label>
-    <label class="webcam-label"><input type="checkbox" id="chk-webcams" onchange="toggleLayer('webcams')"> CAMS</label>
-    <label class="arcticmining-label"><input type="checkbox" id="chk-arcticmining" onchange="toggleLayer('arcticmining')"> ARCTIC</label>
-    <label class="rareearth-label"><input type="checkbox" id="chk-rareearth" onchange="toggleLayer('rareearth')"> REE</label>
-    <label class="drilling-label"><input type="checkbox" id="chk-drilling" onchange="toggleLayer('drilling')"> DRILL</label>
+    <!-- Pinned layer checkboxes inserted dynamically by layerselector.js -->
+    <button id="layer-panel-toggle" onclick="openLayerPanel()">+ LAYERS</button>
+  </div>
+
+  <div id="layer-panel" style="display: none;">
+    <!-- Built dynamically by layerselector.js -->
   </div>
 
   <div id="mines-legend">
@@ -342,6 +334,15 @@
         </select>
       </label>
       <label>MODEL (optional)<input type="text" id="wg-model" placeholder="e.g. claude-sonnet-4-5-20250929"></label>
+      <label>MODE
+        <select id="wg-execution-mode">
+          <option value="turn_based">TURN-BASED</option>
+          <option value="realtime">REALTIME</option>
+        </select>
+      </label>
+      <label>VARIABLES (JSON override)
+        <textarea id="wg-variables" rows="2" placeholder='{"key": "value"}'></textarea>
+      </label>
     </div>
     <div class="wg-controls">
       <button id="wg-start" onclick="wgStart()">START</button>

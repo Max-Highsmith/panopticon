@@ -74,9 +74,18 @@ export const entityMaps = {
 
 // --- Layer Operations ---
 
-export function toggleLayer(viewer, layer, currentMode) {
-  const chkId = 'chk-' + layer;
-  layers[layer] = document.getElementById(chkId).checked;
+export function registerLayer(key) {
+  if (layers[key] === undefined) layers[key] = false;
+  if (!entityMaps[key]) entityMaps[key] = new Map();
+}
+
+export function toggleLayer(viewer, layer, currentMode, enabled) {
+  if (enabled !== undefined) {
+    layers[layer] = enabled;
+  } else {
+    const chk = document.getElementById('chk-' + layer);
+    if (chk) layers[layer] = chk.checked;
+  }
 
   const entityMap = entityMaps[layer];
   if (!entityMap) return;

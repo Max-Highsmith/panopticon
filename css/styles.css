@@ -102,6 +102,83 @@ body {
 #layer-toggles label.drilling-label { color: #ff8844; }
 #layer-toggles input[type="checkbox"] { accent-color: #00ff41; }
 
+/* Unpin button on pinned labels */
+#layer-toggles .unpin-btn {
+  background: none; border: none; color: inherit;
+  font-size: 13px; cursor: pointer; opacity: 0;
+  padding: 0 2px; margin-left: 2px;
+  transition: opacity 0.15s;
+  font-family: 'Courier New', monospace;
+}
+#layer-toggles label:hover .unpin-btn { opacity: 0.6; }
+#layer-toggles .unpin-btn:hover { opacity: 1; }
+
+/* Layer panel toggle button */
+#layer-panel-toggle {
+  background: none; border: 1px solid #00ff4140; color: #00ff41;
+  font-family: 'Courier New', monospace; font-size: 11px;
+  padding: 2px 10px; cursor: pointer; border-radius: 3px;
+  letter-spacing: 1px;
+}
+#layer-panel-toggle:hover { background: #00ff4120; }
+
+/* --- Layer Dropdown Panel --- */
+#layer-panel {
+  position: absolute; top: 82px;
+  left: 50%; transform: translateX(-50%);
+  z-index: 12;
+  background: rgba(0, 0, 0, 0.92);
+  border: 1px solid #00ff4130;
+  border-radius: 4px;
+  max-height: 60vh; min-width: 340px; max-width: 420px;
+  overflow-y: auto; font-size: 11px;
+  box-shadow: 0 4px 24px rgba(0, 255, 65, 0.08);
+}
+#layer-search {
+  width: 100%; background: rgba(0, 255, 65, 0.05);
+  border: none; border-bottom: 1px solid #00ff4120;
+  color: #00ff41; font-family: 'Courier New', monospace;
+  font-size: 12px; padding: 10px 14px; outline: none;
+  letter-spacing: 1px; box-sizing: border-box;
+}
+#layer-search::placeholder { color: #00ff4140; }
+.layer-category-header {
+  padding: 8px 14px; color: #00ff41; opacity: 0.5;
+  font-size: 9px; letter-spacing: 2px; cursor: pointer;
+  user-select: none; border-bottom: 1px solid #00ff4110;
+}
+.layer-category-header:hover { opacity: 0.8; }
+.layer-row {
+  display: flex; align-items: center; gap: 8px;
+  padding: 6px 14px 6px 24px; cursor: pointer;
+  transition: background 0.1s;
+}
+.layer-row:hover { background: rgba(0, 255, 65, 0.05); }
+.layer-row input[type="checkbox"] { accent-color: #00ff41; }
+.layer-color-swatch {
+  width: 8px; height: 8px; border-radius: 2px; flex-shrink: 0;
+}
+.layer-name {
+  flex: 1; color: #ccc; letter-spacing: 1px;
+}
+.layer-pin-btn {
+  background: none; border: 1px solid #00ff4130;
+  color: #00ff4180; font-family: 'Courier New', monospace;
+  font-size: 9px; padding: 2px 6px; cursor: pointer;
+  border-radius: 2px; letter-spacing: 1px;
+}
+.layer-pin-btn:hover { border-color: #00ff41; color: #00ff41; }
+.layer-pin-btn.pinned {
+  background: #00ff4120; border-color: #00ff4160; color: #00ff41;
+}
+
+/* Reposition layer-panel when detail panels are open */
+body.sat-panel-open #layer-panel      { left: calc((100vw - var(--panel-width)) / 2); }
+body.plane-panel-open #layer-panel    { left: calc((100vw - var(--panel-width)) / 2); }
+body.site-panel-open #layer-panel     { left: calc((100vw - var(--panel-width)) / 2); }
+body.airport-panel-open #layer-panel  { left: calc((100vw - var(--panel-width)) / 2); }
+body.webcam-panel-open #layer-panel   { left: calc((100vw - var(--panel-width)) / 2); }
+
 /* --- Mines Legend --- */
 #mines-legend {
   position: absolute; top: 52px; right: 24px;
@@ -1006,16 +1083,19 @@ body.resizing * { transition: none !important; cursor: col-resize !important; }
   display: flex; flex-direction: column; gap: 3px;
   color: #ff4444; font-size: 9px; letter-spacing: 1px; opacity: 0.6;
 }
-.wg-config select, .wg-config input {
+.wg-config select, .wg-config input, .wg-config textarea {
   background: rgba(255, 68, 68, 0.08); color: #ff8888;
   border: 1px solid #ff444440; padding: 5px 8px;
   font-family: 'Courier New', monospace; font-size: 11px;
   border-radius: 3px; outline: none;
 }
-.wg-config select:focus, .wg-config input:focus {
+.wg-config textarea {
+  resize: vertical; min-height: 32px;
+}
+.wg-config select:focus, .wg-config input:focus, .wg-config textarea:focus {
   border-color: #ff4444;
 }
-.wg-config select:disabled, .wg-config input:disabled {
+.wg-config select:disabled, .wg-config input:disabled, .wg-config textarea:disabled {
   opacity: 0.3;
 }
 .wg-controls {

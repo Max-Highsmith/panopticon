@@ -31,6 +31,7 @@ import { DISPLAY, CUSTOM_DATASETS } from '../config.js';
 import { $ } from '../utils.js';
 import { makeDiamondIcon, makeServerIcon, makeRadiationIcon, makeCircleIcon } from '../icons.js';
 import { layers, entityMaps } from '../globe.js';
+import { registerLayer as registerCatalogLayer } from '../layercatalog.js';
 
 const loadedSets = new Set();
 
@@ -208,36 +209,27 @@ async function loadDataset(viewer, dataset) {
   }
 }
 
-// --- UI Registration ---
+// --- Catalog Registration ---
 
-function createToggle(viewer, dataset) {
+function registerCustom(dataset) {
   const { id, label, color } = dataset;
   const mapKey = 'custom_' + id;
+  const shortLabel = label.length > 6 ? label.substring(0, 6) : label;
 
-  const container = $('layer-toggles');
-  const lbl = document.createElement('label');
-  lbl.className = 'custom-label';
-  lbl.style.color = color || '#ff00ff';
-
-  const chk = document.createElement('input');
-  chk.type = 'checkbox';
-  chk.id = 'chk-' + mapKey;
-  chk.onchange = () => {
-    // Use window.toggleLayer which tracks currentMode correctly
-    window.toggleLayer(mapKey);
-    if (layers[mapKey] && !loadedSets.has(id)) {
-      loadDataset(viewer, dataset);
-    }
-  };
-
-  lbl.appendChild(chk);
-  lbl.appendChild(document.createTextNode(' ' + label));
-  container.appendChild(lbl);
+  registerCatalogLayer({
+    key: mapKey,
+    label,
+    shortLabel,
+    category: 'Custom',
+    color: color || '#ff00ff',
+    defaultOn: false,
+    defaultPinned: false,
+  });
 }
 
 // --- Public API ---
 
-export function loadCustomDatasets(viewer) {
+export function loadCustomDatasets(viewer, registerLoader) {
   if (!CUSTOM_DATASETS || CUSTOM_DATASETS.length === 0) return;
 
   for (const ds of CUSTOM_DATASETS) {
@@ -250,6 +242,11 @@ export function loadCustomDatasets(viewer) {
     if (!entityMaps[mapKey]) entityMaps[mapKey] = new Map();
     if (layers[mapKey] === undefined) layers[mapKey] = false;
 
-    createToggle(viewer, ds);
+    registerCustom(ds);
+
+    // Register lazy loader so the layer selector can trigger data fetch
+    if (registerLoader) {
+      registerLoader(mapKey, { load: () => loadDataset(viewer, ds) });
+    }
   }
 }

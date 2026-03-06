@@ -6,6 +6,7 @@ import { SCENARIOS, CITIES, REPLAY_SPEEDS, DEFAULT_SPEED_INDEX } from './config.
 import { formatAlt, formatSpd, formatHdg, secsToUTC, secsToLocal, replayAbsDate, interpolateTrace, $ } from './utils.js';
 import { icons } from './icons.js';
 import { createViewer, layers, entityMaps, toggleLayer, clearAllLayers } from './globe.js';
+import { initLayerSelector, openLayerPanel, closeLayerPanel, refreshCatalog } from './layerselector.js';
 import { setVisualFilter, initFilterUpdater } from './filters.js';
 import { initAudioPlayer, toggleAudio } from './audio.js';
 import { startMilitary, stopMilitary, extrapolateMilitaryPositions } from './layers/military.js';
@@ -97,9 +98,9 @@ const _seenHexes = new Set();
 // =====================================================
 // EXPOSE GLOBALS (for inline onclick handlers in HTML)
 // =====================================================
-window.switchMode     = switchMode;
-window.toggleLayer    = (layer) => {
-  toggleLayer(viewer, layer, currentMode);
+// --- Layer Selector ---
+function handleLayerToggle(layer, enabled) {
+  toggleLayer(viewer, layer, currentMode, enabled);
   $('mines-legend').style.display = (layer === 'mines' && layers.mines) ? 'block' : (layer === 'mines' ? 'none' : $('mines-legend').style.display);
 
   if (layers[layer]) {
@@ -117,7 +118,12 @@ window.toggleLayer    = (layer) => {
       }
     }
   }
-};
+}
+
+initLayerSelector({ toggleFn: handleLayerToggle });
+
+window.switchMode     = switchMode;
+window.openLayerPanel = openLayerPanel;
 window.setVisualFilter = (f) => setVisualFilter(f, viewer);
 window.flyToCity       = flyToCity;
 window.selectScenario  = selectScenario;
@@ -442,6 +448,7 @@ function switchMode(mode) {
     clearAllLayers(viewer, () => removeDataBoundsOverlay(viewer));
     $('subtitle').textContent = 'WARGAME // AI DECISION EVALUATION';
     $('layer-toggles').style.display = 'none';
+    closeLayerPanel();
     $('timeline-bar').style.display = 'none';
     $('scenario-sidebar').style.display = 'none';
     startWargameMode(viewer);
@@ -582,7 +589,8 @@ handler.setInputAction((click) => {
 // =====================================================
 // BOOT — Register Custom Datasets & Start in Replay Mode
 // =====================================================
-loadCustomDatasets(viewer);
+loadCustomDatasets(viewer, (key, loader) => { LAYER_LOADERS[key] = loader; });
+refreshCatalog(); // pick up any custom dataset registrations
 
 $('btn-live').classList.remove('active');
 $('btn-replay').classList.add('active');
