@@ -1,0 +1,176 @@
+{
+  "_source": {
+    "description": "Major oil refineries worldwide",
+    "origin": "Compiled from Oil & Gas Journal worldwide refinery survey, EIA refinery capacity data, and company disclosures.",
+    "retrieved": "2026-03-06",
+    "license": "Mixed: EIA public domain; OGJ fair use summary",
+    "notes": "Largest refineries by crude distillation capacity. Coordinates from public satellite imagery."
+  },
+  "refinery": [
+    {
+      "name": "Jamnagar Refinery",
+      "lon": 70.07,
+      "lat": 22.25,
+      "country": "India",
+      "operator": "Reliance Industries",
+      "capacity_bpd": 1240000,
+      "notes": "World's largest refinery"
+    },
+    {
+      "name": "Paraguana Refinery",
+      "lon": -70.21,
+      "lat": 11.73,
+      "country": "Venezuela",
+      "operator": "PDVSA",
+      "capacity_bpd": 955000
+    },
+    {
+      "name": "SK Ulsan Refinery",
+      "lon": 129.37,
+      "lat": 35.5,
+      "country": "South Korea",
+      "operator": "SK Energy",
+      "capacity_bpd": 840000
+    },
+    {
+      "name": "Ruwais Refinery",
+      "lon": 52.73,
+      "lat": 24.11,
+      "country": "UAE",
+      "operator": "ADNOC",
+      "capacity_bpd": 837000
+    },
+    {
+      "name": "Yeosu Refinery",
+      "lon": 127.74,
+      "lat": 34.76,
+      "country": "South Korea",
+      "operator": "GS Caltex",
+      "capacity_bpd": 785000
+    },
+    {
+      "name": "Port Arthur Refinery",
+      "lon": -93.97,
+      "lat": 29.86,
+      "country": "USA",
+      "operator": "Motiva (Saudi Aramco)",
+      "capacity_bpd": 636000,
+      "notes": "Largest refinery in USA"
+    },
+    {
+      "name": "Galveston Bay Refinery",
+      "lon": -94.92,
+      "lat": 29.37,
+      "country": "USA",
+      "operator": "Marathon Petroleum",
+      "capacity_bpd": 593000
+    },
+    {
+      "name": "Ras Tanura Refinery",
+      "lon": 50.16,
+      "lat": 26.64,
+      "country": "Saudi Arabia",
+      "operator": "Saudi Aramco",
+      "capacity_bpd": 550000
+    },
+    {
+      "name": "Jurong Island Refinery",
+      "lon": 103.7,
+      "lat": 1.26,
+      "country": "Singapore",
+      "operator": "ExxonMobil",
+      "capacity_bpd": 592000
+    },
+    {
+      "name": "Rotterdam Refinery",
+      "lon": 4.25,
+      "lat": 51.88,
+      "country": "Netherlands",
+      "operator": "Shell",
+      "capacity_bpd": 404000
+    },
+    {
+      "name": "Fos-sur-Mer Refinery",
+      "lon": 4.89,
+      "lat": 43.42,
+      "country": "France",
+      "operator": "TotalEnergies",
+      "capacity_bpd": 315000
+    },
+    {
+      "name": "Whiting Refinery",
+      "lon": -87.5,
+      "lat": 41.68,
+      "country": "USA",
+      "operator": "BP",
+      "capacity_bpd": 435000
+    },
+    {
+      "name": "Baytown Refinery",
+      "lon": -94.98,
+      "lat": 29.75,
+      "country": "USA",
+      "operator": "ExxonMobil",
+      "capacity_bpd": 584000
+    },
+    {
+      "name": "Jubail Refinery",
+      "lon": 49.67,
+      "lat": 27.01,
+      "country": "Saudi Arabia",
+      "operator": "SASREF",
+      "capacity_bpd": 400000
+    },
+    {
+      "name": "Abadan Refinery",
+      "lon": 48.3,
+      "lat": 30.34,
+      "country": "Iran",
+      "operator": "NIOC",
+      "capacity_bpd": 400000,
+      "notes": "Historic refinery, built 1912"
+    },
+    {
+      "name": "Dangote Refinery",
+      "lon": 3.53,
+      "lat": 6.43,
+      "country": "Nigeria",
+      "operator": "Dangote Group",
+      "capacity_bpd": 650000,
+      "notes": "Africa's largest refinery"
+    },
+    {
+      "name": "Pernis Refinery",
+      "lon": 4.38,
+      "lat": 51.87,
+      "country": "Netherlands",
+      "operator": "Shell",
+      "capacity_bpd": 404000,
+      "notes": "Europe's largest refinery"
+    },
+    {
+      "name": "Stanlow Refinery",
+      "lon": -2.83,
+      "lat": 53.28,
+      "country": "UK",
+      "operator": "Essar",
+      "capacity_bpd": 296000
+    },
+    {
+      "name": "Daesan Refinery",
+      "lon": 126.59,
+      "lat": 36.99,
+      "country": "South Korea",
+      "operator": "Hanwha",
+      "capacity_bpd": 390000
+    },
+    {
+      "name": "Omsk Refinery",
+      "lon": 73.27,
+      "lat": 54.92,
+      "country": "Russia",
+      "operator": "Gazprom Neft",
+      "capacity_bpd": 420000
+    }
+  ]
+}

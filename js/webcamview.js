@@ -5,10 +5,12 @@
    =================================================================== */
 
 import { $ } from './utils.js';
+import { startAnimLoop } from './viewbase.js';
+import { registerView } from './viewregistry.js';
 
 let webcamViewOpen = false;
 let webcamViewTarget = null;
-let overlayAnimFrame = null;
+let overlayHandle = null;
 let hlsInstance = null;
 let currentMode = null; // 'hls' | 'youtube'
 
@@ -132,21 +134,7 @@ function renderInfoCanvas() {
   ctx.globalAlpha = 1;
 }
 
-function startOverlayLoop() {
-  if (overlayAnimFrame) return;
-  const tick = () => {
-    renderInfoCanvas();
-    overlayAnimFrame = requestAnimationFrame(tick);
-  };
-  overlayAnimFrame = requestAnimationFrame(tick);
-}
-
-function stopOverlayLoop() {
-  if (overlayAnimFrame) {
-    cancelAnimationFrame(overlayAnimFrame);
-    overlayAnimFrame = null;
-  }
-}
+// overlay loop managed via startAnimLoop from viewbase.js
 
 // --- Build embed URL for YouTube live stream ---
 function buildEmbedUrl(ytId) {
@@ -264,7 +252,7 @@ export function openWebcamView(viewer, entity) {
     }
   }
 
-  startOverlayLoop();
+  overlayHandle = startAnimLoop(renderInfoCanvas);
 
   setTimeout(() => viewer.resize(), 400);
 }
@@ -285,7 +273,10 @@ export function closeWebcamView(viewer) {
   const iframe = $('webcam-embed-iframe');
   if (iframe) iframe.src = 'about:blank';
 
-  stopOverlayLoop();
+  if (overlayHandle) { overlayHandle.stop(); overlayHandle = null; }
 
   setTimeout(() => viewer.resize(), 400);
 }
+
+// --- Self-register with view registry ---
+registerView('webcam', { open: openWebcamView, close: closeWebcamView, isOpen: isWebcamViewOpen, resize: resizeWebcamView });

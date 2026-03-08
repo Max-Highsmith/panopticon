@@ -5,6 +5,7 @@
 
 import { $ } from '../utils.js';
 import { layers, entityMaps } from '../globe.js';
+import { cacheLayerData } from '../layerregistry.js';
 
 /**
  * Creates a lazy-loading Cesium polyline layer backed by a JSON data file.
@@ -39,6 +40,7 @@ export function createPathLayer(cfg) {
       const res = await fetch(cfg.dataUrl);
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       const data = await res.json();
+      cacheLayerData(cfg.layerKey, data);
 
       for (const [category, meta] of Object.entries(cfg.categories)) {
         const color = Cesium.Color.fromCssColorString(meta.color).withAlpha(meta.alpha ?? 0.8);
@@ -65,6 +67,7 @@ export function createPathLayer(cfg) {
             hex: id, r: item.name, t: meta.label, flight: item.name,
             desc: (cfg.descFn || defaultDesc)(item, category),
             alt_baro: 0, gs: 0, track: 0,
+            _view: cfg.viewType || 'site',
           };
 
           // Label at midpoint

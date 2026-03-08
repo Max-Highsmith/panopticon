@@ -1,0 +1,131 @@
+{
+  "_source": {
+    "description": "Global lightning hotspot regions",
+    "origin": "NASA LIS/OTD lightning climatology (lightning.nsstc.nasa.gov) and Albrecht et al. 2016 'Where are the lightning hotspots on Earth?' (doi:10.1175/BAMS-D-14-00193.1).",
+    "retrieved": "2026-03-06",
+    "license": "NASA: public domain; Albrecht: published research",
+    "notes": "Hotspot locations from NASA LIS/OTD satellite climatology."
+  },
+  "hotspot": [
+    {
+      "name": "Lake Maracaibo (Catatumbo Lightning)",
+      "lat": 9.4,
+      "lon": -71.58,
+      "country": "Venezuela",
+      "operator": "Natural phenomenon",
+      "notes": "World's highest lightning density; 297 storm days/year; 28 flashes/min"
+    },
+    {
+      "name": "Congo Basin",
+      "lat": 1.5,
+      "lon": 22.0,
+      "country": "DR Congo",
+      "operator": "Natural phenomenon",
+      "notes": "2nd highest flash rate globally; tropical convection over dense forest"
+    },
+    {
+      "name": "Singapore Strait",
+      "lat": 1.3,
+      "lon": 103.8,
+      "country": "Singapore",
+      "operator": "Natural phenomenon",
+      "notes": "~170 lightning days/year; maritime convection hotspot"
+    },
+    {
+      "name": "Kifuka, DR Congo",
+      "lat": -0.1,
+      "lon": 29.0,
+      "country": "DR Congo",
+      "operator": "Natural phenomenon",
+      "notes": "Former record holder: 158 flashes/km\u00b2/year; mountainous tropical"
+    },
+    {
+      "name": "Central Florida (Lightning Alley)",
+      "lat": 28.1,
+      "lon": -81.6,
+      "country": "USA",
+      "operator": "Natural phenomenon",
+      "notes": "US lightning capital; sea breeze convergence; ~80 days/year"
+    },
+    {
+      "name": "R\u00edo de la Plata Basin",
+      "lat": -32.5,
+      "lon": -57.0,
+      "country": "Argentina/Uruguay",
+      "operator": "Natural phenomenon",
+      "notes": "Intense MCS thunderstorms; among world's most severe"
+    },
+    {
+      "name": "Brahmaputra Valley (Assam)",
+      "lat": 26.2,
+      "lon": 91.7,
+      "country": "India",
+      "operator": "Natural phenomenon",
+      "notes": "Pre-monsoon Nor'westers; extreme lightning fatalities"
+    },
+    {
+      "name": "Kampala, Uganda",
+      "lat": 0.32,
+      "lon": 32.58,
+      "country": "Uganda",
+      "operator": "Natural phenomenon",
+      "notes": "~240 thunderstorm days/year; Lake Victoria convergence effects"
+    },
+    {
+      "name": "Northern Colombia Andes",
+      "lat": 7.0,
+      "lon": -75.0,
+      "country": "Colombia",
+      "operator": "Natural phenomenon",
+      "notes": "Andean orographic lift creates persistent afternoon storms"
+    },
+    {
+      "name": "Darwin, Northern Territory",
+      "lat": -12.46,
+      "lon": 130.84,
+      "country": "Australia",
+      "operator": "Natural phenomenon",
+      "notes": "Hector the Convector; daily storms over Tiwi Islands, Nov-Mar"
+    },
+    {
+      "name": "Paraguay/Southern Brazil",
+      "lat": -23.0,
+      "lon": -55.0,
+      "country": "Paraguay/Brazil",
+      "operator": "Natural phenomenon",
+      "notes": "Subtropical convective storms; high flash density corridor"
+    },
+    {
+      "name": "Gulf of Mexico Coast",
+      "lat": 29.5,
+      "lon": -90.0,
+      "country": "USA",
+      "operator": "Natural phenomenon",
+      "notes": "Warm Gulf moisture + frontal systems; 50-60 storms/year"
+    },
+    {
+      "name": "Himalayan Foothills (Nepal)",
+      "lat": 27.7,
+      "lon": 85.3,
+      "country": "Nepal",
+      "operator": "Natural phenomenon",
+      "notes": "Orographic monsoon storms; extremely dangerous lightning"
+    },
+    {
+      "name": "Java Sea (Indonesia)",
+      "lat": -6.5,
+      "lon": 110.0,
+      "country": "Indonesia",
+      "operator": "Natural phenomenon",
+      "notes": "Maritime continent; persistent convection year-round"
+    },
+    {
+      "name": "West African Sahel",
+      "lat": 12.0,
+      "lon": 2.0,
+      "country": "Niger/Nigeria",
+      "operator": "Natural phenomenon",
+      "notes": "Intense MCS supercells during monsoon season; large hail"
+    }
+  ]
+}

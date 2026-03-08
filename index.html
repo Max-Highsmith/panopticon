@@ -45,31 +45,86 @@
   <!-- ==================== HUD ==================== -->
 
   <div id="hud">
-    <div id="title">
-      PANOPTICON
-      <span id="subtitle">LIVE TRACKING // ADS-B + OPENSKY + CELESTRAK + AIS</span>
-    </div>
+    <div id="title">PANOPTICON <span id="subtitle"></span></div>
     <div id="stats">
-      <div>MIL: <span id="mil-count">---</span> // CIV: <span id="civ-count">---</span> // SAT: <span id="sat-count">---</span> // SHIPS: <span id="ship-count">---</span> // POGO: <span id="pogo-count">---</span> // MINES: <span id="mines-count">---</span> // INFRA: <span id="infra-count">---</span> // NUCLEAR: <span id="nuclear-count">---</span> // AIRPORTS: <span id="airport-count">---</span> // BASES: <span id="bases-count">---</span> // CAMS: <span id="webcam-count">---</span> // ARCTIC: <span id="arcticmining-count">---</span> // REE: <span id="rareearth-count">---</span> // DRILL: <span id="drilling-count">---</span></div>
-      <div>UPDATED: <span id="updated">---</span></div>
+      <span class="stat-chip" data-layer="military">MIL: <span id="mil-count">---</span></span>
+      <span class="stat-chip" data-layer="commercial">CIV: <span id="civ-count">---</span></span>
+      <span class="stat-chip" data-layer="satellites">SAT: <span id="sat-count">---</span></span>
+      <span class="stat-chip" data-layer="ships">SHIPS: <span id="ship-count">---</span></span>
+      <span class="stat-chip" data-layer="pokemon">POGO: <span id="pogo-count">---</span></span>
+      <span class="stat-chip" data-layer="mines">MINES: <span id="mines-count">---</span></span>
+      <span class="stat-chip" data-layer="infra">INFRA: <span id="infra-count">---</span></span>
+      <span class="stat-chip" data-layer="nuclear">NUCLEAR: <span id="nuclear-count">---</span></span>
+      <span class="stat-chip" data-layer="airports">AIRPORTS: <span id="airport-count">---</span></span>
+      <span class="stat-chip" data-layer="bases">BASES: <span id="bases-count">---</span></span>
+      <span class="stat-chip" data-layer="webcams">CAMS: <span id="webcam-count">---</span></span>
+      <span class="stat-chip" data-layer="arcticmining">ARCTIC: <span id="arcticmining-count">---</span></span>
+      <span class="stat-chip" data-layer="rareearth">REE: <span id="rareearth-count">---</span></span>
+      <span class="stat-chip" data-layer="drilling">DRILL: <span id="drilling-count">---</span></span>
+      <span class="stat-chip" data-layer="powerplants">PWR: <span id="powerplants-count">---</span></span>
+      <span class="stat-chip" data-layer="nuclearplants">REACT: <span id="nuclearplants-count">---</span></span>
+      <span class="stat-chip" data-layer="refineries">REFINE: <span id="refineries-count">---</span></span>
+      <span class="stat-chip" data-layer="platforms">PLAT: <span id="platforms-count">---</span></span>
+      <span class="stat-chip" data-layer="radar">RADAR: <span id="radar-count">---</span></span>
+      <span class="stat-chip" data-layer="strategicnuclear">NUKE: <span id="strategicnuclear-count">---</span></span>
+      <span class="stat-chip" data-layer="volcanoes">VOLC: <span id="volcanoes-count">---</span></span>
+      <span class="stat-chip" data-layer="cables">CABLE: <span id="cables-count">---</span></span>
+      <span class="stat-chip" data-layer="pipelines">PIPES: <span id="pipelines-count">---</span></span>
+      <span class="stat-chip" data-layer="traderoutes">TRADE: <span id="traderoutes-count">---</span></span>
+      <span class="stat-chip" data-layer="arcticroutes">ARCT: <span id="arcticroutes-count">---</span></span>
+      <span class="stat-chip" data-layer="electricalgrid">GRID: <span id="electricalgrid-count">---</span></span>
+      <span class="stat-chip" data-layer="chokepoints">CHOKE: <span id="chokepoints-count">---</span></span>
+      <span class="stat-chip" data-layer="fisheries">FISH: <span id="fisheries-count">---</span></span>
+      <span class="stat-chip" data-layer="earthquakes">QUAKE: <span id="earthquakes-count">---</span></span>
+      <span class="stat-chip" data-layer="wildfires">FIRE: <span id="wildfires-count">---</span></span>
+      <span class="stat-chip" data-layer="whales">WHALE: <span id="whales-count">---</span></span>
+      <span class="stat-chip" data-layer="seaturtles">TURTL: <span id="seaturtles-count">---</span></span>
+      <span class="stat-chip" data-layer="birds">BIRD: <span id="birds-count">---</span></span>
+      <span class="stat-chip" data-layer="elephants">ELEPH: <span id="elephants-count">---</span></span>
+      <span class="stat-chip" data-layer="spacedebris">DEBRI: <span id="spacedebris-count">---</span></span>
+      <span class="stat-chip" data-layer="oceancurrents">CURR: <span id="oceancurrents-count">---</span></span>
+      <span class="stat-chip" data-layer="cargoroutes">CARGO: <span id="cargoroutes-count">---</span></span>
+      <span class="stat-chip" data-layer="spaceports">LAUNCH: <span id="spaceports-count">---</span></span>
+      <span class="stat-chip" data-layer="seaice">ICE: <span id="seaice-count">---</span></span>
+      <span class="stat-chip" data-layer="lightning">BOLT: <span id="lightning-count">---</span></span>
+      <span class="stat-chip" data-layer="ports">PORT: <span id="ports-count">---</span></span>
+      <span class="stat-chip" data-layer="commodityflows">COMMOD: <span id="commodityflows-count">---</span></span>
+      <span class="stat-chip" data-layer="ixps">IXP: <span id="ixps-count">---</span></span>
+      <span class="stat-chip" data-layer="oceantemp">SST: <span id="oceantemp-count">---</span></span>
+      <span class="stat-chip" data-layer="meteors">METR: <span id="meteors-count">---</span></span>
+      <span class="stat-chip" data-layer="cosmic">COSM: <span id="cosmic-count">---</span></span>
+      <span class="stat-chip" data-layer="ionosphere">IONO: <span id="ionosphere-count">---</span></span>
+      <span class="stat-chip" data-layer="fishingfleets">FFISH: <span id="fishingfleets-count">---</span></span>
+      <span class="stat-chip" data-layer="arcticdeposits">ADEP: <span id="arcticdeposits-count">---</span></span>
+      <span id="updated" style="display:none;"></span>
     </div>
   </div>
 
   <!-- ==================== Controls ==================== -->
 
   <div id="mode-bar">
-    <button id="btn-live" class="active" onclick="switchMode('live')">LIVE</button>
-    <button id="btn-replay" onclick="switchMode('replay')">REPLAY</button>
+    <button id="btn-observe" onclick="switchMode('observe')">OBSERVE</button>
+    <button id="btn-playback" class="active" onclick="switchMode('playback')">PLAYBACK</button>
     <button id="btn-wargame" onclick="switchMode('wargame')">WARGAME</button>
   </div>
 
   <div id="layer-toggles">
-    <!-- Pinned layer checkboxes inserted dynamically by layerselector.js -->
-    <button id="layer-panel-toggle" onclick="openLayerPanel()">+ LAYERS</button>
+    <button id="layer-panel-toggle" onclick="openLayerPanel()">LAYERS</button>
+    <button id="city-panel-toggle" onclick="openCityPanel()">CITIES</button>
+    <button id="filter-panel-toggle" onclick="openFilterPanel()">FILTERS</button>
+  </div>
+
+  <div id="pin-tray">
+    <div id="layer-pins"></div>
+    <div id="city-pins"></div>
   </div>
 
   <div id="layer-panel" style="display: none;">
     <!-- Built dynamically by layerselector.js -->
+  </div>
+
+  <div id="city-panel" style="display: none;">
+    <!-- Built dynamically by cityselector.js -->
   </div>
 
   <div id="mines-legend">
@@ -79,46 +134,24 @@
     <div class="ml-item"><span class="ml-swatch" style="background:#f7931a"></span> BITCOIN</div>
   </div>
 
-  <div id="filter-bar">
-    <button class="active" onclick="setVisualFilter('none')">OFF</button>
-    <button onclick="setVisualFilter('crt')">CRT</button>
-    <button onclick="setVisualFilter('nvg')">NVG</button>
-    <button onclick="setVisualFilter('flir')">FLIR</button>
-    <button onclick="setVisualFilter('anime')">ANIME</button>
-    <button onclick="setVisualFilter('border')">BORDER</button>
+  <div id="filter-panel" style="display: none;">
+    <!-- Built dynamically by filters.js -->
   </div>
 
-  <div id="city-bar">
-    <button onclick="flyToCity('nyc')">NYC</button>
-    <button onclick="flyToCity('london')">LONDON</button>
-    <button onclick="flyToCity('tokyo')">TOKYO</button>
-    <button onclick="flyToCity('paris')">PARIS</button>
-  </div>
 
-  <!-- ==================== Scenario Sidebar ==================== -->
 
-  <div id="scenario-sidebar">
-    <div id="scenario-header">
-      <h3>SCENARIOS</h3>
-      <button id="scenario-toggle" onclick="toggleScenarioSidebar()">◀</button>
+  <!-- ==================== Playback Sidebar ==================== -->
+
+  <div id="playback-sidebar">
+    <div id="playback-header">
+      <h3>PLAYBACK</h3>
+      <button id="playback-toggle" onclick="togglePlaybackSidebar()">&#9664;</button>
     </div>
-    <div class="scenario-card active" id="sc-iran" onclick="selectScenario('iran')">
-      <div class="sc-title">IRAN</div>
-      <div class="sc-region">PERSIAN GULF / STRAIT OF HORMUZ</div>
-      <div class="sc-desc">ADS-B surveillance coverage over Iran and Persian Gulf. Feb 28, 2026 16:02-16:32 UTC.</div>
-      <span class="sc-badge ready">DATA READY</span>
+    <div class="pb-io-buttons">
+      <button class="pb-io-btn" onclick="wgUploadResults()">IMPORT</button>
     </div>
-    <div class="scenario-card" id="sc-venezuela" onclick="selectScenario('venezuela')">
-      <div class="sc-title">VENEZUELA</div>
-      <div class="sc-region">CARIBBEAN / MARACAIBO</div>
-      <div class="sc-desc">ADS-B surveillance over Venezuela and Caribbean airspace. Jan 3, 2026 08:00-08:30 UTC.</div>
-      <span class="sc-badge ready">DATA READY</span>
-    </div>
-    <div class="scenario-card" id="sc-jalisco" onclick="selectScenario('jalisco')">
-      <div class="sc-title">JALISCO</div>
-      <div class="sc-region">WESTERN MEXICO / PACIFIC COAST</div>
-      <div class="sc-desc">Military and commercial tracking over Jalisco and Pacific approaches. Feb 22, 2026 11:00-11:30 UTC.</div>
-      <span class="sc-badge ready">DATA READY</span>
+    <div id="playback-list">
+      <!-- Populated dynamically by playbackbrowser.js -->
     </div>
 
     <!-- Audio Player (nestled at bottom of sidebar) -->
@@ -142,6 +175,7 @@
       <span id="time-current">--:--:-- UTC</span>
       <span id="time-irst">--:--:-- LOCAL</span>
     </div>
+    <div id="timeline-ticks"></div>
     <input type="range" id="timeline-slider" min="0" max="1800" value="0" step="1">
     <div id="timeline-controls">
       <button id="btn-play" onclick="togglePlay()">PLAY</button>
@@ -151,6 +185,12 @@
     </div>
   </div>
 
+
+  <!-- ==================== Playback Event Feed ==================== -->
+
+  <div id="playback-feed" style="display:none;">
+    <!-- Populated during wargame playback with intel + decisions -->
+  </div>
 
   <!-- ==================== Info Panel ==================== -->
 
@@ -320,20 +360,89 @@
 
   <div id="wargame-panel">
     <h3>WARGAME</h3>
+    <div id="wg-settings" class="wg-settings">
+      <div class="wg-settings-header" onclick="wgToggleSettings()">
+        SETTINGS (API KEYS) <span id="wg-settings-arrow">&#9654;</span>
+      </div>
+      <div id="wg-settings-body" style="display:none">
+        <div class="wg-settings-note">Keys stored in your browser only. Never sent to our servers.</div>
+        <label>GOOGLE GEMINI API KEY
+          <input type="password" id="wg-key-google" placeholder="AIza...">
+        </label>
+        <label>ANTHROPIC API KEY
+          <input type="password" id="wg-key-anthropic" placeholder="sk-ant-...">
+        </label>
+        <label>OPENAI API KEY
+          <input type="password" id="wg-key-openai" placeholder="sk-...">
+        </label>
+        <label>XAI API KEY
+          <input type="password" id="wg-key-xai" placeholder="xai-...">
+        </label>
+        <label>OPENROUTER API KEY
+          <input type="password" id="wg-key-openrouter" placeholder="sk-or-...">
+        </label>
+        <label>CORS PROXY URL (for Anthropic)
+          <input type="text" id="wg-proxy-url" placeholder="https://your-worker.workers.dev">
+        </label>
+        <label>OPENAI-COMPATIBLE BASE URL (for OpenAI/xAI/ollama)
+          <input type="text" id="wg-openai-base" placeholder="https://your-proxy.com">
+        </label>
+        <button onclick="wgSaveSettings()">SAVE</button>
+      </div>
+    </div>
     <div class="wg-config">
       <label>SCENARIO<select id="wg-scenario"></select></label>
+      <div id="wg-layers" class="wg-layers"></div>
       <label>VARIANT<select id="wg-variant"></select></label>
       <label>FRAMING<select id="wg-framing"></select></label>
       <label>PROVIDER
         <select id="wg-provider">
-          <option value="anthropic">ANTHROPIC</option>
-          <option value="openai">OPENAI</option>
-          <option value="google">GOOGLE</option>
-          <option value="xai">XAI</option>
-          <option value="baseline">BASELINE</option>
+          <option value="openrouter">OPENROUTER (direct)</option>
+          <option value="google">GOOGLE GEMINI (direct)</option>
+          <option value="anthropic">ANTHROPIC (needs proxy)</option>
+          <option value="openai">OPENAI (needs proxy)</option>
+          <option value="xai">XAI (needs proxy)</option>
+          <option value="baseline">BASELINE (no API key)</option>
         </select>
       </label>
-      <label>MODEL (optional)<input type="text" id="wg-model" placeholder="e.g. claude-sonnet-4-5-20250929"></label>
+      <div id="wg-provider-note" class="wg-provider-note"></div>
+      <label>MODEL
+        <select id="wg-model">
+          <optgroup label="Anthropic">
+            <option value="anthropic/claude-sonnet-4.6">Claude Sonnet 4.6</option>
+            <option value="anthropic/claude-opus-4.5">Claude Opus 4.5</option>
+            <option value="anthropic/claude-opus-4.6">Claude Opus 4.6</option>
+          </optgroup>
+          <optgroup label="OpenAI">
+            <option value="openai/gpt-audio-mini">GPT Audio Mini (cheapest)</option>
+            <option value="openai/gpt-5.2">GPT 5.2</option>
+            <option value="openai/gpt-5.2-chat">GPT 5.2 Chat</option>
+            <option value="openai/gpt-5.4">GPT 5.4</option>
+          </optgroup>
+          <optgroup label="Google">
+            <option value="google/gemini-3.1-flash-lite-preview">Gemini 3.1 Flash Lite (cheapest)</option>
+            <option value="google/gemini-3-flash-preview">Gemini 3 Flash</option>
+            <option value="google/gemini-3.1-pro-preview">Gemini 3.1 Pro</option>
+          </optgroup>
+          <optgroup label="DeepSeek">
+            <option value="deepseek/deepseek-v3.2">DeepSeek V3.2 (cheapest)</option>
+            <option value="deepseek/deepseek-v3.2-speciale">DeepSeek V3.2 Speciale</option>
+          </optgroup>
+          <optgroup label="Qwen">
+            <option value="qwen/qwen3.5-flash-02-23" selected>Qwen 3.5 Flash (default — cheapest)</option>
+            <option value="qwen/qwen3.5-27b">Qwen 3.5 27B</option>
+            <option value="qwen/qwen3.5-397b-a17b">Qwen 3.5 397B</option>
+            <option value="qwen/qwen3-coder-next">Qwen 3 Coder Next</option>
+          </optgroup>
+          <optgroup label="Moonshot">
+            <option value="moonshotai/kimi-k2.5">Kimi K2.5</option>
+          </optgroup>
+          <optgroup label="Baseline">
+            <option value="always-hold">Baseline: Always Hold</option>
+            <option value="always-launch">Baseline: Always Launch</option>
+          </optgroup>
+        </select>
+      </label>
       <label>MODE
         <select id="wg-execution-mode">
           <option value="turn_based">TURN-BASED</option>

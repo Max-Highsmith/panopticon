@@ -561,6 +561,293 @@ export function makeDerrickIcon(color, size) {
   return canvas;
 }
 
+export function makePowerPlantIcon(color, size) {
+  const { canvas, ctx, cx, cy } = createCanvas(size);
+  const r = size / 2 * 0.7;
+  ctx.beginPath();
+  ctx.moveTo(cx - r * 0.5, cy + r);
+  ctx.quadraticCurveTo(cx - r * 0.6, cy, cx - r * 0.35, cy - r * 0.6);
+  ctx.lineTo(cx + r * 0.35, cy - r * 0.6);
+  ctx.quadraticCurveTo(cx + r * 0.6, cy, cx + r * 0.5, cy + r);
+  ctx.closePath();
+  strokeAndFill(ctx, color + '88', size * 0.04);
+  ctx.beginPath();
+  ctx.moveTo(cx + r * 0.05, cy - r * 0.3);
+  ctx.lineTo(cx - r * 0.15, cy + r * 0.15);
+  ctx.lineTo(cx, cy + r * 0.1);
+  ctx.lineTo(cx - r * 0.05, cy + r * 0.5);
+  ctx.lineTo(cx + r * 0.2, cy - r * 0.05);
+  ctx.lineTo(cx + r * 0.05, cy);
+  ctx.closePath();
+  ctx.fillStyle = color;
+  ctx.fill();
+  return canvas;
+}
+
+export function makeRefineryIcon(color, size) {
+  const { canvas, ctx, cx, cy } = createCanvas(size);
+  const r = size / 2 * 0.7;
+  for (let i = -1; i <= 1; i++) {
+    const tw = r * 0.2, th = r * (1.2 + i * 0.2), tx = cx + i * r * 0.35;
+    ctx.fillStyle = color + '66';
+    ctx.fillRect(tx - tw / 2, cy + r * 0.5 - th, tw, th);
+    ctx.strokeStyle = color;
+    ctx.lineWidth = size * 0.03;
+    ctx.strokeRect(tx - tw / 2, cy + r * 0.5 - th, tw, th);
+    ctx.beginPath();
+    ctx.arc(tx, cy + r * 0.5 - th, tw / 2, Math.PI, 0);
+    ctx.fillStyle = color;
+    ctx.fill();
+  }
+  ctx.fillStyle = color + '44';
+  ctx.fillRect(cx - r * 0.7, cy + r * 0.5, r * 1.4, r * 0.2);
+  ctx.strokeStyle = color;
+  ctx.lineWidth = size * 0.03;
+  ctx.strokeRect(cx - r * 0.7, cy + r * 0.5, r * 1.4, r * 0.2);
+  return canvas;
+}
+
+export function makeRadarIcon(color, size) {
+  const { canvas, ctx, cx, cy } = createCanvas(size);
+  const r = size / 2 * 0.7;
+  ctx.beginPath();
+  ctx.arc(cx, cy, r * 0.8, -Math.PI * 0.8, -Math.PI * 0.2);
+  ctx.strokeStyle = color;
+  ctx.lineWidth = size * 0.06;
+  ctx.stroke();
+  ctx.beginPath();
+  ctx.moveTo(cx, cy);
+  ctx.lineTo(cx, cy + r * 0.8);
+  ctx.strokeStyle = color;
+  ctx.lineWidth = size * 0.05;
+  ctx.stroke();
+  ctx.beginPath();
+  ctx.moveTo(cx - r * 0.4, cy + r * 0.8);
+  ctx.lineTo(cx + r * 0.4, cy + r * 0.8);
+  ctx.strokeStyle = color;
+  ctx.lineWidth = size * 0.06;
+  ctx.stroke();
+  for (let i = 1; i <= 3; i++) {
+    ctx.beginPath();
+    ctx.arc(cx, cy - r * 0.3, r * 0.2 * i, -Math.PI * 0.6, -Math.PI * 0.4);
+    ctx.strokeStyle = color + (i === 1 ? 'cc' : i === 2 ? '88' : '44');
+    ctx.lineWidth = size * 0.025;
+    ctx.stroke();
+  }
+  return canvas;
+}
+
+export function makeNuclearPlantIcon(color, size) {
+  const { canvas, ctx, cx, cy } = createCanvas(size);
+  const r = size / 2 * 0.7;
+  ctx.beginPath();
+  ctx.arc(cx, cy + r * 0.1, r * 0.5, Math.PI, 0);
+  ctx.lineTo(cx + r * 0.5, cy + r * 0.6);
+  ctx.lineTo(cx - r * 0.5, cy + r * 0.6);
+  ctx.closePath();
+  strokeAndFill(ctx, color + '66', size * 0.04);
+  const sr = r * 0.22;
+  for (let i = 0; i < 3; i++) {
+    const angle = (i * 120 - 90) * Math.PI / 180;
+    ctx.beginPath();
+    ctx.arc(cx, cy + r * 0.1, sr, angle - 0.4, angle + 0.4);
+    ctx.arc(cx, cy + r * 0.1, sr * 0.35, angle + 0.4, angle - 0.4, true);
+    ctx.closePath();
+    ctx.fillStyle = color;
+    ctx.fill();
+  }
+  ctx.beginPath();
+  ctx.arc(cx, cy + r * 0.1, sr * 0.15, 0, Math.PI * 2);
+  ctx.fillStyle = color;
+  ctx.fill();
+  return canvas;
+}
+
+export function makeWarheadIcon(color, size) {
+  const { canvas, ctx, cx, cy } = createCanvas(size);
+  const r = size / 2 * 0.7;
+  ctx.beginPath();
+  ctx.moveTo(cx, cy - r);
+  ctx.lineTo(cx + r * 0.2, cy - r * 0.5);
+  ctx.lineTo(cx + r * 0.2, cy + r * 0.5);
+  ctx.lineTo(cx + r * 0.4, cy + r * 0.8);
+  ctx.lineTo(cx + r * 0.4, cy + r);
+  ctx.lineTo(cx - r * 0.4, cy + r);
+  ctx.lineTo(cx - r * 0.4, cy + r * 0.8);
+  ctx.lineTo(cx - r * 0.2, cy + r * 0.5);
+  ctx.lineTo(cx - r * 0.2, cy - r * 0.5);
+  ctx.closePath();
+  strokeAndFill(ctx, color, size * 0.04);
+  ctx.fillStyle = '#00000044';
+  ctx.fillRect(cx - r * 0.2, cy - r * 0.2, r * 0.4, r * 0.15);
+  return canvas;
+}
+
+export function makeVolcanoIcon(color, size) {
+  const { canvas, ctx, cx, cy } = createCanvas(size);
+  const r = size / 2 * 0.75;
+  ctx.beginPath();
+  ctx.moveTo(cx, cy - r * 0.5);
+  ctx.lineTo(cx + r * 0.8, cy + r * 0.7);
+  ctx.lineTo(cx - r * 0.8, cy + r * 0.7);
+  ctx.closePath();
+  strokeAndFill(ctx, color + '66', size * 0.04);
+  ctx.beginPath();
+  ctx.arc(cx, cy - r * 0.7, r * 0.12, 0, Math.PI * 2);
+  ctx.arc(cx - r * 0.1, cy - r * 0.85, r * 0.1, 0, Math.PI * 2);
+  ctx.arc(cx + r * 0.1, cy - r * 0.8, r * 0.08, 0, Math.PI * 2);
+  ctx.fillStyle = color;
+  ctx.fill();
+  return canvas;
+}
+
+export function makePlatformIcon(color, size) {
+  const { canvas, ctx, cx, cy } = createCanvas(size);
+  const r = size / 2 * 0.75;
+  ctx.fillStyle = color + '66';
+  ctx.fillRect(cx - r * 0.6, cy - r * 0.1, r * 1.2, r * 0.25);
+  ctx.strokeStyle = color;
+  ctx.lineWidth = size * 0.03;
+  ctx.strokeRect(cx - r * 0.6, cy - r * 0.1, r * 1.2, r * 0.25);
+  ctx.lineWidth = size * 0.04;
+  ctx.beginPath();
+  ctx.moveTo(cx - r * 0.4, cy + r * 0.15);
+  ctx.lineTo(cx - r * 0.3, cy + r * 0.8);
+  ctx.moveTo(cx + r * 0.4, cy + r * 0.15);
+  ctx.lineTo(cx + r * 0.3, cy + r * 0.8);
+  ctx.stroke();
+  ctx.lineWidth = size * 0.03;
+  ctx.beginPath();
+  ctx.moveTo(cx, cy - r * 0.8);
+  ctx.lineTo(cx + r * 0.15, cy - r * 0.1);
+  ctx.moveTo(cx, cy - r * 0.8);
+  ctx.lineTo(cx - r * 0.15, cy - r * 0.1);
+  ctx.stroke();
+  return canvas;
+}
+
+export function makeEarthquakeIcon(color, size) {
+  const { canvas, ctx, cx, cy } = createCanvas(size);
+  const r = size / 2 * 0.7;
+  for (let i = 3; i >= 1; i--) {
+    ctx.beginPath();
+    ctx.arc(cx, cy, r * (i / 3), 0, Math.PI * 2);
+    ctx.strokeStyle = color + (i === 1 ? 'ff' : i === 2 ? '88' : '44');
+    ctx.lineWidth = size * 0.03;
+    ctx.stroke();
+  }
+  ctx.beginPath();
+  ctx.moveTo(cx - r * 0.6, cy);
+  ctx.lineTo(cx - r * 0.3, cy - r * 0.3);
+  ctx.lineTo(cx - r * 0.1, cy + r * 0.2);
+  ctx.lineTo(cx + r * 0.1, cy - r * 0.4);
+  ctx.lineTo(cx + r * 0.3, cy + r * 0.1);
+  ctx.lineTo(cx + r * 0.6, cy);
+  ctx.strokeStyle = color;
+  ctx.lineWidth = size * 0.05;
+  ctx.stroke();
+  return canvas;
+}
+
+export function makeFireIcon(color, size) {
+  const { canvas, ctx, cx, cy } = createCanvas(size);
+  const r = size / 2 * 0.7;
+  ctx.beginPath();
+  ctx.moveTo(cx, cy + r * 0.7);
+  ctx.quadraticCurveTo(cx - r * 0.6, cy + r * 0.3, cx - r * 0.5, cy - r * 0.2);
+  ctx.quadraticCurveTo(cx - r * 0.3, cy - r * 0.6, cx, cy - r);
+  ctx.quadraticCurveTo(cx + r * 0.3, cy - r * 0.6, cx + r * 0.5, cy - r * 0.2);
+  ctx.quadraticCurveTo(cx + r * 0.6, cy + r * 0.3, cx, cy + r * 0.7);
+  ctx.closePath();
+  ctx.fillStyle = color;
+  ctx.fill();
+  ctx.strokeStyle = '#000';
+  ctx.lineWidth = size * 0.03;
+  ctx.stroke();
+  ctx.beginPath();
+  ctx.moveTo(cx, cy + r * 0.5);
+  ctx.quadraticCurveTo(cx - r * 0.25, cy + r * 0.1, cx - r * 0.2, cy - r * 0.1);
+  ctx.quadraticCurveTo(cx, cy - r * 0.5, cx + r * 0.2, cy - r * 0.1);
+  ctx.quadraticCurveTo(cx + r * 0.25, cy + r * 0.1, cx, cy + r * 0.5);
+  ctx.closePath();
+  ctx.fillStyle = '#ffcc00';
+  ctx.fill();
+  return canvas;
+}
+
+export function makeRocketIcon(color, size) {
+  const { canvas, ctx, cx, cy } = createCanvas(size);
+  const r = size / 2 * 0.85;
+  ctx.fillStyle = color;
+  ctx.beginPath();
+  // Rocket body
+  ctx.moveTo(cx, cy - r);
+  ctx.quadraticCurveTo(cx + r * 0.3, cy - r * 0.4, cx + r * 0.25, cy + r * 0.3);
+  ctx.lineTo(cx + r * 0.45, cy + r * 0.7);
+  ctx.lineTo(cx + r * 0.15, cy + r * 0.5);
+  ctx.lineTo(cx, cy + r * 0.8);
+  ctx.lineTo(cx - r * 0.15, cy + r * 0.5);
+  ctx.lineTo(cx - r * 0.45, cy + r * 0.7);
+  ctx.lineTo(cx - r * 0.25, cy + r * 0.3);
+  ctx.quadraticCurveTo(cx - r * 0.3, cy - r * 0.4, cx, cy - r);
+  ctx.closePath();
+  ctx.fill();
+  // Window
+  ctx.fillStyle = '#000';
+  ctx.beginPath();
+  ctx.arc(cx, cy - r * 0.2, r * 0.12, 0, Math.PI * 2);
+  ctx.fill();
+  return canvas;
+}
+
+export function makeLightningIcon(color, size) {
+  const { canvas, ctx, cx, cy } = createCanvas(size);
+  const r = size / 2 * 0.85;
+  ctx.fillStyle = color;
+  ctx.beginPath();
+  ctx.moveTo(cx + r * 0.1, cy - r);
+  ctx.lineTo(cx - r * 0.3, cy - r * 0.05);
+  ctx.lineTo(cx + r * 0.05, cy - r * 0.05);
+  ctx.lineTo(cx - r * 0.15, cy + r);
+  ctx.lineTo(cx + r * 0.35, cy + r * 0.05);
+  ctx.lineTo(cx - r * 0.0, cy + r * 0.05);
+  ctx.closePath();
+  ctx.fill();
+  return canvas;
+}
+
+export function makeAnchorIcon(color, size) {
+  const { canvas, ctx, cx, cy } = createCanvas(size);
+  const r = size / 2 * 0.85;
+  ctx.strokeStyle = color;
+  ctx.lineWidth = size * 0.08;
+  ctx.lineCap = 'round';
+  // Vertical shaft
+  ctx.beginPath();
+  ctx.moveTo(cx, cy - r * 0.6);
+  ctx.lineTo(cx, cy + r * 0.7);
+  ctx.stroke();
+  // Ring at top
+  ctx.beginPath();
+  ctx.arc(cx, cy - r * 0.7, r * 0.15, 0, Math.PI * 2);
+  ctx.stroke();
+  // Crossbar
+  ctx.beginPath();
+  ctx.moveTo(cx - r * 0.4, cy - r * 0.2);
+  ctx.lineTo(cx + r * 0.4, cy - r * 0.2);
+  ctx.stroke();
+  // Flukes (curved arms at bottom)
+  ctx.beginPath();
+  ctx.moveTo(cx - r * 0.6, cy + r * 0.2);
+  ctx.quadraticCurveTo(cx - r * 0.5, cy + r * 0.8, cx, cy + r * 0.7);
+  ctx.stroke();
+  ctx.beginPath();
+  ctx.moveTo(cx + r * 0.6, cy + r * 0.2);
+  ctx.quadraticCurveTo(cx + r * 0.5, cy + r * 0.8, cx, cy + r * 0.7);
+  ctx.stroke();
+  return canvas;
+}
+
 export function makeReticleIcon(color, size) {
   const { canvas, ctx, cx, cy } = createCanvas(size);
   const r = size / 2 * 0.85;
@@ -644,4 +931,59 @@ export const icons = {
   drillNorway:   makeDerrickIcon('#44aaff', 48),
   drillRussia:   makeDerrickIcon('#ff4444', 48),
   drillCanada:   makeDerrickIcon('#ff6688', 48),
+  // Power plants
+  powerCoal:     makePowerPlantIcon('#aa6633', 48),
+  powerGas:      makePowerPlantIcon('#cc8844', 48),
+  powerHydro:    makePowerPlantIcon('#4488ff', 48),
+  powerSolar:    makePowerPlantIcon('#ffcc00', 48),
+  powerWind:     makePowerPlantIcon('#66ccaa', 48),
+  // Nuclear power plants
+  nuclearPlant:  makeNuclearPlantIcon('#ff4444', 48),
+  // Oil refineries
+  refinery:      makeRefineryIcon('#ff6600', 48),
+  // Offshore platforms
+  platform:      makePlatformIcon('#ff8844', 48),
+  // Radar installations
+  radarBmews:    makeRadarIcon('#ff3333', 48),
+  radarAegis:    makeRadarIcon('#4488ff', 48),
+  radarOthr:     makeRadarIcon('#ffaa00', 48),
+  // Strategic nuclear
+  weaponsLab:    makeWarheadIcon('#ff2222', 48),
+  subBase:       makeWarheadIcon('#ff4466', 48),
+  missileSilo:   makeWarheadIcon('#ff0000', 48),
+  // Volcanoes
+  volcanoActive: makeVolcanoIcon('#ff4400', 48),
+  volcanoDormant:makeVolcanoIcon('#aa6644', 48),
+  // Earthquakes
+  earthquake:    makeEarthquakeIcon('#ff6600', 48),
+  // Wildfires
+  wildfire:      makeFireIcon('#ff4400', 48),
+  // Space debris
+  debris:        makeCircleIcon('#888888', 48),
+  // Wildlife (reuse existing shapes)
+  whale:         makeCircleIcon('#4488ff', 48),
+  turtle:        makeCircleIcon('#00cc88', 48),
+  elephant:      makeCircleIcon('#cc8844', 48),
+  // Spaceports / launch sites
+  rocketActive:  makeRocketIcon('#ff4400', 48),
+  rocketHistoric:makeRocketIcon('#888888', 48),
+  // Lightning
+  lightning:     makeLightningIcon('#ffff00', 48),
+  // Ports
+  portMega:      makeAnchorIcon('#00ccff', 48),
+  portMajor:     makeAnchorIcon('#4488ff', 48),
+  // Internet exchanges
+  ixpTier1:      makeServerIcon('#00ff88', 48),
+  ixpRegional:   makeServerIcon('#44cc88', 48),
+  // Ocean temperature
+  tempWarm:      makeCircleIcon('#ff4400', 48),
+  tempCold:      makeCircleIcon('#4488ff', 48),
+  // Meteor impacts
+  craterMajor:   makeCircleIcon('#aa6644', 48),
+  craterRecent:  makeEarthquakeIcon('#ff6600', 48),
+  // Cosmic radiation
+  cosmicMonitor: makeRadarIcon('#aa44ff', 48),
+  // Ionosphere
+  ionoRadar:     makeRadarIcon('#44ffaa', 48),
+  ionoGNSS:      makeRadarIcon('#44ccaa', 48),
 };

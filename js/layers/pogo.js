@@ -45,7 +45,7 @@ out 300;`;
         billboard: { image: icons.pogo, width: DISPLAY.POGO_ICON_SIZE, height: DISPLAY.POGO_ICON_SIZE, alignedAxis: Cesium.Cartesian3.ZERO, disableDepthTestDistance: 0 },
       });
       entity.show = layers.pokemon;
-      entity.acData = { hex: id, r: name, t: 'POKESTOP', flight: name, alt_baro: 0, gs: 0, track: 0 };
+      entity.acData = { hex: id, r: name, t: 'POKESTOP', flight: name, alt_baro: 0, gs: 0, track: 0, _view: 'site' };
       entities.set(id, { entity });
     }
 

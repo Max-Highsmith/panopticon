@@ -1,0 +1,207 @@
+{
+  "_source": {
+    "description": "Ballistic missile early warning and surveillance radar sites",
+    "origin": "Compiled from FAS (fas.org) Nuclear Notebook, CSIS Missile Defense Project (missilethreat.csis.org), and public DoD/MDA fact sheets.",
+    "retrieved": "2026-03-06",
+    "license": "FAS/CSIS: public policy research; DoD: public domain",
+    "notes": "Publicly documented installations. Coordinates from published analyses and satellite imagery."
+  },
+  "bmews": [
+    {
+      "name": "Thule BMEWS",
+      "lon": -68.7,
+      "lat": 76.53,
+      "country": "USA/Denmark",
+      "operator": "US Space Force",
+      "notes": "Ballistic Missile Early Warning // Greenland"
+    },
+    {
+      "name": "RAF Fylingdales",
+      "lon": -0.67,
+      "lat": 54.36,
+      "country": "UK",
+      "operator": "RAF / USSF",
+      "notes": "BMEWS Site III // North Yorkshire"
+    },
+    {
+      "name": "Clear Space Force Station",
+      "lon": -149.19,
+      "lat": 64.29,
+      "country": "USA",
+      "operator": "US Space Force",
+      "notes": "BMEWS Site II // Alaska"
+    },
+    {
+      "name": "Cape Cod AFS",
+      "lon": -70.54,
+      "lat": 41.75,
+      "country": "USA",
+      "operator": "US Space Force",
+      "notes": "PAVE PAWS // Massachusetts"
+    },
+    {
+      "name": "Beale AFB PAVE PAWS",
+      "lon": -121.35,
+      "lat": 39.14,
+      "country": "USA",
+      "operator": "US Space Force",
+      "notes": "PAVE PAWS // California"
+    },
+    {
+      "name": "Cavalier Space Force Station",
+      "lon": -97.9,
+      "lat": 48.72,
+      "country": "USA",
+      "operator": "US Space Force",
+      "notes": "Perimeter Acquisition Radar"
+    },
+    {
+      "name": "Voronezh-M Lekhtusi",
+      "lon": 30.55,
+      "lat": 60.38,
+      "country": "Russia",
+      "operator": "Russian Aerospace Forces",
+      "notes": "VHF early warning radar"
+    },
+    {
+      "name": "Voronezh-DM Armavir",
+      "lon": 41.12,
+      "lat": 44.76,
+      "country": "Russia",
+      "operator": "Russian Aerospace Forces",
+      "notes": "Replaced Gabala radar"
+    },
+    {
+      "name": "Don-2N Pushkino",
+      "lon": 38.06,
+      "lat": 56.25,
+      "country": "Russia",
+      "operator": "Russian Aerospace Forces",
+      "notes": "Moscow ABM radar"
+    },
+    {
+      "name": "Daryal Pechora",
+      "lon": 57.3,
+      "lat": 62.18,
+      "country": "Russia",
+      "operator": "Russian Aerospace Forces",
+      "notes": "Over-the-horizon phased array"
+    }
+  ],
+  "aegis": [
+    {
+      "name": "Aegis Ashore Romania",
+      "lon": 24.28,
+      "lat": 43.91,
+      "country": "Romania",
+      "operator": "US Navy / NATO",
+      "notes": "Deveselu // SM-3 Block IB"
+    },
+    {
+      "name": "Aegis Ashore Poland",
+      "lon": 17.05,
+      "lat": 54.37,
+      "country": "Poland",
+      "operator": "US Navy / NATO",
+      "notes": "Redzikowo // SM-3 Block IIA"
+    },
+    {
+      "name": "AN/TPY-2 Turkey",
+      "lon": 39.9,
+      "lat": 37.72,
+      "country": "Turkey",
+      "operator": "US Army",
+      "notes": "K\u00fcrecik // Forward-based X-band"
+    },
+    {
+      "name": "AN/TPY-2 Israel",
+      "lon": 34.83,
+      "lat": 30.85,
+      "country": "Israel",
+      "operator": "US Army",
+      "notes": "Negev Desert // X-band radar"
+    },
+    {
+      "name": "AN/TPY-2 Shariki",
+      "lon": 140.37,
+      "lat": 40.88,
+      "country": "Japan",
+      "operator": "US Army",
+      "notes": "Shariki // X-band radar"
+    },
+    {
+      "name": "AN/TPY-2 Kyogamisaki",
+      "lon": 135.09,
+      "lat": 35.77,
+      "country": "Japan",
+      "operator": "US Army",
+      "notes": "Kyoto Prefecture"
+    }
+  ],
+  "othr": [
+    {
+      "name": "JORN Laverton",
+      "lon": 122.76,
+      "lat": -28.33,
+      "country": "Australia",
+      "operator": "RAAF",
+      "notes": "Jindalee OTH Radar Network"
+    },
+    {
+      "name": "JORN Longreach",
+      "lon": 144.28,
+      "lat": -23.87,
+      "country": "Australia",
+      "operator": "RAAF",
+      "notes": "Jindalee OTH Radar Network"
+    },
+    {
+      "name": "JORN Alice Springs",
+      "lon": 133.66,
+      "lat": -23.8,
+      "country": "Australia",
+      "operator": "RAAF",
+      "notes": "Jindalee coordination center"
+    },
+    {
+      "name": "ROTHR Virginia",
+      "lon": -75.91,
+      "lat": 37.09,
+      "country": "USA",
+      "operator": "US Navy",
+      "notes": "Relocatable OTH Radar"
+    },
+    {
+      "name": "ROTHR Texas",
+      "lon": -97.39,
+      "lat": 28.25,
+      "country": "USA",
+      "operator": "US Navy",
+      "notes": "Relocatable OTH Radar // Corpus Christi"
+    },
+    {
+      "name": "ROTHR Puerto Rico",
+      "lon": -66.78,
+      "lat": 18.23,
+      "country": "USA",
+      "operator": "US Navy",
+      "notes": "Relocatable OTH Radar // Vieques"
+    },
+    {
+      "name": "Duga-3 Remnant",
+      "lon": 30.07,
+      "lat": 51.31,
+      "country": "Ukraine",
+      "operator": "Decommissioned",
+      "notes": "Former Soviet OTH // Chernobyl Exclusion Zone"
+    },
+    {
+      "name": "Sunflower Radar Gorodets",
+      "lon": 43.5,
+      "lat": 56.67,
+      "country": "Russia",
+      "operator": "Russian Navy",
+      "notes": "Container OTH surface-wave radar"
+    }
+  ]
+}

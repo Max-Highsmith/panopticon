@@ -1,0 +1,109 @@
+{
+  "_source": {
+    "description": "Persistent wildfire regions worldwide",
+    "origin": "Based on NASA FIRMS (firms.modaps.eosdis.nasa.gov) historical hotspot density and NIFC (nifc.gov) fire history records.",
+    "retrieved": "2026-03-06",
+    "license": "NASA/NIFC: public domain",
+    "notes": "Approximate centroids of historically fire-prone regions. Not active fire locations."
+  },
+  "active_region": [
+    {
+      "name": "California Fire Zone",
+      "lon": -119.5,
+      "lat": 36.5,
+      "country": "USA",
+      "notes": "Persistent wildfire region // Mediterranean climate"
+    },
+    {
+      "name": "Amazon Deforestation Front",
+      "lon": -55.0,
+      "lat": -8.0,
+      "country": "Brazil",
+      "notes": "Annual burn season // Deforestation fires"
+    },
+    {
+      "name": "Siberian Boreal Fires",
+      "lon": 110.0,
+      "lat": 62.0,
+      "country": "Russia",
+      "notes": "Arctic amplification // Permafrost fires"
+    },
+    {
+      "name": "Australian Bush Fire Zone",
+      "lon": 149.0,
+      "lat": -33.0,
+      "country": "Australia",
+      "notes": "NSW/VIC fire corridor"
+    },
+    {
+      "name": "Central Africa Savanna",
+      "lon": 20.0,
+      "lat": 5.0,
+      "country": "DRC/CAR",
+      "notes": "Largest annual fire zone globally"
+    },
+    {
+      "name": "Mediterranean Fire Belt",
+      "lon": 23.0,
+      "lat": 38.0,
+      "country": "Greece/Turkey",
+      "notes": "Summer fire season"
+    },
+    {
+      "name": "Canadian Boreal",
+      "lon": -100.0,
+      "lat": 55.0,
+      "country": "Canada",
+      "notes": "2023 record fire season // 18M+ hectares"
+    },
+    {
+      "name": "Southeast Asian Haze",
+      "lon": 105.0,
+      "lat": 0.0,
+      "country": "Indonesia",
+      "notes": "Peatland fires // Annual haze crisis"
+    },
+    {
+      "name": "Cerrado Fire Zone",
+      "lon": -47.0,
+      "lat": -15.0,
+      "country": "Brazil",
+      "notes": "Brazilian savanna fires"
+    },
+    {
+      "name": "Pacific Northwest Fire Zone",
+      "lon": -121.0,
+      "lat": 44.0,
+      "country": "USA",
+      "notes": "Oregon/Washington fire corridor"
+    },
+    {
+      "name": "Southern Europe Fire Belt",
+      "lon": -8.0,
+      "lat": 39.0,
+      "country": "Portugal/Spain",
+      "notes": "Iberian fire corridor"
+    },
+    {
+      "name": "LA Palisades Fire Zone",
+      "lon": -118.53,
+      "lat": 34.05,
+      "country": "USA",
+      "notes": "Jan 2025 fire // 23,000+ structures"
+    },
+    {
+      "name": "Maui Fire Zone",
+      "lon": -156.68,
+      "lat": 20.88,
+      "country": "USA",
+      "notes": "Aug 2023 Lahaina fire // Deadliest US fire in 100 years"
+    },
+    {
+      "name": "Chilean Central Valley",
+      "lon": -71.5,
+      "lat": -35.0,
+      "country": "Chile",
+      "notes": "Feb 2024 fires // 130+ deaths"
+    }
+  ]
+}

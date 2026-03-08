@@ -1,180 +1,1377 @@
 {
+  "_source": {
+    "description": "Global military bases (army, navy, air force, marine, space)",
+    "origin": "Compiled from DoD Base Structure Report (public), IISS Military Balance, GlobalSecurity.org facility profiles, and Wikipedia military installation lists with cited coordinates.",
+    "retrieved": "2026-03-06",
+    "license": "Mixed: US DoD public domain; IISS/GlobalSecurity fair use summary",
+    "notes": "Publicly acknowledged installations only. Coordinates from public satellite imagery and official publications."
+  },
   "army": [
-    { "name": "Fort Liberty", "lat": 35.139, "lon": -79.006, "country": "US", "operator": "United States", "notes": "Airborne and special operations; formerly Fort Bragg" },
-    { "name": "Fort Cavazos", "lat": 31.135, "lon": -97.775, "country": "US", "operator": "United States", "notes": "Largest active-duty armored post; formerly Fort Hood" },
-    { "name": "Fort Campbell", "lat": 36.663, "lon": -87.475, "country": "US", "operator": "United States", "notes": "101st Airborne Division (Air Assault)" },
-    { "name": "Fort Stewart", "lat": 31.872, "lon": -81.611, "country": "US", "operator": "United States", "notes": "3rd Infantry Division; largest Army installation east of the Mississippi" },
-    { "name": "Fort Riley", "lat": 39.055, "lon": -96.831, "country": "US", "operator": "United States", "notes": "1st Infantry Division" },
-    { "name": "Fort Drum", "lat": 44.055, "lon": -75.758, "country": "US", "operator": "United States", "notes": "10th Mountain Division" },
-    { "name": "Fort Carson", "lat": 38.737, "lon": -104.791, "country": "US", "operator": "United States", "notes": "4th Infantry Division" },
-    { "name": "Fort Moore", "lat": 32.362, "lon": -84.955, "country": "US", "operator": "United States", "notes": "Maneuver Center of Excellence; formerly Fort Benning" },
-    { "name": "Fort Eisenhower", "lat": 33.415, "lon": -82.131, "country": "US", "operator": "United States", "notes": "Army Cyber Center of Excellence; formerly Fort Gordon" },
-    { "name": "Fort Bliss", "lat": 31.814, "lon": -106.422, "country": "US", "operator": "United States", "notes": "1st Armored Division; major training area" },
-    { "name": "Fort Sill", "lat": 34.650, "lon": -98.400, "country": "US", "operator": "United States", "notes": "Fires Center of Excellence; field artillery training" },
-    { "name": "Joint Base Lewis-McChord (Army)", "lat": 47.085, "lon": -122.580, "country": "US", "operator": "United States", "notes": "I Corps headquarters" },
-    { "name": "Schofield Barracks", "lat": 21.494, "lon": -158.064, "country": "US", "operator": "United States", "notes": "25th Infantry Division, Hawaii" },
-    { "name": "Fort Wainwright", "lat": 64.828, "lon": -147.638, "country": "US", "operator": "United States", "notes": "11th Airborne Division, Alaska" },
-    { "name": "Camp Humphreys", "lat": 36.963, "lon": 127.031, "country": "KR", "operator": "United States", "notes": "USFK headquarters; largest overseas US base" },
-    { "name": "Camp Casey", "lat": 37.908, "lon": 127.053, "country": "KR", "operator": "United States", "notes": "2nd Infantry Division, South Korea" },
-    { "name": "Grafenwoehr Training Area", "lat": 49.698, "lon": 11.927, "country": "DE", "operator": "United States", "notes": "Major US Army Europe training center" },
-    { "name": "USAG Wiesbaden", "lat": 50.050, "lon": 8.326, "country": "DE", "operator": "United States", "notes": "US Army Europe and Africa headquarters" },
-    { "name": "Camp Zama", "lat": 35.488, "lon": 139.388, "country": "JP", "operator": "United States", "notes": "US Army Japan headquarters" },
-    { "name": "Camp Arifjan", "lat": 28.987, "lon": 48.105, "country": "KW", "operator": "United States", "notes": "Major US Army forward base in Kuwait" },
-    { "name": "Catterick Garrison", "lat": 54.381, "lon": -1.721, "country": "GB", "operator": "United Kingdom", "notes": "Largest British Army garrison" },
-    { "name": "Aldershot Garrison", "lat": 51.250, "lon": -0.766, "country": "GB", "operator": "United Kingdom", "notes": "Home of the British Army" },
-    { "name": "Colchester Garrison", "lat": 51.895, "lon": 0.911, "country": "GB", "operator": "United Kingdom", "notes": "16 Air Assault Brigade" },
-    { "name": "Bulford Camp", "lat": 51.196, "lon": -1.772, "country": "GB", "operator": "United Kingdom", "notes": "Salisbury Plain, armoured infantry" },
-    { "name": "Camp de Canjuers", "lat": 43.616, "lon": 6.376, "country": "FR", "operator": "France", "notes": "Largest military camp in Western Europe" },
-    { "name": "Camp de Mourmelon", "lat": 49.133, "lon": 4.367, "country": "FR", "operator": "France", "notes": "Major French Army training camp" },
-    { "name": "Camp de Mailly", "lat": 48.583, "lon": 3.850, "country": "FR", "operator": "France", "notes": "French Army armoured training center" },
-    { "name": "French Forces Djibouti (Army)", "lat": 11.547, "lon": 43.145, "country": "DJ", "operator": "France", "notes": "Main French Army base in Africa" },
-    { "name": "Alabino", "lat": 55.537, "lon": 36.855, "country": "RU", "operator": "Russia", "notes": "Taman Guards Motor Rifle Division; Moscow defense" },
-    { "name": "Mulino", "lat": 56.334, "lon": 43.240, "country": "RU", "operator": "Russia", "notes": "Western Military District training center" },
-    { "name": "Kaliningrad Ground Forces", "lat": 54.714, "lon": 20.510, "country": "RU", "operator": "Russia", "notes": "11th Army Corps; Baltic exclave" },
-    { "name": "Kamchatka Army Base", "lat": 53.023, "lon": 158.643, "country": "RU", "operator": "Russia", "notes": "Far Eastern Military District ground forces" },
-    { "name": "Asahikawa Garrison", "lat": 43.756, "lon": 142.373, "country": "JP", "operator": "Japan", "notes": "JGSDF 2nd Division, Hokkaido" },
-    { "name": "Camp Itami", "lat": 34.787, "lon": 135.395, "country": "JP", "operator": "Japan", "notes": "JGSDF Middle Army headquarters" },
-    { "name": "Yongin Army Base", "lat": 37.241, "lon": 127.178, "country": "KR", "operator": "South Korea", "notes": "ROK Army headquarters" },
-    { "name": "Ambala Cantonment", "lat": 30.380, "lon": 76.781, "country": "IN", "operator": "India", "notes": "Western Command major army base" },
-    { "name": "Mathura Cantonment", "lat": 27.485, "lon": 77.667, "country": "IN", "operator": "India", "notes": "1st Armoured Division, Strike Corps" },
-    { "name": "Leh Military Station", "lat": 34.158, "lon": 77.577, "country": "IN", "operator": "India", "notes": "High-altitude warfare, Ladakh border" },
-    { "name": "Hatzerim (Ground Forces)", "lat": 31.231, "lon": 34.660, "country": "IL", "operator": "Israel", "notes": "IDF Southern Command, Negev Desert" },
-    { "name": "Camp Taji", "lat": 33.514, "lon": 44.259, "country": "IQ", "operator": "Iraq", "notes": "Major Iraqi Army base north of Baghdad" },
-    { "name": "Lavarack Barracks", "lat": -19.291, "lon": 146.735, "country": "AU", "operator": "Australia", "notes": "3rd Brigade, Australian Army" },
-    { "name": "Robertson Barracks", "lat": -12.437, "lon": 130.884, "country": "AU", "operator": "Australia", "notes": "1st Brigade, Darwin, Northern Territory" },
-    { "name": "Aguas Negras", "lat": -22.897, "lon": -43.290, "country": "BR", "operator": "Brazil", "notes": "Brazilian Army Eastern Command, Rio de Janeiro" },
-    { "name": "Sungur Barracks", "lat": 39.932, "lon": 32.860, "country": "TR", "operator": "Turkey", "notes": "Turkish Land Forces headquarters, Ankara" },
-    { "name": "King Khalid Military City", "lat": 27.899, "lon": 45.527, "country": "SA", "operator": "Saudi Arabia", "notes": "Major RSLF base in northeast Saudi Arabia" },
-    { "name": "Zayed Military City", "lat": 24.108, "lon": 54.560, "country": "AE", "operator": "United Arab Emirates", "notes": "UAE Armed Forces major army base" },
-    { "name": "Bergen-Hohne Training Area", "lat": 52.853, "lon": 9.937, "country": "DE", "operator": "Germany", "notes": "Bundeswehr major armoured training center" },
-    { "name": "Drawsko Pomorskie Training Area", "lat": 53.533, "lon": 15.817, "country": "PL", "operator": "Poland", "notes": "Largest Polish military training area; NATO exercises" },
-    { "name": "Tapa Army Base", "lat": 59.260, "lon": 25.973, "country": "EE", "operator": "NATO/Estonia", "notes": "NATO Enhanced Forward Presence battlegroup" },
-    { "name": "Adazi Military Base", "lat": 57.080, "lon": 24.356, "country": "LV", "operator": "NATO/Latvia", "notes": "NATO Enhanced Forward Presence battlegroup" }
+    {
+      "name": "Fort Liberty",
+      "lat": 35.139,
+      "lon": -79.006,
+      "country": "US",
+      "operator": "United States",
+      "notes": "Airborne and special operations; formerly Fort Bragg"
+    },
+    {
+      "name": "Fort Cavazos",
+      "lat": 31.135,
+      "lon": -97.775,
+      "country": "US",
+      "operator": "United States",
+      "notes": "Largest active-duty armored post; formerly Fort Hood"
+    },
+    {
+      "name": "Fort Campbell",
+      "lat": 36.663,
+      "lon": -87.475,
+      "country": "US",
+      "operator": "United States",
+      "notes": "101st Airborne Division (Air Assault)"
+    },
+    {
+      "name": "Fort Stewart",
+      "lat": 31.872,
+      "lon": -81.611,
+      "country": "US",
+      "operator": "United States",
+      "notes": "3rd Infantry Division; largest Army installation east of the Mississippi"
+    },
+    {
+      "name": "Fort Riley",
+      "lat": 39.055,
+      "lon": -96.831,
+      "country": "US",
+      "operator": "United States",
+      "notes": "1st Infantry Division"
+    },
+    {
+      "name": "Fort Drum",
+      "lat": 44.055,
+      "lon": -75.758,
+      "country": "US",
+      "operator": "United States",
+      "notes": "10th Mountain Division"
+    },
+    {
+      "name": "Fort Carson",
+      "lat": 38.737,
+      "lon": -104.791,
+      "country": "US",
+      "operator": "United States",
+      "notes": "4th Infantry Division"
+    },
+    {
+      "name": "Fort Moore",
+      "lat": 32.362,
+      "lon": -84.955,
+      "country": "US",
+      "operator": "United States",
+      "notes": "Maneuver Center of Excellence; formerly Fort Benning"
+    },
+    {
+      "name": "Fort Eisenhower",
+      "lat": 33.415,
+      "lon": -82.131,
+      "country": "US",
+      "operator": "United States",
+      "notes": "Army Cyber Center of Excellence; formerly Fort Gordon"
+    },
+    {
+      "name": "Fort Bliss",
+      "lat": 31.814,
+      "lon": -106.422,
+      "country": "US",
+      "operator": "United States",
+      "notes": "1st Armored Division; major training area"
+    },
+    {
+      "name": "Fort Sill",
+      "lat": 34.65,
+      "lon": -98.4,
+      "country": "US",
+      "operator": "United States",
+      "notes": "Fires Center of Excellence; field artillery training"
+    },
+    {
+      "name": "Joint Base Lewis-McChord (Army)",
+      "lat": 47.085,
+      "lon": -122.58,
+      "country": "US",
+      "operator": "United States",
+      "notes": "I Corps headquarters"
+    },
+    {
+      "name": "Schofield Barracks",
+      "lat": 21.494,
+      "lon": -158.064,
+      "country": "US",
+      "operator": "United States",
+      "notes": "25th Infantry Division, Hawaii"
+    },
+    {
+      "name": "Fort Wainwright",
+      "lat": 64.828,
+      "lon": -147.638,
+      "country": "US",
+      "operator": "United States",
+      "notes": "11th Airborne Division, Alaska"
+    },
+    {
+      "name": "Camp Humphreys",
+      "lat": 36.963,
+      "lon": 127.031,
+      "country": "KR",
+      "operator": "United States",
+      "notes": "USFK headquarters; largest overseas US base"
+    },
+    {
+      "name": "Camp Casey",
+      "lat": 37.908,
+      "lon": 127.053,
+      "country": "KR",
+      "operator": "United States",
+      "notes": "2nd Infantry Division, South Korea"
+    },
+    {
+      "name": "Grafenwoehr Training Area",
+      "lat": 49.698,
+      "lon": 11.927,
+      "country": "DE",
+      "operator": "United States",
+      "notes": "Major US Army Europe training center"
+    },
+    {
+      "name": "USAG Wiesbaden",
+      "lat": 50.05,
+      "lon": 8.326,
+      "country": "DE",
+      "operator": "United States",
+      "notes": "US Army Europe and Africa headquarters"
+    },
+    {
+      "name": "Camp Zama",
+      "lat": 35.488,
+      "lon": 139.388,
+      "country": "JP",
+      "operator": "United States",
+      "notes": "US Army Japan headquarters"
+    },
+    {
+      "name": "Camp Arifjan",
+      "lat": 28.987,
+      "lon": 48.105,
+      "country": "KW",
+      "operator": "United States",
+      "notes": "Major US Army forward base in Kuwait"
+    },
+    {
+      "name": "Catterick Garrison",
+      "lat": 54.381,
+      "lon": -1.721,
+      "country": "GB",
+      "operator": "United Kingdom",
+      "notes": "Largest British Army garrison"
+    },
+    {
+      "name": "Aldershot Garrison",
+      "lat": 51.25,
+      "lon": -0.766,
+      "country": "GB",
+      "operator": "United Kingdom",
+      "notes": "Home of the British Army"
+    },
+    {
+      "name": "Colchester Garrison",
+      "lat": 51.895,
+      "lon": 0.911,
+      "country": "GB",
+      "operator": "United Kingdom",
+      "notes": "16 Air Assault Brigade"
+    },
+    {
+      "name": "Bulford Camp",
+      "lat": 51.196,
+      "lon": -1.772,
+      "country": "GB",
+      "operator": "United Kingdom",
+      "notes": "Salisbury Plain, armoured infantry"
+    },
+    {
+      "name": "Camp de Canjuers",
+      "lat": 43.616,
+      "lon": 6.376,
+      "country": "FR",
+      "operator": "France",
+      "notes": "Largest military camp in Western Europe"
+    },
+    {
+      "name": "Camp de Mourmelon",
+      "lat": 49.133,
+      "lon": 4.367,
+      "country": "FR",
+      "operator": "France",
+      "notes": "Major French Army training camp"
+    },
+    {
+      "name": "Camp de Mailly",
+      "lat": 48.583,
+      "lon": 3.85,
+      "country": "FR",
+      "operator": "France",
+      "notes": "French Army armoured training center"
+    },
+    {
+      "name": "French Forces Djibouti (Army)",
+      "lat": 11.547,
+      "lon": 43.145,
+      "country": "DJ",
+      "operator": "France",
+      "notes": "Main French Army base in Africa"
+    },
+    {
+      "name": "Alabino",
+      "lat": 55.537,
+      "lon": 36.855,
+      "country": "RU",
+      "operator": "Russia",
+      "notes": "Taman Guards Motor Rifle Division; Moscow defense"
+    },
+    {
+      "name": "Mulino",
+      "lat": 56.334,
+      "lon": 43.24,
+      "country": "RU",
+      "operator": "Russia",
+      "notes": "Western Military District training center"
+    },
+    {
+      "name": "Kaliningrad Ground Forces",
+      "lat": 54.714,
+      "lon": 20.51,
+      "country": "RU",
+      "operator": "Russia",
+      "notes": "11th Army Corps; Baltic exclave"
+    },
+    {
+      "name": "Kamchatka Army Base",
+      "lat": 53.023,
+      "lon": 158.643,
+      "country": "RU",
+      "operator": "Russia",
+      "notes": "Far Eastern Military District ground forces"
+    },
+    {
+      "name": "Asahikawa Garrison",
+      "lat": 43.756,
+      "lon": 142.373,
+      "country": "JP",
+      "operator": "Japan",
+      "notes": "JGSDF 2nd Division, Hokkaido"
+    },
+    {
+      "name": "Camp Itami",
+      "lat": 34.787,
+      "lon": 135.395,
+      "country": "JP",
+      "operator": "Japan",
+      "notes": "JGSDF Middle Army headquarters"
+    },
+    {
+      "name": "Yongin Army Base",
+      "lat": 37.241,
+      "lon": 127.178,
+      "country": "KR",
+      "operator": "South Korea",
+      "notes": "ROK Army headquarters"
+    },
+    {
+      "name": "Ambala Cantonment",
+      "lat": 30.38,
+      "lon": 76.781,
+      "country": "IN",
+      "operator": "India",
+      "notes": "Western Command major army base"
+    },
+    {
+      "name": "Mathura Cantonment",
+      "lat": 27.485,
+      "lon": 77.667,
+      "country": "IN",
+      "operator": "India",
+      "notes": "1st Armoured Division, Strike Corps"
+    },
+    {
+      "name": "Leh Military Station",
+      "lat": 34.158,
+      "lon": 77.577,
+      "country": "IN",
+      "operator": "India",
+      "notes": "High-altitude warfare, Ladakh border"
+    },
+    {
+      "name": "Hatzerim (Ground Forces)",
+      "lat": 31.231,
+      "lon": 34.66,
+      "country": "IL",
+      "operator": "Israel",
+      "notes": "IDF Southern Command, Negev Desert"
+    },
+    {
+      "name": "Camp Taji",
+      "lat": 33.514,
+      "lon": 44.259,
+      "country": "IQ",
+      "operator": "Iraq",
+      "notes": "Major Iraqi Army base north of Baghdad"
+    },
+    {
+      "name": "Lavarack Barracks",
+      "lat": -19.291,
+      "lon": 146.735,
+      "country": "AU",
+      "operator": "Australia",
+      "notes": "3rd Brigade, Australian Army"
+    },
+    {
+      "name": "Robertson Barracks",
+      "lat": -12.437,
+      "lon": 130.884,
+      "country": "AU",
+      "operator": "Australia",
+      "notes": "1st Brigade, Darwin, Northern Territory"
+    },
+    {
+      "name": "Aguas Negras",
+      "lat": -22.897,
+      "lon": -43.29,
+      "country": "BR",
+      "operator": "Brazil",
+      "notes": "Brazilian Army Eastern Command, Rio de Janeiro"
+    },
+    {
+      "name": "Sungur Barracks",
+      "lat": 39.932,
+      "lon": 32.86,
+      "country": "TR",
+      "operator": "Turkey",
+      "notes": "Turkish Land Forces headquarters, Ankara"
+    },
+    {
+      "name": "King Khalid Military City",
+      "lat": 27.899,
+      "lon": 45.527,
+      "country": "SA",
+      "operator": "Saudi Arabia",
+      "notes": "Major RSLF base in northeast Saudi Arabia"
+    },
+    {
+      "name": "Zayed Military City",
+      "lat": 24.108,
+      "lon": 54.56,
+      "country": "AE",
+      "operator": "United Arab Emirates",
+      "notes": "UAE Armed Forces major army base"
+    },
+    {
+      "name": "Bergen-Hohne Training Area",
+      "lat": 52.853,
+      "lon": 9.937,
+      "country": "DE",
+      "operator": "Germany",
+      "notes": "Bundeswehr major armoured training center"
+    },
+    {
+      "name": "Drawsko Pomorskie Training Area",
+      "lat": 53.533,
+      "lon": 15.817,
+      "country": "PL",
+      "operator": "Poland",
+      "notes": "Largest Polish military training area; NATO exercises"
+    },
+    {
+      "name": "Tapa Army Base",
+      "lat": 59.26,
+      "lon": 25.973,
+      "country": "EE",
+      "operator": "NATO/Estonia",
+      "notes": "NATO Enhanced Forward Presence battlegroup"
+    },
+    {
+      "name": "Adazi Military Base",
+      "lat": 57.08,
+      "lon": 24.356,
+      "country": "LV",
+      "operator": "NATO/Latvia",
+      "notes": "NATO Enhanced Forward Presence battlegroup"
+    }
   ],
   "navy": [
-    { "name": "Naval Station Norfolk", "lat": 36.946, "lon": -76.303, "country": "US", "operator": "United States", "notes": "Largest naval station in the world" },
-    { "name": "Naval Base San Diego", "lat": 32.684, "lon": -117.146, "country": "US", "operator": "United States", "notes": "Principal homeport of the Pacific Fleet" },
-    { "name": "Naval Station Mayport", "lat": 30.393, "lon": -81.404, "country": "US", "operator": "United States", "notes": "Major Atlantic Fleet base, Florida" },
-    { "name": "Naval Submarine Base Kings Bay", "lat": 30.789, "lon": -81.514, "country": "US", "operator": "United States", "notes": "Atlantic SSBN base; Trident submarines" },
-    { "name": "Naval Submarine Base New London", "lat": 41.388, "lon": -72.090, "country": "US", "operator": "United States", "notes": "Submarine Force headquarters, Groton CT" },
-    { "name": "Naval Station Pearl Harbor", "lat": 21.353, "lon": -157.970, "country": "US", "operator": "United States", "notes": "USINDOPACOM naval headquarters" },
-    { "name": "Naval Base Kitsap (Bangor)", "lat": 47.728, "lon": -122.715, "country": "US", "operator": "United States", "notes": "Pacific SSBN base; Trident submarines" },
-    { "name": "Naval Base Guam", "lat": 13.445, "lon": 144.655, "country": "GU", "operator": "United States", "notes": "Major forward-deployed naval base in the Pacific" },
-    { "name": "Commander Fleet Activities Yokosuka", "lat": 35.283, "lon": 139.663, "country": "JP", "operator": "United States", "notes": "US 7th Fleet headquarters; forward-deployed carrier" },
-    { "name": "Commander Fleet Activities Sasebo", "lat": 33.157, "lon": 129.710, "country": "JP", "operator": "United States", "notes": "Forward-deployed amphibious ships" },
-    { "name": "Naval Support Activity Bahrain", "lat": 26.217, "lon": 50.615, "country": "BH", "operator": "United States", "notes": "US 5th Fleet headquarters" },
-    { "name": "Naval Support Facility Diego Garcia", "lat": -7.316, "lon": 72.411, "country": "IO", "operator": "United States", "notes": "Strategic logistics hub, Indian Ocean" },
-    { "name": "Naval Station Rota", "lat": 36.622, "lon": -6.350, "country": "ES", "operator": "United States", "notes": "US/NATO naval base in Spain; BMD destroyers" },
-    { "name": "Naval Air Station Sigonella", "lat": 37.402, "lon": 14.922, "country": "IT", "operator": "United States", "notes": "Hub of the Mediterranean; P-8 Poseidons" },
-    { "name": "Camp Lemonnier", "lat": 11.547, "lon": 43.152, "country": "DJ", "operator": "United States", "notes": "Only permanent US base in Africa" },
-    { "name": "HMNB Portsmouth", "lat": 50.800, "lon": -1.110, "country": "GB", "operator": "United Kingdom", "notes": "Home base of the Royal Navy surface fleet" },
-    { "name": "HMNB Devonport", "lat": 50.381, "lon": -4.184, "country": "GB", "operator": "United Kingdom", "notes": "Largest naval base in Western Europe; submarine refit" },
-    { "name": "HMNB Clyde (Faslane)", "lat": 56.063, "lon": -4.820, "country": "GB", "operator": "United Kingdom", "notes": "UK nuclear deterrent; Vanguard-class SSBNs" },
-    { "name": "Toulon Naval Base", "lat": 43.118, "lon": 5.930, "country": "FR", "operator": "France", "notes": "Main French Navy base; Charles de Gaulle carrier homeport" },
-    { "name": "Brest Naval Base", "lat": 48.382, "lon": -4.497, "country": "FR", "operator": "France", "notes": "French SSBN base; Ile Longue" },
-    { "name": "Severomorsk", "lat": 69.073, "lon": 33.421, "country": "RU", "operator": "Russia", "notes": "Northern Fleet headquarters" },
-    { "name": "Vladivostok Naval Base", "lat": 43.107, "lon": 131.904, "country": "RU", "operator": "Russia", "notes": "Pacific Fleet headquarters" },
-    { "name": "Sevastopol Naval Base", "lat": 44.616, "lon": 33.525, "country": "UA", "operator": "Russia", "notes": "Black Sea Fleet headquarters" },
-    { "name": "Tartus Naval Facility", "lat": 34.890, "lon": 35.870, "country": "SY", "operator": "Russia", "notes": "Russian naval facility in Syria; Mediterranean access" },
-    { "name": "Baltiysk Naval Base", "lat": 54.648, "lon": 19.907, "country": "RU", "operator": "Russia", "notes": "Baltic Fleet headquarters, Kaliningrad" },
-    { "name": "Vilyuchinsk", "lat": 52.935, "lon": 158.400, "country": "RU", "operator": "Russia", "notes": "Pacific Fleet submarine base, Kamchatka" },
-    { "name": "Qingdao Naval Base", "lat": 36.089, "lon": 120.371, "country": "CN", "operator": "China", "notes": "PLA Navy North Sea Fleet headquarters" },
-    { "name": "Zhanjiang Naval Base", "lat": 21.227, "lon": 110.410, "country": "CN", "operator": "China", "notes": "PLA Navy South Sea Fleet headquarters" },
-    { "name": "Ningbo (Zhoushan) Naval Base", "lat": 29.950, "lon": 121.840, "country": "CN", "operator": "China", "notes": "PLA Navy East Sea Fleet headquarters" },
-    { "name": "Yulin Naval Base", "lat": 18.210, "lon": 109.560, "country": "CN", "operator": "China", "notes": "Major submarine base, Hainan Island" },
-    { "name": "PLA Support Base Djibouti", "lat": 11.592, "lon": 43.153, "country": "DJ", "operator": "China", "notes": "China's first overseas military support base" },
-    { "name": "Yokosuka (JMSDF)", "lat": 35.289, "lon": 139.661, "country": "JP", "operator": "Japan", "notes": "JMSDF Fleet headquarters" },
-    { "name": "Kure Naval Base", "lat": 34.230, "lon": 132.559, "country": "JP", "operator": "Japan", "notes": "JMSDF major fleet base" },
-    { "name": "Jinhae Naval Base", "lat": 35.133, "lon": 128.673, "country": "KR", "operator": "South Korea", "notes": "ROK Navy headquarters" },
-    { "name": "INS Kadamba (Karwar)", "lat": 14.786, "lon": 74.117, "country": "IN", "operator": "India", "notes": "Largest Indian naval base; Project Seabird" },
-    { "name": "Mumbai Naval Dockyard", "lat": 18.927, "lon": 72.842, "country": "IN", "operator": "India", "notes": "Western Naval Command headquarters" },
-    { "name": "Visakhapatnam Naval Base", "lat": 17.713, "lon": 83.318, "country": "IN", "operator": "India", "notes": "Eastern Naval Command headquarters" },
-    { "name": "King Abdulaziz Naval Base", "lat": 21.338, "lon": 39.168, "country": "SA", "operator": "Saudi Arabia", "notes": "Royal Saudi Naval Forces Western Fleet, Jeddah" },
-    { "name": "Aksaz Naval Base", "lat": 36.965, "lon": 28.380, "country": "TR", "operator": "Turkey", "notes": "Major Turkish Navy base, Aegean coast" },
-    { "name": "HMAS Stirling", "lat": -32.238, "lon": 115.690, "country": "AU", "operator": "Australia", "notes": "Major RAN fleet base, Garden Island, Western Australia" }
+    {
+      "name": "Naval Station Norfolk",
+      "lat": 36.946,
+      "lon": -76.303,
+      "country": "US",
+      "operator": "United States",
+      "notes": "Largest naval station in the world"
+    },
+    {
+      "name": "Naval Base San Diego",
+      "lat": 32.684,
+      "lon": -117.146,
+      "country": "US",
+      "operator": "United States",
+      "notes": "Principal homeport of the Pacific Fleet"
+    },
+    {
+      "name": "Naval Station Mayport",
+      "lat": 30.393,
+      "lon": -81.404,
+      "country": "US",
+      "operator": "United States",
+      "notes": "Major Atlantic Fleet base, Florida"
+    },
+    {
+      "name": "Naval Submarine Base Kings Bay",
+      "lat": 30.789,
+      "lon": -81.514,
+      "country": "US",
+      "operator": "United States",
+      "notes": "Atlantic SSBN base; Trident submarines"
+    },
+    {
+      "name": "Naval Submarine Base New London",
+      "lat": 41.388,
+      "lon": -72.09,
+      "country": "US",
+      "operator": "United States",
+      "notes": "Submarine Force headquarters, Groton CT"
+    },
+    {
+      "name": "Naval Station Pearl Harbor",
+      "lat": 21.353,
+      "lon": -157.97,
+      "country": "US",
+      "operator": "United States",
+      "notes": "USINDOPACOM naval headquarters"
+    },
+    {
+      "name": "Naval Base Kitsap (Bangor)",
+      "lat": 47.728,
+      "lon": -122.715,
+      "country": "US",
+      "operator": "United States",
+      "notes": "Pacific SSBN base; Trident submarines"
+    },
+    {
+      "name": "Naval Base Guam",
+      "lat": 13.445,
+      "lon": 144.655,
+      "country": "GU",
+      "operator": "United States",
+      "notes": "Major forward-deployed naval base in the Pacific"
+    },
+    {
+      "name": "Commander Fleet Activities Yokosuka",
+      "lat": 35.283,
+      "lon": 139.663,
+      "country": "JP",
+      "operator": "United States",
+      "notes": "US 7th Fleet headquarters; forward-deployed carrier"
+    },
+    {
+      "name": "Commander Fleet Activities Sasebo",
+      "lat": 33.157,
+      "lon": 129.71,
+      "country": "JP",
+      "operator": "United States",
+      "notes": "Forward-deployed amphibious ships"
+    },
+    {
+      "name": "Naval Support Activity Bahrain",
+      "lat": 26.217,
+      "lon": 50.615,
+      "country": "BH",
+      "operator": "United States",
+      "notes": "US 5th Fleet headquarters"
+    },
+    {
+      "name": "Naval Support Facility Diego Garcia",
+      "lat": -7.316,
+      "lon": 72.411,
+      "country": "IO",
+      "operator": "United States",
+      "notes": "Strategic logistics hub, Indian Ocean"
+    },
+    {
+      "name": "Naval Station Rota",
+      "lat": 36.622,
+      "lon": -6.35,
+      "country": "ES",
+      "operator": "United States",
+      "notes": "US/NATO naval base in Spain; BMD destroyers"
+    },
+    {
+      "name": "Naval Air Station Sigonella",
+      "lat": 37.402,
+      "lon": 14.922,
+      "country": "IT",
+      "operator": "United States",
+      "notes": "Hub of the Mediterranean; P-8 Poseidons"
+    },
+    {
+      "name": "Camp Lemonnier",
+      "lat": 11.547,
+      "lon": 43.152,
+      "country": "DJ",
+      "operator": "United States",
+      "notes": "Only permanent US base in Africa"
+    },
+    {
+      "name": "HMNB Portsmouth",
+      "lat": 50.8,
+      "lon": -1.11,
+      "country": "GB",
+      "operator": "United Kingdom",
+      "notes": "Home base of the Royal Navy surface fleet"
+    },
+    {
+      "name": "HMNB Devonport",
+      "lat": 50.381,
+      "lon": -4.184,
+      "country": "GB",
+      "operator": "United Kingdom",
+      "notes": "Largest naval base in Western Europe; submarine refit"
+    },
+    {
+      "name": "HMNB Clyde (Faslane)",
+      "lat": 56.063,
+      "lon": -4.82,
+      "country": "GB",
+      "operator": "United Kingdom",
+      "notes": "UK nuclear deterrent; Vanguard-class SSBNs"
+    },
+    {
+      "name": "Toulon Naval Base",
+      "lat": 43.118,
+      "lon": 5.93,
+      "country": "FR",
+      "operator": "France",
+      "notes": "Main French Navy base; Charles de Gaulle carrier homeport"
+    },
+    {
+      "name": "Brest Naval Base",
+      "lat": 48.382,
+      "lon": -4.497,
+      "country": "FR",
+      "operator": "France",
+      "notes": "French SSBN base; Ile Longue"
+    },
+    {
+      "name": "Severomorsk",
+      "lat": 69.073,
+      "lon": 33.421,
+      "country": "RU",
+      "operator": "Russia",
+      "notes": "Northern Fleet headquarters"
+    },
+    {
+      "name": "Vladivostok Naval Base",
+      "lat": 43.107,
+      "lon": 131.904,
+      "country": "RU",
+      "operator": "Russia",
+      "notes": "Pacific Fleet headquarters"
+    },
+    {
+      "name": "Sevastopol Naval Base",
+      "lat": 44.616,
+      "lon": 33.525,
+      "country": "UA",
+      "operator": "Russia",
+      "notes": "Black Sea Fleet headquarters"
+    },
+    {
+      "name": "Tartus Naval Facility",
+      "lat": 34.89,
+      "lon": 35.87,
+      "country": "SY",
+      "operator": "Russia",
+      "notes": "Russian naval facility in Syria; Mediterranean access"
+    },
+    {
+      "name": "Baltiysk Naval Base",
+      "lat": 54.648,
+      "lon": 19.907,
+      "country": "RU",
+      "operator": "Russia",
+      "notes": "Baltic Fleet headquarters, Kaliningrad"
+    },
+    {
+      "name": "Vilyuchinsk",
+      "lat": 52.935,
+      "lon": 158.4,
+      "country": "RU",
+      "operator": "Russia",
+      "notes": "Pacific Fleet submarine base, Kamchatka"
+    },
+    {
+      "name": "Qingdao Naval Base",
+      "lat": 36.089,
+      "lon": 120.371,
+      "country": "CN",
+      "operator": "China",
+      "notes": "PLA Navy North Sea Fleet headquarters"
+    },
+    {
+      "name": "Zhanjiang Naval Base",
+      "lat": 21.227,
+      "lon": 110.41,
+      "country": "CN",
+      "operator": "China",
+      "notes": "PLA Navy South Sea Fleet headquarters"
+    },
+    {
+      "name": "Ningbo (Zhoushan) Naval Base",
+      "lat": 29.95,
+      "lon": 121.84,
+      "country": "CN",
+      "operator": "China",
+      "notes": "PLA Navy East Sea Fleet headquarters"
+    },
+    {
+      "name": "Yulin Naval Base",
+      "lat": 18.21,
+      "lon": 109.56,
+      "country": "CN",
+      "operator": "China",
+      "notes": "Major submarine base, Hainan Island"
+    },
+    {
+      "name": "PLA Support Base Djibouti",
+      "lat": 11.592,
+      "lon": 43.153,
+      "country": "DJ",
+      "operator": "China",
+      "notes": "China's first overseas military support base"
+    },
+    {
+      "name": "Yokosuka (JMSDF)",
+      "lat": 35.289,
+      "lon": 139.661,
+      "country": "JP",
+      "operator": "Japan",
+      "notes": "JMSDF Fleet headquarters"
+    },
+    {
+      "name": "Kure Naval Base",
+      "lat": 34.23,
+      "lon": 132.559,
+      "country": "JP",
+      "operator": "Japan",
+      "notes": "JMSDF major fleet base"
+    },
+    {
+      "name": "Jinhae Naval Base",
+      "lat": 35.133,
+      "lon": 128.673,
+      "country": "KR",
+      "operator": "South Korea",
+      "notes": "ROK Navy headquarters"
+    },
+    {
+      "name": "INS Kadamba (Karwar)",
+      "lat": 14.786,
+      "lon": 74.117,
+      "country": "IN",
+      "operator": "India",
+      "notes": "Largest Indian naval base; Project Seabird"
+    },
+    {
+      "name": "Mumbai Naval Dockyard",
+      "lat": 18.927,
+      "lon": 72.842,
+      "country": "IN",
+      "operator": "India",
+      "notes": "Western Naval Command headquarters"
+    },
+    {
+      "name": "Visakhapatnam Naval Base",
+      "lat": 17.713,
+      "lon": 83.318,
+      "country": "IN",
+      "operator": "India",
+      "notes": "Eastern Naval Command headquarters"
+    },
+    {
+      "name": "King Abdulaziz Naval Base",
+      "lat": 21.338,
+      "lon": 39.168,
+      "country": "SA",
+      "operator": "Saudi Arabia",
+      "notes": "Royal Saudi Naval Forces Western Fleet, Jeddah"
+    },
+    {
+      "name": "Aksaz Naval Base",
+      "lat": 36.965,
+      "lon": 28.38,
+      "country": "TR",
+      "operator": "Turkey",
+      "notes": "Major Turkish Navy base, Aegean coast"
+    },
+    {
+      "name": "HMAS Stirling",
+      "lat": -32.238,
+      "lon": 115.69,
+      "country": "AU",
+      "operator": "Australia",
+      "notes": "Major RAN fleet base, Garden Island, Western Australia"
+    }
   ],
   "airforce": [
-    { "name": "Nellis Air Force Base", "lat": 36.236, "lon": -115.034, "country": "US", "operator": "United States", "notes": "Air combat training and Red Flag exercises" },
-    { "name": "Edwards Air Force Base", "lat": 34.905, "lon": -117.884, "country": "US", "operator": "United States", "notes": "Flight test center; Air Force Test Center" },
-    { "name": "Eglin Air Force Base", "lat": 30.483, "lon": -86.525, "country": "US", "operator": "United States", "notes": "Largest AF base by area; air armament development" },
-    { "name": "Langley Air Force Base", "lat": 37.083, "lon": -76.361, "country": "US", "operator": "United States", "notes": "Air Combat Command headquarters; F-22 wing" },
-    { "name": "Whiteman Air Force Base", "lat": 38.730, "lon": -93.548, "country": "US", "operator": "United States", "notes": "B-2 Spirit stealth bomber wing" },
-    { "name": "Barksdale Air Force Base", "lat": 32.501, "lon": -93.663, "country": "US", "operator": "United States", "notes": "Air Force Global Strike Command headquarters; B-52s" },
-    { "name": "Minot Air Force Base", "lat": 48.416, "lon": -101.358, "country": "US", "operator": "United States", "notes": "B-52 wing and ICBM wing" },
-    { "name": "Dyess Air Force Base", "lat": 32.421, "lon": -99.855, "country": "US", "operator": "United States", "notes": "B-1B Lancer wing" },
-    { "name": "Shaw Air Force Base", "lat": 33.972, "lon": -80.471, "country": "US", "operator": "United States", "notes": "F-16 wing; 9th Air Force headquarters" },
-    { "name": "Hill Air Force Base", "lat": 41.124, "lon": -111.973, "country": "US", "operator": "United States", "notes": "F-35A Lightning II wing" },
-    { "name": "Luke Air Force Base", "lat": 33.535, "lon": -112.383, "country": "US", "operator": "United States", "notes": "F-35 and F-16 pilot training" },
-    { "name": "Tyndall Air Force Base", "lat": 30.070, "lon": -85.576, "country": "US", "operator": "United States", "notes": "F-22 training; First Air Force" },
-    { "name": "Travis Air Force Base", "lat": 38.263, "lon": -121.928, "country": "US", "operator": "United States", "notes": "Major airlift hub; C-5 and C-17 aircraft" },
-    { "name": "Ramstein Air Base", "lat": 49.437, "lon": 7.600, "country": "DE", "operator": "United States", "notes": "USAFE headquarters; NATO Allied Air Command" },
-    { "name": "RAF Lakenheath", "lat": 52.409, "lon": 0.561, "country": "GB", "operator": "United States", "notes": "48th Fighter Wing; F-15E and F-35A" },
-    { "name": "RAF Mildenhall", "lat": 52.362, "lon": 0.486, "country": "GB", "operator": "United States", "notes": "100th Air Refueling Wing; KC-135 tankers" },
-    { "name": "Aviano Air Base", "lat": 46.032, "lon": 12.597, "country": "IT", "operator": "United States", "notes": "31st Fighter Wing; F-16s" },
-    { "name": "Spangdahlem Air Base", "lat": 49.972, "lon": 6.693, "country": "DE", "operator": "United States", "notes": "52nd Fighter Wing" },
-    { "name": "Kadena Air Base", "lat": 26.352, "lon": 127.768, "country": "JP", "operator": "United States", "notes": "Largest USAF base in the Pacific; F-15C/D" },
-    { "name": "Misawa Air Base", "lat": 40.703, "lon": 141.369, "country": "JP", "operator": "United States", "notes": "35th Fighter Wing; F-16s" },
-    { "name": "Osan Air Base", "lat": 37.090, "lon": 127.030, "country": "KR", "operator": "United States", "notes": "51st Fighter Wing; A-10 and F-16" },
-    { "name": "Kunsan Air Base", "lat": 35.904, "lon": 126.615, "country": "KR", "operator": "United States", "notes": "8th Fighter Wing; Wolf Pack; F-16s" },
-    { "name": "Incirlik Air Base", "lat": 37.002, "lon": 35.426, "country": "TR", "operator": "United States", "notes": "Major USAF base; strategic NATO location" },
-    { "name": "Al Udeid Air Base", "lat": 25.117, "lon": 51.315, "country": "QA", "operator": "United States", "notes": "CENTCOM forward headquarters; combined air ops center" },
-    { "name": "Al Dhafra Air Base", "lat": 24.248, "lon": 54.548, "country": "AE", "operator": "United States", "notes": "F-22 and F-35 deployment; tanker ops" },
-    { "name": "Andersen Air Force Base", "lat": 13.584, "lon": 144.930, "country": "GU", "operator": "United States", "notes": "Strategic bomber forward base, Guam" },
-    { "name": "Eielson Air Force Base", "lat": 64.666, "lon": -147.103, "country": "US", "operator": "United States", "notes": "F-35A wing; Arctic operations, Alaska" },
-    { "name": "RAF Coningsby", "lat": 53.093, "lon": -0.166, "country": "GB", "operator": "United Kingdom", "notes": "Typhoon FGR4; Quick Reaction Alert South" },
-    { "name": "RAF Lossiemouth", "lat": 57.712, "lon": -3.339, "country": "GB", "operator": "United Kingdom", "notes": "Typhoon FGR4; Quick Reaction Alert North; P-8A" },
-    { "name": "RAF Marham", "lat": 52.648, "lon": 0.551, "country": "GB", "operator": "United Kingdom", "notes": "F-35B Lightning; RAF strike capability" },
-    { "name": "BA 113 Saint-Dizier", "lat": 48.636, "lon": 4.899, "country": "FR", "operator": "France", "notes": "Rafale nuclear strike squadron" },
-    { "name": "BA 125 Istres", "lat": 43.522, "lon": 4.924, "country": "FR", "operator": "France", "notes": "Strategic Air Forces; tankers and Rafale" },
-    { "name": "BA 118 Mont-de-Marsan", "lat": 43.911, "lon": -0.502, "country": "FR", "operator": "France", "notes": "Rafale squadrons; CEAM test center" },
-    { "name": "Khmeimim Air Base", "lat": 35.411, "lon": 35.949, "country": "SY", "operator": "Russia", "notes": "Russian air base in Syria; Su-35, Su-34" },
-    { "name": "Engels Air Base", "lat": 51.480, "lon": 46.200, "country": "RU", "operator": "Russia", "notes": "Strategic bombers; Tu-160 and Tu-95MS" },
-    { "name": "Ukrainka Air Base", "lat": 51.169, "lon": 128.402, "country": "RU", "operator": "Russia", "notes": "Long-range aviation; Tu-95MS bombers" },
-    { "name": "Lipetsk Air Base", "lat": 52.625, "lon": 39.593, "country": "RU", "operator": "Russia", "notes": "Russian Air Force combat training center" },
-    { "name": "Shagol Air Base", "lat": 55.213, "lon": 61.315, "country": "RU", "operator": "Russia", "notes": "Central Military District interceptors" },
-    { "name": "Dingxin Air Base", "lat": 40.300, "lon": 99.800, "country": "CN", "operator": "China", "notes": "PLAAF major flight test and training base" },
-    { "name": "Changxing Island Air Base", "lat": 31.375, "lon": 121.723, "country": "CN", "operator": "China", "notes": "PLAN aviation; near Shanghai" },
-    { "name": "Hotan Air Base", "lat": 37.038, "lon": 79.865, "country": "CN", "operator": "China", "notes": "PLAAF Western Theater; near India border" },
-    { "name": "Chitose Air Base", "lat": 42.795, "lon": 141.666, "country": "JP", "operator": "Japan", "notes": "JASDF 2nd Air Wing; northern air defense" },
-    { "name": "Naha Air Base", "lat": 26.196, "lon": 127.646, "country": "JP", "operator": "Japan", "notes": "JASDF 9th Air Wing; southwestern air defense" },
-    { "name": "Cheongju Air Base", "lat": 36.717, "lon": 127.489, "country": "KR", "operator": "South Korea", "notes": "ROKAF F-16 and KF-21 wing" },
-    { "name": "Hindan Air Force Station", "lat": 28.710, "lon": 77.364, "country": "IN", "operator": "India", "notes": "Largest IAF base; C-17 transport" },
-    { "name": "Ambala Air Force Station", "lat": 30.370, "lon": 76.817, "country": "IN", "operator": "India", "notes": "Rafale jets; frontline base" },
-    { "name": "Ramon Air Base", "lat": 30.776, "lon": 34.667, "country": "IL", "operator": "Israel", "notes": "IAF F-35I Adir and F-16I Sufa" },
-    { "name": "Hatzerim Air Base", "lat": 31.234, "lon": 34.660, "country": "IL", "operator": "Israel", "notes": "IAF Flight Academy; F-16 wing" },
-    { "name": "RAAF Base Amberley", "lat": -27.639, "lon": 152.712, "country": "AU", "operator": "Australia", "notes": "RAAF F/A-18F Super Hornets and KC-30A" },
-    { "name": "RAAF Base Tindal", "lat": -14.521, "lon": 132.378, "country": "AU", "operator": "Australia", "notes": "Northern Australia; F/A-18 and F-35A" }
+    {
+      "name": "Nellis Air Force Base",
+      "lat": 36.236,
+      "lon": -115.034,
+      "country": "US",
+      "operator": "United States",
+      "notes": "Air combat training and Red Flag exercises"
+    },
+    {
+      "name": "Edwards Air Force Base",
+      "lat": 34.905,
+      "lon": -117.884,
+      "country": "US",
+      "operator": "United States",
+      "notes": "Flight test center; Air Force Test Center"
+    },
+    {
+      "name": "Eglin Air Force Base",
+      "lat": 30.483,
+      "lon": -86.525,
+      "country": "US",
+      "operator": "United States",
+      "notes": "Largest AF base by area; air armament development"
+    },
+    {
+      "name": "Langley Air Force Base",
+      "lat": 37.083,
+      "lon": -76.361,
+      "country": "US",
+      "operator": "United States",
+      "notes": "Air Combat Command headquarters; F-22 wing"
+    },
+    {
+      "name": "Whiteman Air Force Base",
+      "lat": 38.73,
+      "lon": -93.548,
+      "country": "US",
+      "operator": "United States",
+      "notes": "B-2 Spirit stealth bomber wing"
+    },
+    {
+      "name": "Barksdale Air Force Base",
+      "lat": 32.501,
+      "lon": -93.663,
+      "country": "US",
+      "operator": "United States",
+      "notes": "Air Force Global Strike Command headquarters; B-52s"
+    },
+    {
+      "name": "Minot Air Force Base",
+      "lat": 48.416,
+      "lon": -101.358,
+      "country": "US",
+      "operator": "United States",
+      "notes": "B-52 wing and ICBM wing"
+    },
+    {
+      "name": "Dyess Air Force Base",
+      "lat": 32.421,
+      "lon": -99.855,
+      "country": "US",
+      "operator": "United States",
+      "notes": "B-1B Lancer wing"
+    },
+    {
+      "name": "Shaw Air Force Base",
+      "lat": 33.972,
+      "lon": -80.471,
+      "country": "US",
+      "operator": "United States",
+      "notes": "F-16 wing; 9th Air Force headquarters"
+    },
+    {
+      "name": "Hill Air Force Base",
+      "lat": 41.124,
+      "lon": -111.973,
+      "country": "US",
+      "operator": "United States",
+      "notes": "F-35A Lightning II wing"
+    },
+    {
+      "name": "Luke Air Force Base",
+      "lat": 33.535,
+      "lon": -112.383,
+      "country": "US",
+      "operator": "United States",
+      "notes": "F-35 and F-16 pilot training"
+    },
+    {
+      "name": "Tyndall Air Force Base",
+      "lat": 30.07,
+      "lon": -85.576,
+      "country": "US",
+      "operator": "United States",
+      "notes": "F-22 training; First Air Force"
+    },
+    {
+      "name": "Travis Air Force Base",
+      "lat": 38.263,
+      "lon": -121.928,
+      "country": "US",
+      "operator": "United States",
+      "notes": "Major airlift hub; C-5 and C-17 aircraft"
+    },
+    {
+      "name": "Ramstein Air Base",
+      "lat": 49.437,
+      "lon": 7.6,
+      "country": "DE",
+      "operator": "United States",
+      "notes": "USAFE headquarters; NATO Allied Air Command"
+    },
+    {
+      "name": "RAF Lakenheath",
+      "lat": 52.409,
+      "lon": 0.561,
+      "country": "GB",
+      "operator": "United States",
+      "notes": "48th Fighter Wing; F-15E and F-35A"
+    },
+    {
+      "name": "RAF Mildenhall",
+      "lat": 52.362,
+      "lon": 0.486,
+      "country": "GB",
+      "operator": "United States",
+      "notes": "100th Air Refueling Wing; KC-135 tankers"
+    },
+    {
+      "name": "Aviano Air Base",
+      "lat": 46.032,
+      "lon": 12.597,
+      "country": "IT",
+      "operator": "United States",
+      "notes": "31st Fighter Wing; F-16s"
+    },
+    {
+      "name": "Spangdahlem Air Base",
+      "lat": 49.972,
+      "lon": 6.693,
+      "country": "DE",
+      "operator": "United States",
+      "notes": "52nd Fighter Wing"
+    },
+    {
+      "name": "Kadena Air Base",
+      "lat": 26.352,
+      "lon": 127.768,
+      "country": "JP",
+      "operator": "United States",
+      "notes": "Largest USAF base in the Pacific; F-15C/D"
+    },
+    {
+      "name": "Misawa Air Base",
+      "lat": 40.703,
+      "lon": 141.369,
+      "country": "JP",
+      "operator": "United States",
+      "notes": "35th Fighter Wing; F-16s"
+    },
+    {
+      "name": "Osan Air Base",
+      "lat": 37.09,
+      "lon": 127.03,
+      "country": "KR",
+      "operator": "United States",
+      "notes": "51st Fighter Wing; A-10 and F-16"
+    },
+    {
+      "name": "Kunsan Air Base",
+      "lat": 35.904,
+      "lon": 126.615,
+      "country": "KR",
+      "operator": "United States",
+      "notes": "8th Fighter Wing; Wolf Pack; F-16s"
+    },
+    {
+      "name": "Incirlik Air Base",
+      "lat": 37.002,
+      "lon": 35.426,
+      "country": "TR",
+      "operator": "United States",
+      "notes": "Major USAF base; strategic NATO location"
+    },
+    {
+      "name": "Al Udeid Air Base",
+      "lat": 25.117,
+      "lon": 51.315,
+      "country": "QA",
+      "operator": "United States",
+      "notes": "CENTCOM forward headquarters; combined air ops center"
+    },
+    {
+      "name": "Al Dhafra Air Base",
+      "lat": 24.248,
+      "lon": 54.548,
+      "country": "AE",
+      "operator": "United States",
+      "notes": "F-22 and F-35 deployment; tanker ops"
+    },
+    {
+      "name": "Andersen Air Force Base",
+      "lat": 13.584,
+      "lon": 144.93,
+      "country": "GU",
+      "operator": "United States",
+      "notes": "Strategic bomber forward base, Guam"
+    },
+    {
+      "name": "Eielson Air Force Base",
+      "lat": 64.666,
+      "lon": -147.103,
+      "country": "US",
+      "operator": "United States",
+      "notes": "F-35A wing; Arctic operations, Alaska"
+    },
+    {
+      "name": "RAF Coningsby",
+      "lat": 53.093,
+      "lon": -0.166,
+      "country": "GB",
+      "operator": "United Kingdom",
+      "notes": "Typhoon FGR4; Quick Reaction Alert South"
+    },
+    {
+      "name": "RAF Lossiemouth",
+      "lat": 57.712,
+      "lon": -3.339,
+      "country": "GB",
+      "operator": "United Kingdom",
+      "notes": "Typhoon FGR4; Quick Reaction Alert North; P-8A"
+    },
+    {
+      "name": "RAF Marham",
+      "lat": 52.648,
+      "lon": 0.551,
+      "country": "GB",
+      "operator": "United Kingdom",
+      "notes": "F-35B Lightning; RAF strike capability"
+    },
+    {
+      "name": "BA 113 Saint-Dizier",
+      "lat": 48.636,
+      "lon": 4.899,
+      "country": "FR",
+      "operator": "France",
+      "notes": "Rafale nuclear strike squadron"
+    },
+    {
+      "name": "BA 125 Istres",
+      "lat": 43.522,
+      "lon": 4.924,
+      "country": "FR",
+      "operator": "France",
+      "notes": "Strategic Air Forces; tankers and Rafale"
+    },
+    {
+      "name": "BA 118 Mont-de-Marsan",
+      "lat": 43.911,
+      "lon": -0.502,
+      "country": "FR",
+      "operator": "France",
+      "notes": "Rafale squadrons; CEAM test center"
+    },
+    {
+      "name": "Khmeimim Air Base",
+      "lat": 35.411,
+      "lon": 35.949,
+      "country": "SY",
+      "operator": "Russia",
+      "notes": "Russian air base in Syria; Su-35, Su-34"
+    },
+    {
+      "name": "Engels Air Base",
+      "lat": 51.48,
+      "lon": 46.2,
+      "country": "RU",
+      "operator": "Russia",
+      "notes": "Strategic bombers; Tu-160 and Tu-95MS"
+    },
+    {
+      "name": "Ukrainka Air Base",
+      "lat": 51.169,
+      "lon": 128.402,
+      "country": "RU",
+      "operator": "Russia",
+      "notes": "Long-range aviation; Tu-95MS bombers"
+    },
+    {
+      "name": "Lipetsk Air Base",
+      "lat": 52.625,
+      "lon": 39.593,
+      "country": "RU",
+      "operator": "Russia",
+      "notes": "Russian Air Force combat training center"
+    },
+    {
+      "name": "Shagol Air Base",
+      "lat": 55.213,
+      "lon": 61.315,
+      "country": "RU",
+      "operator": "Russia",
+      "notes": "Central Military District interceptors"
+    },
+    {
+      "name": "Dingxin Air Base",
+      "lat": 40.3,
+      "lon": 99.8,
+      "country": "CN",
+      "operator": "China",
+      "notes": "PLAAF major flight test and training base"
+    },
+    {
+      "name": "Changxing Island Air Base",
+      "lat": 31.375,
+      "lon": 121.723,
+      "country": "CN",
+      "operator": "China",
+      "notes": "PLAN aviation; near Shanghai"
+    },
+    {
+      "name": "Hotan Air Base",
+      "lat": 37.038,
+      "lon": 79.865,
+      "country": "CN",
+      "operator": "China",
+      "notes": "PLAAF Western Theater; near India border"
+    },
+    {
+      "name": "Chitose Air Base",
+      "lat": 42.795,
+      "lon": 141.666,
+      "country": "JP",
+      "operator": "Japan",
+      "notes": "JASDF 2nd Air Wing; northern air defense"
+    },
+    {
+      "name": "Naha Air Base",
+      "lat": 26.196,
+      "lon": 127.646,
+      "country": "JP",
+      "operator": "Japan",
+      "notes": "JASDF 9th Air Wing; southwestern air defense"
+    },
+    {
+      "name": "Cheongju Air Base",
+      "lat": 36.717,
+      "lon": 127.489,
+      "country": "KR",
+      "operator": "South Korea",
+      "notes": "ROKAF F-16 and KF-21 wing"
+    },
+    {
+      "name": "Hindan Air Force Station",
+      "lat": 28.71,
+      "lon": 77.364,
+      "country": "IN",
+      "operator": "India",
+      "notes": "Largest IAF base; C-17 transport"
+    },
+    {
+      "name": "Ambala Air Force Station",
+      "lat": 30.37,
+      "lon": 76.817,
+      "country": "IN",
+      "operator": "India",
+      "notes": "Rafale jets; frontline base"
+    },
+    {
+      "name": "Ramon Air Base",
+      "lat": 30.776,
+      "lon": 34.667,
+      "country": "IL",
+      "operator": "Israel",
+      "notes": "IAF F-35I Adir and F-16I Sufa"
+    },
+    {
+      "name": "Hatzerim Air Base",
+      "lat": 31.234,
+      "lon": 34.66,
+      "country": "IL",
+      "operator": "Israel",
+      "notes": "IAF Flight Academy; F-16 wing"
+    },
+    {
+      "name": "RAAF Base Amberley",
+      "lat": -27.639,
+      "lon": 152.712,
+      "country": "AU",
+      "operator": "Australia",
+      "notes": "RAAF F/A-18F Super Hornets and KC-30A"
+    },
+    {
+      "name": "RAAF Base Tindal",
+      "lat": -14.521,
+      "lon": 132.378,
+      "country": "AU",
+      "operator": "Australia",
+      "notes": "Northern Australia; F/A-18 and F-35A"
+    }
   ],
   "joint": [
-    { "name": "Camp Pendleton", "lat": 33.230, "lon": -117.353, "country": "US", "operator": "United States", "notes": "Major USMC base; 1st Marine Expeditionary Force" },
-    { "name": "Marine Corps Air Station Iwakuni", "lat": 34.146, "lon": 132.236, "country": "JP", "operator": "United States", "notes": "USMC air station; F-35B, F/A-18" },
-    { "name": "Marine Corps Base Camp Butler", "lat": 26.456, "lon": 127.755, "country": "JP", "operator": "United States", "notes": "III Marine Expeditionary Force, Okinawa" },
-    { "name": "Joint Base Pearl Harbor-Hickam", "lat": 21.345, "lon": -157.951, "country": "US", "operator": "United States", "notes": "USINDOPACOM headquarters; Navy-Air Force joint" },
-    { "name": "Joint Base Andrews", "lat": 38.811, "lon": -76.867, "country": "US", "operator": "United States", "notes": "Air Force One; presidential airlift" },
-    { "name": "Joint Base Elmendorf-Richardson", "lat": 61.250, "lon": -149.807, "country": "US", "operator": "United States", "notes": "Alaskan Command; F-22 and Army" },
-    { "name": "Peterson Space Force Base", "lat": 38.824, "lon": -104.700, "country": "US", "operator": "United States", "notes": "US Space Command; NORAD" },
-    { "name": "Thule Air Base (Pituffik Space Base)", "lat": 76.531, "lon": -68.703, "country": "GL", "operator": "United States", "notes": "Northernmost US base; BMD radar" },
-    { "name": "Keflavik (Naval Air Station)", "lat": 63.985, "lon": -22.606, "country": "IS", "operator": "NATO", "notes": "NATO air policing; GIUK gap surveillance" },
-    { "name": "Souda Bay", "lat": 35.484, "lon": 24.119, "country": "GR", "operator": "United States/Greece", "notes": "NATO naval and air base, Crete" },
-    { "name": "Djibouti (Combined Forces)", "lat": 11.549, "lon": 43.150, "country": "DJ", "operator": "Multiple", "notes": "French, US, Chinese, Japanese bases co-located" },
-    { "name": "RAAF Base Darwin", "lat": -12.415, "lon": 130.873, "country": "AU", "operator": "Australia", "notes": "Joint ADF base; USMC rotational force" },
-    { "name": "Pine Gap", "lat": -23.799, "lon": 133.737, "country": "AU", "operator": "Australia/United States", "notes": "Joint intelligence facility; satellite ground station" },
-    { "name": "Fiery Cross Reef", "lat": 9.549, "lon": 112.892, "country": "CN", "operator": "China", "notes": "Artificial island; airstrip, radar, missiles; SCS" },
-    { "name": "Subi Reef", "lat": 10.928, "lon": 114.084, "country": "CN", "operator": "China", "notes": "Artificial island; airstrip and port; SCS" },
-    { "name": "Mischief Reef", "lat": 9.901, "lon": 115.535, "country": "CN", "operator": "China", "notes": "Artificial island; military installations; SCS" },
-    { "name": "Woody Island (Yongxing)", "lat": 16.833, "lon": 112.340, "country": "CN", "operator": "China", "notes": "Paracel Islands; airstrip and garrison" },
-    { "name": "Obock (Djibouti)", "lat": 11.968, "lon": 43.287, "country": "DJ", "operator": "Japan", "notes": "JSDF overseas base; anti-piracy operations" },
-    { "name": "King Fahd Air Base", "lat": 26.325, "lon": 49.813, "country": "SA", "operator": "Saudi Arabia", "notes": "RSAF and joint operations; Eastern Province" },
-    { "name": "Prince Sultan Air Base", "lat": 24.063, "lon": 47.580, "country": "SA", "operator": "Saudi Arabia", "notes": "Joint Saudi-US operations; CENTCOM-forward" },
-    { "name": "Bagram Airfield", "lat": 34.946, "lon": 69.265, "country": "AF", "operator": "Afghanistan", "notes": "Former major coalition base; largest in Afghanistan" },
-    { "name": "Hmeimim-Tartus Complex", "lat": 35.400, "lon": 35.950, "country": "SY", "operator": "Russia", "notes": "Combined Russian air and naval presence in Syria" },
-    { "name": "Changi Naval Base / Air Base", "lat": 1.381, "lon": 104.009, "country": "SG", "operator": "Singapore", "notes": "SAF joint naval-air facility; Changi East" },
-    { "name": "Hualien Air Force Base", "lat": 24.024, "lon": 121.618, "country": "TW", "operator": "Taiwan", "notes": "ROCAF F-16V wing; eastern coast defense" },
-    { "name": "Zuoying Naval Base / Gangshan Air Base", "lat": 22.700, "lon": 120.265, "country": "TW", "operator": "Taiwan", "notes": "ROC Navy Southern Fleet and ROCAF wing" },
-    { "name": "Cam Ranh Bay", "lat": 11.996, "lon": 109.215, "country": "VN", "operator": "Vietnam", "notes": "Major Vietnamese naval and air base" },
-    { "name": "Subic Bay / Clark", "lat": 14.794, "lon": 120.271, "country": "PH", "operator": "Philippines", "notes": "Philippine military; EDCA site for US forces" },
-    { "name": "Anadyr (Ugolny) Air Base", "lat": 64.735, "lon": 177.741, "country": "RU", "operator": "Russia", "notes": "Joint strategic bomber and interceptor base, Chukotka" },
-    { "name": "Assab Naval/Air Base", "lat": 13.069, "lon": 42.645, "country": "ER", "operator": "United Arab Emirates", "notes": "UAE forward base on Red Sea coast, Eritrea" },
-    { "name": "Berbera Base", "lat": 10.389, "lon": 45.035, "country": "SO", "operator": "United Arab Emirates", "notes": "UAE-operated base in Somaliland; port and airstrip" }
+    {
+      "name": "Camp Pendleton",
+      "lat": 33.23,
+      "lon": -117.353,
+      "country": "US",
+      "operator": "United States",
+      "notes": "Major USMC base; 1st Marine Expeditionary Force"
+    },
+    {
+      "name": "Marine Corps Air Station Iwakuni",
+      "lat": 34.146,
+      "lon": 132.236,
+      "country": "JP",
+      "operator": "United States",
+      "notes": "USMC air station; F-35B, F/A-18"
+    },
+    {
+      "name": "Marine Corps Base Camp Butler",
+      "lat": 26.456,
+      "lon": 127.755,
+      "country": "JP",
+      "operator": "United States",
+      "notes": "III Marine Expeditionary Force, Okinawa"
+    },
+    {
+      "name": "Joint Base Pearl Harbor-Hickam",
+      "lat": 21.345,
+      "lon": -157.951,
+      "country": "US",
+      "operator": "United States",
+      "notes": "USINDOPACOM headquarters; Navy-Air Force joint"
+    },
+    {
+      "name": "Joint Base Andrews",
+      "lat": 38.811,
+      "lon": -76.867,
+      "country": "US",
+      "operator": "United States",
+      "notes": "Air Force One; presidential airlift"
+    },
+    {
+      "name": "Joint Base Elmendorf-Richardson",
+      "lat": 61.25,
+      "lon": -149.807,
+      "country": "US",
+      "operator": "United States",
+      "notes": "Alaskan Command; F-22 and Army"
+    },
+    {
+      "name": "Peterson Space Force Base",
+      "lat": 38.824,
+      "lon": -104.7,
+      "country": "US",
+      "operator": "United States",
+      "notes": "US Space Command; NORAD"
+    },
+    {
+      "name": "Thule Air Base (Pituffik Space Base)",
+      "lat": 76.531,
+      "lon": -68.703,
+      "country": "GL",
+      "operator": "United States",
+      "notes": "Northernmost US base; BMD radar"
+    },
+    {
+      "name": "Keflavik (Naval Air Station)",
+      "lat": 63.985,
+      "lon": -22.606,
+      "country": "IS",
+      "operator": "NATO",
+      "notes": "NATO air policing; GIUK gap surveillance"
+    },
+    {
+      "name": "Souda Bay",
+      "lat": 35.484,
+      "lon": 24.119,
+      "country": "GR",
+      "operator": "United States/Greece",
+      "notes": "NATO naval and air base, Crete"
+    },
+    {
+      "name": "Djibouti (Combined Forces)",
+      "lat": 11.549,
+      "lon": 43.15,
+      "country": "DJ",
+      "operator": "Multiple",
+      "notes": "French, US, Chinese, Japanese bases co-located"
+    },
+    {
+      "name": "RAAF Base Darwin",
+      "lat": -12.415,
+      "lon": 130.873,
+      "country": "AU",
+      "operator": "Australia",
+      "notes": "Joint ADF base; USMC rotational force"
+    },
+    {
+      "name": "Pine Gap",
+      "lat": -23.799,
+      "lon": 133.737,
+      "country": "AU",
+      "operator": "Australia/United States",
+      "notes": "Joint intelligence facility; satellite ground station"
+    },
+    {
+      "name": "Fiery Cross Reef",
+      "lat": 9.549,
+      "lon": 112.892,
+      "country": "CN",
+      "operator": "China",
+      "notes": "Artificial island; airstrip, radar, missiles; SCS"
+    },
+    {
+      "name": "Subi Reef",
+      "lat": 10.928,
+      "lon": 114.084,
+      "country": "CN",
+      "operator": "China",
+      "notes": "Artificial island; airstrip and port; SCS"
+    },
+    {
+      "name": "Mischief Reef",
+      "lat": 9.901,
+      "lon": 115.535,
+      "country": "CN",
+      "operator": "China",
+      "notes": "Artificial island; military installations; SCS"
+    },
+    {
+      "name": "Woody Island (Yongxing)",
+      "lat": 16.833,
+      "lon": 112.34,
+      "country": "CN",
+      "operator": "China",
+      "notes": "Paracel Islands; airstrip and garrison"
+    },
+    {
+      "name": "Obock (Djibouti)",
+      "lat": 11.968,
+      "lon": 43.287,
+      "country": "DJ",
+      "operator": "Japan",
+      "notes": "JSDF overseas base; anti-piracy operations"
+    },
+    {
+      "name": "King Fahd Air Base",
+      "lat": 26.325,
+      "lon": 49.813,
+      "country": "SA",
+      "operator": "Saudi Arabia",
+      "notes": "RSAF and joint operations; Eastern Province"
+    },
+    {
+      "name": "Prince Sultan Air Base",
+      "lat": 24.063,
+      "lon": 47.58,
+      "country": "SA",
+      "operator": "Saudi Arabia",
+      "notes": "Joint Saudi-US operations; CENTCOM-forward"
+    },
+    {
+      "name": "Bagram Airfield",
+      "lat": 34.946,
+      "lon": 69.265,
+      "country": "AF",
+      "operator": "Afghanistan",
+      "notes": "Former major coalition base; largest in Afghanistan"
+    },
+    {
+      "name": "Hmeimim-Tartus Complex",
+      "lat": 35.4,
+      "lon": 35.95,
+      "country": "SY",
+      "operator": "Russia",
+      "notes": "Combined Russian air and naval presence in Syria"
+    },
+    {
+      "name": "Changi Naval Base / Air Base",
+      "lat": 1.381,
+      "lon": 104.009,
+      "country": "SG",
+      "operator": "Singapore",
+      "notes": "SAF joint naval-air facility; Changi East"
+    },
+    {
+      "name": "Hualien Air Force Base",
+      "lat": 24.024,
+      "lon": 121.618,
+      "country": "TW",
+      "operator": "Taiwan",
+      "notes": "ROCAF F-16V wing; eastern coast defense"
+    },
+    {
+      "name": "Zuoying Naval Base / Gangshan Air Base",
+      "lat": 22.7,
+      "lon": 120.265,
+      "country": "TW",
+      "operator": "Taiwan",
+      "notes": "ROC Navy Southern Fleet and ROCAF wing"
+    },
+    {
+      "name": "Cam Ranh Bay",
+      "lat": 11.996,
+      "lon": 109.215,
+      "country": "VN",
+      "operator": "Vietnam",
+      "notes": "Major Vietnamese naval and air base"
+    },
+    {
+      "name": "Subic Bay / Clark",
+      "lat": 14.794,
+      "lon": 120.271,
+      "country": "PH",
+      "operator": "Philippines",
+      "notes": "Philippine military; EDCA site for US forces"
+    },
+    {
+      "name": "Anadyr (Ugolny) Air Base",
+      "lat": 64.735,
+      "lon": 177.741,
+      "country": "RU",
+      "operator": "Russia",
+      "notes": "Joint strategic bomber and interceptor base, Chukotka"
+    },
+    {
+      "name": "Assab Naval/Air Base",
+      "lat": 13.069,
+      "lon": 42.645,
+      "country": "ER",
+      "operator": "United Arab Emirates",
+      "notes": "UAE forward base on Red Sea coast, Eritrea"
+    },
+    {
+      "name": "Berbera Base",
+      "lat": 10.389,
+      "lon": 45.035,
+      "country": "SO",
+      "operator": "United Arab Emirates",
+      "notes": "UAE-operated base in Somaliland; port and airstrip"
+    }
   ]
 }

@@ -5,6 +5,7 @@
   "description": "Radar contacts on Arctic approach. Evaluate threat and decide response.",
 
   "camera": { "lon": -100, "lat": 62, "alt": 12000000 },
+  "region": { "latMin": 35, "latMax": 85, "lonMin": -130, "lonMax": -30 },
   "duration_ticks": 8,
   "tick_interval_ms": 6000,
 

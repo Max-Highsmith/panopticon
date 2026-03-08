@@ -98,7 +98,7 @@ export function createSatelliteEntities(viewer, activeScenario, atDate) {
         label: { text: sat.name, font: '9px Courier New', fillColor: Cesium.Color.fromCssColorString('#ffaa00'), outlineColor: Cesium.Color.BLACK, outlineWidth: 2, style: Cesium.LabelStyle.FILL_AND_OUTLINE, pixelOffset: new Cesium.Cartesian2(8, -3), disableDepthTestDistance: 0, distanceDisplayCondition: new Cesium.DistanceDisplayCondition(0, 15_000_000), scale: 0.8 },
       });
       entity.show = isSatelliteVisible(viewer, position) && layers.satellites;
-      entity.acData = { hex: sat.noradId, r: sat.name, t: 'SATELLITE', flight: sat.name, alt_baro: Math.round(gd.height * 3280.84), gs: null, track: null };
+      entity.acData = { hex: sat.noradId, r: sat.name, t: 'SATELLITE', flight: sat.name, alt_baro: Math.round(gd.height * 3280.84), gs: null, track: null, _view: 'satellite' };
 
       const dLon = Math.abs(lon - centerLon);
       const dLat = Math.abs(lat - centerLat);

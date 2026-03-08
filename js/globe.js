@@ -37,9 +37,9 @@ export function createViewer(containerId) {
 // --- Layer State ---
 
 export const layers = {
-  military: true,
-  commercial: true,
-  satellites: true,
+  military: false,
+  commercial: false,
+  satellites: false,
   ships: false,
   pokemon: false,
   mines: false,
@@ -51,6 +51,41 @@ export const layers = {
   arcticmining: false,
   rareearth: false,
   drilling: false,
+  powerplants: false,
+  nuclearplants: false,
+  refineries: false,
+  platforms: false,
+  radar: false,
+  strategicnuclear: false,
+  volcanoes: false,
+  cables: false,
+  pipelines: false,
+  traderoutes: false,
+  arcticroutes: false,
+  electricalgrid: false,
+  chokepoints: false,
+  fisheries: false,
+  earthquakes: false,
+  wildfires: false,
+  whales: false,
+  seaturtles: false,
+  birds: false,
+  elephants: false,
+  spacedebris: false,
+  oceancurrents: false,
+  cargoroutes: false,
+  spaceports: false,
+  seaice: false,
+  lightning: false,
+  ports: false,
+  commodityflows: false,
+  ixps: false,
+  oceantemp: false,
+  meteors: false,
+  cosmic: false,
+  ionosphere: false,
+  fishingfleets: false,
+  arcticdeposits: false,
 };
 
 // Entity registries — each maps an ID to a record with { entity, ... }
@@ -70,6 +105,41 @@ export const entityMaps = {
   arcticmining: new Map(),
   rareearth:    new Map(),
   drilling:     new Map(),
+  powerplants:     new Map(),
+  nuclearplants:   new Map(),
+  refineries:      new Map(),
+  platforms:       new Map(),
+  radar:           new Map(),
+  strategicnuclear:new Map(),
+  volcanoes:       new Map(),
+  cables:          new Map(),
+  pipelines:       new Map(),
+  traderoutes:     new Map(),
+  arcticroutes:    new Map(),
+  electricalgrid:  new Map(),
+  chokepoints:     new Map(),
+  fisheries:       new Map(),
+  earthquakes:     new Map(),
+  wildfires:       new Map(),
+  whales:          new Map(),
+  seaturtles:      new Map(),
+  birds:           new Map(),
+  elephants:       new Map(),
+  spacedebris:     new Map(),
+  oceancurrents:   new Map(),
+  cargoroutes:     new Map(),
+  spaceports:      new Map(),
+  seaice:          new Map(),
+  lightning:       new Map(),
+  ports:           new Map(),
+  commodityflows:  new Map(),
+  ixps:            new Map(),
+  oceantemp:       new Map(),
+  meteors:         new Map(),
+  cosmic:          new Map(),
+  ionosphere:      new Map(),
+  fishingfleets:   new Map(),
+  arcticdeposits:  new Map(),
 };
 
 // --- Layer Operations ---
@@ -97,8 +167,8 @@ export function toggleLayer(viewer, layer, currentMode, enabled) {
     if (record.footprintEntities) record.footprintEntities.forEach(e => e.show = layers[layer]);
   }
 
-  // Replay mode: military/commercial toggle controls respective entities
-  if (currentMode === 'replay' && (layer === 'military' || layer === 'commercial')) {
+  // Playback mode: military/commercial toggle controls respective entities
+  if (currentMode === 'playback' && (layer === 'military' || layer === 'commercial')) {
     for (const [, record] of entityMaps.replay) {
       const isMil = record.entity.acData && record.entity.acData.mil;
       if ((layer === 'military' && isMil) || (layer === 'commercial' && !isMil)) {

@@ -1,0 +1,200 @@
+{
+  "_source": {
+    "description": "Nuclear power plants worldwide (active and decommissioned)",
+    "origin": "IAEA Power Reactor Information System (PRIS) \u2014 pris.iaea.org. Supplemented by World Nuclear Association reactor database.",
+    "retrieved": "2026-03-06",
+    "license": "IAEA PRIS: public access; WNA: fair use summary",
+    "notes": "Coordinates from IAEA PRIS station profiles."
+  },
+  "active": [
+    {
+      "name": "Kashiwazaki-Kariwa",
+      "lon": 138.6,
+      "lat": 37.43,
+      "country": "Japan",
+      "operator": "TEPCO",
+      "reactors": 7,
+      "capacity_mw": 7965,
+      "notes": "World's largest nuclear plant"
+    },
+    {
+      "name": "Bruce Nuclear",
+      "lon": -81.6,
+      "lat": 44.32,
+      "country": "Canada",
+      "operator": "Bruce Power",
+      "reactors": 8,
+      "capacity_mw": 6384
+    },
+    {
+      "name": "Zaporizhzhia NPP",
+      "lon": 34.59,
+      "lat": 47.51,
+      "country": "Ukraine",
+      "operator": "Energoatom",
+      "reactors": 6,
+      "capacity_mw": 5700,
+      "notes": "Largest in Europe // Conflict zone"
+    },
+    {
+      "name": "Hanul Nuclear",
+      "lon": 129.38,
+      "lat": 37.09,
+      "country": "South Korea",
+      "operator": "KHNP",
+      "reactors": 6,
+      "capacity_mw": 5928
+    },
+    {
+      "name": "Hanbit Nuclear",
+      "lon": 126.42,
+      "lat": 35.41,
+      "country": "South Korea",
+      "operator": "KHNP",
+      "reactors": 6,
+      "capacity_mw": 5875
+    },
+    {
+      "name": "Gravelines Nuclear",
+      "lon": 2.11,
+      "lat": 51.01,
+      "country": "France",
+      "operator": "EDF",
+      "reactors": 6,
+      "capacity_mw": 5460,
+      "notes": "Largest in Western Europe"
+    },
+    {
+      "name": "Palo Verde Nuclear",
+      "lon": -112.86,
+      "lat": 33.39,
+      "country": "USA",
+      "operator": "APS",
+      "reactors": 3,
+      "capacity_mw": 3937,
+      "notes": "Largest in USA"
+    },
+    {
+      "name": "Cattenom Nuclear",
+      "lon": 6.22,
+      "lat": 49.41,
+      "country": "France",
+      "operator": "EDF",
+      "reactors": 4,
+      "capacity_mw": 5200
+    },
+    {
+      "name": "Paluel Nuclear",
+      "lon": 0.63,
+      "lat": 49.86,
+      "country": "France",
+      "operator": "EDF",
+      "reactors": 4,
+      "capacity_mw": 5320
+    },
+    {
+      "name": "Taishan Nuclear",
+      "lon": 112.98,
+      "lat": 21.91,
+      "country": "China",
+      "operator": "TNPJVC",
+      "reactors": 2,
+      "capacity_mw": 3400,
+      "notes": "EPR reactors"
+    },
+    {
+      "name": "Hinkley Point C",
+      "lon": -3.13,
+      "lat": 51.21,
+      "country": "UK",
+      "operator": "EDF",
+      "reactors": 2,
+      "capacity_mw": 3260,
+      "notes": "Under construction"
+    },
+    {
+      "name": "Doel Nuclear",
+      "lon": 4.26,
+      "lat": 51.33,
+      "country": "Belgium",
+      "operator": "Electrabel",
+      "reactors": 4,
+      "capacity_mw": 2911
+    },
+    {
+      "name": "Ringhals Nuclear",
+      "lon": 12.11,
+      "lat": 57.26,
+      "country": "Sweden",
+      "operator": "Vattenfall",
+      "reactors": 3,
+      "capacity_mw": 3956
+    },
+    {
+      "name": "Kudankulam Nuclear",
+      "lon": 77.71,
+      "lat": 8.17,
+      "country": "India",
+      "operator": "NPCIL",
+      "reactors": 2,
+      "capacity_mw": 2000
+    },
+    {
+      "name": "Barakah Nuclear",
+      "lon": 52.19,
+      "lat": 23.96,
+      "country": "UAE",
+      "operator": "ENEC",
+      "reactors": 4,
+      "capacity_mw": 5600,
+      "notes": "First Arab nuclear plant"
+    },
+    {
+      "name": "Olkiluoto Nuclear",
+      "lon": 21.45,
+      "lat": 61.24,
+      "country": "Finland",
+      "operator": "TVO",
+      "reactors": 3,
+      "capacity_mw": 4300,
+      "notes": "Includes EPR reactor"
+    },
+    {
+      "name": "Vogtle Nuclear",
+      "lon": -81.76,
+      "lat": 33.14,
+      "country": "USA",
+      "operator": "Southern Nuclear",
+      "reactors": 4,
+      "capacity_mw": 4600,
+      "notes": "Newest US nuclear units"
+    },
+    {
+      "name": "Flamanville Nuclear",
+      "lon": -1.88,
+      "lat": 49.54,
+      "country": "France",
+      "operator": "EDF",
+      "reactors": 3,
+      "capacity_mw": 3630
+    },
+    {
+      "name": "Leningrad II Nuclear",
+      "lon": 29.07,
+      "lat": 59.84,
+      "country": "Russia",
+      "operator": "Rosenergoatom",
+      "reactors": 2,
+      "capacity_mw": 2400
+    },
+    {
+      "name": "Shin-Kori Nuclear",
+      "lon": 129.31,
+      "lat": 35.32,
+      "country": "South Korea",
+      "operator": "KHNP",
+      "reactors": 4,
+      "capacity_mw": 5600
+    }
+  ]
+}

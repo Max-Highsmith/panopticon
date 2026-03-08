@@ -1,0 +1,146 @@
+{
+  "_source": {
+    "description": "Significant recent earthquakes and seismic zones",
+    "origin": "USGS Earthquake Hazards Program (earthquake.usgs.gov) significant earthquake archive and Significant Earthquake Database (NOAA/NCEI).",
+    "retrieved": "2026-03-06",
+    "license": "USGS/NOAA: public domain",
+    "notes": "Notable events from USGS catalog. Not a real-time feed."
+  },
+  "significant": [
+    {
+      "name": "2024 Noto Earthquake",
+      "lon": 136.85,
+      "lat": 37.5,
+      "country": "Japan",
+      "magnitude": 7.5,
+      "depth_km": 10,
+      "notes": "Jan 1 2024 // Ishikawa Prefecture"
+    },
+    {
+      "name": "2023 Turkey-Syria Earthquake",
+      "lon": 37.22,
+      "lat": 37.17,
+      "country": "Turkey/Syria",
+      "magnitude": 7.8,
+      "depth_km": 18,
+      "notes": "Feb 6 2023 // 59,000+ deaths"
+    },
+    {
+      "name": "2023 Morocco Earthquake",
+      "lon": -8.39,
+      "lat": 31.06,
+      "country": "Morocco",
+      "magnitude": 6.8,
+      "depth_km": 26,
+      "notes": "Sep 8 2023 // Atlas Mountains"
+    },
+    {
+      "name": "2023 Afghanistan Earthquake",
+      "lon": 62.1,
+      "lat": 34.51,
+      "country": "Afghanistan",
+      "magnitude": 6.3,
+      "depth_km": 14,
+      "notes": "Oct 7 2023 // Herat Province"
+    },
+    {
+      "name": "2024 Taiwan Earthquake",
+      "lon": 121.56,
+      "lat": 23.82,
+      "country": "Taiwan",
+      "magnitude": 7.4,
+      "depth_km": 35,
+      "notes": "Apr 3 2024 // Hualien"
+    },
+    {
+      "name": "San Andreas Fault Zone",
+      "lon": -119.5,
+      "lat": 35.5,
+      "country": "USA",
+      "magnitude": 0,
+      "depth_km": 0,
+      "notes": "High seismic risk zone // California"
+    },
+    {
+      "name": "Cascadia Subduction Zone",
+      "lon": -124.5,
+      "lat": 45.0,
+      "country": "USA/Canada",
+      "magnitude": 0,
+      "depth_km": 0,
+      "notes": "Overdue M9+ zone // Pacific NW"
+    },
+    {
+      "name": "Nankai Trough Zone",
+      "lon": 135.0,
+      "lat": 33.0,
+      "country": "Japan",
+      "magnitude": 0,
+      "depth_km": 0,
+      "notes": "Expected M8-9 zone // Southern Japan"
+    },
+    {
+      "name": "New Madrid Seismic Zone",
+      "lon": -89.5,
+      "lat": 36.5,
+      "country": "USA",
+      "magnitude": 0,
+      "depth_km": 0,
+      "notes": "Central US seismic zone"
+    },
+    {
+      "name": "Alpide Belt (Himalaya)",
+      "lon": 86.93,
+      "lat": 27.99,
+      "country": "Nepal/India/China",
+      "magnitude": 0,
+      "depth_km": 0,
+      "notes": "Active collision zone // High seismic risk"
+    },
+    {
+      "name": "Chilean Subduction Zone",
+      "lon": -72.5,
+      "lat": -35.0,
+      "country": "Chile",
+      "magnitude": 0,
+      "depth_km": 0,
+      "notes": "Most seismically active country"
+    },
+    {
+      "name": "Ring of Fire - Philippines",
+      "lon": 125.0,
+      "lat": 8.0,
+      "country": "Philippines",
+      "magnitude": 0,
+      "depth_km": 0,
+      "notes": "Philippine Trench subduction"
+    },
+    {
+      "name": "East African Rift",
+      "lon": 36.0,
+      "lat": -2.0,
+      "country": "Kenya/Tanzania",
+      "magnitude": 0,
+      "depth_km": 0,
+      "notes": "Continental rifting zone"
+    },
+    {
+      "name": "Hayward Fault",
+      "lon": -122.1,
+      "lat": 37.67,
+      "country": "USA",
+      "magnitude": 0,
+      "depth_km": 0,
+      "notes": "Highest risk urban fault // San Francisco Bay"
+    },
+    {
+      "name": "Istanbul Seismic Gap",
+      "lon": 29.0,
+      "lat": 40.8,
+      "country": "Turkey",
+      "magnitude": 0,
+      "depth_km": 0,
+      "notes": "North Anatolian Fault // Expected M7+"
+    }
+  ]
+}

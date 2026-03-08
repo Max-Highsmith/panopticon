@@ -52,11 +52,9 @@ function setState(key, updates) {
 // --- Pin Bar ---
 
 function renderPinBar() {
-  const container = document.getElementById('layer-toggles');
+  const container = document.getElementById('layer-pins');
   if (!container) return;
 
-  // Remove all children except the toggle button
-  const btn = document.getElementById('layer-panel-toggle');
   while (container.firstChild) container.removeChild(container.firstChild);
 
   // Add pinned layers
@@ -96,8 +94,8 @@ function renderPinBar() {
     container.appendChild(label);
   }
 
-  // Re-add the toggle button
-  if (btn) container.appendChild(btn);
+  // Show/hide the pin tray based on whether anything is pinned
+  updatePinTrayVisibility();
 }
 
 // --- Dropdown Panel ---
@@ -239,6 +237,16 @@ function syncPanelRow(key) {
   if (barChk) barChk.checked = state[key]?.enabled || false;
 }
 
+// --- Pin Tray Visibility ---
+
+export function updatePinTrayVisibility() {
+  const tray = document.getElementById('pin-tray');
+  if (!tray) return;
+  const hasLayerPins = document.getElementById('layer-pins')?.children.length > 0;
+  const hasCityPins = document.getElementById('city-pins')?.children.length > 0;
+  tray.style.display = (hasLayerPins || hasCityPins) ? 'flex' : 'none';
+}
+
 // --- Public API ---
 
 export function openLayerPanel() {
@@ -246,6 +254,7 @@ export function openLayerPanel() {
   if (!panel) return;
   _panelOpen = !_panelOpen;
   panel.style.display = _panelOpen ? 'block' : 'none';
+  document.getElementById('layer-panel-toggle')?.classList.toggle('open', _panelOpen);
   if (_panelOpen) {
     buildPanel(); // rebuild to reflect latest state
     const search = document.getElementById('layer-search');
@@ -256,6 +265,7 @@ export function openLayerPanel() {
 export function closeLayerPanel() {
   const panel = document.getElementById('layer-panel');
   if (panel) panel.style.display = 'none';
+  document.getElementById('layer-panel-toggle')?.classList.remove('open');
   _panelOpen = false;
 }
 
@@ -263,7 +273,7 @@ export function refreshCatalog() {
   // Re-init state for any new catalog entries
   for (const entry of getCatalog()) {
     if (!state[entry.key]) {
-      state[entry.key] = { enabled: entry.defaultOn || false, pinned: entry.defaultPinned || false };
+      state[entry.key] = { enabled: entry.defaultOn || false, pinned: false };
     }
   }
   renderPinBar();
@@ -286,7 +296,7 @@ export function initLayerSelector({ toggleFn }) {
   const catalog = getCatalog();
 
   for (const entry of catalog) {
-    const pinned = savedPins ? savedPins.includes(entry.key) : (entry.defaultPinned || false);
+    const pinned = savedPins ? savedPins.includes(entry.key) : false;
     state[entry.key] = {
       enabled: entry.defaultOn || false,
       pinned,

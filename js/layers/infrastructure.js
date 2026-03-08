@@ -6,6 +6,7 @@
 
 import { DISPLAY } from '../config.js';
 import { createDataLayer } from './datalayer.js';
+import { registerLayerLoader } from '../layerregistry.js';
 
 // --- Datacenters ---
 
@@ -21,6 +22,8 @@ const infraLayer = createDataLayer({
     datacenters: { icon: 'datacenter', color: '#ff8800', label: 'DATACENTER' },
   },
 });
+
+registerLayerLoader('infra', { load: infraLayer.load, flyTo: infraLayer.FLY_TO, reset: infraLayer.reset, dataUrl: 'data/infrastructure.json' });
 
 export const fetchInfra    = infraLayer.load;
 export const isInfraLoaded = infraLayer.isLoaded;
@@ -43,6 +46,8 @@ const nuclearLayer = createDataLayer({
     nuclear_tests: { icon: 'nuclear', color: '#ff2222', label: 'NUCLEAR TEST SITE' },
   },
 });
+
+registerLayerLoader('nuclear', { load: nuclearLayer.load, flyTo: nuclearLayer.FLY_TO, reset: nuclearLayer.reset, dataUrl: 'data/infrastructure.json' });
 
 export const fetchNuclear    = nuclearLayer.load;
 export const isNuclearLoaded = nuclearLayer.isLoaded;

@@ -1,27 +1,167 @@
 {
+  "_source": {
+    "description": "Rare earth element mining and deposit sites",
+    "origin": "USGS Mineral Commodity Summaries (Rare Earths chapter), USGS Mineral Resources Data System (MRDS), and company disclosures (MP Materials, Lynas, etc.).",
+    "retrieved": "2026-03-05",
+    "license": "USGS: public domain",
+    "notes": "Major REE deposits. Coordinates from USGS MRDS and company filings."
+  },
   "heavy_rare_earth": [
-    { "name": "Kvanefjeld", "lat": 60.97, "lon": -46.05, "country": "Greenland", "operator": "Greenland Minerals", "notes": "REE + uranium + zinc, one of world's largest deposits" },
-    { "name": "Norra Kärr", "lat": 58.09, "lon": 14.51, "country": "Sweden", "operator": "Leading Edge Materials", "notes": "Heavy REE — dysprosium, yttrium; one of few outside China" },
-    { "name": "Tomtor", "lat": 71.15, "lon": 116.98, "country": "Russia", "operator": "TriArk Mining", "notes": "Niobium + REE, Yakutia; extremely high grades" },
-    { "name": "Lovozero", "lat": 67.89, "lon": 34.78, "country": "Russia", "operator": "Lovozersky GOK", "notes": "Loparite ore — lanthanum, cerium, neodymium; Kola Peninsula" },
-    { "name": "Strange Lake", "lat": 56.32, "lon": -64.15, "country": "Canada", "operator": "Quest Rare Minerals", "notes": "Heavy REE deposit, Labrador/Quebec border" },
-    { "name": "Nechalacho", "lat": 62.14, "lon": -112.57, "country": "Canada", "operator": "Vital Metals", "notes": "Canada's first rare earth producer, NWT; bastnäsite ore" },
-    { "name": "Round Top Mountain", "lat": 31.36, "lon": -105.02, "country": "USA", "operator": "USA Rare Earth", "notes": "Heavy REE rhyolite deposit, Texas; critical minerals" }
+    {
+      "name": "Kvanefjeld",
+      "lat": 60.97,
+      "lon": -46.05,
+      "country": "Greenland",
+      "operator": "Greenland Minerals",
+      "notes": "REE + uranium + zinc, one of world's largest deposits"
+    },
+    {
+      "name": "Norra K\u00e4rr",
+      "lat": 58.09,
+      "lon": 14.51,
+      "country": "Sweden",
+      "operator": "Leading Edge Materials",
+      "notes": "Heavy REE \u2014 dysprosium, yttrium; one of few outside China"
+    },
+    {
+      "name": "Tomtor",
+      "lat": 71.15,
+      "lon": 116.98,
+      "country": "Russia",
+      "operator": "TriArk Mining",
+      "notes": "Niobium + REE, Yakutia; extremely high grades"
+    },
+    {
+      "name": "Lovozero",
+      "lat": 67.89,
+      "lon": 34.78,
+      "country": "Russia",
+      "operator": "Lovozersky GOK",
+      "notes": "Loparite ore \u2014 lanthanum, cerium, neodymium; Kola Peninsula"
+    },
+    {
+      "name": "Strange Lake",
+      "lat": 56.32,
+      "lon": -64.15,
+      "country": "Canada",
+      "operator": "Quest Rare Minerals",
+      "notes": "Heavy REE deposit, Labrador/Quebec border"
+    },
+    {
+      "name": "Nechalacho",
+      "lat": 62.14,
+      "lon": -112.57,
+      "country": "Canada",
+      "operator": "Vital Metals",
+      "notes": "Canada's first rare earth producer, NWT; bastn\u00e4site ore"
+    },
+    {
+      "name": "Round Top Mountain",
+      "lat": 31.36,
+      "lon": -105.02,
+      "country": "USA",
+      "operator": "USA Rare Earth",
+      "notes": "Heavy REE rhyolite deposit, Texas; critical minerals"
+    }
   ],
   "light_rare_earth": [
-    { "name": "Mountain Pass", "lat": 35.48, "lon": -115.53, "country": "USA", "operator": "MP Materials", "notes": "Only active US rare earth mine; cerium, lanthanum, neodymium" },
-    { "name": "Bear Lodge", "lat": 44.49, "lon": -104.43, "country": "USA", "operator": "Rare Element Resources", "notes": "REE deposit in Wyoming Black Hills; NdPr focus" },
-    { "name": "Wicheeda", "lat": 54.85, "lon": -122.05, "country": "Canada", "operator": "Defense Metals", "notes": "Light REE carbonatite deposit, British Columbia" },
-    { "name": "Sarfartoq", "lat": 66.48, "lon": -51.28, "country": "Greenland", "operator": "Hudson Resources", "notes": "Carbonatite REE deposit, near Kangerlussuaq" },
-    { "name": "Fen Complex", "lat": 59.28, "lon": 9.30, "country": "Norway", "operator": "REEtec", "notes": "Carbonatite REE, Telemark; European supply potential" },
-    { "name": "Sokli", "lat": 67.80, "lon": 29.30, "country": "Finland", "operator": "Yara International", "notes": "Phosphate + REE carbonatite, Finnish Lapland" },
-    { "name": "Koresnaya", "lat": 61.72, "lon": 32.00, "country": "Russia", "operator": "Eurasia Mining", "notes": "REE + PGM deposit, Karelia" }
+    {
+      "name": "Mountain Pass",
+      "lat": 35.48,
+      "lon": -115.53,
+      "country": "USA",
+      "operator": "MP Materials",
+      "notes": "Only active US rare earth mine; cerium, lanthanum, neodymium"
+    },
+    {
+      "name": "Bear Lodge",
+      "lat": 44.49,
+      "lon": -104.43,
+      "country": "USA",
+      "operator": "Rare Element Resources",
+      "notes": "REE deposit in Wyoming Black Hills; NdPr focus"
+    },
+    {
+      "name": "Wicheeda",
+      "lat": 54.85,
+      "lon": -122.05,
+      "country": "Canada",
+      "operator": "Defense Metals",
+      "notes": "Light REE carbonatite deposit, British Columbia"
+    },
+    {
+      "name": "Sarfartoq",
+      "lat": 66.48,
+      "lon": -51.28,
+      "country": "Greenland",
+      "operator": "Hudson Resources",
+      "notes": "Carbonatite REE deposit, near Kangerlussuaq"
+    },
+    {
+      "name": "Fen Complex",
+      "lat": 59.28,
+      "lon": 9.3,
+      "country": "Norway",
+      "operator": "REEtec",
+      "notes": "Carbonatite REE, Telemark; European supply potential"
+    },
+    {
+      "name": "Sokli",
+      "lat": 67.8,
+      "lon": 29.3,
+      "country": "Finland",
+      "operator": "Yara International",
+      "notes": "Phosphate + REE carbonatite, Finnish Lapland"
+    },
+    {
+      "name": "Koresnaya",
+      "lat": 61.72,
+      "lon": 32.0,
+      "country": "Russia",
+      "operator": "Eurasia Mining",
+      "notes": "REE + PGM deposit, Karelia"
+    }
   ],
   "strategic_minerals": [
-    { "name": "Kiruna Mine", "lat": 67.86, "lon": 20.23, "country": "Sweden", "operator": "LKAB", "notes": "Europe's largest REE discovery (2023) — 1M+ tonnes REE oxides" },
-    { "name": "Phalaborwa", "lat": -23.94, "lon": 31.14, "country": "South Africa", "operator": "Foskor", "notes": "Phosphate + REE by-product, major strategic source" },
-    { "name": "Bayan Obo", "lat": 41.80, "lon": 109.97, "country": "China", "operator": "Baotou Steel", "notes": "World's largest REE mine; ~60% global supply" },
-    { "name": "Mount Weld", "lat": -28.77, "lon": 122.55, "country": "Australia", "operator": "Lynas Rare Earths", "notes": "Highest-grade REE deposit globally; NdPr production" },
-    { "name": "Steenkampskraal", "lat": -31.19, "lon": 18.80, "country": "South Africa", "operator": "Steenkampskraal Holdings", "notes": "Monazite thorium + REE; historic mine restart" }
+    {
+      "name": "Kiruna Mine",
+      "lat": 67.86,
+      "lon": 20.23,
+      "country": "Sweden",
+      "operator": "LKAB",
+      "notes": "Europe's largest REE discovery (2023) \u2014 1M+ tonnes REE oxides"
+    },
+    {
+      "name": "Phalaborwa",
+      "lat": -23.94,
+      "lon": 31.14,
+      "country": "South Africa",
+      "operator": "Foskor",
+      "notes": "Phosphate + REE by-product, major strategic source"
+    },
+    {
+      "name": "Bayan Obo",
+      "lat": 41.8,
+      "lon": 109.97,
+      "country": "China",
+      "operator": "Baotou Steel",
+      "notes": "World's largest REE mine; ~60% global supply"
+    },
+    {
+      "name": "Mount Weld",
+      "lat": -28.77,
+      "lon": 122.55,
+      "country": "Australia",
+      "operator": "Lynas Rare Earths",
+      "notes": "Highest-grade REE deposit globally; NdPr production"
+    },
+    {
+      "name": "Steenkampskraal",
+      "lat": -31.19,
+      "lon": 18.8,
+      "country": "South Africa",
+      "operator": "Steenkampskraal Holdings",
+      "notes": "Monazite thorium + REE; historic mine restart"
+    }
   ]
 }

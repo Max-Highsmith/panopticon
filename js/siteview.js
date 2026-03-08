@@ -6,11 +6,13 @@
    =================================================================== */
 
 import { $ } from './utils.js';
+import { getEntityPosition, createDetailViewer, startAnimLoop, drawHudOverlay, seededRandom, hashName, extractOperator, extractCountry, extractNotes, setupOverlayCanvas } from './viewbase.js';
+import { registerView } from './viewregistry.js';
 
 let siteViewer = null;
 let siteViewOpen = false;
 let siteViewTarget = null;
-let overlayAnimFrame = null;
+let overlayHandle = null;
 let lastOverlayData = null;
 let isMineView = false;  // true = procedural canvas, false = Cesium 3D
 let mineReconCache = null; // offscreen canvas cache for mine reconstruction
@@ -41,56 +43,8 @@ const FIXED_HEADING_RAD = Cesium.Math.toRadians(315);
 
 function initSiteViewer() {
   if (siteViewer) return;
-  siteViewer = new Cesium.Viewer('site-view-container', {
-    geocoder: false, homeButton: false, sceneModePicker: false,
-    baseLayerPicker: false, navigationHelpButton: false,
-    animation: false, timeline: false, fullscreenButton: false,
-    selectionIndicator: false, infoBox: false, scene3DOnly: true,
-    imageryProvider: false,
-  });
-  siteViewer.scene.backgroundColor = Cesium.Color.BLACK;
-  siteViewer.imageryLayers.addImageryProvider(
-    new Cesium.OpenStreetMapImageryProvider({ url: 'https://tile.openstreetmap.org/' })
-  );
+  siteViewer = createDetailViewer('site-view-container');
   siteViewer.scene.screenSpaceCameraController.enableInputs = true;
-  (async () => {
-    try {
-      const tileset = await Cesium.createGooglePhotorealistic3DTileset();
-      siteViewer.scene.primitives.add(tileset);
-      siteViewer.scene.globe.show = false;
-    } catch {
-      console.log('Site view: Google 3D Tiles not available, using OSM.');
-    }
-  })();
-}
-
-// --- Extract position from a Cesium entity ---
-function getEntityPosition(entity) {
-  if (!entity) return null;
-  let pos = entity.position;
-  if (!pos) return null;
-  if (typeof pos.getValue === 'function') pos = pos.getValue(Cesium.JulianDate.now());
-  if (!pos) return null;
-  const carto = Cesium.Cartographic.fromCartesian(pos);
-  return {
-    lon: Cesium.Math.toDegrees(carto.longitude),
-    lat: Cesium.Math.toDegrees(carto.latitude),
-    altM: carto.height,
-  };
-}
-
-// --- Metadata extraction from "operator // country // notes" desc format ---
-function extractOperator(desc) {
-  if (!desc) return '---';
-  return desc.split(' // ')[0]?.trim() || '---';
-}
-function extractCountry(desc) {
-  if (!desc) return '---';
-  return desc.split(' // ')[1]?.trim() || '---';
-}
-function extractNotes(desc) {
-  if (!desc) return '---';
-  return desc.split(' // ').slice(2).join(' // ').trim() || '---';
 }
 
 // --- Set camera once (static, for non-mine sites) ---
@@ -118,17 +72,6 @@ function setSiteCamera(posInfo, siteType) {
 // PROCEDURAL MINE RECONSTRUCTION (canvas-based)
 // Satellite-imagery-style rendering of mines/facilities
 // =====================================================
-
-// Simple seeded PRNG for consistent per-mine randomness
-function seededRandom(seed) {
-  let s = seed;
-  return () => { s = (s * 16807 + 0) % 2147483647; return (s - 1) / 2147483646; };
-}
-function hashName(name) {
-  let h = 0;
-  for (let i = 0; i < name.length; i++) h = ((h << 5) - h + name.charCodeAt(i)) | 0;
-  return Math.abs(h);
-}
 
 // --- Shared helpers ---
 
@@ -1004,47 +947,21 @@ function renderBitcoinFacility(ctx, W, H, rng, dpr) {
 // HUD OVERLAY
 // =====================================================
 
-function startOverlayLoop() {
-  if (overlayAnimFrame) return;
-  function loop() {
-    overlayAnimFrame = requestAnimationFrame(loop);
-    renderSiteOverlay();
-  }
-  loop();
-}
-
-function stopOverlayLoop() {
-  if (overlayAnimFrame) {
-    cancelAnimationFrame(overlayAnimFrame);
-    overlayAnimFrame = null;
-  }
-}
-
 function renderSiteOverlay() {
-  const canvas = $('site-view-overlay');
-  if (!canvas) return;
-  const parent = canvas.parentElement;
-  if (!parent) return;
-
-  const rect = parent.getBoundingClientRect();
-  const dpr = window.devicePixelRatio || 1;
-  if (canvas.width !== Math.round(rect.width * dpr) || canvas.height !== Math.round(rect.height * dpr)) {
-    canvas.width = Math.round(rect.width * dpr);
-    canvas.height = Math.round(rect.height * dpr);
-  }
-  const ctx = canvas.getContext('2d');
-  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-  const W = rect.width, H = rect.height;
+  const setup = setupOverlayCanvas($('site-view-overlay'));
+  if (!setup) return;
+  const { ctx, W, H } = setup;
 
   ctx.clearRect(0, 0, W, H);
 
   const d = lastOverlayData;
+  const canvas = $('site-view-overlay');
 
   // --- For mines: draw cached procedural reconstruction as background ---
   if (isMineView && d) {
     const cacheKey = `${d.name}|${canvas.width}|${canvas.height}`;
     if (mineReconCacheKey !== cacheKey || !mineReconCache) {
-      // Render to offscreen canvas and cache
+      const dpr = window.devicePixelRatio || 1;
       const offscreen = document.createElement('canvas');
       offscreen.width = canvas.width;
       offscreen.height = canvas.height;
@@ -1054,67 +971,20 @@ function renderSiteOverlay() {
       mineReconCache = offscreen;
       mineReconCacheKey = cacheKey;
     }
-    // Blit cached reconstruction
     ctx.save();
+    const dpr = window.devicePixelRatio || 1;
     ctx.setTransform(1, 0, 0, 1, 0, 0);
     ctx.drawImage(mineReconCache, 0, 0);
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     ctx.restore();
   }
 
-  // --- HUD overlay (same for all site types) ---
-
-  // Subtle tint
-  if (!isMineView) {
-    ctx.fillStyle = 'rgba(0, 10, 30, 0.1)';
-    ctx.fillRect(0, 0, W, H);
-  }
-
-  // Vignette
-  const vigGrad = ctx.createRadialGradient(W / 2, H / 2, Math.min(W, H) * 0.3, W / 2, H / 2, Math.max(W, H) * 0.7);
-  vigGrad.addColorStop(0, 'rgba(0,0,0,0)');
-  vigGrad.addColorStop(0.7, isMineView ? 'rgba(0,0,0,0.15)' : 'rgba(0,0,0,0.1)');
-  vigGrad.addColorStop(1, isMineView ? 'rgba(0,0,0,0.5)' : 'rgba(0,0,0,0.4)');
-  ctx.fillStyle = vigGrad;
-  ctx.fillRect(0, 0, W, H);
-
-  // Scanlines
-  ctx.fillStyle = 'rgba(0, 0, 0, 0.06)';
-  for (let y = 0; y < H; y += 3) ctx.fillRect(0, y, W, 1);
-
-  // Moving scan line
-  const scanY = (Date.now() / 25) % H;
-  const scanGrad = ctx.createLinearGradient(0, scanY - 15, 0, scanY + 15);
-  scanGrad.addColorStop(0, 'rgba(180, 220, 255, 0)');
-  scanGrad.addColorStop(0.5, 'rgba(180, 220, 255, 0.04)');
-  scanGrad.addColorStop(1, 'rgba(180, 220, 255, 0)');
-  ctx.fillStyle = scanGrad;
-  ctx.fillRect(0, scanY - 15, W, 30);
-
-  // Corner brackets
-  const bracketLen = 30, bracketInset = 20;
-  ctx.strokeStyle = HUD_COLOR + '0.35)';
-  ctx.lineWidth = 1.5;
-  ctx.beginPath();
-  ctx.moveTo(bracketInset, bracketInset + bracketLen);
-  ctx.lineTo(bracketInset, bracketInset);
-  ctx.lineTo(bracketInset + bracketLen, bracketInset);
-  ctx.stroke();
-  ctx.beginPath();
-  ctx.moveTo(W - bracketInset - bracketLen, bracketInset);
-  ctx.lineTo(W - bracketInset, bracketInset);
-  ctx.lineTo(W - bracketInset, bracketInset + bracketLen);
-  ctx.stroke();
-  ctx.beginPath();
-  ctx.moveTo(bracketInset, H - bracketInset - bracketLen);
-  ctx.lineTo(bracketInset, H - bracketInset);
-  ctx.lineTo(bracketInset + bracketLen, H - bracketInset);
-  ctx.stroke();
-  ctx.beginPath();
-  ctx.moveTo(W - bracketInset - bracketLen, H - bracketInset);
-  ctx.lineTo(W - bracketInset, H - bracketInset);
-  ctx.lineTo(W - bracketInset, H - bracketInset - bracketLen);
-  ctx.stroke();
+  // --- HUD overlay ---
+  drawHudOverlay(ctx, W, H, HUD_COLOR, {
+    tintColor: isMineView ? null : 'rgba(0, 10, 30, 0.1)',
+    vigInner: isMineView ? 0.05 : 0,
+    vigOuter: isMineView ? 0.5 : 0.4,
+  });
 
   // Data readouts
   if (!d) return;
@@ -1318,7 +1188,7 @@ export function openSiteView(viewer, entity) {
     if (!isMineView) setSiteCamera(posInfo, ac.t);
   }
 
-  startOverlayLoop();
+  overlayHandle = startAnimLoop(renderSiteOverlay);
 
   setTimeout(() => {
     viewer.resize();
@@ -1341,7 +1211,10 @@ export function closeSiteView(viewer) {
   $('site-view-panel').classList.remove('open');
   document.body.classList.remove('site-panel-open');
 
-  stopOverlayLoop();
+  if (overlayHandle) { overlayHandle.stop(); overlayHandle = null; }
 
   setTimeout(() => viewer.resize(), 400);
 }
+
+// --- Self-register with view registry ---
+registerView('site', { open: openSiteView, close: closeSiteView, isOpen: isSiteViewOpen, resize: resizeSiteView });

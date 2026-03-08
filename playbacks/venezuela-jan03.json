@@ -1,0 +1,50 @@
+{
+  "_source": {
+    "description": "Playback manifest for Venezuela ADS-B surveillance replay",
+    "origin": "Panopticon ADS-B capture via api.adsb.one — adsb.one",
+    "retrieved": "2026-01-03",
+    "license": "public domain",
+    "notes": "ADS-B data captured from adsb.one military endpoint"
+  },
+  "id": "venezuela-jan03",
+  "type": "adsb",
+  "label": "VENEZUELA",
+  "subtitle": "HISTORICAL REPLAY // VENEZUELA // JAN 3, 2026",
+  "description": "ADS-B surveillance over Venezuela and Caribbean airspace. Jan 3, 2026 08:00-08:30 UTC.",
+  "category": "historical",
+  "date": "2026-01-03",
+  "camera": { "lon": -66.9, "lat": 10.5, "alt": 4000000 },
+  "timeline": {
+    "domain": "wallclock",
+    "startUTC": 28800
+  },
+  "data": {
+    "file": "venezuela_jan03.json"
+  },
+  "display": {
+    "localTz": { "name": "VET", "offset": -4 },
+    "dateLabel": "JAN 3, 2026",
+    "timeLabel": "JAN 3, 2026 // 08:00 - 08:30 UTC",
+    "layers": ["military", "commercial", "satellites"],
+    "dataBounds": { "latMin": 0.0, "latMax": 18.0, "lonMin": -78.0, "lonMax": -55.0 },
+    "blackoutZones": [{
+      "label": "ADS-B BLACKOUT",
+      "sublabel": "NO SURVEILLANCE COVERAGE",
+      "labelPos": [-66.0, 7.5],
+      "coords": [
+        -73.0, 12.2, -72.0, 11.8, -71.6, 11.0, -71.8, 10.5,
+        -72.4, 10.0, -72.2, 9.0, -71.5, 8.5, -70.5, 8.2,
+        -70.2, 7.5, -69.5, 7.0, -68.5, 6.2, -67.8, 6.0,
+        -67.5, 5.5, -67.0, 4.5, -66.0, 3.8, -65.0, 2.5,
+        -64.0, 2.0, -63.5, 2.5, -63.0, 3.5, -62.0, 4.0,
+        -61.0, 4.5, -60.5, 5.0, -61.0, 6.0, -61.5, 7.0,
+        -61.0, 8.0, -60.0, 8.5, -60.5, 9.0, -61.0, 10.0,
+        -62.0, 10.5, -63.0, 10.8, -64.0, 10.5, -65.0, 10.2,
+        -66.0, 10.5, -67.5, 10.5, -68.5, 10.8, -69.5, 11.0,
+        -70.0, 11.5, -70.5, 11.8, -71.0, 12.0, -71.5, 12.5,
+        -72.0, 12.5, -73.0, 12.2
+      ]
+    }]
+  },
+  "tags": ["adsb", "venezuela", "caribbean", "military"]
+}

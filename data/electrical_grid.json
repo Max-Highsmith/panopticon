@@ -1,0 +1,239 @@
+{
+  "_source": {
+    "description": "Major HVDC power transmission lines",
+    "origin": "Compiled from Wikipedia HVDC projects list (well-cited), CIGRE publications, and grid operator disclosures (State Grid Corp, ABB/Hitachi Energy).",
+    "retrieved": "2026-03-06",
+    "license": "Mixed: public sources",
+    "notes": "UHVDC and major HVDC links. Route geometries simplified from published terminal-to-terminal paths."
+  },
+  "transmission": [
+    {
+      "name": "Changji-Guquan UHVDC",
+      "coords": [
+        [
+          87.3,
+          44.0
+        ],
+        [
+          95.0,
+          40.0
+        ],
+        [
+          105.0,
+          35.0
+        ],
+        [
+          110.0,
+          33.0
+        ],
+        [
+          115.0,
+          32.0
+        ],
+        [
+          117.2,
+          31.8
+        ]
+      ],
+      "operator": "State Grid",
+      "country": "China",
+      "notes": "1,100 kV DC // World's highest voltage // 3,293km"
+    },
+    {
+      "name": "Rio Madeira HVDC",
+      "coords": [
+        [
+          -64.0,
+          -8.8
+        ],
+        [
+          -60.0,
+          -10.0
+        ],
+        [
+          -55.0,
+          -12.0
+        ],
+        [
+          -50.0,
+          -15.0
+        ],
+        [
+          -46.5,
+          -18.0
+        ],
+        [
+          -44.0,
+          -20.0
+        ],
+        [
+          -43.2,
+          -22.9
+        ]
+      ],
+      "operator": "Eletrobras",
+      "country": "Brazil",
+      "notes": "\u00b1600 kV DC // 2,375km"
+    },
+    {
+      "name": "NorNed Cable",
+      "coords": [
+        [
+          4.5,
+          52.0
+        ],
+        [
+          4.0,
+          54.0
+        ],
+        [
+          4.0,
+          56.0
+        ],
+        [
+          5.0,
+          58.0
+        ],
+        [
+          5.3,
+          60.4
+        ]
+      ],
+      "operator": "TenneT/Statnett",
+      "country": "Netherlands-Norway",
+      "notes": "\u00b1450 kV DC // Longest submarine power cable"
+    },
+    {
+      "name": "IFA Interconnector",
+      "coords": [
+        [
+          -1.5,
+          50.9
+        ],
+        [
+          -1.0,
+          50.5
+        ],
+        [
+          0.0,
+          50.0
+        ],
+        [
+          1.2,
+          49.9
+        ],
+        [
+          1.5,
+          49.8
+        ]
+      ],
+      "operator": "National Grid/RTE",
+      "country": "UK-France",
+      "notes": "\u00b1270 kV DC // English Channel"
+    },
+    {
+      "name": "North Sea Link",
+      "coords": [
+        [
+          1.5,
+          55.0
+        ],
+        [
+          3.0,
+          57.0
+        ],
+        [
+          4.0,
+          59.0
+        ],
+        [
+          5.3,
+          60.4
+        ]
+      ],
+      "operator": "National Grid/Statnett",
+      "country": "UK-Norway",
+      "notes": "\u00b1515 kV DC // 720km"
+    },
+    {
+      "name": "Pacific DC Intertie",
+      "coords": [
+        [
+          -122.0,
+          46.0
+        ],
+        [
+          -121.5,
+          44.0
+        ],
+        [
+          -120.5,
+          42.0
+        ],
+        [
+          -119.0,
+          38.0
+        ],
+        [
+          -118.2,
+          34.1
+        ]
+      ],
+      "operator": "BPA/LADWP",
+      "country": "USA",
+      "notes": "\u00b1500 kV DC // Oregon to LA // 1,362km"
+    },
+    {
+      "name": "Quebec-New England HVDC",
+      "coords": [
+        [
+          -73.0,
+          53.0
+        ],
+        [
+          -72.0,
+          50.0
+        ],
+        [
+          -71.5,
+          47.0
+        ],
+        [
+          -72.0,
+          44.0
+        ],
+        [
+          -72.5,
+          42.5
+        ]
+      ],
+      "operator": "Hydro-Qu\u00e9bec/Eversource",
+      "country": "Canada-USA",
+      "notes": "\u00b1450 kV DC // 1,500km"
+    },
+    {
+      "name": "Viking Link",
+      "coords": [
+        [
+          8.5,
+          56.5
+        ],
+        [
+          5.0,
+          55.0
+        ],
+        [
+          2.0,
+          54.0
+        ],
+        [
+          0.5,
+          53.5
+        ]
+      ],
+      "operator": "National Grid/Energinet",
+      "country": "UK-Denmark",
+      "notes": "\u00b1525 kV DC // 765km"
+    }
+  ]
+}

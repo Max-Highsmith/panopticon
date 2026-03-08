@@ -4,6 +4,7 @@
 
 import { DISPLAY } from '../config.js';
 import { createDataLayer } from './datalayer.js';
+import { registerLayerLoader } from '../layerregistry.js';
 
 const layer = createDataLayer({
   layerKey: 'arcticmining',
@@ -20,6 +21,8 @@ const layer = createDataLayer({
     gold:       { icon: 'mineGold',      color: '#ffcc00', label: 'GOLD MINE' },
   },
 });
+
+registerLayerLoader('arcticmining', { load: layer.load, flyTo: layer.FLY_TO, reset: layer.reset, dataUrl: 'data/arctic_mining.json' });
 
 export const fetchArcticMining     = layer.load;
 export const isArcticMiningLoaded  = layer.isLoaded;

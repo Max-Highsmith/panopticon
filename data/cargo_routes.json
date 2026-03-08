@@ -1,0 +1,371 @@
+{
+  "_source": {
+    "description": "Major air cargo routes worldwide",
+    "origin": "Compiled from IATA Air Cargo Market Analysis reports and carrier network maps (FedEx, UPS, Emirates SkyCargo, Cargolux).",
+    "retrieved": "2026-03-06",
+    "license": "IATA: summary reference; carrier data: public network maps",
+    "notes": "Representative routes between major cargo hubs based on published carrier networks."
+  },
+  "cargo_air": [
+    {
+      "name": "FedEx Memphis Hub \u2192 Cologne (Transatlantic)",
+      "operator": "FedEx Express",
+      "country": "USA/Germany",
+      "notes": "FedEx primary transatlantic cargo corridor, ~800 flights/week",
+      "coords": [
+        [
+          -89.97,
+          35.04
+        ],
+        [
+          -80.0,
+          38.0
+        ],
+        [
+          -60.0,
+          44.0
+        ],
+        [
+          -30.0,
+          50.0
+        ],
+        [
+          -10.0,
+          51.0
+        ],
+        [
+          6.97,
+          50.87
+        ]
+      ]
+    },
+    {
+      "name": "UPS Louisville \u2192 London Stansted",
+      "operator": "UPS Airlines",
+      "country": "USA/UK",
+      "notes": "UPS Worldport to European hub, major e-commerce corridor",
+      "coords": [
+        [
+          -85.74,
+          38.17
+        ],
+        [
+          -75.0,
+          40.0
+        ],
+        [
+          -55.0,
+          47.0
+        ],
+        [
+          -30.0,
+          52.0
+        ],
+        [
+          -5.0,
+          52.0
+        ],
+        [
+          0.23,
+          51.88
+        ]
+      ]
+    },
+    {
+      "name": "Hong Kong \u2192 Anchorage \u2192 Memphis (Pacific Cargo)",
+      "operator": "FedEx / Cathay Cargo",
+      "country": "China/USA",
+      "notes": "Pacific great circle cargo route via Anchorage tech stop",
+      "coords": [
+        [
+          113.91,
+          22.31
+        ],
+        [
+          130.0,
+          35.0
+        ],
+        [
+          155.0,
+          50.0
+        ],
+        [
+          175.0,
+          55.0
+        ],
+        [
+          -150.0,
+          61.0
+        ],
+        [
+          -149.99,
+          61.17
+        ],
+        [
+          -140.0,
+          58.0
+        ],
+        [
+          -120.0,
+          48.0
+        ],
+        [
+          -100.0,
+          40.0
+        ],
+        [
+          -89.97,
+          35.04
+        ]
+      ]
+    },
+    {
+      "name": "Dubai \u2192 Singapore (Middle East\u2013Asia)",
+      "operator": "Emirates SkyCargo",
+      "country": "UAE/Singapore",
+      "notes": "Major cargo corridor connecting Middle East logistics hub to SE Asia",
+      "coords": [
+        [
+          55.36,
+          25.25
+        ],
+        [
+          65.0,
+          20.0
+        ],
+        [
+          75.0,
+          15.0
+        ],
+        [
+          85.0,
+          10.0
+        ],
+        [
+          95.0,
+          5.0
+        ],
+        [
+          103.99,
+          1.35
+        ]
+      ]
+    },
+    {
+      "name": "Shanghai Pudong \u2192 Los Angeles (Transpacific)",
+      "operator": "Multiple carriers",
+      "country": "China/USA",
+      "notes": "Largest air cargo corridor by volume, electronics/e-commerce",
+      "coords": [
+        [
+          121.8,
+          31.14
+        ],
+        [
+          135.0,
+          38.0
+        ],
+        [
+          155.0,
+          46.0
+        ],
+        [
+          175.0,
+          50.0
+        ],
+        [
+          -160.0,
+          48.0
+        ],
+        [
+          -140.0,
+          42.0
+        ],
+        [
+          -118.41,
+          33.94
+        ]
+      ]
+    },
+    {
+      "name": "Leipzig/Halle \u2192 Hong Kong (DHL Express)",
+      "operator": "DHL Express",
+      "country": "Germany/China",
+      "notes": "DHL European hub to Asia-Pacific super hub",
+      "coords": [
+        [
+          12.24,
+          51.42
+        ],
+        [
+          25.0,
+          48.0
+        ],
+        [
+          40.0,
+          42.0
+        ],
+        [
+          55.0,
+          35.0
+        ],
+        [
+          75.0,
+          28.0
+        ],
+        [
+          95.0,
+          25.0
+        ],
+        [
+          113.91,
+          22.31
+        ]
+      ]
+    },
+    {
+      "name": "Narita \u2192 Anchorage \u2192 Chicago (North Pacific Cargo)",
+      "operator": "Nippon Cargo Airlines",
+      "country": "Japan/USA",
+      "notes": "Polar route for Japan\u2013US cargo, Anchorage refueling stop",
+      "coords": [
+        [
+          140.39,
+          35.77
+        ],
+        [
+          160.0,
+          48.0
+        ],
+        [
+          175.0,
+          55.0
+        ],
+        [
+          -170.0,
+          58.0
+        ],
+        [
+          -149.99,
+          61.17
+        ],
+        [
+          -140.0,
+          55.0
+        ],
+        [
+          -115.0,
+          47.0
+        ],
+        [
+          -87.9,
+          41.97
+        ]
+      ]
+    },
+    {
+      "name": "Miami \u2192 S\u00e3o Paulo (Americas Cargo)",
+      "operator": "LATAM Cargo / Atlas Air",
+      "country": "USA/Brazil",
+      "notes": "Primary cargo link between North and South America",
+      "coords": [
+        [
+          -80.29,
+          25.79
+        ],
+        [
+          -75.0,
+          18.0
+        ],
+        [
+          -65.0,
+          5.0
+        ],
+        [
+          -55.0,
+          -5.0
+        ],
+        [
+          -47.0,
+          -15.0
+        ],
+        [
+          -46.47,
+          -23.43
+        ]
+      ]
+    },
+    {
+      "name": "Amsterdam \u2192 Nairobi (Europe\u2013Africa)",
+      "operator": "KLM Cargo / Ethiopian",
+      "country": "Netherlands/Kenya",
+      "notes": "Flower and perishable goods corridor, 40% of EU flower imports",
+      "coords": [
+        [
+          4.76,
+          52.31
+        ],
+        [
+          10.0,
+          47.0
+        ],
+        [
+          18.0,
+          40.0
+        ],
+        [
+          25.0,
+          33.0
+        ],
+        [
+          32.0,
+          25.0
+        ],
+        [
+          36.0,
+          10.0
+        ],
+        [
+          36.93,
+          -1.32
+        ]
+      ]
+    },
+    {
+      "name": "Incheon \u2192 Frankfurt (Asia\u2013Europe Cargo)",
+      "operator": "Korean Air Cargo / Lufthansa",
+      "country": "South Korea/Germany",
+      "notes": "Top-5 global air cargo city pair by tonnage",
+      "coords": [
+        [
+          126.45,
+          37.46
+        ],
+        [
+          110.0,
+          42.0
+        ],
+        [
+          85.0,
+          48.0
+        ],
+        [
+          60.0,
+          50.0
+        ],
+        [
+          35.0,
+          50.0
+        ],
+        [
+          15.0,
+          50.0
+        ],
+        [
+          8.57,
+          50.03
+        ]
+      ]
+    }
+  ]
+}

@@ -1,0 +1,441 @@
+{
+  "_source": {
+    "description": "Major global commodity trade flows (oil, LNG, grain, containers)",
+    "origin": "EIA international energy flow maps (eia.gov), IEA World Energy Outlook trade flow data, and UNCTAD Review of Maritime Transport.",
+    "retrieved": "2026-03-06",
+    "license": "EIA: public domain; IEA/UNCTAD: summary reference",
+    "notes": "Representative route geometries for major trade flows. Volumes from EIA/IEA published statistics."
+  },
+  "oil_flow": [
+    {
+      "name": "Persian Gulf \u2192 East Asia (Crude Oil)",
+      "operator": "VLCC Tankers",
+      "country": "Multiple",
+      "notes": "~17M bbl/day; world's largest crude oil trade flow; Strait of Hormuz",
+      "coords": [
+        [
+          50.5,
+          26.5
+        ],
+        [
+          56.0,
+          25.0
+        ],
+        [
+          60.0,
+          22.0
+        ],
+        [
+          65.0,
+          18.0
+        ],
+        [
+          75.0,
+          10.0
+        ],
+        [
+          85.0,
+          5.0
+        ],
+        [
+          95.0,
+          2.0
+        ],
+        [
+          105.0,
+          3.0
+        ],
+        [
+          115.0,
+          10.0
+        ],
+        [
+          120.0,
+          22.0
+        ]
+      ]
+    },
+    {
+      "name": "West Africa \u2192 US Gulf Coast (Crude Oil)",
+      "operator": "Suezmax / VLCC",
+      "country": "Nigeria/Angola/USA",
+      "notes": "Nigerian/Angolan crude to US refineries; ~2M bbl/day",
+      "coords": [
+        [
+          3.5,
+          5.5
+        ],
+        [
+          -5.0,
+          2.0
+        ],
+        [
+          -20.0,
+          5.0
+        ],
+        [
+          -40.0,
+          15.0
+        ],
+        [
+          -60.0,
+          22.0
+        ],
+        [
+          -80.0,
+          25.0
+        ],
+        [
+          -90.0,
+          29.0
+        ]
+      ]
+    },
+    {
+      "name": "Russia \u2192 Europe Pipeline (Druzhba)",
+      "operator": "Transneft",
+      "country": "Russia/EU",
+      "notes": "World's longest oil pipeline network; 4,000km; ~1M bbl/day to EU",
+      "coords": [
+        [
+          52.0,
+          54.0
+        ],
+        [
+          45.0,
+          54.0
+        ],
+        [
+          38.0,
+          53.0
+        ],
+        [
+          32.0,
+          52.0
+        ],
+        [
+          25.0,
+          52.0
+        ],
+        [
+          18.0,
+          50.0
+        ],
+        [
+          14.0,
+          49.0
+        ]
+      ]
+    }
+  ],
+  "lng_flow": [
+    {
+      "name": "Qatar \u2192 East Asia (LNG)",
+      "operator": "QatarEnergy",
+      "country": "Qatar/Japan/Korea/China",
+      "notes": "World's largest LNG exporter; 77M tonnes/year; Q-Max carriers",
+      "coords": [
+        [
+          51.5,
+          26.0
+        ],
+        [
+          56.0,
+          24.0
+        ],
+        [
+          65.0,
+          18.0
+        ],
+        [
+          80.0,
+          8.0
+        ],
+        [
+          95.0,
+          2.0
+        ],
+        [
+          110.0,
+          8.0
+        ],
+        [
+          125.0,
+          20.0
+        ],
+        [
+          135.0,
+          34.0
+        ]
+      ]
+    },
+    {
+      "name": "Australia \u2192 Japan/Korea (LNG)",
+      "operator": "Chevron / Woodside / Shell",
+      "country": "Australia/Japan",
+      "notes": "NW Shelf, Gorgon, Wheatstone projects; ~80M tonnes/year",
+      "coords": [
+        [
+          115.0,
+          -20.0
+        ],
+        [
+          118.0,
+          -12.0
+        ],
+        [
+          125.0,
+          -5.0
+        ],
+        [
+          135.0,
+          10.0
+        ],
+        [
+          140.0,
+          25.0
+        ],
+        [
+          140.0,
+          35.0
+        ]
+      ]
+    },
+    {
+      "name": "US Gulf \u2192 Europe (LNG)",
+      "operator": "Cheniere / Sempra",
+      "country": "USA/EU",
+      "notes": "Post-2022 surge; Sabine Pass, Cameron, Freeport terminals",
+      "coords": [
+        [
+          -93.0,
+          29.0
+        ],
+        [
+          -88.0,
+          28.0
+        ],
+        [
+          -82.0,
+          26.0
+        ],
+        [
+          -75.0,
+          30.0
+        ],
+        [
+          -55.0,
+          42.0
+        ],
+        [
+          -20.0,
+          50.0
+        ],
+        [
+          -5.0,
+          50.0
+        ]
+      ]
+    }
+  ],
+  "grain_flow": [
+    {
+      "name": "US Midwest \u2192 Global (Grain/Soy)",
+      "operator": "Cargill / ADM / Bunge",
+      "country": "USA",
+      "notes": "Mississippi River to Gulf ports; corn, soybeans, wheat; 100M tonnes/year",
+      "coords": [
+        [
+          -90.0,
+          29.0
+        ],
+        [
+          -85.0,
+          25.0
+        ],
+        [
+          -80.0,
+          22.0
+        ],
+        [
+          -60.0,
+          15.0
+        ],
+        [
+          -30.0,
+          10.0
+        ],
+        [
+          0.0,
+          5.0
+        ]
+      ]
+    },
+    {
+      "name": "Brazil \u2192 China (Soybeans)",
+      "operator": "COFCO / Bunge / Cargill",
+      "country": "Brazil/China",
+      "notes": "World's largest soybean trade flow; Santos/Paranagu\u00e1 ports; 90M tonnes/year",
+      "coords": [
+        [
+          -46.0,
+          -24.0
+        ],
+        [
+          -40.0,
+          -20.0
+        ],
+        [
+          -30.0,
+          -10.0
+        ],
+        [
+          -15.0,
+          0.0
+        ],
+        [
+          10.0,
+          -5.0
+        ],
+        [
+          40.0,
+          -15.0
+        ],
+        [
+          60.0,
+          -10.0
+        ],
+        [
+          90.0,
+          0.0
+        ],
+        [
+          110.0,
+          10.0
+        ],
+        [
+          120.0,
+          22.0
+        ]
+      ]
+    },
+    {
+      "name": "Black Sea \u2192 Mediterranean (Wheat)",
+      "operator": "Multiple",
+      "country": "Ukraine/Russia/Turkey",
+      "notes": "Major wheat export corridor; 60M tonnes/year; Bosphorus transit",
+      "coords": [
+        [
+          36.0,
+          46.0
+        ],
+        [
+          32.0,
+          44.0
+        ],
+        [
+          29.0,
+          41.0
+        ],
+        [
+          26.0,
+          38.0
+        ],
+        [
+          20.0,
+          36.0
+        ],
+        [
+          10.0,
+          36.0
+        ]
+      ]
+    }
+  ],
+  "container_flow": [
+    {
+      "name": "China \u2192 US West Coast (Containers)",
+      "operator": "COSCO / Maersk / MSC / CMA CGM",
+      "country": "China/USA",
+      "notes": "World's busiest container lane; 25M TEU/year; Shanghai/Shenzhen to LA/Long Beach",
+      "coords": [
+        [
+          121.0,
+          31.0
+        ],
+        [
+          135.0,
+          38.0
+        ],
+        [
+          155.0,
+          42.0
+        ],
+        [
+          175.0,
+          45.0
+        ],
+        [
+          -160.0,
+          42.0
+        ],
+        [
+          -140.0,
+          38.0
+        ],
+        [
+          -118.0,
+          34.0
+        ]
+      ]
+    },
+    {
+      "name": "China \u2192 Europe via Suez (Containers)",
+      "operator": "Maersk / MSC / COSCO / CMA CGM",
+      "country": "China/EU",
+      "notes": "15M TEU/year; Shanghai to Rotterdam; ~30 day transit via Suez Canal",
+      "coords": [
+        [
+          121.0,
+          31.0
+        ],
+        [
+          115.0,
+          20.0
+        ],
+        [
+          105.0,
+          5.0
+        ],
+        [
+          80.0,
+          5.0
+        ],
+        [
+          60.0,
+          12.0
+        ],
+        [
+          43.0,
+          13.0
+        ],
+        [
+          33.0,
+          30.0
+        ],
+        [
+          30.0,
+          32.0
+        ],
+        [
+          15.0,
+          36.0
+        ],
+        [
+          4.0,
+          52.0
+        ]
+      ]
+    }
+  ]
+}

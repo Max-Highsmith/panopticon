@@ -1,0 +1,243 @@
+{
+  "_source": {
+    "description": "Arctic shipping routes (Northern Sea Route, Northwest Passage, Transpolar)",
+    "origin": "Arctic Council PAME (Protection of Arctic Marine Environment) shipping route assessments and IMO Polar Code navigation guidance.",
+    "retrieved": "2026-03-06",
+    "license": "Arctic Council/IMO: public policy documents",
+    "notes": "Approximate route geometries. Actual routes vary by ice conditions and season."
+  },
+  "northern_sea_route": [
+    {
+      "name": "Northern Sea Route (Main)",
+      "coords": [
+        [
+          30.3,
+          59.9
+        ],
+        [
+          33.0,
+          69.0
+        ],
+        [
+          40.0,
+          68.5
+        ],
+        [
+          44.0,
+          68.0
+        ],
+        [
+          50.0,
+          70.0
+        ],
+        [
+          60.0,
+          72.0
+        ],
+        [
+          70.0,
+          73.0
+        ],
+        [
+          80.0,
+          74.0
+        ],
+        [
+          90.0,
+          75.0
+        ],
+        [
+          100.0,
+          76.0
+        ],
+        [
+          110.0,
+          75.0
+        ],
+        [
+          120.0,
+          73.0
+        ],
+        [
+          130.0,
+          72.0
+        ],
+        [
+          140.0,
+          70.0
+        ],
+        [
+          150.0,
+          68.0
+        ],
+        [
+          160.0,
+          66.0
+        ],
+        [
+          170.0,
+          65.0
+        ],
+        [
+          180.0,
+          65.0
+        ]
+      ],
+      "operator": "Rosatom/NSRA",
+      "country": "Russia",
+      "notes": "Northern Sea Route // Arctic transit"
+    },
+    {
+      "name": "NSR Murmansk-Kamchatka",
+      "coords": [
+        [
+          33.0,
+          69.0
+        ],
+        [
+          40.0,
+          70.0
+        ],
+        [
+          50.0,
+          72.0
+        ],
+        [
+          60.0,
+          73.0
+        ],
+        [
+          70.0,
+          74.0
+        ],
+        [
+          85.0,
+          75.0
+        ],
+        [
+          100.0,
+          76.0
+        ],
+        [
+          120.0,
+          74.0
+        ],
+        [
+          140.0,
+          70.0
+        ],
+        [
+          158.7,
+          53.0
+        ]
+      ],
+      "operator": "Rosatom/NSRA",
+      "country": "Russia",
+      "notes": "Full NSR transit // Murmansk to Petropavlovsk"
+    }
+  ],
+  "northwest_passage": [
+    {
+      "name": "Northwest Passage (Southern)",
+      "coords": [
+        [
+          -63.0,
+          47.0
+        ],
+        [
+          -63.0,
+          55.0
+        ],
+        [
+          -70.0,
+          60.0
+        ],
+        [
+          -80.0,
+          63.0
+        ],
+        [
+          -85.0,
+          65.0
+        ],
+        [
+          -90.0,
+          67.0
+        ],
+        [
+          -95.0,
+          69.0
+        ],
+        [
+          -100.0,
+          70.0
+        ],
+        [
+          -110.0,
+          71.0
+        ],
+        [
+          -120.0,
+          72.0
+        ],
+        [
+          -130.0,
+          71.0
+        ],
+        [
+          -140.0,
+          70.0
+        ],
+        [
+          -155.0,
+          68.0
+        ],
+        [
+          -165.0,
+          65.0
+        ]
+      ],
+      "operator": "Various",
+      "country": "Canada",
+      "notes": "Historic Arctic passage // Increasingly navigable"
+    }
+  ],
+  "transpolar": [
+    {
+      "name": "Transpolar Sea Route",
+      "coords": [
+        [
+          20.0,
+          70.0
+        ],
+        [
+          30.0,
+          78.0
+        ],
+        [
+          60.0,
+          85.0
+        ],
+        [
+          90.0,
+          88.0
+        ],
+        [
+          120.0,
+          85.0
+        ],
+        [
+          150.0,
+          80.0
+        ],
+        [
+          170.0,
+          72.0
+        ]
+      ],
+      "operator": "Projected",
+      "country": "International",
+      "notes": "Future route // Requires ice-free Arctic"
+    }
+  ]
+}

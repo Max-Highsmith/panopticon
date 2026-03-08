@@ -1,0 +1,201 @@
+{
+  "_source": {
+    "description": "Major offshore oil and gas platforms",
+    "origin": "Compiled from BSEE (US), Oil & Gas UK, Petrobras, and operator disclosures. Coordinates from public platform registries and satellite imagery.",
+    "retrieved": "2026-03-06",
+    "license": "Mixed: BSEE public domain; others fair use summary",
+    "notes": "Representative major platforms by production volume."
+  },
+  "platform": [
+    {
+      "name": "Berkut Platform",
+      "lon": 143.29,
+      "lat": 52.1,
+      "country": "Russia",
+      "operator": "Exxon Neftegas",
+      "field": "Sakhalin-1",
+      "notes": "Heaviest oil platform in the world"
+    },
+    {
+      "name": "Perdido Spar",
+      "lon": -94.88,
+      "lat": 26.13,
+      "country": "USA",
+      "operator": "Shell",
+      "field": "Perdido",
+      "notes": "Deepest floating platform"
+    },
+    {
+      "name": "Hibernia Platform",
+      "lon": -48.78,
+      "lat": 46.75,
+      "country": "Canada",
+      "operator": "HMDC",
+      "field": "Hibernia"
+    },
+    {
+      "name": "Troll A Platform",
+      "lon": 3.73,
+      "lat": 60.64,
+      "country": "Norway",
+      "operator": "Equinor",
+      "field": "Troll",
+      "notes": "Tallest structure ever moved"
+    },
+    {
+      "name": "Gullfaks A",
+      "lon": 2.17,
+      "lat": 61.17,
+      "country": "Norway",
+      "operator": "Equinor",
+      "field": "Gullfaks"
+    },
+    {
+      "name": "Statfjord B",
+      "lon": 1.82,
+      "lat": 61.26,
+      "country": "Norway",
+      "operator": "Equinor",
+      "field": "Statfjord"
+    },
+    {
+      "name": "Sleipner A",
+      "lon": 2.43,
+      "lat": 58.37,
+      "country": "Norway",
+      "operator": "Equinor",
+      "field": "Sleipner"
+    },
+    {
+      "name": "Brent Delta",
+      "lon": 1.72,
+      "lat": 61.06,
+      "country": "UK",
+      "operator": "Shell",
+      "field": "Brent"
+    },
+    {
+      "name": "Forties Alpha",
+      "lon": 0.95,
+      "lat": 57.72,
+      "country": "UK",
+      "operator": "Apache",
+      "field": "Forties"
+    },
+    {
+      "name": "Piper Bravo",
+      "lon": 0.25,
+      "lat": 58.45,
+      "country": "UK",
+      "operator": "Repsol Sinopec",
+      "field": "Piper"
+    },
+    {
+      "name": "Mad Dog 2",
+      "lon": -90.37,
+      "lat": 27.36,
+      "country": "USA",
+      "operator": "BP",
+      "field": "Mad Dog"
+    },
+    {
+      "name": "Appomattox",
+      "lon": -89.98,
+      "lat": 28.2,
+      "country": "USA",
+      "operator": "Shell",
+      "field": "Appomattox"
+    },
+    {
+      "name": "Thunder Horse PDQ",
+      "lon": -89.1,
+      "lat": 28.19,
+      "country": "USA",
+      "operator": "BP",
+      "field": "Thunder Horse"
+    },
+    {
+      "name": "Na Kika",
+      "lon": -87.32,
+      "lat": 27.56,
+      "country": "USA",
+      "operator": "Shell",
+      "field": "Na Kika"
+    },
+    {
+      "name": "Buzios FPSO",
+      "lon": -41.53,
+      "lat": -23.5,
+      "country": "Brazil",
+      "operator": "Petrobras",
+      "field": "Buzios Pre-Salt"
+    },
+    {
+      "name": "P-70 FPSO Tupi",
+      "lon": -42.1,
+      "lat": -24.2,
+      "country": "Brazil",
+      "operator": "Petrobras",
+      "field": "Tupi/Lula"
+    },
+    {
+      "name": "Bonga FPSO",
+      "lon": 4.62,
+      "lat": 4.47,
+      "country": "Nigeria",
+      "operator": "Shell",
+      "field": "Bonga"
+    },
+    {
+      "name": "Egina FPSO",
+      "lon": 4.77,
+      "lat": 4.32,
+      "country": "Nigeria",
+      "operator": "TotalEnergies",
+      "field": "Egina"
+    },
+    {
+      "name": "Safaniyah Platform",
+      "lon": 49.82,
+      "lat": 28.12,
+      "country": "Saudi Arabia",
+      "operator": "Saudi Aramco",
+      "field": "Safaniyah",
+      "notes": "Largest offshore oil field"
+    },
+    {
+      "name": "Khafji Platform",
+      "lon": 48.5,
+      "lat": 28.42,
+      "country": "Saudi Arabia/Kuwait",
+      "operator": "Saudi Aramco",
+      "field": "Khafji"
+    },
+    {
+      "name": "Ichthys Explorer",
+      "lon": 124.55,
+      "lat": -11.78,
+      "country": "Australia",
+      "operator": "INPEX",
+      "field": "Ichthys",
+      "notes": "LNG"
+    },
+    {
+      "name": "Prelude FLNG",
+      "lon": 124.02,
+      "lat": -12.38,
+      "country": "Australia",
+      "operator": "Shell",
+      "field": "Prelude",
+      "notes": "Largest floating structure ever built"
+    },
+    {
+      "name": "Johan Sverdrup",
+      "lon": 2.5,
+      "lat": 58.94,
+      "country": "Norway",
+      "operator": "Equinor",
+      "field": "Johan Sverdrup"
+    }
+  ]
+}

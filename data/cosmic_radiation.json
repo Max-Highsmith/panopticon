@@ -1,0 +1,123 @@
+{
+  "_source": {
+    "description": "Cosmic radiation monitoring stations (neutron monitors)",
+    "origin": "NMDB Neutron Monitor Database (nmdb.eu) station registry.",
+    "retrieved": "2026-03-06",
+    "license": "NMDB: public scientific data",
+    "notes": "Station locations from NMDB registry. Coordinates from station metadata."
+  },
+  "neutron_monitor": [
+    {
+      "name": "Thule Neutron Monitor",
+      "lat": 76.53,
+      "lon": -68.72,
+      "country": "Greenland",
+      "operator": "DTU Space / NMDB",
+      "notes": "High-latitude station; highest cosmic ray flux; polar cutoff rigidity ~0 GV"
+    },
+    {
+      "name": "McMurdo Station (Bartol)",
+      "lat": -77.85,
+      "lon": 166.67,
+      "country": "Antarctica",
+      "operator": "University of Delaware / NSF",
+      "notes": "Antarctic monitor; Bartol Research Institute; long baseline dataset"
+    },
+    {
+      "name": "South Pole Neutron Monitor",
+      "lat": -90.0,
+      "lon": 0.0,
+      "country": "Antarctica",
+      "operator": "University of Delaware / NSF",
+      "notes": "World's southernmost; minimal atmospheric absorption; pristine measurements"
+    },
+    {
+      "name": "Oulu Neutron Monitor",
+      "lat": 65.05,
+      "lon": 25.47,
+      "country": "Finland",
+      "operator": "University of Oulu",
+      "notes": "Continuous since 1964; reference station for European cosmic ray network"
+    },
+    {
+      "name": "Moscow Neutron Monitor",
+      "lat": 55.47,
+      "lon": 37.32,
+      "country": "Russia",
+      "operator": "IZMIRAN",
+      "notes": "One of original IGY network stations; operational since 1957"
+    },
+    {
+      "name": "Jungfraujoch Station",
+      "lat": 46.55,
+      "lon": 7.98,
+      "country": "Switzerland",
+      "operator": "University of Bern / NMDB",
+      "notes": "High-altitude (3570m); reduced atmospheric absorption; IGM18 detector"
+    },
+    {
+      "name": "Rome Neutron Monitor",
+      "lat": 41.9,
+      "lon": 12.52,
+      "country": "Italy",
+      "operator": "INFN / University of Rome",
+      "notes": "Mid-latitude reference; Forbush decrease detection"
+    },
+    {
+      "name": "Mexico City Neutron Monitor",
+      "lat": 19.33,
+      "lon": -99.18,
+      "country": "Mexico",
+      "operator": "UNAM",
+      "notes": "Low-latitude station; high rigidity cutoff ~8.2 GV"
+    },
+    {
+      "name": "Doi Inthanon Neutron Monitor",
+      "lat": 18.59,
+      "lon": 98.49,
+      "country": "Thailand",
+      "operator": "Mahidol University / NMDB",
+      "notes": "Equatorial station; highest cutoff rigidity ~16.8 GV; Princess Sirindhorn NM"
+    },
+    {
+      "name": "Tsumeb Neutron Monitor",
+      "lat": -19.2,
+      "lon": 17.58,
+      "country": "Namibia",
+      "operator": "North-West University",
+      "notes": "Southern African station; part of global network; ~9.2 GV cutoff"
+    },
+    {
+      "name": "Terre Ad\u00e9lie Neutron Monitor",
+      "lat": -66.67,
+      "lon": 140.01,
+      "country": "Antarctica",
+      "operator": "CNRS / University of Paris",
+      "notes": "French Antarctic station; Dumont d'Urville base; polar cap monitor"
+    },
+    {
+      "name": "Inuvik Neutron Monitor",
+      "lat": 68.35,
+      "lon": -133.72,
+      "country": "Canada",
+      "operator": "NRCan / NMDB",
+      "notes": "Canadian Arctic; bare counter + lead-free NM; polar rigidity"
+    },
+    {
+      "name": "Newark Neutron Monitor",
+      "lat": 39.68,
+      "lon": -75.75,
+      "country": "USA",
+      "operator": "University of Delaware",
+      "notes": "Bartol Research Institute; continuous record since 1964; US reference"
+    },
+    {
+      "name": "Alma-Ata Neutron Monitor",
+      "lat": 43.25,
+      "lon": 76.94,
+      "country": "Kazakhstan",
+      "operator": "Institute of Ionosphere",
+      "notes": "High-altitude (3340m); Central Asian reference station"
+    }
+  ]
+}

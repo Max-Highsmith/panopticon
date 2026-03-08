@@ -1,9 +1,21 @@
 /* ===================================================================
    PANOPTICON — Visual Filters (altitude-adaptive)
+   Toolbar dropdown panel + altitude-adaptive CSS filters.
    =================================================================== */
 
 let activeFilter = 'none';
 let filterIntensity = 1;
+let _viewer = null;
+let _panelOpen = false;
+
+const FILTERS = [
+  { key: 'none',   label: 'OFF',    desc: 'No filter' },
+  { key: 'crt',    label: 'CRT',    desc: 'Retro CRT scanlines' },
+  { key: 'nvg',    label: 'NVG',    desc: 'Night vision green' },
+  { key: 'flir',   label: 'FLIR',   desc: 'Thermal imaging' },
+  { key: 'anime',  label: 'ANIME',  desc: 'Cel-shaded posterize' },
+  { key: 'border', label: 'BORDER', desc: 'Political map overlay' },
+];
 
 /**
  * Map camera altitude to 0..1 intensity.
@@ -40,6 +52,50 @@ function applyFilterCSS(fi) {
 
 const FILTER_CLASSES = ['filter-crt', 'filter-nvg', 'filter-flir', 'filter-anime', 'filter-border'];
 
+// --- Dropdown Panel ---
+
+function buildPanel() {
+  const panel = document.getElementById('filter-panel');
+  if (!panel) return;
+  panel.innerHTML = '';
+
+  for (const f of FILTERS) {
+    const row = document.createElement('div');
+    row.className = 'filter-row' + (activeFilter === f.key ? ' active' : '');
+    row.dataset.key = f.key;
+
+    const name = document.createElement('span');
+    name.className = 'filter-name';
+    name.textContent = f.label;
+
+    const desc = document.createElement('span');
+    desc.className = 'filter-desc';
+    desc.textContent = f.desc;
+
+    row.appendChild(name);
+    row.appendChild(desc);
+    row.addEventListener('click', () => {
+      setVisualFilter(f.key, _viewer);
+      closeFilterPanel();
+    });
+    panel.appendChild(row);
+  }
+}
+
+function syncToggleButton() {
+  const btn = document.getElementById('filter-panel-toggle');
+  if (!btn) return;
+  if (activeFilter === 'none') {
+    btn.textContent = 'FILTERS';
+    btn.classList.remove('filter-active');
+  } else {
+    btn.textContent = 'FILTERS: ' + activeFilter.toUpperCase();
+    btn.classList.add('filter-active');
+  }
+}
+
+// --- Public API ---
+
 export function setVisualFilter(filter, viewer) {
   document.body.classList.remove(...FILTER_CLASSES);
   activeFilter = filter;
@@ -48,9 +104,7 @@ export function setVisualFilter(filter, viewer) {
     document.body.classList.add('filter-' + filter);
   }
 
-  document.querySelectorAll('#filter-bar button').forEach(btn => {
-    btn.classList.toggle('active', btn.textContent === (filter === 'none' ? 'OFF' : filter.toUpperCase()));
-  });
+  syncToggleButton();
 
   const fi = calcFilterIntensity(viewer);
   filterIntensity = fi;
@@ -58,10 +112,43 @@ export function setVisualFilter(filter, viewer) {
   applyFilterCSS(fi);
 }
 
+export function openFilterPanel() {
+  const panel = document.getElementById('filter-panel');
+  if (!panel) return;
+  _panelOpen = !_panelOpen;
+  panel.style.display = _panelOpen ? 'block' : 'none';
+  document.getElementById('filter-panel-toggle')?.classList.toggle('open', _panelOpen);
+  if (_panelOpen) buildPanel();
+}
+
+export function closeFilterPanel() {
+  const panel = document.getElementById('filter-panel');
+  if (panel) panel.style.display = 'none';
+  document.getElementById('filter-panel-toggle')?.classList.remove('open');
+  _panelOpen = false;
+}
+
 /**
  * Register a per-frame listener that adjusts filter intensity with camera altitude.
  */
 export function initFilterUpdater(viewer) {
+  _viewer = viewer;
+
+  // Click outside to close
+  document.addEventListener('click', (e) => {
+    if (!_panelOpen) return;
+    const panel = document.getElementById('filter-panel');
+    const toggle = document.getElementById('filter-panel-toggle');
+    if (panel && !panel.contains(e.target) && toggle && !toggle.contains(e.target)) {
+      closeFilterPanel();
+    }
+  });
+
+  // Escape to close
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && _panelOpen) closeFilterPanel();
+  });
+
   viewer.scene.preRender.addEventListener(() => {
     if (activeFilter === 'none') return;
     const fi = calcFilterIntensity(viewer);

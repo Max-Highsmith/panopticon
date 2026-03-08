@@ -5,12 +5,14 @@
    =================================================================== */
 
 import { $ } from './utils.js';
+import { getEntityPosition, createDetailViewer, startAnimLoop, drawHudOverlay, seededRandom, hashName, extractCountry, setupOverlayCanvas } from './viewbase.js';
+import { registerView } from './viewregistry.js';
 
 let airportViewer = null;
 let airportViewOpen = false;
 let airportViewTarget = null;
-let overlayAnimFrame = null;
-let scheduleAnimFrame = null;
+let overlayHandle = null;
+let scheduleHandle = null;
 let lastAirportData = null;
 let generatedSchedule = null;
 
@@ -20,51 +22,10 @@ export function resizeAirportView() { if (airportViewer) airportViewer.resize();
 const HUD_COLOR = 'rgba(0, 204, 255, ';
 const HUD_ACCENT = '#00ccff';
 
-// --- Extract position from a Cesium entity ---
-function getEntityPosition(entity) {
-  if (!entity) return null;
-  let pos = entity.position;
-  if (!pos) return null;
-  if (typeof pos.getValue === 'function') pos = pos.getValue(Cesium.JulianDate.now());
-  if (!pos) return null;
-  const carto = Cesium.Cartographic.fromCartesian(pos);
-  return {
-    lon: Cesium.Math.toDegrees(carto.longitude),
-    lat: Cesium.Math.toDegrees(carto.latitude),
-    altM: carto.height,
-  };
-}
-
-// --- Metadata extraction ---
-function extractCountry(desc) {
-  if (!desc) return '---';
-  return desc.split(' // ')[1]?.trim() || '---';
-}
-
-// --- Second Cesium Viewer for aerial imagery ---
 function initAirportViewer() {
   if (airportViewer) return;
-  airportViewer = new Cesium.Viewer('airport-view-container', {
-    geocoder: false, homeButton: false, sceneModePicker: false,
-    baseLayerPicker: false, navigationHelpButton: false,
-    animation: false, timeline: false, fullscreenButton: false,
-    selectionIndicator: false, infoBox: false, scene3DOnly: true,
-    imageryProvider: false,
-  });
-  airportViewer.scene.backgroundColor = Cesium.Color.BLACK;
-  airportViewer.imageryLayers.addImageryProvider(
-    new Cesium.OpenStreetMapImageryProvider({ url: 'https://tile.openstreetmap.org/' })
-  );
+  airportViewer = createDetailViewer('airport-view-container');
   airportViewer.scene.screenSpaceCameraController.enableInputs = true;
-  (async () => {
-    try {
-      const tileset = await Cesium.createGooglePhotorealistic3DTileset();
-      airportViewer.scene.primitives.add(tileset);
-      airportViewer.scene.globe.show = false;
-    } catch {
-      console.log('Airport view: Google 3D Tiles not available, using OSM.');
-    }
-  })();
 }
 
 // --- Camera: overhead view of the airport ---
@@ -83,17 +44,6 @@ function setAirportCamera(posInfo) {
 // =====================================================
 // PROCEDURAL FLIGHT SCHEDULE GENERATOR
 // =====================================================
-
-function seededRandom(seed) {
-  let s = seed;
-  return () => { s = (s * 16807 + 0) % 2147483647; return (s - 1) / 2147483646; };
-}
-
-function hashName(name) {
-  let h = 0;
-  for (let i = 0; i < name.length; i++) h = ((h << 5) - h + name.charCodeAt(i)) | 0;
-  return Math.abs(h);
-}
 
 const AIRLINES = [
   'AA', 'UA', 'DL', 'BA', 'LH', 'AF', 'KL', 'EK', 'QR', 'SQ',
@@ -319,109 +269,18 @@ function renderScheduleCanvas() {
   ctx.strokeRect(0, 0, W, H);
 }
 
-function startScheduleLoop() {
-  if (scheduleAnimFrame) return;
-  function loop() {
-    scheduleAnimFrame = requestAnimationFrame(loop);
-    renderScheduleCanvas();
-  }
-  loop();
-}
-
-function stopScheduleLoop() {
-  if (scheduleAnimFrame) {
-    cancelAnimationFrame(scheduleAnimFrame);
-    scheduleAnimFrame = null;
-  }
-}
-
 // =====================================================
 // AERIAL VIEW HUD OVERLAY
 // =====================================================
 
-function startOverlayLoop() {
-  if (overlayAnimFrame) return;
-  function loop() {
-    overlayAnimFrame = requestAnimationFrame(loop);
-    renderAirportOverlay();
-  }
-  loop();
-}
-
-function stopOverlayLoop() {
-  if (overlayAnimFrame) {
-    cancelAnimationFrame(overlayAnimFrame);
-    overlayAnimFrame = null;
-  }
-}
-
 function renderAirportOverlay() {
-  const canvas = $('airport-view-overlay');
-  if (!canvas) return;
-  const parent = canvas.parentElement;
-  if (!parent) return;
-
-  const rect = parent.getBoundingClientRect();
-  const dpr = window.devicePixelRatio || 1;
-  if (canvas.width !== Math.round(rect.width * dpr) || canvas.height !== Math.round(rect.height * dpr)) {
-    canvas.width = Math.round(rect.width * dpr);
-    canvas.height = Math.round(rect.height * dpr);
-  }
-  const ctx = canvas.getContext('2d');
-  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-  const W = rect.width, H = rect.height;
+  const setup = setupOverlayCanvas($('airport-view-overlay'));
+  if (!setup) return;
+  const { ctx, W, H } = setup;
 
   ctx.clearRect(0, 0, W, H);
 
-  // Vignette
-  const vigGrad = ctx.createRadialGradient(W / 2, H / 2, Math.min(W, H) * 0.3, W / 2, H / 2, Math.max(W, H) * 0.7);
-  vigGrad.addColorStop(0, 'rgba(0,0,0,0)');
-  vigGrad.addColorStop(0.7, 'rgba(0,0,0,0.1)');
-  vigGrad.addColorStop(1, 'rgba(0,0,0,0.4)');
-  ctx.fillStyle = vigGrad;
-  ctx.fillRect(0, 0, W, H);
-
-  // Scanlines
-  ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
-  for (let y = 0; y < H; y += 3) ctx.fillRect(0, y, W, 1);
-
-  // Moving scan line
-  const scanY = (Date.now() / 25) % H;
-  const scanGrad = ctx.createLinearGradient(0, scanY - 15, 0, scanY + 15);
-  scanGrad.addColorStop(0, 'rgba(0, 204, 255, 0)');
-  scanGrad.addColorStop(0.5, 'rgba(0, 204, 255, 0.04)');
-  scanGrad.addColorStop(1, 'rgba(0, 204, 255, 0)');
-  ctx.fillStyle = scanGrad;
-  ctx.fillRect(0, scanY - 15, W, 30);
-
-  // Corner brackets
-  const bracketLen = 30, bracketInset = 20;
-  ctx.strokeStyle = HUD_COLOR + '0.35)';
-  ctx.lineWidth = 1.5;
-  // Top-left
-  ctx.beginPath();
-  ctx.moveTo(bracketInset, bracketInset + bracketLen);
-  ctx.lineTo(bracketInset, bracketInset);
-  ctx.lineTo(bracketInset + bracketLen, bracketInset);
-  ctx.stroke();
-  // Top-right
-  ctx.beginPath();
-  ctx.moveTo(W - bracketInset - bracketLen, bracketInset);
-  ctx.lineTo(W - bracketInset, bracketInset);
-  ctx.lineTo(W - bracketInset, bracketInset + bracketLen);
-  ctx.stroke();
-  // Bottom-left
-  ctx.beginPath();
-  ctx.moveTo(bracketInset, H - bracketInset - bracketLen);
-  ctx.lineTo(bracketInset, H - bracketInset);
-  ctx.lineTo(bracketInset + bracketLen, H - bracketInset);
-  ctx.stroke();
-  // Bottom-right
-  ctx.beginPath();
-  ctx.moveTo(W - bracketInset - bracketLen, H - bracketInset);
-  ctx.lineTo(W - bracketInset, H - bracketInset);
-  ctx.lineTo(W - bracketInset, H - bracketInset - bracketLen);
-  ctx.stroke();
+  drawHudOverlay(ctx, W, H, HUD_COLOR);
 
   // Data readouts
   const d = lastAirportData;
@@ -524,8 +383,8 @@ export function openAirportView(viewer, entity) {
   generatedSchedule = generateSchedule(icao, ac.r || '');
   scheduleScroll = 0;
 
-  startScheduleLoop();
-  startOverlayLoop();
+  scheduleHandle = startAnimLoop(renderScheduleCanvas);
+  overlayHandle = startAnimLoop(renderAirportOverlay);
 
   setTimeout(() => {
     viewer.resize();
@@ -545,8 +404,11 @@ export function closeAirportView(viewer) {
   $('airport-view-panel').classList.remove('open');
   document.body.classList.remove('airport-panel-open');
 
-  stopScheduleLoop();
-  stopOverlayLoop();
+  if (scheduleHandle) { scheduleHandle.stop(); scheduleHandle = null; }
+  if (overlayHandle) { overlayHandle.stop(); overlayHandle = null; }
 
   setTimeout(() => viewer.resize(), 400);
 }
+
+// --- Self-register with view registry ---
+registerView('airport', { open: openAirportView, close: closeAirportView, isOpen: isAirportViewOpen, resize: resizeAirportView });

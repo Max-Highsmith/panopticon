@@ -46,7 +46,7 @@ export function startAIS(viewer) {
       const sog = pos.Sog;
       const cog = pos.Cog;
       const position = Cesium.Cartesian3.fromDegrees(lon, lat, 0);
-      const acData = { hex: mmsi, r: name, t: 'VESSEL', flight: name, alt_baro: 0, gs: sog, track: cog };
+      const acData = { hex: mmsi, r: name, t: 'VESSEL', flight: name, alt_baro: 0, gs: sog, track: cog, _view: 'plane' };
 
       if (entities.has(mmsi)) {
         const record = entities.get(mmsi);

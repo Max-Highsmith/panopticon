@@ -1,0 +1,259 @@
+{
+  "_source": {
+    "description": "Major whale migration routes",
+    "origin": "NOAA Fisheries species profiles (fisheries.noaa.gov), IWC distribution maps, and Movebank animal tracking database (movebank.org).",
+    "retrieved": "2026-03-06",
+    "license": "NOAA: public domain; IWC/Movebank: public reference",
+    "notes": "Simplified migration corridors from published species range maps."
+  },
+  "migration_route": [
+    {
+      "name": "North Atlantic Right Whale",
+      "coords": [
+        [
+          -81.0,
+          30.0
+        ],
+        [
+          -76.0,
+          35.0
+        ],
+        [
+          -70.0,
+          40.0
+        ],
+        [
+          -66.0,
+          44.0
+        ],
+        [
+          -63.0,
+          47.0
+        ]
+      ],
+      "operator": "NOAA",
+      "country": "USA/Canada",
+      "notes": "Critically endangered // ~350 remaining"
+    },
+    {
+      "name": "Humpback - North Pacific",
+      "coords": [
+        [
+          -156.0,
+          20.0
+        ],
+        [
+          -155.0,
+          25.0
+        ],
+        [
+          -150.0,
+          35.0
+        ],
+        [
+          -145.0,
+          45.0
+        ],
+        [
+          -140.0,
+          55.0
+        ],
+        [
+          -148.0,
+          60.0
+        ]
+      ],
+      "operator": "NOAA",
+      "country": "USA",
+      "notes": "Hawaii to Alaska migration"
+    },
+    {
+      "name": "Gray Whale Pacific",
+      "coords": [
+        [
+          -110.0,
+          23.0
+        ],
+        [
+          -115.0,
+          28.0
+        ],
+        [
+          -120.0,
+          34.0
+        ],
+        [
+          -124.0,
+          42.0
+        ],
+        [
+          -130.0,
+          50.0
+        ],
+        [
+          -145.0,
+          58.0
+        ],
+        [
+          -170.0,
+          65.0
+        ]
+      ],
+      "operator": "NOAA/IWC",
+      "country": "Mexico-USA-Canada-Russia",
+      "notes": "Longest mammal migration // 10,000-12,000 miles"
+    },
+    {
+      "name": "Blue Whale - Eastern Pacific",
+      "coords": [
+        [
+          -90.0,
+          0.0
+        ],
+        [
+          -95.0,
+          10.0
+        ],
+        [
+          -110.0,
+          20.0
+        ],
+        [
+          -120.0,
+          30.0
+        ],
+        [
+          -125.0,
+          38.0
+        ],
+        [
+          -130.0,
+          45.0
+        ]
+      ],
+      "operator": "NOAA",
+      "country": "International",
+      "notes": "Largest animal ever lived"
+    },
+    {
+      "name": "Humpback - South Atlantic",
+      "coords": [
+        [
+          -38.0,
+          -18.0
+        ],
+        [
+          -35.0,
+          -25.0
+        ],
+        [
+          -30.0,
+          -35.0
+        ],
+        [
+          -20.0,
+          -45.0
+        ],
+        [
+          -10.0,
+          -55.0
+        ],
+        [
+          0.0,
+          -60.0
+        ]
+      ],
+      "operator": "IWC",
+      "country": "Brazil-Antarctica",
+      "notes": "Breeding to feeding grounds"
+    },
+    {
+      "name": "Southern Right Whale",
+      "coords": [
+        [
+          20.0,
+          -33.0
+        ],
+        [
+          25.0,
+          -40.0
+        ],
+        [
+          15.0,
+          -50.0
+        ],
+        [
+          0.0,
+          -58.0
+        ],
+        [
+          -10.0,
+          -62.0
+        ]
+      ],
+      "operator": "IWC",
+      "country": "South Africa-Antarctica",
+      "notes": "South African population"
+    },
+    {
+      "name": "Sperm Whale - Atlantic",
+      "coords": [
+        [
+          -20.0,
+          38.0
+        ],
+        [
+          -30.0,
+          35.0
+        ],
+        [
+          -40.0,
+          30.0
+        ],
+        [
+          -50.0,
+          25.0
+        ],
+        [
+          -60.0,
+          20.0
+        ],
+        [
+          -65.0,
+          15.0
+        ]
+      ],
+      "operator": "IWC",
+      "country": "International",
+      "notes": "Deep diving migration"
+    },
+    {
+      "name": "Bowhead Whale - Arctic",
+      "coords": [
+        [
+          -170.0,
+          65.0
+        ],
+        [
+          -165.0,
+          70.0
+        ],
+        [
+          -155.0,
+          72.0
+        ],
+        [
+          -145.0,
+          71.0
+        ],
+        [
+          -135.0,
+          70.0
+        ]
+      ],
+      "operator": "NOAA",
+      "country": "USA/Canada",
+      "notes": "Arctic specialist // 200+ year lifespan"
+    }
+  ]
+}

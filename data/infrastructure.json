@@ -1,56 +1,436 @@
 {
+  "_source": {
+    "description": "Major datacenters and nuclear test sites",
+    "origin": "Datacenters from Data Center Map (datacentermap.com) and company disclosures (Equinix, AWS, Google). Nuclear test sites from CTBTO (ctbto.org) and FAS Nuclear Notebook.",
+    "retrieved": "2026-03-04",
+    "license": "Mixed: public sources",
+    "notes": "Datacenter locations are publicly disclosed campus locations. Nuclear test sites from declassified records."
+  },
   "datacenters": [
-    { "name": "Equinix Ashburn Campus", "lat": 39.018, "lon": -77.473, "country": "USA", "operator": "Equinix", "notes": "World's largest data center cluster" },
-    { "name": "Google The Dalles", "lat": 45.633, "lon": -121.202, "country": "USA", "operator": "Google", "notes": "$1.8B invested, Oregon" },
-    { "name": "Google Council Bluffs", "lat": 41.220, "lon": -95.865, "country": "USA", "operator": "Google", "notes": "$5B invested, Iowa" },
-    { "name": "Switch Citadel", "lat": 39.514, "lon": -119.476, "country": "USA", "operator": "Switch", "notes": "7.2M sqft campus, Reno/Tahoe" },
-    { "name": "Microsoft Quincy", "lat": 47.240, "lon": -119.880, "country": "USA", "operator": "Microsoft", "notes": "Major Azure region, Washington" },
-    { "name": "Meta Prineville", "lat": 44.307, "lon": -120.795, "country": "USA", "operator": "Meta", "notes": "First custom-built Meta DC, Oregon" },
-    { "name": "AWS US-East-1 Ashburn", "lat": 39.040, "lon": -77.488, "country": "USA", "operator": "AWS", "notes": "Largest AWS region globally" },
-    { "name": "Apple Maiden", "lat": 35.587, "lon": -81.257, "country": "USA", "operator": "Apple", "notes": "iCloud data center, North Carolina" },
-    { "name": "CyrusOne Carrollton", "lat": 32.992, "lon": -96.930, "country": "USA", "operator": "CyrusOne", "notes": "Major Texas campus" },
-    { "name": "Digital Realty Dallas", "lat": 32.862, "lon": -96.874, "country": "USA", "operator": "Digital Realty", "notes": "Richardson/Dallas campus" },
-    { "name": "QTS Atlanta Metro", "lat": 34.035, "lon": -84.061, "country": "USA", "operator": "QTS/Blackstone", "notes": "Suwanee, Georgia mega-campus" },
-    { "name": "Stargate Abilene", "lat": 32.449, "lon": -99.741, "country": "USA", "operator": "Oracle/OpenAI/SoftBank", "notes": "1.2 GW AI supercomputer campus" },
-    { "name": "Meta Lulea", "lat": 65.592, "lon": 22.145, "country": "Sweden", "operator": "Meta", "notes": "Near Arctic Circle, natural cooling" },
-    { "name": "Google Hamina", "lat": 60.540, "lon": 27.114, "country": "Finland", "operator": "Google", "notes": "Converted paper mill, seawater cooling" },
-    { "name": "Microsoft Dublin", "lat": 53.318, "lon": -6.444, "country": "Ireland", "operator": "Microsoft", "notes": "Major Azure EU region, Grange Castle" },
-    { "name": "Equinix Amsterdam", "lat": 52.355, "lon": 4.959, "country": "Netherlands", "operator": "Equinix", "notes": "AM series, Science Park, major European hub" },
-    { "name": "Equinix Frankfurt", "lat": 50.099, "lon": 8.632, "country": "Germany", "operator": "Equinix", "notes": "FR series, Europe's largest colocation market" },
-    { "name": "Equinix London Slough", "lat": 51.522, "lon": -0.629, "country": "UK", "operator": "Equinix", "notes": "LD series, Slough Trading Estate" },
-    { "name": "OVHcloud Roubaix", "lat": 50.692, "lon": 3.202, "country": "France", "operator": "OVHcloud", "notes": "Europe's largest hosting provider HQ" },
-    { "name": "AWS Tokyo", "lat": 35.807, "lon": 140.125, "country": "Japan", "operator": "AWS", "notes": "ap-northeast-1, Inzai, Chiba" },
-    { "name": "Equinix Singapore", "lat": 1.295, "lon": 103.790, "country": "Singapore", "operator": "Equinix", "notes": "SG1, 20 Ayer Rajah Crescent" },
-    { "name": "Google Singapore", "lat": 1.340, "lon": 103.704, "country": "Singapore", "operator": "Google", "notes": "Jurong West campus" },
-    { "name": "Microsoft Pune", "lat": 18.627, "lon": 73.800, "country": "India", "operator": "Microsoft", "notes": "Azure Central India, Pimpri-Chinchwad" },
-    { "name": "AWS Sydney", "lat": -33.795, "lon": 150.868, "country": "Australia", "operator": "AWS", "notes": "ap-southeast-2, Eastern Creek" },
-    { "name": "China Telecom Inner Mongolia", "lat": 40.664, "lon": 111.660, "country": "China", "operator": "China Telecom", "notes": "10.6M sqft, Horinger/Shengle cluster" },
-    { "name": "Tencent Guiyang", "lat": 26.433, "lon": 106.474, "country": "China", "operator": "Tencent", "notes": "Underground cave DC, Gui'an New Area" },
-    { "name": "NTT Jakarta", "lat": -6.298, "lon": 107.131, "country": "Indonesia", "operator": "NTT", "notes": "Jakarta 3, Cikarang/Bekasi" },
-    { "name": "AWS São Paulo", "lat": -23.498, "lon": -46.821, "country": "Brazil", "operator": "AWS", "notes": "sa-east-1, Barueri/Tamboré" },
-    { "name": "Teraco Johannesburg", "lat": -26.138, "lon": 28.198, "country": "South Africa", "operator": "Teraco", "notes": "Africa's largest carrier-neutral, Isando" },
-    { "name": "AWS Bahrain", "lat": 26.067, "lon": 50.558, "country": "Bahrain", "operator": "AWS", "notes": "me-south-1, Middle East region" }
+    {
+      "name": "Equinix Ashburn Campus",
+      "lat": 39.018,
+      "lon": -77.473,
+      "country": "USA",
+      "operator": "Equinix",
+      "notes": "World's largest data center cluster"
+    },
+    {
+      "name": "Google The Dalles",
+      "lat": 45.633,
+      "lon": -121.202,
+      "country": "USA",
+      "operator": "Google",
+      "notes": "$1.8B invested, Oregon"
+    },
+    {
+      "name": "Google Council Bluffs",
+      "lat": 41.22,
+      "lon": -95.865,
+      "country": "USA",
+      "operator": "Google",
+      "notes": "$5B invested, Iowa"
+    },
+    {
+      "name": "Switch Citadel",
+      "lat": 39.514,
+      "lon": -119.476,
+      "country": "USA",
+      "operator": "Switch",
+      "notes": "7.2M sqft campus, Reno/Tahoe"
+    },
+    {
+      "name": "Microsoft Quincy",
+      "lat": 47.24,
+      "lon": -119.88,
+      "country": "USA",
+      "operator": "Microsoft",
+      "notes": "Major Azure region, Washington"
+    },
+    {
+      "name": "Meta Prineville",
+      "lat": 44.307,
+      "lon": -120.795,
+      "country": "USA",
+      "operator": "Meta",
+      "notes": "First custom-built Meta DC, Oregon"
+    },
+    {
+      "name": "AWS US-East-1 Ashburn",
+      "lat": 39.04,
+      "lon": -77.488,
+      "country": "USA",
+      "operator": "AWS",
+      "notes": "Largest AWS region globally"
+    },
+    {
+      "name": "Apple Maiden",
+      "lat": 35.587,
+      "lon": -81.257,
+      "country": "USA",
+      "operator": "Apple",
+      "notes": "iCloud data center, North Carolina"
+    },
+    {
+      "name": "CyrusOne Carrollton",
+      "lat": 32.992,
+      "lon": -96.93,
+      "country": "USA",
+      "operator": "CyrusOne",
+      "notes": "Major Texas campus"
+    },
+    {
+      "name": "Digital Realty Dallas",
+      "lat": 32.862,
+      "lon": -96.874,
+      "country": "USA",
+      "operator": "Digital Realty",
+      "notes": "Richardson/Dallas campus"
+    },
+    {
+      "name": "QTS Atlanta Metro",
+      "lat": 34.035,
+      "lon": -84.061,
+      "country": "USA",
+      "operator": "QTS/Blackstone",
+      "notes": "Suwanee, Georgia mega-campus"
+    },
+    {
+      "name": "Stargate Abilene",
+      "lat": 32.449,
+      "lon": -99.741,
+      "country": "USA",
+      "operator": "Oracle/OpenAI/SoftBank",
+      "notes": "1.2 GW AI supercomputer campus"
+    },
+    {
+      "name": "Meta Lulea",
+      "lat": 65.592,
+      "lon": 22.145,
+      "country": "Sweden",
+      "operator": "Meta",
+      "notes": "Near Arctic Circle, natural cooling"
+    },
+    {
+      "name": "Google Hamina",
+      "lat": 60.54,
+      "lon": 27.114,
+      "country": "Finland",
+      "operator": "Google",
+      "notes": "Converted paper mill, seawater cooling"
+    },
+    {
+      "name": "Microsoft Dublin",
+      "lat": 53.318,
+      "lon": -6.444,
+      "country": "Ireland",
+      "operator": "Microsoft",
+      "notes": "Major Azure EU region, Grange Castle"
+    },
+    {
+      "name": "Equinix Amsterdam",
+      "lat": 52.355,
+      "lon": 4.959,
+      "country": "Netherlands",
+      "operator": "Equinix",
+      "notes": "AM series, Science Park, major European hub"
+    },
+    {
+      "name": "Equinix Frankfurt",
+      "lat": 50.099,
+      "lon": 8.632,
+      "country": "Germany",
+      "operator": "Equinix",
+      "notes": "FR series, Europe's largest colocation market"
+    },
+    {
+      "name": "Equinix London Slough",
+      "lat": 51.522,
+      "lon": -0.629,
+      "country": "UK",
+      "operator": "Equinix",
+      "notes": "LD series, Slough Trading Estate"
+    },
+    {
+      "name": "OVHcloud Roubaix",
+      "lat": 50.692,
+      "lon": 3.202,
+      "country": "France",
+      "operator": "OVHcloud",
+      "notes": "Europe's largest hosting provider HQ"
+    },
+    {
+      "name": "AWS Tokyo",
+      "lat": 35.807,
+      "lon": 140.125,
+      "country": "Japan",
+      "operator": "AWS",
+      "notes": "ap-northeast-1, Inzai, Chiba"
+    },
+    {
+      "name": "Equinix Singapore",
+      "lat": 1.295,
+      "lon": 103.79,
+      "country": "Singapore",
+      "operator": "Equinix",
+      "notes": "SG1, 20 Ayer Rajah Crescent"
+    },
+    {
+      "name": "Google Singapore",
+      "lat": 1.34,
+      "lon": 103.704,
+      "country": "Singapore",
+      "operator": "Google",
+      "notes": "Jurong West campus"
+    },
+    {
+      "name": "Microsoft Pune",
+      "lat": 18.627,
+      "lon": 73.8,
+      "country": "India",
+      "operator": "Microsoft",
+      "notes": "Azure Central India, Pimpri-Chinchwad"
+    },
+    {
+      "name": "AWS Sydney",
+      "lat": -33.795,
+      "lon": 150.868,
+      "country": "Australia",
+      "operator": "AWS",
+      "notes": "ap-southeast-2, Eastern Creek"
+    },
+    {
+      "name": "China Telecom Inner Mongolia",
+      "lat": 40.664,
+      "lon": 111.66,
+      "country": "China",
+      "operator": "China Telecom",
+      "notes": "10.6M sqft, Horinger/Shengle cluster"
+    },
+    {
+      "name": "Tencent Guiyang",
+      "lat": 26.433,
+      "lon": 106.474,
+      "country": "China",
+      "operator": "Tencent",
+      "notes": "Underground cave DC, Gui'an New Area"
+    },
+    {
+      "name": "NTT Jakarta",
+      "lat": -6.298,
+      "lon": 107.131,
+      "country": "Indonesia",
+      "operator": "NTT",
+      "notes": "Jakarta 3, Cikarang/Bekasi"
+    },
+    {
+      "name": "AWS S\u00e3o Paulo",
+      "lat": -23.498,
+      "lon": -46.821,
+      "country": "Brazil",
+      "operator": "AWS",
+      "notes": "sa-east-1, Barueri/Tambor\u00e9"
+    },
+    {
+      "name": "Teraco Johannesburg",
+      "lat": -26.138,
+      "lon": 28.198,
+      "country": "South Africa",
+      "operator": "Teraco",
+      "notes": "Africa's largest carrier-neutral, Isando"
+    },
+    {
+      "name": "AWS Bahrain",
+      "lat": 26.067,
+      "lon": 50.558,
+      "country": "Bahrain",
+      "operator": "AWS",
+      "notes": "me-south-1, Middle East region"
+    }
   ],
   "nuclear_tests": [
-    { "name": "Trinity Site", "lat": 33.677, "lon": -106.475, "country": "USA", "tests": 1, "years": "1945", "notes": "First nuclear detonation, July 16 1945" },
-    { "name": "Nevada Test Site (NNSS)", "lat": 37.117, "lon": -116.050, "country": "USA", "tests": 928, "years": "1951-1992", "notes": "Largest US test complex" },
-    { "name": "Bikini Atoll", "lat": 11.692, "lon": 165.270, "country": "Marshall Islands", "tests": 23, "years": "1946-1958", "notes": "Castle Bravo 15 Mt, largest US test" },
-    { "name": "Enewetak Atoll", "lat": 11.500, "lon": 162.350, "country": "Marshall Islands", "tests": 43, "years": "1948-1958", "notes": "Ivy Mike first thermonuclear, 1952" },
-    { "name": "Johnston Atoll", "lat": 16.737, "lon": -169.524, "country": "USA", "tests": 12, "years": "1958-1962", "notes": "High-altitude nuclear tests" },
-    { "name": "Amchitka Island", "lat": 51.433, "lon": 179.167, "country": "USA", "tests": 3, "years": "1965-1971", "notes": "Underground tests, Cannikin 5 Mt" },
-    { "name": "Semipalatinsk (Polygon)", "lat": 50.117, "lon": 78.717, "country": "Kazakhstan", "tests": 456, "years": "1949-1989", "notes": "Primary Soviet test site" },
-    { "name": "Novaya Zemlya", "lat": 73.700, "lon": 54.000, "country": "Russia", "tests": 224, "years": "1955-1990", "notes": "Tsar Bomba 50 Mt, largest ever detonation" },
-    { "name": "Totsk", "lat": 52.567, "lon": 52.583, "country": "Russia", "tests": 1, "years": "1954", "notes": "Snowball military exercise with live nuclear weapon" },
-    { "name": "Lop Nur", "lat": 41.705, "lon": 88.375, "country": "China", "tests": 45, "years": "1964-1996", "notes": "All Chinese nuclear tests conducted here" },
-    { "name": "Mururoa Atoll", "lat": -21.833, "lon": -138.917, "country": "French Polynesia", "tests": 181, "years": "1966-1996", "notes": "French atmospheric and underground tests" },
-    { "name": "Fangataufa Atoll", "lat": -22.233, "lon": -138.750, "country": "French Polynesia", "tests": 12, "years": "1966-1996", "notes": "French secondary Pacific test site" },
-    { "name": "Reggane", "lat": 26.317, "lon": 0.067, "country": "Algeria", "tests": 4, "years": "1960-1961", "notes": "Gerboise Bleue, first French nuclear test" },
-    { "name": "In Ekker", "lat": 24.050, "lon": 5.050, "country": "Algeria", "tests": 13, "years": "1961-1966", "notes": "French underground tests in Sahara" },
-    { "name": "Maralinga", "lat": -30.167, "lon": 131.600, "country": "Australia", "operator": "UK", "tests": 7, "years": "1956-1963", "notes": "British nuclear weapons tests" },
-    { "name": "Monte Bello Islands", "lat": -20.417, "lon": 115.533, "country": "Australia", "operator": "UK", "tests": 3, "years": "1952-1956", "notes": "First British nuclear test, Operation Hurricane" },
-    { "name": "Emu Field", "lat": -28.633, "lon": 132.317, "country": "Australia", "operator": "UK", "tests": 2, "years": "1953", "notes": "Operation Totem, British atmospheric tests" },
-    { "name": "Pokhran", "lat": 27.100, "lon": 71.750, "country": "India", "tests": 6, "years": "1974-1998", "notes": "Smiling Buddha (1974) and Shakti (1998)" },
-    { "name": "Ras Koh Hills (Chagai)", "lat": 28.783, "lon": 64.950, "country": "Pakistan", "tests": 6, "years": "1998", "notes": "Chagai-I and Chagai-II, Pakistan's nuclear tests" },
-    { "name": "Punggye-ri", "lat": 41.291, "lon": 129.076, "country": "North Korea", "tests": 6, "years": "2006-2017", "notes": "All 6 DPRK nuclear tests, mountain facility" }
+    {
+      "name": "Trinity Site",
+      "lat": 33.677,
+      "lon": -106.475,
+      "country": "USA",
+      "tests": 1,
+      "years": "1945",
+      "notes": "First nuclear detonation, July 16 1945"
+    },
+    {
+      "name": "Nevada Test Site (NNSS)",
+      "lat": 37.117,
+      "lon": -116.05,
+      "country": "USA",
+      "tests": 928,
+      "years": "1951-1992",
+      "notes": "Largest US test complex"
+    },
+    {
+      "name": "Bikini Atoll",
+      "lat": 11.692,
+      "lon": 165.27,
+      "country": "Marshall Islands",
+      "tests": 23,
+      "years": "1946-1958",
+      "notes": "Castle Bravo 15 Mt, largest US test"
+    },
+    {
+      "name": "Enewetak Atoll",
+      "lat": 11.5,
+      "lon": 162.35,
+      "country": "Marshall Islands",
+      "tests": 43,
+      "years": "1948-1958",
+      "notes": "Ivy Mike first thermonuclear, 1952"
+    },
+    {
+      "name": "Johnston Atoll",
+      "lat": 16.737,
+      "lon": -169.524,
+      "country": "USA",
+      "tests": 12,
+      "years": "1958-1962",
+      "notes": "High-altitude nuclear tests"
+    },
+    {
+      "name": "Amchitka Island",
+      "lat": 51.433,
+      "lon": 179.167,
+      "country": "USA",
+      "tests": 3,
+      "years": "1965-1971",
+      "notes": "Underground tests, Cannikin 5 Mt"
+    },
+    {
+      "name": "Semipalatinsk (Polygon)",
+      "lat": 50.117,
+      "lon": 78.717,
+      "country": "Kazakhstan",
+      "tests": 456,
+      "years": "1949-1989",
+      "notes": "Primary Soviet test site"
+    },
+    {
+      "name": "Novaya Zemlya",
+      "lat": 73.7,
+      "lon": 54.0,
+      "country": "Russia",
+      "tests": 224,
+      "years": "1955-1990",
+      "notes": "Tsar Bomba 50 Mt, largest ever detonation"
+    },
+    {
+      "name": "Totsk",
+      "lat": 52.567,
+      "lon": 52.583,
+      "country": "Russia",
+      "tests": 1,
+      "years": "1954",
+      "notes": "Snowball military exercise with live nuclear weapon"
+    },
+    {
+      "name": "Lop Nur",
+      "lat": 41.705,
+      "lon": 88.375,
+      "country": "China",
+      "tests": 45,
+      "years": "1964-1996",
+      "notes": "All Chinese nuclear tests conducted here"
+    },
+    {
+      "name": "Mururoa Atoll",
+      "lat": -21.833,
+      "lon": -138.917,
+      "country": "French Polynesia",
+      "tests": 181,
+      "years": "1966-1996",
+      "notes": "French atmospheric and underground tests"
+    },
+    {
+      "name": "Fangataufa Atoll",
+      "lat": -22.233,
+      "lon": -138.75,
+      "country": "French Polynesia",
+      "tests": 12,
+      "years": "1966-1996",
+      "notes": "French secondary Pacific test site"
+    },
+    {
+      "name": "Reggane",
+      "lat": 26.317,
+      "lon": 0.067,
+      "country": "Algeria",
+      "tests": 4,
+      "years": "1960-1961",
+      "notes": "Gerboise Bleue, first French nuclear test"
+    },
+    {
+      "name": "In Ekker",
+      "lat": 24.05,
+      "lon": 5.05,
+      "country": "Algeria",
+      "tests": 13,
+      "years": "1961-1966",
+      "notes": "French underground tests in Sahara"
+    },
+    {
+      "name": "Maralinga",
+      "lat": -30.167,
+      "lon": 131.6,
+      "country": "Australia",
+      "operator": "UK",
+      "tests": 7,
+      "years": "1956-1963",
+      "notes": "British nuclear weapons tests"
+    },
+    {
+      "name": "Monte Bello Islands",
+      "lat": -20.417,
+      "lon": 115.533,
+      "country": "Australia",
+      "operator": "UK",
+      "tests": 3,
+      "years": "1952-1956",
+      "notes": "First British nuclear test, Operation Hurricane"
+    },
+    {
+      "name": "Emu Field",
+      "lat": -28.633,
+      "lon": 132.317,
+      "country": "Australia",
+      "operator": "UK",
+      "tests": 2,
+      "years": "1953",
+      "notes": "Operation Totem, British atmospheric tests"
+    },
+    {
+      "name": "Pokhran",
+      "lat": 27.1,
+      "lon": 71.75,
+      "country": "India",
+      "tests": 6,
+      "years": "1974-1998",
+      "notes": "Smiling Buddha (1974) and Shakti (1998)"
+    },
+    {
+      "name": "Ras Koh Hills (Chagai)",
+      "lat": 28.783,
+      "lon": 64.95,
+      "country": "Pakistan",
+      "tests": 6,
+      "years": "1998",
+      "notes": "Chagai-I and Chagai-II, Pakistan's nuclear tests"
+    },
+    {
+      "name": "Punggye-ri",
+      "lat": 41.291,
+      "lon": 129.076,
+      "country": "North Korea",
+      "tests": 6,
+      "years": "2006-2017",
+      "notes": "All 6 DPRK nuclear tests, mountain facility"
+    }
   ]
 }

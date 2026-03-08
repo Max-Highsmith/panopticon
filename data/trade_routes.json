@@ -1,0 +1,459 @@
+{
+  "_source": {
+    "description": "Major global shipping and trade routes",
+    "origin": "Based on UNCTAD Review of Maritime Transport route maps and IMO shipping density maps (marinetraffic.com/ais/details/density-maps).",
+    "retrieved": "2026-03-06",
+    "license": "UNCTAD: public; IMO/MarineTraffic: reference only",
+    "notes": "Representative route centerlines. Actual shipping lanes are broad corridors."
+  },
+  "major": [
+    {
+      "name": "Asia-Europe (Suez)",
+      "coords": [
+        [
+          121.5,
+          31.2
+        ],
+        [
+          114.2,
+          22.3
+        ],
+        [
+          103.7,
+          1.3
+        ],
+        [
+          80.0,
+          6.0
+        ],
+        [
+          60.0,
+          15.0
+        ],
+        [
+          50.0,
+          15.0
+        ],
+        [
+          43.3,
+          12.6
+        ],
+        [
+          43.0,
+          14.5
+        ],
+        [
+          42.5,
+          15.5
+        ],
+        [
+          38.5,
+          21.5
+        ],
+        [
+          35.0,
+          27.5
+        ],
+        [
+          32.5,
+          30.0
+        ],
+        [
+          32.3,
+          31.2
+        ],
+        [
+          30.0,
+          31.5
+        ],
+        [
+          15.0,
+          37.0
+        ],
+        [
+          5.0,
+          36.5
+        ],
+        [
+          -5.0,
+          36.0
+        ],
+        [
+          -9.5,
+          38.7
+        ]
+      ],
+      "operator": "Global Shipping",
+      "country": "International",
+      "notes": "Busiest trade route // ~30% of global container traffic"
+    },
+    {
+      "name": "Trans-Pacific (Asia-Americas)",
+      "coords": [
+        [
+          121.5,
+          31.2
+        ],
+        [
+          130.0,
+          33.0
+        ],
+        [
+          140.0,
+          35.0
+        ],
+        [
+          155.0,
+          38.0
+        ],
+        [
+          170.0,
+          40.0
+        ],
+        [
+          -175.0,
+          42.0
+        ],
+        [
+          -160.0,
+          40.0
+        ],
+        [
+          -140.0,
+          36.0
+        ],
+        [
+          -125.0,
+          34.0
+        ],
+        [
+          -118.2,
+          33.8
+        ]
+      ],
+      "operator": "Global Shipping",
+      "country": "International",
+      "notes": "~25% of global trade"
+    },
+    {
+      "name": "Trans-Atlantic (Europe-Americas)",
+      "coords": [
+        [
+          -73.9,
+          40.5
+        ],
+        [
+          -60.0,
+          42.0
+        ],
+        [
+          -45.0,
+          45.0
+        ],
+        [
+          -30.0,
+          48.0
+        ],
+        [
+          -15.0,
+          50.0
+        ],
+        [
+          -5.0,
+          50.5
+        ],
+        [
+          0.0,
+          51.0
+        ],
+        [
+          3.5,
+          51.5
+        ]
+      ],
+      "operator": "Global Shipping",
+      "country": "International",
+      "notes": "Historic trade route"
+    },
+    {
+      "name": "Cape of Good Hope Route",
+      "coords": [
+        [
+          103.7,
+          1.3
+        ],
+        [
+          80.0,
+          6.0
+        ],
+        [
+          60.0,
+          0.0
+        ],
+        [
+          50.0,
+          -10.0
+        ],
+        [
+          40.0,
+          -20.0
+        ],
+        [
+          30.0,
+          -30.0
+        ],
+        [
+          20.0,
+          -34.5
+        ],
+        [
+          18.4,
+          -33.9
+        ],
+        [
+          10.0,
+          -20.0
+        ],
+        [
+          0.0,
+          -5.0
+        ],
+        [
+          -5.0,
+          5.0
+        ],
+        [
+          -15.0,
+          15.0
+        ],
+        [
+          -20.0,
+          25.0
+        ],
+        [
+          -15.0,
+          35.0
+        ],
+        [
+          -5.0,
+          36.0
+        ]
+      ],
+      "operator": "Global Shipping",
+      "country": "International",
+      "notes": "Alternative to Suez // longer but avoids chokepoints"
+    },
+    {
+      "name": "Strait of Malacca Route",
+      "coords": [
+        [
+          103.7,
+          1.3
+        ],
+        [
+          103.0,
+          2.0
+        ],
+        [
+          100.5,
+          3.5
+        ],
+        [
+          98.5,
+          5.0
+        ],
+        [
+          96.0,
+          6.5
+        ],
+        [
+          94.0,
+          7.5
+        ],
+        [
+          90.0,
+          8.0
+        ],
+        [
+          85.0,
+          7.0
+        ],
+        [
+          80.0,
+          6.0
+        ]
+      ],
+      "operator": "Global Shipping",
+      "country": "International",
+      "notes": "~25% of world trade passes through"
+    },
+    {
+      "name": "Panama Canal Route",
+      "coords": [
+        [
+          -118.2,
+          33.8
+        ],
+        [
+          -110.0,
+          25.0
+        ],
+        [
+          -100.0,
+          18.0
+        ],
+        [
+          -90.0,
+          14.0
+        ],
+        [
+          -80.0,
+          9.5
+        ],
+        [
+          -79.5,
+          9.0
+        ],
+        [
+          -79.5,
+          8.9
+        ],
+        [
+          -75.0,
+          10.0
+        ],
+        [
+          -65.0,
+          15.0
+        ],
+        [
+          -55.0,
+          20.0
+        ],
+        [
+          -45.0,
+          25.0
+        ],
+        [
+          -35.0,
+          30.0
+        ],
+        [
+          -20.0,
+          35.0
+        ],
+        [
+          -5.0,
+          36.0
+        ]
+      ],
+      "operator": "ACP",
+      "country": "International",
+      "notes": "~5% of world maritime trade"
+    },
+    {
+      "name": "Persian Gulf-Asia Oil Route",
+      "coords": [
+        [
+          50.0,
+          26.0
+        ],
+        [
+          56.0,
+          25.0
+        ],
+        [
+          58.5,
+          22.5
+        ],
+        [
+          65.0,
+          15.0
+        ],
+        [
+          73.0,
+          10.0
+        ],
+        [
+          80.0,
+          6.0
+        ],
+        [
+          96.0,
+          6.5
+        ],
+        [
+          103.7,
+          1.3
+        ],
+        [
+          110.0,
+          5.0
+        ],
+        [
+          114.2,
+          22.3
+        ],
+        [
+          121.5,
+          31.2
+        ]
+      ],
+      "operator": "Oil Tankers",
+      "country": "International",
+      "notes": "Major oil supply route to East Asia"
+    },
+    {
+      "name": "South America-Europe",
+      "coords": [
+        [
+          -43.2,
+          -22.9
+        ],
+        [
+          -38.0,
+          -15.0
+        ],
+        [
+          -35.0,
+          -5.0
+        ],
+        [
+          -30.0,
+          5.0
+        ],
+        [
+          -25.0,
+          15.0
+        ],
+        [
+          -20.0,
+          25.0
+        ],
+        [
+          -15.0,
+          30.0
+        ],
+        [
+          -10.0,
+          35.0
+        ],
+        [
+          -5.0,
+          36.0
+        ],
+        [
+          0.0,
+          40.0
+        ],
+        [
+          3.5,
+          51.5
+        ]
+      ],
+      "operator": "Global Shipping",
+      "country": "International",
+      "notes": "South Atlantic trade"
+    }
+  ]
+}

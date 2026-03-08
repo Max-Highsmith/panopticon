@@ -4,6 +4,7 @@
 
 import { DISPLAY } from '../config.js';
 import { createDataLayer } from './datalayer.js';
+import { registerLayerLoader } from '../layerregistry.js';
 
 const layer = createDataLayer({
   layerKey: 'rareearth',
@@ -19,6 +20,8 @@ const layer = createDataLayer({
     strategic_minerals: { icon: 'reeStrategic', color: '#ffaa44', label: 'STRATEGIC MINERAL' },
   },
 });
+
+registerLayerLoader('rareearth', { load: layer.load, flyTo: layer.FLY_TO, reset: layer.reset, dataUrl: 'data/rare_earth.json' });
 
 export const fetchRareEarth     = layer.load;
 export const isRareEarthLoaded  = layer.isLoaded;

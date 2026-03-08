@@ -1,0 +1,173 @@
+{
+  "_source": {
+    "description": "Major Internet Exchange Points (IXPs) worldwide",
+    "origin": "PeeringDB (peeringdb.com) facility database and Packet Clearing House (pch.net) IXP directory.",
+    "retrieved": "2026-03-06",
+    "license": "PeeringDB: open data (CC-BY); PCH: public reference",
+    "notes": "Major IXPs by peak traffic. Coordinates from PeeringDB facility records."
+  },
+  "tier1": [
+    {
+      "name": "DE-CIX Frankfurt",
+      "lat": 50.11,
+      "lon": 8.68,
+      "country": "Germany",
+      "operator": "DE-CIX",
+      "notes": "World's largest IXP by peak traffic; 14+ Tbps; 1000+ networks"
+    },
+    {
+      "name": "AMS-IX Amsterdam",
+      "lat": 52.37,
+      "lon": 4.9,
+      "country": "Netherlands",
+      "operator": "AMS-IX",
+      "notes": "Europe's 2nd largest; 12+ Tbps; 900+ connected parties"
+    },
+    {
+      "name": "LINX London",
+      "lat": 51.52,
+      "lon": -0.08,
+      "country": "UK",
+      "operator": "LINX",
+      "notes": "London Internet Exchange; 6+ Tbps; 950+ member ASNs"
+    },
+    {
+      "name": "Equinix Ashburn (VA)",
+      "lat": 39.04,
+      "lon": -77.49,
+      "country": "USA",
+      "operator": "Equinix",
+      "notes": "World's densest interconnection hub; ~70% of US internet traffic touches here"
+    },
+    {
+      "name": "IX.br S\u00e3o Paulo (PTT-SP)",
+      "lat": -23.55,
+      "lon": -46.63,
+      "country": "Brazil",
+      "operator": "NIC.br",
+      "notes": "World's largest by connected ASNs; 2600+ ASNs; 25+ Tbps"
+    },
+    {
+      "name": "HKIX Hong Kong",
+      "lat": 22.28,
+      "lon": 114.16,
+      "country": "China (SAR)",
+      "operator": "HKIX",
+      "notes": "Asia's key interconnection point; gateway to mainland China"
+    },
+    {
+      "name": "JPNAP Tokyo",
+      "lat": 35.68,
+      "lon": 139.77,
+      "country": "Japan",
+      "operator": "Internet Multifeed",
+      "notes": "Japan's primary IXP; trans-Pacific cable landing hub"
+    },
+    {
+      "name": "Singapore Internet Exchange (SGIX)",
+      "lat": 1.3,
+      "lon": 103.84,
+      "country": "Singapore",
+      "operator": "SGIX",
+      "notes": "Southeast Asia's primary hub; submarine cable nexus"
+    }
+  ],
+  "regional": [
+    {
+      "name": "MSK-IX Moscow",
+      "lat": 55.76,
+      "lon": 37.62,
+      "country": "Russia",
+      "operator": "MSK-IX",
+      "notes": "Russia's largest; 600+ connected networks; RuNet backbone"
+    },
+    {
+      "name": "KINX Seoul",
+      "lat": 37.57,
+      "lon": 126.98,
+      "country": "South Korea",
+      "operator": "KINX",
+      "notes": "Korea's primary; world-class broadband market; 250+ members"
+    },
+    {
+      "name": "Mumbai IX (NIXI)",
+      "lat": 19.08,
+      "lon": 72.88,
+      "country": "India",
+      "operator": "NIXI",
+      "notes": "India's largest; rapidly growing with digital India initiative"
+    },
+    {
+      "name": "JINX Johannesburg",
+      "lat": -26.2,
+      "lon": 28.05,
+      "country": "South Africa",
+      "operator": "JINX/INX-ZA",
+      "notes": "Africa's largest IXP; pan-African peering hub"
+    },
+    {
+      "name": "France-IX Paris",
+      "lat": 48.86,
+      "lon": 2.35,
+      "country": "France",
+      "operator": "France-IX",
+      "notes": "France's primary; 700+ members; 5+ Tbps peak"
+    },
+    {
+      "name": "MIX Milan",
+      "lat": 45.46,
+      "lon": 9.19,
+      "country": "Italy",
+      "operator": "MIX",
+      "notes": "Southern Europe hub; 300+ connected networks"
+    },
+    {
+      "name": "KIXP Nairobi",
+      "lat": -1.29,
+      "lon": 36.82,
+      "country": "Kenya",
+      "operator": "KIXP",
+      "notes": "East Africa's primary IXP; regional peering hub"
+    },
+    {
+      "name": "UAE-IX Dubai",
+      "lat": 25.2,
+      "lon": 55.27,
+      "country": "UAE",
+      "operator": "UAE-IX / DE-CIX",
+      "notes": "Middle East's largest; connecting Asia, Africa, and Europe traffic"
+    },
+    {
+      "name": "IX Australia Sydney",
+      "lat": -33.87,
+      "lon": 151.21,
+      "country": "Australia",
+      "operator": "IX Australia",
+      "notes": "Oceania's primary; subsea cable landing for trans-Pacific"
+    },
+    {
+      "name": "TorIX Toronto",
+      "lat": 43.65,
+      "lon": -79.38,
+      "country": "Canada",
+      "operator": "TorIX",
+      "notes": "Canada's largest; 300+ peers; critical North American hub"
+    },
+    {
+      "name": "Netnod Stockholm",
+      "lat": 59.33,
+      "lon": 18.07,
+      "country": "Sweden",
+      "operator": "Netnod",
+      "notes": "Nordic region primary; submarine cable hub to Baltic states"
+    },
+    {
+      "name": "Equinix Chicago",
+      "lat": 41.88,
+      "lon": -87.63,
+      "country": "USA",
+      "operator": "Equinix",
+      "notes": "Central US hub; major financial exchange co-location"
+    }
+  ]
+}

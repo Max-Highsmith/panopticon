@@ -5,6 +5,8 @@
 import { entityMaps } from './globe.js';
 import { $ } from './utils.js';
 import { drawEarthGlobe } from './earthmap.js';
+import { createDetailViewer, computeFootprintKm, computeCirclePositions } from './viewbase.js';
+import { registerView } from './viewregistry.js';
 
 const satEntities = entityMaps.satellites;
 let satViewer = null;
@@ -17,46 +19,23 @@ let frameCounter = 0;
 export function isSatViewOpen() { return satViewOpen; }
 export function resizeSatView() { if (satViewer) satViewer.resize(); }
 
-// --- Geometric line-of-sight footprint ---
-// Returns the ground-distance radius (km) a satellite can see from altitude altM (meters).
-// This is the arc distance from nadir to the geometric horizon on Earth's surface.
-function computeFootprintKm(altM) {
-  const R = 6371; // Earth radius in km
-  const altKm = altM / 1000;
-  // Angular radius from Earth center to the satellite's horizon
-  const angularRadius = Math.acos(R / (R + altKm));
-  return R * angularRadius;
-}
-
-// --- Second Cesium Viewer ---
-
 function initSatViewer() {
   if (satViewer) return;
-  satViewer = new Cesium.Viewer('sat-view-container', {
-    geocoder: false, homeButton: false, sceneModePicker: false,
-    baseLayerPicker: false, navigationHelpButton: false,
-    animation: false, timeline: false, fullscreenButton: false,
-    selectionIndicator: false, infoBox: false, scene3DOnly: true,
-    imageryProvider: false,
-  });
-  satViewer.scene.backgroundColor = Cesium.Color.BLACK;
-  satViewer.imageryLayers.addImageryProvider(
-    new Cesium.OpenStreetMapImageryProvider({ url: 'https://tile.openstreetmap.org/' })
-  );
-  (async () => {
-    try {
-      const tileset = await Cesium.createGooglePhotorealistic3DTileset();
-      satViewer.scene.primitives.add(tileset);
-      satViewer.scene.globe.show = false;
-    } catch {
-      console.log('Sat view: Google 3D Tiles not available, using OSM.');
-    }
-  })();
+  satViewer = createDetailViewer('sat-view-container');
 }
 
 // --- Open / Close ---
 
-export function openSatView(viewer, noradId) {
+export function openSatView(viewer, entityOrId) {
+  // Accept either a Cesium entity (from click dispatch) or a NORAD ID string (legacy)
+  let noradId;
+  if (typeof entityOrId === 'string') {
+    noradId = entityOrId;
+  } else if (entityOrId && entityOrId.acData) {
+    noradId = entityOrId.acData.hex;
+  } else {
+    return;
+  }
   const record = satEntities.get(noradId);
   if (!record) return;
 
@@ -136,16 +115,6 @@ function updateSatViewCamera(record) {
 }
 
 // --- Footprint Visualization ---
-
-function computeCirclePositions(lon, lat, radiusDeg, numPts) {
-  const cosLat = Math.cos(Cesium.Math.toRadians(lat));
-  const pts = [];
-  for (let i = 0; i <= numPts; i++) {
-    const ang = (i / numPts) * 2 * Math.PI;
-    pts.push(lon + (radiusDeg * Math.cos(ang)) / cosLat, lat + radiusDeg * Math.sin(ang));
-  }
-  return Cesium.Cartesian3.fromDegreesArray(pts);
-}
 
 function createSatViewFootprint(lon, lat, radiusKm) {
   const radiusDeg = radiusKm / 111.32;
@@ -354,3 +323,6 @@ function renderSatHorizonView(record) {
   ctx.stroke();
   ctx.restore();
 }
+
+// --- Self-register with view registry ---
+registerView('satellite', { open: openSatView, close: closeSatView, isOpen: isSatViewOpen, resize: resizeSatView });

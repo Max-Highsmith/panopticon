@@ -6,6 +6,7 @@ import { DISPLAY } from '../config.js';
 import { $ } from '../utils.js';
 import { icons } from '../icons.js';
 import { layers, entityMaps } from '../globe.js';
+import { registerLayerLoader, cacheLayerData } from '../layerregistry.js';
 
 const entities = entityMaps.airports;
 let loaded = false;
@@ -19,6 +20,7 @@ export async function fetchAirports(viewer) {
     const res = await fetch('data/airports.json');
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const data = await res.json();
+    cacheLayerData('airports', data);
 
     for (const ap of (data.airports || [])) {
       const id = ap.icao || `${ap.lat}_${ap.lon}`;
@@ -64,6 +66,7 @@ export async function fetchAirports(viewer) {
         alt_baro: ap.elevation_ft || 0,
         gs: 0,
         track: 0,
+        _view: 'airport',
       };
       entities.set(id, { entity });
     }
@@ -76,3 +79,5 @@ export async function fetchAirports(viewer) {
     $('airport-count').textContent = 'ERR';
   }
 }
+
+registerLayerLoader('airports', { load: fetchAirports, reset: resetAirports, dataUrl: 'data/airports.json', view: 'airport' });

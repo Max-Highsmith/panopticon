@@ -1,0 +1,215 @@
+{
+  "_source": {
+    "description": "Elephant migration corridors in Africa and Asia",
+    "origin": "IUCN/AfESG elephant range maps, WWF corridor assessments, and published telemetry studies (Movebank/Save the Elephants).",
+    "retrieved": "2026-03-06",
+    "license": "IUCN: public reference; WWF: public education materials",
+    "notes": "Simplified corridor centerlines from published conservation assessments."
+  },
+  "corridor": [
+    {
+      "name": "Amboseli-Tsavo Corridor",
+      "coords": [
+        [
+          37.0,
+          -2.6
+        ],
+        [
+          37.2,
+          -2.8
+        ],
+        [
+          37.5,
+          -3.0
+        ],
+        [
+          37.8,
+          -3.2
+        ],
+        [
+          38.0,
+          -3.0
+        ],
+        [
+          38.3,
+          -2.8
+        ]
+      ],
+      "operator": "KWS/AWF",
+      "country": "Kenya",
+      "notes": "African savanna elephants // ~2,000 individuals"
+    },
+    {
+      "name": "Serengeti-Mara Corridor",
+      "coords": [
+        [
+          34.5,
+          -2.5
+        ],
+        [
+          34.8,
+          -2.0
+        ],
+        [
+          35.0,
+          -1.5
+        ],
+        [
+          35.2,
+          -1.2
+        ],
+        [
+          35.5,
+          -1.0
+        ]
+      ],
+      "operator": "TANAPA/KWS",
+      "country": "Tanzania-Kenya",
+      "notes": "Cross-border elephant movement"
+    },
+    {
+      "name": "Kavango-Zambezi Corridor",
+      "coords": [
+        [
+          22.0,
+          -18.0
+        ],
+        [
+          23.0,
+          -18.5
+        ],
+        [
+          24.5,
+          -18.2
+        ],
+        [
+          25.5,
+          -17.8
+        ],
+        [
+          26.0,
+          -17.5
+        ]
+      ],
+      "operator": "KAZA TFCA",
+      "country": "Botswana-Namibia-Zimbabwe",
+      "notes": "World's largest elephant population // ~230,000"
+    },
+    {
+      "name": "Chobe-Hwange Corridor",
+      "coords": [
+        [
+          25.0,
+          -18.5
+        ],
+        [
+          25.5,
+          -19.0
+        ],
+        [
+          26.0,
+          -19.5
+        ],
+        [
+          26.5,
+          -19.8
+        ],
+        [
+          27.0,
+          -19.5
+        ]
+      ],
+      "operator": "EWB",
+      "country": "Botswana-Zimbabwe",
+      "notes": "Dry season water migration"
+    },
+    {
+      "name": "Mali Elephant Circuit",
+      "coords": [
+        [
+          -3.0,
+          15.0
+        ],
+        [
+          -2.5,
+          14.5
+        ],
+        [
+          -2.0,
+          14.0
+        ],
+        [
+          -1.5,
+          14.5
+        ],
+        [
+          -2.0,
+          15.0
+        ],
+        [
+          -3.0,
+          15.0
+        ]
+      ],
+      "operator": "Wild Foundation",
+      "country": "Mali",
+      "notes": "Northernmost African elephants // 300-500 individuals"
+    },
+    {
+      "name": "Xishuangbanna-Laos Corridor",
+      "coords": [
+        [
+          101.2,
+          21.5
+        ],
+        [
+          101.0,
+          21.0
+        ],
+        [
+          100.8,
+          20.5
+        ],
+        [
+          100.5,
+          20.0
+        ],
+        [
+          100.8,
+          19.5
+        ]
+      ],
+      "operator": "CAS",
+      "country": "China-Laos",
+      "notes": "Asian elephants // Famous 2021 herd trek"
+    },
+    {
+      "name": "Sri Lankan Elephant Corridor",
+      "coords": [
+        [
+          80.5,
+          7.5
+        ],
+        [
+          80.8,
+          7.2
+        ],
+        [
+          81.0,
+          7.0
+        ],
+        [
+          81.2,
+          7.3
+        ],
+        [
+          80.8,
+          7.8
+        ]
+      ],
+      "operator": "DWC",
+      "country": "Sri Lanka",
+      "notes": "~6,000 wild Asian elephants"
+    }
+  ]
+}

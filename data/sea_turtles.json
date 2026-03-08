@@ -1,0 +1,243 @@
+{
+  "_source": {
+    "description": "Sea turtle migration routes",
+    "origin": "NOAA Fisheries sea turtle species profiles, Sea Turtle Conservancy tracking data (conserveturtles.org), and published telemetry studies.",
+    "retrieved": "2026-03-06",
+    "license": "NOAA: public domain; STC: public education materials",
+    "notes": "Simplified migration corridors from published tracking studies."
+  },
+  "migration_route": [
+    {
+      "name": "Loggerhead - North Atlantic",
+      "coords": [
+        [
+          -80.0,
+          28.0
+        ],
+        [
+          -75.0,
+          30.0
+        ],
+        [
+          -60.0,
+          32.0
+        ],
+        [
+          -40.0,
+          35.0
+        ],
+        [
+          -20.0,
+          37.0
+        ],
+        [
+          -10.0,
+          36.0
+        ]
+      ],
+      "operator": "NOAA/SEA TURTLE CONSERVANCY",
+      "country": "USA-Europe",
+      "notes": "Florida nesting to Azores/Mediterranean"
+    },
+    {
+      "name": "Leatherback - Atlantic",
+      "coords": [
+        [
+          -53.0,
+          5.5
+        ],
+        [
+          -50.0,
+          10.0
+        ],
+        [
+          -45.0,
+          20.0
+        ],
+        [
+          -40.0,
+          30.0
+        ],
+        [
+          -30.0,
+          40.0
+        ],
+        [
+          -20.0,
+          50.0
+        ],
+        [
+          -10.0,
+          55.0
+        ]
+      ],
+      "operator": "WWF",
+      "country": "Trinidad-UK/Norway",
+      "notes": "Deepest diving turtle // Jellyfish feeder"
+    },
+    {
+      "name": "Green Turtle - Pacific",
+      "coords": [
+        [
+          -90.5,
+          -0.5
+        ],
+        [
+          -95.0,
+          5.0
+        ],
+        [
+          -100.0,
+          10.0
+        ],
+        [
+          -105.0,
+          15.0
+        ],
+        [
+          -110.0,
+          20.0
+        ]
+      ],
+      "operator": "CDF",
+      "country": "Gal\u00e1pagos-Central America",
+      "notes": "Gal\u00e1pagos nesting population"
+    },
+    {
+      "name": "Hawksbill - Caribbean",
+      "coords": [
+        [
+          -65.0,
+          18.0
+        ],
+        [
+          -68.0,
+          17.0
+        ],
+        [
+          -72.0,
+          17.5
+        ],
+        [
+          -76.0,
+          18.0
+        ],
+        [
+          -80.0,
+          20.0
+        ],
+        [
+          -82.0,
+          21.0
+        ]
+      ],
+      "operator": "WIDECAST",
+      "country": "Caribbean",
+      "notes": "Critically endangered // Coral reef specialist"
+    },
+    {
+      "name": "Olive Ridley - Indian Ocean",
+      "coords": [
+        [
+          85.0,
+          20.0
+        ],
+        [
+          82.0,
+          15.0
+        ],
+        [
+          78.0,
+          10.0
+        ],
+        [
+          75.0,
+          5.0
+        ],
+        [
+          72.0,
+          0.0
+        ],
+        [
+          70.0,
+          -5.0
+        ]
+      ],
+      "operator": "Wildlife Institute India",
+      "country": "India-Indian Ocean",
+      "notes": "Odisha mass nesting (Arribada)"
+    },
+    {
+      "name": "Flatback - Australia",
+      "coords": [
+        [
+          130.0,
+          -12.0
+        ],
+        [
+          132.0,
+          -15.0
+        ],
+        [
+          136.0,
+          -16.0
+        ],
+        [
+          140.0,
+          -14.0
+        ],
+        [
+          142.0,
+          -12.0
+        ],
+        [
+          145.0,
+          -14.0
+        ]
+      ],
+      "operator": "CSIRO",
+      "country": "Australia",
+      "notes": "Endemic to Australian continental shelf"
+    },
+    {
+      "name": "Loggerhead - Mediterranean",
+      "coords": [
+        [
+          25.0,
+          35.5
+        ],
+        [
+          22.0,
+          36.0
+        ],
+        [
+          18.0,
+          38.0
+        ],
+        [
+          15.0,
+          37.5
+        ],
+        [
+          10.0,
+          38.0
+        ],
+        [
+          5.0,
+          37.5
+        ],
+        [
+          0.0,
+          37.0
+        ],
+        [
+          -5.0,
+          36.0
+        ]
+      ],
+      "operator": "ARCHELON",
+      "country": "Greece-Mediterranean",
+      "notes": "Zakynthos/Crete nesting beaches"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "_source": {
+    "description": "Playback manifest for Iran ADS-B surveillance replay",
+    "origin": "Panopticon ADS-B capture via api.adsb.one — adsb.one",
+    "retrieved": "2026-02-28",
+    "license": "public domain",
+    "notes": "ADS-B data captured from adsb.one military endpoint"
+  },
+  "id": "iran-feb28",
+  "type": "adsb",
+  "label": "IRAN",
+  "subtitle": "HISTORICAL REPLAY // IRAN // FEB 28, 2026",
+  "description": "ADS-B surveillance coverage over Iran and Persian Gulf. Feb 28, 2026 16:02-16:32 UTC.",
+  "category": "historical",
+  "date": "2026-02-28",
+  "camera": { "lon": 53, "lat": 32, "alt": 5000000 },
+  "timeline": {
+    "domain": "wallclock",
+    "startUTC": 57720
+  },
+  "data": {
+    "file": "military_feb28.json"
+  },
+  "display": {
+    "localTz": { "name": "IRST", "offset": 3.5 },
+    "dateLabel": "FEB 28, 2026",
+    "timeLabel": "FEB 28, 2026 // 16:02 - 16:32 UTC",
+    "layers": ["military", "commercial", "satellites"],
+    "dataBounds": { "latMin": 12.0, "latMax": 44.0, "lonMin": 26.0, "lonMax": 74.0 },
+    "blackoutZones": [{
+      "label": "ADS-B BLACKOUT",
+      "sublabel": "NO SURVEILLANCE COVERAGE",
+      "labelPos": [53.5, 33.5],
+      "coords": [
+        44.0, 39.8, 44.8, 39.5, 45.5, 38.9, 46.2, 38.8, 47.0, 38.5,
+        48.0, 38.4, 48.5, 38.6, 49.0, 38.0, 50.0, 37.5, 51.0, 36.8,
+        52.5, 36.9, 53.9, 37.0, 54.8, 37.3, 55.5, 37.2, 56.5, 37.6,
+        57.3, 37.9, 58.5, 37.6, 59.5, 37.4, 60.5, 36.7, 61.2, 36.6,
+        61.2, 35.6, 61.5, 34.5, 61.0, 33.5, 60.5, 33.0, 60.8, 32.0,
+        60.5, 31.0, 61.7, 30.8, 61.8, 29.8, 61.5, 28.5, 60.8, 27.2,
+        59.5, 26.5, 58.5, 25.5, 57.5, 25.2, 56.5, 25.8, 55.5, 26.0,
+        54.5, 26.5, 53.5, 26.8, 52.0, 27.5, 51.0, 27.8, 50.0, 27.5,
+        49.5, 27.8, 49.0, 28.5, 48.5, 29.5, 48.0, 30.0, 47.5, 30.5,
+        47.0, 31.0, 46.5, 32.0, 46.0, 33.0, 45.5, 34.0, 45.0, 35.5,
+        44.5, 36.5, 44.2, 37.0, 44.0, 38.0, 44.3, 39.0, 44.0, 39.8
+      ]
+    }]
+  },
+  "tags": ["adsb", "iran", "persian-gulf", "military"]
+}

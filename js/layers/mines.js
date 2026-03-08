@@ -4,6 +4,7 @@
 
 import { DISPLAY } from '../config.js';
 import { createDataLayer } from './datalayer.js';
+import { registerLayerLoader } from '../layerregistry.js';
 
 const layer = createDataLayer({
   layerKey: 'mines',
@@ -21,6 +22,8 @@ const layer = createDataLayer({
     bitcoin: { icon: 'mineBitcoin', color: '#f7931a', label: 'BITCOIN MINE' },
   },
 });
+
+registerLayerLoader('mines', { load: layer.load, flyTo: layer.FLY_TO, reset: layer.reset, dataUrl: 'data/mines.json' });
 
 export const fetchMines    = layer.load;
 export const isMinesLoaded = layer.isLoaded;

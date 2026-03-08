@@ -6,6 +6,7 @@
 import { $ } from '../utils.js';
 import { icons } from '../icons.js';
 import { layers, entityMaps } from '../globe.js';
+import { cacheLayerData } from '../layerregistry.js';
 
 /**
  * Creates a lazy-loading Cesium point layer backed by a JSON data file.
@@ -34,6 +35,7 @@ export function createDataLayer(cfg) {
       const res = await fetch(cfg.dataUrl);
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       const data = await res.json();
+      cacheLayerData(cfg.layerKey, data);
 
       for (const [category, meta] of Object.entries(cfg.categories)) {
         for (const item of (data[category] || [])) {
@@ -66,6 +68,7 @@ export function createDataLayer(cfg) {
             hex: id, r: item.name, t: meta.label, flight: item.name,
             desc: (cfg.descFn || defaultDesc)(item, category),
             alt_baro: 0, gs: 0, track: 0,
+            _view: cfg.viewType || 'site',
           };
           entities.set(id, { entity });
         }

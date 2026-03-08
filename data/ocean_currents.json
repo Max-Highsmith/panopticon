@@ -1,0 +1,331 @@
+{
+  "_source": {
+    "description": "Major ocean currents worldwide",
+    "origin": "NOAA Ocean Service current descriptions (oceanservice.noaa.gov) and published oceanographic atlases. Flow data from OSCAR (oscar.noaa.gov).",
+    "retrieved": "2026-03-06",
+    "license": "NOAA: public domain",
+    "notes": "Simplified current centerlines from NOAA published current maps."
+  },
+  "major_current": [
+    {
+      "name": "Gulf Stream",
+      "coords": [
+        [
+          -80.0,
+          25.0
+        ],
+        [
+          -79.0,
+          28.0
+        ],
+        [
+          -76.0,
+          33.0
+        ],
+        [
+          -73.0,
+          37.0
+        ],
+        [
+          -68.0,
+          40.0
+        ],
+        [
+          -60.0,
+          43.0
+        ],
+        [
+          -50.0,
+          47.0
+        ],
+        [
+          -40.0,
+          50.0
+        ],
+        [
+          -30.0,
+          52.0
+        ],
+        [
+          -20.0,
+          53.0
+        ],
+        [
+          -10.0,
+          55.0
+        ]
+      ],
+      "operator": "NOAA",
+      "country": "USA-Europe",
+      "notes": "100 Sv flow // Warms Europe by 5-10\u00b0C"
+    },
+    {
+      "name": "Kuroshio Current",
+      "coords": [
+        [
+          122.0,
+          18.0
+        ],
+        [
+          125.0,
+          22.0
+        ],
+        [
+          128.0,
+          26.0
+        ],
+        [
+          132.0,
+          30.0
+        ],
+        [
+          137.0,
+          33.0
+        ],
+        [
+          142.0,
+          35.0
+        ],
+        [
+          148.0,
+          37.0
+        ],
+        [
+          155.0,
+          38.0
+        ]
+      ],
+      "operator": "JMA",
+      "country": "Japan",
+      "notes": "Pacific western boundary current // Warms Japan"
+    },
+    {
+      "name": "Antarctic Circumpolar Current",
+      "coords": [
+        [
+          -70.0,
+          -60.0
+        ],
+        [
+          -40.0,
+          -55.0
+        ],
+        [
+          -10.0,
+          -50.0
+        ],
+        [
+          20.0,
+          -48.0
+        ],
+        [
+          50.0,
+          -50.0
+        ],
+        [
+          80.0,
+          -52.0
+        ],
+        [
+          110.0,
+          -55.0
+        ],
+        [
+          140.0,
+          -58.0
+        ],
+        [
+          170.0,
+          -60.0
+        ],
+        [
+          -170.0,
+          -62.0
+        ],
+        [
+          -140.0,
+          -60.0
+        ],
+        [
+          -110.0,
+          -58.0
+        ],
+        [
+          -70.0,
+          -60.0
+        ]
+      ],
+      "operator": "SCAR",
+      "country": "International",
+      "notes": "Largest ocean current // 130-150 Sv"
+    },
+    {
+      "name": "Humboldt (Peru) Current",
+      "coords": [
+        [
+          -75.0,
+          -40.0
+        ],
+        [
+          -76.0,
+          -35.0
+        ],
+        [
+          -77.0,
+          -28.0
+        ],
+        [
+          -78.0,
+          -20.0
+        ],
+        [
+          -80.0,
+          -12.0
+        ],
+        [
+          -82.0,
+          -5.0
+        ]
+      ],
+      "operator": "IMARPE",
+      "country": "Chile-Peru",
+      "notes": "Cold upwelling // World's most productive fishery"
+    },
+    {
+      "name": "Agulhas Current",
+      "coords": [
+        [
+          36.0,
+          -27.0
+        ],
+        [
+          34.0,
+          -30.0
+        ],
+        [
+          30.0,
+          -33.0
+        ],
+        [
+          26.0,
+          -35.0
+        ],
+        [
+          22.0,
+          -36.0
+        ],
+        [
+          20.0,
+          -38.0
+        ],
+        [
+          18.0,
+          -40.0
+        ]
+      ],
+      "operator": "SAEON",
+      "country": "South Africa",
+      "notes": "Western Indian Ocean boundary current"
+    },
+    {
+      "name": "North Atlantic Drift",
+      "coords": [
+        [
+          -20.0,
+          53.0
+        ],
+        [
+          -15.0,
+          55.0
+        ],
+        [
+          -10.0,
+          58.0
+        ],
+        [
+          -5.0,
+          60.0
+        ],
+        [
+          0.0,
+          62.0
+        ],
+        [
+          5.0,
+          65.0
+        ],
+        [
+          10.0,
+          68.0
+        ],
+        [
+          15.0,
+          70.0
+        ]
+      ],
+      "operator": "IMR",
+      "country": "Europe-Arctic",
+      "notes": "Extension of Gulf Stream // Keeps Scandinavia warm"
+    },
+    {
+      "name": "Benguela Current",
+      "coords": [
+        [
+          14.0,
+          -34.0
+        ],
+        [
+          12.0,
+          -28.0
+        ],
+        [
+          11.0,
+          -22.0
+        ],
+        [
+          10.0,
+          -16.0
+        ],
+        [
+          10.0,
+          -10.0
+        ]
+      ],
+      "operator": "BCC",
+      "country": "South Africa-Namibia-Angola",
+      "notes": "Cold upwelling current // Rich fisheries"
+    },
+    {
+      "name": "California Current",
+      "coords": [
+        [
+          -130.0,
+          48.0
+        ],
+        [
+          -128.0,
+          44.0
+        ],
+        [
+          -125.0,
+          40.0
+        ],
+        [
+          -122.0,
+          36.0
+        ],
+        [
+          -119.0,
+          32.0
+        ],
+        [
+          -116.0,
+          28.0
+        ]
+      ],
+      "operator": "NOAA",
+      "country": "USA-Mexico",
+      "notes": "Eastern Pacific boundary current // Upwelling zone"
+    }
+  ]
+}

@@ -26,6 +26,70 @@ export const LAYER_CATALOG = [
   { key: 'rareearth',    label: 'RARE EARTH DEPOSITS', shortLabel: 'REE',      category: 'Resources',      color: '#cc88ff', defaultOn: false, defaultPinned: false },
   { key: 'drilling',     label: 'OFFSHORE DRILLING',   shortLabel: 'DRILL',    category: 'Resources',      color: '#ff8844', defaultOn: false, defaultPinned: false },
 
+  // === ENERGY ===
+  { key: 'powerplants',     label: 'POWER PLANTS',        shortLabel: 'POWER',    category: 'Energy',         color: '#cc8844', defaultOn: false, defaultPinned: false },
+  { key: 'nuclearplants',   label: 'NUCLEAR REACTORS',    shortLabel: 'REACT',    category: 'Energy',         color: '#ff4444', defaultOn: false, defaultPinned: false },
+  { key: 'refineries',      label: 'OIL REFINERIES',      shortLabel: 'REFINE',   category: 'Energy',         color: '#ff6600', defaultOn: false, defaultPinned: false },
+  { key: 'platforms',       label: 'OFFSHORE PLATFORMS',   shortLabel: 'PLAT',     category: 'Energy',         color: '#ff8844', defaultOn: false, defaultPinned: false },
+  { key: 'electricalgrid',  label: 'ELECTRICAL GRID',      shortLabel: 'GRID',     category: 'Energy',         color: '#ffff00', defaultOn: false, defaultPinned: false },
+  { key: 'pipelines',       label: 'PIPELINES',            shortLabel: 'PIPES',    category: 'Energy',         color: '#cc6600', defaultOn: false, defaultPinned: false },
+
+  // === MILITARY (expanded) ===
+  { key: 'radar',            label: 'RADAR SYSTEMS',        shortLabel: 'RADAR',    category: 'Military',       color: '#ff3333', defaultOn: false, defaultPinned: false },
+  { key: 'strategicnuclear', label: 'STRATEGIC NUCLEAR',    shortLabel: 'NUKE',     category: 'Military',       color: '#ff0000', defaultOn: false, defaultPinned: false },
+
+  // === MARITIME ===
+  { key: 'cables',        label: 'SUBSEA CABLES',        shortLabel: 'CABLE',    category: 'Maritime',       color: '#00ff88', defaultOn: false, defaultPinned: false },
+  { key: 'traderoutes',   label: 'TRADE ROUTES',         shortLabel: 'TRADE',    category: 'Maritime',       color: '#ffcc00', defaultOn: false, defaultPinned: false },
+  { key: 'chokepoints',   label: 'CHOKEPOINTS',          shortLabel: 'CHOKE',    category: 'Maritime',       color: '#ff4444', defaultOn: false, defaultPinned: false },
+  { key: 'arcticroutes',  label: 'ARCTIC SHIPPING',      shortLabel: 'ARCT',     category: 'Maritime',       color: '#44aaff', defaultOn: false, defaultPinned: false },
+  { key: 'fisheries',     label: 'FISHERIES ZONES',      shortLabel: 'FISH',     category: 'Maritime',       color: '#00aaff', defaultOn: false, defaultPinned: false },
+
+  { key: 'oceancurrents', label: 'OCEAN CURRENTS',       shortLabel: 'CURR',     category: 'Maritime',       color: '#00bbff', defaultOn: false, defaultPinned: false },
+
+  // === NATURAL HAZARDS ===
+  { key: 'volcanoes',    label: 'VOLCANOES',            shortLabel: 'VOLC',     category: 'Natural Hazards', color: '#ff4400', defaultOn: false, defaultPinned: false },
+  { key: 'earthquakes',  label: 'EARTHQUAKES',          shortLabel: 'QUAKE',    category: 'Natural Hazards', color: '#ff6600', defaultOn: false, defaultPinned: false },
+  { key: 'wildfires',    label: 'WILDFIRES',            shortLabel: 'FIRE',     category: 'Natural Hazards', color: '#ff4400', defaultOn: false, defaultPinned: false },
+
+  // === WILDLIFE ===
+  { key: 'whales',       label: 'WHALE MIGRATIONS',     shortLabel: 'WHALE',    category: 'Wildlife',       color: '#4488ff', defaultOn: false, defaultPinned: false },
+  { key: 'seaturtles',   label: 'SEA TURTLE MIGRATIONS',shortLabel: 'TURTL',    category: 'Wildlife',       color: '#00cc88', defaultOn: false, defaultPinned: false },
+  { key: 'birds',        label: 'BIRD MIGRATION',       shortLabel: 'BIRD',     category: 'Wildlife',       color: '#88cc44', defaultOn: false, defaultPinned: false },
+  { key: 'elephants',    label: 'ELEPHANT CORRIDORS',   shortLabel: 'ELEPH',    category: 'Wildlife',       color: '#cc8844', defaultOn: false, defaultPinned: false },
+
+  // === SPACE ===
+  { key: 'spacedebris',  label: 'SPACE DEBRIS',         shortLabel: 'DEBRI',    category: 'Space',          color: '#888888', defaultOn: false, defaultPinned: false },
+  { key: 'spaceports',   label: 'LAUNCH SITES',         shortLabel: 'LAUNCH',   category: 'Space',          color: '#ff4400', defaultOn: false, defaultPinned: false },
+
+  // === TRANSPORT ===
+  { key: 'cargoroutes',  label: 'CARGO FLIGHT ROUTES',  shortLabel: 'CARGO',    category: 'Transport',      color: '#ff8800', defaultOn: false, defaultPinned: false },
+  { key: 'ports',        label: 'MAJOR PORTS',           shortLabel: 'PORT',     category: 'Transport',      color: '#00ccff', defaultOn: false, defaultPinned: false },
+
+  // === CLIMATE ===
+  { key: 'seaice',       label: 'SEA ICE EXTENT',       shortLabel: 'ICE',      category: 'Climate',        color: '#aaddff', defaultOn: false, defaultPinned: false },
+  { key: 'lightning',    label: 'LIGHTNING HOTSPOTS',    shortLabel: 'BOLT',     category: 'Natural Hazards', color: '#ffff00', defaultOn: false, defaultPinned: false },
+  { key: 'meteors',     label: 'METEOR IMPACTS',       shortLabel: 'METR',     category: 'Natural Hazards', color: '#aa6644', defaultOn: false, defaultPinned: false },
+
+  // === TRADE & ECONOMICS ===
+  { key: 'commodityflows', label: 'COMMODITY FLOWS',    shortLabel: 'COMMOD',   category: 'Trade',          color: '#cc4400', defaultOn: false, defaultPinned: false },
+
+  // === INTERNET ===
+  { key: 'ixps',        label: 'INTERNET EXCHANGES',    shortLabel: 'IXP',      category: 'Infrastructure', color: '#00ff88', defaultOn: false, defaultPinned: false },
+
+  // === OCEAN / CLIMATE ===
+  { key: 'oceantemp',   label: 'OCEAN TEMPERATURE',     shortLabel: 'SST',      category: 'Climate',        color: '#ff4400', defaultOn: false, defaultPinned: false },
+
+  // === SPACE WEATHER ===
+  { key: 'cosmic',      label: 'COSMIC RADIATION',      shortLabel: 'COSM',     category: 'Space',          color: '#aa44ff', defaultOn: false, defaultPinned: false },
+  { key: 'ionosphere',  label: 'IONOSPHERE NETWORK',    shortLabel: 'IONO',     category: 'Space',          color: '#44ffaa', defaultOn: false, defaultPinned: false },
+
+  // === FISHING ===
+  { key: 'fishingfleets', label: 'FISHING GROUNDS',     shortLabel: 'FFISH',    category: 'Maritime',       color: '#00aacc', defaultOn: false, defaultPinned: false },
+
+  // === ARCTIC ===
+  { key: 'arcticdeposits', label: 'ARCTIC DEPOSITS',    shortLabel: 'ADEP',     category: 'Resources',      color: '#cc6633', defaultOn: false, defaultPinned: false },
+
   // === SURVEILLANCE ===
   { key: 'webcams',      label: 'LIVE WEBCAMS',        shortLabel: 'CAMS',     category: 'Surveillance',   color: '#00ddff', defaultOn: false, defaultPinned: false },
 ];

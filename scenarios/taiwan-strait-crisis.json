@@ -5,6 +5,7 @@
   "description": "PLA amphibious fleet detected. Carrier strike group in position. Decide on force posture and engagement rules.",
 
   "camera": { "lon": 121, "lat": 24, "alt": 5000000 },
+  "region": { "latMin": 16, "latMax": 32, "lonMin": 113, "lonMax": 132 },
   "duration_ticks": 8,
   "tick_interval_ms": 6000,
 

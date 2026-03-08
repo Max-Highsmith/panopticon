@@ -1,0 +1,133 @@
+{
+  "_source": {
+    "description": "Major meteor impact craters and recent bolide events",
+    "origin": "Earth Impact Database (passc.net/EarthImpactDatabase \u2014 University of New Brunswick) and NASA CNEOS Fireball database (cneos.jpl.nasa.gov/fireballs).",
+    "retrieved": "2026-03-06",
+    "license": "UNB EID: academic public access; NASA CNEOS: public domain",
+    "notes": "Confirmed impact structures from EID. Bolide events from NASA CNEOS."
+  },
+  "major_crater": [
+    {
+      "name": "Chicxulub Crater",
+      "lat": 21.4,
+      "lon": -89.52,
+      "country": "Mexico",
+      "operator": "UNAM / LPI",
+      "notes": "66 Mya; 180km diameter; K-Pg mass extinction event; killed the dinosaurs"
+    },
+    {
+      "name": "Vredefort Crater",
+      "lat": -27.0,
+      "lon": 27.5,
+      "country": "South Africa",
+      "operator": "UNESCO",
+      "notes": "2.023 Bya; 300km original diameter; largest confirmed impact structure on Earth"
+    },
+    {
+      "name": "Sudbury Basin",
+      "lat": 46.6,
+      "lon": -81.18,
+      "country": "Canada",
+      "operator": "Geological Survey of Canada",
+      "notes": "1.849 Bya; 130km diameter; world's largest nickel mining district"
+    },
+    {
+      "name": "Popigai Crater",
+      "lat": 71.65,
+      "lon": 111.18,
+      "country": "Russia",
+      "operator": "RAS",
+      "notes": "35.7 Mya; 100km diameter; contains trillions of carats of impact diamonds"
+    },
+    {
+      "name": "Manicouagan Crater",
+      "lat": 51.38,
+      "lon": -68.7,
+      "country": "Canada",
+      "operator": "NRC",
+      "notes": "214 Mya; 85km diameter; 'Eye of Quebec' visible from space; reservoir ring"
+    },
+    {
+      "name": "Chesapeake Bay Crater",
+      "lat": 37.28,
+      "lon": -76.02,
+      "country": "USA",
+      "operator": "USGS",
+      "notes": "35.5 Mya; 85km diameter; buried beneath Chesapeake Bay; shaped the bay's formation"
+    },
+    {
+      "name": "Acraman Crater",
+      "lat": -32.02,
+      "lon": 135.45,
+      "country": "Australia",
+      "operator": "GSWA",
+      "notes": "580 Mya; 90km diameter; ejecta found 300km away in Flinders Ranges"
+    },
+    {
+      "name": "Morokweng Crater",
+      "lat": -26.47,
+      "lon": 23.53,
+      "country": "South Africa",
+      "operator": "CGS",
+      "notes": "145 Mya; 70km diameter; meteorite fragment found intact at depth"
+    },
+    {
+      "name": "Kara Crater",
+      "lat": 69.08,
+      "lon": 64.18,
+      "country": "Russia",
+      "operator": "RAS",
+      "notes": "70.3 Mya; 65km diameter; Arctic Russia; associated shocked minerals"
+    },
+    {
+      "name": "Barringer Crater (Meteor Crater)",
+      "lat": 35.03,
+      "lon": -111.02,
+      "country": "USA",
+      "operator": "Barringer Crater Company",
+      "notes": "50,000 ya; 1.2km diameter; best-preserved impact crater; tourism landmark"
+    }
+  ],
+  "recent_bolide": [
+    {
+      "name": "Chelyabinsk Meteor (2013)",
+      "lat": 54.82,
+      "lon": 61.12,
+      "country": "Russia",
+      "operator": "RAS / NASA",
+      "notes": "Feb 15, 2013; 20m asteroid; 500 kt airburst; 1,500 injuries from shockwave glass"
+    },
+    {
+      "name": "Tunguska Event (1908)",
+      "lat": 60.89,
+      "lon": 101.89,
+      "country": "Russia",
+      "operator": "RAS",
+      "notes": "Jun 30, 1908; 50-80m object; 12 Mt airburst; flattened 2,150 km\u00b2 of forest"
+    },
+    {
+      "name": "Bering Sea Bolide (2018)",
+      "lat": 56.9,
+      "lon": 172.4,
+      "country": "International",
+      "operator": "NASA / USAF",
+      "notes": "Dec 18, 2018; 10m asteroid; 173 kt airburst; detected only by military satellites"
+    },
+    {
+      "name": "Sikhote-Alin Meteorite (1947)",
+      "lat": 46.16,
+      "lon": 134.65,
+      "country": "Russia",
+      "operator": "RAS",
+      "notes": "Feb 12, 1947; iron meteorite shower; 120+ craters; 23 tonnes recovered"
+    },
+    {
+      "name": "Carancas Impact (2007)",
+      "lat": -16.66,
+      "lon": -69.04,
+      "country": "Peru",
+      "operator": "IGP",
+      "notes": "Sep 15, 2007; stony meteorite; created 13.5m crater; sickened locals from arsenic steam"
+    }
+  ]
+}

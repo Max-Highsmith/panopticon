@@ -4,6 +4,7 @@
 
 import { DISPLAY } from '../config.js';
 import { createDataLayer } from './datalayer.js';
+import { registerLayerLoader } from '../layerregistry.js';
 
 const layer = createDataLayer({
   layerKey: 'drilling',
@@ -20,6 +21,8 @@ const layer = createDataLayer({
     canada_arctic:  { icon: 'drillCanada', color: '#ff6688', label: 'CANADA ARCTIC FIELD' },
   },
 });
+
+registerLayerLoader('drilling', { load: layer.load, flyTo: layer.FLY_TO, reset: layer.reset, dataUrl: 'data/drilling_leases.json' });
 
 export const fetchDrilling     = layer.load;
 export const isDrillingLoaded  = layer.isLoaded;

@@ -9,6 +9,7 @@ import { layers, entityMaps } from '../globe.js';
 import { DISPLAY } from '../config.js';
 import { icons } from '../icons.js';
 import { $ } from '../utils.js';
+import { registerLayerLoader } from '../layerregistry.js';
 
 const entities = entityMaps.webcams;
 let loaded = false;
@@ -88,6 +89,7 @@ export function fetchWebcams(viewer) {
       lon: cam.lon,
       ytId: cam.ytId,
       hlsUrl: cam.hlsUrl || null,
+      _view: 'webcam',
     };
 
     entities.set(cam.ytId || cam.title, { entity });
@@ -96,3 +98,5 @@ export function fetchWebcams(viewer) {
   $('webcam-count').textContent = entities.size;
   loaded = true;
 }
+
+registerLayerLoader('webcams', { load: fetchWebcams, flyTo: WEBCAMS_FLY_TO, reset: resetWebcams, view: 'webcam' });

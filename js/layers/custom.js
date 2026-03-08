@@ -198,6 +198,7 @@ async function loadDataset(viewer, dataset) {
         alt_baro: 0,
         gs: 0,
         track: 0,
+        _view: 'site',
       };
       entities.set(ptId, { entity });
     }

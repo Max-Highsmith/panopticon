@@ -70,6 +70,7 @@ export async function fetchCommercial(viewer) {
         alt_baro: onGround ? 'ground' : Math.round(altMeters * 3.28084),
         gs: velocity != null ? Math.round(velocity * 1.94384) : null,
         track, squawk: s[14],
+        _view: 'plane',
       };
 
       if (entities.has(hex)) {

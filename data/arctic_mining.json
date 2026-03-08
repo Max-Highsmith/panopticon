@@ -1,32 +1,193 @@
 {
+  "_source": {
+    "description": "Arctic region mining operations (iron, zinc, gold)",
+    "origin": "Compiled from Geological Survey of Denmark and Greenland (GEUS), Natural Resources Canada MERN database, and company annual reports.",
+    "retrieved": "2026-03-05",
+    "license": "Mixed: government geological surveys (public)",
+    "notes": "Active and advanced-stage Arctic mines. Coordinates from geological survey records."
+  },
   "iron": [
-    { "name": "Isua Iron Ore", "lat": 65.08, "lon": -50.17, "country": "Greenland", "operator": "General Nice Group", "notes": "1.3 billion tonnes iron ore, near Nuuk" },
-    { "name": "Mary River Mine", "lat": 71.33, "lon": -79.13, "country": "Canada", "operator": "Baffinland Iron Mines", "notes": "Largest iron ore deposit in Arctic, Baffin Island" },
-    { "name": "Sydvaranger Mine", "lat": 69.65, "lon": 30.05, "country": "Norway", "operator": "Sydvaranger Gruve", "notes": "Historic iron mine, Kirkenes, near Russian border" },
-    { "name": "Storliden Mine", "lat": 65.03, "lon": 17.88, "country": "Sweden", "operator": "Boliden", "notes": "Zinc-copper-gold mine in Västerbotten" },
-    { "name": "Kovdor Mine", "lat": 67.56, "lon": 30.47, "country": "Russia", "operator": "EuroChem", "notes": "Iron ore and apatite, Kola Peninsula" },
-    { "name": "Olenegorsk Mine", "lat": 68.14, "lon": 33.28, "country": "Russia", "operator": "Severstal", "notes": "Major iron ore deposit, Murmansk Oblast" }
+    {
+      "name": "Isua Iron Ore",
+      "lat": 65.08,
+      "lon": -50.17,
+      "country": "Greenland",
+      "operator": "General Nice Group",
+      "notes": "1.3 billion tonnes iron ore, near Nuuk"
+    },
+    {
+      "name": "Mary River Mine",
+      "lat": 71.33,
+      "lon": -79.13,
+      "country": "Canada",
+      "operator": "Baffinland Iron Mines",
+      "notes": "Largest iron ore deposit in Arctic, Baffin Island"
+    },
+    {
+      "name": "Sydvaranger Mine",
+      "lat": 69.65,
+      "lon": 30.05,
+      "country": "Norway",
+      "operator": "Sydvaranger Gruve",
+      "notes": "Historic iron mine, Kirkenes, near Russian border"
+    },
+    {
+      "name": "Storliden Mine",
+      "lat": 65.03,
+      "lon": 17.88,
+      "country": "Sweden",
+      "operator": "Boliden",
+      "notes": "Zinc-copper-gold mine in V\u00e4sterbotten"
+    },
+    {
+      "name": "Kovdor Mine",
+      "lat": 67.56,
+      "lon": 30.47,
+      "country": "Russia",
+      "operator": "EuroChem",
+      "notes": "Iron ore and apatite, Kola Peninsula"
+    },
+    {
+      "name": "Olenegorsk Mine",
+      "lat": 68.14,
+      "lon": 33.28,
+      "country": "Russia",
+      "operator": "Severstal",
+      "notes": "Major iron ore deposit, Murmansk Oblast"
+    }
   ],
   "rare_earth": [
-    { "name": "Kvanefjeld", "lat": 60.97, "lon": -46.05, "country": "Greenland", "operator": "Greenland Minerals", "notes": "World's 2nd largest rare earth deposit, uranium co-product" },
-    { "name": "Kringlerne", "lat": 60.91, "lon": -45.92, "country": "Greenland", "operator": "Tanbreez Mining", "notes": "Eudialyte rare earth deposit, southern Greenland" },
-    { "name": "Norra Kärr", "lat": 58.09, "lon": 14.51, "country": "Sweden", "operator": "Leading Edge Materials", "notes": "Heavy rare earth deposit, one of few outside China" },
-    { "name": "Lovozero", "lat": 67.89, "lon": 34.78, "country": "Russia", "operator": "Lovozersky GOK", "notes": "Loparite rare earth mine, Kola Peninsula" },
-    { "name": "Tomtor", "lat": 71.15, "lon": 116.98, "country": "Russia", "operator": "TriArk Mining", "notes": "One of world's richest rare earth deposits, Yakutia" }
+    {
+      "name": "Kvanefjeld",
+      "lat": 60.97,
+      "lon": -46.05,
+      "country": "Greenland",
+      "operator": "Greenland Minerals",
+      "notes": "World's 2nd largest rare earth deposit, uranium co-product"
+    },
+    {
+      "name": "Kringlerne",
+      "lat": 60.91,
+      "lon": -45.92,
+      "country": "Greenland",
+      "operator": "Tanbreez Mining",
+      "notes": "Eudialyte rare earth deposit, southern Greenland"
+    },
+    {
+      "name": "Norra K\u00e4rr",
+      "lat": 58.09,
+      "lon": 14.51,
+      "country": "Sweden",
+      "operator": "Leading Edge Materials",
+      "notes": "Heavy rare earth deposit, one of few outside China"
+    },
+    {
+      "name": "Lovozero",
+      "lat": 67.89,
+      "lon": 34.78,
+      "country": "Russia",
+      "operator": "Lovozersky GOK",
+      "notes": "Loparite rare earth mine, Kola Peninsula"
+    },
+    {
+      "name": "Tomtor",
+      "lat": 71.15,
+      "lon": 116.98,
+      "country": "Russia",
+      "operator": "TriArk Mining",
+      "notes": "One of world's richest rare earth deposits, Yakutia"
+    }
   ],
   "zinc": [
-    { "name": "Citronen Fjord", "lat": 83.07, "lon": -28.24, "country": "Greenland", "operator": "Ironbark Zinc", "notes": "Northernmost zinc-lead deposit in the world" },
-    { "name": "Black Angel Mine", "lat": 71.12, "lon": -51.17, "country": "Greenland", "operator": "Various", "notes": "Historic zinc-lead mine, Maarmorilik, reopening explored" },
-    { "name": "Red Dog Mine", "lat": 68.07, "lon": -162.77, "country": "USA", "operator": "Teck Resources", "notes": "World's largest zinc mine, northwest Alaska" },
-    { "name": "Polaris Mine", "lat": 75.39, "lon": -96.94, "country": "Canada", "operator": "Teck Resources", "notes": "Former northernmost mine in Canada, Little Cornwallis Island" },
-    { "name": "Lik Deposit", "lat": 68.29, "lon": -163.33, "country": "USA", "operator": "Zazu Metals", "notes": "Large zinc-lead deposit near Red Dog, Alaska" }
+    {
+      "name": "Citronen Fjord",
+      "lat": 83.07,
+      "lon": -28.24,
+      "country": "Greenland",
+      "operator": "Ironbark Zinc",
+      "notes": "Northernmost zinc-lead deposit in the world"
+    },
+    {
+      "name": "Black Angel Mine",
+      "lat": 71.12,
+      "lon": -51.17,
+      "country": "Greenland",
+      "operator": "Various",
+      "notes": "Historic zinc-lead mine, Maarmorilik, reopening explored"
+    },
+    {
+      "name": "Red Dog Mine",
+      "lat": 68.07,
+      "lon": -162.77,
+      "country": "USA",
+      "operator": "Teck Resources",
+      "notes": "World's largest zinc mine, northwest Alaska"
+    },
+    {
+      "name": "Polaris Mine",
+      "lat": 75.39,
+      "lon": -96.94,
+      "country": "Canada",
+      "operator": "Teck Resources",
+      "notes": "Former northernmost mine in Canada, Little Cornwallis Island"
+    },
+    {
+      "name": "Lik Deposit",
+      "lat": 68.29,
+      "lon": -163.33,
+      "country": "USA",
+      "operator": "Zazu Metals",
+      "notes": "Large zinc-lead deposit near Red Dog, Alaska"
+    }
   ],
   "gold": [
-    { "name": "Nalunaq Gold Mine", "lat": 60.23, "lon": -44.98, "country": "Greenland", "operator": "AEX Gold", "notes": "Greenland's only gold mine, high-grade veins" },
-    { "name": "Meadowbank Mine", "lat": 65.02, "lon": -96.07, "country": "Canada", "operator": "Agnico Eagle", "notes": "Open-pit gold mine, Nunavut" },
-    { "name": "Hope Bay Mine", "lat": 68.15, "lon": -106.62, "country": "Canada", "operator": "Agnico Eagle", "notes": "Underground gold mine, Nunavut" },
-    { "name": "Kupol Mine", "lat": 66.75, "lon": 169.50, "country": "Russia", "operator": "Kinross Gold", "notes": "Major gold-silver mine, Chukotka" },
-    { "name": "Fort Knox Mine", "lat": 64.90, "lon": -147.43, "country": "USA", "operator": "Kinross Gold", "notes": "Large open-pit gold mine near Fairbanks, Alaska" },
-    { "name": "Pogo Mine", "lat": 64.47, "lon": -144.90, "country": "USA", "operator": "Northern Star Resources", "notes": "Underground gold mine, interior Alaska" }
+    {
+      "name": "Nalunaq Gold Mine",
+      "lat": 60.23,
+      "lon": -44.98,
+      "country": "Greenland",
+      "operator": "AEX Gold",
+      "notes": "Greenland's only gold mine, high-grade veins"
+    },
+    {
+      "name": "Meadowbank Mine",
+      "lat": 65.02,
+      "lon": -96.07,
+      "country": "Canada",
+      "operator": "Agnico Eagle",
+      "notes": "Open-pit gold mine, Nunavut"
+    },
+    {
+      "name": "Hope Bay Mine",
+      "lat": 68.15,
+      "lon": -106.62,
+      "country": "Canada",
+      "operator": "Agnico Eagle",
+      "notes": "Underground gold mine, Nunavut"
+    },
+    {
+      "name": "Kupol Mine",
+      "lat": 66.75,
+      "lon": 169.5,
+      "country": "Russia",
+      "operator": "Kinross Gold",
+      "notes": "Major gold-silver mine, Chukotka"
+    },
+    {
+      "name": "Fort Knox Mine",
+      "lat": 64.9,
+      "lon": -147.43,
+      "country": "USA",
+      "operator": "Kinross Gold",
+      "notes": "Large open-pit gold mine near Fairbanks, Alaska"
+    },
+    {
+      "name": "Pogo Mine",
+      "lat": 64.47,
+      "lon": -144.9,
+      "country": "USA",
+      "operator": "Northern Star Resources",
+      "notes": "Underground gold mine, interior Alaska"
+    }
   ]
 }

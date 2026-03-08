@@ -1,0 +1,157 @@
+{
+  "_source": {
+    "description": "Ionospheric monitoring stations (ionosondes, ISRs, GNSS/TEC)",
+    "origin": "GIRO/DIDBase (giro.uml.edu) ionosonde network and CEDAR (cedarweb.vsp.ucar.edu) observatory directory.",
+    "retrieved": "2026-03-06",
+    "license": "GIRO/CEDAR: public scientific data",
+    "notes": "Station locations from GIRO network registry and CEDAR facility list."
+  },
+  "ionosonde": [
+    {
+      "name": "Millstone Hill ISR",
+      "lat": 42.62,
+      "lon": -71.49,
+      "country": "USA",
+      "operator": "MIT Haystack Observatory",
+      "notes": "Incoherent scatter radar; ionospheric storms and TEC monitoring"
+    },
+    {
+      "name": "Arecibo Observatory (legacy)",
+      "lat": 18.35,
+      "lon": -66.75,
+      "country": "Puerto Rico",
+      "operator": "NSF (collapsed 2020)",
+      "notes": "Former world's largest ISR; ionospheric heating experiments; 305m dish"
+    },
+    {
+      "name": "Jicamarca Radio Observatory",
+      "lat": -11.95,
+      "lon": -76.87,
+      "country": "Peru",
+      "operator": "IGP / Cornell",
+      "notes": "Equatorial ISR; studies equatorial spread-F and electrojet"
+    },
+    {
+      "name": "EISCAT Troms\u00f8",
+      "lat": 69.59,
+      "lon": 19.23,
+      "country": "Norway",
+      "operator": "EISCAT Scientific Association",
+      "notes": "European ISR; auroral zone ionosphere; heating facility (HEATING)"
+    },
+    {
+      "name": "HAARP (Gakona)",
+      "lat": 62.39,
+      "lon": -145.15,
+      "country": "USA",
+      "operator": "University of Alaska Fairbanks",
+      "notes": "High-frequency Active Auroral Research Program; ionospheric heater; 3.6 MW ERP"
+    },
+    {
+      "name": "Sondrestrom ISR",
+      "lat": 67.0,
+      "lon": -50.95,
+      "country": "Greenland",
+      "operator": "SRI International / NSF",
+      "notes": "Polar cap incoherent scatter radar; cusp region studies"
+    },
+    {
+      "name": "Kharkov ISR",
+      "lat": 49.63,
+      "lon": 36.32,
+      "country": "Ukraine",
+      "operator": "IRIA / NAS Ukraine",
+      "notes": "Eastern European ISR; 25m dish; ionospheric irregularities"
+    },
+    {
+      "name": "Irkutsk ISR",
+      "lat": 52.97,
+      "lon": 103.29,
+      "country": "Russia",
+      "operator": "ISTP SB RAS",
+      "notes": "Siberian ISR; mid-latitude ionosphere monitoring"
+    },
+    {
+      "name": "MU Radar (Shigaraki)",
+      "lat": 34.85,
+      "lon": 136.11,
+      "country": "Japan",
+      "operator": "Kyoto University RISH",
+      "notes": "Middle and Upper atmosphere radar; mesosphere-stratosphere-troposphere"
+    },
+    {
+      "name": "Resolute Bay ISR",
+      "lat": 74.73,
+      "lon": -94.91,
+      "country": "Canada",
+      "operator": "University of Western Ontario / SRI",
+      "notes": "RISR-N/C; polar cap F-region; advanced phased array ISR"
+    },
+    {
+      "name": "Poker Flat ISR (PFISR)",
+      "lat": 65.13,
+      "lon": -147.47,
+      "country": "USA",
+      "operator": "SRI International / NSF",
+      "notes": "Advanced Modular ISR; auroral zone; phased array; continuous operation"
+    },
+    {
+      "name": "SURA Ionospheric Heating Facility",
+      "lat": 56.11,
+      "lon": 46.1,
+      "country": "Russia",
+      "operator": "NIRFI",
+      "notes": "Russian ionospheric heater; 190 MW ERP; artificial ionospheric turbulence"
+    }
+  ],
+  "gnss_station": [
+    {
+      "name": "Kiruna GNSS/TEC Station",
+      "lat": 67.86,
+      "lon": 20.42,
+      "country": "Sweden",
+      "operator": "IRF / SSC",
+      "notes": "High-latitude TEC monitoring; scintillation studies; satellite ground station"
+    },
+    {
+      "name": "Ny-\u00c5lesund GNSS Station",
+      "lat": 78.92,
+      "lon": 11.93,
+      "country": "Norway (Svalbard)",
+      "operator": "Geodetic Institute / ESA",
+      "notes": "High Arctic TEC; polar patch monitoring; cusp scintillation"
+    },
+    {
+      "name": "Cachoeira Paulista Digisonde",
+      "lat": -22.7,
+      "lon": -45.01,
+      "country": "Brazil",
+      "operator": "INPE",
+      "notes": "Equatorial anomaly region; F-region bubble detection; South Atlantic Anomaly"
+    },
+    {
+      "name": "Ascension Island Ionosonde",
+      "lat": -7.95,
+      "lon": -14.4,
+      "country": "UK (South Atlantic)",
+      "operator": "RAF / USAF",
+      "notes": "South Atlantic Anomaly region; enhanced radiation environment"
+    },
+    {
+      "name": "Darwin Ionosonde",
+      "lat": -12.46,
+      "lon": 130.84,
+      "country": "Australia",
+      "operator": "Bureau of Meteorology / IPS",
+      "notes": "Equatorial region; Appleton anomaly crest monitoring"
+    },
+    {
+      "name": "Learmonth Ionosonde",
+      "lat": -22.24,
+      "lon": 114.1,
+      "country": "Australia",
+      "operator": "IPS Radio & Space Services",
+      "notes": "Australian reference ionosonde; feeds ASWFC space weather forecasts"
+    }
+  ]
+}

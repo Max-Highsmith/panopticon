@@ -5,165 +5,42 @@
    =================================================================== */
 
 import { $ } from './utils.js';
+import { getEntityPosition, createDetailViewer, startAnimLoop, drawHudOverlay, computeFootprintKm, computeCirclePositions, setupOverlayCanvas } from './viewbase.js';
+import { registerView } from './viewregistry.js';
 
 let planeViewer = null;
 let planeViewOpen = false;
 let planeViewTarget = null;   // the Cesium entity being tracked
 let planeViewUpdateHandler = null;
 let planeViewFootprintEntities = [];
-let overlayAnimFrame = null;
+let overlayHandle = null;
 let frameCounter = 0;
 
 export function isPlaneViewOpen() { return planeViewOpen; }
 export function resizePlaneView() { if (planeViewer) planeViewer.resize(); }
 
-// --- Geometric line-of-sight footprint for an aircraft ---
-function computeFootprintKm(altM) {
-  const R = 6371;
-  const altKm = altM / 1000;
-  if (altKm <= 0) return 0;
-  const angularRadius = Math.acos(R / (R + altKm));
-  return R * angularRadius;
-}
-
-// --- Second Cesium Viewer ---
-
 function initPlaneViewer() {
   if (planeViewer) return;
-  planeViewer = new Cesium.Viewer('plane-view-container', {
-    geocoder: false, homeButton: false, sceneModePicker: false,
-    baseLayerPicker: false, navigationHelpButton: false,
-    animation: false, timeline: false, fullscreenButton: false,
-    selectionIndicator: false, infoBox: false, scene3DOnly: true,
-    imageryProvider: false,
-  });
-  planeViewer.scene.backgroundColor = Cesium.Color.BLACK;
-  planeViewer.imageryLayers.addImageryProvider(
-    new Cesium.OpenStreetMapImageryProvider({ url: 'https://tile.openstreetmap.org/' })
-  );
-  (async () => {
-    try {
-      const tileset = await Cesium.createGooglePhotorealistic3DTileset();
-      planeViewer.scene.primitives.add(tileset);
-      planeViewer.scene.globe.show = false;
-    } catch {
-      console.log('Plane view: Google 3D Tiles not available, using OSM.');
-    }
-  })();
+  planeViewer = createDetailViewer('plane-view-container');
 }
-
-// --- Extract position from a Cesium entity ---
-function getEntityPosition(entity) {
-  if (!entity) return null;
-  let pos = entity.position;
-  if (!pos) return null;
-  if (typeof pos.getValue === 'function') pos = pos.getValue(Cesium.JulianDate.now());
-  if (!pos) return null;
-  const carto = Cesium.Cartographic.fromCartesian(pos);
-  return {
-    lon: Cesium.Math.toDegrees(carto.longitude),
-    lat: Cesium.Math.toDegrees(carto.latitude),
-    altM: carto.height,
-  };
-}
-
-// --- Military camera overlay (drawn on a canvas over the Cesium viewer) ---
-// Renders scanlines, vignette, timestamp, coordinates, and targeting info.
 
 let lastOverlayData = null;
 
-function startOverlayLoop() {
-  if (overlayAnimFrame) return;
-  function loop() {
-    overlayAnimFrame = requestAnimationFrame(loop);
-    renderMilitaryOverlay();
-  }
-  loop();
-}
-
-function stopOverlayLoop() {
-  if (overlayAnimFrame) {
-    cancelAnimationFrame(overlayAnimFrame);
-    overlayAnimFrame = null;
-  }
-}
-
 function renderMilitaryOverlay() {
-  const canvas = $('plane-view-overlay');
-  if (!canvas) return;
-  const parent = canvas.parentElement;
-  if (!parent) return;
-
-  const rect = parent.getBoundingClientRect();
-  const dpr = window.devicePixelRatio || 1;
-  if (canvas.width !== Math.round(rect.width * dpr) || canvas.height !== Math.round(rect.height * dpr)) {
-    canvas.width = Math.round(rect.width * dpr);
-    canvas.height = Math.round(rect.height * dpr);
-  }
-  const ctx = canvas.getContext('2d');
-  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-  const W = rect.width, H = rect.height;
+  const setup = setupOverlayCanvas($('plane-view-overlay'));
+  if (!setup) return;
+  const { ctx, W, H } = setup;
 
   ctx.clearRect(0, 0, W, H);
 
-  // --- Green tint over entire view ---
-  ctx.fillStyle = 'rgba(0, 20, 0, 0.15)';
-  ctx.fillRect(0, 0, W, H);
+  const HUD = 'rgba(0, 255, 65, ';
+  drawHudOverlay(ctx, W, H, HUD, {
+    tintColor: 'rgba(0, 20, 0, 0.15)',
+    vigInner: 0.05,
+    vigOuter: 0.55,
+    scanSpeed: 20,
+  });
 
-  // --- Vignette (darker edges like a camera lens) ---
-  const vigGrad = ctx.createRadialGradient(W / 2, H / 2, Math.min(W, H) * 0.25, W / 2, H / 2, Math.max(W, H) * 0.7);
-  vigGrad.addColorStop(0, 'rgba(0,0,0,0)');
-  vigGrad.addColorStop(0.7, 'rgba(0,0,0,0.15)');
-  vigGrad.addColorStop(1, 'rgba(0,0,0,0.55)');
-  ctx.fillStyle = vigGrad;
-  ctx.fillRect(0, 0, W, H);
-
-  // --- Horizontal scanlines ---
-  ctx.fillStyle = 'rgba(0, 0, 0, 0.08)';
-  for (let y = 0; y < H; y += 3) {
-    ctx.fillRect(0, y, W, 1);
-  }
-
-  // --- Moving scan line ---
-  const scanY = (Date.now() / 20) % H;
-  const scanGrad = ctx.createLinearGradient(0, scanY - 15, 0, scanY + 15);
-  scanGrad.addColorStop(0, 'rgba(0, 255, 65, 0)');
-  scanGrad.addColorStop(0.5, 'rgba(0, 255, 65, 0.06)');
-  scanGrad.addColorStop(1, 'rgba(0, 255, 65, 0)');
-  ctx.fillStyle = scanGrad;
-  ctx.fillRect(0, scanY - 15, W, 30);
-
-  // --- Corner brackets (targeting frame) ---
-  const bracketLen = 30;
-  const bracketInset = 20;
-  ctx.strokeStyle = 'rgba(0, 255, 65, 0.35)';
-  ctx.lineWidth = 1.5;
-  // Top-left
-  ctx.beginPath();
-  ctx.moveTo(bracketInset, bracketInset + bracketLen);
-  ctx.lineTo(bracketInset, bracketInset);
-  ctx.lineTo(bracketInset + bracketLen, bracketInset);
-  ctx.stroke();
-  // Top-right
-  ctx.beginPath();
-  ctx.moveTo(W - bracketInset - bracketLen, bracketInset);
-  ctx.lineTo(W - bracketInset, bracketInset);
-  ctx.lineTo(W - bracketInset, bracketInset + bracketLen);
-  ctx.stroke();
-  // Bottom-left
-  ctx.beginPath();
-  ctx.moveTo(bracketInset, H - bracketInset - bracketLen);
-  ctx.lineTo(bracketInset, H - bracketInset);
-  ctx.lineTo(bracketInset + bracketLen, H - bracketInset);
-  ctx.stroke();
-  // Bottom-right
-  ctx.beginPath();
-  ctx.moveTo(W - bracketInset - bracketLen, H - bracketInset);
-  ctx.lineTo(W - bracketInset, H - bracketInset);
-  ctx.lineTo(W - bracketInset, H - bracketInset - bracketLen);
-  ctx.stroke();
-
-  // --- Data readouts (bottom bar, like real FLIR/targeting pod footage) ---
   const d = lastOverlayData;
   if (!d) return;
 
@@ -257,7 +134,7 @@ export function openPlaneView(viewer, entity) {
   };
   viewer.scene.preRender.addEventListener(planeViewUpdateHandler);
 
-  startOverlayLoop();
+  overlayHandle = startAnimLoop(renderMilitaryOverlay);
 
   setTimeout(() => {
     viewer.resize();
@@ -274,7 +151,7 @@ export function closePlaneView(viewer) {
   $('plane-view-panel').classList.remove('open');
   document.body.classList.remove('plane-panel-open');
 
-  stopOverlayLoop();
+  if (overlayHandle) { overlayHandle.stop(); overlayHandle = null; }
 
   if (planeViewUpdateHandler) {
     viewer.scene.preRender.removeEventListener(planeViewUpdateHandler);
@@ -336,16 +213,6 @@ function updatePlaneViewCamera(posInfo, acData) {
 }
 
 // --- Footprint Visualization ---
-
-function computeCirclePositions(lon, lat, radiusDeg, numPts) {
-  const cosLat = Math.cos(Cesium.Math.toRadians(lat));
-  const pts = [];
-  for (let i = 0; i <= numPts; i++) {
-    const ang = (i / numPts) * 2 * Math.PI;
-    pts.push(lon + (radiusDeg * Math.cos(ang)) / cosLat, lat + radiusDeg * Math.sin(ang));
-  }
-  return Cesium.Cartesian3.fromDegreesArray(pts);
-}
 
 function createPlaneViewFootprint(lon, lat, radiusKm) {
   const radiusDeg = radiusKm / 111.32;
@@ -672,3 +539,6 @@ function renderPlaneHorizonView(posInfo, acData) {
   ctx.lineTo(W, scanY);
   ctx.stroke();
 }
+
+// --- Self-register with view registry ---
+registerView('plane', { open: openPlaneView, close: closePlaneView, isOpen: isPlaneViewOpen, resize: resizePlaneView });

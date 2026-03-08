@@ -4,6 +4,7 @@
 
 import { DISPLAY } from '../config.js';
 import { createDataLayer } from './datalayer.js';
+import { registerLayerLoader } from '../layerregistry.js';
 
 const layer = createDataLayer({
   layerKey: 'bases',
@@ -22,6 +23,8 @@ const layer = createDataLayer({
     joint:    { icon: 'militaryBase', color: '#ff6644', label: 'MILITARY BASE' },
   },
 });
+
+registerLayerLoader('bases', { load: layer.load, flyTo: layer.FLY_TO, reset: layer.reset, dataUrl: 'data/military_bases.json' });
 
 export const fetchMilitaryBases     = layer.load;
 export const isMilitaryBasesLoaded  = layer.isLoaded;

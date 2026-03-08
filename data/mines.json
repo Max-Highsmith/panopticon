@@ -1,77 +1,567 @@
 {
+  "_source": {
+    "description": "Global cobalt, lithium, and bitcoin mining sites",
+    "origin": "Compiled from USGS Mineral Commodity Summaries, S&P Global Market Intelligence mine profiles, and company annual reports (CMOC, Glencore, Albemarle, SQM, etc.). Coordinates cross-referenced with Google Earth.",
+    "retrieved": "2026-03-04",
+    "license": "USGS: public domain; S&P/company data: fair use summary",
+    "notes": "Major operations only. Coordinates approximate to facility centroids. Bitcoin mining sites from Cambridge Bitcoin Electricity Consumption Index and public reporting."
+  },
   "cobalt": [
-    { "name": "Tenke Fungurume", "lat": -10.603, "lon": 26.135, "country": "DRC", "operator": "CMOC Group", "notes": "One of world's largest cobalt-copper deposits" },
-    { "name": "Kamoto", "lat": -10.717, "lon": 25.417, "country": "DRC", "operator": "Glencore", "notes": "World's largest active cobalt mine" },
-    { "name": "Kisanfu", "lat": -10.779, "lon": 25.976, "country": "DRC", "operator": "CMOC/CATL", "notes": "Highest-grade undeveloped cobalt deposit" },
-    { "name": "Mutanda", "lat": -10.783, "lon": 25.950, "country": "DRC", "operator": "Glencore", "notes": "Major copper-cobalt mine, suspended 2019" },
-    { "name": "Etoile", "lat": -11.508, "lon": 27.567, "country": "DRC", "operator": "Chemaf", "notes": "Copper-cobalt mine in Katanga" },
-    { "name": "Ruashi", "lat": -11.633, "lon": 27.500, "country": "DRC", "operator": "Jinchuan Group", "notes": "Open-pit copper-cobalt mine" },
-    { "name": "Luiswishi", "lat": -11.517, "lon": 27.633, "country": "DRC", "operator": "Gecamines/CNMC", "notes": "Cobalt-copper deposit near Lubumbashi" },
-    { "name": "Kolwezi Tailings", "lat": -10.717, "lon": 25.467, "country": "DRC", "operator": "ERG", "notes": "Reprocessing historical copper-cobalt tailings" },
-    { "name": "Murrin Murrin", "lat": -28.717, "lon": 121.883, "country": "Australia", "operator": "Minara/Glencore", "notes": "Nickel-cobalt laterite operation" },
-    { "name": "Sconi", "lat": -18.850, "lon": 144.850, "country": "Australia", "operator": "Australian Mines", "notes": "Nickel-cobalt-scandium project, Queensland" },
-    { "name": "Moa Bay", "lat": 20.660, "lon": -74.950, "country": "Cuba", "operator": "Sherritt International", "notes": "Nickel-cobalt laterite mine" },
-    { "name": "Norilsk-Talnakh", "lat": 69.492, "lon": 88.424, "country": "Russia", "operator": "Nornickel", "notes": "~10% of global cobalt, nickel-copper-cobalt" },
-    { "name": "Voisey's Bay", "lat": 56.334, "lon": -62.102, "country": "Canada", "operator": "Vale", "notes": "Major nickel-copper-cobalt deposit, Labrador" },
-    { "name": "Coral Bay", "lat": 10.033, "lon": 118.917, "country": "Philippines", "operator": "Sumitomo", "notes": "Nickel-cobalt HPAL plant, Palawan" },
-    { "name": "Bou Azzer", "lat": 30.518, "lon": -6.915, "country": "Morocco", "operator": "Managem Group", "notes": "World's highest-grade cobalt, arsenide deposits" },
-    { "name": "Nkana", "lat": -12.983, "lon": 28.233, "country": "Zambia", "operator": "Vedanta Resources", "notes": "Copper-cobalt mine in the Copperbelt" },
-    { "name": "Ambatovy", "lat": -18.850, "lon": 48.300, "country": "Madagascar", "operator": "Sumitomo", "notes": "Laterite nickel-cobalt mine, one of world's largest" }
+    {
+      "name": "Tenke Fungurume",
+      "lat": -10.603,
+      "lon": 26.135,
+      "country": "DRC",
+      "operator": "CMOC Group",
+      "notes": "One of world's largest cobalt-copper deposits"
+    },
+    {
+      "name": "Kamoto",
+      "lat": -10.717,
+      "lon": 25.417,
+      "country": "DRC",
+      "operator": "Glencore",
+      "notes": "World's largest active cobalt mine"
+    },
+    {
+      "name": "Kisanfu",
+      "lat": -10.779,
+      "lon": 25.976,
+      "country": "DRC",
+      "operator": "CMOC/CATL",
+      "notes": "Highest-grade undeveloped cobalt deposit"
+    },
+    {
+      "name": "Mutanda",
+      "lat": -10.783,
+      "lon": 25.95,
+      "country": "DRC",
+      "operator": "Glencore",
+      "notes": "Major copper-cobalt mine, suspended 2019"
+    },
+    {
+      "name": "Etoile",
+      "lat": -11.508,
+      "lon": 27.567,
+      "country": "DRC",
+      "operator": "Chemaf",
+      "notes": "Copper-cobalt mine in Katanga"
+    },
+    {
+      "name": "Ruashi",
+      "lat": -11.633,
+      "lon": 27.5,
+      "country": "DRC",
+      "operator": "Jinchuan Group",
+      "notes": "Open-pit copper-cobalt mine"
+    },
+    {
+      "name": "Luiswishi",
+      "lat": -11.517,
+      "lon": 27.633,
+      "country": "DRC",
+      "operator": "Gecamines/CNMC",
+      "notes": "Cobalt-copper deposit near Lubumbashi"
+    },
+    {
+      "name": "Kolwezi Tailings",
+      "lat": -10.717,
+      "lon": 25.467,
+      "country": "DRC",
+      "operator": "ERG",
+      "notes": "Reprocessing historical copper-cobalt tailings"
+    },
+    {
+      "name": "Murrin Murrin",
+      "lat": -28.717,
+      "lon": 121.883,
+      "country": "Australia",
+      "operator": "Minara/Glencore",
+      "notes": "Nickel-cobalt laterite operation"
+    },
+    {
+      "name": "Sconi",
+      "lat": -18.85,
+      "lon": 144.85,
+      "country": "Australia",
+      "operator": "Australian Mines",
+      "notes": "Nickel-cobalt-scandium project, Queensland"
+    },
+    {
+      "name": "Moa Bay",
+      "lat": 20.66,
+      "lon": -74.95,
+      "country": "Cuba",
+      "operator": "Sherritt International",
+      "notes": "Nickel-cobalt laterite mine"
+    },
+    {
+      "name": "Norilsk-Talnakh",
+      "lat": 69.492,
+      "lon": 88.424,
+      "country": "Russia",
+      "operator": "Nornickel",
+      "notes": "~10% of global cobalt, nickel-copper-cobalt"
+    },
+    {
+      "name": "Voisey's Bay",
+      "lat": 56.334,
+      "lon": -62.102,
+      "country": "Canada",
+      "operator": "Vale",
+      "notes": "Major nickel-copper-cobalt deposit, Labrador"
+    },
+    {
+      "name": "Coral Bay",
+      "lat": 10.033,
+      "lon": 118.917,
+      "country": "Philippines",
+      "operator": "Sumitomo",
+      "notes": "Nickel-cobalt HPAL plant, Palawan"
+    },
+    {
+      "name": "Bou Azzer",
+      "lat": 30.518,
+      "lon": -6.915,
+      "country": "Morocco",
+      "operator": "Managem Group",
+      "notes": "World's highest-grade cobalt, arsenide deposits"
+    },
+    {
+      "name": "Nkana",
+      "lat": -12.983,
+      "lon": 28.233,
+      "country": "Zambia",
+      "operator": "Vedanta Resources",
+      "notes": "Copper-cobalt mine in the Copperbelt"
+    },
+    {
+      "name": "Ambatovy",
+      "lat": -18.85,
+      "lon": 48.3,
+      "country": "Madagascar",
+      "operator": "Sumitomo",
+      "notes": "Laterite nickel-cobalt mine, one of world's largest"
+    }
   ],
   "lithium": [
-    { "name": "Greenbushes", "lat": -33.863, "lon": 116.056, "country": "Australia", "operator": "Talison/Tianqi/Albemarle", "notes": "World's largest hard-rock lithium mine" },
-    { "name": "Mt Cattlin", "lat": -33.533, "lon": 119.717, "country": "Australia", "operator": "Allkem", "notes": "Spodumene mine, Western Australia" },
-    { "name": "Pilgangoora", "lat": -21.300, "lon": 119.083, "country": "Australia", "operator": "Pilbara Minerals", "notes": "Major spodumene-tantalite deposit" },
-    { "name": "Wodgina", "lat": -21.183, "lon": 118.683, "country": "Australia", "operator": "Albemarle/MRL", "notes": "Hard-rock lithium mine, Pilbara" },
-    { "name": "Mt Marion", "lat": -31.583, "lon": 121.467, "country": "Australia", "operator": "Mineral Resources", "notes": "Spodumene mine near Coolgardie" },
-    { "name": "Salar de Atacama", "lat": -23.416, "lon": -68.239, "country": "Chile", "operator": "SQM/Albemarle", "notes": "World's largest lithium brine operation" },
-    { "name": "Salar del Hombre Muerto", "lat": -25.383, "lon": -67.083, "country": "Argentina", "operator": "Livent (Arcadium)", "notes": "Operating brine since 1997" },
-    { "name": "Cauchari-Olaroz", "lat": -23.400, "lon": -66.683, "country": "Argentina", "operator": "Allkem/Ganfeng", "notes": "High-grade lithium brine deposit" },
-    { "name": "Salar de Uyuni", "lat": -20.134, "lon": -67.487, "country": "Bolivia", "operator": "YLB (State)", "notes": "World's largest salt flat, vast lithium reserves" },
-    { "name": "Jiajika", "lat": 30.296, "lon": 101.302, "country": "China", "operator": "Tianqi Lithium", "notes": "Major spodumene deposit, Sichuan" },
-    { "name": "Zhabuye Salt Lake", "lat": 31.383, "lon": 84.067, "country": "China", "operator": "Tibet Mining", "notes": "High-altitude lithium brine, Tibet" },
-    { "name": "Thacker Pass", "lat": 41.058, "lon": -117.567, "country": "USA", "operator": "Lithium Americas", "notes": "Largest known lithium deposit in the US" },
-    { "name": "Silver Peak", "lat": 37.770, "lon": -117.581, "country": "USA", "operator": "Albemarle", "notes": "Only US lithium mine operating since 1965" },
-    { "name": "Manono", "lat": -7.300, "lon": 27.417, "country": "DRC", "operator": "AVZ Minerals", "notes": "One of world's largest hard-rock lithium deposits" },
-    { "name": "Goulamina", "lat": -11.617, "lon": -7.833, "country": "Mali", "operator": "Leo Lithium/Ganfeng", "notes": "Major spodumene deposit, West Africa" },
-    { "name": "Jadar", "lat": 44.500, "lon": 19.350, "country": "Serbia", "operator": "Rio Tinto", "notes": "Jadarite deposit, unique lithium-boron mineral" },
-    { "name": "James Bay", "lat": 52.333, "lon": -76.667, "country": "Canada", "operator": "Allkem", "notes": "Hard-rock spodumene, Quebec" },
-    { "name": "Bikita", "lat": -20.083, "lon": 31.433, "country": "Zimbabwe", "operator": "Sinomine", "notes": "Historic petalite mine, now spodumene focus" }
+    {
+      "name": "Greenbushes",
+      "lat": -33.863,
+      "lon": 116.056,
+      "country": "Australia",
+      "operator": "Talison/Tianqi/Albemarle",
+      "notes": "World's largest hard-rock lithium mine"
+    },
+    {
+      "name": "Mt Cattlin",
+      "lat": -33.533,
+      "lon": 119.717,
+      "country": "Australia",
+      "operator": "Allkem",
+      "notes": "Spodumene mine, Western Australia"
+    },
+    {
+      "name": "Pilgangoora",
+      "lat": -21.3,
+      "lon": 119.083,
+      "country": "Australia",
+      "operator": "Pilbara Minerals",
+      "notes": "Major spodumene-tantalite deposit"
+    },
+    {
+      "name": "Wodgina",
+      "lat": -21.183,
+      "lon": 118.683,
+      "country": "Australia",
+      "operator": "Albemarle/MRL",
+      "notes": "Hard-rock lithium mine, Pilbara"
+    },
+    {
+      "name": "Mt Marion",
+      "lat": -31.583,
+      "lon": 121.467,
+      "country": "Australia",
+      "operator": "Mineral Resources",
+      "notes": "Spodumene mine near Coolgardie"
+    },
+    {
+      "name": "Salar de Atacama",
+      "lat": -23.416,
+      "lon": -68.239,
+      "country": "Chile",
+      "operator": "SQM/Albemarle",
+      "notes": "World's largest lithium brine operation"
+    },
+    {
+      "name": "Salar del Hombre Muerto",
+      "lat": -25.383,
+      "lon": -67.083,
+      "country": "Argentina",
+      "operator": "Livent (Arcadium)",
+      "notes": "Operating brine since 1997"
+    },
+    {
+      "name": "Cauchari-Olaroz",
+      "lat": -23.4,
+      "lon": -66.683,
+      "country": "Argentina",
+      "operator": "Allkem/Ganfeng",
+      "notes": "High-grade lithium brine deposit"
+    },
+    {
+      "name": "Salar de Uyuni",
+      "lat": -20.134,
+      "lon": -67.487,
+      "country": "Bolivia",
+      "operator": "YLB (State)",
+      "notes": "World's largest salt flat, vast lithium reserves"
+    },
+    {
+      "name": "Jiajika",
+      "lat": 30.296,
+      "lon": 101.302,
+      "country": "China",
+      "operator": "Tianqi Lithium",
+      "notes": "Major spodumene deposit, Sichuan"
+    },
+    {
+      "name": "Zhabuye Salt Lake",
+      "lat": 31.383,
+      "lon": 84.067,
+      "country": "China",
+      "operator": "Tibet Mining",
+      "notes": "High-altitude lithium brine, Tibet"
+    },
+    {
+      "name": "Thacker Pass",
+      "lat": 41.058,
+      "lon": -117.567,
+      "country": "USA",
+      "operator": "Lithium Americas",
+      "notes": "Largest known lithium deposit in the US"
+    },
+    {
+      "name": "Silver Peak",
+      "lat": 37.77,
+      "lon": -117.581,
+      "country": "USA",
+      "operator": "Albemarle",
+      "notes": "Only US lithium mine operating since 1965"
+    },
+    {
+      "name": "Manono",
+      "lat": -7.3,
+      "lon": 27.417,
+      "country": "DRC",
+      "operator": "AVZ Minerals",
+      "notes": "One of world's largest hard-rock lithium deposits"
+    },
+    {
+      "name": "Goulamina",
+      "lat": -11.617,
+      "lon": -7.833,
+      "country": "Mali",
+      "operator": "Leo Lithium/Ganfeng",
+      "notes": "Major spodumene deposit, West Africa"
+    },
+    {
+      "name": "Jadar",
+      "lat": 44.5,
+      "lon": 19.35,
+      "country": "Serbia",
+      "operator": "Rio Tinto",
+      "notes": "Jadarite deposit, unique lithium-boron mineral"
+    },
+    {
+      "name": "James Bay",
+      "lat": 52.333,
+      "lon": -76.667,
+      "country": "Canada",
+      "operator": "Allkem",
+      "notes": "Hard-rock spodumene, Quebec"
+    },
+    {
+      "name": "Bikita",
+      "lat": -20.083,
+      "lon": 31.433,
+      "country": "Zimbabwe",
+      "operator": "Sinomine",
+      "notes": "Historic petalite mine, now spodumene focus"
+    }
   ],
   "bitcoin": [
-    { "name": "Rockdale", "lat": 30.656, "lon": -97.002, "country": "USA", "operator": "Riot Platforms", "notes": "1 GW facility, one of largest in North America" },
-    { "name": "Corsicana", "lat": 32.095, "lon": -96.469, "country": "USA", "operator": "Riot Platforms", "notes": "400 MW facility in Navarro County, TX" },
-    { "name": "Garden City", "lat": 31.867, "lon": -101.488, "country": "USA", "operator": "Marathon Digital", "notes": "Large-scale mining site, West Texas" },
-    { "name": "Ellendale", "lat": 46.003, "lon": -98.528, "country": "USA", "operator": "Marathon Digital", "notes": "Wind-powered mining facility, North Dakota" },
-    { "name": "Kearney", "lat": 40.699, "lon": -99.083, "country": "USA", "operator": "Marathon Digital", "notes": "Mining facility, Nebraska" },
-    { "name": "King Mountain", "lat": 31.350, "lon": -102.800, "country": "USA", "operator": "Marathon Digital", "notes": "Wind farm co-located mining, West Texas" },
-    { "name": "Norcross", "lat": 33.941, "lon": -84.213, "country": "USA", "operator": "CleanSpark", "notes": "Corporate HQ and mining operations, Georgia" },
-    { "name": "Sandersville", "lat": 32.979, "lon": -82.810, "country": "USA", "operator": "CleanSpark", "notes": "Mining campus, Washington County, GA" },
-    { "name": "Dalton", "lat": 34.770, "lon": -84.970, "country": "USA", "operator": "CleanSpark", "notes": "Mining facility, northwest Georgia" },
-    { "name": "Vicksburg", "lat": 32.352, "lon": -90.878, "country": "USA", "operator": "CleanSpark", "notes": "Mining facility, Mississippi" },
-    { "name": "Denton", "lat": 36.512, "lon": -94.307, "country": "USA", "operator": "Core Scientific", "notes": "Large-scale mining data center, Denton County" },
-    { "name": "Calvert City", "lat": 37.033, "lon": -88.350, "country": "USA", "operator": "Core Scientific", "notes": "Mining facility, Kentucky" },
-    { "name": "Marble", "lat": 34.454, "lon": -94.168, "country": "USA", "operator": "Core Scientific", "notes": "Mining facility, Oklahoma" },
-    { "name": "Massena", "lat": 44.928, "lon": -74.891, "country": "USA", "operator": "Various", "notes": "Cheap hydropower attracts multiple miners, NY" },
-    { "name": "Niagara Falls", "lat": 43.094, "lon": -79.057, "country": "USA", "operator": "Various", "notes": "Hydropower-based mining operations, NY" },
-    { "name": "Magog", "lat": 45.266, "lon": -72.142, "country": "Canada", "operator": "Bitfarms", "notes": "Hydropower mining facility, Quebec" },
-    { "name": "Sherbrooke", "lat": 45.404, "lon": -71.893, "country": "Canada", "operator": "Bitfarms", "notes": "Hydropower mining facility, Quebec" },
-    { "name": "Baie-Comeau", "lat": 49.219, "lon": -68.158, "country": "Canada", "operator": "Bitfarms", "notes": "Hydropower mining, Cote-Nord, Quebec" },
-    { "name": "Medicine Hat", "lat": 50.042, "lon": -110.678, "country": "Canada", "operator": "Hut 8", "notes": "Natural gas-powered mining, Alberta" },
-    { "name": "Drumheller", "lat": 51.464, "lon": -112.707, "country": "Canada", "operator": "Hut 8", "notes": "Mining facility, Alberta" },
-    { "name": "Río Cuarto", "lat": -33.130, "lon": -64.350, "country": "Argentina", "operator": "Bitfarms", "notes": "Gas-powered mining facility, Córdoba" },
-    { "name": "Villarrica", "lat": -25.751, "lon": -56.434, "country": "Paraguay", "operator": "Bitfarms", "notes": "Hydropower mining, Itaipu dam region" },
-    { "name": "Bratsk", "lat": 56.132, "lon": 101.614, "country": "Russia", "operator": "BitRiver", "notes": "Hydropower colocation, Irkutsk region" },
-    { "name": "Irkutsk", "lat": 52.297, "lon": 104.296, "country": "Russia", "operator": "BitRiver", "notes": "Multiple facilities near cheap Siberian hydropower" },
-    { "name": "Ekibastuz", "lat": 51.723, "lon": 75.322, "country": "Kazakhstan", "operator": "Various", "notes": "Coal-powered mining hub, once ~18% of global hashrate" },
-    { "name": "Norilsk", "lat": 69.349, "lon": 88.201, "country": "Russia", "operator": "Various", "notes": "Arctic mining operations using surplus energy" },
-    { "name": "Tbilisi", "lat": 41.693, "lon": 44.802, "country": "Georgia", "operator": "Various", "notes": "Hydropower-based mining operations" },
-    { "name": "Reykjanesbaer", "lat": 63.843, "lon": -22.451, "country": "Iceland", "operator": "Genesis Mining", "notes": "Geothermal-powered mining, natural cooling" },
-    { "name": "Boden", "lat": 66.098, "lon": 21.689, "country": "Sweden", "operator": "Various", "notes": "Hydropower mining in northern Sweden" },
-    { "name": "Mo i Rana", "lat": 66.313, "lon": 14.142, "country": "Norway", "operator": "Various", "notes": "Hydropower-based mining, arctic cooling" },
-    { "name": "Surf City", "lat": 9.068, "lon": -79.523, "country": "El Salvador", "operator": "Government", "notes": "State-backed volcano-powered Bitcoin mining" },
-    { "name": "Bhutan Facility", "lat": 27.472, "lon": 89.639, "country": "Bhutan", "operator": "Druk Holding", "notes": "State-owned hydropower Bitcoin mining" },
-    { "name": "Abu Dhabi", "lat": 24.453, "lon": 54.377, "country": "UAE", "operator": "Marathon Digital/Zero Two", "notes": "Joint venture mining facility" },
-    { "name": "Addis Ababa", "lat": 9.025, "lon": 38.747, "country": "Ethiopia", "operator": "Various", "notes": "Grand Renaissance Dam hydropower mining" }
+    {
+      "name": "Rockdale",
+      "lat": 30.656,
+      "lon": -97.002,
+      "country": "USA",
+      "operator": "Riot Platforms",
+      "notes": "1 GW facility, one of largest in North America"
+    },
+    {
+      "name": "Corsicana",
+      "lat": 32.095,
+      "lon": -96.469,
+      "country": "USA",
+      "operator": "Riot Platforms",
+      "notes": "400 MW facility in Navarro County, TX"
+    },
+    {
+      "name": "Garden City",
+      "lat": 31.867,
+      "lon": -101.488,
+      "country": "USA",
+      "operator": "Marathon Digital",
+      "notes": "Large-scale mining site, West Texas"
+    },
+    {
+      "name": "Ellendale",
+      "lat": 46.003,
+      "lon": -98.528,
+      "country": "USA",
+      "operator": "Marathon Digital",
+      "notes": "Wind-powered mining facility, North Dakota"
+    },
+    {
+      "name": "Kearney",
+      "lat": 40.699,
+      "lon": -99.083,
+      "country": "USA",
+      "operator": "Marathon Digital",
+      "notes": "Mining facility, Nebraska"
+    },
+    {
+      "name": "King Mountain",
+      "lat": 31.35,
+      "lon": -102.8,
+      "country": "USA",
+      "operator": "Marathon Digital",
+      "notes": "Wind farm co-located mining, West Texas"
+    },
+    {
+      "name": "Norcross",
+      "lat": 33.941,
+      "lon": -84.213,
+      "country": "USA",
+      "operator": "CleanSpark",
+      "notes": "Corporate HQ and mining operations, Georgia"
+    },
+    {
+      "name": "Sandersville",
+      "lat": 32.979,
+      "lon": -82.81,
+      "country": "USA",
+      "operator": "CleanSpark",
+      "notes": "Mining campus, Washington County, GA"
+    },
+    {
+      "name": "Dalton",
+      "lat": 34.77,
+      "lon": -84.97,
+      "country": "USA",
+      "operator": "CleanSpark",
+      "notes": "Mining facility, northwest Georgia"
+    },
+    {
+      "name": "Vicksburg",
+      "lat": 32.352,
+      "lon": -90.878,
+      "country": "USA",
+      "operator": "CleanSpark",
+      "notes": "Mining facility, Mississippi"
+    },
+    {
+      "name": "Denton",
+      "lat": 36.512,
+      "lon": -94.307,
+      "country": "USA",
+      "operator": "Core Scientific",
+      "notes": "Large-scale mining data center, Denton County"
+    },
+    {
+      "name": "Calvert City",
+      "lat": 37.033,
+      "lon": -88.35,
+      "country": "USA",
+      "operator": "Core Scientific",
+      "notes": "Mining facility, Kentucky"
+    },
+    {
+      "name": "Marble",
+      "lat": 34.454,
+      "lon": -94.168,
+      "country": "USA",
+      "operator": "Core Scientific",
+      "notes": "Mining facility, Oklahoma"
+    },
+    {
+      "name": "Massena",
+      "lat": 44.928,
+      "lon": -74.891,
+      "country": "USA",
+      "operator": "Various",
+      "notes": "Cheap hydropower attracts multiple miners, NY"
+    },
+    {
+      "name": "Niagara Falls",
+      "lat": 43.094,
+      "lon": -79.057,
+      "country": "USA",
+      "operator": "Various",
+      "notes": "Hydropower-based mining operations, NY"
+    },
+    {
+      "name": "Magog",
+      "lat": 45.266,
+      "lon": -72.142,
+      "country": "Canada",
+      "operator": "Bitfarms",
+      "notes": "Hydropower mining facility, Quebec"
+    },
+    {
+      "name": "Sherbrooke",
+      "lat": 45.404,
+      "lon": -71.893,
+      "country": "Canada",
+      "operator": "Bitfarms",
+      "notes": "Hydropower mining facility, Quebec"
+    },
+    {
+      "name": "Baie-Comeau",
+      "lat": 49.219,
+      "lon": -68.158,
+      "country": "Canada",
+      "operator": "Bitfarms",
+      "notes": "Hydropower mining, Cote-Nord, Quebec"
+    },
+    {
+      "name": "Medicine Hat",
+      "lat": 50.042,
+      "lon": -110.678,
+      "country": "Canada",
+      "operator": "Hut 8",
+      "notes": "Natural gas-powered mining, Alberta"
+    },
+    {
+      "name": "Drumheller",
+      "lat": 51.464,
+      "lon": -112.707,
+      "country": "Canada",
+      "operator": "Hut 8",
+      "notes": "Mining facility, Alberta"
+    },
+    {
+      "name": "R\u00edo Cuarto",
+      "lat": -33.13,
+      "lon": -64.35,
+      "country": "Argentina",
+      "operator": "Bitfarms",
+      "notes": "Gas-powered mining facility, C\u00f3rdoba"
+    },
+    {
+      "name": "Villarrica",
+      "lat": -25.751,
+      "lon": -56.434,
+      "country": "Paraguay",
+      "operator": "Bitfarms",
+      "notes": "Hydropower mining, Itaipu dam region"
+    },
+    {
+      "name": "Bratsk",
+      "lat": 56.132,
+      "lon": 101.614,
+      "country": "Russia",
+      "operator": "BitRiver",
+      "notes": "Hydropower colocation, Irkutsk region"
+    },
+    {
+      "name": "Irkutsk",
+      "lat": 52.297,
+      "lon": 104.296,
+      "country": "Russia",
+      "operator": "BitRiver",
+      "notes": "Multiple facilities near cheap Siberian hydropower"
+    },
+    {
+      "name": "Ekibastuz",
+      "lat": 51.723,
+      "lon": 75.322,
+      "country": "Kazakhstan",
+      "operator": "Various",
+      "notes": "Coal-powered mining hub, once ~18% of global hashrate"
+    },
+    {
+      "name": "Norilsk",
+      "lat": 69.349,
+      "lon": 88.201,
+      "country": "Russia",
+      "operator": "Various",
+      "notes": "Arctic mining operations using surplus energy"
+    },
+    {
+      "name": "Tbilisi",
+      "lat": 41.693,
+      "lon": 44.802,
+      "country": "Georgia",
+      "operator": "Various",
+      "notes": "Hydropower-based mining operations"
+    },
+    {
+      "name": "Reykjanesbaer",
+      "lat": 63.843,
+      "lon": -22.451,
+      "country": "Iceland",
+      "operator": "Genesis Mining",
+      "notes": "Geothermal-powered mining, natural cooling"
+    },
+    {
+      "name": "Boden",
+      "lat": 66.098,
+      "lon": 21.689,
+      "country": "Sweden",
+      "operator": "Various",
+      "notes": "Hydropower mining in northern Sweden"
+    },
+    {
+      "name": "Mo i Rana",
+      "lat": 66.313,
+      "lon": 14.142,
+      "country": "Norway",
+      "operator": "Various",
+      "notes": "Hydropower-based mining, arctic cooling"
+    },
+    {
+      "name": "Surf City",
+      "lat": 9.068,
+      "lon": -79.523,
+      "country": "El Salvador",
+      "operator": "Government",
+      "notes": "State-backed volcano-powered Bitcoin mining"
+    },
+    {
+      "name": "Bhutan Facility",
+      "lat": 27.472,
+      "lon": 89.639,
+      "country": "Bhutan",
+      "operator": "Druk Holding",
+      "notes": "State-owned hydropower Bitcoin mining"
+    },
+    {
+      "name": "Abu Dhabi",
+      "lat": 24.453,
+      "lon": 54.377,
+      "country": "UAE",
+      "operator": "Marathon Digital/Zero Two",
+      "notes": "Joint venture mining facility"
+    },
+    {
+      "name": "Addis Ababa",
+      "lat": 9.025,
+      "lon": 38.747,
+      "country": "Ethiopia",
+      "operator": "Various",
+      "notes": "Grand Renaissance Dam hydropower mining"
+    }
   ]
 }

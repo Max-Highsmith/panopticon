@@ -1,0 +1,45 @@
+{
+  "_source": {
+    "description": "Playback manifest for Jalisco ADS-B surveillance replay",
+    "origin": "Panopticon ADS-B capture via api.adsb.one — adsb.one",
+    "retrieved": "2026-02-22",
+    "license": "public domain",
+    "notes": "ADS-B data captured from adsb.one military endpoint"
+  },
+  "id": "jalisco-feb22",
+  "type": "adsb",
+  "label": "JALISCO",
+  "subtitle": "HISTORICAL REPLAY // JALISCO // FEB 22, 2026",
+  "description": "Military and commercial tracking over Jalisco and Pacific approaches. Feb 22, 2026 11:00-11:30 UTC.",
+  "category": "historical",
+  "date": "2026-02-22",
+  "camera": { "lon": -103.5, "lat": 20.7, "alt": 3500000 },
+  "timeline": {
+    "domain": "wallclock",
+    "startUTC": 39600
+  },
+  "data": {
+    "file": "jalisco_feb22.json"
+  },
+  "display": {
+    "localTz": { "name": "CST", "offset": -6 },
+    "dateLabel": "FEB 22, 2026",
+    "timeLabel": "FEB 22, 2026 // 11:00 - 11:30 UTC",
+    "layers": ["military", "commercial", "satellites"],
+    "dataBounds": { "latMin": 12.0, "latMax": 28.0, "lonMin": -112.0, "lonMax": -95.0 },
+    "blackoutZones": [{
+      "label": "ADS-B BLACKOUT",
+      "sublabel": "WESTERN MEXICO // NO COVERAGE",
+      "labelPos": [-104.5, 22.0],
+      "coords": [
+        -105.5, 27.0, -104.5, 26.0, -104.0, 25.0, -104.5, 24.0,
+        -105.0, 23.5, -105.5, 23.0, -105.2, 22.0, -105.0, 21.0,
+        -105.5, 20.5, -105.3, 19.5, -104.5, 19.0, -103.5, 18.5,
+        -103.0, 18.8, -102.5, 19.0, -102.0, 19.5, -102.0, 20.5,
+        -102.5, 21.5, -103.0, 22.5, -103.5, 23.5, -104.0, 24.5,
+        -104.0, 25.5, -104.5, 26.5, -105.5, 27.0
+      ]
+    }]
+  },
+  "tags": ["adsb", "jalisco", "mexico", "military"]
+}

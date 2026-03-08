@@ -1,0 +1,430 @@
+{
+  "_source": {
+    "description": "Major power plants worldwide (coal, gas, hydro, solar, wind)",
+    "origin": "Compiled from WRI Global Power Plant Database (datasets.wri.org/dataset/globalpowerplantdatabase) and Global Energy Monitor plant trackers.",
+    "retrieved": "2026-03-06",
+    "license": "WRI GPPD: Creative Commons 4.0; GEM: CC-BY-4.0",
+    "notes": "Representative sample of largest facilities by capacity. Coordinates from WRI GPPD."
+  },
+  "coal": [
+    {
+      "name": "Taichung Power Plant",
+      "lon": 120.48,
+      "lat": 24.21,
+      "country": "Taiwan",
+      "operator": "Taipower",
+      "capacity_mw": 5780,
+      "notes": "World's largest coal-fired plant"
+    },
+    {
+      "name": "Tuoketuo Power Station",
+      "lon": 111.37,
+      "lat": 40.22,
+      "country": "China",
+      "operator": "China Datang",
+      "capacity_mw": 6720,
+      "notes": "Largest thermal plant in China"
+    },
+    {
+      "name": "Dangjin Power Station",
+      "lon": 126.82,
+      "lat": 36.97,
+      "country": "South Korea",
+      "operator": "Korea East-West Power",
+      "capacity_mw": 6040
+    },
+    {
+      "name": "Belchatow Power Station",
+      "lon": 19.33,
+      "lat": 51.27,
+      "country": "Poland",
+      "operator": "PGE",
+      "capacity_mw": 5472,
+      "notes": "Europe's largest coal plant"
+    },
+    {
+      "name": "Vindhyachal STPS",
+      "lon": 82.68,
+      "lat": 24.09,
+      "country": "India",
+      "operator": "NTPC",
+      "capacity_mw": 4760
+    },
+    {
+      "name": "Mundra Thermal",
+      "lon": 69.72,
+      "lat": 22.84,
+      "country": "India",
+      "operator": "Adani Power",
+      "capacity_mw": 4620
+    },
+    {
+      "name": "Kusile Power Station",
+      "lon": 29.36,
+      "lat": -25.97,
+      "country": "South Africa",
+      "operator": "Eskom",
+      "capacity_mw": 4800
+    },
+    {
+      "name": "Medupi Power Station",
+      "lon": 27.6,
+      "lat": -23.68,
+      "country": "South Africa",
+      "operator": "Eskom",
+      "capacity_mw": 4764
+    },
+    {
+      "name": "J\u00e4nschwalde Power Station",
+      "lon": 14.47,
+      "lat": 51.83,
+      "country": "Germany",
+      "operator": "LEAG",
+      "capacity_mw": 3000,
+      "notes": "Lignite-fired"
+    },
+    {
+      "name": "Ratcliffe-on-Soar",
+      "lon": -1.25,
+      "lat": 52.86,
+      "country": "UK",
+      "operator": "Uniper",
+      "capacity_mw": 2116,
+      "notes": "UK's last coal plant"
+    }
+  ],
+  "gas": [
+    {
+      "name": "Surgut-2 Power Station",
+      "lon": 73.3,
+      "lat": 61.25,
+      "country": "Russia",
+      "operator": "E.ON Russia",
+      "capacity_mw": 5597
+    },
+    {
+      "name": "Futtsu Power Station",
+      "lon": 139.85,
+      "lat": 35.31,
+      "country": "Japan",
+      "operator": "TEPCO",
+      "capacity_mw": 5040
+    },
+    {
+      "name": "Kawagoe Power Station",
+      "lon": 136.7,
+      "lat": 35.02,
+      "country": "Japan",
+      "operator": "Chubu Electric",
+      "capacity_mw": 4802
+    },
+    {
+      "name": "West County Energy Center",
+      "lon": -80.64,
+      "lat": 26.73,
+      "country": "USA",
+      "operator": "FPL",
+      "capacity_mw": 3750
+    },
+    {
+      "name": "Didcot B Power Station",
+      "lon": -1.27,
+      "lat": 51.62,
+      "country": "UK",
+      "operator": "RWE npower",
+      "capacity_mw": 1360
+    },
+    {
+      "name": "Barka Power Station",
+      "lon": 57.88,
+      "lat": 23.68,
+      "country": "Oman",
+      "operator": "SMN Power",
+      "capacity_mw": 2785
+    },
+    {
+      "name": "Ras Laffan CCGT",
+      "lon": 51.55,
+      "lat": 25.9,
+      "country": "Qatar",
+      "operator": "Qatar Electricity",
+      "capacity_mw": 2730
+    },
+    {
+      "name": "Shuweihat S2",
+      "lon": 52.62,
+      "lat": 24.15,
+      "country": "UAE",
+      "operator": "IWPP",
+      "capacity_mw": 1510
+    },
+    {
+      "name": "Pembroke Power Station",
+      "lon": -5.01,
+      "lat": 51.68,
+      "country": "UK",
+      "operator": "RWE",
+      "capacity_mw": 2180
+    },
+    {
+      "name": "Cartagena CCGT",
+      "lon": -0.98,
+      "lat": 37.6,
+      "country": "Spain",
+      "operator": "AES",
+      "capacity_mw": 1200
+    }
+  ],
+  "hydro": [
+    {
+      "name": "Three Gorges Dam",
+      "lon": 111.0,
+      "lat": 30.83,
+      "country": "China",
+      "operator": "CTG",
+      "capacity_mw": 22500,
+      "notes": "World's largest power station"
+    },
+    {
+      "name": "Itaipu Dam",
+      "lon": -54.59,
+      "lat": -25.41,
+      "country": "Brazil/Paraguay",
+      "operator": "Itaipu Binacional",
+      "capacity_mw": 14000
+    },
+    {
+      "name": "Xiluodu Dam",
+      "lon": 103.65,
+      "lat": 28.25,
+      "country": "China",
+      "operator": "CTG",
+      "capacity_mw": 13860
+    },
+    {
+      "name": "Guri Dam",
+      "lon": -62.97,
+      "lat": 7.77,
+      "country": "Venezuela",
+      "operator": "CVG Edelca",
+      "capacity_mw": 10235
+    },
+    {
+      "name": "Tucuru\u00ed Dam",
+      "lon": -49.65,
+      "lat": -3.83,
+      "country": "Brazil",
+      "operator": "Eletrobras",
+      "capacity_mw": 8370
+    },
+    {
+      "name": "Grand Coulee Dam",
+      "lon": -118.98,
+      "lat": 47.95,
+      "country": "USA",
+      "operator": "USBR",
+      "capacity_mw": 6809
+    },
+    {
+      "name": "Xiangjiaba Dam",
+      "lon": 104.39,
+      "lat": 28.63,
+      "country": "China",
+      "operator": "CTG",
+      "capacity_mw": 6448
+    },
+    {
+      "name": "Longtan Dam",
+      "lon": 107.05,
+      "lat": 25.03,
+      "country": "China",
+      "operator": "Datian",
+      "capacity_mw": 6426
+    },
+    {
+      "name": "Sayano-Shushenskaya Dam",
+      "lon": 91.37,
+      "lat": 52.83,
+      "country": "Russia",
+      "operator": "RusHydro",
+      "capacity_mw": 6400
+    },
+    {
+      "name": "Robert-Bourassa Dam",
+      "lon": -77.45,
+      "lat": 53.78,
+      "country": "Canada",
+      "operator": "Hydro-Qu\u00e9bec",
+      "capacity_mw": 5616
+    }
+  ],
+  "solar": [
+    {
+      "name": "Bhadla Solar Park",
+      "lon": 71.91,
+      "lat": 27.54,
+      "country": "India",
+      "operator": "RRECL",
+      "capacity_mw": 2245,
+      "notes": "World's largest solar park"
+    },
+    {
+      "name": "Huanghe Hydropower Hainan",
+      "lon": 100.6,
+      "lat": 36.2,
+      "country": "China",
+      "operator": "State Power Investment",
+      "capacity_mw": 2200
+    },
+    {
+      "name": "Pavagada Solar Park",
+      "lon": 77.28,
+      "lat": 14.1,
+      "country": "India",
+      "operator": "KSPDCL",
+      "capacity_mw": 2050
+    },
+    {
+      "name": "Benban Solar Park",
+      "lon": 32.72,
+      "lat": 24.45,
+      "country": "Egypt",
+      "operator": "Various",
+      "capacity_mw": 1650
+    },
+    {
+      "name": "Tengger Desert Solar Park",
+      "lon": 104.5,
+      "lat": 37.4,
+      "country": "China",
+      "operator": "Zhongwei",
+      "capacity_mw": 1547
+    },
+    {
+      "name": "Noor-Midelt Solar Complex",
+      "lon": -4.73,
+      "lat": 32.68,
+      "country": "Morocco",
+      "operator": "MASEN",
+      "capacity_mw": 1600
+    },
+    {
+      "name": "Al Dhafra Solar PV",
+      "lon": 54.1,
+      "lat": 23.65,
+      "country": "UAE",
+      "operator": "EWEC",
+      "capacity_mw": 2000
+    },
+    {
+      "name": "Copper Mountain Solar",
+      "lon": -114.98,
+      "lat": 35.79,
+      "country": "USA",
+      "operator": "Sempra",
+      "capacity_mw": 802
+    },
+    {
+      "name": "Villanueva Solar Plant",
+      "lon": -104.22,
+      "lat": 25.31,
+      "country": "Mexico",
+      "operator": "Enel",
+      "capacity_mw": 828
+    },
+    {
+      "name": "Kamuthi Solar Power Project",
+      "lon": 78.37,
+      "lat": 9.35,
+      "country": "India",
+      "operator": "Adani",
+      "capacity_mw": 648
+    }
+  ],
+  "wind": [
+    {
+      "name": "Gansu Wind Farm",
+      "lon": 95.5,
+      "lat": 40.5,
+      "country": "China",
+      "operator": "Various",
+      "capacity_mw": 8000,
+      "notes": "World's largest wind farm complex"
+    },
+    {
+      "name": "Jaisalmer Wind Park",
+      "lon": 70.9,
+      "lat": 26.92,
+      "country": "India",
+      "operator": "Various",
+      "capacity_mw": 1600
+    },
+    {
+      "name": "Alta Wind Energy Center",
+      "lon": -118.35,
+      "lat": 35.07,
+      "country": "USA",
+      "operator": "Terra-Gen",
+      "capacity_mw": 1548
+    },
+    {
+      "name": "Hornsea 2",
+      "lon": 1.8,
+      "lat": 53.9,
+      "country": "UK",
+      "operator": "\u00d8rsted",
+      "capacity_mw": 1386,
+      "notes": "Offshore wind farm"
+    },
+    {
+      "name": "Markbygden Wind Farm",
+      "lon": 19.3,
+      "lat": 65.23,
+      "country": "Sweden",
+      "operator": "Svevind",
+      "capacity_mw": 4000
+    },
+    {
+      "name": "Dogger Bank A",
+      "lon": 1.9,
+      "lat": 54.8,
+      "country": "UK",
+      "operator": "SSE/Equinor",
+      "capacity_mw": 1200,
+      "notes": "Offshore"
+    },
+    {
+      "name": "Shepherds Flat Wind Farm",
+      "lon": -120.04,
+      "lat": 45.61,
+      "country": "USA",
+      "operator": "Caithness Energy",
+      "capacity_mw": 845
+    },
+    {
+      "name": "Roscoe Wind Farm",
+      "lon": -100.53,
+      "lat": 32.44,
+      "country": "USA",
+      "operator": "E.ON",
+      "capacity_mw": 781
+    },
+    {
+      "name": "Walney Extension",
+      "lon": -3.55,
+      "lat": 54.05,
+      "country": "UK",
+      "operator": "\u00d8rsted",
+      "capacity_mw": 659,
+      "notes": "Offshore"
+    },
+    {
+      "name": "Fosen Vind",
+      "lon": 10.4,
+      "lat": 63.8,
+      "country": "Norway",
+      "operator": "Tr\u00f8nderEnergi",
+      "capacity_mw": 1057
+    }
+  ]
+}

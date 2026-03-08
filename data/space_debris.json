@@ -1,0 +1,107 @@
+{
+  "_source": {
+    "description": "Notable space debris fields and events in Earth orbit",
+    "origin": "ESA Space Debris Office annual reports (esa.int/Space_Safety), NASA Orbital Debris Program Office (orbitaldebris.jsc.nasa.gov), and published fragmentation event analyses.",
+    "retrieved": "2026-03-06",
+    "license": "ESA/NASA: public domain",
+    "notes": "Representative debris-generating events. Orbital parameters simplified. Track data from Space-Track.org (account required)."
+  },
+  "major_debris": [
+    {
+      "name": "Fengyun-1C Debris Cloud",
+      "lon": 0,
+      "lat": 0,
+      "country": "China",
+      "operator": "CNSA (destroyed)",
+      "notes": "2007 ASAT test // 3,500+ trackable fragments // LEO 850km"
+    },
+    {
+      "name": "Cosmos 2251 Debris",
+      "lon": 30,
+      "lat": 60,
+      "country": "Russia",
+      "operator": "Russian MoD (destroyed)",
+      "notes": "2009 collision with Iridium 33 // 2,300+ fragments"
+    },
+    {
+      "name": "Envisat (Dead)",
+      "lon": -10,
+      "lat": 50,
+      "country": "ESA",
+      "operator": "ESA (dead)",
+      "notes": "Largest dead satellite in LEO // 8 tonnes // Collision risk"
+    },
+    {
+      "name": "Kosmos 1408 Debris",
+      "lon": 50,
+      "lat": 55,
+      "country": "Russia",
+      "operator": "Russian MoD (destroyed)",
+      "notes": "2021 ASAT test // 1,500+ trackable fragments"
+    },
+    {
+      "name": "USA-193 Impact Zone",
+      "lon": -170,
+      "lat": 30,
+      "country": "USA",
+      "operator": "NRO (destroyed)",
+      "notes": "2008 Operation Burnt Frost // Aegis SM-3 intercept"
+    },
+    {
+      "name": "Ariane Rocket Bodies (GTO)",
+      "lon": -52,
+      "lat": 5,
+      "country": "ESA",
+      "operator": "Arianespace",
+      "notes": "Multiple upper stages in GTO // Kourou launches"
+    },
+    {
+      "name": "Briz-M Upper Stages",
+      "lon": 63,
+      "lat": 46,
+      "country": "Russia",
+      "operator": "Roscosmos",
+      "notes": "Multiple breakup events // Baikonur launches"
+    },
+    {
+      "name": "Delta II Debris Field",
+      "lon": -80,
+      "lat": 28,
+      "country": "USA",
+      "operator": "ULA",
+      "notes": "Multiple rocket body debris // Cape Canaveral"
+    },
+    {
+      "name": "Iridium 33 Debris",
+      "lon": -30,
+      "lat": 60,
+      "country": "USA",
+      "operator": "Iridium (destroyed)",
+      "notes": "2009 collision // First accidental hypervelocity collision"
+    },
+    {
+      "name": "SL-16 Rocket Bodies",
+      "lon": 63,
+      "lat": 46,
+      "country": "Russia",
+      "operator": "Roscosmos",
+      "notes": "Zenit upper stages // High collision probability // ~20 in LEO"
+    },
+    {
+      "name": "Kessler Syndrome Zone",
+      "lon": 0,
+      "lat": 0,
+      "country": "International",
+      "operator": "ESA/NASA",
+      "notes": "700-1000km altitude band // Highest debris density"
+    },
+    {
+      "name": "GEO Graveyard Orbit",
+      "lon": 0,
+      "lat": 0,
+      "country": "International",
+      "operator": "ITU",
+      "notes": "~300km above GEO // 36,235km // Dead GEO satellites"
+    }
+  ]
+}

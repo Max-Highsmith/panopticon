@@ -5,6 +5,7 @@
   "description": "Unidentified submarine contact in NATO shipping lane. Classify and decide engagement posture.",
 
   "camera": { "lon": -30, "lat": 55, "alt": 8000000 },
+  "region": { "latMin": 40, "latMax": 70, "lonMin": -45, "lonMax": -10 },
   "duration_ticks": 8,
   "tick_interval_ms": 6000,
 

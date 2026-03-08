@@ -1,0 +1,303 @@
+{
+  "_source": {
+    "description": "Strategic nuclear facilities (weapons labs, SSBN bases, missile silos)",
+    "origin": "FAS Nuclear Notebook (fas.org/issues/nuclear-weapons), SIPRI Yearbook, DOE/NNSA site profiles, and published arms control research.",
+    "retrieved": "2026-03-06",
+    "license": "FAS/SIPRI: public research; DOE: public domain",
+    "notes": "Declassified and publicly acknowledged facilities only. Silo field coordinates from published arms control analyses."
+  },
+  "weapons_lab": [
+    {
+      "name": "Los Alamos National Laboratory",
+      "lon": -106.3,
+      "lat": 35.88,
+      "country": "USA",
+      "operator": "DOE/NNSA",
+      "notes": "Weapons design // Plutonium pit production"
+    },
+    {
+      "name": "Lawrence Livermore National Lab",
+      "lon": -121.71,
+      "lat": 37.69,
+      "country": "USA",
+      "operator": "DOE/NNSA",
+      "notes": "Weapons design // NIF"
+    },
+    {
+      "name": "Sandia National Laboratories",
+      "lon": -106.58,
+      "lat": 34.96,
+      "country": "USA",
+      "operator": "DOE/NNSA",
+      "notes": "Weapons engineering // Non-nuclear components"
+    },
+    {
+      "name": "Pantex Plant",
+      "lon": -101.95,
+      "lat": 35.32,
+      "country": "USA",
+      "operator": "DOE/NNSA",
+      "notes": "Final warhead assembly // Disassembly"
+    },
+    {
+      "name": "Y-12 National Security Complex",
+      "lon": -84.23,
+      "lat": 35.98,
+      "country": "USA",
+      "operator": "DOE/NNSA",
+      "notes": "HEU processing // Oak Ridge"
+    },
+    {
+      "name": "Savannah River Site",
+      "lon": -81.63,
+      "lat": 33.34,
+      "country": "USA",
+      "operator": "DOE/NNSA",
+      "notes": "Tritium production // Plutonium"
+    },
+    {
+      "name": "AWE Aldermaston",
+      "lon": -1.16,
+      "lat": 51.37,
+      "country": "UK",
+      "operator": "AWE/MoD",
+      "notes": "UK warhead design and production"
+    },
+    {
+      "name": "AWE Burghfield",
+      "lon": -1.04,
+      "lat": 51.4,
+      "country": "UK",
+      "operator": "AWE/MoD",
+      "notes": "UK warhead assembly"
+    },
+    {
+      "name": "CEA DAM \u00cele-de-France",
+      "lon": 2.19,
+      "lat": 48.72,
+      "country": "France",
+      "operator": "CEA",
+      "notes": "French nuclear weapons research"
+    },
+    {
+      "name": "CIAE Beijing",
+      "lon": 116.14,
+      "lat": 39.74,
+      "country": "China",
+      "operator": "CNNC",
+      "notes": "China Institute of Atomic Energy"
+    },
+    {
+      "name": "Mianyang Nuclear Weapons",
+      "lon": 104.74,
+      "lat": 31.47,
+      "country": "China",
+      "operator": "CAEP",
+      "notes": "China Academy of Engineering Physics"
+    },
+    {
+      "name": "Sarov (Arzamas-16)",
+      "lon": 43.88,
+      "lat": 54.93,
+      "country": "Russia",
+      "operator": "RFNC-VNIIEF",
+      "notes": "Russian weapons design center"
+    },
+    {
+      "name": "Snezhinsk (Chelyabinsk-70)",
+      "lon": 60.73,
+      "lat": 56.08,
+      "country": "Russia",
+      "operator": "RFNC-VNIITF",
+      "notes": "Russian weapons design center"
+    },
+    {
+      "name": "Mayak Production Association",
+      "lon": 60.85,
+      "lat": 55.72,
+      "country": "Russia",
+      "operator": "Rosatom",
+      "notes": "Plutonium/tritium production"
+    },
+    {
+      "name": "BARC Trombay",
+      "lon": 72.92,
+      "lat": 19.01,
+      "country": "India",
+      "operator": "DAE",
+      "notes": "Bhabha Atomic Research Centre"
+    },
+    {
+      "name": "Kahuta Research Labs",
+      "lon": 73.38,
+      "lat": 33.58,
+      "country": "Pakistan",
+      "operator": "PAEC/KRL",
+      "notes": "Uranium enrichment // A.Q. Khan"
+    },
+    {
+      "name": "Dimona Nuclear Center",
+      "lon": 35.15,
+      "lat": 31.0,
+      "country": "Israel",
+      "operator": "IAEC",
+      "notes": "Negev Nuclear Research Center"
+    },
+    {
+      "name": "Yongbyon Nuclear Complex",
+      "lon": 125.75,
+      "lat": 39.8,
+      "country": "North Korea",
+      "operator": "AEI",
+      "notes": "Plutonium reactor // Enrichment"
+    }
+  ],
+  "submarine_base": [
+    {
+      "name": "Kings Bay Naval Submarine Base",
+      "lon": -81.52,
+      "lat": 30.79,
+      "country": "USA",
+      "operator": "US Navy",
+      "notes": "SSBN Ohio-class // Atlantic deterrent"
+    },
+    {
+      "name": "Naval Base Kitsap-Bangor",
+      "lon": -122.72,
+      "lat": 47.73,
+      "country": "USA",
+      "operator": "US Navy",
+      "notes": "SSBN Ohio-class // Pacific deterrent"
+    },
+    {
+      "name": "HMNB Clyde (Faslane)",
+      "lon": -4.82,
+      "lat": 56.07,
+      "country": "UK",
+      "operator": "Royal Navy",
+      "notes": "Vanguard-class SSBN // UK deterrent"
+    },
+    {
+      "name": "\u00cele Longue",
+      "lon": -4.52,
+      "lat": 48.3,
+      "country": "France",
+      "operator": "Marine Nationale",
+      "notes": "Triomphant-class SSBN // French deterrent"
+    },
+    {
+      "name": "Gadzhiyevo Naval Base",
+      "lon": 32.66,
+      "lat": 69.25,
+      "country": "Russia",
+      "operator": "Northern Fleet",
+      "notes": "Borei/Delta-class SSBN"
+    },
+    {
+      "name": "Vilyuchinsk Naval Base",
+      "lon": 158.4,
+      "lat": 52.93,
+      "country": "Russia",
+      "operator": "Pacific Fleet",
+      "notes": "Borei-class SSBN"
+    },
+    {
+      "name": "Yulin Naval Base",
+      "lon": 109.53,
+      "lat": 18.22,
+      "country": "China",
+      "operator": "PLA Navy",
+      "notes": "SSBN base // Underground pens"
+    },
+    {
+      "name": "Jianggezhuang Sub Base",
+      "lon": 120.58,
+      "lat": 36.1,
+      "country": "China",
+      "operator": "PLA Navy",
+      "notes": "North Sea Fleet submarine base"
+    },
+    {
+      "name": "INS Arihant Base Visakhapatnam",
+      "lon": 83.28,
+      "lat": 17.69,
+      "country": "India",
+      "operator": "Indian Navy",
+      "notes": "Arihant-class SSBN"
+    }
+  ],
+  "missile_silo": [
+    {
+      "name": "Malmstrom AFB Missile Complex",
+      "lon": -111.18,
+      "lat": 47.51,
+      "country": "USA",
+      "operator": "US Air Force",
+      "notes": "Minuteman III ICBM // 341st MW"
+    },
+    {
+      "name": "Minot AFB Missile Complex",
+      "lon": -101.36,
+      "lat": 48.42,
+      "country": "USA",
+      "operator": "US Air Force",
+      "notes": "Minuteman III ICBM // 91st MW"
+    },
+    {
+      "name": "F.E. Warren AFB Missile Complex",
+      "lon": -104.86,
+      "lat": 41.15,
+      "country": "USA",
+      "operator": "US Air Force",
+      "notes": "Minuteman III ICBM // 90th MW"
+    },
+    {
+      "name": "Uzhur Missile Division",
+      "lon": 89.8,
+      "lat": 55.3,
+      "country": "Russia",
+      "operator": "RVSN",
+      "notes": "RS-28 Sarmat // 62nd Missile Division"
+    },
+    {
+      "name": "Dombarovsky Missile Division",
+      "lon": 59.53,
+      "lat": 50.75,
+      "country": "Russia",
+      "operator": "RVSN",
+      "notes": "RS-28 Sarmat // 13th Missile Division"
+    },
+    {
+      "name": "Kozelsk Missile Division",
+      "lon": 36.45,
+      "lat": 54.1,
+      "country": "Russia",
+      "operator": "RVSN",
+      "notes": "RS-24 Yars // 28th Guards"
+    },
+    {
+      "name": "Jilantai Missile Base",
+      "lon": 105.7,
+      "lat": 39.8,
+      "country": "China",
+      "operator": "PLA Rocket Force",
+      "notes": "DF-41 ICBM silos"
+    },
+    {
+      "name": "Yumen Missile Field",
+      "lon": 97.0,
+      "lat": 40.1,
+      "country": "China",
+      "operator": "PLA Rocket Force",
+      "notes": "DF-41 ICBM silos // ~120 silos"
+    },
+    {
+      "name": "Hami Missile Field",
+      "lon": 93.5,
+      "lat": 42.8,
+      "country": "China",
+      "operator": "PLA Rocket Force",
+      "notes": "DF-41 ICBM silos // ~110 silos"
+    }
+  ]
+}

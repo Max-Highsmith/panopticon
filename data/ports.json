@@ -1,0 +1,213 @@
+{
+  "_source": {
+    "description": "Major global seaports",
+    "origin": "World Shipping Council port rankings, Lloyd's List One Hundred Ports, and World Port Source (worldportsource.com) facility data.",
+    "retrieved": "2026-03-06",
+    "license": "Mixed: public industry rankings and port authority data",
+    "notes": "Major ports ranked by TEU throughput. Coordinates from port authority published locations."
+  },
+  "mega_port": [
+    {
+      "name": "Port of Shanghai",
+      "lat": 31.36,
+      "lon": 121.62,
+      "country": "China",
+      "operator": "Shanghai International Port Group",
+      "notes": "World's busiest container port; 49.6M TEU (2024); Yangshan deep-water terminal"
+    },
+    {
+      "name": "Port of Singapore",
+      "lat": 1.26,
+      "lon": 103.84,
+      "country": "Singapore",
+      "operator": "PSA International / Jurong",
+      "notes": "2nd busiest; transshipment hub; 39.0M TEU; Tuas Mega Port under construction"
+    },
+    {
+      "name": "Port of Ningbo-Zhoushan",
+      "lat": 29.87,
+      "lon": 121.88,
+      "country": "China",
+      "operator": "Zhejiang Provincial Seaport Group",
+      "notes": "World's largest port by cargo tonnage; 1.3B tonnes/year"
+    },
+    {
+      "name": "Port of Shenzhen",
+      "lat": 22.48,
+      "lon": 114.07,
+      "country": "China",
+      "operator": "Shenzhen Port Group",
+      "notes": "Pearl River Delta; 30.2M TEU; Yantian, Shekou, Chiwan terminals"
+    },
+    {
+      "name": "Port of Guangzhou",
+      "lat": 22.94,
+      "lon": 113.53,
+      "country": "China",
+      "operator": "Guangzhou Port Group",
+      "notes": "Ancient port city; 24.6M TEU; Nansha container terminals"
+    },
+    {
+      "name": "Port of Qingdao",
+      "lat": 36.07,
+      "lon": 120.38,
+      "country": "China",
+      "operator": "Qingdao Port Group",
+      "notes": "Fully automated terminal; 25.9M TEU; Shandong province hub"
+    },
+    {
+      "name": "Port of Busan",
+      "lat": 35.1,
+      "lon": 129.04,
+      "country": "South Korea",
+      "operator": "BPA / HMM",
+      "notes": "Northeast Asia transshipment hub; 22.7M TEU; New Port expansion"
+    },
+    {
+      "name": "Port of Tianjin",
+      "lat": 38.99,
+      "lon": 117.74,
+      "country": "China",
+      "operator": "Tianjin Port Group",
+      "notes": "Gateway for Beijing/North China; 21.7M TEU"
+    },
+    {
+      "name": "Port of Hong Kong",
+      "lat": 22.32,
+      "lon": 114.16,
+      "country": "China (SAR)",
+      "operator": "HIT / MTL / DPI",
+      "notes": "Historic free port; Kwai Tsing terminals; 14.6M TEU"
+    },
+    {
+      "name": "Port of Rotterdam",
+      "lat": 51.89,
+      "lon": 4.3,
+      "country": "Netherlands",
+      "operator": "Port of Rotterdam Authority",
+      "notes": "Europe's largest port; Maasvlakte 2 automated terminals; 14.5M TEU"
+    }
+  ],
+  "major_port": [
+    {
+      "name": "Port of Antwerp-Bruges",
+      "lat": 51.3,
+      "lon": 4.38,
+      "country": "Belgium",
+      "operator": "Port of Antwerp-Bruges NV",
+      "notes": "Europe's 2nd largest; merged 2022; 13.6M TEU; petrochemical cluster"
+    },
+    {
+      "name": "Port of Los Angeles",
+      "lat": 33.74,
+      "lon": -118.27,
+      "country": "USA",
+      "operator": "City of Los Angeles",
+      "notes": "Western Hemisphere's busiest; San Pedro Bay; 9.9M TEU"
+    },
+    {
+      "name": "Port of Long Beach",
+      "lat": 33.76,
+      "lon": -118.2,
+      "country": "USA",
+      "operator": "City of Long Beach",
+      "notes": "Adjacent to LA; together handle 40% of US containerized imports; 9.0M TEU"
+    },
+    {
+      "name": "Port of Dubai (Jebel Ali)",
+      "lat": 25.01,
+      "lon": 55.06,
+      "country": "UAE",
+      "operator": "DP World",
+      "notes": "Largest port in Middle East; 14.1M TEU; free zone with 8,000+ companies"
+    },
+    {
+      "name": "Port of Tanjung Pelepas",
+      "lat": 1.37,
+      "lon": 103.55,
+      "country": "Malaysia",
+      "operator": "PTP / MMC",
+      "notes": "Major transshipment hub competing with Singapore; 11.2M TEU"
+    },
+    {
+      "name": "Port of Hamburg",
+      "lat": 53.54,
+      "lon": 9.97,
+      "country": "Germany",
+      "operator": "HHLA / Eurogate",
+      "notes": "Germany's largest; 120km up Elbe River; 8.7M TEU"
+    },
+    {
+      "name": "Port of Colombo",
+      "lat": 6.94,
+      "lon": 79.85,
+      "country": "Sri Lanka",
+      "operator": "SLPA / CICT",
+      "notes": "Indian Ocean transshipment hub; 7.3M TEU; Chinese-built terminal"
+    },
+    {
+      "name": "Port of Piraeus",
+      "lat": 37.95,
+      "lon": 23.63,
+      "country": "Greece",
+      "operator": "COSCO / PPA",
+      "notes": "COSCO-operated; gateway to SE Europe; 5.4M TEU; rapid growth"
+    },
+    {
+      "name": "Port of Santos",
+      "lat": -23.99,
+      "lon": -46.31,
+      "country": "Brazil",
+      "operator": "Santos Port Authority",
+      "notes": "Latin America's largest; coffee/sugar/soybeans; 4.8M TEU"
+    },
+    {
+      "name": "Port of New York/New Jersey",
+      "lat": 40.67,
+      "lon": -74.15,
+      "country": "USA",
+      "operator": "PANYNJ",
+      "notes": "US East Coast's largest; 9.6M TEU; bayonne bridge raised for mega-ships"
+    },
+    {
+      "name": "Port of Savannah",
+      "lat": 32.08,
+      "lon": -81.09,
+      "country": "USA",
+      "operator": "Georgia Ports Authority",
+      "notes": "Fastest-growing US port; 5.8M TEU; Mason Mega Rail terminal"
+    },
+    {
+      "name": "Port of Felixstowe",
+      "lat": 51.96,
+      "lon": 1.31,
+      "country": "UK",
+      "operator": "CK Hutchison",
+      "notes": "UK's busiest container port; 3.8M TEU; handles 48% of UK container trade"
+    },
+    {
+      "name": "Port of Tanger Med",
+      "lat": 35.87,
+      "lon": -5.5,
+      "country": "Morocco",
+      "operator": "TMSA / APM",
+      "notes": "Africa's largest container port; Strait of Gibraltar; 7.6M TEU"
+    },
+    {
+      "name": "Port of Laem Chabang",
+      "lat": 13.08,
+      "lon": 100.89,
+      "country": "Thailand",
+      "operator": "PAT / Hutchison",
+      "notes": "Thailand's main deep-sea port; 8.1M TEU; Bangkok hinterland"
+    },
+    {
+      "name": "Port of Algeciras",
+      "lat": 36.13,
+      "lon": -5.44,
+      "country": "Spain",
+      "operator": "APM Terminals / TTI",
+      "notes": "Mediterranean transshipment hub; Strait of Gibraltar; 4.8M TEU"
+    }
+  ]
+}

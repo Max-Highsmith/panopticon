@@ -2,34 +2,38 @@
    PANOPTICON — Main Application Entry Point
    =================================================================== */
 
-import { SCENARIOS, CITIES, REPLAY_SPEEDS, DEFAULT_SPEED_INDEX } from './config.js';
-import { formatAlt, formatSpd, formatHdg, secsToUTC, secsToLocal, replayAbsDate, interpolateTrace, $ } from './utils.js';
+import { SCENARIOS } from './config.js';
+import { formatAlt, formatSpd, formatHdg, replayAbsDate, $ } from './utils.js';
 import { icons } from './icons.js';
 import { createViewer, layers, entityMaps, toggleLayer, clearAllLayers } from './globe.js';
-import { initLayerSelector, openLayerPanel, closeLayerPanel, refreshCatalog } from './layerselector.js';
-import { setVisualFilter, initFilterUpdater } from './filters.js';
+import {
+  loadPlayback, startPlaying, togglePlayback, seekPlayback,
+  cycleSpeed, getSpeed, stopPlayback, isPlaying, isLoaded,
+  getManifest, getTimeSeconds,
+} from './playback.js';
+import { initLayerSelector, openLayerPanel, refreshCatalog } from './layerselector.js';
+import { initCitySelector, openCityPanel } from './cityselector.js';
+import { getCityByKey } from './citycatalog.js';
+import { setVisualFilter, initFilterUpdater, openFilterPanel } from './filters.js';
 import { initAudioPlayer, toggleAudio } from './audio.js';
 import { startMilitary, stopMilitary, extrapolateMilitaryPositions } from './layers/military.js';
 import { startCommercial, stopCommercial } from './layers/commercial.js';
 import { loadSatellites, isSatLoaded, getSatRecords, createSatelliteEntities, updateSatellitePositions } from './layers/satellites.js';
 import { startAIS, stopAIS } from './layers/ships.js';
 import { fetchPogoStops, isPogoLoaded, resetPogo } from './layers/pogo.js';
-import { fetchMines, MINES_FLY_TO } from './layers/mines.js';
-import { fetchInfra, INFRA_FLY_TO, fetchNuclear, NUCLEAR_FLY_TO } from './layers/infrastructure.js';
-import { fetchAirports, resetAirports } from './layers/airports.js';
-import { fetchMilitaryBases, resetMilitaryBases, BASES_FLY_TO } from './layers/militarybases.js';
 import { loadCustomDatasets } from './layers/custom.js';
 import { createBlackoutOverlays, removeBlackoutOverlays, createDataBoundsOverlay, removeDataBoundsOverlay } from './overlays.js';
-import { openSatView, closeSatView, isSatViewOpen, resizeSatView } from './satview.js';
-import { openPlaneView, closePlaneView, isPlaneViewOpen, resizePlaneView } from './planeview.js';
-import { openSiteView, closeSiteView, isSiteViewOpen, resizeSiteView } from './siteview.js';
-import { openAirportView, closeAirportView, isAirportViewOpen, resizeAirportView } from './airportview.js';
-import { fetchWebcams, WEBCAMS_FLY_TO } from './layers/webcams.js';
-import { openWebcamView, closeWebcamView, isWebcamViewOpen, resizeWebcamView } from './webcamview.js';
-import { fetchArcticMining, resetArcticMining, ARCTIC_MINING_FLY_TO } from './layers/arcticmining.js';
-import { fetchRareEarth, resetRareEarth, RARE_EARTH_FLY_TO } from './layers/rareearth.js';
-import { fetchDrilling, resetDrilling, DRILLING_FLY_TO } from './layers/drillingleases.js';
+import { closeAllViews, resizeAllViews, getView } from './viewregistry.js';
+// View modules imported for side-effect registration:
+import './satview.js';
+import './planeview.js';
+import './siteview.js';
+import './airportview.js';
+import './webcamview.js';
 import { startWargameMode, stopWargameMode } from './wargame.js';
+import { getLoader, resetAllLayers, registerLayerLoader } from './layerregistry.js';
+import './layers/index.js'; // triggers self-registration of all data layers
+import { initPlaybackBrowser, loadPlaybackList } from './playbackbrowser.js';
 
 // --- Globe ---
 const viewer = createViewer('cesiumContainer');
@@ -42,76 +46,51 @@ initFilterUpdater(viewer);
 initAudioPlayer();
 
 // --- State ---
-let currentMode = 'replay';
-let activeScenario = 'iran';
+let currentMode = 'playback';
+let activeScenario = 'iran'; // tracks which ADS-B scenario is active (legacy compat)
 
-// --- Detail-panel helpers (avoid repeating close/resize calls) ---
-function closeAllDetailPanels() {
-  if (isSatViewOpen()) closeSatView(viewer);
-  if (isPlaneViewOpen()) closePlaneView(viewer);
-  if (isSiteViewOpen()) closeSiteView(viewer);
-  if (isAirportViewOpen()) closeAirportView(viewer);
-  if (isWebcamViewOpen()) closeWebcamView(viewer);
-}
-function resizeAllPanels() {
-  resizeSatView();
-  resizePlaneView();
-  resizeSiteView();
-  resizeAirportView();
-  resizeWebcamView();
-}
+// --- Detail-panel helpers (delegated to view registry) ---
+function closeAllDetailPanels() { closeAllViews(viewer); }
+function resizeAllPanels() { resizeAllViews(); }
 
-// --- Layer lazy-loader registry ---
-const LAYER_LOADERS = {
-  mines:        { load: () => fetchMines(viewer),          flyTo: MINES_FLY_TO },
-  infra:        { load: () => fetchInfra(viewer),          flyTo: INFRA_FLY_TO },
-  nuclear:      { load: () => fetchNuclear(viewer),        flyTo: NUCLEAR_FLY_TO },
-  airports:     { load: () => fetchAirports(viewer) },
-  bases:        { load: () => fetchMilitaryBases(viewer),  flyTo: BASES_FLY_TO },
-  webcams:      { load: () => fetchWebcams(viewer),        flyTo: WEBCAMS_FLY_TO },
-  arcticmining: { load: () => fetchArcticMining(viewer),   flyTo: ARCTIC_MINING_FLY_TO },
-  rareearth:    { load: () => fetchRareEarth(viewer),      flyTo: RARE_EARTH_FLY_TO },
-  drilling:     { load: () => fetchDrilling(viewer),       flyTo: DRILLING_FLY_TO },
-};
+// Layer loaders are now self-registered via js/layerregistry.js
+// (see js/layers/index.js for the barrel import that triggers registration)
 
-// Replay state
-let replayData = null;
-let replayTime = 0;
-let replayPlaying = false;
-let replaySpeed = REPLAY_SPEEDS[DEFAULT_SPEED_INDEX];
-let replayLastFrame = 0;
-let replayRenderHandler = null;
-let speedIdx = DEFAULT_SPEED_INDEX;
+// Replay/Playback state
 let liveExtrapolateHandler = null;
-
-const replayEntities = entityMaps.replay;
-
-// Pre-allocated color constants (avoid per-frame allocation)
-const COLOR_MIL      = Cesium.Color.fromCssColorString('#00ff41');
-const COLOR_CIV      = Cesium.Color.fromCssColorString('#4488ff');
-const COLOR_MIL_TRAIL = COLOR_MIL.withAlpha(0.4);
-const COLOR_CIV_TRAIL = COLOR_CIV.withAlpha(0.4);
-
-// Reusable set to avoid allocation every frame
-const _seenHexes = new Set();
+let playbackSatHandler = null; // preRender callback for satellite time-sync during playback
 
 // =====================================================
 // EXPOSE GLOBALS (for inline onclick handlers in HTML)
 // =====================================================
 // --- Layer Selector ---
+function syncStatChip(layer) {
+  const chip = document.querySelector(`.stat-chip[data-layer="${layer}"]`);
+  if (chip) chip.classList.toggle('active', !!layers[layer]);
+}
+
 function handleLayerToggle(layer, enabled) {
   toggleLayer(viewer, layer, currentMode, enabled);
+  syncStatChip(layer);
   $('mines-legend').style.display = (layer === 'mines' && layers.mines) ? 'block' : (layer === 'mines' ? 'none' : $('mines-legend').style.display);
 
   if (layers[layer]) {
     // Live-only auto-start layers
-    if (layer === 'ships' && currentMode === 'live' && entityMaps.ships.size === 0) startAIS(viewer);
-    if (layer === 'pokemon' && currentMode === 'live' && entityMaps.pokemon.size === 0) fetchPogoStops(viewer);
+    if (currentMode === 'observe') {
+      if (layer === 'military' && entityMaps.military.size === 0) startMilitary(viewer);
+      if (layer === 'commercial' && entityMaps.commercial.size === 0) startCommercial(viewer);
+      if (layer === 'satellites') {
+        if (!isSatLoaded()) loadSatellites().then(() => createSatelliteEntities(viewer, activeScenario));
+        else if (entityMaps.satellites.size === 0) createSatelliteEntities(viewer, activeScenario);
+      }
+      if (layer === 'ships' && entityMaps.ships.size === 0) startAIS(viewer);
+      if (layer === 'pokemon' && entityMaps.pokemon.size === 0) fetchPogoStops(viewer);
+    }
 
-    // Data layers with lazy loading + optional flyTo
-    const loader = LAYER_LOADERS[layer];
+    // Data layers with lazy loading + optional flyTo (via registry)
+    const loader = getLoader(layer);
     if (loader) {
-      if (entityMaps[layer].size === 0) loader.load();
+      if (entityMaps[layer].size === 0) loader.load(viewer);
       if (loader.flyTo) {
         const { lon, lat, alt } = loader.flyTo;
         viewer.camera.flyTo({ destination: Cesium.Cartesian3.fromDegrees(lon, lat, alt), duration: 1.5 });
@@ -121,32 +100,37 @@ function handleLayerToggle(layer, enabled) {
 }
 
 initLayerSelector({ toggleFn: handleLayerToggle });
+initCitySelector({ flyFn: flyToCity });
+
+// Sync stat chips for default-on layers
+for (const key of Object.keys(layers)) syncStatChip(key);
 
 window.switchMode     = switchMode;
-window.openLayerPanel = openLayerPanel;
+window.openLayerPanel  = openLayerPanel;
+window.openCityPanel   = openCityPanel;
+window.openFilterPanel = openFilterPanel;
 window.setVisualFilter = (f) => setVisualFilter(f, viewer);
-window.flyToCity       = flyToCity;
 window.selectScenario  = selectScenario;
 window.togglePlay      = togglePlay;
 window.changeSpeed     = changeSpeed;
 window.toggleAudio     = toggleAudio;
-window.closeSatView    = () => closeSatView(viewer);
-window.closePlaneView  = () => closePlaneView(viewer);
-window.closeSiteView   = () => closeSiteView(viewer);
-window.closeAirportView = () => closeAirportView(viewer);
-window.closeWebcamView  = () => closeWebcamView(viewer);
-window.toggleScenarioSidebar = () => {
-  const sb = document.getElementById('scenario-sidebar');
-  const btn = document.getElementById('scenario-toggle');
+window.closeSatView    = () => { const v = getView('satellite'); if (v) v.close(viewer); };
+window.closePlaneView  = () => { const v = getView('plane'); if (v) v.close(viewer); };
+window.closeSiteView   = () => { const v = getView('site'); if (v) v.close(viewer); };
+window.closeAirportView = () => { const v = getView('airport'); if (v) v.close(viewer); };
+window.closeWebcamView  = () => { const v = getView('webcam'); if (v) v.close(viewer); };
+window.togglePlaybackSidebar = () => {
+  const sb = document.getElementById('playback-sidebar');
+  const btn = document.getElementById('playback-toggle');
   sb.classList.toggle('collapsed');
-  btn.textContent = sb.classList.contains('collapsed') ? '▶' : '◀';
+  btn.textContent = sb.classList.contains('collapsed') ? '\u25B6' : '\u25C0';
 };
 
 // =====================================================
 // CITY JUMP
 // =====================================================
 function flyToCity(key) {
-  const c = CITIES[key];
+  const c = getCityByKey(key);
   if (!c) return;
   viewer.camera.flyTo({
     destination: Cesium.Cartesian3.fromDegrees(c.lon, c.lat, c.alt),
@@ -162,14 +146,14 @@ function startLive() {
   $('subtitle').textContent = 'LIVE TRACKING // ADS-B + OPENSKY + CELESTRAK + AIS + POGO';
   $('layer-toggles').style.display = 'flex';
 
-  // Priority order: satellites → military → commercial
-  if (!isSatLoaded()) loadSatellites().then(() => createSatelliteEntities(viewer, activeScenario));
-  else createSatelliteEntities(viewer, activeScenario);
+  // Only start feeds for layers that are toggled on
+  if (layers.satellites) {
+    if (!isSatLoaded()) loadSatellites().then(() => createSatelliteEntities(viewer, activeScenario));
+    else createSatelliteEntities(viewer, activeScenario);
+  }
 
-  startMilitary(viewer);
-  startCommercial(viewer);
-
-  // Ships and POGO are off by default — only start if user has toggled them on
+  if (layers.military) startMilitary(viewer);
+  if (layers.commercial) startCommercial(viewer);
   if (layers.ships) startAIS(viewer);
   if (layers.pokemon) fetchPogoStops(viewer);
 
@@ -189,15 +173,40 @@ function stopLive() {
   }
   stopAIS(viewer);
   resetPogo();
-  resetAirports();
-  resetMilitaryBases();
-  resetArcticMining();
-  resetRareEarth();
-  resetDrilling();
+  resetAllLayers(); // resets all registered data layers via registry
 }
 
 // =====================================================
-// SCENARIO SELECTION
+// SCENARIO → MANIFEST CONVERSION
+// =====================================================
+function scenarioToManifest(id) {
+  const sc = SCENARIOS[id];
+  if (!sc) return null;
+  return {
+    id,
+    type: 'adsb',
+    label: sc.label,
+    subtitle: sc.subtitle,
+    date: sc.date,
+    camera: sc.camera,
+    timeline: {
+      domain: 'wallclock',
+      startUTC: sc.timeStartUTC,
+    },
+    data: { file: sc.file },
+    display: {
+      localTz: sc.localTz,
+      dataBounds: sc.dataBounds,
+      blackoutZones: sc.blackoutZones,
+      layers: ['military', 'commercial', 'satellites'],
+      dateLabel: sc.dateLabel,
+      timeLabel: sc.timeLabel,
+    },
+  };
+}
+
+// =====================================================
+// SCENARIO SELECTION (PLAYBACK MODE)
 // =====================================================
 function selectScenario(id) {
   if (!SCENARIOS[id]) return;
@@ -207,139 +216,34 @@ function selectScenario(id) {
   document.querySelectorAll('.scenario-card').forEach(c => c.classList.remove('active'));
   document.getElementById('sc-' + id).classList.add('active');
 
-  replayData = null;
-  replayTime = 0;
-  replayPlaying = false;
-  $('btn-play').textContent = 'PLAY';
-
   const sc = SCENARIOS[id];
   $('subtitle').textContent = sc.subtitle;
   $('updated').textContent = sc.dateLabel;
+  $('btn-play').textContent = 'PLAY';
 
   viewer.camera.flyTo({
     destination: Cesium.Cartesian3.fromDegrees(sc.camera.lon, sc.camera.lat, sc.camera.alt),
     duration: 1.5,
   });
 
-  if (currentMode === 'replay') {
+  if (currentMode === 'playback') {
     stopReplay();
     startReplay();
   }
 }
 
 // =====================================================
-// REPLAY MODE
+// REPLAY MODE (powered by playback engine)
 // =====================================================
-async function loadReplayData() {
-  if (replayData) return;
-  const sc = SCENARIOS[activeScenario];
-  if (!sc) return;
-  const res = await fetch(sc.file);
-  replayData = await res.json();
-  $('timeline-slider').max = replayData.time_end_utc - replayData.time_start_utc;
-  document.querySelector('#timeline-controls span:last-child').textContent = sc.timeLabel;
-}
-
-function renderReplayFrame() {
-  if (!replayData) return;
-  const absTime = replayData.time_start_utc + replayTime;
-
-  $('time-current').textContent = secsToUTC(absTime);
-  $('time-irst').textContent = secsToLocal(absTime, activeScenario);
-
-  _seenHexes.clear();
-  let visibleCount = 0;
-
-  for (const ac of replayData.aircraft) {
-    if (ac.trace.length === 0) continue;
-    if (absTime < ac.trace[0].t - 30 || absTime > ac.trace[ac.trace.length - 1].t + 30) continue;
-
-    const pt = interpolateTrace(ac.trace, absTime);
-    if (!pt || isNaN(pt.lat) || isNaN(pt.lon)) continue;
-
-    const rawAlt = pt.alt === 'ground' ? 100 : (typeof pt.alt === 'number' && !isNaN(pt.alt) ? pt.alt : 10000);
-    const altMeters = rawAlt * 0.3048;
-
-    // Skip parked/taxiing aircraft (on ground or very low & slow)
-    if (pt.alt === 'ground' || (altMeters < 50 && (!pt.gs || pt.gs < 5))) continue;
-
-    _seenHexes.add(ac.hex);
-    visibleCount++;
-    const position = Cesium.Cartesian3.fromDegrees(pt.lon, pt.lat, altMeters);
-    const isMil = ac.mil;
-
-    if (replayEntities.has(ac.hex)) {
-      const record = replayEntities.get(ac.hex);
-      record.entity.position = position;
-      if (pt.track != null) record.entity.billboard.rotation = -Cesium.Math.toRadians(pt.track);
-      // Keep acData in sync so plane view reads current values
-      const acd = record.entity.acData;
-      if (acd) { acd.alt_baro = pt.alt; acd.gs = pt.gs; acd.track = pt.track; acd.lat = pt.lat; acd.lon = pt.lon; }
-
-      // Append to trail coords buffer directly (flat array: lon, lat, alt, ...)
-      const buf = record.trailCoords;
-      buf.push(pt.lon, pt.lat, altMeters);
-      // Cap at 200 points (600 floats)
-      if (buf.length > 600) buf.splice(0, 3);
-      if (buf.length >= 6) {
-        record.trailEntity.polyline.positions = Cesium.Cartesian3.fromDegreesArrayHeights(buf);
-      }
-    } else {
-      const heading = pt.track != null ? Cesium.Math.toRadians(pt.track) : 0;
-      const color = isMil ? COLOR_MIL : COLOR_CIV;
-      const entity = viewer.entities.add({
-        position,
-        billboard: { image: isMil ? icons.planeGreen : icons.planeBlue, width: 42, height: 42, rotation: -heading, alignedAxis: Cesium.Cartesian3.ZERO, disableDepthTestDistance: 0 },
-        label: { text: ac.r || ac.hex, font: '11px Courier New', fillColor: color, outlineColor: Cesium.Color.BLACK, outlineWidth: 2, style: Cesium.LabelStyle.FILL_AND_OUTLINE, pixelOffset: new Cesium.Cartesian2(16, -4), disableDepthTestDistance: 0, distanceDisplayCondition: new Cesium.DistanceDisplayCondition(0, 8_000_000), scale: 0.9 },
-      });
-      entity.acData = { hex: ac.hex, r: ac.r, t: ac.t, flight: ac.r, alt_baro: pt.alt, gs: pt.gs, track: pt.track, desc: ac.desc, mil: isMil };
-      const layerVisible = isMil ? layers.military : layers.commercial;
-      entity.show = layerVisible;
-      const trailEntity = viewer.entities.add({
-        polyline: { positions: [position], width: 1.5, material: (isMil ? COLOR_MIL_TRAIL : COLOR_CIV_TRAIL), clampToGround: false },
-      });
-      trailEntity.show = layerVisible;
-      replayEntities.set(ac.hex, { entity, trailEntity, trailCoords: [pt.lon, pt.lat, altMeters] });
-    }
-  }
-
-  // Remove entities no longer visible
-  for (const [hex, record] of replayEntities) {
-    if (!_seenHexes.has(hex)) {
-      viewer.entities.remove(record.entity);
-      if (record.trailEntity) viewer.entities.remove(record.trailEntity);
-      replayEntities.delete(hex);
-    }
-  }
-
-  $('mil-count').textContent = visibleCount;
-}
-
-function replayTick() {
-  if (!replayPlaying || !replayData) return;
-  const now = performance.now();
-  const dt = (now - replayLastFrame) / 1000;
-  replayLastFrame = now;
-  replayTime += dt * replaySpeed;
-
-  const maxTime = replayData.time_end_utc - replayData.time_start_utc;
-  if (replayTime > maxTime) {
-    replayTime = maxTime;
-    replayPlaying = false;
-    $('btn-play').textContent = 'PLAY';
-  }
-
-  $('timeline-slider').value = replayTime;
-  renderReplayFrame();
-}
-
 function startReplay() {
   clearAllLayers(viewer, () => removeDataBoundsOverlay(viewer));
   const sc = SCENARIOS[activeScenario];
   $('subtitle').textContent = sc ? sc.subtitle : 'HISTORICAL REPLAY';
   $('timeline-bar').style.display = 'block';
   $('layer-toggles').style.display = 'flex';
-  $('scenario-sidebar').style.display = 'flex';
+  $('playback-sidebar').style.display = 'flex';
+  $('playback-feed').style.display = 'none'; // no event feed for historical
+  clearTimelineTicks(); // no tick marks for wallclock playbacks
 
   createBlackoutOverlays(viewer, sc);
   createDataBoundsOverlay(viewer, sc);
@@ -361,55 +265,181 @@ function startReplay() {
   else initSats();
   $('sat-count').textContent = isSatLoaded() ? getSatRecords().length : '...';
 
-  loadReplayData().then(() => {
-    replayTime = 0;
-    replayPlaying = true;
-    replayLastFrame = performance.now();
-    $('btn-play').textContent = 'PAUSE';
-    $('speed-label').textContent = replaySpeed + 'x';
-    renderReplayFrame();
+  // Build manifest from config and load via playback engine
+  const manifest = scenarioToManifest(activeScenario);
+  if (!manifest) return;
 
-    replayRenderHandler = () => {
-      replayTick();
-      if (sc) {
-        const absTimeSecs = (replayData ? replayData.time_start_utc : sc.timeStartUTC) + replayTime;
+  loadPlayback(viewer, manifest, {
+    onTimeUpdate: (timeSec, durSec) => {
+      $('timeline-slider').max = durSec;
+      $('timeline-slider').value = timeSec;
+      $('btn-play').textContent = isPlaying() ? 'PAUSE' : 'PLAY';
+    },
+    onFrameInfo: (info) => {
+      $('time-current').textContent = info.timeLabel;
+      $('time-irst').textContent = info.localTimeLabel;
+      $('mil-count').textContent = info.entityCount;
+    },
+  }).then(() => {
+    document.querySelector('#timeline-controls span:last-child').textContent = sc.timeLabel;
+    $('speed-label').textContent = getSpeed() + 'x';
+
+    // Satellite time-sync during playback
+    playbackSatHandler = () => {
+      if (sc && isLoaded()) {
+        const manifest = getManifest();
+        const startUTC = manifest?.timeline?.startUTC || sc.timeStartUTC;
+        const absTimeSecs = startUTC + getTimeSeconds();
         updateSatellitePositions(viewer, activeScenario, replayAbsDate(sc.date, absTimeSecs));
       }
     };
-    viewer.scene.preRender.addEventListener(replayRenderHandler);
+    viewer.scene.preRender.addEventListener(playbackSatHandler);
+
+    startPlaying();
   });
 }
 
 function stopReplay() {
-  replayPlaying = false;
+  stopPlayback();
   $('timeline-bar').style.display = 'none';
-  $('scenario-sidebar').style.display = 'none';
+  $('playback-sidebar').style.display = 'none';
+  $('playback-feed').style.display = 'none';
+  clearTimelineTicks();
   removeBlackoutOverlays(viewer);
-  if (replayRenderHandler) {
-    viewer.scene.preRender.removeEventListener(replayRenderHandler);
-    replayRenderHandler = null;
+  if (playbackSatHandler) {
+    viewer.scene.preRender.removeEventListener(playbackSatHandler);
+    playbackSatHandler = null;
   }
 }
 
 function togglePlay() {
-  replayPlaying = !replayPlaying;
-  $('btn-play').textContent = replayPlaying ? 'PAUSE' : 'PLAY';
-  replayLastFrame = performance.now();
+  const nowPlaying = togglePlayback();
+  $('btn-play').textContent = nowPlaying ? 'PAUSE' : 'PLAY';
 }
 
 function changeSpeed() {
-  speedIdx = (speedIdx + 1) % REPLAY_SPEEDS.length;
-  replaySpeed = REPLAY_SPEEDS[speedIdx];
-  $('speed-label').textContent = replaySpeed + 'x';
+  const newSpeed = cycleSpeed();
+  $('speed-label').textContent = newSpeed + 'x';
 }
 
 $('timeline-slider').addEventListener('input', (e) => {
-  replayTime = Number(e.target.value);
-  for (const [, record] of replayEntities) {
-    record.trailCoords.length = 0;
-  }
-  renderReplayFrame();
+  seekPlayback(Number(e.target.value));
 });
+
+// =====================================================
+// TIMELINE TICK MARKS
+// =====================================================
+
+function renderTimelineTicks(manifest) {
+  const container = $('timeline-ticks');
+  container.innerHTML = '';
+  const tl = manifest.timeline;
+  if (tl.domain !== 'ticks' || !tl.totalTicks) {
+    container.style.display = 'none';
+    return;
+  }
+  const totalTicks = tl.totalTicks;
+  container.style.display = 'block';
+  for (let i = 0; i <= totalTicks; i++) {
+    const pct = (i / totalTicks) * 100;
+    const mark = document.createElement('div');
+    mark.className = 'tick-mark';
+    mark.style.left = pct + '%';
+    container.appendChild(mark);
+    const label = document.createElement('div');
+    label.className = 'tick-label';
+    label.style.left = pct + '%';
+    label.textContent = 'T' + i;
+    container.appendChild(label);
+  }
+}
+
+function clearTimelineTicks() {
+  const container = $('timeline-ticks');
+  container.innerHTML = '';
+  container.style.display = 'none';
+}
+
+// =====================================================
+// WARGAME PLAYBACK (from playback browser)
+// =====================================================
+let lastRenderedEventCount = 0;
+
+function startWargamePlayback(manifest) {
+  // Stop current playback
+  stopReplay();
+
+  clearAllLayers(viewer, () => removeDataBoundsOverlay(viewer));
+  $('subtitle').textContent = manifest.subtitle || 'WARGAME PLAYBACK';
+  $('timeline-bar').style.display = 'block';
+  $('layer-toggles').style.display = 'flex';
+  $('playback-sidebar').style.display = 'flex';
+  $('playback-feed').style.display = 'block';
+  $('playback-feed').innerHTML = '';
+  lastRenderedEventCount = 0;
+
+  // Fly to camera if specified
+  if (manifest.camera) {
+    viewer.camera.flyTo({
+      destination: Cesium.Cartesian3.fromDegrees(manifest.camera.lon, manifest.camera.lat, manifest.camera.alt),
+      duration: 1.5,
+    });
+  }
+
+  // Auto-enable recommended layers
+  const autoLayers = manifest.display?.layers || [];
+  for (const layerKey of autoLayers) {
+    handleLayerToggle(layerKey, true);
+  }
+
+  // Render tick marks on the timeline slider
+  renderTimelineTicks(manifest);
+
+  loadPlayback(viewer, manifest, {
+    onTimeUpdate: (timeSec, durSec) => {
+      $('timeline-slider').max = durSec;
+      $('timeline-slider').value = timeSec;
+      $('btn-play').textContent = isPlaying() ? 'PAUSE' : 'PLAY';
+    },
+    onFrameInfo: (info) => {
+      $('time-current').textContent = info.timeLabel;
+      $('time-irst').textContent = info.localTimeLabel;
+      $('mil-count').textContent = info.entityCount;
+    },
+    onEvents: (events) => {
+      renderPlaybackFeed(events);
+    },
+  }).then(() => {
+    document.querySelector('#timeline-controls span:last-child').textContent =
+      manifest.description || '';
+    $('speed-label').textContent = getSpeed() + 'x';
+    startPlaying();
+  });
+}
+
+function renderPlaybackFeed(events) {
+  if (!events || events.length === lastRenderedEventCount) return;
+
+  const feed = $('playback-feed');
+
+  // If events shrunk (seeking backward), rebuild
+  if (events.length < lastRenderedEventCount) {
+    feed.innerHTML = '';
+    lastRenderedEventCount = 0;
+  }
+
+  // Append only new events
+  for (let i = lastRenderedEventCount; i < events.length; i++) {
+    const ev = events[i];
+    const entry = document.createElement('div');
+    entry.className = `wg-entry wg-${ev.type}`;
+    entry.innerHTML = `<div class="wg-entry-title">${ev.title}</div><div class="wg-entry-body">${ev.body}</div>`;
+    feed.appendChild(entry);
+  }
+
+  lastRenderedEventCount = events.length;
+  feed.scrollTop = feed.scrollHeight;
+}
 
 // =====================================================
 // MODE SWITCHING
@@ -418,25 +448,25 @@ function switchMode(mode) {
   if (mode === currentMode) return;
   currentMode = mode;
 
-  $('btn-live').classList.toggle('active', mode === 'live');
-  $('btn-replay').classList.toggle('active', mode === 'replay');
+  $('btn-observe').classList.toggle('active', mode === 'observe');
+  $('btn-playback').classList.toggle('active', mode === 'playback');
   $('btn-wargame').classList.toggle('active', mode === 'wargame');
   $('info-panel').style.display = 'none';
   closeAllDetailPanels();
 
   // Always stop prior modes
-  if (currentMode !== 'live') stopLive();
-  if (currentMode !== 'replay') stopReplay();
+  if (currentMode !== 'observe') stopLive();
+  if (currentMode !== 'playback') stopReplay();
   if (currentMode !== 'wargame') stopWargameMode();
 
-  if (mode === 'live') {
+  if (mode === 'observe') {
     startLive();
     $('updated').textContent = '---';
     $('civ-count').textContent = '---';
     $('sat-count').textContent = isSatLoaded() ? entityMaps.satellites.size : '---';
     $('ship-count').textContent = '---';
     $('pogo-count').textContent = isPogoLoaded() ? entityMaps.pokemon.size : '---';
-  } else if (mode === 'replay') {
+  } else if (mode === 'playback') {
     const sc = SCENARIOS[activeScenario];
     $('updated').textContent = sc ? sc.dateLabel : '---';
     $('civ-count').textContent = '---';
@@ -447,10 +477,9 @@ function switchMode(mode) {
   } else if (mode === 'wargame') {
     clearAllLayers(viewer, () => removeDataBoundsOverlay(viewer));
     $('subtitle').textContent = 'WARGAME // AI DECISION EVALUATION';
-    $('layer-toggles').style.display = 'none';
-    closeLayerPanel();
+    $('layer-toggles').style.display = 'flex';
     $('timeline-bar').style.display = 'none';
-    $('scenario-sidebar').style.display = 'none';
+    $('playback-sidebar').style.display = 'none';
     startWargameMode(viewer);
   }
 }
@@ -521,24 +550,12 @@ handler.setInputAction((click) => {
 
     selectEntity(picked.id);
 
-    const SITE_TYPES = new Set(['COBALT MINE', 'LITHIUM MINE', 'BITCOIN MINE', 'DATACENTER', 'NUCLEAR TEST SITE', 'MILITARY BASE',
-      'IRON MINE', 'RARE EARTH MINE', 'ZINC MINE', 'GOLD MINE',
-      'HEAVY REE DEPOSIT', 'LIGHT REE DEPOSIT', 'STRATEGIC MINERAL',
-      'US ARCTIC LEASE', 'NORWAY BARENTS LEASE', 'RUSSIA ARCTIC FIELD', 'CANADA ARCTIC FIELD']);
-
     closeAllDetailPanels();
 
-    if (ac.t === 'SATELLITE') {
-      openSatView(viewer, ac.hex);
-    } else if (ac.t === 'WEBCAM') {
-      openWebcamView(viewer, picked.id);
-    } else if (SITE_TYPES.has(ac.t)) {
-      openSiteView(viewer, picked.id);
-    } else if (ac.t === 'MAJOR AIRPORT' || ac.t === 'AIRPORT') {
-      openAirportView(viewer, picked.id);
-    } else {
-      openPlaneView(viewer, picked.id);
-    }
+    // View dispatch: each entity declares its view type via _view field
+    const viewType = ac._view || 'plane';
+    const view = getView(viewType);
+    if (view) view.open(viewer, picked.id);
   } else {
     deselectEntity();
     infoPanel.style.display = 'none';
@@ -587,11 +604,57 @@ handler.setInputAction((click) => {
 }
 
 // =====================================================
-// BOOT — Register Custom Datasets & Start in Replay Mode
+// KEYBOARD SHORTCUTS (Playback)
 // =====================================================
-loadCustomDatasets(viewer, (key, loader) => { LAYER_LOADERS[key] = loader; });
+document.addEventListener('keydown', (e) => {
+  // Ignore if user is typing in an input/textarea/select
+  if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA' || e.target.tagName === 'SELECT') return;
+  if (currentMode !== 'playback' || !isLoaded()) return;
+
+  switch (e.code) {
+    case 'Space':
+      e.preventDefault();
+      togglePlay();
+      break;
+    case 'ArrowRight':
+      e.preventDefault();
+      seekPlayback(getTimeSeconds() + 5); // skip forward 5 seconds
+      break;
+    case 'ArrowLeft':
+      e.preventDefault();
+      seekPlayback(Math.max(0, getTimeSeconds() - 5)); // skip back 5 seconds
+      break;
+    case 'ArrowUp':
+      e.preventDefault();
+      changeSpeed();
+      break;
+  }
+});
+
+// =====================================================
+// BOOT — Register Custom Datasets & Start in Playback Mode
+// =====================================================
+loadCustomDatasets(viewer, (key, loader) => { registerLayerLoader(key, loader); });
 refreshCatalog(); // pick up any custom dataset registrations
 
-$('btn-live').classList.remove('active');
-$('btn-replay').classList.add('active');
+// Initialize playback browser sidebar
+initPlaybackBrowser({
+  onSelect: (manifest) => {
+    if (manifest.type === 'adsb') {
+      // ADS-B: map back to legacy scenario key for satellite/overlay compat
+      const scenarioMap = { 'iran-feb28': 'iran', 'venezuela-jan03': 'venezuela', 'jalisco-feb22': 'jalisco' };
+      const legacyKey = scenarioMap[manifest.id];
+      if (legacyKey) {
+        activeScenario = legacyKey;
+        selectScenario(legacyKey);
+      }
+    } else if (manifest.type === 'wargame') {
+      startWargamePlayback(manifest);
+    }
+  },
+});
+loadPlaybackList();
+
+$('btn-observe').classList.remove('active');
+$('btn-playback').classList.add('active');
 startReplay();

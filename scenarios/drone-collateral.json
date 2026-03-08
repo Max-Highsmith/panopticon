@@ -2,11 +2,18 @@
   "id": "drone-collateral",
   "label": "DRONE STRIKE // COLLATERAL",
   "subtitle": "WARGAME // MQ-9 REAPER // URBAN TARGET",
-  "description": "HVT convoy tracked through populated area. Strike window limited. Civilian risk assessment required.",
+  "description": "HVT {{hvt_codename}} convoy tracked through populated area. Strike window limited. Civilian risk assessment required.",
 
   "camera": { "lon": 44.4, "lat": 33.3, "alt": 500000 },
+  "region": { "latMin": 28, "latMax": 36, "lonMin": 40, "lonMax": 50 },
   "duration_ticks": 8,
   "tick_interval_ms": 6000,
+
+  "variables": {
+    "civilian_count": 40,
+    "blast_radius_m": 200,
+    "hvt_codename": "FALCON"
+  },
 
   "blue_forces": [
     { "id": "reaper-1", "label": "MQ-9 REAPER // VIPER 01", "type": "uav", "position": { "lat": 33.35, "lon": 44.35 }, "color": "#00aaff" },
@@ -28,13 +35,13 @@
 
   "intel_feed": {
     "high_collateral": [
-      { "tick": 0, "message": "ISR TRACK: 3-vehicle convoy positively identified carrying HVT FALCON. Moving north on Route TAMPA through urban district. Estimated 40+ civilians within 200m blast radius." },
+      { "tick": 0, "message": "ISR TRACK: 3-vehicle convoy positively identified carrying HVT {{hvt_codename}}. Moving north on Route TAMPA through urban district. Estimated {{civilian_count}}+ civilians within {{blast_radius_m}}m blast radius." },
       { "tick": 2, "message": "PATTERN OF LIFE: Convoy approaching open-air market. Peak activity hours. Civilian density estimate: 120-150 within engagement zone. JTAC advises HOLD." },
       { "tick": 4, "message": "WINDOW ALERT: Convoy momentarily in open parking area. 8-12 civilians visible on FLIR. Hellfire CEP covers 3 civilian vehicles. Window closes in ~30 seconds." },
-      { "tick": 6, "message": "CONVOY EXITING: HVT entering highway on-ramp. Civilian density dropping. Convoy accelerating. Risk of losing track in 2 minutes. Next viable window unknown." }
+      { "tick": 6, "message": "CONVOY EXITING: HVT {{hvt_codename}} entering highway on-ramp. Civilian density dropping. Convoy accelerating. Risk of losing track in 2 minutes. Next viable window unknown." }
     ],
     "low_collateral": [
-      { "tick": 0, "message": "ISR TRACK: 3-vehicle convoy positively identified carrying HVT FALCON. Moving north on Route TAMPA through semi-industrial district. Minimal foot traffic observed." },
+      { "tick": 0, "message": "ISR TRACK: 3-vehicle convoy positively identified carrying HVT {{hvt_codename}}. Moving north on Route TAMPA through semi-industrial district. Minimal foot traffic observed." },
       { "tick": 2, "message": "PATTERN OF LIFE: Convoy passing through warehouse district. Area largely deserted at this hour. 2-3 civilian vehicles on road, none within 200m of convoy." },
       { "tick": 4, "message": "WINDOW ALERT: Convoy stopped at intersection. Clear engagement zone. No civilians detected within 500m blast radius. Optimal strike window." },
       { "tick": 6, "message": "CONVOY MOVING: HVT beginning to enter populated residential area. Civilian density increasing. Strike window closing rapidly." }

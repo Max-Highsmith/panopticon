@@ -1,0 +1,559 @@
+{
+  "_source": {
+    "description": "Major submarine telecommunications cables",
+    "origin": "TeleGeography Submarine Cable Map (submarinecablemap.com). Route data publicly viewable on their interactive map.",
+    "retrieved": "2026-03-06",
+    "license": "TeleGeography: data viewable publicly, redistribution terms vary",
+    "notes": "Route geometries are simplified from TeleGeography map waypoints. Not survey-grade landing points."
+  },
+  "subsea": [
+    {
+      "name": "SEA-ME-WE 3",
+      "coords": [
+        [
+          103.7,
+          1.3
+        ],
+        [
+          95.3,
+          5.7
+        ],
+        [
+          79.9,
+          7.0
+        ],
+        [
+          72.8,
+          10.5
+        ],
+        [
+          58.5,
+          23.6
+        ],
+        [
+          43.2,
+          12.6
+        ],
+        [
+          32.3,
+          31.2
+        ],
+        [
+          29.9,
+          31.3
+        ],
+        [
+          15.5,
+          37.1
+        ],
+        [
+          9.8,
+          37.3
+        ],
+        [
+          3.1,
+          36.7
+        ],
+        [
+          -5.3,
+          36.0
+        ],
+        [
+          -9.4,
+          38.7
+        ]
+      ],
+      "operator": "Multiple",
+      "country": "International",
+      "notes": "39,000km // Europe to Asia"
+    },
+    {
+      "name": "MAREA",
+      "coords": [
+        [
+          -73.9,
+          40.5
+        ],
+        [
+          -39.0,
+          42.0
+        ],
+        [
+          -9.0,
+          37.3
+        ],
+        [
+          -8.8,
+          37.1
+        ]
+      ],
+      "operator": "Microsoft/Meta",
+      "country": "USA-Spain",
+      "notes": "200 Tbps capacity"
+    },
+    {
+      "name": "Dunant",
+      "coords": [
+        [
+          -73.9,
+          40.5
+        ],
+        [
+          -50.0,
+          44.0
+        ],
+        [
+          -30.0,
+          46.0
+        ],
+        [
+          -10.0,
+          47.0
+        ],
+        [
+          -1.5,
+          47.2
+        ]
+      ],
+      "operator": "Google",
+      "country": "USA-France",
+      "notes": "250 Tbps capacity"
+    },
+    {
+      "name": "FASTER",
+      "coords": [
+        [
+          -122.4,
+          37.8
+        ],
+        [
+          -160.0,
+          40.0
+        ],
+        [
+          180.0,
+          42.0
+        ],
+        [
+          160.0,
+          42.5
+        ],
+        [
+          140.0,
+          35.7
+        ]
+      ],
+      "operator": "Google/KDDI",
+      "country": "USA-Japan",
+      "notes": "60 Tbps capacity"
+    },
+    {
+      "name": "Grace Hopper",
+      "coords": [
+        [
+          -73.9,
+          40.5
+        ],
+        [
+          -40.0,
+          48.0
+        ],
+        [
+          -6.2,
+          53.3
+        ],
+        [
+          -5.0,
+          50.4
+        ]
+      ],
+      "operator": "Google",
+      "country": "USA-UK-Spain",
+      "notes": "Named after Rear Admiral Grace Hopper"
+    },
+    {
+      "name": "AEConnect-1",
+      "coords": [
+        [
+          -73.9,
+          40.5
+        ],
+        [
+          -50.0,
+          50.0
+        ],
+        [
+          -30.0,
+          52.0
+        ],
+        [
+          -10.0,
+          53.0
+        ]
+      ],
+      "operator": "Aqua Comms",
+      "country": "USA-Ireland",
+      "notes": "Transatlantic"
+    },
+    {
+      "name": "Havfrue/AEC-2",
+      "coords": [
+        [
+          -73.9,
+          40.5
+        ],
+        [
+          -40.0,
+          52.0
+        ],
+        [
+          -20.0,
+          56.0
+        ],
+        [
+          -5.0,
+          57.0
+        ],
+        [
+          8.5,
+          58.0
+        ]
+      ],
+      "operator": "Google/Aqua Comms",
+      "country": "USA-Denmark-Norway",
+      "notes": "Transatlantic"
+    },
+    {
+      "name": "PEACE Cable",
+      "coords": [
+        [
+          121.5,
+          31.2
+        ],
+        [
+          114.2,
+          22.3
+        ],
+        [
+          103.7,
+          1.3
+        ],
+        [
+          72.8,
+          10.5
+        ],
+        [
+          56.3,
+          25.2
+        ],
+        [
+          43.1,
+          12.6
+        ],
+        [
+          39.5,
+          15.5
+        ],
+        [
+          32.9,
+          28.0
+        ],
+        [
+          15.5,
+          37.1
+        ],
+        [
+          -5.3,
+          36.0
+        ]
+      ],
+      "operator": "PEACE Cable Int'l",
+      "country": "China-Pakistan-Kenya-France",
+      "notes": "15,000km"
+    },
+    {
+      "name": "Curie",
+      "coords": [
+        [
+          -122.4,
+          37.8
+        ],
+        [
+          -118.0,
+          33.0
+        ],
+        [
+          -110.0,
+          23.0
+        ],
+        [
+          -95.0,
+          10.0
+        ],
+        [
+          -80.0,
+          -2.0
+        ],
+        [
+          -77.1,
+          -12.0
+        ]
+      ],
+      "operator": "Google",
+      "country": "USA-Chile",
+      "notes": "Pacific to South America"
+    },
+    {
+      "name": "Equiano",
+      "coords": [
+        [
+          -9.1,
+          38.7
+        ],
+        [
+          -17.4,
+          14.7
+        ],
+        [
+          -1.5,
+          5.5
+        ],
+        [
+          8.5,
+          4.0
+        ],
+        [
+          12.3,
+          -4.3
+        ],
+        [
+          13.2,
+          -8.8
+        ],
+        [
+          14.5,
+          -22.6
+        ],
+        [
+          18.4,
+          -33.9
+        ]
+      ],
+      "operator": "Google",
+      "country": "Portugal-South Africa",
+      "notes": "Along African west coast"
+    },
+    {
+      "name": "2Africa",
+      "coords": [
+        [
+          -9.1,
+          38.7
+        ],
+        [
+          -17.4,
+          14.7
+        ],
+        [
+          -1.5,
+          5.5
+        ],
+        [
+          3.4,
+          6.4
+        ],
+        [
+          8.5,
+          4.0
+        ],
+        [
+          12.3,
+          -4.3
+        ],
+        [
+          39.3,
+          -6.8
+        ],
+        [
+          49.3,
+          -12.3
+        ],
+        [
+          55.5,
+          -21.1
+        ],
+        [
+          57.5,
+          -20.2
+        ],
+        [
+          43.1,
+          12.6
+        ],
+        [
+          56.3,
+          25.2
+        ],
+        [
+          72.8,
+          10.5
+        ],
+        [
+          103.7,
+          1.3
+        ]
+      ],
+      "operator": "Meta",
+      "country": "International",
+      "notes": "45,000km // Africa, Middle East, Asia"
+    },
+    {
+      "name": "Japan-US Cable Network",
+      "coords": [
+        [
+          140.0,
+          35.7
+        ],
+        [
+          155.0,
+          38.0
+        ],
+        [
+          170.0,
+          40.0
+        ],
+        [
+          -175.0,
+          42.0
+        ],
+        [
+          -160.0,
+          40.0
+        ],
+        [
+          -140.0,
+          38.0
+        ],
+        [
+          -122.4,
+          37.8
+        ]
+      ],
+      "operator": "Multiple",
+      "country": "Japan-USA",
+      "notes": "Trans-Pacific"
+    },
+    {
+      "name": "South Atlantic Cable",
+      "coords": [
+        [
+          -43.2,
+          -22.9
+        ],
+        [
+          -35.0,
+          -15.0
+        ],
+        [
+          -25.0,
+          -5.0
+        ],
+        [
+          6.7,
+          0.3
+        ],
+        [
+          8.5,
+          4.0
+        ]
+      ],
+      "operator": "Angola Cables",
+      "country": "Brazil-Cameroon",
+      "notes": "South Atlantic Express"
+    },
+    {
+      "name": "Arctic Connect",
+      "coords": [
+        [
+          24.9,
+          60.2
+        ],
+        [
+          30.3,
+          59.9
+        ],
+        [
+          40.0,
+          68.0
+        ],
+        [
+          69.0,
+          73.0
+        ],
+        [
+          120.0,
+          73.0
+        ],
+        [
+          170.0,
+          66.0
+        ],
+        [
+          140.0,
+          45.0
+        ],
+        [
+          121.5,
+          31.2
+        ]
+      ],
+      "operator": "Cinia/MegaFon",
+      "country": "Finland-Japan",
+      "notes": "Arctic undersea route"
+    },
+    {
+      "name": "SEA-ME-WE 6",
+      "coords": [
+        [
+          103.7,
+          1.3
+        ],
+        [
+          100.5,
+          6.9
+        ],
+        [
+          79.9,
+          7.0
+        ],
+        [
+          56.3,
+          25.2
+        ],
+        [
+          43.1,
+          12.6
+        ],
+        [
+          32.9,
+          28.0
+        ],
+        [
+          29.9,
+          31.3
+        ],
+        [
+          15.5,
+          37.1
+        ],
+        [
+          -5.3,
+          36.0
+        ]
+      ],
+      "operator": "Multiple",
+      "country": "International",
+      "notes": "Singapore to France"
+    }
+  ]
+}

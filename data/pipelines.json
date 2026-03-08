@@ -1,0 +1,509 @@
+{
+  "_source": {
+    "description": "Major oil and gas pipelines worldwide",
+    "origin": "Global Energy Monitor Global Oil & Gas Infrastructure Tracker (globalenergymonitor.org). Supplemented by EIA and IEA pipeline maps.",
+    "retrieved": "2026-03-06",
+    "license": "GEM: CC-BY-4.0; EIA: public domain",
+    "notes": "Route geometries simplified. Major pipelines by capacity/length."
+  },
+  "oil": [
+    {
+      "name": "Druzhba Pipeline",
+      "coords": [
+        [
+          52.0,
+          52.0
+        ],
+        [
+          48.0,
+          52.5
+        ],
+        [
+          44.0,
+          52.8
+        ],
+        [
+          40.0,
+          53.0
+        ],
+        [
+          36.0,
+          52.5
+        ],
+        [
+          32.0,
+          52.0
+        ],
+        [
+          30.0,
+          51.0
+        ],
+        [
+          26.0,
+          50.5
+        ],
+        [
+          24.0,
+          50.0
+        ],
+        [
+          21.0,
+          49.5
+        ],
+        [
+          18.0,
+          49.3
+        ],
+        [
+          15.0,
+          49.5
+        ],
+        [
+          14.3,
+          50.1
+        ]
+      ],
+      "operator": "Transneft",
+      "country": "Russia-Europe",
+      "notes": "World's longest oil pipeline // 5,500km"
+    },
+    {
+      "name": "Keystone Pipeline",
+      "coords": [
+        [
+          -110.0,
+          52.0
+        ],
+        [
+          -108.0,
+          50.0
+        ],
+        [
+          -104.0,
+          48.0
+        ],
+        [
+          -100.0,
+          46.0
+        ],
+        [
+          -97.0,
+          43.0
+        ],
+        [
+          -97.0,
+          40.0
+        ],
+        [
+          -97.0,
+          37.0
+        ],
+        [
+          -97.0,
+          34.0
+        ],
+        [
+          -95.5,
+          30.0
+        ],
+        [
+          -95.0,
+          29.5
+        ]
+      ],
+      "operator": "TC Energy",
+      "country": "Canada-USA",
+      "notes": "4,324km // Alberta to Texas"
+    },
+    {
+      "name": "Trans-Alaska Pipeline",
+      "coords": [
+        [
+          -148.5,
+          70.3
+        ],
+        [
+          -149.0,
+          68.0
+        ],
+        [
+          -146.5,
+          66.0
+        ],
+        [
+          -146.0,
+          64.0
+        ],
+        [
+          -146.5,
+          63.0
+        ],
+        [
+          -146.5,
+          61.0
+        ],
+        [
+          -146.4,
+          60.9
+        ]
+      ],
+      "operator": "Alyeska",
+      "country": "USA",
+      "notes": "1,288km // Prudhoe Bay to Valdez"
+    },
+    {
+      "name": "BTC Pipeline",
+      "coords": [
+        [
+          50.0,
+          40.5
+        ],
+        [
+          49.0,
+          40.8
+        ],
+        [
+          46.0,
+          41.0
+        ],
+        [
+          44.5,
+          41.7
+        ],
+        [
+          43.5,
+          41.8
+        ],
+        [
+          42.0,
+          41.2
+        ],
+        [
+          40.0,
+          39.8
+        ],
+        [
+          37.0,
+          37.5
+        ],
+        [
+          36.0,
+          36.8
+        ]
+      ],
+      "operator": "BP",
+      "country": "Azerbaijan-Georgia-Turkey",
+      "notes": "Baku-Tbilisi-Ceyhan // 1,768km"
+    },
+    {
+      "name": "East Siberia-Pacific Pipeline",
+      "coords": [
+        [
+          105.0,
+          56.0
+        ],
+        [
+          110.0,
+          54.0
+        ],
+        [
+          115.0,
+          52.0
+        ],
+        [
+          120.0,
+          50.0
+        ],
+        [
+          125.0,
+          48.0
+        ],
+        [
+          130.0,
+          46.0
+        ],
+        [
+          132.9,
+          42.9
+        ]
+      ],
+      "operator": "Transneft",
+      "country": "Russia-Pacific",
+      "notes": "ESPO // 4,857km"
+    },
+    {
+      "name": "Trans-Arabian Pipeline",
+      "coords": [
+        [
+          49.5,
+          26.5
+        ],
+        [
+          48.0,
+          28.0
+        ],
+        [
+          42.0,
+          30.0
+        ],
+        [
+          38.0,
+          31.5
+        ],
+        [
+          35.7,
+          32.7
+        ]
+      ],
+      "operator": "Aramco (decommissioned)",
+      "country": "Saudi Arabia-Lebanon",
+      "notes": "Tapline // 1,213km // Historical"
+    }
+  ],
+  "gas": [
+    {
+      "name": "Nord Stream (Damaged)",
+      "coords": [
+        [
+          30.1,
+          59.9
+        ],
+        [
+          28.0,
+          59.5
+        ],
+        [
+          24.0,
+          58.5
+        ],
+        [
+          20.0,
+          56.5
+        ],
+        [
+          16.0,
+          55.0
+        ],
+        [
+          13.6,
+          54.1
+        ],
+        [
+          12.1,
+          54.4
+        ]
+      ],
+      "operator": "Nord Stream AG",
+      "country": "Russia-Germany",
+      "notes": "Sabotaged Sept 2022 // Under Baltic Sea"
+    },
+    {
+      "name": "TurkStream",
+      "coords": [
+        [
+          38.0,
+          44.5
+        ],
+        [
+          36.0,
+          43.5
+        ],
+        [
+          33.0,
+          43.0
+        ],
+        [
+          30.0,
+          43.5
+        ],
+        [
+          29.0,
+          42.5
+        ],
+        [
+          29.0,
+          41.5
+        ],
+        [
+          28.9,
+          41.2
+        ]
+      ],
+      "operator": "Gazprom/Bota\u015f",
+      "country": "Russia-Turkey",
+      "notes": "Under Black Sea // 930km"
+    },
+    {
+      "name": "Trans-Mediterranean Pipeline",
+      "coords": [
+        [
+          2.5,
+          36.5
+        ],
+        [
+          3.5,
+          37.0
+        ],
+        [
+          5.0,
+          37.5
+        ],
+        [
+          8.0,
+          37.5
+        ],
+        [
+          10.0,
+          37.5
+        ],
+        [
+          10.5,
+          37.0
+        ],
+        [
+          12.5,
+          37.8
+        ],
+        [
+          15.0,
+          38.5
+        ],
+        [
+          16.0,
+          38.5
+        ]
+      ],
+      "operator": "Sonatrach/ENI",
+      "country": "Algeria-Italy",
+      "notes": "TransMed // 2,475km"
+    },
+    {
+      "name": "TANAP",
+      "coords": [
+        [
+          42.0,
+          41.2
+        ],
+        [
+          40.0,
+          39.8
+        ],
+        [
+          38.0,
+          38.5
+        ],
+        [
+          36.0,
+          37.5
+        ],
+        [
+          34.0,
+          37.0
+        ],
+        [
+          32.0,
+          37.5
+        ],
+        [
+          30.0,
+          38.0
+        ],
+        [
+          28.0,
+          38.5
+        ],
+        [
+          26.5,
+          40.0
+        ]
+      ],
+      "operator": "BOTA\u015e/SOCAR",
+      "country": "Azerbaijan-Turkey-Europe",
+      "notes": "Trans-Anatolian // 1,850km"
+    },
+    {
+      "name": "Yamal-Europe Pipeline",
+      "coords": [
+        [
+          68.0,
+          66.0
+        ],
+        [
+          60.0,
+          61.0
+        ],
+        [
+          55.0,
+          58.0
+        ],
+        [
+          50.0,
+          56.0
+        ],
+        [
+          40.0,
+          55.0
+        ],
+        [
+          33.0,
+          54.0
+        ],
+        [
+          28.0,
+          53.5
+        ],
+        [
+          24.0,
+          52.5
+        ],
+        [
+          21.0,
+          52.0
+        ],
+        [
+          17.0,
+          52.5
+        ],
+        [
+          14.5,
+          52.5
+        ]
+      ],
+      "operator": "Gazprom",
+      "country": "Russia-Germany",
+      "notes": "4,107km via Belarus and Poland"
+    },
+    {
+      "name": "Power of Siberia",
+      "coords": [
+        [
+          128.0,
+          62.0
+        ],
+        [
+          130.0,
+          58.0
+        ],
+        [
+          132.0,
+          54.0
+        ],
+        [
+          131.0,
+          50.0
+        ],
+        [
+          128.0,
+          48.0
+        ],
+        [
+          127.5,
+          47.0
+        ]
+      ],
+      "operator": "Gazprom",
+      "country": "Russia-China",
+      "notes": "3,000km // Yakutia to Heilongjiang"
+    }
+  ]
+}

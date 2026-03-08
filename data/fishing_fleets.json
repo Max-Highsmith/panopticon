@@ -1,0 +1,407 @@
+{
+  "_source": {
+    "description": "Major global fishing grounds and fleet areas",
+    "origin": "FAO fisheries statistics (fao.org/fishery), Global Fishing Watch public data (globalfishingwatch.org), and published fisheries science literature.",
+    "retrieved": "2026-03-06",
+    "license": "FAO: public; GFW: CC-BY-SA-4.0 for public data",
+    "notes": "Approximate fishing ground zones from FAO catch statistics and GFW vessel density maps."
+  },
+  "industrial_ground": [
+    {
+      "name": "Grand Banks of Newfoundland",
+      "notes": "Historic cod fishery; collapsed 1992; recovering groundfish; Canadian EEZ",
+      "rings": [
+        [
+          [
+            -55,
+            42
+          ],
+          [
+            -50,
+            44
+          ],
+          [
+            -46,
+            47
+          ],
+          [
+            -48,
+            48
+          ],
+          [
+            -53,
+            47
+          ],
+          [
+            -56,
+            45
+          ],
+          [
+            -55,
+            42
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "North Sea Fishing Ground",
+      "notes": "Major herring/cod/haddock fishery; EU Common Fisheries Policy; heavily managed",
+      "rings": [
+        [
+          [
+            0,
+            51
+          ],
+          [
+            3,
+            53
+          ],
+          [
+            5,
+            56
+          ],
+          [
+            6,
+            58
+          ],
+          [
+            4,
+            60
+          ],
+          [
+            0,
+            58
+          ],
+          [
+            -2,
+            55
+          ],
+          [
+            -1,
+            52
+          ],
+          [
+            0,
+            51
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "Bering Sea Pollock Ground",
+      "notes": "World's largest single-species fishery; 1.5M tonnes/year; US/Russia boundary",
+      "rings": [
+        [
+          [
+            -180,
+            54
+          ],
+          [
+            -175,
+            56
+          ],
+          [
+            -170,
+            58
+          ],
+          [
+            -165,
+            60
+          ],
+          [
+            -170,
+            62
+          ],
+          [
+            -178,
+            60
+          ],
+          [
+            -180,
+            57
+          ],
+          [
+            -180,
+            54
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "Humboldt Current Anchoveta Zone",
+      "notes": "World's most productive fishery by tonnage; Peruvian anchoveta; El Ni\u00f1o-sensitive",
+      "rings": [
+        [
+          [
+            -82,
+            -5
+          ],
+          [
+            -78,
+            -6
+          ],
+          [
+            -76,
+            -10
+          ],
+          [
+            -75,
+            -15
+          ],
+          [
+            -76,
+            -18
+          ],
+          [
+            -80,
+            -16
+          ],
+          [
+            -82,
+            -12
+          ],
+          [
+            -82,
+            -5
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "South China Sea Fishing Ground",
+      "notes": "Contested fishing zone; 12M tonnes/year; 4 million fishers; overfished",
+      "rings": [
+        [
+          [
+            108,
+            8
+          ],
+          [
+            115,
+            10
+          ],
+          [
+            118,
+            15
+          ],
+          [
+            120,
+            18
+          ],
+          [
+            116,
+            20
+          ],
+          [
+            110,
+            18
+          ],
+          [
+            107,
+            14
+          ],
+          [
+            108,
+            8
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "East China Sea / Yellow Sea",
+      "notes": "Major squid/anchovy/mackerel; China/Japan/Korea disputed zones; DWF fleets",
+      "rings": [
+        [
+          [
+            120,
+            28
+          ],
+          [
+            125,
+            30
+          ],
+          [
+            128,
+            33
+          ],
+          [
+            126,
+            36
+          ],
+          [
+            122,
+            36
+          ],
+          [
+            120,
+            33
+          ],
+          [
+            120,
+            28
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "Patagonian Shelf Squid Zone",
+      "notes": "Argentine shortfin squid; 200-mile EEZ boundary; DWF vessel concentration",
+      "rings": [
+        [
+          [
+            -62,
+            -42
+          ],
+          [
+            -58,
+            -44
+          ],
+          [
+            -56,
+            -48
+          ],
+          [
+            -58,
+            -52
+          ],
+          [
+            -62,
+            -52
+          ],
+          [
+            -64,
+            -48
+          ],
+          [
+            -63,
+            -44
+          ],
+          [
+            -62,
+            -42
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "West African Upwelling Zone",
+      "notes": "Mauritania/Senegal/Guinea; sardine/octopus; IUU fishing hotspot; DWF exploitation",
+      "rings": [
+        [
+          [
+            -20,
+            10
+          ],
+          [
+            -17,
+            12
+          ],
+          [
+            -16,
+            16
+          ],
+          [
+            -17,
+            20
+          ],
+          [
+            -20,
+            20
+          ],
+          [
+            -22,
+            16
+          ],
+          [
+            -21,
+            12
+          ],
+          [
+            -20,
+            10
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "Barents Sea Cod Ground",
+      "notes": "Norwegian/Russian shared stock; world's largest cod fishery; well-managed",
+      "rings": [
+        [
+          [
+            15,
+            69
+          ],
+          [
+            25,
+            70
+          ],
+          [
+            35,
+            72
+          ],
+          [
+            40,
+            74
+          ],
+          [
+            30,
+            75
+          ],
+          [
+            20,
+            73
+          ],
+          [
+            15,
+            71
+          ],
+          [
+            15,
+            69
+          ]
+        ]
+      ]
+    },
+    {
+      "name": "Southeast Pacific Tuna Zone",
+      "notes": "Skipjack/yellowfin tuna; purse seine fleets; IATTC managed; equatorial productivity",
+      "rings": [
+        [
+          [
+            -130,
+            -5
+          ],
+          [
+            -120,
+            -2
+          ],
+          [
+            -110,
+            0
+          ],
+          [
+            -100,
+            2
+          ],
+          [
+            -90,
+            0
+          ],
+          [
+            -95,
+            -5
+          ],
+          [
+            -110,
+            -8
+          ],
+          [
+            -130,
+            -5
+          ]
+        ]
+      ]
+    }
+  ]
+}

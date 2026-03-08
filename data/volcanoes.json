@@ -1,0 +1,271 @@
+{
+  "_source": {
+    "description": "Notable active and dormant volcanoes worldwide",
+    "origin": "Smithsonian Global Volcanism Program (volcano.si.edu) Holocene Volcano List. Coordinates from GVP database.",
+    "retrieved": "2026-03-06",
+    "license": "Smithsonian GVP: public access (CC-BY)",
+    "notes": "Coordinates are GVP summit locations."
+  },
+  "active": [
+    {
+      "name": "Kilauea",
+      "lon": -155.29,
+      "lat": 19.42,
+      "country": "USA",
+      "operator": "USGS HVO",
+      "elevation_m": 1222,
+      "notes": "Continuous eruption since 1983"
+    },
+    {
+      "name": "Mount Etna",
+      "lon": 14.99,
+      "lat": 37.75,
+      "country": "Italy",
+      "operator": "INGV",
+      "elevation_m": 3357,
+      "notes": "Europe's most active volcano"
+    },
+    {
+      "name": "Stromboli",
+      "lon": 15.21,
+      "lat": 38.79,
+      "country": "Italy",
+      "operator": "INGV",
+      "elevation_m": 924,
+      "notes": "Continuous Strombolian activity"
+    },
+    {
+      "name": "Sakurajima",
+      "lon": 130.66,
+      "lat": 31.58,
+      "country": "Japan",
+      "operator": "JMA",
+      "elevation_m": 1117
+    },
+    {
+      "name": "Mount Erebus",
+      "lon": 167.17,
+      "lat": -77.53,
+      "country": "Antarctica",
+      "operator": "MEVO",
+      "elevation_m": 3794,
+      "notes": "Southernmost active volcano"
+    },
+    {
+      "name": "Popocatepetl",
+      "lon": -98.62,
+      "lat": 19.02,
+      "country": "Mexico",
+      "operator": "CENAPRED",
+      "elevation_m": 5426
+    },
+    {
+      "name": "Merapi",
+      "lon": 110.44,
+      "lat": -7.54,
+      "country": "Indonesia",
+      "operator": "BPPTKG",
+      "elevation_m": 2930
+    },
+    {
+      "name": "Piton de la Fournaise",
+      "lon": 55.71,
+      "lat": -21.23,
+      "country": "France (R\u00e9union)",
+      "operator": "OVPF",
+      "elevation_m": 2632
+    },
+    {
+      "name": "Nyiragongo",
+      "lon": 29.25,
+      "lat": -1.52,
+      "country": "DRC",
+      "operator": "OVG",
+      "elevation_m": 3470,
+      "notes": "Persistent lava lake"
+    },
+    {
+      "name": "Mauna Loa",
+      "lon": -155.61,
+      "lat": 19.47,
+      "country": "USA",
+      "operator": "USGS HVO",
+      "elevation_m": 4169,
+      "notes": "World's largest active volcano"
+    },
+    {
+      "name": "Mount Fuji",
+      "lon": 138.73,
+      "lat": 35.36,
+      "country": "Japan",
+      "operator": "JMA",
+      "elevation_m": 3776,
+      "notes": "Last eruption 1707"
+    },
+    {
+      "name": "Mount Vesuvius",
+      "lon": 14.43,
+      "lat": 40.82,
+      "country": "Italy",
+      "operator": "INGV-OV",
+      "elevation_m": 1281,
+      "notes": "3 million people in danger zone"
+    },
+    {
+      "name": "Mount Rainier",
+      "lon": -121.76,
+      "lat": 46.85,
+      "country": "USA",
+      "operator": "USGS CVO",
+      "elevation_m": 4392,
+      "notes": "Most dangerous US volcano"
+    },
+    {
+      "name": "Mount St. Helens",
+      "lon": -122.18,
+      "lat": 46.2,
+      "country": "USA",
+      "operator": "USGS CVO",
+      "elevation_m": 2549,
+      "notes": "1980 eruption"
+    },
+    {
+      "name": "Yellowstone Caldera",
+      "lon": -110.67,
+      "lat": 44.43,
+      "country": "USA",
+      "operator": "USGS YVO",
+      "elevation_m": 2805,
+      "notes": "Supervolcano // Monitoring"
+    },
+    {
+      "name": "Eyjafjallajokull",
+      "lon": -19.62,
+      "lat": 63.63,
+      "country": "Iceland",
+      "operator": "IMO",
+      "elevation_m": 1651,
+      "notes": "2010 aviation disruption"
+    },
+    {
+      "name": "Fagradalsfjall",
+      "lon": -22.27,
+      "lat": 63.9,
+      "country": "Iceland",
+      "operator": "IMO",
+      "elevation_m": 385,
+      "notes": "Recent eruption cycle 2021-2024"
+    },
+    {
+      "name": "Taal Volcano",
+      "lon": 120.99,
+      "lat": 14.0,
+      "country": "Philippines",
+      "operator": "PHIVOLCS",
+      "elevation_m": 311
+    },
+    {
+      "name": "Mount Semeru",
+      "lon": 112.92,
+      "lat": -8.11,
+      "country": "Indonesia",
+      "operator": "BMKG",
+      "elevation_m": 3676
+    },
+    {
+      "name": "Ruang Volcano",
+      "lon": 125.37,
+      "lat": 2.3,
+      "country": "Indonesia",
+      "operator": "BMKG",
+      "elevation_m": 725,
+      "notes": "2024 eruption"
+    },
+    {
+      "name": "Cotopaxi",
+      "lon": -78.44,
+      "lat": -0.68,
+      "country": "Ecuador",
+      "operator": "IG-EPN",
+      "elevation_m": 5897
+    },
+    {
+      "name": "Villarrica",
+      "lon": -71.93,
+      "lat": -39.42,
+      "country": "Chile",
+      "operator": "SERNAGEOMIN",
+      "elevation_m": 2847
+    },
+    {
+      "name": "Mount Agung",
+      "lon": 115.51,
+      "lat": -8.34,
+      "country": "Indonesia",
+      "operator": "BMKG",
+      "elevation_m": 3142
+    },
+    {
+      "name": "Aso Caldera",
+      "lon": 131.08,
+      "lat": 32.88,
+      "country": "Japan",
+      "operator": "JMA",
+      "elevation_m": 1592,
+      "notes": "One of world's largest calderas"
+    }
+  ],
+  "dormant": [
+    {
+      "name": "Mount Kilimanjaro",
+      "lon": 37.35,
+      "lat": -3.07,
+      "country": "Tanzania",
+      "operator": "TGSD",
+      "elevation_m": 5895,
+      "notes": "Dormant stratovolcano"
+    },
+    {
+      "name": "Mount Elbrus",
+      "lon": 42.44,
+      "lat": 43.36,
+      "country": "Russia",
+      "operator": "RAS",
+      "elevation_m": 5642,
+      "notes": "Europe's highest peak // Dormant"
+    },
+    {
+      "name": "Mount Adams",
+      "lon": -121.49,
+      "lat": 46.2,
+      "country": "USA",
+      "operator": "USGS CVO",
+      "elevation_m": 3742
+    },
+    {
+      "name": "Mount Shasta",
+      "lon": -122.19,
+      "lat": 41.41,
+      "country": "USA",
+      "operator": "USGS CVO",
+      "elevation_m": 4322
+    },
+    {
+      "name": "Teide",
+      "lon": -16.64,
+      "lat": 28.27,
+      "country": "Spain",
+      "operator": "IGN",
+      "elevation_m": 3718,
+      "notes": "Tenerife // Atlantic's highest peak"
+    },
+    {
+      "name": "Mount Hood",
+      "lon": -121.7,
+      "lat": 45.37,
+      "country": "USA",
+      "operator": "USGS CVO",
+      "elevation_m": 3429
+    }
+  ]
+}

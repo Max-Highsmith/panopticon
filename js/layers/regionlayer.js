@@ -5,6 +5,7 @@
 
 import { $ } from '../utils.js';
 import { layers, entityMaps } from '../globe.js';
+import { cacheLayerData } from '../layerregistry.js';
 
 /**
  * Creates a lazy-loading Cesium polygon layer backed by a JSON data file.
@@ -48,6 +49,7 @@ export function createRegionLayer(cfg) {
       const res = await fetch(cfg.dataUrl);
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       const data = await res.json();
+      cacheLayerData(cfg.layerKey, data);
 
       for (const [category, meta] of Object.entries(cfg.categories)) {
         const fillColor = Cesium.Color.fromCssColorString(meta.fillColor).withAlpha(meta.alpha ?? 0.25);
@@ -82,6 +84,7 @@ export function createRegionLayer(cfg) {
             hex: id, r: item.name, t: meta.label, flight: item.name,
             desc: (cfg.descFn || defaultDesc)(item, category),
             alt_baro: 0, gs: 0, track: 0,
+            _view: cfg.viewType || 'site',
           };
 
           // Label at centroid

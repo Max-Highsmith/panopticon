@@ -1,0 +1,339 @@
+{
+  "_source": {
+    "description": "Major global fisheries zones",
+    "origin": "FAO Major Fishing Areas (fao.org/fishery/area/search) statistical area boundaries.",
+    "retrieved": "2026-03-06",
+    "license": "FAO: public international organization data",
+    "notes": "Simplified boundaries from FAO statistical areas."
+  },
+  "industrial": [
+    {
+      "name": "Grand Banks",
+      "rings": [
+        [
+          [
+            -52.0,
+            48.0
+          ],
+          [
+            -48.0,
+            48.0
+          ],
+          [
+            -44.0,
+            46.0
+          ],
+          [
+            -44.0,
+            43.0
+          ],
+          [
+            -48.0,
+            42.0
+          ],
+          [
+            -52.0,
+            43.0
+          ],
+          [
+            -54.0,
+            45.0
+          ],
+          [
+            -52.0,
+            48.0
+          ]
+        ]
+      ],
+      "country": "Canada/International",
+      "notes": "Atlantic cod // Historic collapse 1992"
+    },
+    {
+      "name": "North Sea Fishing Zone",
+      "rings": [
+        [
+          [
+            0.0,
+            58.0
+          ],
+          [
+            4.0,
+            58.0
+          ],
+          [
+            8.0,
+            57.0
+          ],
+          [
+            8.0,
+            54.0
+          ],
+          [
+            4.0,
+            52.0
+          ],
+          [
+            0.0,
+            52.0
+          ],
+          [
+            -2.0,
+            54.0
+          ],
+          [
+            -2.0,
+            56.0
+          ],
+          [
+            0.0,
+            58.0
+          ]
+        ]
+      ],
+      "country": "UK/Norway/EU",
+      "notes": "Cod, herring, mackerel // Heavily managed"
+    },
+    {
+      "name": "Humboldt Current Zone",
+      "rings": [
+        [
+          [
+            -85.0,
+            -5.0
+          ],
+          [
+            -78.0,
+            -5.0
+          ],
+          [
+            -75.0,
+            -15.0
+          ],
+          [
+            -75.0,
+            -30.0
+          ],
+          [
+            -80.0,
+            -35.0
+          ],
+          [
+            -85.0,
+            -30.0
+          ],
+          [
+            -85.0,
+            -5.0
+          ]
+        ]
+      ],
+      "country": "Peru/Chile",
+      "notes": "Anchovy // World's most productive fishery"
+    },
+    {
+      "name": "South China Sea Fishing",
+      "rings": [
+        [
+          [
+            108.0,
+            22.0
+          ],
+          [
+            115.0,
+            22.0
+          ],
+          [
+            118.0,
+            18.0
+          ],
+          [
+            118.0,
+            10.0
+          ],
+          [
+            115.0,
+            5.0
+          ],
+          [
+            110.0,
+            3.0
+          ],
+          [
+            105.0,
+            5.0
+          ],
+          [
+            105.0,
+            15.0
+          ],
+          [
+            108.0,
+            22.0
+          ]
+        ]
+      ],
+      "country": "Disputed",
+      "notes": "Contested fishing rights // >50% of global fishing vessels"
+    },
+    {
+      "name": "Bering Sea Pollock Zone",
+      "rings": [
+        [
+          [
+            -180.0,
+            58.0
+          ],
+          [
+            -170.0,
+            60.0
+          ],
+          [
+            -165.0,
+            58.0
+          ],
+          [
+            -165.0,
+            54.0
+          ],
+          [
+            -170.0,
+            52.0
+          ],
+          [
+            -180.0,
+            53.0
+          ],
+          [
+            -180.0,
+            58.0
+          ]
+        ]
+      ],
+      "country": "USA/Russia",
+      "notes": "Alaska Pollock // $1B+ annual catch"
+    },
+    {
+      "name": "Northeast Atlantic",
+      "rings": [
+        [
+          [
+            -20.0,
+            65.0
+          ],
+          [
+            -10.0,
+            65.0
+          ],
+          [
+            0.0,
+            62.0
+          ],
+          [
+            5.0,
+            60.0
+          ],
+          [
+            5.0,
+            55.0
+          ],
+          [
+            -5.0,
+            50.0
+          ],
+          [
+            -15.0,
+            50.0
+          ],
+          [
+            -20.0,
+            55.0
+          ],
+          [
+            -20.0,
+            65.0
+          ]
+        ]
+      ],
+      "country": "EU/Norway/Iceland",
+      "notes": "Major herring and mackerel fishery"
+    },
+    {
+      "name": "East African Tuna Zone",
+      "rings": [
+        [
+          [
+            40.0,
+            0.0
+          ],
+          [
+            55.0,
+            0.0
+          ],
+          [
+            60.0,
+            -10.0
+          ],
+          [
+            55.0,
+            -20.0
+          ],
+          [
+            45.0,
+            -25.0
+          ],
+          [
+            35.0,
+            -20.0
+          ],
+          [
+            35.0,
+            -10.0
+          ],
+          [
+            40.0,
+            0.0
+          ]
+        ]
+      ],
+      "country": "International",
+      "notes": "Indian Ocean tuna // IUU fishing hotspot"
+    },
+    {
+      "name": "Argentine Basin",
+      "rings": [
+        [
+          [
+            -65.0,
+            -35.0
+          ],
+          [
+            -55.0,
+            -35.0
+          ],
+          [
+            -50.0,
+            -42.0
+          ],
+          [
+            -55.0,
+            -50.0
+          ],
+          [
+            -65.0,
+            -50.0
+          ],
+          [
+            -68.0,
+            -45.0
+          ],
+          [
+            -65.0,
+            -35.0
+          ]
+        ]
+      ],
+      "country": "Argentina/International",
+      "notes": "Squid fishing // Dark fleet activity"
+    }
+  ]
+}

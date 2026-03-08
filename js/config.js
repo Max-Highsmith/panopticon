@@ -68,12 +68,6 @@ export const CUSTOM_DATASETS = [];
 export const REPLAY_SPEEDS = [1, 2, 5, 10, 30, 60, 100];
 export const DEFAULT_SPEED_INDEX = 4; // 30x
 
-export const CITIES = {
-  nyc:    { lon: -73.98, lat: 40.75, alt: 30_000 },
-  london: { lon: -0.12,  lat: 51.50, alt: 30_000 },
-  tokyo:  { lon: 139.75, lat: 35.68, alt: 30_000 },
-  paris:  { lon: 2.35,   lat: 48.86, alt: 30_000 },
-};
 
 export const SCENARIOS = {
   iran: {

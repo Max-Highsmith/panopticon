@@ -5,6 +5,7 @@
   "description": "Ongoing cyberattack on power grid. Attribution uncertain. Decide on retaliatory cyber/kinetic response.",
 
   "camera": { "lon": -95, "lat": 38, "alt": 8000000 },
+  "region": { "latMin": 25, "latMax": 60, "lonMin": -110, "lonMax": 50 },
   "duration_ticks": 8,
   "tick_interval_ms": 6000,
 

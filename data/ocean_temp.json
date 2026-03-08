@@ -1,0 +1,125 @@
+{
+  "_source": {
+    "description": "Ocean temperature anomaly regions",
+    "origin": "NOAA OISST (Optimum Interpolation SST) dataset and NOAA Climate.gov ENSO monitoring regions.",
+    "retrieved": "2026-03-06",
+    "license": "NOAA: public domain",
+    "notes": "Representative anomaly regions based on NOAA climate monitoring zone definitions."
+  },
+  "warm_anomaly": [
+    {
+      "name": "ENSO Ni\u00f1o 3.4 Region (Equatorial Pacific)",
+      "lat": 0.0,
+      "lon": -170.0,
+      "country": "International Waters",
+      "operator": "NOAA CPC",
+      "notes": "El Ni\u00f1o/La Ni\u00f1a monitoring zone; SST anomalies drive global weather patterns"
+    },
+    {
+      "name": "Gulf Stream Warm Core (Cape Hatteras)",
+      "lat": 35.0,
+      "lon": -74.0,
+      "country": "USA",
+      "operator": "NOAA",
+      "notes": "Gulf Stream intensification zone; 2-4\u00b0C above surrounding water; marine heatwaves"
+    },
+    {
+      "name": "Kuroshio Current Warm Anomaly",
+      "lat": 30.0,
+      "lon": 135.0,
+      "country": "Japan",
+      "operator": "JMA",
+      "notes": "Pacific western boundary current; typhoon intensification; coral bleaching risk"
+    },
+    {
+      "name": "Mediterranean Hot Pool",
+      "lat": 36.0,
+      "lon": 18.0,
+      "country": "International",
+      "operator": "Copernicus",
+      "notes": "Record marine heatwave zone; +3-5\u00b0C anomalies; posidonia die-off"
+    },
+    {
+      "name": "North Atlantic Warming Hole Perimeter",
+      "lat": 55.0,
+      "lon": -30.0,
+      "country": "International",
+      "operator": "NOAA / Met Office",
+      "notes": "Paradoxical cold blob surrounded by warming; AMOC slowdown indicator"
+    },
+    {
+      "name": "Arabian Sea Heat Dome",
+      "lat": 15.0,
+      "lon": 65.0,
+      "country": "International",
+      "operator": "IMD",
+      "notes": "Persistent SST >30\u00b0C; cyclone intensification zone; coral stress"
+    },
+    {
+      "name": "South China Sea Warm Pool",
+      "lat": 12.0,
+      "lon": 115.0,
+      "country": "International",
+      "operator": "CMA",
+      "notes": "Tropical warm pool; fuels Southeast Asian monsoon; typhoon genesis"
+    },
+    {
+      "name": "Coral Triangle Thermal Stress",
+      "lat": -5.0,
+      "lon": 130.0,
+      "country": "Indonesia/Philippines",
+      "operator": "NOAA CRW",
+      "notes": "World's most biodiverse marine region; mass bleaching events"
+    }
+  ],
+  "cold_anomaly": [
+    {
+      "name": "Weddell Sea Cold Tongue",
+      "lat": -65.0,
+      "lon": -40.0,
+      "country": "Antarctica",
+      "operator": "BAS",
+      "notes": "Antarctic Bottom Water formation zone; drives global thermohaline circulation"
+    },
+    {
+      "name": "Benguela Upwelling Zone",
+      "lat": -25.0,
+      "lon": 12.0,
+      "country": "Namibia/South Africa",
+      "operator": "NOAA",
+      "notes": "Major cold-water upwelling; highly productive fishery; SST 8-14\u00b0C"
+    },
+    {
+      "name": "Humboldt Current Upwelling",
+      "lat": -15.0,
+      "lon": -78.0,
+      "country": "Peru/Chile",
+      "operator": "IMARPE",
+      "notes": "World's most productive fishery by tonnage; cold upwelling drives anchoveta"
+    },
+    {
+      "name": "California Current Upwelling",
+      "lat": 37.0,
+      "lon": -124.0,
+      "country": "USA",
+      "operator": "NOAA",
+      "notes": "Coastal upwelling zone; fog production; marine productivity hotspot"
+    },
+    {
+      "name": "North Atlantic Cold Blob",
+      "lat": 52.0,
+      "lon": -35.0,
+      "country": "International",
+      "operator": "NOAA / IPCC",
+      "notes": "Only region cooling in warming world; linked to AMOC weakening; Greenland melt input"
+    },
+    {
+      "name": "Canary Current Upwelling",
+      "lat": 25.0,
+      "lon": -17.0,
+      "country": "Morocco/Mauritania",
+      "operator": "NOAA",
+      "notes": "NW Africa upwelling; sardine/anchovy fishery; Saharan dust deposition"
+    }
+  ]
+}

@@ -1,0 +1,245 @@
+{
+  "_source": {
+    "description": "Active and historic launch sites worldwide",
+    "origin": "FAA/AST licensed launch site data (faa.gov/space), ESA launch facility profiles, and Jonathan McDowell's launch site database (planet4589.org).",
+    "retrieved": "2026-03-06",
+    "license": "FAA: public domain; McDowell: public reference",
+    "notes": "Coordinates from FAA site licenses and published facility coordinates."
+  },
+  "active": [
+    {
+      "name": "Kennedy Space Center LC-39A",
+      "lat": 28.608,
+      "lon": -80.604,
+      "country": "USA",
+      "operator": "SpaceX / NASA",
+      "notes": "Primary SpaceX Falcon 9/Heavy & Starship launch pad; historic Apollo/Shuttle pad"
+    },
+    {
+      "name": "Cape Canaveral SLC-40",
+      "lat": 28.562,
+      "lon": -80.577,
+      "country": "USA",
+      "operator": "SpaceX",
+      "notes": "High-tempo Falcon 9 pad, 40+ launches/year"
+    },
+    {
+      "name": "Cape Canaveral SLC-41",
+      "lat": 28.583,
+      "lon": -80.583,
+      "country": "USA",
+      "operator": "ULA",
+      "notes": "Atlas V and Vulcan Centaur launch complex"
+    },
+    {
+      "name": "Vandenberg SLC-4E",
+      "lat": 34.632,
+      "lon": -120.611,
+      "country": "USA",
+      "operator": "SpaceX",
+      "notes": "Polar orbit Falcon 9 launches, West Coast"
+    },
+    {
+      "name": "SpaceX Starbase (Boca Chica)",
+      "lat": 25.997,
+      "lon": -97.157,
+      "country": "USA",
+      "operator": "SpaceX",
+      "notes": "Starship development & launch facility; world's largest rocket"
+    },
+    {
+      "name": "Wallops Flight Facility",
+      "lat": 37.834,
+      "lon": -75.488,
+      "country": "USA",
+      "operator": "NASA / Rocket Lab",
+      "notes": "Antares/Cygnus ISS resupply; Electron launches"
+    },
+    {
+      "name": "Baikonur Cosmodrome",
+      "lat": 45.965,
+      "lon": 63.305,
+      "country": "Kazakhstan",
+      "operator": "Roscosmos",
+      "notes": "World's first spaceport; Soyuz, Proton launches; leased from Kazakhstan"
+    },
+    {
+      "name": "Vostochny Cosmodrome",
+      "lat": 51.884,
+      "lon": 128.334,
+      "country": "Russia",
+      "operator": "Roscosmos",
+      "notes": "Russia's newest spaceport in Amur Oblast; Soyuz-2 launches"
+    },
+    {
+      "name": "Plesetsk Cosmodrome",
+      "lat": 62.927,
+      "lon": 40.577,
+      "country": "Russia",
+      "operator": "Russian MoD",
+      "notes": "Primary Russian military launch site; most launches in history"
+    },
+    {
+      "name": "Jiuquan Satellite Launch Center",
+      "lat": 40.958,
+      "lon": 100.291,
+      "country": "China",
+      "operator": "CNSA / CASC",
+      "notes": "China's oldest launch site; crewed Shenzhou missions"
+    },
+    {
+      "name": "Xichang Satellite Launch Center",
+      "lat": 28.246,
+      "lon": 102.027,
+      "country": "China",
+      "operator": "CNSA / CASC",
+      "notes": "BeiDou navigation constellation; geostationary launches"
+    },
+    {
+      "name": "Wenchang Space Launch Site",
+      "lat": 19.614,
+      "lon": 110.951,
+      "country": "China",
+      "operator": "CNSA / CASC",
+      "notes": "China's newest & most equatorial site; Long March 5/7; Tiangong modules"
+    },
+    {
+      "name": "Satish Dhawan Space Centre (Sriharikota)",
+      "lat": 13.72,
+      "lon": 80.23,
+      "country": "India",
+      "operator": "ISRO",
+      "notes": "India's primary spaceport; PSLV, GSLV, LVM3 launches; Chandrayaan missions"
+    },
+    {
+      "name": "Guiana Space Centre (Kourou)",
+      "lat": 5.236,
+      "lon": -52.769,
+      "country": "French Guiana",
+      "operator": "ESA / Arianespace",
+      "notes": "European spaceport; Ariane 6, Vega-C; near-equatorial advantage"
+    },
+    {
+      "name": "Tanegashima Space Center",
+      "lat": 30.4,
+      "lon": 131.0,
+      "country": "Japan",
+      "operator": "JAXA",
+      "notes": "Japan's primary launch site; H-IIA/H3 rockets"
+    },
+    {
+      "name": "Uchinoura Space Center",
+      "lat": 31.251,
+      "lon": 131.079,
+      "country": "Japan",
+      "operator": "JAXA",
+      "notes": "Solid-fuel rocket launches; Epsilon vehicle"
+    },
+    {
+      "name": "Naro Space Center",
+      "lat": 34.432,
+      "lon": 127.535,
+      "country": "South Korea",
+      "operator": "KARI",
+      "notes": "South Korea's only spaceport; Nuri (KSLV-II) orbital launches"
+    },
+    {
+      "name": "Semnan Space Center",
+      "lat": 35.235,
+      "lon": 53.921,
+      "country": "Iran",
+      "operator": "ISA",
+      "notes": "Iran's primary launch facility; Simorgh & Qased vehicles"
+    },
+    {
+      "name": "Palmachim Airbase",
+      "lat": 31.897,
+      "lon": 34.691,
+      "country": "Israel",
+      "operator": "IAI / ISA",
+      "notes": "Shavit launches westward (retrograde orbit) over Mediterranean"
+    },
+    {
+      "name": "Rocket Lab LC-1 (Mahia)",
+      "lat": -39.262,
+      "lon": 177.865,
+      "country": "New Zealand",
+      "operator": "Rocket Lab",
+      "notes": "World's first private orbital launch complex; Electron vehicle"
+    },
+    {
+      "name": "Alc\u00e2ntara Launch Center",
+      "lat": -2.373,
+      "lon": -44.396,
+      "country": "Brazil",
+      "operator": "AEB / FAB",
+      "notes": "Most equatorial launch site in the world; VLS program"
+    },
+    {
+      "name": "Esrange Space Center",
+      "lat": 67.893,
+      "lon": 21.104,
+      "country": "Sweden",
+      "operator": "SSC",
+      "notes": "Suborbital rockets & high-altitude balloons; planned orbital launches"
+    },
+    {
+      "name": "SaxaVord Spaceport",
+      "lat": 60.825,
+      "lon": -0.855,
+      "country": "UK",
+      "operator": "SaxaVord",
+      "notes": "UK's first vertical launch site; Unst, Shetland Islands"
+    },
+    {
+      "name": "Arnhem Space Centre",
+      "lat": -12.444,
+      "lon": 136.817,
+      "country": "Australia",
+      "operator": "ELA",
+      "notes": "Australia's first commercial orbital launch site; NASA sounding rockets"
+    }
+  ],
+  "historic": [
+    {
+      "name": "Edwards AFB / Dryden (X-15 Program)",
+      "lat": 34.905,
+      "lon": -117.884,
+      "country": "USA",
+      "operator": "USAF / NASA",
+      "notes": "X-15 and Space Shuttle landing site; first supersonic flight"
+    },
+    {
+      "name": "White Sands Missile Range",
+      "lat": 32.39,
+      "lon": -106.48,
+      "country": "USA",
+      "operator": "US Army",
+      "notes": "V-2 tests, first US rocket launches; Trinity nuclear test site nearby"
+    },
+    {
+      "name": "Kapustin Yar",
+      "lat": 48.58,
+      "lon": 46.3,
+      "country": "Russia",
+      "operator": "Russian MoD",
+      "notes": "Soviet Union's first rocket launch site (1947); R-1 tests"
+    },
+    {
+      "name": "Woomera Test Range",
+      "lat": -31.2,
+      "lon": 136.834,
+      "country": "Australia",
+      "operator": "RAAF / UK",
+      "notes": "British rocket tests; Black Arrow, Europa launches (1960s)"
+    },
+    {
+      "name": "San Marco Platform",
+      "lat": -2.938,
+      "lon": 40.213,
+      "country": "Kenya (Italian)",
+      "operator": "ASI / University of Rome",
+      "notes": "Offshore equatorial launch platform; Scout rockets (1964-1988)"
+    }
+  ]
+}
