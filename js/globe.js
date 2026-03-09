@@ -11,10 +11,13 @@ export function createViewer(containerId) {
     animation: false, timeline: false, fullscreenButton: false,
     selectionIndicator: false, infoBox: false, scene3DOnly: true,
     imageryProvider: false,
+    msaaSamples: 4,
   });
 
   viewer.scene.backgroundColor = Cesium.Color.BLACK;
   viewer.scene.screenSpaceCameraController.minimumZoomDistance = 500;
+  viewer.scene.postProcessStages.fxaa.enabled = true;
+  viewer.resolutionScale = window.devicePixelRatio || 1;
 
   viewer.imageryLayers.addImageryProvider(
     new Cesium.OpenStreetMapImageryProvider({ url: 'https://tile.openstreetmap.org/' })
@@ -86,6 +89,24 @@ export const layers = {
   ionosphere: false,
   fishingfleets: false,
   arcticdeposits: false,
+  // Critical minerals
+  lithium: false, cobalt: false, nickel: false, graphite: false,
+  manganese: false, vanadium: false, reelight: false, reeheavy: false,
+  copper: false, bauxite: false, silicon: false, tin: false,
+  gallium: false, germanium: false, indium: false, tantalum: false,
+  niobium: false, tungsten: false, titanium: false, beryllium: false,
+  chromium: false, antimony: false, platinum: false, palladium: false,
+  uranium: false, tellurium: false, fluorspar: false, magnesium: false,
+  zinc: false, phosphate: false,
+  iridium: false, rhodium: false, molybdenum: false, zirconium: false,
+  hafnium: false, selenium: false, bismuth: false, cadmium: false,
+  silver: false, scandium: false,
+  kalshi: false,
+  crypto: false,
+  commodities: false,
+  news: false,
+  whalebtc: false,
+  wikipedia: false,
 };
 
 // Entity registries — each maps an ID to a record with { entity, ... }
@@ -140,6 +161,18 @@ export const entityMaps = {
   ionosphere:      new Map(),
   fishingfleets:   new Map(),
   arcticdeposits:  new Map(),
+  // Critical minerals
+  lithium: new Map(), cobalt: new Map(), nickel: new Map(), graphite: new Map(),
+  manganese: new Map(), vanadium: new Map(), reelight: new Map(), reeheavy: new Map(),
+  copper: new Map(), bauxite: new Map(), silicon: new Map(), tin: new Map(),
+  gallium: new Map(), germanium: new Map(), indium: new Map(), tantalum: new Map(),
+  niobium: new Map(), tungsten: new Map(), titanium: new Map(), beryllium: new Map(),
+  chromium: new Map(), antimony: new Map(), platinum: new Map(), palladium: new Map(),
+  uranium: new Map(), tellurium: new Map(), fluorspar: new Map(), magnesium: new Map(),
+  zinc: new Map(), phosphate: new Map(),
+  iridium: new Map(), rhodium: new Map(), molybdenum: new Map(), zirconium: new Map(),
+  hafnium: new Map(), selenium: new Map(), bismuth: new Map(), cadmium: new Map(),
+  silver: new Map(), scandium: new Map(),
 };
 
 // --- Layer Operations ---

@@ -12,7 +12,7 @@ import { registerLayerLoader } from '../layerregistry.js';
 
 const infraLayer = createDataLayer({
   layerKey: 'infra',
-  dataUrl: 'data/infrastructure.json',
+  dataUrl: 'data/layers/points/infrastructure.json',
   idPrefix: 'datacenter',
   iconSize: DISPLAY.INFRA_ICON_SIZE,
   countId: 'infra-count',
@@ -23,7 +23,7 @@ const infraLayer = createDataLayer({
   },
 });
 
-registerLayerLoader('infra', { load: infraLayer.load, flyTo: infraLayer.FLY_TO, reset: infraLayer.reset, dataUrl: 'data/infrastructure.json' });
+registerLayerLoader('infra', { load: infraLayer.load, flyTo: infraLayer.FLY_TO, reset: infraLayer.reset, dataUrl: 'data/layers/points/infrastructure.json' });
 
 export const fetchInfra    = infraLayer.load;
 export const isInfraLoaded = infraLayer.isLoaded;
@@ -34,7 +34,7 @@ export const INFRA_FLY_TO  = infraLayer.FLY_TO;
 
 const nuclearLayer = createDataLayer({
   layerKey: 'nuclear',
-  dataUrl: 'data/infrastructure.json',
+  dataUrl: 'data/layers/points/infrastructure.json',
   idPrefix: 'nuclear',
   iconSize: DISPLAY.INFRA_ICON_SIZE,
   countId: 'nuclear-count',
@@ -47,7 +47,7 @@ const nuclearLayer = createDataLayer({
   },
 });
 
-registerLayerLoader('nuclear', { load: nuclearLayer.load, flyTo: nuclearLayer.FLY_TO, reset: nuclearLayer.reset, dataUrl: 'data/infrastructure.json' });
+registerLayerLoader('nuclear', { load: nuclearLayer.load, flyTo: nuclearLayer.FLY_TO, reset: nuclearLayer.reset, dataUrl: 'data/layers/points/infrastructure.json' });
 
 export const fetchNuclear    = nuclearLayer.load;
 export const isNuclearLoaded = nuclearLayer.isLoaded;

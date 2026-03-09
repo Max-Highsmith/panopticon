@@ -67,7 +67,7 @@ export function createPathLayer(cfg) {
             hex: id, r: item.name, t: meta.label, flight: item.name,
             desc: (cfg.descFn || defaultDesc)(item, category),
             alt_baro: 0, gs: 0, track: 0,
-            _view: cfg.viewType || 'site',
+            _view: cfg.viewType || 'path',
           };
 
           // Label at midpoint

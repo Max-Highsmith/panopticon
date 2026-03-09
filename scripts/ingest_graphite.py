@@ -1,0 +1,940 @@
+#!/usr/bin/env python3
+"""
+Ingest natural graphite mining sites into Panopticon format.
+
+Primary sources:
+  - USGS Mineral Commodity Summaries 2024, Graphite (Natural) chapter
+    https://pubs.usgs.gov/periodicals/mcs2024/mcs2024-graphite.pdf
+  - S&P Global Market Intelligence mine profiles
+  - BGS World Mineral Production
+    https://www2.bgs.ac.uk/mineralsuk/statistics/worldStatistics.html
+  - Indian Bureau of Mines (https://ibm.gov.in/)
+  - DNPM Brazil / ANM (https://www.gov.br/anm/)
+  - Company annual reports and filings:
+    * Syrah Resources (ASX: SYR) — Balama mine, Mozambique
+    * NextSource Materials (TSX: NEXT) — Molo mine, Madagascar
+    * Black Rock Mining (ASX: BKT) — Mahenge/Epanko project, Tanzania
+    * Focus Graphite (TSXV: FMS) — Lac Knife project, Canada
+    * Mason Graphite (TSXV: LLG) — Lac Guéret project, Canada
+    * Northern Graphite (TSXV: NGC) — Lac des Îles mine, Canada
+    * Talga Group (ASX: TLG) — Vittangi project, Sweden
+    * AMG Advanced Metallurgical Group — Bogala mine, Sri Lanka
+    * Nouveau Monde Graphite (NYSE: NMG) — Matawinie project, Canada
+    * Graphite One (TSXV: GPH) — Graphite Creek project, Alaska
+    * Tirupati Graphite (LSE: TGR) — Karnataka mines, India
+    * Nacional de Grafite — Minas Gerais mines, Brazil
+    * Triton Minerals (ASX: TON) — Ancuabe project, Mozambique
+    * Battery Minerals (ASX: BAT) — Montepuez project, Mozambique
+    * Evolution Energy Minerals (ASX: EV1) — Chilalo project, Tanzania
+    * Magnis Energy Technologies (ASX: MNS) — Nachu project, Tanzania
+    * SRG Mining (TSXV: SRG) — Lola project, Guinea
+    * Mineral Commodities (ASX: MRC) — Skaland mine, Norway
+    * Leading Edge Materials (TSXV: LEM) — Woxna mine, Sweden
+    * Beowulf Mining (AIM: BEM) — Aitolampi project, Finland
+    * BTR New Energy Materials (SZ: 835185) — Jixi operations, China
+  - Coordinates verified against satellite imagery and company site maps.
+
+Since USGS MCS is published as PDF (not API), this script embeds curated
+site data compiled from the above sources and writes the Panopticon JSON.
+
+Usage:
+    python3 scripts/ingest_graphite.py
+
+Output:
+    data/layers/points/graphite.json
+"""
+
+import json
+import os
+import pathlib
+
+# Resolve project root (parent of scripts/)
+SCRIPT_DIR = pathlib.Path(__file__).resolve().parent
+PROJECT_ROOT = SCRIPT_DIR.parent
+OUTPUT_PATH = PROJECT_ROOT / "data" / "layers" / "points" / "graphite.json"
+
+SOURCE_METADATA = {
+    "description": "Major global natural graphite mining and production sites",
+    "origin": (
+        "USGS Mineral Commodity Summaries 2024 "
+        "(https://pubs.usgs.gov/periodicals/mcs2024/); "
+        "S&P Global Market Intelligence; "
+        "BGS World Mineral Production "
+        "(https://www2.bgs.ac.uk/mineralsuk/statistics/worldStatistics.html); "
+        "Indian Bureau of Mines (https://ibm.gov.in/); "
+        "DNPM Brazil (https://www.gov.br/anm/); "
+        "Company annual reports: Syrah Resources, NextSource, Black Rock Mining, "
+        "Northern Graphite, Talga Group, Nouveau Monde Graphite, Graphite One, "
+        "Tirupati Graphite, Nacional de Grafite, Triton Minerals, Evolution Energy, "
+        "Magnis Energy, SRG Mining, Leading Edge Materials, Beowulf Mining, "
+        "Focus Graphite, Mason Graphite, AMG Advanced Metallurgical Group"
+    ),
+    "retrieved": "2026-03-08",
+    "license": "USGS: public domain; BGS: Open Government Licence; company data: fair use summary",
+    "notes": (
+        "Comprehensive coverage of significant natural graphite operations globally. "
+        "China dominates with ~65% of global output (~1.0-1.1 Mt/yr mining capacity "
+        "across 9 mining districts; Qingdao listed separately as a processing hub). "
+        "India, Brazil, Mozambique, and Madagascar are other major producers. "
+        "Critical mineral for lithium-ion battery anodes "
+        "(anode-grade graphite demand growing >20%/yr). "
+        "Chinese district capacities calibrated to USGS MCS 2024 national total and "
+        "provincial production shares from BGS/S&P data. Heilongjiang province "
+        "districts (Luobei, Jixi, Beishan) sum to ~350,000 tpa reflecting the "
+        "province's dominant share of China's flake graphite output. "
+        "Coordinates from company filings and satellite verification. "
+        "Capacity audit performed 2026-03-08."
+    ),
+}
+
+SITES = [
+    # =========================================================================
+    # MOZAMBIQUE
+    # =========================================================================
+    {
+        "name": "Balama Graphite Mine",
+        "lat": -13.32,
+        "lon": 38.58,
+        "country": "Mozambique",
+        "operator": "Syrah Resources",
+        "ownership": "Syrah Resources (ASX: SYR) — 100%",
+        "status": "operating",
+        "type": "open-pit",
+        "products": ["flake graphite"],
+        "capacity_tpa": 350000,
+        "production_year": 2023,
+        "reserves_mt": 81.4,
+        "grade": "16.2% TGC (total graphitic carbon)",
+        "notes": (
+            "One of the world's largest integrated natural graphite mines. "
+            "Feeds Vidalia active anode material facility in Louisiana, USA. "
+            "Nameplate capacity 350,000 tpa but actual utilization has been "
+            "~100,000-150,000 tpa due to demand-driven production curtailments."
+        ),
+    },
+    {
+        "name": "Ancuabe Graphite Project",
+        "lat": -12.99,
+        "lon": 39.86,
+        "country": "Mozambique",
+        "operator": "Triton Minerals",
+        "ownership": "Triton Minerals (ASX: TON) — 100%",
+        "status": "development",
+        "type": "open-pit",
+        "products": ["flake graphite"],
+        "capacity_tpa": 100000,
+        "production_year": 2023,
+        "reserves_mt": 56.2,
+        "grade": "5.2% TGC",
+        "notes": (
+            "Cabo Delgado province, Mozambique. Large-flake graphite deposit "
+            "adjacent to Syrah's Balama operation. Part of the Mozambique graphite "
+            "belt, one of the world's richest graphite provinces."
+        ),
+    },
+    {
+        "name": "Montepuez Graphite Project",
+        "lat": -13.12,
+        "lon": 39.0,
+        "country": "Mozambique",
+        "operator": "Battery Minerals",
+        "ownership": "Battery Minerals (ASX: BAT) — 100%",
+        "status": "development",
+        "type": "open-pit",
+        "products": ["flake graphite"],
+        "capacity_tpa": 50000,
+        "production_year": 2023,
+        "reserves_mt": 15.8,
+        "grade": "6.1% TGC",
+        "notes": (
+            "Cabo Delgado province, Mozambique. Located within the prolific "
+            "Mozambique graphite corridor. Feasibility studies targeting "
+            "battery-grade concentrate production."
+        ),
+    },
+    # =========================================================================
+    # CHINA — ~65% of global production
+    # =========================================================================
+    {
+        "name": "Luobei Graphite District",
+        "lat": 47.58,
+        "lon": 130.28,
+        "country": "China",
+        "operator": "Multiple (Luobei County operators)",
+        "ownership": "Various Chinese state and private enterprises",
+        "status": "operating",
+        "type": "open-pit",
+        "products": ["flake graphite"],
+        "capacity_tpa": 200000,
+        "production_year": 2023,
+        "reserves_mt": None,
+        "grade": "5-15% TGC",
+        "notes": (
+            "Heilongjiang province hub. China's major flake graphite producing region. "
+            "Multiple mines and processing facilities in cluster."
+        ),
+    },
+    {
+        "name": "Jixi Graphite District",
+        "lat": 45.3,
+        "lon": 130.97,
+        "country": "China",
+        "operator": "BTR New Energy Materials / Multiple",
+        "ownership": "BTR New Energy (SZ: 835185) and various state/private enterprises",
+        "status": "operating",
+        "type": "open-pit",
+        "products": ["flake graphite"],
+        "capacity_tpa": 100000,
+        "production_year": 2023,
+        "reserves_mt": None,
+        "grade": "5-15% TGC",
+        "notes": (
+            "Heilongjiang province. Major large-flake graphite producing district. "
+            "Capacity reduced from earlier estimates to avoid overcount with Luobei "
+            "and Beishan districts (provincial total ~350,000 tpa). BTR New Energy "
+            "is one of the world's largest producers of anode-grade spherical "
+            "graphite, sourcing feedstock from this region."
+        ),
+    },
+    {
+        "name": "Beishan Graphite District",
+        "lat": 46.95,
+        "lon": 128.0,
+        "country": "China",
+        "operator": "Multiple (Heilongjiang operators)",
+        "ownership": "Various Chinese state and private enterprises",
+        "status": "operating",
+        "type": "open-pit",
+        "products": ["flake graphite"],
+        "capacity_tpa": 50000,
+        "production_year": 2023,
+        "reserves_mt": None,
+        "grade": "5-12% TGC",
+        "notes": (
+            "Central Heilongjiang province graphite production area. Smaller "
+            "district within the broader Heilongjiang graphite belt. Provincial "
+            "total (Luobei + Jixi + Beishan) ~350,000 tpa, consistent with "
+            "Heilongjiang's dominant share of China's flake graphite output."
+        ),
+    },
+    {
+        "name": "Laixi-Pingdu Graphite District",
+        "lat": 36.86,
+        "lon": 120.53,
+        "country": "China",
+        "operator": "Multiple (Qingdao area operators)",
+        "ownership": "Various Chinese state and private enterprises",
+        "status": "operating",
+        "type": "open-pit",
+        "products": ["flake graphite"],
+        "capacity_tpa": 150000,
+        "production_year": 2023,
+        "reserves_mt": None,
+        "grade": "4-12% TGC",
+        "notes": (
+            "Shandong province production center. Long-established graphite mining "
+            "region near port of Qingdao for export."
+        ),
+    },
+    {
+        "name": "Qingdao Graphite Processing Hub",
+        "lat": 36.07,
+        "lon": 120.38,
+        "country": "China",
+        "operator": "Multiple (Qingdao Haida, Qingdao Tianhe, etc.)",
+        "ownership": "Various Chinese state and private enterprises",
+        "status": "operating",
+        "type": "processing",
+        "products": ["spherical graphite", "coated spherical graphite", "purified flake graphite"],
+        "capacity_tpa": 150000,
+        "production_year": 2023,
+        "reserves_mt": None,
+        "grade": "varies by facility",
+        "notes": (
+            "Shandong province. Processing and export hub — not a mine. Capacity "
+            "figure represents processing throughput, not raw ore extraction. "
+            "Multiple companies operate purification, spheroidization, and coating "
+            "facilities. Processes feedstock sourced from Laixi-Pingdu and other "
+            "Chinese mining districts. Key port for Chinese graphite exports. "
+            "Do not sum with mining capacities to avoid double-counting."
+        ),
+    },
+    {
+        "name": "Xinghe Graphite District",
+        "lat": 40.67,
+        "lon": 113.83,
+        "country": "China",
+        "operator": "Multiple (Inner Mongolia operators)",
+        "ownership": "Various Chinese state and private enterprises",
+        "status": "operating",
+        "type": "open-pit",
+        "products": ["amorphous graphite", "flake graphite"],
+        "capacity_tpa": 120000,
+        "production_year": 2023,
+        "reserves_mt": None,
+        "grade": "60-85% carbon (amorphous); 5-10% TGC (flake)",
+        "notes": (
+            "Inner Mongolia production hub. Largest source of amorphous graphite globally. "
+            "Also produces some crystalline flake."
+        ),
+    },
+    {
+        "name": "Tianzhu Graphite District",
+        "lat": 36.97,
+        "lon": 103.13,
+        "country": "China",
+        "operator": "Multiple (Gansu state mines)",
+        "ownership": "Various Chinese state enterprises",
+        "status": "operating",
+        "type": "underground",
+        "products": ["microcrystalline graphite", "amorphous graphite"],
+        "capacity_tpa": 100000,
+        "production_year": 2023,
+        "reserves_mt": None,
+        "grade": "60-80% carbon (microcrystalline)",
+        "notes": (
+            "Gansu province. Significant microcrystalline/amorphous graphite production. "
+            "Used in steel, foundry, and refractories applications rather than battery anode."
+        ),
+    },
+    {
+        "name": "Chenzhou Graphite District",
+        "lat": 25.77,
+        "lon": 113.02,
+        "country": "China",
+        "operator": "Multiple (Hunan operators)",
+        "ownership": "Various Chinese state and private enterprises",
+        "status": "operating",
+        "type": "underground",
+        "products": ["microcrystalline graphite"],
+        "capacity_tpa": 150000,
+        "production_year": 2023,
+        "reserves_mt": None,
+        "grade": "65-85% carbon (microcrystalline)",
+        "notes": (
+            "Hunan province. One of China's largest microcrystalline (cryptocrystalline) "
+            "graphite producing regions. Hunan hosts an estimated 35% of China's "
+            "microcrystalline graphite reserves."
+        ),
+    },
+    {
+        "name": "Panzhihua Graphite District",
+        "lat": 26.58,
+        "lon": 101.72,
+        "country": "China",
+        "operator": "Multiple (Sichuan operators)",
+        "ownership": "Various Chinese state and private enterprises",
+        "status": "operating",
+        "type": "open-pit",
+        "products": ["amorphous graphite"],
+        "capacity_tpa": 80000,
+        "production_year": 2023,
+        "reserves_mt": None,
+        "grade": "55-75% carbon (amorphous)",
+        "notes": (
+            "Sichuan province. Amorphous graphite production associated with Panzhihua "
+            "vanadium-titanium magnetite mining region. Used in foundry coatings and refractories."
+        ),
+    },
+    {
+        "name": "Nanjiang Graphite District",
+        "lat": 32.35,
+        "lon": 106.83,
+        "country": "China",
+        "operator": "Multiple (Sichuan operators)",
+        "ownership": "Various Chinese state and private enterprises",
+        "status": "operating",
+        "type": "underground",
+        "products": ["microcrystalline graphite"],
+        "capacity_tpa": 60000,
+        "production_year": 2023,
+        "reserves_mt": None,
+        "grade": "60-80% carbon (microcrystalline)",
+        "notes": (
+            "Northern Sichuan province (Bazhong area). Microcrystalline graphite "
+            "production for industrial applications. Part of the Sichuan-Shaanxi "
+            "graphite belt."
+        ),
+    },
+    # =========================================================================
+    # INDIA — ~6% of global production
+    # =========================================================================
+    {
+        "name": "Srirangapatna Graphite Mine",
+        "lat": 12.42,
+        "lon": 76.69,
+        "country": "India",
+        "operator": "Tirupati Graphite",
+        "ownership": "Tirupati Graphite PLC (LSE: TGR) — 100%",
+        "status": "operating",
+        "type": "open-pit",
+        "products": ["flake graphite"],
+        "capacity_tpa": 30000,
+        "production_year": 2023,
+        "reserves_mt": None,
+        "grade": "5-12% TGC",
+        "notes": (
+            "Mandya district, Karnataka. Tirupati Graphite operates multiple mines "
+            "in Karnataka targeting battery-grade flake graphite. India is the world's "
+            "second-largest graphite producer (~6% global share)."
+        ),
+    },
+    {
+        "name": "Betul Graphite Mine",
+        "lat": 21.91,
+        "lon": 77.9,
+        "country": "India",
+        "operator": "HEG Limited",
+        "ownership": "HEG Ltd (BSE: 509631) — 100%",
+        "status": "operating",
+        "type": "open-pit",
+        "products": ["flake graphite"],
+        "capacity_tpa": 20000,
+        "production_year": 2023,
+        "reserves_mt": None,
+        "grade": "8-15% TGC",
+        "notes": (
+            "Madhya Pradesh. HEG is one of India's largest graphite electrode "
+            "manufacturers. Operates captive mines feeding electrode production. "
+            "India's Madhya Pradesh belt is a significant flake graphite source."
+        ),
+    },
+    {
+        "name": "Raichur Graphite District",
+        "lat": 16.2,
+        "lon": 77.37,
+        "country": "India",
+        "operator": "Multiple (Karnataka state mines)",
+        "ownership": "Various Indian state and private operators",
+        "status": "operating",
+        "type": "open-pit",
+        "products": ["flake graphite"],
+        "capacity_tpa": 15000,
+        "production_year": 2023,
+        "reserves_mt": None,
+        "grade": "6-12% TGC",
+        "notes": (
+            "Karnataka state. Multiple small and medium-scale graphite mining "
+            "operations. Karnataka and Jharkhand together account for the majority "
+            "of India's graphite output."
+        ),
+    },
+    # =========================================================================
+    # BRAZIL — ~8% of global production
+    # =========================================================================
+    {
+        "name": "Pedra Azul Graphite Mine",
+        "lat": -16.01,
+        "lon": -41.28,
+        "country": "Brazil",
+        "operator": "Nacional de Grafite",
+        "ownership": "Nacional de Grafite Ltda — private",
+        "status": "operating",
+        "type": "open-pit",
+        "products": ["flake graphite"],
+        "capacity_tpa": 40000,
+        "production_year": 2023,
+        "reserves_mt": None,
+        "grade": "5-10% TGC",
+        "notes": (
+            "Minas Gerais state. Nacional de Grafite is Brazil's largest natural "
+            "graphite producer. Brazil is the world's third-largest graphite "
+            "producer (~8% global share)."
+        ),
+    },
+    {
+        "name": "Itapecerica Graphite Mine",
+        "lat": -20.47,
+        "lon": -45.13,
+        "country": "Brazil",
+        "operator": "Nacional de Grafite",
+        "ownership": "Nacional de Grafite Ltda — private",
+        "status": "operating",
+        "type": "open-pit",
+        "products": ["flake graphite"],
+        "capacity_tpa": 35000,
+        "production_year": 2023,
+        "reserves_mt": None,
+        "grade": "5-8% TGC",
+        "notes": (
+            "Minas Gerais state. One of Nacional de Grafite's primary mining "
+            "operations. Company exports globally and is a key supplier to "
+            "refractories and battery sectors."
+        ),
+    },
+    {
+        "name": "Maiquinique Graphite Mine",
+        "lat": -15.62,
+        "lon": -40.26,
+        "country": "Brazil",
+        "operator": "Grafe Grafite",
+        "ownership": "Grafe Grafite Ltda — private",
+        "status": "operating",
+        "type": "open-pit",
+        "products": ["flake graphite"],
+        "capacity_tpa": 15000,
+        "production_year": 2023,
+        "reserves_mt": None,
+        "grade": "5-10% TGC",
+        "notes": (
+            "Bahia state. Grafe is a smaller Brazilian graphite producer operating "
+            "in the Bahia graphite belt. Supplies domestic and export markets."
+        ),
+    },
+    # =========================================================================
+    # TANZANIA
+    # =========================================================================
+    {
+        "name": "Merelani/Mautia Graphite",
+        "lat": -8.05,
+        "lon": 37.85,
+        "country": "Tanzania",
+        "operator": "Various (artisanal and junior miners)",
+        "ownership": "Various Tanzanian and international operators",
+        "status": "operating",
+        "type": "open-pit",
+        "products": ["flake graphite"],
+        "capacity_tpa": 40000,
+        "production_year": 2023,
+        "reserves_mt": None,
+        "grade": "8-12% TGC",
+        "notes": (
+            "Central Tanzania graphite belt. Multiple small-scale and artisanal operations. "
+            "Growing exploration interest for battery-grade material."
+        ),
+    },
+    {
+        "name": "Mahenge/Epanko Graphite Project",
+        "lat": -8.65,
+        "lon": 36.18,
+        "country": "Tanzania",
+        "operator": "Black Rock Mining",
+        "ownership": "Black Rock Mining (ASX: BKT) — 84%",
+        "status": "development",
+        "type": "open-pit",
+        "products": ["flake graphite"],
+        "capacity_tpa": 250000,
+        "production_year": 2023,
+        "reserves_mt": 31.7,
+        "grade": "7.8% TGC",
+        "notes": (
+            "Mahenge graphite belt. Large-scale project in development. "
+            "Offtake agreements with battery supply chain companies."
+        ),
+    },
+    {
+        "name": "Chilalo Graphite Project",
+        "lat": -9.92,
+        "lon": 35.6,
+        "country": "Tanzania",
+        "operator": "Evolution Energy Minerals",
+        "ownership": "Evolution Energy Minerals (ASX: EV1) — 100%",
+        "status": "development",
+        "type": "open-pit",
+        "products": ["flake graphite"],
+        "capacity_tpa": 40000,
+        "production_year": 2023,
+        "reserves_mt": 20.0,
+        "grade": "9.9% TGC",
+        "notes": (
+            "Ruangwa district, Lindi region, southeast Tanzania. High-grade flake "
+            "graphite deposit. Definitive feasibility study completed. Targeting "
+            "battery anode supply chain."
+        ),
+    },
+    {
+        "name": "Nachu Graphite Project",
+        "lat": -10.6,
+        "lon": 38.4,
+        "country": "Tanzania",
+        "operator": "Magnis Energy Technologies",
+        "ownership": "Magnis Energy Technologies (ASX: MNS) — 100%",
+        "status": "development",
+        "type": "open-pit",
+        "products": ["flake graphite"],
+        "capacity_tpa": 240000,
+        "production_year": 2023,
+        "reserves_mt": 174.0,
+        "grade": "5.4% TGC",
+        "notes": (
+            "Ruangwa district, southeastern Tanzania. One of the world's largest "
+            "known graphite deposits by tonnage. Environmental Impact Assessment "
+            "approved. Integrated with planned iM3NY battery facility in New York."
+        ),
+    },
+    # =========================================================================
+    # GUINEA
+    # =========================================================================
+    {
+        "name": "Lola Graphite Project",
+        "lat": 7.8,
+        "lon": -8.53,
+        "country": "Guinea",
+        "operator": "SRG Mining",
+        "ownership": "SRG Mining (TSXV: SRG) — 100%",
+        "status": "development",
+        "type": "open-pit",
+        "products": ["flake graphite"],
+        "capacity_tpa": 50000,
+        "production_year": 2023,
+        "reserves_mt": 5.3,
+        "grade": "4.2% TGC",
+        "notes": (
+            "Lola prefecture, southeastern Guinea near Liberian border. Large-flake "
+            "graphite deposit. Feasibility study completed. Significant jumbo and "
+            "large flake fraction (>60%)."
+        ),
+    },
+    # =========================================================================
+    # MADAGASCAR
+    # =========================================================================
+    {
+        "name": "Molo Graphite Mine",
+        "lat": -22.25,
+        "lon": 46.73,
+        "country": "Madagascar",
+        "operator": "NextSource Materials",
+        "ownership": "NextSource Materials (TSX: NEXT) — 100%",
+        "status": "operating",
+        "type": "open-pit",
+        "products": ["flake graphite"],
+        "capacity_tpa": 17000,
+        "production_year": 2023,
+        "reserves_mt": 14.3,
+        "grade": "6.3% TGC",
+        "notes": (
+            "Southern Madagascar. Phase 1 in production; Phase 2 expansion to "
+            "150,000 tpa planned. SuperFlake graphite product line."
+        ),
+    },
+    # =========================================================================
+    # SRI LANKA
+    # =========================================================================
+    {
+        "name": "Bogala Graphite Mine",
+        "lat": 7.17,
+        "lon": 80.23,
+        "country": "Sri Lanka",
+        "operator": "Bogala Graphite Lanka",
+        "ownership": "Graphit Kropfmühl (subsidiary of AMG Advanced Metallurgical Group)",
+        "status": "operating",
+        "type": "underground",
+        "products": ["vein graphite"],
+        "capacity_tpa": 10000,
+        "production_year": 2023,
+        "reserves_mt": None,
+        "grade": "90-99% carbon (vein graphite)",
+        "notes": (
+            "One of few remaining vein (lump) graphite mines globally. "
+            "Sri Lankan vein graphite is naturally high purity, commanding premium prices."
+        ),
+    },
+    {
+        "name": "Kahatagaha Graphite Mine",
+        "lat": 7.32,
+        "lon": 80.18,
+        "country": "Sri Lanka",
+        "operator": "Graphite Lanka Ltd",
+        "ownership": "Sri Lankan state/private joint venture",
+        "status": "operating",
+        "type": "underground",
+        "products": ["vein graphite"],
+        "capacity_tpa": 5000,
+        "production_year": 2023,
+        "reserves_mt": None,
+        "grade": "95-99% carbon (vein graphite)",
+        "notes": (
+            "Historic underground vein graphite mine. Sri Lanka is the only significant "
+            "source of naturally occurring vein graphite worldwide."
+        ),
+    },
+    # =========================================================================
+    # CANADA
+    # =========================================================================
+    {
+        "name": "Lac Knife Graphite Project",
+        "lat": 51.08,
+        "lon": -66.30,
+        "country": "Canada",
+        "operator": "Focus Graphite",
+        "ownership": "Focus Graphite (TSXV: FMS) — 100%",
+        "status": "development",
+        "type": "open-pit",
+        "products": ["flake graphite"],
+        "capacity_tpa": 44000,
+        "production_year": 2023,
+        "reserves_mt": 4.97,
+        "grade": "15.8% Cg (graphitic carbon)",
+        "notes": (
+            "Cote-Nord region, Quebec. Feasibility-stage project. "
+            "High-grade deposit targeting battery anode market."
+        ),
+    },
+    {
+        "name": "Lac Guéret Graphite Project",
+        "lat": 51.05,
+        "lon": -69.17,
+        "country": "Canada",
+        "operator": "Mason Graphite",
+        "ownership": "Mason Graphite (TSXV: LLG) — 100%",
+        "status": "development",
+        "type": "open-pit",
+        "products": ["flake graphite"],
+        "capacity_tpa": 51800,
+        "production_year": 2023,
+        "reserves_mt": 3.59,
+        "grade": "26.8% Cg (graphitic carbon)",
+        "notes": (
+            "Baie-Comeau area, Quebec. Exceptionally high-grade deposit. "
+            "Value-added processing facility planned in Baie-Comeau."
+        ),
+    },
+    {
+        "name": "Lac des Îles Graphite Mine",
+        "lat": 46.90,
+        "lon": -78.30,
+        "country": "Canada",
+        "operator": "Northern Graphite / Imerys",
+        "ownership": "Northern Graphite Corporation (TSXV: NGC) — 100%",
+        "status": "operating",
+        "type": "open-pit",
+        "products": ["flake graphite"],
+        "capacity_tpa": 25000,
+        "production_year": 2023,
+        "reserves_mt": 1.0,
+        "grade": "3.4% Cg (graphitic carbon)",
+        "notes": (
+            "Timiskaming region, Ontario (near Quebec border). One of few operating "
+            "graphite mines in North America. Acquired from Imerys in 2022."
+        ),
+    },
+    {
+        "name": "Matawinie Graphite Project",
+        "lat": 46.67,
+        "lon": -73.92,
+        "country": "Canada",
+        "operator": "Nouveau Monde Graphite",
+        "ownership": "Nouveau Monde Graphite (NYSE: NMG, TSXV: NOU) — 100%",
+        "status": "development",
+        "type": "open-pit",
+        "products": ["flake graphite"],
+        "capacity_tpa": 103000,
+        "production_year": 2023,
+        "reserves_mt": 34.4,
+        "grade": "4.35% Cg (graphitic carbon)",
+        "notes": (
+            "Saint-Michel-des-Saints, Quebec. Flagship project of NMG. Integrated "
+            "mine-to-anode strategy with Bécancour processing facility. First "
+            "all-electric open-pit mine in the world planned. USDOE loan commitment received."
+        ),
+    },
+    {
+        "name": "Uatnan Graphite Project",
+        "lat": 50.57,
+        "lon": -70.17,
+        "country": "Canada",
+        "operator": "Nouveau Monde Graphite",
+        "ownership": "Nouveau Monde Graphite (NYSE: NMG, TSXV: NOU) — 100%",
+        "status": "exploration",
+        "type": "open-pit",
+        "products": ["flake graphite"],
+        "capacity_tpa": 100000,
+        "production_year": 2023,
+        "reserves_mt": None,
+        "grade": None,
+        "notes": (
+            "Manicouagan area, Quebec. Phase 2 target capacity of 100,000 tpa "
+            "(per NI 43-101 technical report). Additional resource potential for "
+            "NMG's long-term supply pipeline."
+        ),
+    },
+    # =========================================================================
+    # UNITED STATES
+    # =========================================================================
+    {
+        "name": "Graphite Creek Project",
+        "lat": 65.0,
+        "lon": -163.2,
+        "country": "United States",
+        "operator": "Graphite One",
+        "ownership": "Graphite One Inc. (TSXV: GPH, OTCQX: GPHOF) — 100%",
+        "status": "development",
+        "type": "open-pit",
+        "products": ["flake graphite"],
+        "capacity_tpa": 60000,
+        "production_year": 2023,
+        "reserves_mt": 10.8,
+        "grade": "7.8% TGC",
+        "notes": (
+            "Seward Peninsula, Alaska. Largest known graphite deposit in the "
+            "United States (USGS-recognized). Mine-to-manufacturing integration "
+            "planned with processing facility in Washington state. Listed on "
+            "USGS critical minerals list."
+        ),
+    },
+    # =========================================================================
+    # EUROPE
+    # =========================================================================
+    {
+        "name": "Vittangi Graphite Project",
+        "lat": 65.83,
+        "lon": 20.22,
+        "country": "Sweden",
+        "operator": "Talga Group",
+        "ownership": "Talga Group (ASX: TLG) — 100%",
+        "status": "development",
+        "type": "open-pit",
+        "products": ["flake graphite"],
+        "capacity_tpa": 19500,
+        "production_year": 2023,
+        "reserves_mt": 7.56,
+        "grade": "24.7% TGC",
+        "notes": (
+            "Norrbotten County, northern Sweden. Integrated mine-to-anode project. "
+            "EU Critical Raw Materials Act strategic project. Talnode-C anode product."
+        ),
+    },
+    {
+        "name": "Skaland Graphite Mine",
+        "lat": 69.12,
+        "lon": 17.2,
+        "country": "Norway",
+        "operator": "Skaland Graphite / Mineral Commodities",
+        "ownership": "Mineral Commodities Ltd (ASX: MRC) — 100%",
+        "status": "operating",
+        "type": "underground",
+        "products": ["flake graphite"],
+        "capacity_tpa": 10000,
+        "production_year": 2023,
+        "reserves_mt": None,
+        "grade": "22-32% TGC",
+        "notes": (
+            "Senja island, Troms, northern Norway (Trælen mine). Europe's only "
+            "operating natural graphite mine as of 2023. High-grade crystalline "
+            "flake graphite. Operational since 1917."
+        ),
+    },
+    {
+        "name": "Woxna Graphite Mine",
+        "lat": 61.52,
+        "lon": 15.58,
+        "country": "Sweden",
+        "operator": "Leading Edge Materials",
+        "ownership": "Leading Edge Materials Corp (TSXV: LEM) — 100%",
+        "status": "care-and-maintenance",
+        "type": "open-pit",
+        "products": ["flake graphite"],
+        "capacity_tpa": 10000,
+        "production_year": 2023,
+        "reserves_mt": 1.8,
+        "grade": "8.0% TGC",
+        "notes": (
+            "Gävleborg County, central Sweden. Historic graphite mine on "
+            "care-and-maintenance. EU Critical Raw Materials project. Restart "
+            "studies in progress targeting battery-grade production."
+        ),
+    },
+    {
+        "name": "Aitolampi Graphite Project",
+        "lat": 62.93,
+        "lon": 27.8,
+        "country": "Finland",
+        "operator": "Beowulf Mining",
+        "ownership": "Beowulf Mining PLC (AIM: BEM) — 100%",
+        "status": "exploration",
+        "type": "open-pit",
+        "products": ["flake graphite"],
+        "capacity_tpa": 15000,
+        "production_year": 2023,
+        "reserves_mt": 1.5,
+        "grade": "4.8% TGC",
+        "notes": (
+            "Eastern Finland. PEA-stage project with estimated 15,000 tpa capacity "
+            "(Beowulf Mining PEA). EU Critical Raw Materials Act potential strategic "
+            "project. Scoping study indicates amenability to battery-grade "
+            "concentrate production."
+        ),
+    },
+    {
+        "name": "Zavalye Graphite Mine",
+        "lat": 48.85,
+        "lon": 30.92,
+        "country": "Ukraine",
+        "operator": "Zavalye Graphite",
+        "ownership": "Zavalye Graphite (Ukrainian state/private)",
+        "status": "operating",
+        "type": "open-pit",
+        "products": ["flake graphite", "amorphous graphite"],
+        "capacity_tpa": 30000,
+        "production_year": 2023,
+        "reserves_mt": None,
+        "grade": "5-10% TGC (flake); 60-75% carbon (amorphous)",
+        "notes": (
+            "Kirovohrad Oblast, central Ukraine. One of the largest graphite deposits "
+            "in Europe. Operations impacted by the ongoing conflict. Historically "
+            "significant supplier to European and CIS markets."
+        ),
+    },
+    # =========================================================================
+    # OTHER ASIA
+    # =========================================================================
+    {
+        "name": "Geumgang Graphite District",
+        "lat": 38.95,
+        "lon": 127.7,
+        "country": "North Korea",
+        "operator": "State-operated (DPRK)",
+        "ownership": "DPRK state enterprises",
+        "status": "operating",
+        "type": "underground",
+        "products": ["amorphous graphite"],
+        "capacity_tpa": 30000,
+        "production_year": 2023,
+        "reserves_mt": None,
+        "grade": "60-80% carbon (amorphous)",
+        "notes": (
+            "Kangwon Province. North Korea is a significant amorphous graphite "
+            "producer (~30,000 tpa per USGS estimates). Limited data available "
+            "due to international sanctions. Primarily exports to China."
+        ),
+    },
+    {
+        "name": "Kütahya Graphite District",
+        "lat": 39.42,
+        "lon": 29.98,
+        "country": "Turkey",
+        "operator": "Multiple (Turkish operators)",
+        "ownership": "Various Turkish state and private enterprises",
+        "status": "operating",
+        "type": "underground",
+        "products": ["amorphous graphite"],
+        "capacity_tpa": 25000,
+        "production_year": 2023,
+        "reserves_mt": None,
+        "grade": "50-70% carbon (amorphous)",
+        "notes": (
+            "Kütahya province, western Turkey. Multiple small-scale amorphous "
+            "graphite operations. Turkey produces ~25,000 tpa, primarily amorphous "
+            "grade for industrial applications (refractories, foundry, pencils)."
+        ),
+    },
+]
+
+
+def main():
+    output = {
+        "_source": SOURCE_METADATA,
+        "sites": SITES,
+    }
+
+    # Ensure output directory exists
+    OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
+
+    with open(OUTPUT_PATH, "w", encoding="utf-8") as f:
+        json.dump(output, f, indent=2, ensure_ascii=False)
+
+    print(f"Wrote {len(SITES)} graphite sites to {OUTPUT_PATH}")
+
+
+if __name__ == "__main__":
+    main()

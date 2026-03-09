@@ -5,14 +5,17 @@
    =================================================================== */
 
 import { $ } from './utils.js';
-import { startAnimLoop } from './viewbase.js';
+import { startAnimLoop, setupOverlayCanvas } from './viewbase.js';
 import { registerView } from './viewregistry.js';
 
 let webcamViewOpen = false;
 let webcamViewTarget = null;
 let overlayHandle = null;
+let videoOverlayHandle = null;
 let hlsInstance = null;
 let currentMode = null; // 'hls' | 'youtube'
+let frameCounter = 0;
+let surveillanceOn = true;
 
 export function isWebcamViewOpen() { return webcamViewOpen; }
 export function resizeWebcamView() { /* iframe/video auto-resizes */ }
@@ -134,7 +137,211 @@ function renderInfoCanvas() {
   ctx.globalAlpha = 1;
 }
 
-// overlay loop managed via startAnimLoop from viewbase.js
+// --- Canvas overlay: spy-movie surveillance HUD on top of video feed ---
+
+function renderVideoOverlay() {
+  if (!surveillanceOn) return;
+  const canvas = $('webcam-video-overlay');
+  const setup = setupOverlayCanvas(canvas);
+  if (!setup) return;
+  const { ctx, W, H } = setup;
+  frameCounter++;
+
+  ctx.clearRect(0, 0, W, H);
+
+  const ac = webcamViewTarget?.acData;
+  const now = new Date();
+  const t = Date.now();
+
+  // --- Vignette (dark edges) ---
+  const vig = ctx.createRadialGradient(W / 2, H / 2, Math.min(W, H) * 0.25, W / 2, H / 2, Math.max(W, H) * 0.72);
+  vig.addColorStop(0, 'rgba(0,0,0,0)');
+  vig.addColorStop(0.6, 'rgba(0,0,0,0.08)');
+  vig.addColorStop(1, 'rgba(0,0,0,0.55)');
+  ctx.fillStyle = vig;
+  ctx.fillRect(0, 0, W, H);
+
+  // --- Scanlines ---
+  ctx.fillStyle = 'rgba(0,0,0,0.07)';
+  for (let y = 0; y < H; y += 2) ctx.fillRect(0, y, W, 1);
+
+  // --- Moving scan bar ---
+  const scanY = (t / 30) % H;
+  const scanGrad = ctx.createLinearGradient(0, scanY - 20, 0, scanY + 20);
+  scanGrad.addColorStop(0, 'rgba(0,255,65,0)');
+  scanGrad.addColorStop(0.5, 'rgba(0,255,65,0.06)');
+  scanGrad.addColorStop(1, 'rgba(0,255,65,0)');
+  ctx.fillStyle = scanGrad;
+  ctx.fillRect(0, scanY - 20, W, 40);
+
+  // --- Corner brackets ---
+  const bLen = Math.min(40, W * 0.08);
+  const bInset = 14;
+  ctx.strokeStyle = 'rgba(0,255,65,0.5)';
+  ctx.lineWidth = 1.5;
+  // Top-left
+  ctx.beginPath();
+  ctx.moveTo(bInset, bInset + bLen); ctx.lineTo(bInset, bInset); ctx.lineTo(bInset + bLen, bInset);
+  ctx.stroke();
+  // Top-right
+  ctx.beginPath();
+  ctx.moveTo(W - bInset - bLen, bInset); ctx.lineTo(W - bInset, bInset); ctx.lineTo(W - bInset, bInset + bLen);
+  ctx.stroke();
+  // Bottom-left
+  ctx.beginPath();
+  ctx.moveTo(bInset, H - bInset - bLen); ctx.lineTo(bInset, H - bInset); ctx.lineTo(bInset + bLen, H - bInset);
+  ctx.stroke();
+  // Bottom-right
+  ctx.beginPath();
+  ctx.moveTo(W - bInset - bLen, H - bInset); ctx.lineTo(W - bInset, H - bInset); ctx.lineTo(W - bInset, H - bInset - bLen);
+  ctx.stroke();
+
+  // --- Center crosshair / reticle ---
+  const cx = W / 2, cy = H / 2;
+  const rOuter = Math.min(W, H) * 0.08;
+  const rInner = rOuter * 0.4;
+  const gap = rOuter * 0.15;
+
+  ctx.strokeStyle = 'rgba(0,255,65,0.3)';
+  ctx.lineWidth = 1;
+  // Outer circle
+  ctx.beginPath();
+  ctx.arc(cx, cy, rOuter, 0, Math.PI * 2);
+  ctx.stroke();
+  // Inner circle
+  ctx.beginPath();
+  ctx.arc(cx, cy, rInner, 0, Math.PI * 2);
+  ctx.stroke();
+  // Cross lines with gap
+  ctx.beginPath();
+  ctx.moveTo(cx - rOuter * 1.4, cy); ctx.lineTo(cx - gap, cy);
+  ctx.moveTo(cx + gap, cy); ctx.lineTo(cx + rOuter * 1.4, cy);
+  ctx.moveTo(cx, cy - rOuter * 1.4); ctx.lineTo(cx, cy - gap);
+  ctx.moveTo(cx, cy + gap); ctx.lineTo(cx, cy + rOuter * 1.4);
+  ctx.stroke();
+
+  // Tick marks on outer circle (every 45 deg)
+  ctx.strokeStyle = 'rgba(0,255,65,0.25)';
+  for (let i = 0; i < 8; i++) {
+    const ang = (i / 8) * Math.PI * 2;
+    ctx.beginPath();
+    ctx.moveTo(cx + Math.cos(ang) * (rOuter - 3), cy + Math.sin(ang) * (rOuter - 3));
+    ctx.lineTo(cx + Math.cos(ang) * (rOuter + 5), cy + Math.sin(ang) * (rOuter + 5));
+    ctx.stroke();
+  }
+
+  // --- "REC" indicator (top-left, blinking) ---
+  const recVisible = Math.floor(t / 700) % 2 === 0;
+  if (recVisible) {
+    ctx.fillStyle = 'rgba(255,40,40,0.9)';
+    ctx.beginPath();
+    ctx.arc(bInset + 8, bInset + bLen + 22, 4, 0, Math.PI * 2);
+    ctx.fill();
+  }
+  ctx.font = 'bold 11px Courier New';
+  ctx.fillStyle = 'rgba(255,40,40,0.8)';
+  ctx.textAlign = 'left';
+  ctx.fillText('REC', bInset + 16, bInset + bLen + 26);
+
+  // --- Classification banner (top-center) ---
+  ctx.font = 'bold 10px Courier New';
+  ctx.fillStyle = 'rgba(0,255,65,0.4)';
+  ctx.textAlign = 'center';
+  ctx.fillText('CLASSIFIED // NOFORN // PANOPTICON', W / 2, bInset + 10);
+
+  // --- Timestamp + frame (bottom-left) ---
+  ctx.font = '10px Courier New';
+  ctx.fillStyle = 'rgba(0,255,65,0.6)';
+  ctx.textAlign = 'left';
+  const ts = now.toISOString().replace('T', ' ').slice(0, 19) + ' UTC';
+  ctx.fillText(ts, bInset + 4, H - bInset - bLen - 4);
+  ctx.font = '9px Courier New';
+  ctx.fillStyle = 'rgba(0,255,65,0.35)';
+  ctx.fillText('FRM ' + String(frameCounter).padStart(6, '0'), bInset + 4, H - bInset - bLen + 8);
+
+  // --- Coordinates (bottom-right) ---
+  if (ac) {
+    ctx.font = '10px Courier New';
+    ctx.fillStyle = 'rgba(0,255,65,0.5)';
+    ctx.textAlign = 'right';
+    const lat = ac.lat != null ? ac.lat.toFixed(4) + '\u00B0' : '---';
+    const lon = ac.lon != null ? ac.lon.toFixed(4) + '\u00B0' : '---';
+    ctx.fillText(`LAT ${lat}`, W - bInset - 4, H - bInset - bLen - 4);
+    ctx.fillText(`LON ${lon}`, W - bInset - 4, H - bInset - bLen + 8);
+  }
+
+  // --- Signal strength bars (top-right) ---
+  const barX = W - bInset - 4;
+  const barY = bInset + bLen + 16;
+  const barW = 3, barGap = 2, barCount = 5;
+  const signalLevel = 3 + Math.floor(Math.sin(t / 2000) * 1.5 + 1.5); // fluctuate 2-5
+  ctx.textAlign = 'right';
+  ctx.font = '8px Courier New';
+  ctx.fillStyle = 'rgba(0,255,65,0.4)';
+  ctx.fillText('SIG', barX - (barW + barGap) * barCount - 2, barY + 12);
+  for (let i = 0; i < barCount; i++) {
+    const bh = 4 + i * 2;
+    const bx = barX - (barCount - i) * (barW + barGap);
+    const active = i < signalLevel;
+    ctx.fillStyle = active ? 'rgba(0,255,65,0.6)' : 'rgba(0,255,65,0.12)';
+    ctx.fillRect(bx, barY + 14 - bh, barW, bh);
+  }
+
+  // --- Random noise specks (subtle) ---
+  ctx.fillStyle = 'rgba(0,255,65,0.03)';
+  const seed = (frameCounter * 7) % 997;
+  for (let i = 0; i < 30; i++) {
+    const px = ((seed * (i + 1) * 13) % 997) / 997 * W;
+    const py = ((seed * (i + 1) * 29) % 991) / 991 * H;
+    ctx.fillRect(px, py, 1, 1);
+  }
+
+  // --- Grid overlay (very subtle) ---
+  ctx.strokeStyle = 'rgba(0,255,65,0.03)';
+  ctx.lineWidth = 0.5;
+  const gridSp = 50;
+  for (let x = gridSp; x < W; x += gridSp) {
+    ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, H); ctx.stroke();
+  }
+  for (let y = gridSp; y < H; y += gridSp) {
+    ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(W, y); ctx.stroke();
+  }
+
+  // --- Feed ID (bottom-center) ---
+  ctx.font = '8px Courier New';
+  ctx.fillStyle = 'rgba(0,255,65,0.25)';
+  ctx.textAlign = 'center';
+  const feedId = ac ? `FEED-${(ac.city || 'UNK').slice(0, 3).toUpperCase()}-${String(Math.abs(hashCode(ac.flight || 'X'))).slice(0, 4)}` : 'FEED-0000';
+  ctx.fillText(feedId + ' // CH-' + (currentMode === 'hls' ? '01' : '02'), W / 2, H - bInset - 4);
+}
+
+function hashCode(s) {
+  let h = 0;
+  for (let i = 0; i < s.length; i++) h = ((h << 5) - h + s.charCodeAt(i)) | 0;
+  return h;
+}
+
+function applySurveillanceState() {
+  const wrapper = $('webcam-embed-wrapper');
+  const btn = $('webcam-surveillance-toggle');
+  if (wrapper) wrapper.classList.toggle('surveillance', surveillanceOn);
+  if (btn) btn.classList.toggle('active', surveillanceOn);
+  // Clear the overlay canvas when turning off so it doesn't freeze on last frame
+  if (!surveillanceOn) {
+    const canvas = $('webcam-video-overlay');
+    if (canvas) {
+      const ctx = canvas.getContext('2d');
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }
+  }
+}
+
+function toggleSurveillance() {
+  surveillanceOn = !surveillanceOn;
+  applySurveillanceState();
+}
+
+// overlay loops managed via startAnimLoop from viewbase.js
 
 // --- Build embed URL for YouTube live stream ---
 function buildEmbedUrl(ytId) {
@@ -253,6 +460,13 @@ export function openWebcamView(viewer, entity) {
   }
 
   overlayHandle = startAnimLoop(renderInfoCanvas);
+  videoOverlayHandle = startAnimLoop(renderVideoOverlay);
+  frameCounter = 0;
+
+  // Apply surveillance filter state + bind toggle
+  applySurveillanceState();
+  const togBtn = $('webcam-surveillance-toggle');
+  if (togBtn) togBtn.onclick = toggleSurveillance;
 
   setTimeout(() => viewer.resize(), 400);
 }
@@ -274,6 +488,7 @@ export function closeWebcamView(viewer) {
   if (iframe) iframe.src = 'about:blank';
 
   if (overlayHandle) { overlayHandle.stop(); overlayHandle = null; }
+  if (videoOverlayHandle) { videoOverlayHandle.stop(); videoOverlayHandle = null; }
 
   setTimeout(() => viewer.resize(), 400);
 }

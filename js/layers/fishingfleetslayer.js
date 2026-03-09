@@ -7,7 +7,7 @@ import { registerLayerLoader } from '../layerregistry.js';
 
 const layer = createRegionLayer({
   layerKey: 'fishingfleets',
-  dataUrl: 'data/fishing_fleets.json',
+  layerType: 'region', dataUrl: 'data/layers/regions/fishing_fleets.json',
   idPrefix: 'ffleet',
   countId: 'fishingfleets-count',
   logLabel: 'FISHING FLEETS',
@@ -18,7 +18,7 @@ const layer = createRegionLayer({
   },
 });
 
-registerLayerLoader('fishingfleets', { load: layer.load, flyTo: layer.FLY_TO, reset: layer.reset, dataUrl: 'data/fishing_fleets.json' });
+registerLayerLoader('fishingfleets', { load: layer.load, flyTo: layer.FLY_TO, reset: layer.reset, layerType: 'region', dataUrl: 'data/layers/regions/fishing_fleets.json' });
 
 export const fetchFishingFleets     = layer.load;
 export const isFishingFleetsLoaded  = layer.isLoaded;

@@ -19,7 +19,7 @@
     "startUTC": 28800
   },
   "data": {
-    "file": "venezuela_jan03.json"
+    "file": "data/playback/venezuela_jan03.json"
   },
   "display": {
     "localTz": { "name": "VET", "offset": -4 },

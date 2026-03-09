@@ -8,7 +8,7 @@ import { registerLayerLoader } from '../layerregistry.js';
 
 const layer = createDataLayer({
   layerKey: 'ionosphere',
-  dataUrl: 'data/ionosphere.json',
+  dataUrl: 'data/layers/points/ionosphere.json',
   idPrefix: 'iono',
   iconSize: DISPLAY.MINE_ICON_SIZE,
   countId: 'ionosphere-count',
@@ -20,7 +20,7 @@ const layer = createDataLayer({
   },
 });
 
-registerLayerLoader('ionosphere', { load: layer.load, flyTo: layer.FLY_TO, reset: layer.reset, dataUrl: 'data/ionosphere.json' });
+registerLayerLoader('ionosphere', { load: layer.load, flyTo: layer.FLY_TO, reset: layer.reset, dataUrl: 'data/layers/points/ionosphere.json' });
 
 export const fetchIonosphere     = layer.load;
 export const isIonosphereLoaded  = layer.isLoaded;

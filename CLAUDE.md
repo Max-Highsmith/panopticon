@@ -32,16 +32,21 @@ Every data layer MUST have a corresponding ingestion script in `scripts/`. The s
 - Downloading from the authoritative source (API, CSV, database export)
 - Parsing and transforming into the app's JSON format
 - Including the `_source` metadata in the output
-- Being runnable with `python3 scripts/ingest_<layer>.py` to regenerate `data/<layer>.json`
+- Being runnable with `python3 scripts/ingest_<layer>.py` to regenerate the corresponding file in `data/layers/`
 
-Existing script: `scripts/prepare_airports.py` → `data/airports.json` (downloads from OurAirports CSV).
+Existing script: `scripts/prepare_airports.py` → `data/layers/points/airports.json` (downloads from OurAirports CSV).
 
 If a source requires manual steps (e.g. account registration, manual download), document those steps clearly in the script header. The script should still handle the parsing/transformation from the downloaded file.
 
 ## Directory Structure
 
-- `data/` — Runtime data only. JSON files loaded by the app.
-- `data/custom/` — User-defined datasets (GeoJSON, CSV, KML).
+- `data/` — All runtime data loaded by the app.
+  - `data/layers/points/` — Point layer JSON (mines, airports, nuclear plants, etc.)
+  - `data/layers/paths/` — Path layer JSON (cables, pipelines, migrations, etc.)
+  - `data/layers/regions/` — Region layer JSON (chokepoints, fisheries, sea ice, etc.)
+  - `data/layers/ambient/` — Non-geographic layer data (future: markets, prices, feeds)
+  - `data/playback/` — ADS-B trace data for historical replay
+  - `data/custom/` — User-defined datasets (GeoJSON, CSV, KML)
 - `scripts/` — One-time data extraction/processing tools. Not part of app runtime.
 - `scenarios/` — Wargame scenario definitions.
 - `server/` — Wargame server (Express + WebSocket + LLM adapters).

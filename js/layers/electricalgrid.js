@@ -8,7 +8,7 @@ import { registerLayerLoader } from '../layerregistry.js';
 
 const layer = createPathLayer({
   layerKey: 'electricalgrid',
-  dataUrl: 'data/electrical_grid.json',
+  layerType: 'path', dataUrl: 'data/layers/paths/electrical_grid.json',
   idPrefix: 'grid',
   countId: 'electricalgrid-count',
   logLabel: 'ELECTRICAL GRID',
@@ -20,7 +20,7 @@ const layer = createPathLayer({
   },
 });
 
-registerLayerLoader('electricalgrid', { load: layer.load, flyTo: layer.FLY_TO, reset: layer.reset, dataUrl: 'data/electrical_grid.json' });
+registerLayerLoader('electricalgrid', { load: layer.load, flyTo: layer.FLY_TO, reset: layer.reset, layerType: 'path', dataUrl: 'data/layers/paths/electrical_grid.json' });
 
 export const fetchElectricalGrid     = layer.load;
 export const isElectricalGridLoaded  = layer.isLoaded;

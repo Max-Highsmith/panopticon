@@ -19,7 +19,7 @@ TRACES_DIR = "./traces"
 # 2026-03-01 16:17:09Z ±15 min
 TIME_START = 57720  # 16:02 UTC
 TIME_END = 59520    # 16:32 UTC
-OUTPUT_FILE = "../military_feb28.json"
+OUTPUT_FILE = "../data/playback/military_feb28.json"
 
 # Bounding box: Iran + all border countries
 LAT_MIN = 12.0

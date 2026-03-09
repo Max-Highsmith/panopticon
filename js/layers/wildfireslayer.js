@@ -8,7 +8,7 @@ import { registerLayerLoader } from '../layerregistry.js';
 
 const layer = createDataLayer({
   layerKey: 'wildfires',
-  dataUrl: 'data/wildfires.json',
+  dataUrl: 'data/layers/points/wildfires.json',
   idPrefix: 'fire',
   iconSize: DISPLAY.MINE_ICON_SIZE,
   countId: 'wildfires-count',
@@ -21,7 +21,7 @@ const layer = createDataLayer({
   },
 });
 
-registerLayerLoader('wildfires', { load: layer.load, flyTo: layer.FLY_TO, reset: layer.reset, dataUrl: 'data/wildfires.json' });
+registerLayerLoader('wildfires', { load: layer.load, flyTo: layer.FLY_TO, reset: layer.reset, dataUrl: 'data/layers/points/wildfires.json' });
 
 export const fetchWildfires     = layer.load;
 export const isWildfiresLoaded  = layer.isLoaded;

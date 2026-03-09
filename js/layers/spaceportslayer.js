@@ -8,7 +8,7 @@ import { registerLayerLoader } from '../layerregistry.js';
 
 const layer = createDataLayer({
   layerKey: 'spaceports',
-  dataUrl: 'data/spaceports.json',
+  dataUrl: 'data/layers/points/spaceports.json',
   idPrefix: 'launch',
   iconSize: DISPLAY.MINE_ICON_SIZE,
   countId: 'spaceports-count',
@@ -20,7 +20,7 @@ const layer = createDataLayer({
   },
 });
 
-registerLayerLoader('spaceports', { load: layer.load, flyTo: layer.FLY_TO, reset: layer.reset, dataUrl: 'data/spaceports.json' });
+registerLayerLoader('spaceports', { load: layer.load, flyTo: layer.FLY_TO, reset: layer.reset, dataUrl: 'data/layers/points/spaceports.json' });
 
 export const fetchSpaceports     = layer.load;
 export const isSpaceportsLoaded  = layer.isLoaded;

@@ -6,6 +6,7 @@ import { API, LIMITS } from '../config.js';
 import { $ } from '../utils.js';
 import { entityMaps, clearLayer } from '../globe.js';
 import { createLiveEntity, updateLiveEntity, pruneByAge, LIVE_STYLES } from './livelayer.js';
+import { registerLayerLoader } from '../layerregistry.js';
 
 const entities = entityMaps.ships;
 let socket = null;
@@ -78,3 +79,5 @@ export function stopAIS(viewer) {
   if (socket) { socket.close(); socket = null; }
   clearLayer(viewer, entities);
 }
+
+registerLayerLoader('ships', { load: startAIS, reset: () => { if (socket) { socket.close(); socket = null; } }, view: 'plane', layerType: 'live' });

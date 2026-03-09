@@ -1,0 +1,413 @@
+{
+  "_source": {
+    "description": "Major global beryllium mining, processing, and production sites",
+    "origin": "USGS Mineral Commodity Summaries 2024, Beryllium chapter (https://pubs.usgs.gov/periodicals/mcs2024/mcs2024-beryllium.pdf); USGS Mineral Resources Data System (https://mrdata.usgs.gov/mrds/); Materion Corporation (NYSE: MTRN) 10-K 2023, Annual Report 2023, and Investor Presentations; Kazatomprom (LSE: KAP) Annual Report 2023 (Ulba Metallurgical Plant); S&P Global Market Intelligence mine profiles; British Geological Survey World Mineral Production data; Panasqueira mine (Almonty Industries, TSX: AII) annual reports; Alto Ligonha pegmatite district geological surveys (Mozambique Geological Survey); India Atomic Minerals Directorate reports; USGS Professional Paper 1802-D (Critical Mineral Resources — Beryllium)",
+    "retrieved": "2026-03-08",
+    "license": "USGS: public domain; company data: fair use summary; BGS: Open Government License",
+    "notes": "Beryllium is an extremely small-market critical mineral (~300 tonnes/yr Be content globally). The USA (Materion Corporation, formerly Brush Engineered Materials) dominates global production at ~60%, operating the world's only large-scale bertrandite mine at Spor Mountain, Utah, and the primary refinery at Elmore, Ohio. China is the second-largest producer (~20%). Most other sources are artisanal beryl (emerald-grade pegmatite by-product) from Mozambique, Madagascar, Brazil, and other pegmatite provinces. Coordinates from USGS MRDS, company filings, and geological survey publications."
+  },
+  "_coverage": {
+    "global_production_2023_tpa": 300,
+    "global_production_unit": "beryllium content (tonnes)",
+    "global_production_source": "USGS MCS 2024 — ~300 t Be content",
+    "site_count": 20,
+    "operating_count": 11,
+    "development_count": 3,
+    "historic_or_minor_count": 6,
+    "estimated_coverage_pct": 88,
+    "known_gaps": "Small artisanal beryl producers in Nigeria, Rwanda, Ethiopia; minor Chinese beryllium operations beyond Xinjiang; some South American pegmatite sources",
+    "audit_date": "2026-03-08"
+  },
+  "sites": [
+    {
+      "name": "Spor Mountain",
+      "lat": 39.73,
+      "lon": -113.22,
+      "country": "United States",
+      "operator": "Materion Corporation",
+      "ownership": "Materion Corporation (100%, NYSE: MTRN)",
+      "status": "operating",
+      "type": "bertrandite (volcanic tuff-hosted)",
+      "products": [
+        "beryllium"
+      ],
+      "capacity_tpa": 180,
+      "production_year": 2023,
+      "reserves_mt": null,
+      "grade": "0.25-0.75% BeO in bertrandite tuff",
+      "notes": "World's only large-scale bertrandite mine; Juab County, Utah; feeds Delta processing plant; ~60% of global beryllium supply; discovered 1959; open-pit mining of fluorine-bearing volcanic tuff"
+    },
+    {
+      "name": "Delta (Materion Processing Plant)",
+      "lat": 39.35,
+      "lon": -112.58,
+      "country": "United States",
+      "operator": "Materion Corporation",
+      "ownership": "Materion Corporation (100%)",
+      "status": "operating",
+      "type": "beryllium hydroxide processing plant",
+      "products": [
+        "beryllium hydroxide"
+      ],
+      "capacity_tpa": 180,
+      "production_year": 2023,
+      "reserves_mt": null,
+      "grade": "n/a (processing)",
+      "notes": "Millard County, Utah; acid leach processing of Spor Mountain bertrandite ore into beryllium hydroxide intermediate; also processes imported beryl ore"
+    },
+    {
+      "name": "Elmore (Materion Refinery)",
+      "lat": 41.08,
+      "lon": -83.59,
+      "country": "United States",
+      "operator": "Materion Corporation",
+      "ownership": "Materion Corporation (100%)",
+      "status": "operating",
+      "type": "beryllium refinery and alloy manufacturing",
+      "products": [
+        "beryllium metal",
+        "beryllium-copper alloys",
+        "beryllium oxide ceramics"
+      ],
+      "capacity_tpa": 180,
+      "production_year": 2023,
+      "reserves_mt": null,
+      "grade": "n/a (refinery/manufacturing)",
+      "notes": "Ottawa County, Ohio; world's largest beryllium refinery; converts beryllium hydroxide from Delta into metal, alloys, and ceramics; formerly Brush Engineered Materials (renamed Materion 2011)"
+    },
+    {
+      "name": "Mayfield (Materion)",
+      "lat": 41.52,
+      "lon": -81.44,
+      "country": "United States",
+      "operator": "Materion Corporation",
+      "ownership": "Materion Corporation (100%)",
+      "status": "operating",
+      "type": "beryllium alloy manufacturing",
+      "products": [
+        "beryllium-copper strip",
+        "beryllium-copper rod/wire",
+        "specialty alloys"
+      ],
+      "capacity_tpa": null,
+      "production_year": 2023,
+      "reserves_mt": null,
+      "grade": "n/a (downstream manufacturing)",
+      "notes": "Materion corporate headquarters and primary alloy strip plant; Cuyahoga County, Ohio; largest beryllium-copper alloy producer globally"
+    },
+    {
+      "name": "Xinjiang Beryllium (Koktokay/Altay)",
+      "lat": 47.35,
+      "lon": 89.78,
+      "country": "China",
+      "operator": "Xinjiang Nonferrous Metals Group / various",
+      "ownership": "Chinese state-owned enterprises",
+      "status": "operating",
+      "type": "pegmatite beryl",
+      "products": [
+        "beryllium",
+        "lithium",
+        "tantalum",
+        "cesium"
+      ],
+      "capacity_tpa": 30,
+      "production_year": 2023,
+      "reserves_mt": null,
+      "grade": "10-12% BeO in beryl mineral",
+      "notes": "Koktokay (Keketuohai) rare metal pegmatite district; Altay Prefecture, Xinjiang; historic No. 3 pegmatite vein is one of world's most famous rare-metal pegmatites; now multiple operations in district"
+    },
+    {
+      "name": "Xinjiang Beryllium Processing (Urumqi area)",
+      "lat": 43.8,
+      "lon": 87.6,
+      "country": "China",
+      "operator": "Northwest Rare Metals / Xinjiang Nonferrous",
+      "ownership": "Chinese state-owned enterprises",
+      "status": "operating",
+      "type": "beryllium processing / smelting",
+      "products": [
+        "beryllium metal",
+        "beryllium-copper alloys"
+      ],
+      "capacity_tpa": 50,
+      "production_year": 2023,
+      "reserves_mt": null,
+      "grade": "n/a (processing)",
+      "notes": "Multiple beryllium processing facilities in Xinjiang region; China is estimated to produce ~20% of global Be; exact facility locations are not publicly disclosed in detail"
+    },
+    {
+      "name": "Hunan Beryllium Processing",
+      "lat": 28.22,
+      "lon": 112.94,
+      "country": "China",
+      "operator": "Hunan Shuikoushan Nonferrous / various",
+      "ownership": "Chinese state-owned and private enterprises",
+      "status": "operating",
+      "type": "beryllium processing",
+      "products": [
+        "beryllium-copper alloys"
+      ],
+      "capacity_tpa": 20,
+      "production_year": 2023,
+      "reserves_mt": null,
+      "grade": "n/a (processing)",
+      "notes": "Changsha area; secondary Chinese beryllium alloy manufacturing center; processes imported beryl and domestic feedstock"
+    },
+    {
+      "name": "Alto Ligonha (Pegmatite District)",
+      "lat": -15.95,
+      "lon": 37.78,
+      "country": "Mozambique",
+      "operator": "Artisanal / small-scale miners",
+      "ownership": "Various small-scale operators; some government concessions",
+      "status": "operating",
+      "type": "pegmatite beryl (artisanal)",
+      "products": [
+        "beryl",
+        "tantalite",
+        "tourmaline"
+      ],
+      "capacity_tpa": 15,
+      "production_year": 2023,
+      "reserves_mt": null,
+      "grade": "10-12% BeO in beryl crystals",
+      "notes": "Zambezia Province; one of world's most prolific rare-metal pegmatite provinces; artisanal hand mining of beryl crystals from pegmatites; exported as hand-sorted beryl to USA and China"
+    },
+    {
+      "name": "Madagascar (Pegmatite Districts)",
+      "lat": -18.5,
+      "lon": 47.5,
+      "country": "Madagascar",
+      "operator": "Artisanal / small-scale miners",
+      "ownership": "Various small-scale operators",
+      "status": "operating",
+      "type": "pegmatite beryl (artisanal)",
+      "products": [
+        "beryl",
+        "tourmaline",
+        "tantalite"
+      ],
+      "capacity_tpa": 10,
+      "production_year": 2023,
+      "reserves_mt": null,
+      "grade": "10-12% BeO in beryl crystals",
+      "notes": "Multiple pegmatite districts across central and southern Madagascar; artisanal mining of beryl from weathered pegmatites; exported as hand-sorted beryl concentrate"
+    },
+    {
+      "name": "Erongo Pegmatites",
+      "lat": -21.75,
+      "lon": 15.65,
+      "country": "Namibia",
+      "operator": "Various small-scale miners",
+      "ownership": "Various artisanal operators and junior companies",
+      "status": "operating",
+      "type": "pegmatite beryl (artisanal/small-scale)",
+      "products": [
+        "beryl",
+        "aquamarine",
+        "tourmaline"
+      ],
+      "capacity_tpa": 5,
+      "production_year": 2023,
+      "reserves_mt": null,
+      "grade": "10-12% BeO in beryl mineral",
+      "notes": "Erongo Region; pegmatites in Damara Orogen; beryl primarily by-product of gemstone mining (aquamarine); small quantities exported"
+    },
+    {
+      "name": "Bikita (Beryl by-product)",
+      "lat": -20.06,
+      "lon": 31.43,
+      "country": "Zimbabwe",
+      "operator": "Sinomine Resource Group",
+      "ownership": "Sinomine (100%)",
+      "status": "minor production",
+      "type": "pegmatite beryl (by-product of lithium mining)",
+      "products": [
+        "lithium",
+        "beryl",
+        "petalite"
+      ],
+      "capacity_tpa": 2,
+      "production_year": 2023,
+      "reserves_mt": null,
+      "grade": "minor beryl in LCT pegmatite",
+      "notes": "Masvingo Province; beryl occurs as minor phase in lithium-cesium-tantalum pegmatite; small quantities hand-sorted during lithium mining; historically exported beryl"
+    },
+    {
+      "name": "Minas Gerais (Pegmatite Province)",
+      "lat": -17.5,
+      "lon": -42.0,
+      "country": "Brazil",
+      "operator": "Artisanal / small-scale miners",
+      "ownership": "Various small-scale operators",
+      "status": "operating",
+      "type": "pegmatite beryl (artisanal)",
+      "products": [
+        "beryl",
+        "emerald",
+        "aquamarine",
+        "tantalite"
+      ],
+      "capacity_tpa": 10,
+      "production_year": 2023,
+      "reserves_mt": null,
+      "grade": "10-13% BeO in beryl mineral",
+      "notes": "Eastern Brazilian pegmatite province; Jequitinhonha and Doce river valleys; beryl often by-product of gemstone (emerald/aquamarine) and tantalite mining; historically significant source"
+    },
+    {
+      "name": "Argentina (San Luis pegmatites)",
+      "lat": -32.5,
+      "lon": -66.0,
+      "country": "Argentina",
+      "operator": "Artisanal / small-scale miners",
+      "ownership": "Various small-scale operators",
+      "status": "minor production",
+      "type": "pegmatite beryl",
+      "products": [
+        "beryl",
+        "feldspar"
+      ],
+      "capacity_tpa": 3,
+      "production_year": 2023,
+      "reserves_mt": null,
+      "grade": "10-12% BeO in beryl",
+      "notes": "San Luis and Cordoba provinces; Sierras Pampeanas pegmatite province; small-scale beryl production exported to USA; production intermittent"
+    },
+    {
+      "name": "Ulba Metallurgical Plant",
+      "lat": 49.95,
+      "lon": 82.62,
+      "country": "Kazakhstan",
+      "operator": "Ulba Metallurgical Plant (UMP)",
+      "ownership": "Kazatomprom (national atomic company, LSE: KAP)",
+      "status": "operating",
+      "type": "beryllium processing / manufacturing",
+      "products": [
+        "beryllium metal",
+        "beryllium oxide",
+        "beryllium-copper alloys"
+      ],
+      "capacity_tpa": 25,
+      "production_year": 2023,
+      "reserves_mt": null,
+      "grade": "n/a (processing facility)",
+      "notes": "Ust-Kamenogorsk (Oskemen), East Kazakhstan; one of few non-US beryllium processing facilities globally; part of Kazatomprom nuclear fuel complex; processes imported and domestic beryl; legacy Soviet-era facility modernized"
+    },
+    {
+      "name": "Panasqueira",
+      "lat": 40.15,
+      "lon": -7.75,
+      "country": "Portugal",
+      "operator": "Almonty Industries (Beralt Tin & Wolfram)",
+      "ownership": "Almonty Industries (TSX: AII, 100%)",
+      "status": "operating",
+      "type": "hydrothermal vein (beryl by-product of tungsten mining)",
+      "products": [
+        "tungsten",
+        "tin",
+        "beryl"
+      ],
+      "capacity_tpa": 2,
+      "production_year": 2023,
+      "reserves_mt": null,
+      "grade": "minor beryl in quartz-wolframite veins",
+      "notes": "Castelo Branco district; one of Europe's last operating tungsten mines; small quantities of beryl recovered as by-product; operating since 1890s"
+    },
+    {
+      "name": "India (Bihar/Jharkhand pegmatites)",
+      "lat": 24.5,
+      "lon": 85.5,
+      "country": "India",
+      "operator": "Indian Bureau of Mines / state enterprises",
+      "ownership": "Government of India (Atomic Minerals Directorate)",
+      "status": "operating",
+      "type": "pegmatite beryl (by-product of mica mining)",
+      "products": [
+        "beryl",
+        "mica"
+      ],
+      "capacity_tpa": 5,
+      "production_year": 2023,
+      "reserves_mt": null,
+      "grade": "10-12% BeO in beryl",
+      "notes": "Koderma-Hazaribagh mica belt, Jharkhand; beryl recovered as by-product of mica pegmatite mining; strategic mineral under Atomic Energy Act; historically important source"
+    },
+    {
+      "name": "India (Rajasthan pegmatites)",
+      "lat": 25.2,
+      "lon": 73.8,
+      "country": "India",
+      "operator": "Rajasthan State Mines & Minerals / artisanal",
+      "ownership": "Various state and private operators",
+      "status": "operating",
+      "type": "pegmatite beryl",
+      "products": [
+        "beryl",
+        "feldspar",
+        "quartz"
+      ],
+      "capacity_tpa": 3,
+      "production_year": 2023,
+      "reserves_mt": null,
+      "grade": "10-12% BeO in beryl",
+      "notes": "Ajmer-Bhilwara-Udaipur pegmatite belt; beryl from pegmatite quarries; historically significant Indian source; production has declined from peak"
+    },
+    {
+      "name": "Lost River (Exploration)",
+      "lat": 65.47,
+      "lon": -167.15,
+      "country": "United States",
+      "operator": "Ucore Rare Metals / exploration stage",
+      "ownership": "Various (exploration claims)",
+      "status": "development",
+      "type": "fluorite-tin-beryllium skarn/greisen",
+      "products": [
+        "beryllium",
+        "tin",
+        "fluorite"
+      ],
+      "capacity_tpa": null,
+      "production_year": null,
+      "reserves_mt": null,
+      "grade": "0.3-0.5% BeO (historic estimates)",
+      "notes": "Seward Peninsula, Alaska; historic USGS-identified beryllium-bearing tin deposit; significant beryllium resources identified in USGS assessments; no current production; remote location"
+    },
+    {
+      "name": "Yermakovskoye",
+      "lat": 51.3,
+      "lon": 108.7,
+      "country": "Russia",
+      "operator": "State enterprise (idle/development)",
+      "ownership": "Russian state interests",
+      "status": "development",
+      "type": "fluorite-bertrandite (volcanic-hydrothermal)",
+      "products": [
+        "beryllium",
+        "fluorite"
+      ],
+      "capacity_tpa": null,
+      "production_year": null,
+      "reserves_mt": null,
+      "grade": "0.3-1.0% BeO (bertrandite-phenakite)",
+      "notes": "Buryatia, Transbaikal region; one of Russia's largest known beryllium deposits; fluorite-bertrandite ore similar to Spor Mountain; development repeatedly delayed; strategic reserve"
+    },
+    {
+      "name": "Mount Wheeler (IBC Advanced Alloys)",
+      "lat": 39.32,
+      "lon": -115.53,
+      "country": "United States",
+      "operator": "IBC Advanced Alloys (formerly International Beryllium Corp)",
+      "ownership": "IBC Advanced Alloys (TSX-V: IB)",
+      "status": "development",
+      "type": "skarn/replacement beryllium",
+      "products": [
+        "beryllium"
+      ],
+      "capacity_tpa": null,
+      "production_year": null,
+      "reserves_mt": null,
+      "grade": "0.5-2.0% BeO",
+      "notes": "White Pine County, Nevada; historically mined for beryllium in 1950s-60s; IBC holds claims; potential alternative domestic US source; near Ely, NV"
+    }
+  ]
+}

@@ -1,0 +1,1031 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PANOPTICON // SUBMARINE PURSUIT</title>
+  <script src="https://unpkg.com/three@0.160.0/build/three.min.js"></script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #000;
+      color: #00ff41;
+      font-family: 'Courier New', monospace;
+      overflow: hidden;
+      cursor: crosshair;
+    }
+    #game-canvas {
+      width: 100vw;
+      height: 100vh;
+      display: block;
+    }
+
+    /* === HUD Overlay === */
+    .hud-panel {
+      position: absolute;
+      background: rgba(5, 15, 8, 0.85);
+      border: 1px solid rgba(0, 255, 65, 0.2);
+      padding: 10px 14px;
+      pointer-events: none;
+      z-index: 10;
+    }
+    .hud-header {
+      color: #00ff41;
+      font-size: 13px;
+      font-weight: bold;
+      letter-spacing: 2px;
+      margin-bottom: 6px;
+      text-shadow: 0 0 8px rgba(0, 255, 65, 0.5);
+    }
+    .hud-row {
+      color: rgba(180, 210, 180, 0.9);
+      font-size: 12px;
+      line-height: 1.6;
+    }
+    .hud-accent {
+      color: #00ff41;
+      text-shadow: 0 0 6px rgba(0, 255, 65, 0.3);
+    }
+    .hud-warn { color: #ffaa00; }
+    .hud-danger { color: #ff4444; }
+
+    /* Status panel — top left */
+    #hud-status {
+      top: 12px; left: 12px;
+      min-width: 240px;
+    }
+
+    /* Sonar contacts — top right */
+    #hud-sonar {
+      top: 12px; right: 12px;
+      min-width: 280px;
+    }
+
+    /* AI reasoning — bottom left */
+    #hud-ai {
+      bottom: 60px; left: 12px;
+      max-width: 450px;
+    }
+    #hud-ai .ai-reasoning {
+      color: rgba(200, 220, 200, 0.85);
+      font-size: 12px;
+      line-height: 1.5;
+      max-height: 60px;
+      overflow: hidden;
+    }
+
+    /* Intel feed — bottom right */
+    #hud-intel {
+      bottom: 60px; right: 12px;
+      max-width: 380px;
+      max-height: 200px;
+      overflow: hidden;
+    }
+    .intel-msg {
+      color: #ffcc33;
+      font-size: 11px;
+      line-height: 1.4;
+      margin-bottom: 4px;
+      border-left: 2px solid #ffcc33;
+      padding-left: 6px;
+    }
+
+    /* Compass — top center */
+    #hud-compass {
+      position: absolute;
+      top: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+      text-align: center;
+    }
+    #compass-heading {
+      color: #00ff41;
+      font-size: 22px;
+      font-weight: bold;
+      letter-spacing: 4px;
+      text-shadow: 0 0 12px rgba(0, 255, 65, 0.6);
+    }
+    #compass-dir {
+      color: rgba(0, 255, 65, 0.5);
+      font-size: 11px;
+      letter-spacing: 3px;
+    }
+
+    /* Title bar */
+    #hud-title {
+      position: absolute;
+      top: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+      text-align: center;
+      margin-top: 48px;
+    }
+    #hud-title .title-main {
+      color: #00ff41;
+      font-size: 11px;
+      letter-spacing: 6px;
+      opacity: 0.5;
+    }
+
+    /* Sonar PPI display */
+    #sonar-ppi {
+      position: absolute;
+      bottom: 70px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+      pointer-events: none;
+    }
+
+    /* Controls hint */
+    #hud-controls {
+      position: absolute;
+      bottom: 8px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+      color: rgba(0, 255, 65, 0.3);
+      font-size: 10px;
+      letter-spacing: 1px;
+    }
+
+    /* Connection status */
+    #hud-connection {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      z-index: 20;
+      font-size: 10px;
+      letter-spacing: 1px;
+    }
+    .conn-ok { color: #00ff41; }
+    .conn-fail { color: #ff4444; }
+
+    /* Depth gauge — left side vertical bar */
+    #depth-gauge {
+      position: absolute;
+      left: 8px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 6px;
+      height: 300px;
+      background: rgba(0, 255, 65, 0.1);
+      border: 1px solid rgba(0, 255, 65, 0.15);
+      z-index: 10;
+    }
+    #depth-indicator {
+      position: absolute;
+      left: -4px;
+      width: 14px;
+      height: 3px;
+      background: #00ff41;
+      box-shadow: 0 0 8px #00ff41;
+      transition: top 0.3s ease;
+    }
+    .depth-label {
+      position: absolute;
+      left: 14px;
+      color: rgba(0, 255, 65, 0.3);
+      font-size: 9px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HUD elements -->
+  <div id="hud-compass">
+    <div id="compass-heading">000</div>
+    <div id="compass-dir">N</div>
+  </div>
+  <div id="hud-title">
+    <div class="title-main">PANOPTICON // SUBMARINE PURSUIT</div>
+  </div>
+
+  <div id="hud-status" class="hud-panel">
+    <div class="hud-header">SUBMARINE STATUS</div>
+    <div class="hud-row">HDG <span class="hud-accent" id="s-hdg">000</span>°</div>
+    <div class="hud-row">DEP <span class="hud-accent" id="s-dep">100</span>m</div>
+    <div class="hud-row">SPD <span class="hud-accent" id="s-spd">0.0</span> kts</div>
+    <div class="hud-row">NOISE <span id="s-noise">ULTRA-QUIET</span></div>
+    <div style="border-top:1px solid rgba(0,255,65,0.1); margin-top:6px; padding-top:4px;">
+      <div class="hud-row" style="opacity:0.5">CMD → <span id="s-cmd">AWAITING AI</span></div>
+    </div>
+  </div>
+
+  <div id="hud-sonar" class="hud-panel">
+    <div class="hud-header">SONAR CONTACTS</div>
+    <div id="sonar-list">
+      <div class="hud-row" style="opacity:0.4">No contacts detected</div>
+    </div>
+  </div>
+
+  <div id="hud-ai" class="hud-panel" style="display:none;">
+    <div class="hud-header">AI CAPTAIN</div>
+    <div class="ai-reasoning" id="ai-text"></div>
+  </div>
+
+  <div id="hud-intel" class="hud-panel" style="display:none;">
+    <div class="hud-header">INTEL FEED</div>
+    <div id="intel-list"></div>
+  </div>
+
+  <canvas id="sonar-ppi" width="200" height="200"></canvas>
+
+  <div id="depth-gauge">
+    <div id="depth-indicator" style="top:20%"></div>
+    <div class="depth-label" style="top:-4px">0m</div>
+    <div class="depth-label" style="top:48%">250m</div>
+    <div class="depth-label" style="bottom:-4px">500m</div>
+  </div>
+
+  <div id="hud-controls">
+    WASD: HEADING/SPEED &nbsp; Q/E: DEPTH &nbsp; SPACE: ACTIVE SONAR &nbsp; RIGHT-CLICK: ORBIT &nbsp; SCROLL: ZOOM
+  </div>
+
+  <script type="module">
+    // =====================================================
+    // CONFIG
+    // =====================================================
+    const BRIDGE_URL = 'ws://localhost:3002';
+    const STATE_INTERVAL = 2000; // ms between state updates
+    const REF_LAT = 55.0;
+    const REF_LON = -28.0;
+    const NM_PER_DEG_LAT = 60.0;
+    const NM_PER_DEG_LON = 60.0 * Math.cos(REF_LAT * Math.PI / 180);
+    const DEPTH_SCALE = 50; // 1 Y unit = 50 meters
+    const KTS_TO_UNITS = 1 / 3600; // 1 knot = 1 nm/hr = 1/3600 nm/s
+    const MAX_SONAR_RANGE = 60; // nm (passive)
+    const MAX_ACTIVE_RANGE = 20; // nm (active)
+
+    // Starting position: 56°N, 30°W (closer to action than P-8)
+    const START_LAT = 56.0;
+    const START_LON = -30.0;
+    const START_X = (START_LON - REF_LON) * NM_PER_DEG_LON;
+    const START_Z = (START_LAT - REF_LAT) * NM_PER_DEG_LAT;
+
+    // GOBLIN ONE trace
+    const TARGET_TRACE = [
+      { tick: 0,  lat: 55.0, lon: -26.0 },
+      { tick: 4,  lat: 54.0, lon: -24.0 },
+      { tick: 8,  lat: 52.5, lon: -21.5 },
+      { tick: 12, lat: 51.0, lon: -19.0 },
+    ];
+    const GAME_DURATION = 360; // seconds
+
+    // =====================================================
+    // THREE.JS SCENE SETUP
+    // =====================================================
+    const renderer = new THREE.WebGLRenderer({ antialias: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    renderer.toneMappingExposure = 0.6;
+    document.body.prepend(renderer.domElement);
+    renderer.domElement.id = 'game-canvas';
+
+    const scene = new THREE.Scene();
+    const fogColor = new THREE.Color(0.015, 0.06, 0.09);
+    scene.fog = new THREE.FogExp2(fogColor, 0.012);
+    scene.background = fogColor;
+
+    const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 500);
+    camera.position.set(START_X, -100 / DEPTH_SCALE + 3, START_Z - 10);
+
+    window.addEventListener('resize', () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+
+    // =====================================================
+    // LIGHTING
+    // =====================================================
+    const ambient = new THREE.AmbientLight(new THREE.Color(0.04, 0.08, 0.12), 1.0);
+    scene.add(ambient);
+
+    const sunlight = new THREE.DirectionalLight(new THREE.Color(0.15, 0.35, 0.45), 0.5);
+    sunlight.position.set(50, 100, 30);
+    scene.add(sunlight);
+
+    // Volumetric-ish light rays (simple spotlight from above)
+    const godray = new THREE.SpotLight(new THREE.Color(0.1, 0.25, 0.3), 0.8, 200, Math.PI / 6, 0.5);
+    godray.position.set(0, 50, 0);
+    godray.target.position.set(0, -10, 0);
+    scene.add(godray);
+    scene.add(godray.target);
+
+    // =====================================================
+    // OCEAN FLOOR
+    // =====================================================
+    function createOceanFloor() {
+      const size = 800;
+      const segments = 128;
+      const geo = new THREE.PlaneGeometry(size, size, segments, segments);
+      geo.rotateX(-Math.PI / 2);
+
+      const positions = geo.attributes.position;
+      for (let i = 0; i < positions.count; i++) {
+        const x = positions.getX(i);
+        const z = positions.getZ(i);
+        // Multi-octave noise approximation
+        let h = 0;
+        h += Math.sin(x * 0.008 + 1.3) * Math.cos(z * 0.006 + 0.7) * 1.5;
+        h += Math.sin(x * 0.025 + 4.1) * Math.cos(z * 0.03 + 2.3) * 0.4;
+        h += Math.sin(x * 0.003 + z * 0.002) * 3.0; // Large ridges
+        // Seamounts
+        const seamount = Math.sin(x * 0.004 + 3.0) * Math.sin(z * 0.005 + 1.5);
+        if (seamount > 0.7) h += (seamount - 0.7) * 12;
+        positions.setY(i, h);
+      }
+      geo.computeVertexNormals();
+
+      const mat = new THREE.MeshStandardMaterial({
+        color: new THREE.Color(0.06, 0.1, 0.06),
+        roughness: 0.95,
+        metalness: 0.0,
+        flatShading: true,
+      });
+      const floor = new THREE.Mesh(geo, mat);
+      floor.position.y = -400 / DEPTH_SCALE;
+      return floor;
+    }
+    scene.add(createOceanFloor());
+
+    // Water surface (faint plane at Y=0)
+    const surfaceGeo = new THREE.PlaneGeometry(2000, 2000);
+    surfaceGeo.rotateX(-Math.PI / 2);
+    const surfaceMat = new THREE.MeshBasicMaterial({
+      color: new THREE.Color(0.08, 0.25, 0.35),
+      transparent: true,
+      opacity: 0.08,
+      side: THREE.DoubleSide,
+    });
+    scene.add(new THREE.Mesh(surfaceGeo, surfaceMat));
+
+    // =====================================================
+    // MARINE SNOW (particles)
+    // =====================================================
+    function createParticles() {
+      const count = 600;
+      const geo = new THREE.BufferGeometry();
+      const positions = new Float32Array(count * 3);
+      for (let i = 0; i < count; i++) {
+        positions[i * 3] = (Math.random() - 0.5) * 80;
+        positions[i * 3 + 1] = (Math.random() - 0.5) * 30;
+        positions[i * 3 + 2] = (Math.random() - 0.5) * 80;
+      }
+      geo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+
+      const mat = new THREE.PointsMaterial({
+        color: 0x88aa88,
+        size: 0.08,
+        transparent: true,
+        opacity: 0.3,
+        sizeAttenuation: true,
+      });
+      return new THREE.Points(geo, mat);
+    }
+    const particles = createParticles();
+    scene.add(particles);
+
+    // =====================================================
+    // SUBMARINE MODEL BUILDER
+    // =====================================================
+    function createSubmarineModel(color) {
+      const group = new THREE.Group();
+      const hullMat = new THREE.MeshStandardMaterial({
+        color: new THREE.Color(color),
+        roughness: 0.4,
+        metalness: 0.6,
+      });
+      const darkMat = new THREE.MeshStandardMaterial({
+        color: new THREE.Color(color).multiplyScalar(0.6),
+        roughness: 0.5,
+        metalness: 0.5,
+      });
+
+      // Hull
+      const hull = new THREE.Mesh(new THREE.CapsuleGeometry(0.5, 2.8, 8, 16), hullMat);
+      hull.rotation.z = Math.PI / 2;
+      group.add(hull);
+
+      // Sail (conning tower)
+      const sail = new THREE.Mesh(new THREE.BoxGeometry(0.1, 0.35, 0.5), darkMat);
+      sail.position.set(0, 0.42, 0.2);
+      group.add(sail);
+
+      // Periscope
+      const periscope = new THREE.Mesh(new THREE.CylinderGeometry(0.015, 0.015, 0.25, 6), darkMat);
+      periscope.position.set(0, 0.68, 0.25);
+      group.add(periscope);
+
+      // Rudder (vertical)
+      const rudder = new THREE.Mesh(new THREE.BoxGeometry(0.03, 0.35, 0.2), darkMat);
+      rudder.position.set(0, 0, -1.55);
+      group.add(rudder);
+
+      // Horizontal stabilizers
+      const hStab = new THREE.Mesh(new THREE.BoxGeometry(0.5, 0.03, 0.18), darkMat);
+      hStab.position.set(0, 0, -1.5);
+      group.add(hStab);
+
+      // Bow planes
+      const bowPlaneGeo = new THREE.BoxGeometry(0.22, 0.03, 0.12);
+      const bpL = new THREE.Mesh(bowPlaneGeo, darkMat);
+      bpL.position.set(-0.22, 0, 1.1);
+      group.add(bpL);
+      const bpR = new THREE.Mesh(bowPlaneGeo, darkMat);
+      bpR.position.set(0.22, 0, 1.1);
+      group.add(bpR);
+
+      // Propeller
+      const propMat = new THREE.MeshStandardMaterial({ color: 0x555555, metalness: 0.8, roughness: 0.3 });
+      const prop = new THREE.Mesh(new THREE.CylinderGeometry(0.2, 0.2, 0.02, 8), propMat);
+      prop.rotation.x = Math.PI / 2;
+      prop.position.set(0, 0, -1.7);
+      prop.name = 'propeller';
+      group.add(prop);
+
+      // Scale up for visibility
+      group.scale.setScalar(1.5);
+
+      return group;
+    }
+
+    // =====================================================
+    // PLAYER SUBMARINE
+    // =====================================================
+    const playerSub = createSubmarineModel(0x338855);
+    playerSub.position.set(START_X, -100 / DEPTH_SCALE, START_Z);
+    scene.add(playerSub);
+
+    // Sub light (green glow)
+    const subLight = new THREE.PointLight(0x33ff55, 0.4, 15);
+    subLight.position.set(0, 0.3, 1.0);
+    playerSub.add(subLight);
+
+    // State
+    const sub = {
+      heading: 150, targetHeading: 150,
+      depthM: 100, targetDepthM: 100,
+      speedKts: 0, targetSpeedKts: 0,
+      maxSpeedKts: 30, maxDepthM: 500, minDepthM: 30,
+      turnRate: 12, depthRate: 3, accelRate: 1.5,
+    };
+
+    // =====================================================
+    // TARGET SUBMARINE (GOBLIN ONE)
+    // =====================================================
+    const targetSub = createSubmarineModel(0x993322);
+    scene.add(targetSub);
+
+    const targetTraceUnity = TARGET_TRACE.map(t => ({
+      x: (t.lon - REF_LON) * NM_PER_DEG_LON,
+      z: (t.lat - REF_LAT) * NM_PER_DEG_LAT,
+      timeSec: (t.tick / 12) * GAME_DURATION,
+    }));
+
+    function getTargetPosition(elapsed) {
+      const trace = targetTraceUnity;
+      if (elapsed <= trace[0].timeSec) return { x: trace[0].x, z: trace[0].z };
+      if (elapsed >= trace[trace.length - 1].timeSec) {
+        const last = trace[trace.length - 1];
+        return { x: last.x, z: last.z };
+      }
+      for (let i = 0; i < trace.length - 1; i++) {
+        if (elapsed >= trace[i].timeSec && elapsed <= trace[i + 1].timeSec) {
+          const frac = (elapsed - trace[i].timeSec) / (trace[i + 1].timeSec - trace[i].timeSec);
+          return {
+            x: trace[i].x + (trace[i + 1].x - trace[i].x) * frac,
+            z: trace[i].z + (trace[i + 1].z - trace[i].z) * frac,
+          };
+        }
+      }
+      const last = trace[trace.length - 1];
+      return { x: last.x, z: last.z };
+    }
+
+    // =====================================================
+    // SONAR SYSTEM
+    // =====================================================
+    let activeSonar = false;
+
+    function computeSonarContacts() {
+      const px = playerSub.position.x;
+      const pz = playerSub.position.z;
+      const tx = targetSub.position.x;
+      const tz = targetSub.position.z;
+
+      const dx = tx - px;
+      const dz = tz - pz;
+      const distNm = Math.sqrt(dx * dx + dz * dz);
+
+      let bearingDeg = Math.atan2(dx, dz) * 180 / Math.PI;
+      bearingDeg = (bearingDeg + 360) % 360;
+
+      let signalStrength = 0;
+      let rangeAccuracy = 0;
+
+      if (activeSonar && distNm <= MAX_ACTIVE_RANGE) {
+        signalStrength = 1 - (distNm / MAX_ACTIVE_RANGE);
+        rangeAccuracy = 0.9;
+      } else if (distNm <= MAX_SONAR_RANGE) {
+        const distFactor = Math.pow(1 - distNm / MAX_SONAR_RANGE, 2);
+        const targetNoise = 0.5; // GOBLIN at 14kts
+        const ownNoisePenalty = 1 - (getNoiseLevel() * 0.6);
+        // Thermocline
+        const ownDepth = sub.depthM;
+        const tgtDepth = 180;
+        const thermocline = ((ownDepth < 200 && tgtDepth > 200) || (ownDepth > 200 && tgtDepth < 200)) ? 0.4 : 1.0;
+        signalStrength = distFactor * targetNoise * ownNoisePenalty * thermocline;
+        rangeAccuracy = signalStrength > 0.5 ? 0.3 : 0.1;
+      }
+
+      if (signalStrength < 0.05) return [];
+
+      // Bearing noise
+      const bearingNoise = (1 - signalStrength) * 8;
+      const noisyBearing = (bearingDeg + (Math.random() - 0.5) * 2 * bearingNoise + 360) % 360;
+
+      // Range estimate
+      let rangeEst = -1;
+      if (rangeAccuracy > 0.2) {
+        rangeEst = distNm + (Math.random() - 0.5) * distNm * (1 - rangeAccuracy);
+        rangeEst = Math.max(0.5, rangeEst);
+      }
+
+      const classification = signalStrength > 0.7 ? 'Submarine — high confidence' :
+                             signalStrength > 0.4 ? 'Probable submarine' :
+                             signalStrength > 0.2 ? 'Submerged contact — unclassified' :
+                             'Possible contact — very weak';
+
+      return [{
+        id: 'GOBLIN ONE',
+        bearing: Math.round(noisyBearing * 10) / 10,
+        range_nm: rangeEst > 0 ? Math.round(rangeEst * 10) / 10 : -1,
+        signal_strength: Math.round(signalStrength * 100) / 100,
+        classification,
+        actualDist: distNm,
+      }];
+    }
+
+    function getNoiseLevel() {
+      if (sub.speedKts <= 3) return 0.1;
+      if (sub.speedKts <= 8) return 0.3;
+      if (sub.speedKts <= 15) return 0.6;
+      return 0.9;
+    }
+
+    // =====================================================
+    // CAMERA SYSTEM
+    // =====================================================
+    let camDistance = 12;
+    let camOrbitX = 0;
+    let camOrbitY = 15;
+    let isOrbiting = false;
+
+    renderer.domElement.addEventListener('contextmenu', e => e.preventDefault());
+    renderer.domElement.addEventListener('mousedown', e => { if (e.button === 2) isOrbiting = true; });
+    window.addEventListener('mouseup', e => { if (e.button === 2) isOrbiting = false; });
+    window.addEventListener('mousemove', e => {
+      if (isOrbiting) {
+        camOrbitX += e.movementX * 0.3;
+        camOrbitY -= e.movementY * 0.3;
+        camOrbitY = Math.max(-30, Math.min(60, camOrbitY));
+      }
+    });
+    renderer.domElement.addEventListener('wheel', e => {
+      camDistance += e.deltaY * 0.01 * camDistance * 0.1;
+      camDistance = Math.max(3, Math.min(80, camDistance));
+    });
+
+    function updateCamera(dt) {
+      // Slowly return orbit to center when not dragging
+      if (!isOrbiting) {
+        camOrbitX *= 0.97;
+      }
+
+      const subHeading = sub.heading;
+      const angle = (subHeading + 180 + camOrbitX) * Math.PI / 180;
+      const pitch = camOrbitY * Math.PI / 180;
+
+      const targetPos = playerSub.position.clone();
+      const offset = new THREE.Vector3(
+        Math.sin(angle) * Math.cos(pitch) * camDistance,
+        Math.sin(pitch) * camDistance + 2,
+        Math.cos(angle) * Math.cos(pitch) * camDistance
+      );
+
+      const desiredPos = targetPos.clone().add(offset);
+      camera.position.lerp(desiredPos, 5 * dt);
+      camera.lookAt(targetPos);
+    }
+
+    // =====================================================
+    // KEYBOARD INPUT
+    // =====================================================
+    const keys = {};
+    window.addEventListener('keydown', e => {
+      keys[e.key.toLowerCase()] = true;
+      if (e.key === ' ') {
+        activeSonar = !activeSonar;
+        console.log(`Active sonar: ${activeSonar ? 'ON' : 'OFF'}`);
+      }
+    });
+    window.addEventListener('keyup', e => { keys[e.key.toLowerCase()] = false; });
+
+    function handleInput(dt) {
+      if (keys['w']) sub.targetSpeedKts = Math.min(sub.targetSpeedKts + 5 * dt, sub.maxSpeedKts);
+      if (keys['s']) sub.targetSpeedKts = Math.max(sub.targetSpeedKts - 5 * dt, 0);
+      if (keys['a']) sub.targetHeading -= 30 * dt;
+      if (keys['d']) sub.targetHeading += 30 * dt;
+      if (keys['q']) sub.targetDepthM = Math.max(sub.targetDepthM - 20 * dt, sub.minDepthM);
+      if (keys['e']) sub.targetDepthM = Math.min(sub.targetDepthM + 20 * dt, sub.maxDepthM);
+      sub.targetHeading = ((sub.targetHeading % 360) + 360) % 360;
+    }
+
+    // =====================================================
+    // PHYSICS UPDATE
+    // =====================================================
+    function updateSubPhysics(dt) {
+      // Heading
+      let hDiff = sub.targetHeading - sub.heading;
+      if (hDiff > 180) hDiff -= 360;
+      if (hDiff < -180) hDiff += 360;
+      sub.heading += Math.max(-sub.turnRate * dt, Math.min(sub.turnRate * dt, hDiff));
+      sub.heading = ((sub.heading % 360) + 360) % 360;
+
+      // Depth
+      const tgtDepth = Math.max(sub.minDepthM, Math.min(sub.maxDepthM, sub.targetDepthM));
+      const dDiff = tgtDepth - sub.depthM;
+      sub.depthM += Math.max(-sub.depthRate * dt, Math.min(sub.depthRate * dt, dDiff));
+
+      // Speed
+      const tgtSpeed = Math.max(0, Math.min(sub.maxSpeedKts, sub.targetSpeedKts));
+      const sDiff = tgtSpeed - sub.speedKts;
+      sub.speedKts += Math.max(-sub.accelRate * dt, Math.min(sub.accelRate * dt, sDiff));
+      sub.speedKts = Math.max(0, sub.speedKts);
+
+      // Move
+      const unitsPerSec = sub.speedKts * KTS_TO_UNITS;
+      const headingRad = sub.heading * Math.PI / 180;
+      playerSub.position.x += Math.sin(headingRad) * unitsPerSec * dt;
+      playerSub.position.z += Math.cos(headingRad) * unitsPerSec * dt;
+      playerSub.position.y = -sub.depthM / DEPTH_SCALE;
+
+      // Rotation
+      const pitchTarget = Math.max(-15, Math.min(15, (sub.targetDepthM - sub.depthM) * 0.1));
+      playerSub.rotation.set(pitchTarget * Math.PI / 180, headingRad, 0, 'YXZ');
+
+      // Propeller spin
+      const prop = playerSub.getObjectByName('propeller');
+      if (prop) prop.rotation.z += sub.speedKts * 0.02 * dt;
+    }
+
+    // =====================================================
+    // TARGET UPDATE
+    // =====================================================
+    function updateTarget(elapsed) {
+      const pos = getTargetPosition(elapsed);
+      targetSub.position.x = pos.x;
+      targetSub.position.z = pos.z;
+      targetSub.position.y = -180 / DEPTH_SCALE;
+
+      // Face direction of movement
+      const nextPos = getTargetPosition(elapsed + 1);
+      const dx = nextPos.x - pos.x;
+      const dz = nextPos.z - pos.z;
+      if (dx * dx + dz * dz > 0.0001) {
+        targetSub.rotation.y = Math.atan2(dx, dz);
+      }
+    }
+
+    // =====================================================
+    // WEBSOCKET BRIDGE
+    // =====================================================
+    let ws = null;
+    let wsConnected = false;
+    let gameStarted = false;
+    let gameStartTime = 0;
+    let lastStateSend = 0;
+    let commandCount = 0;
+
+    function connectBridge() {
+      try {
+        ws = new WebSocket(BRIDGE_URL);
+      } catch { return; }
+
+      ws.onopen = () => {
+        wsConnected = true;
+        ws.send(JSON.stringify({ type: 'register', role: 'unity' }));
+        setTimeout(() => {
+          ws.send(JSON.stringify({ type: 'start' }));
+          gameStarted = true;
+          gameStartTime = performance.now();
+        }, 500);
+      };
+
+      ws.onmessage = (e) => {
+        try {
+          const msg = JSON.parse(e.data);
+          handleBridgeMessage(msg);
+        } catch {}
+      };
+
+      ws.onclose = () => {
+        wsConnected = false;
+        setTimeout(connectBridge, 3000);
+      };
+
+      ws.onerror = () => {
+        wsConnected = false;
+      };
+    }
+
+    function handleBridgeMessage(msg) {
+      if (msg.type === 'command') {
+        commandCount++;
+        sub.targetHeading = msg.heading;
+        sub.targetDepthM = msg.target_depth_m;
+        sub.targetSpeedKts = msg.speed_kts;
+        activeSonar = !!msg.active_sonar;
+
+        // Update HUD
+        document.getElementById('ai-text').textContent = msg.reasoning;
+        document.getElementById('hud-ai').style.display = 'block';
+        document.getElementById('s-cmd').textContent =
+          `HDG ${msg.heading}° DEP ${msg.target_depth_m}m SPD ${msg.speed_kts}kts`;
+      }
+
+      if (msg.type === 'intel') {
+        document.getElementById('hud-intel').style.display = 'block';
+        const list = document.getElementById('intel-list');
+        const div = document.createElement('div');
+        div.className = 'intel-msg';
+        div.textContent = msg.message;
+        list.prepend(div);
+        // Keep last 5
+        while (list.children.length > 5) list.removeChild(list.lastChild);
+      }
+
+      if (msg.type === 'config') {
+        // Could update start position, but we already set it
+      }
+    }
+
+    function sendState(contacts) {
+      if (!ws || ws.readyState !== 1 || !gameStarted) return;
+
+      const lat = REF_LAT + playerSub.position.z / NM_PER_DEG_LAT;
+      const lon = REF_LON + playerSub.position.x / NM_PER_DEG_LON;
+
+      const state = {
+        type: 'state',
+        submarine: {
+          lat: Math.round(lat * 10000) / 10000,
+          lon: Math.round(lon * 10000) / 10000,
+          depth_m: Math.round(sub.depthM),
+          heading: Math.round(sub.heading),
+          speed_kts: Math.round(sub.speedKts * 10) / 10,
+        },
+        contacts: contacts.map(c => ({
+          id: c.id,
+          bearing: c.bearing,
+          range_nm: c.range_nm,
+          signal_strength: c.signal_strength,
+          classification: c.classification,
+        })),
+      };
+      ws.send(JSON.stringify(state));
+    }
+
+    // =====================================================
+    // HUD UPDATES
+    // =====================================================
+    function updateHUD(contacts) {
+      // Compass
+      const h = Math.round(sub.heading);
+      document.getElementById('compass-heading').textContent = String(h).padStart(3, '0');
+      const dirs = ['N','NE','E','SE','S','SW','W','NW'];
+      document.getElementById('compass-dir').textContent = dirs[Math.round(h / 45) % 8];
+
+      // Status
+      document.getElementById('s-hdg').textContent = String(h).padStart(3, '0');
+      document.getElementById('s-dep').textContent = Math.round(sub.depthM);
+      document.getElementById('s-spd').textContent = sub.speedKts.toFixed(1);
+
+      const noiseEl = document.getElementById('s-noise');
+      if (sub.speedKts > 15) { noiseEl.textContent = 'HIGH'; noiseEl.className = 'hud-danger'; }
+      else if (sub.speedKts > 8) { noiseEl.textContent = 'MODERATE'; noiseEl.className = 'hud-warn'; }
+      else if (sub.speedKts > 3) { noiseEl.textContent = 'LOW'; noiseEl.className = 'hud-accent'; }
+      else { noiseEl.textContent = 'ULTRA-QUIET'; noiseEl.className = 'hud-accent'; }
+
+      // Sonar contacts
+      const list = document.getElementById('sonar-list');
+      if (contacts.length === 0) {
+        list.innerHTML = '<div class="hud-row" style="opacity:0.4">No contacts detected</div>';
+      } else {
+        list.innerHTML = contacts.map(c => {
+          const rangeStr = c.range_nm > 0 ? `${c.range_nm.toFixed(1)}nm` : 'UNKNOWN';
+          const sigPct = Math.round(c.signal_strength * 100);
+          const color = c.signal_strength > 0.5 ? 'hud-danger' :
+                       c.signal_strength > 0.2 ? 'hud-warn' : '';
+          return `<div class="hud-row ${color}">${c.id}</div>
+                  <div class="hud-row">&nbsp;&nbsp;BRG ${Math.round(c.bearing)}° &nbsp;RNG ${rangeStr} &nbsp;SIG ${sigPct}%</div>
+                  <div class="hud-row" style="opacity:0.6">&nbsp;&nbsp;${c.classification}</div>`;
+        }).join('');
+      }
+
+      // Depth gauge
+      const depthPct = (sub.depthM - sub.minDepthM) / (sub.maxDepthM - sub.minDepthM) * 100;
+      document.getElementById('depth-indicator').style.top = `${depthPct}%`;
+    }
+
+    // =====================================================
+    // SONAR PPI DISPLAY
+    // =====================================================
+    const ppiCanvas = document.getElementById('sonar-ppi');
+    const ppiCtx = ppiCanvas.getContext('2d');
+    let sweepAngle = 0;
+
+    function drawSonarPPI(contacts) {
+      const w = ppiCanvas.width;
+      const h = ppiCanvas.height;
+      const cx = w / 2;
+      const cy = h / 2;
+      const r = w / 2 - 10;
+
+      ppiCtx.clearRect(0, 0, w, h);
+
+      // Background
+      ppiCtx.fillStyle = 'rgba(5, 20, 10, 0.8)';
+      ppiCtx.beginPath();
+      ppiCtx.arc(cx, cy, r + 4, 0, Math.PI * 2);
+      ppiCtx.fill();
+
+      // Range rings
+      ppiCtx.strokeStyle = 'rgba(0, 255, 65, 0.12)';
+      ppiCtx.lineWidth = 0.5;
+      for (let i = 1; i <= 3; i++) {
+        ppiCtx.beginPath();
+        ppiCtx.arc(cx, cy, r * i / 3, 0, Math.PI * 2);
+        ppiCtx.stroke();
+      }
+
+      // Cardinal lines
+      ppiCtx.strokeStyle = 'rgba(0, 255, 65, 0.08)';
+      for (let a = 0; a < 4; a++) {
+        const ang = a * Math.PI / 2;
+        ppiCtx.beginPath();
+        ppiCtx.moveTo(cx, cy);
+        ppiCtx.lineTo(cx + Math.sin(ang) * r, cy - Math.cos(ang) * r);
+        ppiCtx.stroke();
+      }
+
+      // Cardinal labels
+      ppiCtx.fillStyle = 'rgba(0, 255, 65, 0.3)';
+      ppiCtx.font = '8px Courier New';
+      ppiCtx.textAlign = 'center';
+      // Rotate labels based on own heading
+      const headRad = sub.heading * Math.PI / 180;
+      const labels = ['N', 'E', 'S', 'W'];
+      for (let i = 0; i < 4; i++) {
+        const ang = i * Math.PI / 2 - headRad;
+        const lx = cx + Math.sin(ang) * (r + 7);
+        const ly = cy - Math.cos(ang) * (r + 7);
+        ppiCtx.fillText(labels[i], lx, ly + 3);
+      }
+
+      // Sweep line
+      sweepAngle += 0.03;
+      ppiCtx.strokeStyle = 'rgba(0, 255, 65, 0.5)';
+      ppiCtx.lineWidth = 1;
+      ppiCtx.beginPath();
+      ppiCtx.moveTo(cx, cy);
+      const sx = cx + Math.sin(sweepAngle) * r;
+      const sy = cy - Math.cos(sweepAngle) * r;
+      ppiCtx.lineTo(sx, sy);
+      ppiCtx.stroke();
+
+      // Sweep trail (fading arc)
+      for (let i = 0; i < 30; i++) {
+        const a = sweepAngle - i * 0.02;
+        const alpha = (1 - i / 30) * 0.15;
+        ppiCtx.strokeStyle = `rgba(0, 255, 65, ${alpha})`;
+        ppiCtx.beginPath();
+        ppiCtx.moveTo(cx, cy);
+        ppiCtx.lineTo(cx + Math.sin(a) * r, cy - Math.cos(a) * r);
+        ppiCtx.stroke();
+      }
+
+      // Own heading indicator (top of PPI)
+      ppiCtx.fillStyle = '#00ff41';
+      ppiCtx.beginPath();
+      ppiCtx.moveTo(cx, cy - r - 6);
+      ppiCtx.lineTo(cx - 3, cy - r - 1);
+      ppiCtx.lineTo(cx + 3, cy - r - 1);
+      ppiCtx.fill();
+
+      // Contact blips (relative bearing from own heading)
+      for (const c of contacts) {
+        const relBearing = (c.bearing - sub.heading) * Math.PI / 180;
+        const blipDist = c.actualDist !== undefined
+          ? Math.min(1, c.actualDist / MAX_SONAR_RANGE) * r
+          : r * 0.6;
+
+        const bx = cx + Math.sin(relBearing) * blipDist;
+        const by = cy - Math.cos(relBearing) * blipDist;
+
+        // Blip glow
+        const grad = ppiCtx.createRadialGradient(bx, by, 0, bx, by, 6);
+        grad.addColorStop(0, `rgba(255, 60, 60, ${c.signal_strength})`);
+        grad.addColorStop(1, 'rgba(255, 60, 60, 0)');
+        ppiCtx.fillStyle = grad;
+        ppiCtx.fillRect(bx - 6, by - 6, 12, 12);
+
+        // Blip dot
+        ppiCtx.fillStyle = c.signal_strength > 0.4 ? '#ff4444' : '#ff8844';
+        ppiCtx.beginPath();
+        ppiCtx.arc(bx, by, 2, 0, Math.PI * 2);
+        ppiCtx.fill();
+      }
+
+      // Center dot (own position)
+      ppiCtx.fillStyle = '#00ff41';
+      ppiCtx.beginPath();
+      ppiCtx.arc(cx, cy, 2, 0, Math.PI * 2);
+      ppiCtx.fill();
+
+      // Border
+      ppiCtx.strokeStyle = 'rgba(0, 255, 65, 0.3)';
+      ppiCtx.lineWidth = 1;
+      ppiCtx.beginPath();
+      ppiCtx.arc(cx, cy, r + 1, 0, Math.PI * 2);
+      ppiCtx.stroke();
+    }
+
+    // =====================================================
+    // GAME LOOP
+    // =====================================================
+    const clock = new THREE.Clock();
+    let lastContacts = [];
+
+    function animate() {
+      requestAnimationFrame(animate);
+      const dt = Math.min(clock.getDelta(), 0.1);
+      const elapsed = gameStarted ? (performance.now() - gameStartTime) / 1000 : 0;
+
+      // Input
+      handleInput(dt);
+
+      // Physics
+      updateSubPhysics(dt);
+      updateTarget(elapsed);
+
+      // Move particles with camera
+      particles.position.copy(playerSub.position);
+
+      // Move godray light above player
+      godray.position.set(playerSub.position.x, 50, playerSub.position.z);
+      godray.target.position.copy(playerSub.position);
+
+      // Camera
+      updateCamera(dt);
+
+      // Fog density adjusts with depth
+      const depthFactor = sub.depthM / 500;
+      scene.fog.density = 0.01 + depthFactor * 0.015;
+      const baseFog = new THREE.Color(0.015, 0.06, 0.09);
+      const deepFog = new THREE.Color(0.005, 0.02, 0.04);
+      scene.fog.color.lerpColors(baseFog, deepFog, depthFactor);
+      scene.background.copy(scene.fog.color);
+
+      // Sonar + state send
+      const now = performance.now();
+      if (now - lastStateSend > STATE_INTERVAL) {
+        lastStateSend = now;
+        lastContacts = computeSonarContacts();
+        sendState(lastContacts);
+      }
+
+      // HUD
+      updateHUD(lastContacts);
+      drawSonarPPI(lastContacts);
+
+      // Render
+      renderer.render(scene, camera);
+    }
+
+    // =====================================================
+    // START
+    // =====================================================
+    connectBridge();
+    animate();
+
+    console.log('%cPANOPTICON // SUBMARINE PURSUIT', 'color: #00ff41; font-size: 16px; font-weight: bold');
+    console.log('%cConnecting to bridge at ' + BRIDGE_URL, 'color: #88aa88');
+  </script>
+</body>
+</html>

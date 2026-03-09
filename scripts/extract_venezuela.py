@@ -19,7 +19,7 @@ TRACES_DIR = "./traces"
 # 2026-01-03 21:00-21:30 UTC
 TIME_START = 75600  # 21:00 UTC
 TIME_END = 77400    # 21:30 UTC
-OUTPUT_FILE = "../venezuela_jan03.json"
+OUTPUT_FILE = "../data/playback/venezuela_jan03.json"
 
 # Bounding box: Venezuela + Caribbean + Colombia + Guyana + Brazil north
 LAT_MIN = 0.0

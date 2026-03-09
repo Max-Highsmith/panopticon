@@ -8,7 +8,7 @@ import { registerLayerLoader } from '../layerregistry.js';
 
 const layer = createDataLayer({
   layerKey: 'oceantemp',
-  dataUrl: 'data/ocean_temp.json',
+  dataUrl: 'data/layers/points/ocean_temp.json',
   idPrefix: 'sst',
   iconSize: DISPLAY.MINE_ICON_SIZE,
   countId: 'oceantemp-count',
@@ -20,7 +20,7 @@ const layer = createDataLayer({
   },
 });
 
-registerLayerLoader('oceantemp', { load: layer.load, flyTo: layer.FLY_TO, reset: layer.reset, dataUrl: 'data/ocean_temp.json' });
+registerLayerLoader('oceantemp', { load: layer.load, flyTo: layer.FLY_TO, reset: layer.reset, dataUrl: 'data/layers/points/ocean_temp.json' });
 
 export const fetchOceanTemp     = layer.load;
 export const isOceanTempLoaded  = layer.isLoaded;

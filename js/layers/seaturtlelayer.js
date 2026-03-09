@@ -7,7 +7,7 @@ import { registerLayerLoader } from '../layerregistry.js';
 
 const layer = createPathLayer({
   layerKey: 'seaturtles',
-  dataUrl: 'data/sea_turtles.json',
+  layerType: 'path', dataUrl: 'data/layers/paths/sea_turtles.json',
   idPrefix: 'turtle',
   countId: 'seaturtles-count',
   logLabel: 'SEA TURTLES',
@@ -19,7 +19,7 @@ const layer = createPathLayer({
   },
 });
 
-registerLayerLoader('seaturtles', { load: layer.load, flyTo: layer.FLY_TO, reset: layer.reset, dataUrl: 'data/sea_turtles.json' });
+registerLayerLoader('seaturtles', { load: layer.load, flyTo: layer.FLY_TO, reset: layer.reset, layerType: 'path', dataUrl: 'data/layers/paths/sea_turtles.json' });
 
 export const fetchSeaTurtles     = layer.load;
 export const isSeaTurtlesLoaded  = layer.isLoaded;

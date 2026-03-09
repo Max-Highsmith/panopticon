@@ -7,7 +7,7 @@ import { registerLayerLoader } from '../layerregistry.js';
 
 const layer = createPathLayer({
   layerKey: 'cargoroutes',
-  dataUrl: 'data/cargo_routes.json',
+  layerType: 'path', dataUrl: 'data/layers/paths/cargo_routes.json',
   idPrefix: 'cargo',
   countId: 'cargoroutes-count',
   logLabel: 'CARGO ROUTES',
@@ -19,7 +19,7 @@ const layer = createPathLayer({
   },
 });
 
-registerLayerLoader('cargoroutes', { load: layer.load, flyTo: layer.FLY_TO, reset: layer.reset, dataUrl: 'data/cargo_routes.json' });
+registerLayerLoader('cargoroutes', { load: layer.load, flyTo: layer.FLY_TO, reset: layer.reset, layerType: 'path', dataUrl: 'data/layers/paths/cargo_routes.json' });
 
 export const fetchCargoRoutes     = layer.load;
 export const isCargoRoutesLoaded  = layer.isLoaded;

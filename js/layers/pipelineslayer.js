@@ -7,7 +7,7 @@ import { registerLayerLoader } from '../layerregistry.js';
 
 const layer = createPathLayer({
   layerKey: 'pipelines',
-  dataUrl: 'data/pipelines.json',
+  layerType: 'path', dataUrl: 'data/layers/paths/pipelines.json',
   idPrefix: 'pipe',
   countId: 'pipelines-count',
   logLabel: 'PIPELINES',
@@ -20,7 +20,7 @@ const layer = createPathLayer({
   },
 });
 
-registerLayerLoader('pipelines', { load: layer.load, flyTo: layer.FLY_TO, reset: layer.reset, dataUrl: 'data/pipelines.json' });
+registerLayerLoader('pipelines', { load: layer.load, flyTo: layer.FLY_TO, reset: layer.reset, layerType: 'path', dataUrl: 'data/layers/paths/pipelines.json' });
 
 export const fetchPipelines     = layer.load;
 export const isPipelinesLoaded  = layer.isLoaded;

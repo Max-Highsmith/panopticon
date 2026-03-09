@@ -1,0 +1,652 @@
+{
+  "_source": {
+    "description": "Major global phosphate rock mining and production sites",
+    "origin": "USGS Mineral Commodity Summaries 2024 (https://pubs.usgs.gov/periodicals/mcs2024/); USGS Mineral Resources Data System (https://mrdata.usgs.gov/mrds/); International Fertilizer Association (IFA) (https://www.ifastat.org/); S&P Global Market Intelligence; Company annual reports: OCP Group (Morocco), Mosaic Company, Nutrien, PhosAgro, Ma'aden/SABIC, JPMC, ICL Group, CMOC Group, Foskor, CPG (Tunisia), ICS/Indorama (Senegal), SNPT (Togo), El-Nasr Mining (Egypt), Itafos, Ferphos/Somiphos (Algeria)",
+    "retrieved": "2026-03-08",
+    "license": "USGS: public domain; IFA: summary data fair use; OCP/company data: fair use summary",
+    "notes": "Major phosphate rock mining operations globally. Coordinates from USGS MRDS, company filings, and satellite verification. Capacity figures in phosphate rock tonnes per annum. Morocco (OCP Group) holds over 70% of world reserves. Phosphate rock is the primary feedstock for phosphoric acid and fertilizer production."
+  },
+  "_coverage": {
+    "global_production_2023_tpa": 220000000,
+    "global_production_unit": "phosphate rock",
+    "global_production_source": "USGS MCS 2024 — ~220 million tonnes phosphate rock",
+    "site_count": 37,
+    "operating_count": 35,
+    "development_count": 2,
+    "estimated_coverage_pct": 75,
+    "known_gaps": "Smaller Chinese phosphate operations across Guizhou, Yunnan, Sichuan, and Hubei; smaller Russian phosphate mines; Vietnamese phosphate operations; North Korean Musan-area deposits; numerous small-scale operations in sub-Saharan Africa",
+    "audit_date": "2026-03-08"
+  },
+  "sites": [
+    {
+      "name": "Khouribga",
+      "lat": 32.88,
+      "lon": -6.91,
+      "country": "Morocco",
+      "operator": "OCP Group",
+      "ownership": "OCP Group (state-owned, 95% Government of Morocco)",
+      "status": "operating",
+      "type": "sedimentary marine phosphorite",
+      "products": [
+        "phosphate rock",
+        "phosphoric acid"
+      ],
+      "capacity_tpa": 30000000,
+      "grade": "28-32% P2O5",
+      "notes": "World's largest phosphate mining complex; Oulad Abdoun basin; multiple open-pit mines including Merah el Aharch, Sidi Daoui, Sidi Chennane"
+    },
+    {
+      "name": "Benguerir",
+      "lat": 32.23,
+      "lon": -7.95,
+      "country": "Morocco",
+      "operator": "OCP Group",
+      "ownership": "OCP Group (state-owned)",
+      "status": "operating",
+      "type": "sedimentary marine phosphorite",
+      "products": [
+        "phosphate rock"
+      ],
+      "capacity_tpa": 12000000,
+      "grade": "25-30% P2O5",
+      "notes": "Gantour basin mining complex; includes OCP's Mohammed VI Polytechnic University campus and green energy research"
+    },
+    {
+      "name": "Youssoufia",
+      "lat": 32.25,
+      "lon": -8.53,
+      "country": "Morocco",
+      "operator": "OCP Group",
+      "ownership": "OCP Group (state-owned)",
+      "status": "operating",
+      "type": "sedimentary marine phosphorite",
+      "products": [
+        "phosphate rock"
+      ],
+      "capacity_tpa": 8000000,
+      "grade": "27-30% P2O5",
+      "notes": "Gantour basin; one of Morocco's original phosphate mining centers; underground and open-pit operations"
+    },
+    {
+      "name": "Bou Craa",
+      "lat": 26.32,
+      "lon": -12.85,
+      "country": "Western Sahara (administered by Morocco)",
+      "operator": "OCP Group (Phosboucraa)",
+      "ownership": "OCP Group (100%, via Phosboucraa subsidiary)",
+      "status": "operating",
+      "type": "sedimentary marine phosphorite",
+      "products": [
+        "phosphate rock"
+      ],
+      "capacity_tpa": 3000000,
+      "grade": "32% P2O5",
+      "notes": "Open-pit mine with 100km conveyor belt to Laayoune port; sovereignty disputed between Morocco and Sahrawi Arab Democratic Republic"
+    },
+    {
+      "name": "Guizhou phosphate complex (Wengfu)",
+      "lat": 27.05,
+      "lon": 107.55,
+      "country": "China",
+      "operator": "Wengfu Group",
+      "ownership": "Wengfu Group (state-owned enterprise, Guizhou province)",
+      "status": "operating",
+      "type": "sedimentary marine phosphorite",
+      "products": [
+        "phosphate rock",
+        "phosphoric acid",
+        "fertilizer"
+      ],
+      "capacity_tpa": 15000000,
+      "grade": "20-28% P2O5",
+      "notes": "China's largest phosphate producer; integrated mine-to-fertilizer complex in Guizhou province; Kaiyang district"
+    },
+    {
+      "name": "Yunnan phosphate complex (Yuntianhua)",
+      "lat": 24.75,
+      "lon": 102.85,
+      "country": "China",
+      "operator": "Yuntianhua Group",
+      "ownership": "Yuntianhua Group (Yunnan state-owned enterprise)",
+      "status": "operating",
+      "type": "sedimentary phosphorite",
+      "products": [
+        "phosphate rock",
+        "phosphoric acid",
+        "DAP/MAP fertilizer"
+      ],
+      "capacity_tpa": 12000000,
+      "grade": "22-30% P2O5",
+      "notes": "Major integrated phosphate-fertilizer complex; Kunming area; includes Haikou, Jinning, Anning mining operations"
+    },
+    {
+      "name": "Hubei phosphate complex (Xingfa)",
+      "lat": 30.8,
+      "lon": 111.3,
+      "country": "China",
+      "operator": "Hubei Xingfa Chemicals Group",
+      "ownership": "Xingfa Chemicals Group (SHE: 600141, mixed ownership)",
+      "status": "operating",
+      "type": "sedimentary phosphorite",
+      "products": [
+        "phosphate rock",
+        "phosphoric acid",
+        "phosphorus chemicals"
+      ],
+      "capacity_tpa": 10000000,
+      "grade": "20-26% P2O5",
+      "notes": "Yichang area, Hubei province; integrated phosphate mining and phosphorus chemical production"
+    },
+    {
+      "name": "Sichuan phosphate operations",
+      "lat": 31.3,
+      "lon": 104.8,
+      "country": "China",
+      "operator": "Various (incl. Chuanhua Group, Sichuan Lomon)",
+      "ownership": "Multiple Chinese state and private operators",
+      "status": "operating",
+      "type": "sedimentary phosphorite",
+      "products": [
+        "phosphate rock",
+        "phosphoric acid"
+      ],
+      "capacity_tpa": 8000000,
+      "grade": "18-25% P2O5",
+      "notes": "Mianzhu and Shifang districts near Deyang, Sichuan; multiple mines feeding integrated chemical complexes"
+    },
+    {
+      "name": "South Fort Meade",
+      "lat": 27.72,
+      "lon": -81.87,
+      "country": "United States",
+      "operator": "Mosaic Company",
+      "ownership": "Mosaic Company (100%)",
+      "status": "operating",
+      "type": "sedimentary marine phosphorite (Bone Valley Formation)",
+      "products": [
+        "phosphate rock",
+        "phosphoric acid",
+        "DAP/MAP fertilizer"
+      ],
+      "capacity_tpa": 8000000,
+      "grade": "25-30% P2O5 (BPL 60-68)",
+      "notes": "Central Florida phosphate district; large-scale dragline strip mining; feeds Mosaic's New Wales chemical plant"
+    },
+    {
+      "name": "Four Corners",
+      "lat": 27.65,
+      "lon": -81.95,
+      "country": "United States",
+      "operator": "Mosaic Company",
+      "ownership": "Mosaic Company (100%)",
+      "status": "operating",
+      "type": "sedimentary marine phosphorite (Bone Valley Formation)",
+      "products": [
+        "phosphate rock",
+        "phosphoric acid"
+      ],
+      "capacity_tpa": 6000000,
+      "grade": "25-30% P2O5",
+      "notes": "Central Florida Bone Valley; adjacent operations to South Fort Meade; dragline surface mining"
+    },
+    {
+      "name": "Riverview",
+      "lat": 27.87,
+      "lon": -82.3,
+      "country": "United States",
+      "operator": "Mosaic Company",
+      "ownership": "Mosaic Company (100%)",
+      "status": "operating",
+      "type": "phosphoric acid plant",
+      "products": [
+        "phosphoric acid",
+        "DAP/MAP fertilizer"
+      ],
+      "capacity_tpa": 5000000,
+      "grade": "N/A (processing)",
+      "notes": "Major phosphoric acid and fertilizer production complex; Hillsborough County, Florida; processes Florida phosphate rock"
+    },
+    {
+      "name": "White Springs (Swift Creek / Suwannee River)",
+      "lat": 30.33,
+      "lon": -82.75,
+      "country": "United States",
+      "operator": "Nutrien (formerly PotashCorp)",
+      "ownership": "Nutrien Ltd (100%)",
+      "status": "operating",
+      "type": "sedimentary marine phosphorite (Hawthorn Group)",
+      "products": [
+        "phosphate rock",
+        "phosphoric acid",
+        "animal feed phosphates"
+      ],
+      "capacity_tpa": 4000000,
+      "grade": "27-30% P2O5",
+      "notes": "North Florida phosphate operation; Hamilton County; Nutrien's only US phosphate mining operation"
+    },
+    {
+      "name": "Aurora (PCS Phosphate)",
+      "lat": 35.3,
+      "lon": -76.78,
+      "country": "United States",
+      "operator": "Nutrien (PCS Phosphate)",
+      "ownership": "Nutrien Ltd (100%)",
+      "status": "operating",
+      "type": "sedimentary marine phosphorite (Pungo River Formation)",
+      "products": [
+        "phosphate rock",
+        "phosphoric acid",
+        "DAP"
+      ],
+      "capacity_tpa": 6000000,
+      "grade": "28% P2O5",
+      "notes": "Largest integrated phosphate mining and chemical complex in the US; Beaufort County, North Carolina"
+    },
+    {
+      "name": "Caldwell Canyon / Rasmussen Ridge",
+      "lat": 42.73,
+      "lon": -111.55,
+      "country": "United States",
+      "operator": "Bayer CropScience (formerly Monsanto/P4 Production)",
+      "ownership": "Bayer (100%, via Monsanto acquisition)",
+      "status": "operating",
+      "type": "sedimentary marine phosphorite (Phosphoria Formation)",
+      "products": [
+        "elemental phosphorus",
+        "phosphoric acid"
+      ],
+      "capacity_tpa": 3000000,
+      "grade": "24-30% P2O5",
+      "notes": "Southeastern Idaho Phosphate Resource Area (SEIPRA); Caribou County; Western US phosphate district"
+    },
+    {
+      "name": "Conda/Smoky Canyon",
+      "lat": 42.65,
+      "lon": -111.4,
+      "country": "United States",
+      "operator": "Itafos (formerly Agrium/Conda)",
+      "ownership": "Itafos Inc (100%)",
+      "status": "operating",
+      "type": "sedimentary marine phosphorite (Phosphoria Formation)",
+      "products": [
+        "phosphate rock",
+        "phosphoric acid",
+        "SPA fertilizer"
+      ],
+      "capacity_tpa": 1500000,
+      "grade": "24-28% P2O5",
+      "notes": "Caribou County, Idaho; integrated mine and acid plant; one of few remaining Western US phosphate operations"
+    },
+    {
+      "name": "Kirovsk / Apatity (Apatit)",
+      "lat": 67.62,
+      "lon": 33.68,
+      "country": "Russia",
+      "operator": "PhosAgro (Apatit JSC)",
+      "ownership": "PhosAgro (100%, via Apatit subsidiary)",
+      "status": "operating",
+      "type": "igneous apatite (alkaline-ultramafic intrusion)",
+      "products": [
+        "apatite concentrate",
+        "phosphoric acid",
+        "NPK fertilizer"
+      ],
+      "capacity_tpa": 12000000,
+      "grade": "13-15% P2O5 (ore), 39% P2O5 (concentrate)",
+      "notes": "World's largest apatite mining complex; Khibiny Mountains, Kola Peninsula; multiple underground and open-pit mines; operating since 1929"
+    },
+    {
+      "name": "Voskresensk",
+      "lat": 55.32,
+      "lon": 38.66,
+      "country": "Russia",
+      "operator": "PhosAgro",
+      "ownership": "PhosAgro subsidiary",
+      "status": "operating",
+      "type": "phosphoric acid/fertilizer plant",
+      "products": [
+        "phosphoric acid",
+        "NPK fertilizer"
+      ],
+      "capacity_tpa": 3000000,
+      "grade": "N/A (processing)",
+      "notes": "Major phosphoric acid and fertilizer production complex; Moscow region; processes Kola Peninsula apatite concentrate"
+    },
+    {
+      "name": "Balakovo",
+      "lat": 52.03,
+      "lon": 47.78,
+      "country": "Russia",
+      "operator": "PhosAgro (Balakovo branch)",
+      "ownership": "PhosAgro (100%)",
+      "status": "operating",
+      "type": "fertilizer production complex",
+      "products": [
+        "phosphoric acid",
+        "DAP/MAP",
+        "NPK fertilizer"
+      ],
+      "capacity_tpa": 4000000,
+      "grade": "N/A (processing)",
+      "notes": "Major fertilizer production complex; Saratov Oblast; one of PhosAgro's largest downstream plants"
+    },
+    {
+      "name": "Al Hasa (Eshidiya South)",
+      "lat": 30.55,
+      "lon": 36.1,
+      "country": "Jordan",
+      "operator": "Jordan Phosphate Mines Company (JPMC)",
+      "ownership": "JPMC (Brunei Investment Agency 37%, Government of Jordan ~25%)",
+      "status": "operating",
+      "type": "sedimentary marine phosphorite",
+      "products": [
+        "phosphate rock"
+      ],
+      "capacity_tpa": 4000000,
+      "grade": "28-32% P2O5",
+      "notes": "Al Hasa and surrounding mines in southern Jordan; JPMC is world's 6th largest phosphate producer"
+    },
+    {
+      "name": "Eshidiya",
+      "lat": 30.3,
+      "lon": 35.8,
+      "country": "Jordan",
+      "operator": "Jordan Phosphate Mines Company (JPMC)",
+      "ownership": "JPMC",
+      "status": "operating",
+      "type": "sedimentary marine phosphorite",
+      "products": [
+        "phosphate rock"
+      ],
+      "capacity_tpa": 5000000,
+      "grade": "26-30% P2O5",
+      "notes": "Largest phosphate mine in Jordan; Ma'an Governorate; open-pit mining; railway to Aqaba port for export"
+    },
+    {
+      "name": "Al Jalamid (Wa'ad Al Shamal)",
+      "lat": 31.5,
+      "lon": 40.0,
+      "country": "Saudi Arabia",
+      "operator": "Ma'aden (Saudi Arabian Mining Company)",
+      "ownership": "Ma'aden (60%) / SABIC (15%) / Mosaic (25%)",
+      "status": "operating",
+      "type": "sedimentary marine phosphorite",
+      "products": [
+        "phosphate rock",
+        "DAP fertilizer",
+        "phosphoric acid"
+      ],
+      "capacity_tpa": 11000000,
+      "grade": "20-22% P2O5",
+      "notes": "Wa'ad Al Shamal Phosphate Company; integrated mine-to-DAP complex in Northern Border Province; world-class scale facility commissioned 2016"
+    },
+    {
+      "name": "Negev (Rotem/Zin)",
+      "lat": 31.1,
+      "lon": 35.18,
+      "country": "Israel",
+      "operator": "ICL Group (Rotem Amfert Negev)",
+      "ownership": "ICL Group (100%)",
+      "status": "operating",
+      "type": "sedimentary marine phosphorite",
+      "products": [
+        "phosphate rock",
+        "phosphoric acid",
+        "specialty phosphates"
+      ],
+      "capacity_tpa": 4000000,
+      "grade": "27-32% P2O5",
+      "notes": "Negev Desert operations including Rotem, Zin, and Oron mines; ICL is also major Dead Sea minerals producer"
+    },
+    {
+      "name": "Tapira",
+      "lat": -19.88,
+      "lon": -46.83,
+      "country": "Brazil",
+      "operator": "Mosaic Fertilizantes",
+      "ownership": "Mosaic Company (100%, via Mosaic Fertilizantes)",
+      "status": "operating",
+      "type": "igneous apatite (alkaline-carbonatite complex)",
+      "products": [
+        "phosphate rock",
+        "phosphoric acid"
+      ],
+      "capacity_tpa": 3000000,
+      "grade": "8-12% P2O5 (ore), enriched to 36% P2O5 (concentrate)",
+      "notes": "Alkaline-carbonatite intrusion in Minas Gerais; part of Alto Paranaiba Igneous Province"
+    },
+    {
+      "name": "Catalao",
+      "lat": -18.17,
+      "lon": -47.95,
+      "country": "Brazil",
+      "operator": "CMOC Group (formerly Anglo American Phosphates)",
+      "ownership": "CMOC Group (100%, acquired from Anglo American 2016)",
+      "status": "operating",
+      "type": "igneous apatite (alkaline-carbonatite complex)",
+      "products": [
+        "phosphate rock",
+        "niobium",
+        "phosphoric acid"
+      ],
+      "capacity_tpa": 4000000,
+      "grade": "10-14% P2O5 (ore)",
+      "notes": "Goias state; integrated phosphate-niobium complex; weathered carbonatite; CMOC (China Molybdenum Co.)"
+    },
+    {
+      "name": "Araxa",
+      "lat": -19.6,
+      "lon": -46.95,
+      "country": "Brazil",
+      "operator": "Mosaic Fertilizantes",
+      "ownership": "Mosaic Company (100%)",
+      "status": "operating",
+      "type": "igneous apatite (alkaline-carbonatite complex)",
+      "products": [
+        "phosphate rock",
+        "phosphoric acid"
+      ],
+      "capacity_tpa": 3500000,
+      "grade": "10-14% P2O5 (ore)",
+      "notes": "Barreiro carbonatite complex in Minas Gerais; integrated mining and chemical processing; adjacent to CBMM niobium mine"
+    },
+    {
+      "name": "Bayovar (Miski Mayo)",
+      "lat": -5.8,
+      "lon": -81.05,
+      "country": "Peru",
+      "operator": "Miski Mayo (Mosaic subsidiary)",
+      "ownership": "Mosaic Company (75%), other investors",
+      "status": "operating",
+      "type": "sedimentary marine phosphorite",
+      "products": [
+        "phosphate rock"
+      ],
+      "capacity_tpa": 5000000,
+      "grade": "29% P2O5",
+      "notes": "Sechura Desert, Piura region; one of world's largest phosphate deposits; open-pit mining; exported to Brazil and Asia"
+    },
+    {
+      "name": "Abu Tartur",
+      "lat": 25.47,
+      "lon": 30.02,
+      "country": "Egypt",
+      "operator": "El-Nasr Mining (ENMC)",
+      "ownership": "Government of Egypt (ENMC, state-owned)",
+      "status": "operating",
+      "type": "sedimentary marine phosphorite",
+      "products": [
+        "phosphate rock"
+      ],
+      "capacity_tpa": 2500000,
+      "grade": "24-28% P2O5",
+      "notes": "New Valley Governorate (Western Desert); one of Egypt's major phosphate operations; railway to Nile Valley"
+    },
+    {
+      "name": "Red Sea coast (Safaga/Quseir)",
+      "lat": 26.1,
+      "lon": 33.95,
+      "country": "Egypt",
+      "operator": "El-Nasr Mining / Misr Phosphate Company",
+      "ownership": "Government of Egypt (state-owned enterprises)",
+      "status": "operating",
+      "type": "sedimentary marine phosphorite",
+      "products": [
+        "phosphate rock"
+      ],
+      "capacity_tpa": 3000000,
+      "grade": "25-30% P2O5",
+      "notes": "Multiple mines along Red Sea mountains corridor; Quseir, Safaga, and Hamrawein operations; Eastern Desert"
+    },
+    {
+      "name": "Gafsa basin",
+      "lat": 34.42,
+      "lon": 8.78,
+      "country": "Tunisia",
+      "operator": "Compagnie des Phosphates de Gafsa (CPG)",
+      "ownership": "Government of Tunisia (100%, via CPG/GCT)",
+      "status": "operating",
+      "type": "sedimentary marine phosphorite",
+      "products": [
+        "phosphate rock",
+        "phosphoric acid"
+      ],
+      "capacity_tpa": 4000000,
+      "grade": "26-30% P2O5",
+      "notes": "Historic mining basin with multiple mines (Metlaoui, Redeyef, M'Dhilla); operating since 1899; production disrupted by social unrest since 2011"
+    },
+    {
+      "name": "Djebel Onk",
+      "lat": 34.7,
+      "lon": 7.95,
+      "country": "Algeria",
+      "operator": "Ferphos / Somiphos",
+      "ownership": "Government of Algeria (Manal Group)",
+      "status": "operating",
+      "type": "sedimentary marine phosphorite",
+      "products": [
+        "phosphate rock"
+      ],
+      "capacity_tpa": 3000000,
+      "grade": "25-29% P2O5",
+      "notes": "Tebessa province, eastern Algeria near Tunisian border; open-pit mining; significant reserves for future expansion"
+    },
+    {
+      "name": "Taiba / Lam-Lam",
+      "lat": 14.93,
+      "lon": -16.98,
+      "country": "Senegal",
+      "operator": "Industries Chimiques du Senegal (ICS)",
+      "ownership": "Indorama Corporation (majority), Government of Senegal (minority)",
+      "status": "operating",
+      "type": "sedimentary marine phosphorite",
+      "products": [
+        "phosphate rock",
+        "phosphoric acid"
+      ],
+      "capacity_tpa": 3000000,
+      "grade": "30-36% P2O5 (high-grade Eocene)",
+      "notes": "Thies region; high-grade Eocene phosphorite; ICS is West Africa's largest phosphoric acid producer; Indian-owned"
+    },
+    {
+      "name": "Hahotoe / Kpogame",
+      "lat": 6.25,
+      "lon": 1.5,
+      "country": "Togo",
+      "operator": "SNPT (Societe Nouvelle des Phosphates du Togo)",
+      "ownership": "Government of Togo / Wengfu Group (management contract)",
+      "status": "operating",
+      "type": "sedimentary marine phosphorite",
+      "products": [
+        "phosphate rock"
+      ],
+      "capacity_tpa": 1500000,
+      "grade": "30-36% P2O5",
+      "notes": "Maritime Region; coastal phosphate deposits; Chinese (Wengfu) management since 2007; historically important export commodity for Togo"
+    },
+    {
+      "name": "Phalaborwa",
+      "lat": -23.95,
+      "lon": 31.13,
+      "country": "South Africa",
+      "operator": "Foskor",
+      "ownership": "Government of South Africa (IDC, 58%), other shareholders",
+      "status": "operating",
+      "type": "igneous apatite (carbonatite complex)",
+      "products": [
+        "phosphate rock",
+        "phosphoric acid",
+        "magnetite"
+      ],
+      "capacity_tpa": 3000000,
+      "grade": "7-9% P2O5 (ore), enriched to 36% P2O5 (concentrate)",
+      "notes": "Palabora igneous complex, Limpopo province; open-pit apatite-magnetite mining; adjacent to Kruger National Park; integrated mine-acid plant"
+    },
+    {
+      "name": "Bourem / Tilemsi",
+      "lat": 16.95,
+      "lon": -0.35,
+      "country": "Mali",
+      "operator": "Government of Mali (exploration stage)",
+      "ownership": "Government of Mali",
+      "status": "development",
+      "type": "sedimentary phosphorite",
+      "products": [
+        "phosphate rock"
+      ],
+      "capacity_tpa": null,
+      "grade": "25-30% P2O5 (est.)",
+      "notes": "Tilemsi Valley phosphate deposits; significant undeveloped resources; security situation limits development in northern Mali"
+    },
+    {
+      "name": "Minjingu",
+      "lat": -4.3,
+      "lon": 35.9,
+      "country": "Tanzania",
+      "operator": "Minjingu Mines & Fertilizer",
+      "ownership": "Private / Government of Tanzania",
+      "status": "operating",
+      "type": "sedimentary phosphorite",
+      "products": [
+        "phosphate rock",
+        "direct application fertilizer"
+      ],
+      "capacity_tpa": 150000,
+      "grade": "26-30% P2O5",
+      "notes": "Near Lake Manyara; small-scale operation producing direct-application phosphate rock for East African agriculture"
+    },
+    {
+      "name": "Jhamarkotra / Udaipur",
+      "lat": 24.5,
+      "lon": 73.68,
+      "country": "India",
+      "operator": "Rajasthan State Mines and Minerals (RSMML)",
+      "ownership": "Government of Rajasthan (state enterprise)",
+      "status": "operating",
+      "type": "Precambrian igneous/metamorphic apatite",
+      "products": [
+        "phosphate rock",
+        "rock phosphate concentrate"
+      ],
+      "capacity_tpa": 2000000,
+      "grade": "18-22% P2O5",
+      "notes": "Rajasthan; India's largest phosphate rock mining complex; Jhamarkotra and surrounding deposits; low-grade requires beneficiation"
+    },
+    {
+      "name": "Mussorie / Dehradun",
+      "lat": 30.45,
+      "lon": 78.07,
+      "country": "India",
+      "operator": "Pyrites, Phosphates & Chemicals Ltd (PPCL)",
+      "ownership": "Government of India (Ministry of Chemicals & Fertilizers)",
+      "status": "development",
+      "type": "sedimentary phosphorite",
+      "products": [
+        "phosphate rock"
+      ],
+      "capacity_tpa": 500000,
+      "grade": "15-20% P2O5",
+      "notes": "Uttarakhand; low-grade Precambrian-Cambrian phosphorite; India exploring to reduce import dependence"
+    }
+  ]
+}

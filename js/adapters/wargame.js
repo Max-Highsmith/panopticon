@@ -5,8 +5,39 @@
    replays them with a scrubable timeline.
    =================================================================== */
 
-import { interpolateContact, buildWorldState, applyVariables } from '../simulation.mjs';
+import { interpolateContact, applyVariables } from '../simulation.mjs';
 import { getResult } from '../results.js';
+
+/**
+ * Interpolate a blue force's position from its trace snapshots.
+ * Uses linear interpolation between the two bracketing snapshots.
+ * Heading interpolation uses shortest arc.
+ */
+function interpolateBlueForce(trace, tick) {
+  if (!trace || trace.length === 0) return null;
+  if (trace.length === 1) return { ...trace[0] };
+
+  for (let i = 0; i < trace.length - 1; i++) {
+    const t0 = trace[i], t1 = trace[i + 1];
+    if (tick >= t0.tick && tick <= t1.tick) {
+      const span = t1.tick - t0.tick;
+      const frac = span > 0 ? (tick - t0.tick) / span : 0;
+      // Shortest-arc heading interpolation
+      let dH = t1.heading - t0.heading;
+      if (dH > 180) dH -= 360;
+      if (dH < -180) dH += 360;
+      return {
+        lat: t0.lat + (t1.lat - t0.lat) * frac,
+        lon: t0.lon + (t1.lon - t0.lon) * frac,
+        heading: ((t0.heading + dH * frac) % 360 + 360) % 360,
+        speed_kts: t0.speed_kts + (t1.speed_kts - t0.speed_kts) * frac,
+      };
+    }
+  }
+  // Past the last snapshot — hold final position
+  const last = trace[trace.length - 1];
+  return { lat: last.lat, lon: last.lon, heading: last.heading, speed_kts: last.speed_kts };
+}
 
 const wargameAdapter = {
   /**
@@ -53,7 +84,38 @@ const wargameAdapter = {
       message: applyVariables(m.message, vars),
     }));
 
-    return { scenario, decisions, variant, intelFeed, vars };
+    // Build blue force traces from decision snapshots (navigation scenarios)
+    let blueTraces = null;
+    if (scenario.navigation) {
+      blueTraces = new Map();
+      // Seed with initial positions at tick 0
+      for (const bf of (scenario.blue_forces || [])) {
+        blueTraces.set(bf.id, [{
+          tick: 0,
+          lat: bf.position.lat,
+          lon: bf.position.lon,
+          heading: bf.heading || 0,
+          speed_kts: bf.speed_kts || 0,
+        }]);
+      }
+      // Add positions from each decision's blue_positions snapshot
+      for (const dec of decisions) {
+        if (!dec.blue_positions) continue;
+        const tick = dec.tick !== undefined ? dec.tick : 0;
+        for (const bp of dec.blue_positions) {
+          if (!blueTraces.has(bp.id)) continue;
+          blueTraces.get(bp.id).push({
+            tick,
+            lat: bp.lat,
+            lon: bp.lon,
+            heading: bp.heading || 0,
+            speed_kts: bp.speed_kts || 0,
+          });
+        }
+      }
+    }
+
+    return { scenario, decisions, variant, intelFeed, vars, blueTraces };
   },
 
   /** Total duration in seconds */
@@ -70,21 +132,34 @@ const wargameAdapter = {
    * Maps progress → tick, interpolates entity positions, returns frame info.
    */
   renderFrame(ctx, manifest, viewer, entityMap, progress, timeSeconds) {
-    const { scenario } = ctx;
+    const { scenario, blueTraces } = ctx;
     const totalTicks = manifest.timeline.totalTicks || scenario.duration_ticks || 8;
     const currentTick = progress * totalTicks;
 
-    // Blue forces (static positions)
+    // Blue forces
     for (const bf of (scenario.blue_forces || [])) {
+      // Determine position: interpolate from traces if nav, else static
+      let posLon = bf.position.lon, posLat = bf.position.lat;
+      if (blueTraces && blueTraces.has(bf.id)) {
+        const interp = interpolateBlueForce(blueTraces.get(bf.id), currentTick);
+        if (interp) {
+          posLat = interp.lat;
+          posLon = interp.lon;
+        }
+      }
+      const cartPos = Cesium.Cartesian3.fromDegrees(posLon, posLat, 5000);
+
       if (entityMap.has(bf.id)) {
-        // Already exists, no update needed (static)
+        // Update position (needed for navigation scenarios)
+        entityMap.get(bf.id).entity.position = cartPos;
       } else {
         const entity = viewer.entities.add({
-          position: Cesium.Cartesian3.fromDegrees(bf.position.lon, bf.position.lat, 0),
+          position: cartPos,
           point: {
             pixelSize: 10,
             color: Cesium.Color.fromCssColorString(bf.color || '#00aaff'),
             outlineColor: Cesium.Color.WHITE, outlineWidth: 1,
+            disableDepthTestDistance: Number.POSITIVE_INFINITY,
           },
           label: {
             text: bf.label, font: '11px Courier New',
@@ -93,6 +168,7 @@ const wargameAdapter = {
             style: Cesium.LabelStyle.FILL_AND_OUTLINE,
             pixelOffset: new Cesium.Cartesian2(0, -16),
             distanceDisplayCondition: new Cesium.DistanceDisplayCondition(0, 20_000_000),
+            disableDepthTestDistance: Number.POSITIVE_INFINITY,
             scale: 0.9,
           },
         });
@@ -104,7 +180,8 @@ const wargameAdapter = {
     let entityCount = 0;
     for (const contact of (scenario.red_contacts || [])) {
       const pos = interpolateContact(contact, currentTick, totalTicks);
-      const cartPos = Cesium.Cartesian3.fromDegrees(pos.lon, pos.lat, (pos.alt || 0) * 1000);
+      const altM = Math.max((pos.alt || 0) * 1000, 5000);
+      const cartPos = Cesium.Cartesian3.fromDegrees(pos.lon, pos.lat, altM);
       entityCount++;
 
       if (entityMap.has(contact.id)) {
@@ -116,6 +193,7 @@ const wargameAdapter = {
             pixelSize: 8,
             color: Cesium.Color.fromCssColorString(contact.color || '#ff3333'),
             outlineColor: Cesium.Color.WHITE, outlineWidth: 1,
+            disableDepthTestDistance: Number.POSITIVE_INFINITY,
           },
           label: {
             text: contact.label, font: '10px Courier New',
@@ -124,6 +202,7 @@ const wargameAdapter = {
             style: Cesium.LabelStyle.FILL_AND_OUTLINE,
             pixelOffset: new Cesium.Cartesian2(0, -14),
             distanceDisplayCondition: new Cesium.DistanceDisplayCondition(0, 20_000_000),
+            disableDepthTestDistance: Number.POSITIVE_INFINITY,
             scale: 0.85,
           },
         });
@@ -166,11 +245,20 @@ const wargameAdapter = {
       if (dTick <= currentTick) {
         const isCritical = scenario.measurement?.critical_action &&
           d.action === scenario.measurement.critical_action;
+
+        let body = `${d.reasoning || ''} (confidence: ${d.confidence || '?'}, ${d.latencyMs || '?'}ms)`;
+        if (d.movements && d.movements.length > 0) {
+          const moveStr = d.movements.map(m =>
+            `${m.id}: ${Math.round(m.heading)}° @ ${Math.round(m.speed_kts)}kts`
+          ).join(', ');
+          body += ` [MOVE: ${moveStr}]`;
+        }
+
         events.push({
           type: isCritical ? 'critical' : 'decision',
           tick: dTick,
           title: `T${dTick} → ${d.action}`,
-          body: `${d.reasoning || ''} (confidence: ${d.confidence || '?'}, ${d.latencyMs || '?'}ms)`,
+          body,
         });
       }
     }

@@ -7,7 +7,7 @@ import { registerLayerLoader } from '../layerregistry.js';
 
 const layer = createPathLayer({
   layerKey: 'arcticroutes',
-  dataUrl: 'data/arctic_routes.json',
+  layerType: 'path', dataUrl: 'data/layers/paths/arctic_routes.json',
   idPrefix: 'arcrt',
   countId: 'arcticroutes-count',
   logLabel: 'ARCTIC ROUTES',
@@ -21,7 +21,7 @@ const layer = createPathLayer({
   },
 });
 
-registerLayerLoader('arcticroutes', { load: layer.load, flyTo: layer.FLY_TO, reset: layer.reset, dataUrl: 'data/arctic_routes.json' });
+registerLayerLoader('arcticroutes', { load: layer.load, flyTo: layer.FLY_TO, reset: layer.reset, layerType: 'path', dataUrl: 'data/layers/paths/arctic_routes.json' });
 
 export const fetchArcticRoutes     = layer.load;
 export const isArcticRoutesLoaded  = layer.isLoaded;

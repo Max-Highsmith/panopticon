@@ -1,67 +1,76 @@
 # PANOPTICON
 
-Real-time and historical 3D globe visualization for aircraft, satellite, and ship surveillance.
+Real-time OSINT globe with 60+ data layers, AI wargame simulations, and historical playback.
 
 ![PANOPTICON](https://img.shields.io/badge/status-active-00ff41?style=flat-square&labelColor=000)
 ![License](https://img.shields.io/badge/license-MIT-blue?style=flat-square&labelColor=000)
 
 ## What It Does
 
-PANOPTICON renders live tracking data from multiple open-source intelligence (OSINT) feeds onto an interactive 3D globe. It supports both real-time monitoring and historical scenario replay with timeline scrubbing.
+Panopticon renders live tracking data, static intelligence layers, and AI-driven crisis simulations on an interactive CesiumJS 3D globe. Three operating modes:
 
-**Live Mode** aggregates five data sources simultaneously:
+**OBSERVE** — Real-time feeds from five OSINT sources:
 
-| Layer | Source | Data |
-|-------|--------|------|
-| Military Aircraft | [ADS-B Exchange](https://www.adsbexchange.com/) | Real-time ADS-B transponder data |
+| Feed | Source | Data |
+|------|--------|------|
+| Military Aircraft | [ADS-B Exchange](https://www.adsbexchange.com/) | Real-time transponder positions |
 | Commercial Aircraft | [OpenSky Network](https://opensky-network.org/) | Global flight tracking |
-| Satellites | [CelesTrak](https://celestrak.org/) | TLE orbital elements + propagation |
+| Satellites | [CelesTrak](https://celestrak.org/) | TLE orbital elements + SGP4 propagation |
 | Ships | [AISStream](https://aisstream.io/) | Real-time AIS vessel positions |
-| POI (POGO) | [Overpass API](https://overpass-api.de/) | OpenStreetMap monuments/landmarks |
+| POI | [Overpass API](https://overpass-api.de/) | OpenStreetMap landmarks |
 
-**Replay Mode** plays back historical ADS-B snapshots with:
-- Frame-by-frame timeline scrubbing at variable speed (1x–100x)
-- Aircraft trail rendering with interpolated positions
-- ADS-B blackout zone overlays
-- Data boundary markers
-- Satellite positions propagated to the historical date
+**PLAYBACK** — Replay historical events and completed wargame results with timeline scrubbing, variable speed (0.25x–100x), and full data layer visibility.
 
-### Visual Filters
+**WARGAME** — Run AI-driven geopolitical crisis simulations using LLMs (Anthropic, OpenAI, Google, xAI, OpenRouter). 35+ scenarios across naval confrontations, cyber attacks, nuclear escalation, and more. Results automatically generate playback manifests for replay.
 
-Six altitude-adaptive visual filters that scale intensity based on camera height:
+## Data Layers
 
-| Filter | Effect |
-|--------|--------|
-| CRT | Scanlines + vignette + brightness boost |
-| NVG | Night vision green tint + scan noise |
-| FLIR | Thermal imaging desaturation |
-| Anime | Cel-shading + posterization |
-| Border | Political map desaturation + warm tint |
-| Off | Default rendering |
+60+ toggleable data layers across four categories:
 
-### Satellite View
+| Category | Examples | Count |
+|----------|----------|-------|
+| **Critical Minerals** | Lithium, cobalt, rare earths, uranium, tungsten, gallium... | 40+ |
+| **Energy & Infrastructure** | Nuclear plants, oil refineries, pipelines, power grids, subsea cables | 10+ |
+| **Military & Intelligence** | Bases, radar installations, strategic nuclear sites, spaceports | 5+ |
+| **Natural & Environmental** | Volcanoes, earthquakes, wildfires, ocean currents, sea ice, wildlife migrations | 10+ |
 
-Click any satellite to open a split-panel view with:
-- Nadir ground projection (second Cesium viewer)
-- Sensor footprint circle with crosshair overlay
-- Canvas 2D orbital profile showing viewing cone geometry
-- Real-time altitude, lat/lon, and footprint radius readouts
+Every data file includes a `_source` field with specific provenance (database, publication, URL). Each layer has a corresponding ingestion script in `scripts/` to reproduce the data from source.
+
+## Views
+
+Click any entity on the globe to open a detail panel. Eight specialized view types:
+
+| View | Description |
+|------|-------------|
+| **Plane** | Aircraft flight profile with altitude chart |
+| **Satellite** | Orbital profile with nadir projection and sensor footprint |
+| **Site** | 3D close-up of infrastructure (nuclear plants, mines, etc.) |
+| **Airport** | Flight information display (FIDS) schedule |
+| **Webcam** | Live HLS/YouTube stream embed |
+| **Path** | Route intelligence for cables, pipelines, shipping lanes |
+| **Submarine** | 3D submarine with sonar contacts (Three.js) |
+| **Sniper** | Scope view with target tracking |
+
+## Visual Filters
+
+Six altitude-adaptive filters that scale intensity with camera height:
+
+CRT · NVG · FLIR · Anime · Border · Off
 
 ## Quick Start
 
 ### 1. Clone
 
 ```bash
-git clone https://github.com/your-username/panopticon.git
+git clone https://github.com/Max-Highsmith/panopticon.git
 cd panopticon
 ```
 
 ### 2. Configure API Keys
 
-Create `config.local.js` in the project root (this file is gitignored):
+Create `config.local.js` in the project root (gitignored):
 
 ```js
-// config.local.js
 window.CESIUM_TOKEN = 'your-cesium-ion-token';
 window.AIS_API_KEY  = 'your-aisstream-api-key';
 ```
@@ -70,179 +79,140 @@ window.AIS_API_KEY  = 'your-aisstream-api-key';
 - **Cesium Ion** — Free at [cesium.com/ion](https://cesium.com/ion/) (enables Google 3D Photorealistic Tiles)
 - **AISStream** — Free at [aisstream.io](https://aisstream.io/) (enables ship tracking)
 
-The other APIs (ADS-B Exchange, OpenSky, CelesTrak, Overpass) are public and require no keys.
+The other feeds (ADS-B Exchange, OpenSky, CelesTrak, Overpass) are public and require no keys.
 
 ### 3. Serve
 
-Any static file server works. For local development:
+Any static file server works:
 
 ```bash
-# Python
 python3 -m http.server 8080
-
-# Node
-npx serve .
-
-# PHP
-php -S localhost:8080
 ```
 
-Open `http://localhost:8080` in a modern browser.
+Open `http://localhost:8080`.
 
-### 4. Deploy
+### 4. Wargame Server (Optional)
 
-PANOPTICON is a static site — deploy to any hosting provider:
+The wargame system can run entirely in the browser (direct API calls to LLM providers) or via a backend server for server-side execution:
 
 ```bash
-# GitHub Pages (already configured via CNAME)
-git push origin main
-
-# Netlify / Vercel / Cloudflare Pages
-# Just point to the repo root — no build step required
+cd server
+npm install
+cp .env.example .env    # Add your LLM API keys
+npm start               # Starts on port 3001
 ```
-
-For CI/CD, inject API keys as environment variables using the `%%CESIUM_TOKEN%%` and `%%AIS_API_KEY%%` placeholders in the build pipeline.
 
 ## Project Structure
 
 ```
 panopticon/
-├── index.html                  # Application shell (HTML only)
-├── config.local.js             # Local API keys (gitignored)
-├── CNAME                       # GitHub Pages custom domain
-│
-├── css/
-│   └── styles.css              # All styles (HUD, filters, panels, overlays)
+├── index.html                 Application shell
+├── config.local.js            Local API keys (gitignored)
+├── css/styles.css             All styles
 │
 ├── js/
-│   ├── app.js                  # Main entry point — mode switching, replay, interaction
-│   ├── config.js               # API endpoints, constants, scenario definitions
-│   ├── utils.js                # Formatting, time conversion, interpolation, DOM cache
-│   ├── icons.js                # Canvas-based icon generators (plane, ship, satellite, POGO)
-│   ├── globe.js                # Cesium viewer init, layer state, entity registries
-│   ├── filters.js              # Altitude-adaptive visual filter system
-│   ├── audio.js                # Background music player
-│   ├── overlays.js             # Blackout zones and data boundary overlays
-│   ├── satview.js              # Satellite aerial view (2nd viewer + canvas profile)
+│   ├── app.js                 Entry point — mode switching, UI orchestration
+│   ├── globe.js               CesiumJS viewer, entity maps, layer state
+│   ├── config.js              API endpoints, constants
+│   ├── utils.js               Shared utilities
+│   ├── icons.js               Canvas-based icon generators
+│   ├── filters.js             Visual filter system
+│   │
+│   ├── layerregistry.js       Central layer registry + data cache
+│   ├── layercatalog.js        Layer catalog with metadata
+│   ├── layerselector.js       Searchable layer dropdown + pin bar
+│   ├── layers/
+│   │   ├── index.js           Barrel file (imports all layers)
+│   │   ├── datalayer.js       Point layer factory
+│   │   ├── pathlayer.js       Path layer factory
+│   │   ├── regionlayer.js     Region layer factory
+│   │   └── *.js               60+ self-registering layer modules
+│   │
+│   ├── viewregistry.js        Central view registry
+│   ├── viewbase.js            Shared view utilities
+│   ├── *view.js               8 view modules (plane, site, airport, satellite, etc.)
+│   │
+│   ├── playback.js            Unified playback engine (timeline, frame loop)
+│   ├── playbackbrowser.js     Playback sidebar UI
+│   ├── adapters/
+│   │   ├── adsb.js            Historical playback adapter
+│   │   └── wargame.js         Wargame playback adapter
+│   │
+│   ├── wargame.js             Browser-side wargame execution
+│   ├── simulation.mjs         Shared simulation logic (prompts, parsing)
+│   ├── llm.js                 Browser-side LLM API caller
+│   └── settings.js            API key management UI
+│
+├── data/
 │   └── layers/
-│       ├── military.js         # ADS-B Exchange military feed
-│       ├── commercial.js       # OpenSky Network commercial feed
-│       ├── satellites.js       # CelesTrak TLE + satellite.js propagation
-│       ├── ships.js            # AIS WebSocket ship tracking
-│       └── pogo.js             # Overpass API POI layer
+│       ├── points/            Point layer JSON (mines, plants, bases...)
+│       ├── paths/             Path layer JSON (cables, routes, migrations...)
+│       ├── regions/           Region layer JSON (chokepoints, fisheries...)
+│       └── ambient/           Non-geographic data (markets, feeds)
 │
-├── military_feb28.json         # Replay data: Iran scenario
-├── venezuela_jan03.json        # Replay data: Venezuela scenario
-├── jalisco_feb22.json          # Replay data: Jalisco scenario
-│
-└── data/                       # Raw ADS-B archives (gitignored)
+├── scenarios/                 35+ wargame scenario definitions
+├── playbacks/                 Playback manifest files
+├── scripts/                   Python data ingestion scripts
+├── server/                    Express + WebSocket wargame server
+└── docs/                      Architecture and spec documents
 ```
 
 ## Architecture
 
+### Design Patterns
+
+**Self-Registering Modules** — Layers register themselves via `registerLayerLoader()` at import time. Adding a layer = create a file + add one import to the barrel. `app.js` has zero knowledge of individual layers.
+
+**Factory Pattern** — Three factories (`datalayer.js`, `pathlayer.js`, `regionlayer.js`) handle point/path/region layers with config-driven customization, eliminating boilerplate.
+
+**Adapter Pattern** — Playback engine delegates to type-specific adapters (historical vs wargame). LLM calls use the same pattern across five providers.
+
+**View Registry** — Views self-register like layers. Each entity declares its view type; the registry handles dispatch.
+
+### Wargame Flow
+
 ```
-┌─────────────────────────────────────────────┐
-│                  index.html                  │
-│              (application shell)             │
-└────────────────────┬────────────────────────┘
-                     │
-              ┌──────┴──────┐
-              │   app.js    │  ← entry point (ES module)
-              └──────┬──────┘
-                     │
-     ┌───────┬───────┼───────┬──────────┐
-     │       │       │       │          │
-  globe.js  filters  audio  overlays  satview
-     │               │
-     │        ┌──────┴──────────────┐
-     │        │     layers/         │
-     │        ├── military.js       │
-     │        ├── commercial.js     │
-     │        ├── satellites.js     │
-     │        ├── ships.js          │
-     │        └── pogo.js           │
-     │                              │
-     └──── config.js + utils.js ────┘
-              (shared by all)
+Scenario JSON → Layer Context → buildPrompt() → LLM API → parseDecision()
+                                                              ↓
+                                               Playback Manifest → PLAYBACK mode
 ```
 
-**Key patterns:**
-- **ES Modules** — Each file exports its public API; `app.js` wires them together
-- **Entity registries** — Each layer maintains a `Map<id, record>` for efficient updates
-- **Frame-driven updates** — Satellite positions and filter intensity update via `preRender` listeners
-- **Altitude-adaptive effects** — Camera height mapped to 0–1 intensity via log scale
+1. User picks scenario, variant, framing, and LLM provider
+2. Engine loads scenario-declared data layers for geographic context
+3. Each tick: builds prompt with situation + intel + layer data, sends to LLM
+4. LLM response parsed into structured decision (action, movements, reasoning)
+5. On completion, results auto-generate a playback manifest for replay
 
-## Replay Data Format
+## Documentation
 
-Scenario JSON files follow this schema:
+| Document | Description |
+|----------|-------------|
+| [ARCHITECTURE.md](docs/ARCHITECTURE.md) | System design overview |
+| [LAYER_SYSTEM.md](docs/LAYER_SYSTEM.md) | Layer registry, factories, view system |
+| [PLAYBACK_SPEC.md](docs/PLAYBACK_SPEC.md) | Playback manifest format |
+| [SCENARIO_SPEC.md](docs/SCENARIO_SPEC.md) | Wargame scenario JSON format |
+| [DATA_SPEC.md](docs/DATA_SPEC.md) | Data file schemas and provenance |
+| [CRITICAL_MINERALS_SPEC.md](docs/CRITICAL_MINERALS_SPEC.md) | Mineral commodity layer spec |
 
-```json
-{
-  "time_start_utc": 57720,
-  "time_end_utc": 59520,
-  "aircraft": [
-    {
-      "hex": "a1b2c3",
-      "r": "CALLSIGN",
-      "t": "B737",
-      "desc": "Boeing 737-800",
-      "mil": false,
-      "trace": [
-        { "t": 57720, "lat": 32.5, "lon": 53.2, "alt": 35000, "gs": 450, "track": 90 },
-        { "t": 57721, "lat": 32.5, "lon": 53.21, "alt": 35000, "gs": 450, "track": 90 }
-      ]
-    }
-  ]
-}
-```
+## Contributing
 
-| Field | Description |
-|-------|-------------|
-| `time_start_utc` | Window start as seconds since midnight UTC |
-| `time_end_utc` | Window end as seconds since midnight UTC |
-| `hex` | ICAO 24-bit transponder address |
-| `r` | Registration / callsign |
-| `t` | Aircraft type code |
-| `mil` | `true` if flagged as military |
-| `trace[].t` | Timestamp (seconds since midnight UTC) |
-| `trace[].alt` | Barometric altitude in feet (or `"ground"`) |
-| `trace[].gs` | Ground speed in knots |
-| `trace[].track` | Track angle in degrees (0 = north) |
+See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines on adding layers, scenarios, views, and other contributions.
 
-Traces are linearly interpolated between data points during playback.
-
-## Included Scenarios
-
-| Scenario | Region | Date | UTC Window |
-|----------|--------|------|------------|
-| **IRAN** | Persian Gulf / Strait of Hormuz | Feb 28, 2026 | 16:02 – 16:32 |
-| **VENEZUELA** | Caribbean / Maracaibo | Jan 3, 2026 | 08:00 – 08:30 |
-| **JALISCO** | Western Mexico / Pacific Coast | Feb 22, 2026 | 11:00 – 11:30 |
-
-## Adding a New Scenario
-
-1. Prepare a JSON file matching the replay data format above
-2. Place it in the project root (e.g., `my_scenario.json`)
-3. Add the scenario definition to `SCENARIOS` in [js/config.js](js/config.js)
-4. Add a `.scenario-card` to the sidebar in [index.html](index.html)
-
-## Browser Support
-
-Requires WebGL 2.0. Tested on:
-- Chrome 120+
-- Firefox 120+
-- Edge 120+
-- Safari 17+ (partial — WebGL performance may vary)
-
-## Dependencies
+## Tech Stack
 
 | Library | Version | Purpose |
 |---------|---------|---------|
 | [CesiumJS](https://cesium.com/) | 1.124 | 3D globe rendering |
 | [satellite.js](https://github.com/shashwatak/satellite-js) | 5.0.0 | Orbital mechanics (SGP4/SDP4) |
+| [Three.js](https://threejs.org/) | 0.160.0 | 3D submarine view |
+| [HLS.js](https://github.com/video-dev/hls.js/) | 1.5.7 | Webcam stream playback |
 
-No build tools, bundlers, or package managers required.
+No build tools, bundlers, or package managers required for the frontend. Pure ES Modules.
+
+## Browser Support
+
+Requires WebGL 2.0. Tested on Chrome 120+, Firefox 120+, Edge 120+, Safari 17+.
 
 ## License
 
-MIT
+MIT — see [LICENSE](LICENSE).

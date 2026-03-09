@@ -8,7 +8,7 @@ import { registerLayerLoader } from '../layerregistry.js';
 
 const layer = createDataLayer({
   layerKey: 'ixps',
-  dataUrl: 'data/internet_exchanges.json',
+  dataUrl: 'data/layers/points/internet_exchanges.json',
   idPrefix: 'ixp',
   iconSize: DISPLAY.MINE_ICON_SIZE,
   countId: 'ixps-count',
@@ -20,7 +20,7 @@ const layer = createDataLayer({
   },
 });
 
-registerLayerLoader('ixps', { load: layer.load, flyTo: layer.FLY_TO, reset: layer.reset, dataUrl: 'data/internet_exchanges.json' });
+registerLayerLoader('ixps', { load: layer.load, flyTo: layer.FLY_TO, reset: layer.reset, dataUrl: 'data/layers/points/internet_exchanges.json' });
 
 export const fetchIXPs     = layer.load;
 export const isIXPsLoaded  = layer.isLoaded;

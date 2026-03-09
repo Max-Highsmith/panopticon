@@ -7,7 +7,7 @@ import { registerLayerLoader } from '../layerregistry.js';
 
 const layer = createPathLayer({
   layerKey: 'traderoutes',
-  dataUrl: 'data/trade_routes.json',
+  layerType: 'path', dataUrl: 'data/layers/paths/trade_routes.json',
   idPrefix: 'trade',
   countId: 'traderoutes-count',
   logLabel: 'TRADE ROUTES',
@@ -19,7 +19,7 @@ const layer = createPathLayer({
   },
 });
 
-registerLayerLoader('traderoutes', { load: layer.load, flyTo: layer.FLY_TO, reset: layer.reset, dataUrl: 'data/trade_routes.json' });
+registerLayerLoader('traderoutes', { load: layer.load, flyTo: layer.FLY_TO, reset: layer.reset, layerType: 'path', dataUrl: 'data/layers/paths/trade_routes.json' });
 
 export const fetchTradeRoutes     = layer.load;
 export const isTradeRoutesLoaded  = layer.isLoaded;

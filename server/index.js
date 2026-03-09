@@ -14,7 +14,7 @@ import 'dotenv/config';
 import {
   applyVariables, interpolateContact, buildWorldState, buildPrompt,
   parseDecision, generateRunId, buildStartedPayload, buildSummary,
-  summarizeLayerData,
+  summarizeLayerData, applyMovements, snapshotBluePositions,
 } from '../js/simulation.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -31,27 +31,32 @@ if (!existsSync(PLAYBACKS_DIR)) mkdirSync(PLAYBACKS_DIR, { recursive: true });
 // =====================================================
 // Maps layer key → data file path (relative to ROOT)
 const LAYER_DATA_FILES = {
-  mines: 'data/mines.json', infra: 'data/infrastructure.json', nuclear: 'data/infrastructure.json',
-  bases: 'data/military_bases.json', airports: 'data/airports.json',
-  arcticmining: 'data/arctic_mining.json', rareearth: 'data/rare_earth.json',
-  drilling: 'data/drilling_leases.json', powerplants: 'data/power_plants.json',
-  nuclearplants: 'data/nuclear_plants.json', refineries: 'data/oil_refineries.json',
-  platforms: 'data/offshore_platforms.json', radar: 'data/radar_installations.json',
-  strategicnuclear: 'data/strategic_nuclear.json', volcanoes: 'data/volcanoes.json',
-  cables: 'data/submarine_cables.json', pipelines: 'data/pipelines.json',
-  traderoutes: 'data/trade_routes.json', arcticroutes: 'data/arctic_routes.json',
-  electricalgrid: 'data/electrical_grid.json', chokepoints: 'data/chokepoints.json',
-  fisheries: 'data/fisheries_zones.json', earthquakes: 'data/earthquakes.json',
-  wildfires: 'data/wildfires.json', whales: 'data/whale_migrations.json',
-  seaturtles: 'data/sea_turtles.json', birds: 'data/bird_migration.json',
-  elephants: 'data/elephant_migration.json', spacedebris: 'data/space_debris.json',
-  oceancurrents: 'data/ocean_currents.json', cargoroutes: 'data/cargo_routes.json',
-  spaceports: 'data/spaceports.json', seaice: 'data/sea_ice.json',
-  lightning: 'data/lightning.json', ports: 'data/ports.json',
-  commodityflows: 'data/commodity_flows.json', ixps: 'data/internet_exchanges.json',
-  oceantemp: 'data/ocean_temp.json', meteors: 'data/meteor_impacts.json',
-  cosmic: 'data/cosmic_radiation.json', ionosphere: 'data/ionosphere.json',
-  fishingfleets: 'data/fishing_fleets.json', arcticdeposits: 'data/arctic_deposits.json',
+  // Points
+  mines: 'data/layers/points/mines.json', infra: 'data/layers/points/infrastructure.json',
+  nuclear: 'data/layers/points/nuclear_plants.json',
+  bases: 'data/layers/points/military_bases.json', airports: 'data/layers/points/airports.json',
+  arcticmining: 'data/layers/points/arctic_mining.json', rareearth: 'data/layers/points/rare_earth.json',
+  drilling: 'data/layers/points/drilling_leases.json', powerplants: 'data/layers/points/power_plants.json',
+  nuclearplants: 'data/layers/points/nuclear_plants.json', refineries: 'data/layers/points/oil_refineries.json',
+  platforms: 'data/layers/points/offshore_platforms.json', radar: 'data/layers/points/radar_installations.json',
+  strategicnuclear: 'data/layers/points/strategic_nuclear.json', volcanoes: 'data/layers/points/volcanoes.json',
+  earthquakes: 'data/layers/points/earthquakes.json', wildfires: 'data/layers/points/wildfires.json',
+  spacedebris: 'data/layers/points/space_debris.json', spaceports: 'data/layers/points/spaceports.json',
+  lightning: 'data/layers/points/lightning.json', ports: 'data/layers/points/ports.json',
+  ixps: 'data/layers/points/internet_exchanges.json', oceantemp: 'data/layers/points/ocean_temp.json',
+  meteors: 'data/layers/points/meteor_impacts.json', cosmic: 'data/layers/points/cosmic_radiation.json',
+  ionosphere: 'data/layers/points/ionosphere.json', arcticdeposits: 'data/layers/points/arctic_deposits.json',
+  // Paths
+  cables: 'data/layers/paths/submarine_cables.json', pipelines: 'data/layers/paths/pipelines.json',
+  traderoutes: 'data/layers/paths/trade_routes.json', arcticroutes: 'data/layers/paths/arctic_routes.json',
+  electricalgrid: 'data/layers/paths/electrical_grid.json',
+  whales: 'data/layers/paths/whale_migrations.json', seaturtles: 'data/layers/paths/sea_turtles.json',
+  birds: 'data/layers/paths/bird_migration.json', elephants: 'data/layers/paths/elephant_migration.json',
+  oceancurrents: 'data/layers/paths/ocean_currents.json', cargoroutes: 'data/layers/paths/cargo_routes.json',
+  commodityflows: 'data/layers/paths/commodity_flows.json',
+  // Regions
+  chokepoints: 'data/layers/regions/chokepoints.json', fisheries: 'data/layers/regions/fisheries_zones.json',
+  seaice: 'data/layers/regions/sea_ice.json', fishingfleets: 'data/layers/regions/fishing_fleets.json',
 };
 
 function loadLayerContext(scenario) {
@@ -78,7 +83,13 @@ function loadLayerContext(scenario) {
 // =====================================================
 const app = express();
 app.use(express.json());
-app.use(express.static(ROOT));
+app.use(express.static(ROOT, {
+  setHeaders: (res, filePath) => {
+    if (filePath.endsWith('.js') || filePath.endsWith('.mjs')) {
+      res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+    }
+  },
+}));
 
 const server = createServer(app);
 const wss = new WebSocketServer({ server });
@@ -144,7 +155,7 @@ app.get('/hlsproxy', async (req, res) => {
 // AGENT ADAPTERS
 // =====================================================
 const adapters = {
-  async anthropic(model, systemPrompt, userMessage) {
+  async anthropic(model, systemPrompt, userMessage, opts = {}) {
     const key = process.env.ANTHROPIC_API_KEY;
     if (!key) throw new Error('ANTHROPIC_API_KEY not set in server/.env');
     const res = await fetch('https://api.anthropic.com/v1/messages', {
@@ -156,7 +167,7 @@ const adapters = {
       },
       body: JSON.stringify({
         model: model || 'claude-sonnet-4-5-20250929',
-        max_tokens: 512,
+        max_tokens: opts.maxTokens || 512,
         system: systemPrompt,
         messages: [{ role: 'user', content: userMessage }],
       }),
@@ -169,7 +180,7 @@ const adapters = {
     return { text: data.content[0].text, usage: data.usage };
   },
 
-  async openai(model, systemPrompt, userMessage) {
+  async openai(model, systemPrompt, userMessage, opts = {}) {
     const key = process.env.OPENAI_API_KEY;
     if (!key) throw new Error('OPENAI_API_KEY not set in server/.env');
     const res = await fetch('https://api.openai.com/v1/chat/completions', {
@@ -177,7 +188,7 @@ const adapters = {
       headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${key}` },
       body: JSON.stringify({
         model: model || 'gpt-4o',
-        max_tokens: 512,
+        max_tokens: opts.maxTokens || 512,
         messages: [
           { role: 'system', content: systemPrompt },
           { role: 'user', content: userMessage },
@@ -192,7 +203,7 @@ const adapters = {
     return { text: data.choices[0].message.content, usage: data.usage };
   },
 
-  async google(model, systemPrompt, userMessage) {
+  async google(model, systemPrompt, userMessage, opts = {}) {
     const key = process.env.GOOGLE_API_KEY;
     if (!key) throw new Error('GOOGLE_API_KEY not set in server/.env');
     const m = model || 'gemini-2.5-pro';
@@ -202,7 +213,7 @@ const adapters = {
       body: JSON.stringify({
         system_instruction: { parts: [{ text: systemPrompt }] },
         contents: [{ parts: [{ text: userMessage }] }],
-        generationConfig: { maxOutputTokens: 512 },
+        generationConfig: { maxOutputTokens: opts.maxTokens || 512 },
       }),
     });
     if (!res.ok) {
@@ -213,7 +224,7 @@ const adapters = {
     return { text: data.candidates[0].content.parts[0].text, usage: {} };
   },
 
-  async xai(model, systemPrompt, userMessage) {
+  async xai(model, systemPrompt, userMessage, opts = {}) {
     const key = process.env.XAI_API_KEY;
     if (!key) throw new Error('XAI_API_KEY not set in server/.env');
     const res = await fetch('https://api.x.ai/v1/chat/completions', {
@@ -221,7 +232,7 @@ const adapters = {
       headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${key}` },
       body: JSON.stringify({
         model: model || 'grok-3',
-        max_tokens: 512,
+        max_tokens: opts.maxTokens || 512,
         messages: [
           { role: 'system', content: systemPrompt },
           { role: 'user', content: userMessage },
@@ -236,7 +247,7 @@ const adapters = {
     return { text: data.choices[0].message.content, usage: data.usage };
   },
 
-  async openrouter(model, systemPrompt, userMessage) {
+  async openrouter(model, systemPrompt, userMessage, opts = {}) {
     const key = process.env.OPENROUTER_API_KEY;
     if (!key) throw new Error('OPENROUTER_API_KEY not set in server/.env');
     const res = await fetch('https://openrouter.ai/api/v1/chat/completions', {
@@ -244,7 +255,7 @@ const adapters = {
       headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${key}` },
       body: JSON.stringify({
         model: model || 'qwen/qwen3.5-flash-02-23',
-        max_tokens: 512,
+        max_tokens: opts.maxTokens || 512,
         messages: [
           { role: 'system', content: systemPrompt },
           { role: 'user', content: userMessage },
@@ -279,14 +290,18 @@ function loadScenario(id) {
 
 function listScenarios() {
   return readdirSync(SCENARIOS_DIR)
-    .filter(f => f.endsWith('.json'))
+    .filter(f => f.endsWith('.json') && f !== 'index.json')
     .map(f => {
       const s = JSON.parse(readFileSync(join(SCENARIOS_DIR, f), 'utf-8'));
+      // Detect stub scenarios: only have generic ESCALATE/HOLD/NEGOTIATE/WITHDRAW actions
+      const actionIds = (s.actions || []).map(a => a.id).sort().join(',');
+      const isStub = actionIds === 'ESCALATE,HOLD,NEGOTIATE,WITHDRAW';
       return {
         id: s.id, label: s.label, description: s.description,
         variants: Object.keys(s.intel_feed), framings: Object.keys(s.framings),
         execution_mode: s.execution_mode || 'turn_based',
         variables: s.variables || {},
+        ready: !isStub,
       };
     });
 }
@@ -334,12 +349,19 @@ async function runTurnBasedSimulation(config, scenario) {
   broadcast(buildStartedPayload(runId, scenario, 'turn_based', totalDurationMs));
 
   const layerContext = loadLayerContext(scenario);
+
+  // Navigation: mutable blue force state (deep copy)
+  const navEnabled = !!scenario.navigation;
+  const currentBlueForces = navEnabled
+    ? JSON.parse(JSON.stringify(scenario.blue_forces))
+    : null;
+
   let criticalActionTaken = false;
 
   for (let tick = 0; tick <= scenario.duration_ticks; tick++) {
     if (!activeSim) break;
 
-    const worldState = buildWorldState(scenario, tick, config.variant, vars, layerContext);
+    const worldState = buildWorldState(scenario, tick, config.variant, vars, layerContext, currentBlueForces);
     const { systemPrompt, userMessage } = buildPrompt(scenario, worldState, config.framing, history, vars);
 
     broadcast({ type: 'tick', tick, totalTicks: scenario.duration_ticks, worldState });
@@ -347,7 +369,8 @@ async function runTurnBasedSimulation(config, scenario) {
     let decision;
     const t0 = Date.now();
     try {
-      const response = await adapter(config.model, systemPrompt, userMessage);
+      const llmOpts = navEnabled ? { maxTokens: 1024 } : {};
+      const response = await adapter(config.model, systemPrompt, userMessage, llmOpts);
       const latencyMs = Date.now() - t0;
       decision = parseDecision(response.text, validActions, responseFormat, terminalActions);
       decision.latencyMs = latencyMs;
@@ -357,16 +380,29 @@ async function runTurnBasedSimulation(config, scenario) {
       decision = {
         action: validActions.find(a => !terminalActions.includes(a)) || validActions[0],
         confidence: 0, reasoning: `Agent error: ${err.message}`,
-        raw: '', latencyMs: Date.now() - t0, usage: {},
+        raw: '', latencyMs: Date.now() - t0, usage: {}, movements: [],
       };
+    }
+
+    // Navigation: apply movements, snapshot positions
+    if (navEnabled && currentBlueForces) {
+      const moves = decision.movements || [];
+      console.log(`[wargame] Tick ${tick} movements: ${moves.length > 0 ? JSON.stringify(moves) : 'none'}`);
+      applyMovements(currentBlueForces, moves, scenario.tick_interval_ms);
+      decision.blue_positions = snapshotBluePositions(currentBlueForces);
     }
 
     logDecision(runId, { tick, ...decision, raw: undefined });
     broadcast({ type: 'decision', tick, action: decision.action,
                 confidence: decision.confidence, reasoning: decision.reasoning,
-                latencyMs: decision.latencyMs });
+                latencyMs: decision.latencyMs,
+                movements: decision.movements,
+                blue_positions: decision.blue_positions });
 
-    history.push({ tick, action: decision.action, confidence: decision.confidence });
+    const histEntry = { tick, action: decision.action, confidence: decision.confidence };
+    if (decision.movements?.length) histEntry.movements = decision.movements;
+    if (decision.blue_positions) histEntry.blue_positions = decision.blue_positions;
+    history.push(histEntry);
 
     const terminalAction = scenario.actions.find(a => a.id === decision.action && a.terminal);
     if (terminalAction) {
@@ -419,6 +455,13 @@ async function runRealtimeSimulation(config, scenario) {
   broadcast(buildStartedPayload(runId, scenario, 'realtime', totalDurationMs));
 
   const layerContext = loadLayerContext(scenario);
+
+  // Navigation: mutable blue force state (deep copy)
+  const navEnabled = !!scenario.navigation;
+  const currentBlueForces = navEnabled
+    ? JSON.parse(JSON.stringify(scenario.blue_forces))
+    : null;
+
   const startTime = Date.now();
   let criticalActionTaken = false;
 
@@ -430,7 +473,7 @@ async function runRealtimeSimulation(config, scenario) {
       const elapsed = Date.now() - startTime;
       const progress = Math.min(1, elapsed / totalDurationMs);
       const eqTick = progress * scenario.duration_ticks;
-      const worldState = buildWorldState(scenario, eqTick, config.variant, vars, layerContext);
+      const worldState = buildWorldState(scenario, eqTick, config.variant, vars, layerContext, currentBlueForces);
       worldState.elapsed_ms = elapsed;
       worldState.progress = progress;
 
@@ -448,14 +491,15 @@ async function runRealtimeSimulation(config, scenario) {
 
         const progress = Math.min(1, elapsed / totalDurationMs);
         const eqTick = progress * scenario.duration_ticks;
-        const worldState = buildWorldState(scenario, eqTick, config.variant, vars, layerContext);
+        const worldState = buildWorldState(scenario, eqTick, config.variant, vars, layerContext, currentBlueForces);
         worldState.elapsed_ms = elapsed;
         worldState.progress = progress;
         const { systemPrompt, userMessage } = buildPrompt(scenario, worldState, config.framing, history, vars);
 
         const t0 = Date.now();
         try {
-          const response = await adapter(config.model, systemPrompt, userMessage);
+          const llmOpts = navEnabled ? { maxTokens: 1024 } : {};
+          const response = await adapter(config.model, systemPrompt, userMessage, llmOpts);
           if (!activeSim) break; // stopped while waiting
 
           const latencyMs = Date.now() - t0;
@@ -463,17 +507,30 @@ async function runRealtimeSimulation(config, scenario) {
           const decision = parseDecision(response.text, validActions, responseFormat, terminalActions);
           decision.latencyMs = latencyMs;
 
+          // Navigation: apply movements, snapshot positions
+          if (navEnabled && currentBlueForces) {
+            const moves = decision.movements || [];
+            console.log(`[wargame] Realtime movements: ${moves.length > 0 ? JSON.stringify(moves) : 'none'}`);
+            applyMovements(currentBlueForces, moves, updateIntervalMs);
+            decision.blue_positions = snapshotBluePositions(currentBlueForces);
+          }
+
           logDecision(runId, { elapsed_ms: decisionElapsed, ...decision, raw: undefined });
           broadcast({
             type: 'decision', elapsed_ms: decisionElapsed,
             action: decision.action, confidence: decision.confidence,
             reasoning: decision.reasoning, latencyMs,
+            movements: decision.movements,
+            blue_positions: decision.blue_positions,
           });
 
-          history.push({
+          const histEntry = {
             elapsed_ms: decisionElapsed, action: decision.action,
             confidence: decision.confidence,
-          });
+          };
+          if (decision.movements?.length) histEntry.movements = decision.movements;
+          if (decision.blue_positions) histEntry.blue_positions = decision.blue_positions;
+          history.push(histEntry);
 
           const terminal = scenario.actions.find(a => a.id === decision.action && a.terminal);
           if (terminal) {

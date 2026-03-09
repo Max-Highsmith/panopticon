@@ -7,7 +7,7 @@ import { registerLayerLoader } from '../layerregistry.js';
 
 const layer = createPathLayer({
   layerKey: 'cables',
-  dataUrl: 'data/submarine_cables.json',
+  layerType: 'path', dataUrl: 'data/layers/paths/submarine_cables.json',
   idPrefix: 'cable',
   countId: 'cables-count',
   logLabel: 'CABLES',
@@ -19,7 +19,7 @@ const layer = createPathLayer({
   },
 });
 
-registerLayerLoader('cables', { load: layer.load, flyTo: layer.FLY_TO, reset: layer.reset, dataUrl: 'data/submarine_cables.json' });
+registerLayerLoader('cables', { load: layer.load, flyTo: layer.FLY_TO, reset: layer.reset, layerType: 'path', dataUrl: 'data/layers/paths/submarine_cables.json' });
 
 export const fetchCables     = layer.load;
 export const isCablesLoaded  = layer.isLoaded;

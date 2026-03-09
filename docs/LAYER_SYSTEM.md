@@ -5,17 +5,19 @@
 
 This document describes the data layer architecture (how layers are defined, registered, loaded, and consumed by the wargame AI) and the view system (how clicking entities opens detail panels).
 
+For detailed JSON schemas of all data types (point, path, region, playback, manifests), see [DATA_SPEC.md](DATA_SPEC.md).
+
 ---
 
 ## Overview
 
-Panopticon renders 45+ data layers on a CesiumJS globe. Each layer is a collection of entities — **geographic** (rendered on the globe as points, polylines, or polygons) or **non-geographic** (rendered as sidebar panels for markets, feeds, or other ambient data). The system uses three patterns:
+Panopticon renders 60+ data layers on a CesiumJS globe. Each layer has one of six types: **point** (billboards), **path** (polylines), **region** (polygons), **live** (streaming multi-geometry), **scenario** (ephemeral wargame entities), or **ambient** (sidebar panels for markets, feeds, or other non-globe data). The system uses three patterns:
 
 1. **Layer Registry** — central registration and data caching
-2. **Layer Factories** — shared logic for the three geographic entity types (point, path, region)
+2. **Layer Factories** — shared logic for the three globe entity types (point, path, region)
 3. **Self-Registration** — each layer module registers itself at import time
 
-Clicking a geographic entity opens a **view** — a pair of detail panels. The view system uses a parallel registry pattern so layers declare their view type at registration time rather than requiring bespoke dispatch logic.
+Clicking an entity opens a **view** — a pair of detail panels. The view system uses a parallel registry pattern so layers declare their view type at registration time rather than requiring bespoke dispatch logic.
 
 ---
 
@@ -55,26 +57,20 @@ js/app.js                    Imports barrel → all layers registered
 
 ## Layer Types
 
-### Geographic Layers
+Every layer declares a `layerType` at registration. Six types:
 
-Geographic layers render entities on the 3D globe. Three subtypes:
+| Type | Factory | Data Source | Rendering | Lifecycle |
+|------|---------|-------------|-----------|-----------|
+| `point` | `createDataLayer` | Static JSON (`data/layers/points/`) | Billboards with labels | Persistent |
+| `path` | `createPathLayer` | Static JSON (`data/layers/paths/`) | Polylines | Persistent |
+| `region` | `createRegionLayer` | Static JSON (`data/layers/regions/`) | Polygons | Persistent |
+| `live` | *(bespoke)* | Streaming APIs (HTTP polling, WebSocket) | Multi-geometry (billboards + trails + footprints) | Persistent |
+| `scenario` | *(wargame engine)* | Inline in scenario JSON | Points with labels | Ephemeral (wargame session) |
+| `ambient` | *(future)* | TBD | Sidebar panels (markets, prices, feeds) | Persistent |
 
-- **Point layers** — billboards with labels (mines, nuclear plants, airports, radar stations)
-- **Path layers** — polylines (submarine cables, pipelines, migration routes, ocean currents)
-- **Region layers** — polygons (fisheries zones, sea ice extent, chokepoints)
+Point, path, and region layers render entities on the CesiumJS globe using their respective factory patterns. Live layers manage their own entity lifecycle using `livelayer.js` helpers and may render multiple geometry types per entity (e.g. satellites render billboards + orbit arcs + ground footprints). Scenario layers are ephemeral — created by the wargame engine on session start and destroyed on session end. They participate in the entity system (click dispatch, detail panels) via `acData` stamps but are not user-togglable in the layer selector. Ambient layers will use a separate rendering strategy (sidebar panels, charts, tickers). No ambient layers exist yet.
 
-All geographic layers use the factory pattern (`createDataLayer`, `createPathLayer`, `createRegionLayer`) unless they need truly unique rendering.
-
-### Non-Geographic Layers (Future)
-
-Non-geographic layers render as sidebar panels, not on the globe. Planned examples:
-
-- Prediction markets (Kalshi, Polymarket)
-- Stock/crypto prices
-- News feeds
-- Sensor data streams
-
-These will register with `geographic: false` in the layer registry. The layer catalog UI and wargame engine will handle them distinctly from geographic layers.
+**Future:** Live layers will be consumable by the wargame engine — real-time satellite positions, aircraft tracks, and vessel locations will be available as geographic context for AI decision-making. This will require a live data summarization strategy parallel to the static `summarizeLayerData()` approach.
 
 ---
 
@@ -82,17 +78,17 @@ These will register with `geographic: false` in the layer registry. The layer ca
 
 ```javascript
 import {
-  registerLayerLoader,  // (key, { load, flyTo, reset, dataUrl, view, geographic }) → void
+  registerLayerLoader,  // (key, { load, flyTo, reset, dataUrl, view, layerType }) → void
   cacheLayerData,       // (key, rawJSON) → void
-  getLoader,            // (key) → { load, flyTo, reset, dataUrl, view, geographic } | null
+  getLoader,            // (key) → { load, flyTo, reset, dataUrl, view, layerType } | null
   hasLoader,            // (key) → boolean
   getLayerData,         // (key) → rawJSON | null
   isLayerDataCached,    // (key) → boolean
   resetAllLayers,       // () → void  (calls every layer's reset())
   getRegisteredKeys,    // () → string[]
   getCachedLayerKeys,   // () → string[]
-  getViewForLayer,      // (key) → string | undefined
-  isLayerGeographic,    // (key) → boolean (defaults true)
+  getViewForLayer,      // (key) → string | null
+  getLayerType,         // (key) → 'point' | 'path' | 'region' | 'live' | 'scenario' | 'ambient'
 } from './layerregistry.js';
 ```
 
@@ -105,15 +101,15 @@ registerLayerLoader('nuclearplants', {
   load:       layer.load,      // (viewer) => Promise<void>
   flyTo:      layer.FLY_TO,    // { lon, lat, alt }
   reset:      layer.reset,     // () => void
-  dataUrl:    'data/nuclear_plants.json',
+  dataUrl:    'data/layers/points/nuclear_plants.json',
   view:       'site',          // optional — which view type opens on click
-  geographic: true,            // optional — defaults to true
+  layerType:  'point',         // optional — 'point' (default), 'path', 'region', 'live', 'scenario', or 'ambient'
 });
 ```
 
 The `view` field declares which view type opens when entities from this layer are clicked. See [View System](#view-system) below.
 
-The `geographic` field marks whether this layer renders on the globe (`true`, default) or as a sidebar panel (`false`).
+The `layerType` field declares the layer's data modality: `'point'` (default), `'path'`, `'region'`, `'live'`, or `'ambient'`.
 
 ### Data Caching
 
@@ -132,7 +128,7 @@ import { createDataLayer } from './datalayer.js';
 
 const layer = createDataLayer({
   layerKey:   'nuclearplants',           // Key in layers{} and entityMaps{}
-  dataUrl:    'data/nuclear_plants.json',// JSON data file
+  dataUrl:    'data/layers/points/nuclear_plants.json',
   idPrefix:   'nuke',                    // Entity ID prefix
   categories: {                          // Data file top-level keys → display config
     operating: { icon: 'nuclear', color: '#00ff41', label: 'NUCLEAR' },
@@ -148,6 +144,24 @@ const layer = createDataLayer({
 ```
 
 The factory stamps `_view: cfg.viewType || 'site'` on every entity's `acData`, enabling data-driven click dispatch.
+
+**Optional hooks** for advanced layers (airports, webcams, etc.):
+
+| Hook | Signature | Default | Purpose |
+|------|-----------|---------|---------|
+| `labelFn` | `(item, cat) → string` | `item.name` | Custom billboard label text |
+| `idFn` | `(item, cat) → string` | `{idPrefix}_{cat}_{item.name}` | Custom entity ID |
+| `descFn` | `(item, cat) → string` | `{operator} // {country} // {notes}` | Description string |
+| `acDataFn` | `(item, cat) → object` | `{}` | Extra fields merged into `acData` |
+| `altFn` | `(item) → number` | `500` | Entity altitude in meters |
+
+**Per-category overrides** in the `categories` config:
+
+| Field | Type | Default | Purpose |
+|-------|------|---------|---------|
+| `iconSize` | `number` | `cfg.iconSize` | Billboard size for this category |
+| `displayDist` | `number` | *(none)* | Max billboard visibility distance in meters |
+| `labelDist` | `number` | `3_000_000` | Max label visibility distance in meters |
 
 **Expected data format:**
 ```jsonc
@@ -170,7 +184,7 @@ import { createPathLayer } from './pathlayer.js';
 
 const layer = createPathLayer({
   layerKey:   'cables',
-  dataUrl:    'data/submarine_cables.json',
+  dataUrl:    'data/layers/paths/submarine_cables.json',
   idPrefix:   'cable',
   categories: {
     transatlantic: { color: '#00aaff', width: 2, label: 'CABLE', clamp: true, alpha: 0.8 },
@@ -205,7 +219,7 @@ import { createRegionLayer } from './regionlayer.js';
 
 const layer = createRegionLayer({
   layerKey:   'fisheries',
-  dataUrl:    'data/fisheries_zones.json',
+  dataUrl:    'data/layers/regions/fisheries_zones.json',
   idPrefix:   'fish',
   categories: {
     eez: { fillColor: '#0066cc', outlineColor: '#00aaff', label: 'EEZ', alpha: 0.15 },
@@ -235,7 +249,7 @@ const layer = createRegionLayer({
 
 ## View System
 
-When a user clicks a geographic entity, a **view** opens — a pair of detail panels:
+When a user clicks an entity, a **view** opens — a pair of detail panels:
 
 - **Minor view** — smaller top panel with a canvas overlay (HUD chrome, stats, custom rendering)
 - **Major view** — larger bottom panel with a secondary Cesium viewer or embedded content
@@ -341,41 +355,51 @@ Every entity creation site stamps `_view` on `acData`:
 
 ---
 
-## Bespoke Layers
+## Live Tracking Layers
 
-Some layers don't use the factories. These manually call `registerLayerLoader()` and `cacheLayerData()`:
+Live layers (`layerType: 'live'`) use real-time data feeds rather than static JSON files. They self-register with the layer registry and use `livelayer.js` helpers for entity lifecycle management.
 
-| Layer | File | Reason |
-|-------|------|--------|
-| `airports` | `js/layers/airports.js` | Custom icon sizing by airport class |
-| `webcams` | `js/layers/webcams.js` | Hardcoded list, HLS/YouTube streams |
+| Layer | File | Transport | Source | Geometries |
+|-------|------|-----------|--------|------------|
+| `military` | `js/layers/military.js` | HTTP polling | ADS-B Exchange API | billboard + trail polyline |
+| `commercial` | `js/layers/commercial.js` | HTTP polling | OpenSky Network API | billboard + trail polyline |
+| `satellites` | `js/layers/satellites.js` | HTTP + SGP4 | Celestrak TLE data | billboard + orbit arc + footprint polygon |
+| `ships` | `js/layers/ships.js` | WebSocket | AISStream.io | billboard |
+| `pokemon` | `js/layers/pogo.js` | HTTP + Overpass | OpenStreetMap | billboard |
 
-Note: `mines`, `infrastructure`, and `militarybases` were formerly bespoke but now use the point factory pattern (`createDataLayer`).
+Live layers don't use the factories (`createDataLayer`, etc.) because they manage continuously updating entities with streaming transports. They share entity creation/update/removal utilities from `livelayer.js` (`createLiveEntity`, `updateLiveEntity`, `pruneStale`, `pruneByAge`).
+
+Note: `airports` and `webcams` were formerly bespoke but now use the point factory with optional hooks.
+
+---
+
+## Scenario Layers
+
+Scenario layers (`layerType: 'scenario'`) are ephemeral entities created by the wargame engine. Unlike all other layer types, they exist only for the duration of a wargame session and are not user-togglable in the layer selector.
+
+| Entity Map | Source | Contents | Movement |
+|------------|--------|----------|----------|
+| `wg_blue` | `scenario.blue_forces` | Friendly units (command centers, silos, bases) | Static |
+| `wg_red` | `scenario.red_contacts` | Threat contacts (inbound tracks, unknowns) | Scripted traces (interpolated per tick) |
+
+**Entity contract:** Scenario entities participate in the standard entity system — they carry `acData` with `_view: 'site'`, `hex`, `r`, `t`, `desc`, enabling click dispatch and detail panel views. They are registered in `entityMaps` (`wg_blue`, `wg_red`) so the view system can resolve them.
+
+**Lifecycle:** Created by `handleStarted()` in `wargame.js` (blue forces) and `handleTick()` (red contacts, created on first appearance). Destroyed by `clearEntities()` when the wargame ends, which also clears the ephemeral entity maps.
+
+**Data source:** Unlike other layers, scenario entity data is inline in the scenario JSON file, not in separate data files. Blue forces have static positions; red contacts have `trace` arrays with tick-indexed waypoints that the simulation engine interpolates.
 
 ---
 
 ## Data File Requirements
 
-Every JSON file in `data/` **must** include a `_source` field at the top level:
+Every JSON file in `data/layers/` must conform to the schema for its layer type. Full schemas with field-level detail, validation rules, and complete examples are in **[DATA_SPEC.md](DATA_SPEC.md)**.
 
-```jsonc
-{
-  "_source": {
-    "description": "Global nuclear power plant locations and capacities",
-    "origin": "IAEA Power Reactor Information System (PRIS) — pris.iaea.org",
-    "retrieved": "2026-03-07",
-    "license": "public domain",
-    "notes": "Approximate coordinates for some facilities"
-  },
-  "operating": [ ... ],
-  "shutdown": [ ... ]
-}
-```
-
-Every data file **must** have a corresponding ingestion script in `scripts/`:
-- Pattern: `scripts/ingest_<layer>.py` → `data/<layer>.json`
-- The script must be runnable: `python3 scripts/ingest_<layer>.py`
-- See `scripts/prepare_airports.py` for the reference implementation
+Key requirements:
+- **`_source` metadata** — required on every data file, with specific origin (see [DATA_SPEC.md §1](DATA_SPEC.md#1-source-metadata))
+- **Ingestion script** — every data file must have `scripts/ingest_<layer>.py` that can reproduce it
+- **Point items** — `name`, `lat`, `lon` required; `country`, `operator`, `notes` optional (see [DATA_SPEC.md §2](DATA_SPEC.md#2-point-layer-data))
+- **Path items** — `name`, `coords` (as `[lon, lat]` pairs) required (see [DATA_SPEC.md §3](DATA_SPEC.md#3-path-layer-data))
+- **Region items** — `name`, `rings` (array of `[lon, lat]` rings) required (see [DATA_SPEC.md §4](DATA_SPEC.md#4-region-layer-data))
 
 ---
 
@@ -395,18 +419,25 @@ SUBMARINE CABLES (12 entries) [showing nearest 15]:
   ...
 ```
 
-The summarizer handles all three geographic data shapes (points, paths, regions) and supports proximity filtering via `nearLat`, `nearLon`, `nearRadiusKm`. Non-geographic layers will require a separate summarization strategy.
+The summarizer handles point, path, and region layers and supports proximity filtering via `nearLat`, `nearLon`, `nearRadiusKm`.
+
+**Scenario entities** (blue forces and red contacts) are also fed to the AI prompt, but through the dedicated `buildPrompt()` function in `simulation.mjs` rather than through `summarizeLayerData()`. Blue forces appear in `BLUE FORCE STATUS` and red contacts in `RED CONTACTS`, both with positions and types. These scenario entities carry `acData` stamps and are clickable in the globe view during wargame sessions.
+
+**Planned: Live layer integration.** Live layers (satellites, aircraft, vessels) will be consumable by wargame scenarios as real-time geographic context. This will require a `summarizeLiveData()` function that snapshots current entity positions from `entityMaps` and formats them for the AI prompt. Scenarios will be able to declare live layers alongside static ones (e.g. `"layers": ["cables", "satellites", "military"]`) to give the AI awareness of real-time positions during decision-making.
 
 ---
 
 ## Adding a New Layer
 
-1. Create the data file: `data/<layer>.json` with `_source` metadata
+1. Create the data file in the appropriate subdirectory with `_source` metadata:
+   - Point layers: `data/layers/points/<layer>.json`
+   - Path layers: `data/layers/paths/<layer>.json`
+   - Region layers: `data/layers/regions/<layer>.json`
 2. Create the ingestion script: `scripts/ingest_<layer>.py`
 3. Create the layer module: `js/layers/<layer>.js`
    - Use the appropriate factory (`createDataLayer`, `createPathLayer`, `createRegionLayer`)
    - Set `viewType` in factory config if not `'site'` (e.g. `viewType: 'airport'`)
-   - Call `registerLayerLoader()` at module scope, including `view` and `geographic` fields
+   - Call `registerLayerLoader()` at module scope, including `layerType` and `view` fields
 4. Add the import to `js/layers/index.js`
 5. Add a layer key entry to `js/globe.js` in the `layers` and `entityMaps` objects
 6. Add to `js/layercatalog.js` for the searchable layer dropdown
@@ -418,10 +449,10 @@ The summarizer handles all three geographic data shapes (points, paths, regions)
 
 Current layer keys (as of 2026-03-07):
 
-**Point layers:** `mines`, `infrastructure`, `militarybases`, `arcticmining`, `rareearth`, `drillingleases`, `powerplants`, `nuclearplants`, `refineries`, `platforms`, `radar`, `strategicnuclear`, `volcanoes`, `earthquakes`, `wildfires`, `spacedebris`, `spaceports`, `lightning`, `ports`, `ixps`, `oceantemp`, `meteors`, `cosmic`, `ionosphere`, `arcticdeposits`
+**Point layers:** `mines`, `infrastructure`, `militarybases`, `arcticmining`, `rareearth`, `drillingleases`, `powerplants`, `nuclearplants`, `refineries`, `platforms`, `radar`, `strategicnuclear`, `volcanoes`, `earthquakes`, `wildfires`, `spacedebris`, `spaceports`, `lightning`, `ports`, `ixps`, `oceantemp`, `meteors`, `cosmic`, `ionosphere`, `arcticdeposits`, `airports`, `webcams`
 
 **Path layers:** `cables`, `pipelines`, `traderoutes`, `arcticroutes`, `electricalgrid`, `whales`, `seaturtles`, `birds`, `elephants`, `oceancurrents`, `cargoroutes`, `commodityflows`
 
 **Region layers:** `chokepoints`, `fisheries`, `seaice`, `fishingfleets`
 
-**Bespoke layers:** `airports`, `webcams`
+**Live layers:** `military`, `commercial`, `satellites`, `ships`, `pokemon`

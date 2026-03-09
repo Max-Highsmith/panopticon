@@ -1,0 +1,563 @@
+{
+  "_source": {
+    "description": "Major global antimony mining, processing, and smelting sites",
+    "origin": "USGS Mineral Commodity Summaries 2024, Antimony chapter (https://pubs.usgs.gov/periodicals/mcs2024/mcs2024-antimony.pdf); USGS Mineral Resources Data System (MRDS) for coordinates (https://mrdata.usgs.gov/mrds/); S&P Global Market Intelligence mine profiles; British Geological Survey (BGS) World Mineral Production 2019-2023 (bgs.ac.uk); Hunan Nonferrous Metals annual reports; Mandalay Resources Annual Report 2023 (mandalayresources.com); Perpetua Resources corporate filings (perpetuaresources.com); TALCO (Tajik Aluminium Company) production data; Eti Mine Works (Eti Maden) corporate data (etimaden.gov.tr); Dundee Precious Metals corporate filings; Hillgrove Resources corporate filings; Fortune Minerals corporate filings; Larvotto Resources corporate filings; Myanmar Ministry of Mines statistical reports; Bundesanstalt fur Geowissenschaften und Rohstoffe (BGR) commodity reports",
+    "retrieved": "2026-03-08",
+    "license": "USGS: public domain; BGS: Open Government Licence; company data: fair use summary",
+    "notes": "Major antimony mining and smelting operations worldwide. Global production ~83,000 tonnes Sb metal content per year (USGS MCS 2024). China dominates with ~55% of global output, primarily from Hunan, Guizhou, and Guangxi provinces. Coordinates from USGS MRDS, company filings, and geological survey maps. Capacity figures represent antimony metal content where available."
+  },
+  "_coverage": {
+    "global_production_2023_tpa": 83000,
+    "global_production_unit": "antimony metal content",
+    "global_production_source": "USGS MCS 2024",
+    "site_count": 28,
+    "operating_count": 20,
+    "development_count": 5,
+    "care_maintenance_count": 3,
+    "known_gaps": "Numerous small Chinese stibnite mines in Hunan, Guizhou, Guangxi, and Yunnan are aggregated into district-level entries. Myanmar's artisanal antimony mining in Shan State is underrepresented. Vietnamese antimony production from small operations in Ha Giang province is not individually captured. Russian antimony production details are limited due to restricted reporting since 2022.",
+    "audit_date": "2026-03-08"
+  },
+  "sites": [
+    {
+      "name": "Xikuangshan Mine",
+      "lat": 27.74,
+      "lon": 111.46,
+      "country": "China",
+      "operator": "Hunan Nonferrous Metals / Hsikwangshan Twinkling Star",
+      "ownership": "Hunan provincial state-owned enterprise",
+      "status": "operating",
+      "type": "underground",
+      "products": [
+        "antimony",
+        "gold"
+      ],
+      "capacity_tpa": 20000,
+      "production_year": 2023,
+      "reserves_mt": null,
+      "grade": "~2-5% Sb (stibnite veins)",
+      "notes": "World's largest antimony mine, known as the 'antimony capital of the world.' Located in Lengshuijiang, Hunan province. Mining since 1897. Contains the world's largest known antimony deposit with reserves exceeding 2.1 million tonnes Sb. Produces antimony trioxide and antimony metal."
+    },
+    {
+      "name": "Qinglong Antimony District",
+      "lat": 25.83,
+      "lon": 105.2,
+      "country": "China",
+      "operator": "Various (Guizhou provincial operators)",
+      "ownership": "Multiple state and private Chinese companies",
+      "status": "operating",
+      "type": "underground",
+      "products": [
+        "antimony",
+        "gold"
+      ],
+      "capacity_tpa": 8000,
+      "production_year": 2023,
+      "reserves_mt": null,
+      "grade": "~1.5-4% Sb",
+      "notes": "Major antimony mining district in Qinglong county, Guizhou province. Multiple stibnite deposits in Devonian-Carboniferous carbonate sequences. Guizhou is China's second-largest antimony-producing province after Hunan."
+    },
+    {
+      "name": "Guangxi Antimony Mines (Hechi/Nandan)",
+      "lat": 24.7,
+      "lon": 107.55,
+      "country": "China",
+      "operator": "Various (Guangxi operators)",
+      "ownership": "Multiple state and private companies",
+      "status": "operating",
+      "type": "underground",
+      "products": [
+        "antimony",
+        "tin",
+        "lead",
+        "zinc"
+      ],
+      "capacity_tpa": 5000,
+      "production_year": 2023,
+      "reserves_mt": null,
+      "grade": "~1-3% Sb (polymetallic)",
+      "notes": "Antimony produced as co-product from polymetallic Sn-Sb-Pb-Zn deposits in the Hechi/Nandan area, Guangxi Zhuang Autonomous Region. Complex polymetallic ore requires specialized processing."
+    },
+    {
+      "name": "Yunnan Antimony Mines (Wenshan)",
+      "lat": 23.38,
+      "lon": 104.24,
+      "country": "China",
+      "operator": "Various (Yunnan operators)",
+      "ownership": "Multiple private and state companies",
+      "status": "operating",
+      "type": "underground",
+      "products": [
+        "antimony"
+      ],
+      "capacity_tpa": 4000,
+      "production_year": 2023,
+      "reserves_mt": null,
+      "grade": "~2-4% Sb",
+      "notes": "Antimony mining operations in the Wenshan and Gejiu districts of Yunnan province. Stibnite deposits associated with the Tethyan metallogenic belt. Yunnan is China's third-largest Sb-producing province."
+    },
+    {
+      "name": "Hunan Smelters (Changning/Yiyang)",
+      "lat": 26.73,
+      "lon": 112.39,
+      "country": "China",
+      "operator": "Hsikwangshan Twinkling Star / China Minmetals",
+      "ownership": "State and private enterprises",
+      "status": "operating",
+      "type": "smelter + refinery",
+      "products": [
+        "antimony metal",
+        "antimony trioxide"
+      ],
+      "capacity_tpa": 25000,
+      "production_year": 2023,
+      "reserves_mt": null,
+      "grade": null,
+      "notes": "Major antimony smelting and refining complex in Hunan. Processes ore from Xikuangshan and other mines. China produces ~80% of global antimony trioxide, the primary flame retardant form. Multiple smelters across Changning and Yiyang."
+    },
+    {
+      "name": "Anzob (Jijikrut) Mine",
+      "lat": 39.08,
+      "lon": 68.87,
+      "country": "Tajikistan",
+      "operator": "TALCO (Tajik Aluminium Company) / CNMC",
+      "ownership": "Government of Tajikistan (51%), CNMC (49%)",
+      "status": "operating",
+      "type": "underground",
+      "products": [
+        "antimony",
+        "mercury"
+      ],
+      "capacity_tpa": 6000,
+      "production_year": 2023,
+      "reserves_mt": null,
+      "grade": "~3-6% Sb (high-grade stibnite)",
+      "notes": "Major antimony mine in the Fan Mountains, north of Dushanbe. Accessible via the Anzob Tunnel (Istiqlol Tunnel). One of the world's highest-grade antimony deposits. Joint venture with China Nonferrous Metal Mining Group (CNMC). Tajikistan is the world's #2 antimony producer."
+    },
+    {
+      "name": "Kadamzhai Mine (Tajikistan)",
+      "lat": 40.15,
+      "lon": 70.95,
+      "country": "Tajikistan",
+      "operator": "K&S Minerals / Government JV",
+      "ownership": "K&S Minerals International (UK), Tajik government",
+      "status": "operating",
+      "type": "underground",
+      "products": [
+        "antimony"
+      ],
+      "capacity_tpa": 3000,
+      "production_year": 2023,
+      "reserves_mt": null,
+      "grade": "~2-4% Sb",
+      "notes": "Historic antimony mine near Isfara in the Fergana Valley border region. One of Central Asia's major stibnite deposits. Operations have been intermittent due to financing and infrastructure challenges."
+    },
+    {
+      "name": "Sarylakh Mine",
+      "lat": 63.33,
+      "lon": 138.82,
+      "country": "Russia",
+      "operator": "GeoProMining (formerly Star Technology)",
+      "ownership": "GeoProMining Ltd",
+      "status": "operating",
+      "type": "underground",
+      "products": [
+        "antimony",
+        "gold"
+      ],
+      "capacity_tpa": 4000,
+      "production_year": 2023,
+      "reserves_mt": null,
+      "grade": "~5-8% Sb, 4-6 g/t Au (high-grade stibnite-gold)",
+      "notes": "Major antimony-gold deposit in Yakutia (Sakha Republic), Russian Far East. One of the world's highest-grade Sb-Au deposits. Extreme Arctic mining conditions. Russia is the world's #3 antimony producer. GeoProMining acquired from Norilsk Nickel."
+    },
+    {
+      "name": "Sentachan Mine",
+      "lat": 62.6,
+      "lon": 137.0,
+      "country": "Russia",
+      "operator": "GeoProMining",
+      "ownership": "GeoProMining Ltd",
+      "status": "operating",
+      "type": "underground",
+      "products": [
+        "antimony",
+        "gold"
+      ],
+      "capacity_tpa": 3000,
+      "production_year": 2023,
+      "reserves_mt": null,
+      "grade": "~3-5% Sb, 3-5 g/t Au",
+      "notes": "Second major antimony-gold mine in Yakutia, ~150 km from Sarylakh. Part of GeoProMining's Yakutia antimony cluster. Arctic conditions require seasonal access roads."
+    },
+    {
+      "name": "Bawdwin Mine",
+      "lat": 23.1,
+      "lon": 97.28,
+      "country": "Myanmar",
+      "operator": "Myanmar Metals (formerly) / Myanma Economic Holdings Ltd",
+      "ownership": "Complex — military-linked entities, foreign JV partners",
+      "status": "development",
+      "type": "underground + open-pit",
+      "products": [
+        "antimony",
+        "lead",
+        "zinc",
+        "silver",
+        "copper"
+      ],
+      "capacity_tpa": 3000,
+      "production_year": 2023,
+      "reserves_mt": null,
+      "grade": "~2% Sb, 5% Pb, 3% Zn, 300 g/t Ag (polymetallic)",
+      "notes": "Historic polymetallic mine in northern Shan State, once one of the world's largest lead-zinc-silver mines. Contains significant antimony in the upper levels. Redevelopment plans disrupted by political instability since 2021."
+    },
+    {
+      "name": "Man Maw Antimony (Shan State)",
+      "lat": 23.5,
+      "lon": 98.9,
+      "country": "Myanmar",
+      "operator": "Various artisanal / Chinese operators",
+      "ownership": "Various (informal and Chinese-backed)",
+      "status": "operating",
+      "type": "underground (artisanal + small-scale)",
+      "products": [
+        "antimony"
+      ],
+      "capacity_tpa": 2000,
+      "production_year": 2023,
+      "reserves_mt": null,
+      "grade": "~3-8% Sb (stibnite veins)",
+      "notes": "Antimony mining area in northeastern Shan State near the Chinese border. Much of the ore is trucked to Chinese smelters in Yunnan. Myanmar is a significant but poorly documented antimony producer."
+    },
+    {
+      "name": "Turhal Antimony Smelter",
+      "lat": 40.39,
+      "lon": 36.09,
+      "country": "Turkey",
+      "operator": "Eti Mine Works (Eti Maden)",
+      "ownership": "Republic of Turkey (state enterprise)",
+      "status": "operating",
+      "type": "smelter + mines",
+      "products": [
+        "antimony metal",
+        "antimony trioxide"
+      ],
+      "capacity_tpa": 3000,
+      "production_year": 2023,
+      "reserves_mt": null,
+      "grade": null,
+      "notes": "Turkey's primary antimony smelter in Tokat province. Eti Mine Works (state enterprise) processes domestic stibnite ore and imported concentrates. Turkey has been a notable antimony producer since Ottoman times."
+    },
+    {
+      "name": "Tokat/Niksar Antimony Mines",
+      "lat": 40.6,
+      "lon": 36.95,
+      "country": "Turkey",
+      "operator": "Various Turkish operators / Eti Maden",
+      "ownership": "State and private companies",
+      "status": "operating",
+      "type": "underground",
+      "products": [
+        "antimony"
+      ],
+      "capacity_tpa": 1500,
+      "production_year": 2023,
+      "reserves_mt": null,
+      "grade": "~2-5% Sb (stibnite)",
+      "notes": "Antimony mining district in the Tokat-Niksar area. Multiple small stibnite deposits feed the Turhal smelter. Part of Turkey's North Anatolian antimony belt."
+    },
+    {
+      "name": "Oruro Antimony District",
+      "lat": -17.96,
+      "lon": -67.11,
+      "country": "Bolivia",
+      "operator": "Various (Empresa Minera Inti Raymi, cooperatives)",
+      "ownership": "Cooperative and private Bolivian miners",
+      "status": "operating",
+      "type": "underground",
+      "products": [
+        "antimony",
+        "tin",
+        "silver"
+      ],
+      "capacity_tpa": 1500,
+      "production_year": 2023,
+      "reserves_mt": null,
+      "grade": "~2-4% Sb (stibnite in polymetallic veins)",
+      "notes": "Antimony mining district in the Oruro department of the Bolivian Altiplano. Stibnite produced alongside tin and silver from polymetallic vein deposits. Bolivia historically a top-5 antimony producer."
+    },
+    {
+      "name": "Potosi Antimony Mines",
+      "lat": -19.59,
+      "lon": -65.75,
+      "country": "Bolivia",
+      "operator": "COMIBOL (state) / cooperatives",
+      "ownership": "Bolivian state and cooperative miners",
+      "status": "operating",
+      "type": "underground",
+      "products": [
+        "antimony",
+        "tin",
+        "silver",
+        "zinc"
+      ],
+      "capacity_tpa": 1000,
+      "production_year": 2023,
+      "reserves_mt": null,
+      "grade": "~1.5-3% Sb (polymetallic)",
+      "notes": "Antimony produced as co-product from historic polymetallic mining district at Cerro Rico de Potosi and surrounding areas. Mining at Potosi since 1545. Antimony recovered from complex Sn-Ag-Sb-Zn ores."
+    },
+    {
+      "name": "Costerfield Mine",
+      "lat": -37.07,
+      "lon": 144.36,
+      "country": "Australia",
+      "operator": "Mandalay Resources",
+      "ownership": "Mandalay Resources Corp (100%)",
+      "status": "operating",
+      "type": "underground",
+      "products": [
+        "antimony",
+        "gold"
+      ],
+      "capacity_tpa": 3500,
+      "production_year": 2023,
+      "reserves_mt": null,
+      "grade": "~4-8% Sb, 8-15 g/t Au (high-grade stibnite-gold veins)",
+      "notes": "Australia's only significant antimony producer, in central Victoria. High-grade stibnite-gold veins in the Costerfield fault system. Mandalay Resources Annual Report 2023: ~3,300 t Sb production. One of the few Western antimony mines."
+    },
+    {
+      "name": "Hillgrove Mine",
+      "lat": -30.54,
+      "lon": 152.01,
+      "country": "Australia",
+      "operator": "Hillgrove Resources",
+      "ownership": "Hillgrove Resources (100%)",
+      "status": "development",
+      "type": "underground",
+      "products": [
+        "antimony",
+        "gold"
+      ],
+      "capacity_tpa": 2000,
+      "production_year": 2023,
+      "reserves_mt": null,
+      "grade": "~1.5-3% Sb, 3-5 g/t Au",
+      "notes": "Historic antimony-gold mine near Armidale, NSW. Restart planned as critical minerals project. Australia classified antimony as a critical mineral in 2022. Resource of ~4 Mt at 1.5% Sb."
+    },
+    {
+      "name": "Consolidated Murchison",
+      "lat": -23.68,
+      "lon": 30.73,
+      "country": "South Africa",
+      "operator": "Consolidated Murchison (formerly Metorex)",
+      "ownership": "Various (complex ownership history)",
+      "status": "care and maintenance",
+      "type": "underground",
+      "products": [
+        "antimony"
+      ],
+      "capacity_tpa": 3000,
+      "production_year": 2023,
+      "reserves_mt": null,
+      "grade": "~3-5% Sb (stibnite in Murchison greenstone belt)",
+      "notes": "Historic antimony mine and smelter in Limpopo province. Once one of the world's top antimony producers. Placed on care and maintenance due to operational issues and low prices. Located in the Murchison greenstone belt, one of the world's oldest geological formations."
+    },
+    {
+      "name": "Murchison/Gravelotte (Larvotto)",
+      "lat": -23.95,
+      "lon": 30.55,
+      "country": "South Africa",
+      "operator": "Larvotto Resources",
+      "ownership": "Larvotto Resources (Australia-listed)",
+      "status": "development",
+      "type": "underground (proposed restart)",
+      "products": [
+        "antimony",
+        "gold"
+      ],
+      "capacity_tpa": 2500,
+      "production_year": 2023,
+      "reserves_mt": null,
+      "grade": "~3-4% Sb, 1-2 g/t Au",
+      "notes": "Former Gravelotte antimony mine in the Murchison greenstone belt, Limpopo. Being redeveloped by Australian-listed Larvotto Resources as a critical minerals project. Historic production of >50,000 tonnes antimony metal."
+    },
+    {
+      "name": "Beaver Brook Mine",
+      "lat": 48.48,
+      "lon": -56.52,
+      "country": "Canada",
+      "operator": "Perpetua Resources (formerly Midas Gold)",
+      "ownership": "Perpetua Resources Corp",
+      "status": "care and maintenance",
+      "type": "underground",
+      "products": [
+        "antimony"
+      ],
+      "capacity_tpa": 2000,
+      "production_year": 2023,
+      "reserves_mt": null,
+      "grade": "~4-5% Sb (massive stibnite)",
+      "notes": "Antimony mine in central Newfoundland. Previously operated by Beaver Brook Antimony Mines Inc. Contains significant stibnite resources. One of North America's few antimony deposits. Currently on care and maintenance awaiting improved market conditions."
+    },
+    {
+      "name": "NICO Project (Fortune Minerals)",
+      "lat": 63.1,
+      "lon": -117.1,
+      "country": "Canada",
+      "operator": "Fortune Minerals",
+      "ownership": "Fortune Minerals Limited (100%)",
+      "status": "development",
+      "type": "open-pit + underground (proposed)",
+      "products": [
+        "cobalt",
+        "gold",
+        "bismuth",
+        "copper",
+        "antimony"
+      ],
+      "capacity_tpa": 200,
+      "production_year": 2023,
+      "reserves_mt": null,
+      "grade": "trace Sb (polymetallic: Co, Au, Bi, Cu)",
+      "notes": "NICO polymetallic deposit in the Northwest Territories. Antimony as minor byproduct from Co-Au-Bi-Cu ore. Environmental assessment approved. Fortune Minerals corporate filings."
+    },
+    {
+      "name": "Stibnite Gold Project (Idaho)",
+      "lat": 44.93,
+      "lon": -115.33,
+      "country": "USA",
+      "operator": "Perpetua Resources",
+      "ownership": "Perpetua Resources Corp (100%)",
+      "status": "development",
+      "type": "open-pit (proposed)",
+      "products": [
+        "gold",
+        "antimony"
+      ],
+      "capacity_tpa": 1700,
+      "production_year": 2023,
+      "reserves_mt": null,
+      "grade": "~0.6% Sb, 4.8 g/t Au",
+      "notes": "Historic mining district in central Idaho with significant antimony-gold resources. US Department of Defense awarded $59M grant to support domestic antimony production (2022). Would become the only US antimony mine. Permitting underway. Perpetua Resources corporate filings."
+    },
+    {
+      "name": "Sunshine Mine (Coeur d'Alene)",
+      "lat": 47.47,
+      "lon": -116.11,
+      "country": "USA",
+      "operator": "Sunshine Silver Mining & Refining",
+      "ownership": "Sunshine Silver Mining & Refining Corp",
+      "status": "care and maintenance",
+      "type": "underground",
+      "products": [
+        "silver",
+        "antimony",
+        "copper"
+      ],
+      "capacity_tpa": 500,
+      "production_year": 2023,
+      "reserves_mt": null,
+      "grade": "~0.5% Sb, 400 g/t Ag (tetrahedrite-rich ore)",
+      "notes": "Historic silver-antimony mine in the Coeur d'Alene mining district, Idaho. Antimony recovered from tetrahedrite (Cu-Sb sulfide) ore as silver processing byproduct. One of the deepest mines in North America. Currently on care and maintenance."
+    },
+    {
+      "name": "Wadley (San Luis Potosi)",
+      "lat": 23.57,
+      "lon": -100.58,
+      "country": "Mexico",
+      "operator": "Various small operators",
+      "ownership": "Private Mexican mining companies",
+      "status": "operating",
+      "type": "underground",
+      "products": [
+        "antimony"
+      ],
+      "capacity_tpa": 500,
+      "production_year": 2023,
+      "reserves_mt": null,
+      "grade": "~3-6% Sb (stibnite veins)",
+      "notes": "Antimony mining district near Wadley in San Luis Potosi state. Mexico has been a historic antimony producer since the 19th century. Small-scale underground operations on high-grade stibnite veins."
+    },
+    {
+      "name": "Kadamzhai Mine (Kyrgyzstan)",
+      "lat": 40.14,
+      "lon": 70.49,
+      "country": "Kyrgyzstan",
+      "operator": "Various Kyrgyz operators",
+      "ownership": "Kyrgyz state and private enterprises",
+      "status": "operating",
+      "type": "underground",
+      "products": [
+        "antimony",
+        "mercury"
+      ],
+      "capacity_tpa": 1500,
+      "production_year": 2023,
+      "reserves_mt": null,
+      "grade": "~2-5% Sb",
+      "notes": "Major Central Asian antimony deposit in the Fergana Valley region near Kadamzhai. Shares geological formation with Tajikistan's deposits across the border. Historic production since the Soviet era. Environmental remediation challenges from mercury co-production."
+    },
+    {
+      "name": "Khaidarkan Mercury-Antimony",
+      "lat": 39.85,
+      "lon": 71.04,
+      "country": "Kyrgyzstan",
+      "operator": "Khaidarkan Mercury Plant",
+      "ownership": "Kyrgyz state enterprise",
+      "status": "operating",
+      "type": "underground + processing",
+      "products": [
+        "antimony",
+        "mercury",
+        "fluorspar"
+      ],
+      "capacity_tpa": 500,
+      "production_year": 2023,
+      "reserves_mt": null,
+      "grade": "~1.5-3% Sb, with mercury and fluorite",
+      "notes": "Historic mercury-antimony operation in the Fergana Valley. One of the world's last active mercury mines. Antimony recovered as co-product. Significant environmental concerns due to mercury contamination."
+    },
+    {
+      "name": "Dundee Precious Metals (Tsumeb Smelter)",
+      "lat": -19.24,
+      "lon": 17.72,
+      "country": "Namibia",
+      "operator": "Dundee Precious Metals",
+      "ownership": "Dundee Precious Metals Inc (100%)",
+      "status": "operating",
+      "type": "smelter",
+      "products": [
+        "antimony",
+        "copper",
+        "gold",
+        "silver"
+      ],
+      "capacity_tpa": 1500,
+      "production_year": 2023,
+      "reserves_mt": null,
+      "grade": null,
+      "notes": "One of the few smelters globally capable of processing complex copper-antimony concentrates. Located at the historic Tsumeb mining complex in northern Namibia. Processes concentrates from Dundee's Chelopech mine (Bulgaria) and third-party feeds. Produces antimony trioxide and antimony metal as byproducts."
+    },
+    {
+      "name": "Chelopech Mine",
+      "lat": 42.73,
+      "lon": 24.08,
+      "country": "Bulgaria",
+      "operator": "Dundee Precious Metals",
+      "ownership": "Dundee Precious Metals Inc (100%)",
+      "status": "operating",
+      "type": "underground",
+      "products": [
+        "copper",
+        "gold",
+        "antimony"
+      ],
+      "capacity_tpa": 800,
+      "production_year": 2023,
+      "reserves_mt": null,
+      "grade": "~0.3% Sb, 1.4% Cu, 3.5 g/t Au (high-sulfidation epithermal)",
+      "notes": "Underground copper-gold mine with significant antimony content. Complex Cu-Au-Sb concentrate shipped to Tsumeb smelter in Namibia for processing. One of Europe's few antimony-bearing mines. Dundee Precious Metals Annual Report 2023."
+    }
+  ]
+}

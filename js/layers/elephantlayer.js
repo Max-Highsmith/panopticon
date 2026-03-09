@@ -7,7 +7,7 @@ import { registerLayerLoader } from '../layerregistry.js';
 
 const layer = createPathLayer({
   layerKey: 'elephants',
-  dataUrl: 'data/elephant_migration.json',
+  layerType: 'path', dataUrl: 'data/layers/paths/elephant_migration.json',
   idPrefix: 'eleph',
   countId: 'elephants-count',
   logLabel: 'ELEPHANTS',
@@ -19,7 +19,7 @@ const layer = createPathLayer({
   },
 });
 
-registerLayerLoader('elephants', { load: layer.load, flyTo: layer.FLY_TO, reset: layer.reset, dataUrl: 'data/elephant_migration.json' });
+registerLayerLoader('elephants', { load: layer.load, flyTo: layer.FLY_TO, reset: layer.reset, layerType: 'path', dataUrl: 'data/layers/paths/elephant_migration.json' });
 
 export const fetchElephants     = layer.load;
 export const isElephantsLoaded  = layer.isLoaded;

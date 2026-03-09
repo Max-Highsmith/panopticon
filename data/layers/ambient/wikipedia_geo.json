@@ -1,0 +1,3664 @@
+{
+  "_source": {
+    "description": "Pre-cached Wikipedia articles for strategic regions worldwide",
+    "origin": "Wikipedia MediaWiki API geosearch \u2014 https://en.wikipedia.org/w/api.php",
+    "retrieved": "2026-03-09",
+    "license": "CC-BY-SA 3.0 (Wikipedia content license)",
+    "notes": "Static snapshot for offline fallback. Queried 20 strategic coordinates, deduplicated to 365 unique articles. Extracts truncated to 300 chars."
+  },
+  "queryLat": null,
+  "queryLon": null,
+  "snapshot_ts": "2026-03-09T22:46:32.684345+00:00Z",
+  "articles": [
+    {
+      "pageid": 67535588,
+      "name": "100th Anniversary of the Chinese Communist Party",
+      "title": "100th Anniversary of the Chinese Communist Party",
+      "lat": 39.907333333333334,
+      "lon": 116.39108333333334,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/100th_Anniversary_of_the_Chinese_Communist_Party",
+      "distKm": 0
+    },
+    {
+      "pageid": 35184975,
+      "name": "10th anniversary of the People's Republic of China",
+      "title": "10th anniversary of the People's Republic of China",
+      "lat": 39.907333333333334,
+      "lon": 116.39108333333334,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/10th_anniversary_of_the_People%27s_Republic_of_China",
+      "distKm": 0
+    },
+    {
+      "pageid": 18396195,
+      "name": "1625 Eye Street",
+      "title": "1625 Eye Street",
+      "lat": 38.901555555555554,
+      "lon": -77.03758333333333,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/1625_Eye_Street",
+      "distKm": 0
+    },
+    {
+      "pageid": 18424737,
+      "name": "1701 Pennsylvania Avenue",
+      "title": "1701 Pennsylvania Avenue",
+      "lat": 38.8992,
+      "lon": -77.04,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/1701_Pennsylvania_Avenue",
+      "distKm": 0
+    },
+    {
+      "pageid": 77639628,
+      "name": "1942 Aeroflot Li-2 Krasnoyarsk crash",
+      "title": "1942 Aeroflot Li-2 Krasnoyarsk crash",
+      "lat": 55.75,
+      "lon": 37.61666666666667,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/1942_Aeroflot_Li-2_Krasnoyarsk_crash",
+      "distKm": 0
+    },
+    {
+      "pageid": 44534,
+      "name": "1989 Tiananmen Square protests and massacre",
+      "title": "1989 Tiananmen Square protests and massacre",
+      "lat": 39.90333333333333,
+      "lon": 116.39166666666668,
+      "extract": "Protests led by students, known in China as the June Fourth Incident, were held in Tiananmen Square in Beijing, China, from 15 April to 4 June 1989. After weeks of unsuccessful attempts between the demonstrators and the Chinese government to find a peaceful resolution, the Chinese government deploye",
+      "url": "https://en.wikipedia.org/wiki/1989_Tiananmen_Square_protests_and_massacre",
+      "distKm": 0
+    },
+    {
+      "pageid": 18366631,
+      "name": "2008 United States consulate in Istanbul attack",
+      "title": "2008 United States consulate in Istanbul attack",
+      "lat": 41.117274,
+      "lon": 29.046867,
+      "extract": "In the morning hours on July 9, 2008, an attack on the  Consulate General of the United States, Istanbul resulted in the deaths of the three gunmen and three Turkish National Police officers.\nThe attack occurred at a time when the facility was at full function. It is the responsibility of the host s",
+      "url": "https://en.wikipedia.org/wiki/2008_United_States_consulate_in_Istanbul_attack",
+      "distKm": 0
+    },
+    {
+      "pageid": 40922698,
+      "name": "2013 Tiananmen Square attack",
+      "title": "2013 Tiananmen Square attack",
+      "lat": 39.9075,
+      "lon": 116.39722222222223,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/2013_Tiananmen_Square_attack",
+      "distKm": 0
+    },
+    {
+      "pageid": 47570673,
+      "name": "2015 China Victory Day Parade",
+      "title": "2015 China Victory Day Parade",
+      "lat": 39.907333333333334,
+      "lon": 116.39108333333334,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/2015_China_Victory_Day_Parade",
+      "distKm": 0
+    },
+    {
+      "pageid": 80295802,
+      "name": "2025 China Victory Day Parade",
+      "title": "2025 China Victory Day Parade",
+      "lat": 39.907333333333334,
+      "lon": 116.39108333333334,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/2025_China_Victory_Day_Parade",
+      "distKm": 0
+    },
+    {
+      "pageid": 81697146,
+      "name": "2025 Washington, D.C., National Guard shooting",
+      "title": "2025 Washington, D.C., National Guard shooting",
+      "lat": 38.9012,
+      "lon": -77.0393,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/2025_Washington,_D.C.,_National_Guard_shooting",
+      "distKm": 0
+    },
+    {
+      "pageid": 748818,
+      "name": "2nd Ring Road",
+      "title": "2nd Ring Road",
+      "lat": 39.89805555555556,
+      "lon": 116.38666666666667,
+      "extract": "The 2nd Ring Road (Chinese: \u4e8c\u73af\u8def; pinyin: \u00e8r hu\u00e1n l\u00f9) is the innermost ring road highway which encircles the city center of Beijing, People's Republic of China. (The first ring road had been a circular tram route.)\nThe ring road can be divided into two parts: the original ring road (the southern sect",
+      "url": "https://en.wikipedia.org/wiki/2nd_Ring_Road",
+      "distKm": 0
+    },
+    {
+      "pageid": 61918529,
+      "name": "35th anniversary of the People's Republic of China",
+      "title": "35th anniversary of the People's Republic of China",
+      "lat": 39.907333333333334,
+      "lon": 116.39108333333334,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/35th_anniversary_of_the_People%27s_Republic_of_China",
+      "distKm": 0
+    },
+    {
+      "pageid": 73875820,
+      "name": "40th anniversary of the People's Republic of China",
+      "title": "40th anniversary of the People's Republic of China",
+      "lat": 39.907333333333334,
+      "lon": 116.39108333333334,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/40th_anniversary_of_the_People%27s_Republic_of_China",
+      "distKm": 0
+    },
+    {
+      "pageid": 61918379,
+      "name": "50th anniversary of the People's Republic of China",
+      "title": "50th anniversary of the People's Republic of China",
+      "lat": 39.907333333333334,
+      "lon": 116.39108333333334,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/50th_anniversary_of_the_People%27s_Republic_of_China",
+      "distKm": 0
+    },
+    {
+      "pageid": 24365940,
+      "name": "60th anniversary of the People's Republic of China",
+      "title": "60th anniversary of the People's Republic of China",
+      "lat": 39.907333333333334,
+      "lon": 116.39108333333334,
+      "extract": "The 60th anniversary of the founding of the People's Republic of China took place on 1 October 2009. A military parade involving 10,000 troops and the display of many high-tech weapons was held in Tiananmen Square in Beijing and various celebrations were conducted all over the country. China's param",
+      "url": "https://en.wikipedia.org/wiki/60th_anniversary_of_the_People%27s_Republic_of_China",
+      "distKm": 0
+    },
+    {
+      "pageid": 80301446,
+      "name": "70th Anniversary of Chinese People's Volunteers' Participation in War to Resist US Aggression and Aid Korea",
+      "title": "70th Anniversary of Chinese People's Volunteers' Participation in War to Resist US Aggression and Aid Korea",
+      "lat": 39.90333333333333,
+      "lon": 116.3875,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/70th_Anniversary_of_Chinese_People%27s_Volunteers%27_Participation_in_War_to_Resist_US_Aggression_and_Aid_Korea",
+      "distKm": 0
+    },
+    {
+      "pageid": 61332735,
+      "name": "70th anniversary of the People's Republic of China",
+      "title": "70th anniversary of the People's Republic of China",
+      "lat": 39.907333333333334,
+      "lon": 116.39108333333334,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/70th_anniversary_of_the_People%27s_Republic_of_China",
+      "distKm": 0
+    },
+    {
+      "pageid": 48942235,
+      "name": "AJA University of Command and Staff",
+      "title": "AJA University of Command and Staff",
+      "lat": 35.6918,
+      "lon": 51.3853,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/AJA_University_of_Command_and_Staff",
+      "distKm": 0
+    },
+    {
+      "pageid": 43311608,
+      "name": "AKA White House",
+      "title": "AKA White House",
+      "lat": 38.899917,
+      "lon": -77.040362,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/AKA_White_House",
+      "distKm": 0
+    },
+    {
+      "pageid": 80800599,
+      "name": "Abdulhakim Sanjak Mosque",
+      "title": "Abdulhakim Sanjak Mosque",
+      "lat": 41.1063,
+      "lon": 29.0306,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Abdulhakim_Sanjak_Mosque",
+      "distKm": 0
+    },
+    {
+      "pageid": 23180495,
+      "name": "Agia Eirini, Nicosia",
+      "title": "Agia Eirini, Nicosia",
+      "lat": 34.983333333333334,
+      "lon": 32.96666666666667,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Agia_Eirini,_Nicosia",
+      "distKm": 0
+    },
+    {
+      "pageid": 23169151,
+      "name": "Agia Marina, Nicosia",
+      "title": "Agia Marina, Nicosia",
+      "lat": 35.05,
+      "lon": 33.05,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Agia_Marina,_Nicosia",
+      "distKm": 0
+    },
+    {
+      "pageid": 23172088,
+      "name": "Agios Theodoros, Nicosia",
+      "title": "Agios Theodoros, Nicosia",
+      "lat": 35.04138888888889,
+      "lon": 32.92861111111111,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Agios_Theodoros,_Nicosia",
+      "distKm": 0
+    },
+    {
+      "pageid": 23216123,
+      "name": "Agridia",
+      "title": "Agridia",
+      "lat": 34.92861111111111,
+      "lon": 32.99444444444445,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Agridia",
+      "distKm": 0
+    },
+    {
+      "pageid": 14443083,
+      "name": "Agros, Cyprus",
+      "title": "Agros, Cyprus",
+      "lat": 34.916666666666664,
+      "lon": 33.016666666666666,
+      "extract": "Agros (Greek: \u0391\u03b3\u03c1\u03cc\u03c2, Turkish: A\u011fros) is a village built on the Tro\u00f6dos Mountains, in the region of Pitsilia, in southwest Cyprus, which has built amphitheatrically among high mountains at an altitude of 1100 metres with a population of approximately 1,000. The village is located 45 minutes away from",
+      "url": "https://en.wikipedia.org/wiki/Agros,_Cyprus",
+      "distKm": 0
+    },
+    {
+      "pageid": 22770714,
+      "name": "Alibi Club",
+      "title": "Alibi Club",
+      "lat": 38.90116666666667,
+      "lon": -77.04205555555555,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Alibi_Club",
+      "distKm": 0
+    },
+    {
+      "pageid": 23194110,
+      "name": "Alithinou",
+      "title": "Alithinou",
+      "lat": 34.947222222222216,
+      "lon": 33.03,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Alithinou",
+      "distKm": 0
+    },
+    {
+      "pageid": 23193984,
+      "name": "Alona, Cyprus",
+      "title": "Alona, Cyprus",
+      "lat": 34.93277777777777,
+      "lon": 33.04,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Alona,_Cyprus",
+      "distKm": 0
+    },
+    {
+      "pageid": 29203577,
+      "name": "American Action Network",
+      "title": "American Action Network",
+      "lat": 38.89961111111111,
+      "lon": -77.04094444444445,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/American_Action_Network",
+      "distKm": 0
+    },
+    {
+      "pageid": 17097826,
+      "name": "American Peace Society house",
+      "title": "American Peace Society house",
+      "lat": 38.89969444444444,
+      "lon": -77.03813888888888,
+      "extract": "The American Peace Society House, also known as the Glover House, is a historic house at 734 Jackson Place NW, facing Lafayette Square in the heart of Washington, D.C. Built in 1878 for banker and philanthropist Charles Carroll Glover, it is most notable as the national headquarters of the American ",
+      "url": "https://en.wikipedia.org/wiki/American_Peace_Society_house",
+      "distKm": 0
+    },
+    {
+      "pageid": 14597958,
+      "name": "Amusement Palace",
+      "title": "Amusement Palace",
+      "lat": 55.7512,
+      "lon": 37.6144,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Amusement_Palace",
+      "distKm": 0
+    },
+    {
+      "pageid": 77791603,
+      "name": "Araka (restaurant)",
+      "title": "Araka (restaurant)",
+      "lat": 41.11712,
+      "lon": 29.06313,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Araka_(restaurant)",
+      "distKm": 0
+    },
+    {
+      "pageid": 3769733,
+      "name": "Arch of Triumph (Pyongyang)",
+      "title": "Arch of Triumph (Pyongyang)",
+      "lat": 39.044444444444444,
+      "lon": 125.75277777777778,
+      "extract": "The Arch of Triumph (Korean: \uac1c\uc120\ubb38; Hanja: \u51f1\u65cb\u9580) is a triumphal arch in Pyongyang, North Korea. It was built to commemorate the Korean resistance to Japan from 1925 to 1945. It is the second tallest memorial arch in the world, after Monumento a la Revoluci\u00f3n in Mexico, standing 60 m (197 ft) high and 5",
+      "url": "https://en.wikipedia.org/wiki/Arch_of_Triumph_(Pyongyang)",
+      "distKm": 0
+    },
+    {
+      "pageid": 18776409,
+      "name": "Archdiocese of Tehran\u2013Isfahan",
+      "title": "Archdiocese of Tehran\u2013Isfahan",
+      "lat": 35.6969,
+      "lon": 51.4086,
+      "extract": "The Archdiocese of Tehran\u2013Isfahan of the Latins (Latin: Archidioecesis Teheranensis-Hispahanensis Latinorum; Persian: \u0627\u0633\u0642\u0641\u200c\u0646\u0634\u06cc\u0646 \u06a9\u0627\u062a\u0648\u0644\u06cc\u06a9 \u0631\u0648\u0645\u06cc \u062a\u0647\u0631\u0627\u0646-\u0627\u0635\u0641\u0647\u0627\u0646, romanized: \u014csghof-neshin K\u0101tolik Romi Tehr\u0101n-Esfah\u0101n) is a Latin Catholic jurisdiction of the Catholic Church in Iran.\nPope Francis changed the n",
+      "url": "https://en.wikipedia.org/wiki/Archdiocese_of_Tehran%E2%80%93Isfahan",
+      "distKm": 0
+    },
+    {
+      "pageid": 6841292,
+      "name": "Armorial Gate",
+      "title": "Armorial Gate",
+      "lat": 55.750277777777775,
+      "lon": 37.61472222222223,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Armorial_Gate",
+      "distKm": 0
+    },
+    {
+      "pageid": 50264988,
+      "name": "Army and Navy Club (Washington, D.C.)",
+      "title": "Army and Navy Club (Washington, D.C.)",
+      "lat": 38.9015,
+      "lon": -77.0382,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Army_and_Navy_Club_(Washington,_D.C.)",
+      "distKm": 0
+    },
+    {
+      "pageid": 4331000,
+      "name": "Ascension Convent",
+      "title": "Ascension Convent",
+      "lat": 55.7525,
+      "lon": 37.62027777777778,
+      "extract": "Ascension Convent, known as the Starodevichy Convent or Old Maidens' Convent until 1817 (Russian: \u0412\u043e\u0437\u043d\u0435\u0441\u0435\u043d\u0441\u043a\u0438\u0439 \u043c\u043e\u043d\u0430\u0441\u0442\u044b\u0440\u044c, romanized: Voznesensky monastyr), was a  Russian Orthodox nunnery in the Moscow Kremlin which contained the burials of grand princesses, tsarinas, and other noble ladies from the",
+      "url": "https://en.wikipedia.org/wiki/Ascension_Convent",
+      "distKm": 0
+    },
+    {
+      "pageid": 82537558,
+      "name": "Assassination of Ali Khamenei",
+      "title": "Assassination of Ali Khamenei",
+      "lat": 35.6919,
+      "lon": 51.3986,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Assassination_of_Ali_Khamenei",
+      "distKm": 0
+    },
+    {
+      "pageid": 45527399,
+      "name": "Assassination of Boris Nemtsov",
+      "title": "Assassination of Boris Nemtsov",
+      "lat": 55.75,
+      "lon": 37.62388888888889,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Assassination_of_Boris_Nemtsov",
+      "distKm": 0
+    },
+    {
+      "pageid": 512725,
+      "name": "Assembly of Experts",
+      "title": "Assembly of Experts",
+      "lat": 35.68805555555555,
+      "lon": 51.39972222222222,
+      "extract": "The Assembly of Experts (Persian: \u0645\u062c\u0644\u0633 \u062e\u0628\u0631\u06af\u0627\u0646 \u0631\u0647\u0628\u0631\u06cc, romanized: Majles-e Khobreg\u0101n-e Rahbar\u012b, lit.\u2009'Assembly of Experts for Leadership') is the deliberative body of Iran empowered to appoint, supervise, and discharge the Supreme Leader of Iran. The assembly consists of 88 members who are directly el",
+      "url": "https://en.wikipedia.org/wiki/Assembly_of_Experts",
+      "distKm": 0
+    },
+    {
+      "pageid": 45106904,
+      "name": "Atat\u00fcrk Oto Sanayi (Istanbul Metro)",
+      "title": "Atat\u00fcrk Oto Sanayi (Istanbul Metro)",
+      "lat": 41.1186,
+      "lon": 29.024,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Atat%C3%BCrk_Oto_Sanayi_(Istanbul_Metro)",
+      "distKm": 0
+    },
+    {
+      "pageid": 33905322,
+      "name": "Bachelor Apartment House",
+      "title": "Bachelor Apartment House",
+      "lat": 38.900416666666665,
+      "lon": -77.04133333333333,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Bachelor_Apartment_House",
+      "distKm": 0
+    },
+    {
+      "pageid": 9844333,
+      "name": "Balkh University",
+      "title": "Balkh University",
+      "lat": 35.7038,
+      "lon": 51.395,
+      "extract": "Balkh University (Dari: \u062f\u0627\u0646\u0634\u06af\u0627\u0647 \u0628\u0644\u062e; Pashto: \u062f \u0628\u0644\u062e \u067e\u0648\u0647\u0646\u062a\u0648\u0646) is the largest public university in Mazar-i-Sharif, which is the capital of Balkh Province in northern Afghanistan. Established in 1986, the university has about 18,000 students. Its current chancellor is Mufti Mohammad Sharif Osmani. His p",
+      "url": "https://en.wikipedia.org/wiki/Balkh_University",
+      "distKm": 0
+    },
+    {
+      "pageid": 39547389,
+      "name": "Barr Building",
+      "title": "Barr Building",
+      "lat": 38.90189083333333,
+      "lon": -77.03992699999999,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Barr_Building",
+      "distKm": 0
+    },
+    {
+      "pageid": 29242607,
+      "name": "Battle of Gaoliang River",
+      "title": "Battle of Gaoliang River",
+      "lat": 39.904214,
+      "lon": 116.407413,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Battle_of_Gaoliang_River",
+      "distKm": 0
+    },
+    {
+      "pageid": 524949,
+      "name": "Battle of Goose Green",
+      "title": "Battle of Goose Green",
+      "lat": -51.828833333333336,
+      "lon": -58.969166666666666,
+      "extract": "The Battle of Goose Green (Spanish: Batalla de Pradera del Ganso) was fought from 28 to 29 May 1982 by British and Argentine forces during the Falklands War. Located on East Falkland's central isthmus, the settlement of Goose Green was the site of a tactically vital airfield. Argentine forces were l",
+      "url": "https://en.wikipedia.org/wiki/Battle_of_Goose_Green",
+      "distKm": 0
+    },
+    {
+      "pageid": 7449820,
+      "name": "Battle of Peking (1900)",
+      "title": "Battle of Peking (1900)",
+      "lat": 39.906666666666666,
+      "lon": 116.39750000000001,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Battle_of_Peking_(1900)",
+      "distKm": 0
+    },
+    {
+      "pageid": 56590699,
+      "name": "Battle of Pyongyang (1592)",
+      "title": "Battle of Pyongyang (1592)",
+      "lat": 39.035977777777774,
+      "lon": 125.75426666666667,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Battle_of_Pyongyang_(1592)",
+      "distKm": 0
+    },
+    {
+      "pageid": 6564285,
+      "name": "Battle of Pyongyang (1894)",
+      "title": "Battle of Pyongyang (1894)",
+      "lat": 39.03333333333333,
+      "lon": 125.75,
+      "extract": "The Battle of Pyongyang (Japanese: \u5e73\u58cc\u4f5c\u6226; Chinese: \u5e73\u58e4\u4e4b\u6230) was the second major land battle of the First Sino-Japanese War.  It took place on 15 September 1894 in Pyongyang, Korea between the forces of Meiji Japan and Qing China. It is sometimes referred to archaically in Western sources as the \"Battle",
+      "url": "https://en.wikipedia.org/wiki/Battle_of_Pyongyang_(1894)",
+      "distKm": 0
+    },
+    {
+      "pageid": 51735783,
+      "name": "Battle of Pyongyang (1950)",
+      "title": "Battle of Pyongyang (1950)",
+      "lat": 39.019444444444446,
+      "lon": 125.73805555555556,
+      "extract": "The Battle of Pyongyang (17\u201319 October 1950) was one of the major battles of the United Nations' offensive during the Korean War. Following the Battle of Inchon, the UN forces re-captured Seoul, the capital of South Korea, and proceeded to advance into North Korea. Shortly after advancing, the Ameri",
+      "url": "https://en.wikipedia.org/wiki/Battle_of_Pyongyang_(1950)",
+      "distKm": 0
+    },
+    {
+      "pageid": 856325,
+      "name": "Battle of the Imjin River",
+      "title": "Battle of the Imjin River",
+      "lat": 37.942499999999995,
+      "lon": 126.93916666666667,
+      "extract": "The Battle of the Imjin River (Filipino: Labanan sa Ilog Imjin), also known as the Battle of Solma-ri (Korean: \uc124\ub9c8\ub9ac \uc804\ud22c) or Battle of Gloster Hill (\uae00\ub85c\uc2a4\ud130 \uace0\uc9c0 \uc804\ud22c) in South Korea, or as Battle of Xuemali (Chinese: \u96ea\u9a6c\u91cc\u6218\u6597; pinyin: Xu\u011b M\u01ce L\u01d0 Zh\u00e0n D\u00f2u) in China, took place 22\u201325 April 1951 during the Korean W",
+      "url": "https://en.wikipedia.org/wiki/Battle_of_the_Imjin_River",
+      "distKm": 0
+    },
+    {
+      "pageid": 18603746,
+      "name": "Beijing",
+      "title": "Beijing",
+      "lat": 39.906666666666666,
+      "lon": 116.39750000000001,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Beijing",
+      "distKm": 0
+    },
+    {
+      "pageid": 1138963,
+      "name": "Beijing Central Axis",
+      "title": "Beijing Central Axis",
+      "lat": 39.899639,
+      "lon": 116.391608,
+      "extract": "The Beijing Central Axis (simplified Chinese: \u5317\u4eac\u4e2d\u8f74\u7ebf; traditional Chinese: \u5317\u4eac\u4e2d\u8ef8\u7dab; pinyin: B\u011bij\u012bng Zh\u014dngzh\u00f3uxi\u00e0n), or Central Axis (simplified Chinese: \u4e2d\u8f74\u7ebf; traditional Chinese: \u4e2d\u8ef8\u7dab; pinyin: Zh\u014dngzh\u00f3uxi\u00e0n), refers to a stretch of road in Beijing, China. Beijing Central Axis extends 7.8 kilometers from",
+      "url": "https://en.wikipedia.org/wiki/Beijing_Central_Axis",
+      "distKm": 0
+    },
+    {
+      "pageid": 1216759,
+      "name": "Beijing Hotel",
+      "title": "Beijing Hotel",
+      "lat": 39.907745,
+      "lon": 116.403987,
+      "extract": "The Beijing Hotel (simplified Chinese: \u5317\u4eac\u996d\u5e97; traditional Chinese: \u5317\u4eac\u98ef\u5e97; pinyin: B\u011bij\u012bng F\u00e0ndi\u00e0n) is a five-star state-owned hotel complex in the Dongcheng District of Beijing, China. It is located at the southern end of Wangfujing Street, at the corner with East Chang'an Avenue, 1.5 km from Beijing ",
+      "url": "https://en.wikipedia.org/wiki/Beijing_Hotel",
+      "distKm": 0
+    },
+    {
+      "pageid": 52632860,
+      "name": "Beijing Mall",
+      "title": "Beijing Mall",
+      "lat": 39.90848,
+      "lon": 116.40443,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Beijing_Mall",
+      "distKm": 0
+    },
+    {
+      "pageid": 15128320,
+      "name": "Beijing Planning Exhibition Hall",
+      "title": "Beijing Planning Exhibition Hall",
+      "lat": 39.898416,
+      "lon": 116.39503,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Beijing_Planning_Exhibition_Hall",
+      "distKm": 0
+    },
+    {
+      "pageid": 12035975,
+      "name": "Beijing Tongren Hospital",
+      "title": "Beijing Tongren Hospital",
+      "lat": 39.90132,
+      "lon": 116.41101,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Beijing_Tongren_Hospital",
+      "distKm": 0
+    },
+    {
+      "pageid": 27331687,
+      "name": "Beklemishevskaya Tower",
+      "title": "Beklemishevskaya Tower",
+      "lat": 55.74973,
+      "lon": 37.62327,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Beklemishevskaya_Tower",
+      "distKm": 0
+    },
+    {
+      "pageid": 40627413,
+      "name": "Black Alliance for Educational Options",
+      "title": "Black Alliance for Educational Options",
+      "lat": 38.9001,
+      "lon": -77.037,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Black_Alliance_for_Educational_Options",
+      "distKm": 0
+    },
+    {
+      "pageid": 59568476,
+      "name": "Blair House",
+      "title": "Blair House",
+      "lat": 38.899027777777775,
+      "lon": -77.03858333333334,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Blair_House",
+      "distKm": 0
+    },
+    {
+      "pageid": 9353197,
+      "name": "Bolshoy Moskvoretsky Bridge",
+      "title": "Bolshoy Moskvoretsky Bridge",
+      "lat": 55.74888888888889,
+      "lon": 37.62444444444444,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Bolshoy_Moskvoretsky_Bridge",
+      "distKm": 0
+    },
+    {
+      "pageid": 61025488,
+      "name": "Boradion",
+      "title": "Boradion",
+      "lat": 41.102125,
+      "lon": 29.067899,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Boradion",
+      "distKm": 0
+    },
+    {
+      "pageid": 3022849,
+      "name": "Borsa Istanbul",
+      "title": "Borsa Istanbul",
+      "lat": 41.11055555555556,
+      "lon": 29.039722222222224,
+      "extract": "The Borsa \u0130stanbul (abbreviated as BIST) is the sole exchange entity of Turkey combining the former Istanbul Stock Exchange (ISE) (Turkish: \u0130stanbul Menkul K\u0131ymetler Borsas\u0131, IMKB),  the Istanbul Gold Exchange (Turkish: \u0130stanbul Alt\u0131n Borsas\u0131, \u0130AB) and the Derivatives Exchange of Turkey (Turkish: Va",
+      "url": "https://en.wikipedia.org/wiki/Borsa_Istanbul",
+      "distKm": 0
+    },
+    {
+      "pageid": 14626627,
+      "name": "Bosan station",
+      "title": "Bosan station",
+      "lat": 37.91361111111111,
+      "lon": 127.05722222222222,
+      "extract": "Bosan station is a subway station located at Dongducheon, Gyeonggi Province, South Korea. This station is on the Seoul Subway Line 1. Camp Casey, an American military base, is located nearby.",
+      "url": "https://en.wikipedia.org/wiki/Bosan_station",
+      "distKm": 0
+    },
+    {
+      "pageid": 3705,
+      "name": "Bosporus",
+      "title": "Bosporus",
+      "lat": 41.11944444444445,
+      "lon": 29.075277777777778,
+      "extract": "The Bosporus or Bosphorus Strait is a natural strait and an internationally significant waterway located in Turkey which is straddled by the city of  Istanbul. The Bosporus connects the Black Sea to the Sea of Marmara and forms one of the continental boundaries between Asia and Europe. It also divid",
+      "url": "https://en.wikipedia.org/wiki/Bosporus",
+      "distKm": 0
+    },
+    {
+      "pageid": 36109798,
+      "name": "Bosporus Water Tunnel",
+      "title": "Bosporus Water Tunnel",
+      "lat": 41.1276,
+      "lon": 29.08098,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Bosporus_Water_Tunnel",
+      "distKm": 0
+    },
+    {
+      "pageid": 8203594,
+      "name": "Brenton Loch",
+      "title": "Brenton Loch",
+      "lat": -51.771,
+      "lon": -59.02,
+      "extract": "Brenton Loch (Spanish, Bahia de Ruiz Puente) is an inlet-cum-small fjord in the Falkland Islands. It is one of a handful of sea lochs outside Scotland. It is sometimes known as \"Brenton Sound\". \"Loch\" is normally pronounced as \"lock\" in the English rather than Scottish manner, i.e. without a fricati",
+      "url": "https://en.wikipedia.org/wiki/Brenton_Loch",
+      "distKm": 0
+    },
+    {
+      "pageid": 6060123,
+      "name": "Camp Castle (South Korea)",
+      "title": "Camp Castle (South Korea)",
+      "lat": 37.93416666666666,
+      "lon": 127.05638888888889,
+      "extract": "Camp Castle was a 48.6-acre (197,000 m2), United States Army military installation in Dongducheon, South Korea, and home to elements of the U.S. 2nd Infantry Division. It is adjacent but not connected to the larger Camp Casey. Camp Castle served as home to the 2nd Engineer Battalion (known colloquia",
+      "url": "https://en.wikipedia.org/wiki/Camp_Castle_(South_Korea)",
+      "distKm": 0
+    },
+    {
+      "pageid": 43334232,
+      "name": "Caraba Formation",
+      "title": "Caraba Formation",
+      "lat": 9.1,
+      "lon": -79.7,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Caraba_Formation",
+      "distKm": 0
+    },
+    {
+      "pageid": 3990105,
+      "name": "Cathedral Square, Moscow",
+      "title": "Cathedral Square, Moscow",
+      "lat": 55.7505555656,
+      "lon": 37.61750001,
+      "extract": "Cathedral Square or Sobornaya Square (Russian: \u0421\u043e\u0431\u043e\u0440\u043d\u0430\u044f \u043f\u043b\u043e\u0449\u0430\u0434\u044c, romanized: Sobornaya ploshchad) is the central square of the Moscow Kremlin where all of its streets used to converge in the 15th century.\nThe square owes its name to the three cathedrals facing it \u2013 Cathedral of the Dormition, Cathedr",
+      "url": "https://en.wikipedia.org/wiki/Cathedral_Square,_Moscow",
+      "distKm": 0
+    },
+    {
+      "pageid": 1555643,
+      "name": "Cathedral of the Annunciation, Moscow",
+      "title": "Cathedral of the Annunciation, Moscow",
+      "lat": 55.75,
+      "lon": 37.61694444444444,
+      "extract": "The Cathedral of the Annunciation (Russian: \u0411\u043b\u0430\u0433\u043e\u0432\u0435\u0449\u0435\u043d\u0441\u043a\u0438\u0439 \u0441\u043e\u0431\u043e\u0440, romanized: Blagoveschensky sobor) in Moscow is a Russian Orthodox church dedicated to the Annunciation of the Theotokos. It is located on the southwest side of Cathedral Square in the Moscow Kremlin in Russia, where it connects direct",
+      "url": "https://en.wikipedia.org/wiki/Cathedral_of_the_Annunciation,_Moscow",
+      "distKm": 0
+    },
+    {
+      "pageid": 1392402,
+      "name": "Cathedral of the Archangel",
+      "title": "Cathedral of the Archangel",
+      "lat": 55.750277777777775,
+      "lon": 37.617777777777775,
+      "extract": "The Cathedral of the Archangel (Russian: \u0410\u0440\u0445\u0430\u043d\u0433\u0435\u043b\u044c\u0441\u043a\u0438\u0439 \u0441\u043e\u0431\u043e\u0440, romanized: Arkhangel'skiy sobor) is a Russian Orthodox church dedicated to the Archangel Michael. It is located in Cathedral Square of the Moscow Kremlin in Russia between the Great Kremlin Palace and the Ivan the Great Bell Tower. It was",
+      "url": "https://en.wikipedia.org/wiki/Cathedral_of_the_Archangel",
+      "distKm": 0
+    },
+    {
+      "pageid": 52412808,
+      "name": "Cathedral of the Consolata, Tehran",
+      "title": "Cathedral of the Consolata, Tehran",
+      "lat": 35.6969,
+      "lon": 51.4086,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Cathedral_of_the_Consolata,_Tehran",
+      "distKm": 0
+    },
+    {
+      "pageid": 70384985,
+      "name": "Cedrus Residential",
+      "title": "Cedrus Residential",
+      "lat": 35.689444,
+      "lon": 51.389722,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Cedrus_Residential",
+      "distKm": 0
+    },
+    {
+      "pageid": 2839538,
+      "name": "Centennial Bridge, Panama",
+      "title": "Centennial Bridge, Panama",
+      "lat": 9.03005277777778,
+      "lon": -79.63568611111111,
+      "extract": "Panama's Centennial Bridge (Spanish: Puente Centenario) is a major bridge crossing the Panama Canal. It was built to supplement the overcrowded Bridge of the Americas and to replace it as the carrier of the Pan-American Highway. Upon its opening in 2004, it became the second permanent crossing of th",
+      "url": "https://en.wikipedia.org/wiki/Centennial_Bridge,_Panama",
+      "distKm": 0
+    },
+    {
+      "pageid": 540797,
+      "name": "Center for Strategic and International Studies",
+      "title": "Center for Strategic and International Studies",
+      "lat": 38.901944444444446,
+      "lon": -77.04194444444444,
+      "extract": "The Center for Strategic and International Studies (CSIS) is an American think tank based in Washington, D.C. From its founding in 1962 until 1987, it was an affiliate of Georgetown University, initially named the Center for Strategic and International Studies of Georgetown University.\nThe center co",
+      "url": "https://en.wikipedia.org/wiki/Center_for_Strategic_and_International_Studies",
+      "distKm": 0
+    },
+    {
+      "pageid": 5091902,
+      "name": "Central Administrative Okrug",
+      "title": "Central Administrative Okrug",
+      "lat": 55.75,
+      "lon": 37.61666666666667,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Central_Administrative_Okrug",
+      "distKm": 0
+    },
+    {
+      "pageid": 68103874,
+      "name": "Central Library of University of Tehran",
+      "title": "Central Library of University of Tehran",
+      "lat": 35.7031,
+      "lon": 51.395,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Central_Library_of_University_of_Tehran",
+      "distKm": 0
+    },
+    {
+      "pageid": 39001946,
+      "name": "Central Youth Hall",
+      "title": "Central Youth Hall",
+      "lat": 39.026817,
+      "lon": 125.768797,
+      "extract": "The Central Youth Hall (Korean: \uccad\ub144\uc911\uc559\ud68c\uad00) is a social education center located in Pyongyang, North Korea. It opened on 18 May 1989 for the 13th World Festival of Youth and Students.\nThe building houses a variety of functions including two theatres (2,000 and 600 seats), a multipurpose hall for 1,000, ",
+      "url": "https://en.wikipedia.org/wiki/Central_Youth_Hall",
+      "distKm": 0
+    },
+    {
+      "pageid": 34081301,
+      "name": "Chabelley",
+      "title": "Chabelley",
+      "lat": 11.489166666666666,
+      "lon": 43.07555555555556,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Chabelley",
+      "distKm": 0
+    },
+    {
+      "pageid": 16251140,
+      "name": "Chabelley Airport",
+      "title": "Chabelley Airport",
+      "lat": 11.516666666666666,
+      "lon": 43.06666666666667,
+      "extract": "Chabelley Airport (ICAO: HDCH), also known as the Chabelley Airfield, is a military airstrip in Chabelley, located some 6 miles to the southwest of Djibouti City, the capital of Djibouti.",
+      "url": "https://en.wikipedia.org/wiki/Chabelley_Airport",
+      "distKm": 0
+    },
+    {
+      "pageid": 1780235,
+      "name": "Chairman Mao Memorial Hall",
+      "title": "Chairman Mao Memorial Hall",
+      "lat": 39.901,
+      "lon": 116.3915,
+      "extract": "The Chairman Mao Memorial Hall (simplified Chinese: \u6bdb\u4e3b\u5e2d\u7eaa\u5ff5\u5802; traditional Chinese: \u6bdb\u4e3b\u5e2d\u7d00\u5ff5\u5802; pinyin: M\u00e1o Zh\u01d4x\u00ed J\u00ecni\u00e0n T\u00e1ng), also known as the Mausoleum of Mao Zedong, is the final resting place of Mao Zedong, who was the Founding Father of the People's Republic of China and chairman of the Chinese Comm",
+      "url": "https://en.wikipedia.org/wiki/Chairman_Mao_Memorial_Hall",
+      "distKm": 0
+    },
+    {
+      "pageid": 12138226,
+      "name": "Chandria",
+      "title": "Chandria",
+      "lat": 34.94277777777778,
+      "lon": 32.99444444444445,
+      "extract": "Chandria (Greek: \u03a7\u03b1\u03bd\u03b4\u03c1\u03b9\u03ac) is a village in Cyprus in the Limassol administrative district and belongs to the Pitsilia group of villages. At an elevation of 1,275 m (4,180 ft), it is the second highest village in Cyprus after Prodromos.",
+      "url": "https://en.wikipedia.org/wiki/Chandria",
+      "distKm": 0
+    },
+    {
+      "pageid": 882087,
+      "name": "Chang'an Avenue",
+      "title": "Chang'an Avenue",
+      "lat": 39.90757,
+      "lon": 116.397,
+      "extract": "Chang'an Avenue (Chinese: \u957f\u5b89\u8857; pinyin: Ch\u00e1ng'\u0101n Ji\u0113; lit. 'Eternal Peace Street') is a major thoroughfare in Beijing, China.\nChang'an (Chinese: \u957f\u5b89; pinyin: Ch\u00e1ng'\u0101n) is also the old name for Xi'an which was the capital of China during the Western Han dynasty, the Tang dynasty and other periods. The ",
+      "url": "https://en.wikipedia.org/wiki/Chang%27an_Avenue",
+      "distKm": 0
+    },
+    {
+      "pageid": 20830430,
+      "name": "Children Are the Victims of Adult Vices",
+      "title": "Children Are the Victims of Adult Vices",
+      "lat": 55.745935,
+      "lon": 37.619376,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Children_Are_the_Victims_of_Adult_Vices",
+      "distKm": 0
+    },
+    {
+      "pageid": 23247683,
+      "name": "Chilsongmun",
+      "title": "Chilsongmun",
+      "lat": 39.035978,
+      "lon": 125.754267,
+      "extract": "Ch'ils\u014fng Gate (Korean: \uce60\uc131\ubb38) is the northern gate of the inner castle of the walled city of Pyongyang (Pyongyang Castle). Located in the scenic Moranbong Park, the gate was originally built in the sixth century as an official Koguryo construction, although present construction dates from 1712.\nThe g",
+      "url": "https://en.wikipedia.org/wiki/Chilsongmun",
+      "distKm": 0
+    },
+    {
+      "pageid": 74508019,
+      "name": "China National Technical Import and Export Corporation",
+      "title": "China National Technical Import and Export Corporation",
+      "lat": 39.9012,
+      "lon": 116.4065,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/China_National_Technical_Import_and_Export_Corporation",
+      "distKm": 0
+    },
+    {
+      "pageid": 55977791,
+      "name": "China Numismatic Museum",
+      "title": "China Numismatic Museum",
+      "lat": 39.90075,
+      "lon": 116.38875,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/China_Numismatic_Museum",
+      "distKm": 0
+    },
+    {
+      "pageid": 62145045,
+      "name": "Chinese National Day Parade",
+      "title": "Chinese National Day Parade",
+      "lat": 39.907333333333334,
+      "lon": 116.39108333333334,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Chinese_National_Day_Parade",
+      "distKm": 0
+    },
+    {
+      "pageid": 43584464,
+      "name": "Chinese spring offensive",
+      "title": "Chinese spring offensive",
+      "lat": 37.9427,
+      "lon": 126.9392,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Chinese_spring_offensive",
+      "distKm": 0
+    },
+    {
+      "pageid": 48229064,
+      "name": "Chollima Statue",
+      "title": "Chollima Statue",
+      "lat": 39.034305555555555,
+      "lon": 125.75291666666666,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Chollima_Statue",
+      "distKm": 0
+    },
+    {
+      "pageid": 44928638,
+      "name": "Chongam-ri Earthen Castle",
+      "title": "Chongam-ri Earthen Castle",
+      "lat": 39.03921944444444,
+      "lon": 125.762525,
+      "extract": "The Chongam-ri Earthen Castle is a fortification thought to date to the Gojoseon period. Located near Pyongyang, North Korea, it is similar to other earthen fortifications of the period. It was made of alternating layers of soil, rock and sand. It is one of the National Treasures of North Korea. The",
+      "url": "https://en.wikipedia.org/wiki/Chongam-ri_Earthen_Castle",
+      "distKm": 0
+    },
+    {
+      "pageid": 1231350,
+      "name": "Chudov Monastery",
+      "title": "Chudov Monastery",
+      "lat": 55.75222222222222,
+      "lon": 37.61888888888889,
+      "extract": "The Chudov Monastery (Russian: \u0427\u0443\u0301\u0434\u043e\u0432 \u043c\u043e\u043d\u0430\u0441\u0442\u044b\u0301\u0440\u044c, romanized: Ch\u00fadov monast\u00fdr'; more formally known as Alexius\u2019 Archangel Michael Monastery) was founded in the Moscow Kremlin in 1358 by Metropolitan Alexius of Moscow. The monastery was dedicated to the miracle (chudo in Russian) of the Archangel Mich",
+      "url": "https://en.wikipedia.org/wiki/Chudov_Monastery",
+      "distKm": 0
+    },
+    {
+      "pageid": 17170048,
+      "name": "Church of the Deposition of the Robe",
+      "title": "Church of the Deposition of the Robe",
+      "lat": 55.75055555555556,
+      "lon": 37.61638888888889,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Church_of_the_Deposition_of_the_Robe",
+      "distKm": 0
+    },
+    {
+      "pageid": 4567486,
+      "name": "Church of the Twelve Apostles",
+      "title": "Church of the Twelve Apostles",
+      "lat": 55.7514,
+      "lon": 37.6175,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Church_of_the_Twelve_Apostles",
+      "distKm": 0
+    },
+    {
+      "pageid": 36264332,
+      "name": "City Theater of Tehran",
+      "title": "City Theater of Tehran",
+      "lat": 35.7001,
+      "lon": 51.4056,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/City_Theater_of_Tehran",
+      "distKm": 0
+    },
+    {
+      "pageid": 19910217,
+      "name": "Climate of Moscow",
+      "title": "Climate of Moscow",
+      "lat": 55.75,
+      "lon": 37.61666666666667,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Climate_of_Moscow",
+      "distKm": 0
+    },
+    {
+      "pageid": 74240011,
+      "name": "College of Fine Arts (University of Tehran)",
+      "title": "College of Fine Arts (University of Tehran)",
+      "lat": 35.70333333333333,
+      "lon": 51.394999999999996,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/College_of_Fine_Arts_(University_of_Tehran)",
+      "distKm": 0
+    },
+    {
+      "pageid": 65741492,
+      "name": "College of Science, University of Tehran",
+      "title": "College of Science, University of Tehran",
+      "lat": 35.7050197,
+      "lon": 51.3959624,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/College_of_Science,_University_of_Tehran",
+      "distKm": 0
+    },
+    {
+      "pageid": 67806270,
+      "name": "Consulate-General of China, Istanbul",
+      "title": "Consulate-General of China, Istanbul",
+      "lat": 41.139758,
+      "lon": 29.0526823,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Consulate-General_of_China,_Istanbul",
+      "distKm": 0
+    },
+    {
+      "pageid": 30814208,
+      "name": "Consumer Financial Protection Bureau",
+      "title": "Consumer Financial Protection Bureau",
+      "lat": 38.898,
+      "lon": -77.04,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Consumer_Financial_Protection_Bureau",
+      "distKm": 0
+    },
+    {
+      "pageid": 26998874,
+      "name": "Council of the Inspectors General on Integrity and Efficiency",
+      "title": "Council of the Inspectors General on Integrity and Efficiency",
+      "lat": 38.900467,
+      "lon": -77.040536,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Council_of_the_Inspectors_General_on_Integrity_and_Efficiency",
+      "distKm": 0
+    },
+    {
+      "pageid": 2258823,
+      "name": "Culebra Cut",
+      "title": "Culebra Cut",
+      "lat": 9.077222222222222,
+      "lon": -79.67527777777778,
+      "extract": "The Culebra Cut, formerly called Gaillard Cut, is an artificial valley that cuts through the Continental Divide in Panama. The cut forms part of the Panama Canal, linking Gatun Lake, and thereby the Atlantic Ocean, to the Gulf of Panama and hence the Pacific Ocean. It is 12.6 kilometres (7.8 mi) fro",
+      "url": "https://en.wikipedia.org/wiki/Culebra_Cut",
+      "distKm": 0
+    },
+    {
+      "pageid": 43334221,
+      "name": "Culebra Formation",
+      "title": "Culebra Formation",
+      "lat": 9.1,
+      "lon": -79.7,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Culebra_Formation",
+      "distKm": 0
+    },
+    {
+      "pageid": 5593,
+      "name": "Cyprus",
+      "title": "Cyprus",
+      "lat": 35,
+      "lon": 33,
+      "extract": "Cyprus, officially the Republic of Cyprus, is an island country in the eastern Mediterranean Sea, located off the coast of the Levant in West Asia. Cyprus' capital and largest municipality is Nicosia. The northeast portion of the island is occupied by Turkey, which is separated from the Republic of ",
+      "url": "https://en.wikipedia.org/wiki/Cyprus",
+      "distKm": 0
+    },
+    {
+      "pageid": 24152874,
+      "name": "Daneshgah-e Emam Ali Metro Station",
+      "title": "Daneshgah-e Emam Ali Metro Station",
+      "lat": 35.68722222222222,
+      "lon": 51.399166666666666,
+      "extract": "Daneshgah-e Emam Ali Metro Station, which is translated into Imam Ali University Metro Station is a station in Tehran Metro Line 2. It is located in Imam Khomeini Street in front of the old Majles building near Imam Ali University. It is between Imam Khomeini Metro Station and Hor Square Metro Stati",
+      "url": "https://en.wikipedia.org/wiki/Daneshgah-e_Emam_Ali_Metro_Station",
+      "distKm": 0
+    },
+    {
+      "pageid": 817453,
+      "name": "Darwin, Falkland Islands",
+      "title": "Darwin, Falkland Islands",
+      "lat": -51.806888888888885,
+      "lon": -58.95869444444445,
+      "extract": "Darwin is a settlement in Lafonia on East Falkland, Falkland Islands, lying on Choiseul Sound, on the east side of the island's central isthmus, 2.5 miles (4.0 km) north of Goose Green. It was known occasionally (and still is from time to time) as Port Darwin.\nAttractions in Darwin include a corral,",
+      "url": "https://en.wikipedia.org/wiki/Darwin,_Falkland_Islands",
+      "distKm": 0
+    },
+    {
+      "pageid": 45106962,
+      "name": "Dar\u00fc\u015f\u015fafaka (Istanbul Metro)",
+      "title": "Dar\u00fc\u015f\u015fafaka (Istanbul Metro)",
+      "lat": 41.1302,
+      "lon": 29.025,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Dar%C3%BC%C5%9F%C5%9Fafaka_(Istanbul_Metro)",
+      "distKm": 0
+    },
+    {
+      "pageid": 9577391,
+      "name": "Dar\u00fc\u015f\u015fafaka Ayhan \u015eahenk Sports Hall",
+      "title": "Dar\u00fc\u015f\u015fafaka Ayhan \u015eahenk Sports Hall",
+      "lat": 41.12638888888889,
+      "lon": 29.028888888888886,
+      "extract": "Dar\u00fc\u015f\u015fafaka Ayhan \u015eahenk Sports Hall (Turkish: Dar\u00fc\u015f\u015fafaka Ayhan \u015eahenk Spor Salonu) is a multi-purpose indoor arena that is located in Istanbul, Turkey. The arena is mostly used to host basketball games, but can also be used to host artistic and cultural events. It has a seating capacity for 3,500 ",
+      "url": "https://en.wikipedia.org/wiki/Dar%C3%BC%C5%9F%C5%9Fafaka_Ayhan_%C5%9Eahenk_Sports_Hall",
+      "distKm": 0
+    },
+    {
+      "pageid": 8435534,
+      "name": "Dar\u00fc\u015f\u015fafaka High School",
+      "title": "Dar\u00fc\u015f\u015fafaka High School",
+      "lat": 41.12613611111111,
+      "lon": 29.02764722222222,
+      "extract": "Dar\u00fc\u015f\u015fafaka High School (Turkish: Dar\u00fc\u015f\u015fafaka E\u011fitim Kurumlar\u0131) is a boarding, coeducational school in Maslak, Istanbul, Turkey, established in 1863. It was founded by the Dar\u00fc\u015f\u015fafaka Society, recognized as Turkey's first civil society organization in the field of education. The institution provides",
+      "url": "https://en.wikipedia.org/wiki/Dar%C3%BC%C5%9F%C5%9Fafaka_High_School",
+      "distKm": 0
+    },
+    {
+      "pageid": 30582905,
+      "name": "Death and state funeral of Leonid Brezhnev",
+      "title": "Death and state funeral of Leonid Brezhnev",
+      "lat": 55.75361111111111,
+      "lon": 37.61972222222222,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Death_and_state_funeral_of_Leonid_Brezhnev",
+      "distKm": 0
+    },
+    {
+      "pageid": 10518974,
+      "name": "Decatur House",
+      "title": "Decatur House",
+      "lat": 38.900055555555554,
+      "lon": -77.03816666666667,
+      "extract": "Decatur House is a historic house museum at 748 Jackson Place in Washington, D.C., the capital of the United States. It is named after its first owner and occupant, the naval officer Stephen Decatur Jr. Built in 1818, the house is located at the northwest corner of Lafayette Square, about a block fr",
+      "url": "https://en.wikipedia.org/wiki/Decatur_House",
+      "distKm": 0
+    },
+    {
+      "pageid": 9749628,
+      "name": "Diamond Fund",
+      "title": "Diamond Fund",
+      "lat": 55.74944444444444,
+      "lon": 37.61361111111111,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Diamond_Fund",
+      "distKm": 0
+    },
+    {
+      "pageid": 17207794,
+      "name": "Djibouti",
+      "title": "Djibouti",
+      "lat": 11.5,
+      "lon": 43,
+      "extract": "Djibouti, officially the Republic of Djibouti, is a country in the Horn of Africa, bordered by Somalia to the south, Ethiopia to the southwest, Eritrea in the north, and the Red Sea and the Gulf of Aden to the east. The country has an area of 23,200 km2 (8,958 sq mi).\nIn antiquity, the territory, to",
+      "url": "https://en.wikipedia.org/wiki/Djibouti",
+      "distKm": 0
+    },
+    {
+      "pageid": 33905046,
+      "name": "Doctor Habib-o-llah Metro Station",
+      "title": "Doctor Habib-o-llah Metro Station",
+      "lat": 35.7008,
+      "lon": 51.3785,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Doctor_Habib-o-llah_Metro_Station",
+      "distKm": 0
+    },
+    {
+      "pageid": 967685,
+      "name": "Dongducheon",
+      "title": "Dongducheon",
+      "lat": 37.916666666666664,
+      "lon": 127.06666666666666,
+      "extract": "Dongducheon (Korean: \ub3d9\ub450\ucc9c; Korean pronunciation: [\u02c8to\u031e\u014b.du.t\u0255\u02b0\u028c\u0339n]) is a city in Gyeonggi Province, South Korea.\nThe city, to the north of Seoul, is strategically important for the defense of the Korean capital. The main camps of the United States Second Infantry Division are in the city, and the div",
+      "url": "https://en.wikipedia.org/wiki/Dongducheon",
+      "distKm": 0
+    },
+    {
+      "pageid": 15618500,
+      "name": "Dongducheon Jungang station",
+      "title": "Dongducheon Jungang station",
+      "lat": 37.90222222222222,
+      "lon": 127.05638888888889,
+      "extract": "Dongducheon Jungang Station (Korean: \ub3d9\ub450\ucc9c\uc911\uc559\uc5ed) is a train station on the Seoul Subway Line 1 and the Gyeongwon Line. The name means Dongducheon Central Station. It was also once known as Eosu-dong Station.",
+      "url": "https://en.wikipedia.org/wiki/Dongducheon_Jungang_station",
+      "distKm": 0
+    },
+    {
+      "pageid": 14596036,
+      "name": "Dongducheon station",
+      "title": "Dongducheon station",
+      "lat": 37.92777777777778,
+      "lon": 127.05472222222222,
+      "extract": "Dongducheon Station (Korean: \ub3d9\ub450\ucc9c\uc5ed; formerly Dongan station) is a metro station located in Dongducheon, South Korea. Seoul Subway Line 1 serves this station, and it is the terminus station for Gyeongwon Line express trains. Camp Casey, a U.S. Army military base, is located nearby.\n\nDongducheon Statio",
+      "url": "https://en.wikipedia.org/wiki/Dongducheon_station",
+      "distKm": 0
+    },
+    {
+      "pageid": 732701,
+      "name": "Dormition Cathedral, Moscow",
+      "title": "Dormition Cathedral, Moscow",
+      "lat": 55.75111111111111,
+      "lon": 37.61694444444444,
+      "extract": "The Cathedral of the Dormition (Russian: \u0423\u0441\u043f\u0435\u043d\u0441\u043a\u0438\u0439 \u0441\u043e\u0431\u043e\u0440, romanized: Uspenskiy sobor), also known as the Assumption Cathedral or Cathedral of the Assumption, is a Russian Orthodox church dedicated to the Dormition of the Theotokos. It is located on the north side of Cathedral Square of the Moscow Kr",
+      "url": "https://en.wikipedia.org/wiki/Dormition_Cathedral,_Moscow",
+      "distKm": 0
+    },
+    {
+      "pageid": 23218557,
+      "name": "Dymes",
+      "title": "Dymes",
+      "lat": 34.916666666666664,
+      "lon": 32.983333333333334,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Dymes",
+      "distKm": 0
+    },
+    {
+      "pageid": 76531272,
+      "name": "Editors Building",
+      "title": "Editors Building",
+      "lat": 38.900277777777774,
+      "lon": -77.0411111111111,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Editors_Building",
+      "distKm": 0
+    },
+    {
+      "pageid": 36482320,
+      "name": "Edward R. Murrow Park",
+      "title": "Edward R. Murrow Park",
+      "lat": 38.9,
+      "lon": -77.0422,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Edward_R._Murrow_Park",
+      "distKm": 0
+    },
+    {
+      "pageid": 2562582,
+      "name": "El Ferdan Railway Bridge",
+      "title": "El Ferdan Railway Bridge",
+      "lat": 30.65694444444444,
+      "lon": 32.33388888888889,
+      "extract": "The El Ferdan Railway Bridge is a swing bridge that spans the western shipping lane of the Suez Canal near Ismailia, Egypt. It is the longest swing bridge in the world, with a span of 1,100 feet (340 m).\nThe bridge was not functional for a while due to the expansion of the Suez Canal completed in 20",
+      "url": "https://en.wikipedia.org/wiki/El_Ferdan_Railway_Bridge",
+      "distKm": 0
+    },
+    {
+      "pageid": 12419022,
+      "name": "Elgiz Museum",
+      "title": "Elgiz Museum",
+      "lat": 41.109722222222224,
+      "lon": 29.020555555555553,
+      "extract": "Elgiz Museum (Turkish: Elgiz M\u00fczesi) is a private collection museum, founded by Dr. Can Elgiz.\nThe museum opened in 2001, when there were no non-profit institutions in Turkey dedicated to contemporary art. Established with a mission to promote the development of contemporary art in Turkey, the initi",
+      "url": "https://en.wikipedia.org/wiki/Elgiz_Museum",
+      "distKm": 0
+    },
+    {
+      "pageid": 31863133,
+      "name": "Embassy of Ireland, Washington, D.C.",
+      "title": "Embassy of Ireland, Washington, D.C.",
+      "lat": 38.89869,
+      "lon": -77.03996027777778,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Embassy_of_Ireland,_Washington,_D.C.",
+      "distKm": 0
+    },
+    {
+      "pageid": 75128421,
+      "name": "Embassy of Russia, Pyongyang",
+      "title": "Embassy of Russia, Pyongyang",
+      "lat": 39.02444444444444,
+      "lon": 125.7461111111111,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Embassy_of_Russia,_Pyongyang",
+      "distKm": 0
+    },
+    {
+      "pageid": 51202004,
+      "name": "Emirgan",
+      "title": "Emirgan",
+      "lat": 41.10305555555556,
+      "lon": 29.055555555555557,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Emirgan",
+      "distKm": 0
+    },
+    {
+      "pageid": 51185198,
+      "name": "Emirgan Mosque",
+      "title": "Emirgan Mosque",
+      "lat": 41.10456,
+      "lon": 29.05626,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Emirgan_Mosque",
+      "distKm": 0
+    },
+    {
+      "pageid": 51203408,
+      "name": "Emirgan Pier",
+      "title": "Emirgan Pier",
+      "lat": 41.10303,
+      "lon": 29.05607,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Emirgan_Pier",
+      "distKm": 0
+    },
+    {
+      "pageid": 29978274,
+      "name": "Enqelab Square",
+      "title": "Enqelab Square",
+      "lat": 35.70111111111111,
+      "lon": 51.39111111111111,
+      "extract": "Enqelab Square (Persian: \u0645\u06cc\u062f\u0627\u0646 \u0627\u0646\u0642\u0644\u0627\u0628 \u0627\u0633\u0644\u0627\u0645\u06cc, romanized: Meyd\u00e2n-e Enqel\u00e2b-e Esl\u00e2mi, lit.\u2009'Islamic Revolution Square') is a square in central Tehran, Iran. It is served by a Metro station of the same name. It sits at the western end of Enqelab Street.\nIn January 2026 Iranian authorities installed a  ",
+      "url": "https://en.wikipedia.org/wiki/Enqelab_Square",
+      "distKm": 0
+    },
+    {
+      "pageid": 43051969,
+      "name": "Ettefagh Synagogue",
+      "title": "Ettefagh Synagogue",
+      "lat": 35.704513,
+      "lon": 51.397086,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Ettefagh_Synagogue",
+      "distKm": 0
+    },
+    {
+      "pageid": 15171111,
+      "name": "Evrychou",
+      "title": "Evrychou",
+      "lat": 35.03333333333333,
+      "lon": 32.9,
+      "extract": "Evrychou (Greek: \u0395\u03c5\u03c1\u03cd\u03c7\u03bf\u03c5, Turkish: Evrihu) is a village in Cyprus. It is located in the Nicosia District and the agricultural centre of the \"Solea\" region located about 50 km south-west of Nicosia and 30 km from Troodos Mountains.",
+      "url": "https://en.wikipedia.org/wiki/Evrychou",
+      "distKm": 0
+    },
+    {
+      "pageid": 5712148,
+      "name": "Faculty of Law and Political Science at University of Tehran",
+      "title": "Faculty of Law and Political Science at University of Tehran",
+      "lat": 35.7028,
+      "lon": 51.3943,
+      "extract": "The Faculty of Law and Political Science at University of Tehran (Persian: \u062f\u0627\u0646\u0634\u06a9\u062f\u0647 \u062d\u0642\u0648\u0642 \u0648 \u0639\u0644\u0648\u0645 \u0633\u06cc\u0627\u0633\u06cc \u062f\u0627\u0646\u0634\u06af\u0627\u0647 \u062a\u0647\u0631\u0627\u0646) is one of the oldest institutions of higher education in Iran. It was initially established as the College of Political Science in 1899 by the Ministry of Foreign Affairs.\nThe faculty ",
+      "url": "https://en.wikipedia.org/wiki/Faculty_of_Law_and_Political_Science_at_University_of_Tehran",
+      "distKm": 0
+    },
+    {
+      "pageid": 829848,
+      "name": "Farragut Square",
+      "title": "Farragut Square",
+      "lat": 38.90193055555555,
+      "lon": -77.03895833333333,
+      "extract": "Farragut Square is a city square in Washington, D.C.'s Ward 2. It is bordered by K Street NW to the north, I Street NW to the south, on the east and west by segments of 17th Street NW, and interrupts Connecticut Avenue NW. It is the sister park of McPherson Square two blocks east.  It is serviced by",
+      "url": "https://en.wikipedia.org/wiki/Farragut_Square",
+      "distKm": 0
+    },
+    {
+      "pageid": 581313,
+      "name": "Farragut West station",
+      "title": "Farragut West station",
+      "lat": 38.90138888888889,
+      "lon": -77.03944444444444,
+      "extract": "Farragut West station is a Washington Metro station in Downtown Washington, D.C., United States. The side-platformed station was opened on July 1, 1977, and is operated by the Washington Metropolitan Area Transit Authority (WMATA). Providing service for the Blue, Orange and Silver Lines, the station",
+      "url": "https://en.wikipedia.org/wiki/Farragut_West_station",
+      "distKm": 0
+    },
+    {
+      "pageid": 957768,
+      "name": "Fatih Sultan Mehmet Bridge",
+      "title": "Fatih Sultan Mehmet Bridge",
+      "lat": 41.0913,
+      "lon": 29.062,
+      "extract": "The Fatih Sultan Mehmet Bridge (\"Sultan Mehmed the Conqueror Bridge\"; Turkish: Fatih Sultan Mehmet K\u00f6pr\u00fcs\u00fc, abbreviated as F.S.M. K\u00f6pr\u00fcs\u00fc), also known as the Second Bosphorus Bridge (\u0130kinci K\u00f6pr\u00fc), is a bridge in Istanbul, Turkey spanning the Bosphorus strait (Turkish: Bo\u011fazi\u00e7i). When completed in 1",
+      "url": "https://en.wikipedia.org/wiki/Fatih_Sultan_Mehmet_Bridge",
+      "distKm": 0
+    },
+    {
+      "pageid": 73992537,
+      "name": "Fatih Sultan Mehmet, Sar\u0131yer",
+      "title": "Fatih Sultan Mehmet, Sar\u0131yer",
+      "lat": 41.0954,
+      "lon": 29.036,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Fatih_Sultan_Mehmet,_Sar%C4%B1yer",
+      "distKm": 0
+    },
+    {
+      "pageid": 150172,
+      "name": "Federalist Society",
+      "title": "Federalist Society",
+      "lat": 38.9009,
+      "lon": -77.0412,
+      "extract": "The Federalist Society for Law and Public Policy Studies (FedSoc) is an American conservative and libertarian legal organization that advocates for a textualist and originalist interpretation of the United States Constitution. Headquartered in Washington, D.C., it has chapters at more than 200 law s",
+      "url": "https://en.wikipedia.org/wiki/Federalist_Society",
+      "distKm": 0
+    },
+    {
+      "pageid": 23195541,
+      "name": "Fterikoudi",
+      "title": "Fterikoudi",
+      "lat": 34.94222222222222,
+      "lon": 33.06916666666667,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Fterikoudi",
+      "distKm": 0
+    },
+    {
+      "pageid": 19799975,
+      "name": "Gamaksan (Gyeonggi)",
+      "title": "Gamaksan (Gyeonggi)",
+      "lat": 37.94166666666666,
+      "lon": 126.96888888888888,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Gamaksan_(Gyeonggi)",
+      "distKm": 0
+    },
+    {
+      "pageid": 7725319,
+      "name": "Gamboa, Panama",
+      "title": "Gamboa, Panama",
+      "lat": 9.116666666666667,
+      "lon": -79.7,
+      "extract": "Gamboa is a small town in corregimiento  of Crist\u00f3bal in the Col\u00f3n Province, Panama close to the Panama Canal and the Chagres River. It was one of a handful of permanent Canal Zone townships, built to house employees of the Panama Canal and their dependents. The name Gamboa is the name of a tree of ",
+      "url": "https://en.wikipedia.org/wiki/Gamboa,_Panama",
+      "distKm": 0
+    },
+    {
+      "pageid": 5147119,
+      "name": "Gate of China, Beijing",
+      "title": "Gate of China, Beijing",
+      "lat": 39.901111111111106,
+      "lon": 116.39166666666668,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Gate_of_China,_Beijing",
+      "distKm": 0
+    },
+    {
+      "pageid": 856376,
+      "name": "Gloucester Hill Battle Monument",
+      "title": "Gloucester Hill Battle Monument",
+      "lat": 37.9472,
+      "lon": 126.9339,
+      "extract": "The Gloucester Hill Battle Monument (Korean: \ud30c\uc8fc \uc601\uad6d\uad70 \uc124\ub9c8\ub9ac\uc804\ud22c\ube44, literally \"British Army's Seolmari Battle Monument in Paju\") or Gloucester Memorial is a memorial in South Korea that commemorates the actions of the Gloucestershire Regiment and C Troop, 170th Mortar Battery, Royal Artillery, of the Britis",
+      "url": "https://en.wikipedia.org/wiki/Gloucester_Hill_Battle_Monument",
+      "distKm": 0
+    },
+    {
+      "pageid": 817470,
+      "name": "Goose Green",
+      "title": "Goose Green",
+      "lat": -51.827222222222225,
+      "lon": -58.973055555555554,
+      "extract": "Goose Green, also known simply as Goose, is a hamlet in Lafonia on East Falkland in the Falkland Islands. It lies on Choiseul Sound, on the east side of the island's central isthmus, 2 miles (3.2 km) south-southwest of Darwin. With a population of about 40, it is the third-largest settlement of the ",
+      "url": "https://en.wikipedia.org/wiki/Goose_Green",
+      "distKm": 0
+    },
+    {
+      "pageid": 16251054,
+      "name": "Goubetto",
+      "title": "Goubetto",
+      "lat": 11.421666666666667,
+      "lon": 42.99916666666667,
+      "extract": "Goubetto (Arabic: \u062c\u0648\u0628\u064a\u062a\u0648, Somali: Gubato), also spelled Goub\u00e9tto, is a town in Djibouti. Located in the Ali Sabieh region, it is served by a station on the Ethio-Djibouti Railways. The eastern part of the same plateau is crossed by numerous valleys and dry watercourses. Goat and camel raising form t",
+      "url": "https://en.wikipedia.org/wiki/Goubetto",
+      "distKm": 0
+    },
+    {
+      "pageid": 63636856,
+      "name": "Government Complex No. 1, Pyongyang",
+      "title": "Government Complex No. 1, Pyongyang",
+      "lat": 39.01777777777777,
+      "lon": 125.74416666666667,
+      "extract": "Government Complex No. 1 (Korean: 1\ud638 \uccad\uc0ac) is a closed complex of government buildings located at the center of Pyongyang, the capital of North Korea. It houses the headquarters of the Central Committee of the Workers' Party of Korea and the State Affairs Commission, the country's ruling party and sup",
+      "url": "https://en.wikipedia.org/wiki/Government_Complex_No._1,_Pyongyang",
+      "distKm": 0
+    },
+    {
+      "pageid": 2631236,
+      "name": "Grand Hyatt Beijing",
+      "title": "Grand Hyatt Beijing",
+      "lat": 39.907777777777774,
+      "lon": 116.40805555555556,
+      "extract": "Grand Hyatt Beijing (simplified Chinese: \u5317\u4eac\u4e1c\u65b9\u541b\u60a6\u5927\u9152\u5e97; traditional Chinese: \u5317\u4eac\u6771\u65b9\u541b\u6085\u5927\u9152\u5e97; pinyin: B\u011bij\u012bng D\u014dngf\u0101ng J\u016bnyu\u00e8 D\u00e0ji\u01d4di\u00e0n) is an 518-room luxury hotel in Beijing, China operated by the Hyatt Hotels Corporation that opened in October 2001. It is located at the crossroads of Chang'an Avenue and Wa",
+      "url": "https://en.wikipedia.org/wiki/Grand_Hyatt_Beijing",
+      "distKm": 0
+    },
+    {
+      "pageid": 610450,
+      "name": "Grand Kremlin Palace",
+      "title": "Grand Kremlin Palace",
+      "lat": 55.75,
+      "lon": 37.6158,
+      "extract": "The Grand Kremlin Palace (Russian: \u0411\u043e\u043b\u044c\u0448\u043e\u0439 \u041a\u0440\u0435\u043c\u043b\u0451\u0432\u0441\u043a\u0438\u0439 \u0434\u0432\u043e\u0440\u0435\u0446, romanized: Bolshoy Kremlyovskiy dvorets) is a building in the Moscow Kremlin. For much of the 19th century, it served as the official residence of the Russian emperor in Moscow, which was not then the capital of the Russian Empire. Desig",
+      "url": "https://en.wikipedia.org/wiki/Grand_Kremlin_Palace",
+      "distKm": 0
+    },
+    {
+      "pageid": 25372925,
+      "name": "Grand People's Study House",
+      "title": "Grand People's Study House",
+      "lat": 39.02027777777778,
+      "lon": 125.74972222222222,
+      "extract": "The Grand People's Study House is the national library of North Korea, located in the capital city of Pyongyang. The library was built in 1982 in honour of the Supreme Leader Kim Il Sung's 70th birthday. It is located in the centre of the capital, situated on Kim Il Sung Square by the banks of the T",
+      "url": "https://en.wikipedia.org/wiki/Grand_People%27s_Study_House",
+      "distKm": 0
+    },
+    {
+      "pageid": 553623,
+      "name": "Great Hall of the People",
+      "title": "Great Hall of the People",
+      "lat": 39.90333333333333,
+      "lon": 116.3875,
+      "extract": "The Great Hall of the People is a state building situated to the west of Tiananmen Square in Beijing. It is used for legislative and ceremonial activities by the government of China. The People's Great Hall functions as the meeting place for the full sessions of China's legislature, the National Peo",
+      "url": "https://en.wikipedia.org/wiki/Great_Hall_of_the_People",
+      "distKm": 0
+    },
+    {
+      "pageid": 242358,
+      "name": "Guardian Council",
+      "title": "Guardian Council",
+      "lat": 35.68787777777777,
+      "lon": 51.40120833333333,
+      "extract": "The Guardian Council (also called Council of Guardians or Constitutional Council, Persian: \u0634\u0648\u0631\u0627\u06cc \u0646\u06af\u0647\u0628\u0627\u0646, romanized: Shour\u0101-ye Negahb\u0101n) is a 12-member council that wields considerable power and influence in the Islamic Republic of Iran. \nThe Constitution of Iran mandates the Council to:\n\nVeto uncons",
+      "url": "https://en.wikipedia.org/wiki/Guardian_Council",
+      "distKm": 0
+    },
+    {
+      "pageid": 45082700,
+      "name": "Hac\u0131osman (Istanbul Metro)",
+      "title": "Hac\u0131osman (Istanbul Metro)",
+      "lat": 41.1399,
+      "lon": 29.0309,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Hac%C4%B1osman_(Istanbul_Metro)",
+      "distKm": 0
+    },
+    {
+      "pageid": 18011658,
+      "name": "Hansung University",
+      "title": "Hansung University",
+      "lat": 37.97323055555556,
+      "lon": 127.01782777777778,
+      "extract": "Hansung University (Korean: \ud55c\uc131\ub300\ud559\uad50) is a private university in Seongbuk District, Seoul, South Korea. It was founded on December 21, 1972.  The Hansung University is located in Seongbuk District and Jongno District, Seoul.",
+      "url": "https://en.wikipedia.org/wiki/Hansung_University",
+      "distKm": 0
+    },
+    {
+      "pageid": 7442363,
+      "name": "Hantan River",
+      "title": "Hantan River",
+      "lat": 38.00472222222222,
+      "lon": 127.01083333333334,
+      "extract": "The Hantan (Korean: \ud55c\ud0c4\uac15) is a river flowing from Pyonggang, North Korea across the border through Gangwon and Gyeonggi provinces in South Korea. It is a tributary of the Imjin River, which eventually joins the Han River and empties into the Yellow Sea. The Hantan River is a popular site for white-wa",
+      "url": "https://en.wikipedia.org/wiki/Hantan_River",
+      "distKm": 0
+    },
+    {
+      "pageid": 24152806,
+      "name": "Hasan Abad Metro Station",
+      "title": "Hasan Abad Metro Station",
+      "lat": 35.686388888888885,
+      "lon": 51.40972222222222,
+      "extract": "Hasan Abad Metro Station is a station in Tehran Metro Line 2. It is located in the junction of Imam Khomeini Street and Hafez Street in Hasanabad Square. It is located between Imam Khomeini and Imam Ali University Metro Station.",
+      "url": "https://en.wikipedia.org/wiki/Hasan_Abad_Metro_Station",
+      "distKm": 0
+    },
+    {
+      "pageid": 3325776,
+      "name": "Hay\u2013Adams Hotel",
+      "title": "Hay\u2013Adams Hotel",
+      "lat": 38.9004,
+      "lon": -77.037,
+      "extract": "The Hay\u2013Adams is an historic luxury hotel opened in 1928, located at 800 16th Street NW in Washington, D.C.  It south-fronts on Lafayette Square across from the White House. It sits on the former site of connected 19th-century mansions, which were owned by two influential friends, John Hay and Henry",
+      "url": "https://en.wikipedia.org/wiki/Hay%E2%80%93Adams_Hotel",
+      "distKm": 0
+    },
+    {
+      "pageid": 43657643,
+      "name": "Heij\u014d Shrine",
+      "title": "Heij\u014d Shrine",
+      "lat": 39.03534,
+      "lon": 125.7552,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Heij%C5%8D_Shrine",
+      "distKm": 0
+    },
+    {
+      "pageid": 52576888,
+      "name": "Hossein Abad Metro Station",
+      "title": "Hossein Abad Metro Station",
+      "lat": 35.686388888888885,
+      "lon": 51.41,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Hossein_Abad_Metro_Station",
+      "distKm": 0
+    },
+    {
+      "pageid": 57855036,
+      "name": "House of Lobkov on the Sophia Embankment",
+      "title": "House of Lobkov on the Sophia Embankment",
+      "lat": 55.7478,
+      "lon": 37.6183,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/House_of_Lobkov_on_the_Sophia_Embankment",
+      "distKm": 0
+    },
+    {
+      "pageid": 72570311,
+      "name": "Huber Mansion",
+      "title": "Huber Mansion",
+      "lat": 41.135,
+      "lon": 29.062,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Huber_Mansion",
+      "distKm": 0
+    },
+    {
+      "pageid": 48941748,
+      "name": "Imam Ali Officers' Academy",
+      "title": "Imam Ali Officers' Academy",
+      "lat": 35.6857,
+      "lon": 51.3987,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Imam_Ali_Officers%27_Academy",
+      "distKm": 0
+    },
+    {
+      "pageid": 63655785,
+      "name": "Immigrant Food",
+      "title": "Immigrant Food",
+      "lat": 38.8995,
+      "lon": -77.0398,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Immigrant_Food",
+      "distKm": 0
+    },
+    {
+      "pageid": 36751,
+      "name": "International Bank for Reconstruction and Development",
+      "title": "International Bank for Reconstruction and Development",
+      "lat": 38.899,
+      "lon": -77.0425,
+      "extract": "The International Bank for Reconstruction and Development (IBRD) is an international financial institution, established in 1944 and headquartered in Washington, D.C., United States; it is the lending arm of the World Bank Group. The IBRD offers loans to middle-income developing countries. It is the ",
+      "url": "https://en.wikipedia.org/wiki/International_Bank_for_Reconstruction_and_Development",
+      "distKm": 0
+    },
+    {
+      "pageid": 65623956,
+      "name": "Iran Technical and Vocational Training Organization",
+      "title": "Iran Technical and Vocational Training Organization",
+      "lat": 35.7002385,
+      "lon": 51.3722132,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Iran_Technical_and_Vocational_Training_Organization",
+      "distKm": 0
+    },
+    {
+      "pageid": 743431,
+      "name": "Istanbul Technical University",
+      "title": "Istanbul Technical University",
+      "lat": 41.105000000000004,
+      "lon": 29.025,
+      "extract": "Istanbul Technical University, also known as Technical University of Istanbul (Turkish: \u0130stanbul Teknik \u00dcniversitesi, commonly referred to as \u0130T\u00dc), is a public technical university located in Istanbul, Turkey. It is the world's third-oldest technical university dedicated to engineering and natural s",
+      "url": "https://en.wikipedia.org/wiki/Istanbul_Technical_University",
+      "distKm": 0
+    },
+    {
+      "pageid": 27077013,
+      "name": "Istanbul Technical University S\u00fcleyman Demirel Cultural Center",
+      "title": "Istanbul Technical University S\u00fcleyman Demirel Cultural Center",
+      "lat": 41.10711,
+      "lon": 29.02303,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Istanbul_Technical_University_S%C3%BCleyman_Demirel_Cultural_Center",
+      "distKm": 0
+    },
+    {
+      "pageid": 804848,
+      "name": "Ivan the Great Bell Tower",
+      "title": "Ivan the Great Bell Tower",
+      "lat": 55.75083333333333,
+      "lon": 37.61805555555556,
+      "extract": "The Ivan the Great Bell Tower (Russian: \u041a\u043e\u043b\u043e\u043a\u043e\u043b\u044c\u043d\u044f \u0418\u0432\u0430\u043d \u0412\u0435\u043b\u0438\u043a\u0438\u0439, romanized: Kolokol'nya Ivan Velikiy) is a church tower inside the Moscow Kremlin complex. With a total height of 81 metres (266 ft), it is the tallest tower and structure of the Kremlin. It was built in 1508 on Cathedral Square for the",
+      "url": "https://en.wikipedia.org/wiki/Ivan_the_Great_Bell_Tower",
+      "distKm": 0
+    },
+    {
+      "pageid": 14597687,
+      "name": "Ivanovskaya Square",
+      "title": "Ivanovskaya Square",
+      "lat": 55.7516,
+      "lon": 37.6188,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Ivanovskaya_Square",
+      "distKm": 0
+    },
+    {
+      "pageid": 16774396,
+      "name": "Jackson Place",
+      "title": "Jackson Place",
+      "lat": 38.89944444444444,
+      "lon": -77.03805555555556,
+      "extract": "Jackson Place is a Washington, D.C. street located across from the White House and forming the western border of Lafayette Square between Pennsylvania Avenue and H Street, NW, beginning just south of Connecticut Avenue.  Facing the street are mostly 19th century town homes which are now generally us",
+      "url": "https://en.wikipedia.org/wiki/Jackson_Place",
+      "distKm": 0
+    },
+    {
+      "pageid": 14433702,
+      "name": "Jihaeng station",
+      "title": "Jihaeng station",
+      "lat": 37.89222222222222,
+      "lon": 127.05555555555556,
+      "extract": "Jihaeng station is a ground-level metro station on Line 1 of the Seoul Subway in Jihaeng-dong, Dongducheon, South Korea. It opened on January 30, 2005, to services on the Gyeongwon Line and services on the Seoul Metropolitan Subway began calling here on December 15, 2006. The station offers access t",
+      "url": "https://en.wikipedia.org/wiki/Jihaeng_station",
+      "distKm": 0
+    },
+    {
+      "pageid": 47629406,
+      "name": "Kaeson station",
+      "title": "Kaeson station",
+      "lat": 39.043055555555554,
+      "lon": 125.75397222222222,
+      "extract": "Kaes\u014fn Station is a station on Ch\u014fllima Line of the Pyongyang Metro. It is located near the Arch of Triumph and Kaes\u014fn Youth Park.\nThe station was refurbished in 2019 with new lighting and TVs to entertain waiting passengers, as well as LED signs showing train information and local weather.\nThe mura",
+      "url": "https://en.wikipedia.org/wiki/Kaeson_station",
+      "distKm": 0
+    },
+    {
+      "pageid": 9001731,
+      "name": "Kakopetria",
+      "title": "Kakopetria",
+      "lat": 34.983333333333334,
+      "lon": 32.9,
+      "extract": "Kakopetria is a town in Cyprus located 55 kilometres (34 mi) southwest of the capital, Nicosia, on the north-facing foothills of the Troodos Mountains. It stands at an altitude of 667 metres and it is the highest village in the Solea Valley. The community has about 1,200 permanent inhabitants and a ",
+      "url": "https://en.wikipedia.org/wiki/Kakopetria",
+      "distKm": 0
+    },
+    {
+      "pageid": 50779251,
+      "name": "Kanl\u0131ca",
+      "title": "Kanl\u0131ca",
+      "lat": 41.1,
+      "lon": 29.065833333333334,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Kanl%C4%B1ca",
+      "distKm": 0
+    },
+    {
+      "pageid": 50796774,
+      "name": "Kanl\u0131ca Cemetery",
+      "title": "Kanl\u0131ca Cemetery",
+      "lat": 41.09743,
+      "lon": 29.06575,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Kanl%C4%B1ca_Cemetery",
+      "distKm": 0
+    },
+    {
+      "pageid": 23188045,
+      "name": "Kannavia",
+      "title": "Kannavia",
+      "lat": 34.98222222222223,
+      "lon": 32.976111111111116,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Kannavia",
+      "distKm": 0
+    },
+    {
+      "pageid": 41146459,
+      "name": "Keshavarz Boulevard",
+      "title": "Keshavarz Boulevard",
+      "lat": 35.70805555555556,
+      "lon": 51.39361111111111,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Keshavarz_Boulevard",
+      "distKm": 0
+    },
+    {
+      "pageid": 15833579,
+      "name": "Khedive's Palace",
+      "title": "Khedive's Palace",
+      "lat": 41.105000000000004,
+      "lon": 29.0738,
+      "extract": "The Khedive's Palace (Turkish: H\u0131div Kasr\u0131, \"Khedive Palace\"), also known as \u00c7ubuklu Palace (\u00c7ubuklu Saray\u0131), is located on the Asian side of the Bosphorus in Istanbul, Turkey, and was once the residence of Khedive Abbas II of Egypt and Sudan. In English it is also known as the Khedive's Pavilion or",
+      "url": "https://en.wikipedia.org/wiki/Khedive%27s_Palace",
+      "distKm": 0
+    },
+    {
+      "pageid": 14747683,
+      "name": "Kim Il Sung Square",
+      "title": "Kim Il Sung Square",
+      "lat": 39.01953,
+      "lon": 125.75247,
+      "extract": "Kim Il Sung Square (Korean: \uae40\uc77c\uc131\uad11\uc7a5) is a large city square in the Central District of Pyongyang, North Korea, and is named after the country's founding leader, Kim Il Sung. The square was constructed in 1954 according to a master plan for reconstructing the capital after the destruction of the Korean",
+      "url": "https://en.wikipedia.org/wiki/Kim_Il_Sung_Square",
+      "distKm": 0
+    },
+    {
+      "pageid": 3027101,
+      "name": "Kim Il Sung Stadium",
+      "title": "Kim Il Sung Stadium",
+      "lat": 39.04372222222222,
+      "lon": 125.75769444444444,
+      "extract": "Kim Il Sung Stadium (Korean: \uae40\uc77c\uc131\uacbd\uae30\uc7a5) is a multi-purpose stadium located in Pyongyang, the capital city of North Korea. The stadium is used primarily for association football matches.",
+      "url": "https://en.wikipedia.org/wiki/Kim_Il_Sung_Stadium",
+      "distKm": 0
+    },
+    {
+      "pageid": 46755678,
+      "name": "Kire\u00e7burnu, Sar\u0131yer",
+      "title": "Kire\u00e7burnu, Sar\u0131yer",
+      "lat": 41.1425,
+      "lon": 29.045833333333334,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Kire%C3%A7burnu,_Sar%C4%B1yer",
+      "distKm": 0
+    },
+    {
+      "pageid": 54455006,
+      "name": "Komeyl Metro Station",
+      "title": "Komeyl Metro Station",
+      "lat": 35.6827326,
+      "lon": 51.3796743,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Komeyl_Metro_Station",
+      "distKm": 0
+    },
+    {
+      "pageid": 47629428,
+      "name": "Konsol station",
+      "title": "Konsol station",
+      "lat": 39.03477777777778,
+      "lon": 125.73263888888889,
+      "extract": "K\u014fns\u014fl Station (Korean: \uac74\uc124\uc5ed; Hanja: \u5efa\u8a2d\u9a5b) is a station on Hy\u014fksin Line of the Pyongyang Metro. It is notable for being the only station in the Pyongyang Metro to use side platforms, as all other stations use an island platform configuration instead.\nThe station is in front of the Ryugyong Hotel and a",
+      "url": "https://en.wikipedia.org/wiki/Konsol_station",
+      "distKm": 0
+    },
+    {
+      "pageid": 39002369,
+      "name": "Korean Art Gallery",
+      "title": "Korean Art Gallery",
+      "lat": 39.02,
+      "lon": 125.75,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Korean_Art_Gallery",
+      "distKm": 0
+    },
+    {
+      "pageid": 39002348,
+      "name": "Korean Central History Museum",
+      "title": "Korean Central History Museum",
+      "lat": 39.020701,
+      "lon": 125.754646,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Korean_Central_History_Museum",
+      "distKm": 0
+    },
+    {
+      "pageid": 39002392,
+      "name": "Korean Folklore Museum",
+      "title": "Korean Folklore Museum",
+      "lat": 39.0215,
+      "lon": 125.7549,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Korean_Folklore_Museum",
+      "distKm": 0
+    },
+    {
+      "pageid": 39002226,
+      "name": "Korean Revolution Museum",
+      "title": "Korean Revolution Museum",
+      "lat": 39.03234,
+      "lon": 125.75205,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Korean_Revolution_Museum",
+      "distKm": 0
+    },
+    {
+      "pageid": 381075,
+      "name": "Kremlin",
+      "title": "Kremlin",
+      "lat": 55.751666666666665,
+      "lon": 37.617777777777775,
+      "extract": "The Moscow Kremlin, commonly known simply as the Kremlin, is a fortified complex in Moscow, Russia. Located in the historic centre of the country's capital city, the Kremlin comprises five palaces, four cathedrals, and an enclosing wall along with numerous towers. Within the complex is the Grand Kre",
+      "url": "https://en.wikipedia.org/wiki/Kremlin",
+      "distKm": 0
+    },
+    {
+      "pageid": 411770,
+      "name": "Kremlin Arsenal",
+      "title": "Kremlin Arsenal",
+      "lat": 55.75361111111111,
+      "lon": 37.61638888888889,
+      "extract": "The Kremlin Arsenal (Russian: \u0410\u0440\u0441\u0435\u043d\u0430\u043b \u041c\u043e\u0441\u043a\u043e\u0432\u0441\u043a\u043e\u0433\u043e \u041a\u0440\u0435\u043c\u043b\u044f) is a former armory built within the grounds of the Moscow Kremlin in Russia. Initially constructed in 1736, it has been rebuilt several times. It remains in military use to date, unlike the Kremlin Armoury, another arsenal within the walls of",
+      "url": "https://en.wikipedia.org/wiki/Kremlin_Arsenal",
+      "distKm": 0
+    },
+    {
+      "pageid": 1312086,
+      "name": "Kremlin Wall Necropolis",
+      "title": "Kremlin Wall Necropolis",
+      "lat": 55.75361111111111,
+      "lon": 37.61972222222222,
+      "extract": "The Kremlin Wall Necropolis is the former national cemetery of the Soviet Union, located in Red Square in Moscow beside the Kremlin Wall. Burials there began in November 1917, when 240 pro-Bolsheviks who died during the Moscow Bolshevik Uprising were buried in mass graves. The improvised burial site",
+      "url": "https://en.wikipedia.org/wiki/Kremlin_Wall_Necropolis",
+      "distKm": 0
+    },
+    {
+      "pageid": 4927148,
+      "name": "Kremlin stars",
+      "title": "Kremlin stars",
+      "lat": 55.7525,
+      "lon": 37.62138888888889,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Kremlin_stars",
+      "distKm": 0
+    },
+    {
+      "pageid": 61142261,
+      "name": "Kyparodes",
+      "title": "Kyparodes",
+      "lat": 41.104446,
+      "lon": 29.054246,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Kyparodes",
+      "distKm": 0
+    },
+    {
+      "pageid": 23215978,
+      "name": "Kyperounda Community Stadium",
+      "title": "Kyperounda Community Stadium",
+      "lat": 34.935236,
+      "lon": 32.975947,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Kyperounda_Community_Stadium",
+      "distKm": 0
+    },
+    {
+      "pageid": 22425920,
+      "name": "Kyperounta",
+      "title": "Kyperounta",
+      "lat": 34.94138888888889,
+      "lon": 32.969166666666666,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Kyperounta",
+      "distKm": 0
+    },
+    {
+      "pageid": 75091622,
+      "name": "La Bise (restaurant)",
+      "title": "La Bise (restaurant)",
+      "lat": 38.90047222222222,
+      "lon": -77.03852777777777,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/La_Bise_(restaurant)",
+      "distKm": 0
+    },
+    {
+      "pageid": 23188063,
+      "name": "Lagoudera",
+      "title": "Lagoudera",
+      "lat": 34.962500000000006,
+      "lon": 33.01027777777778,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Lagoudera",
+      "distKm": 0
+    },
+    {
+      "pageid": 61142108,
+      "name": "Lasthenes (Thrace)",
+      "title": "Lasthenes (Thrace)",
+      "lat": 41.115124,
+      "lon": 29.052603,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Lasthenes_(Thrace)",
+      "distKm": 0
+    },
+    {
+      "pageid": 489905,
+      "name": "Lenin's Mausoleum",
+      "title": "Lenin's Mausoleum",
+      "lat": 55.75361111111111,
+      "lon": 37.61972222222222,
+      "extract": "Lenin's Mausoleum, also known as Lenin's Tomb, is a mausoleum located at Red Square in Moscow, Russia. It serves as the resting place of Soviet leader Vladimir Lenin, whose preserved body has been on public display since shortly after his death in 1924, with rare exceptions in wartime. From 1953 to ",
+      "url": "https://en.wikipedia.org/wiki/Lenin%27s_Mausoleum",
+      "distKm": 0
+    },
+    {
+      "pageid": 2826665,
+      "name": "Liberation Monument",
+      "title": "Liberation Monument",
+      "lat": 39.03511111111111,
+      "lon": 125.75848888888889,
+      "extract": "The Liberation Monument is a monument in Pyongyang, North Korea. It was built in 1947 to honour Red Army soldiers who took part in capturing Korea from Imperial Japan during the final stage of the Second World War. Soviet paratroopers took control of Pyongyang on August 24, 1945. The monument is com",
+      "url": "https://en.wikipedia.org/wiki/Liberation_Monument",
+      "distKm": 0
+    },
+    {
+      "pageid": 53329339,
+      "name": "List of ambassadors of Monaco to the United States",
+      "title": "List of ambassadors of Monaco to the United States",
+      "lat": 38.901111111111106,
+      "lon": -77.03975,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/List_of_ambassadors_of_Monaco_to_the_United_States",
+      "distKm": 0
+    },
+    {
+      "pageid": 53378737,
+      "name": "List of ambassadors of Palau to the United States",
+      "title": "List of ambassadors of Palau to the United States",
+      "lat": 38.899332,
+      "lon": -77.039935,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/List_of_ambassadors_of_Palau_to_the_United_States",
+      "distKm": 0
+    },
+    {
+      "pageid": 23187572,
+      "name": "Livadia, Nicosia",
+      "title": "Livadia, Nicosia",
+      "lat": 34.94583333333333,
+      "lon": 33.02166666666667,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Livadia,_Nicosia",
+      "distKm": 0
+    },
+    {
+      "pageid": 3396911,
+      "name": "Lobnoye Mesto",
+      "title": "Lobnoye Mesto",
+      "lat": 55.75333333333333,
+      "lon": 37.6225,
+      "extract": "Lobnoye mesto (Russian: \u041b\u043e\u0431\u043d\u043e\u0435 \u043c\u0435\u0441\u0442\u043e) is a 13-meter-long stone platform situated in the Red Square in Moscow in front of Saint Basil's Cathedral.\nIts name is derived from the Russian words for 'forehead' (lob) and 'place' (Mesto). In Old Russian lob meant 'a steep river bank'. The platform, believed",
+      "url": "https://en.wikipedia.org/wiki/Lobnoye_Mesto",
+      "distKm": 0
+    },
+    {
+      "pageid": 31192190,
+      "name": "Loeb's NY Deli",
+      "title": "Loeb's NY Deli",
+      "lat": 38.90116666666667,
+      "lon": -77.04022222222223,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Loeb%27s_NY_Deli",
+      "distKm": 0
+    },
+    {
+      "pageid": 47431777,
+      "name": "Mansudae Assembly Hall",
+      "title": "Mansudae Assembly Hall",
+      "lat": 39.02861111111111,
+      "lon": 125.74944444444445,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Mansudae_Assembly_Hall",
+      "distKm": 0
+    },
+    {
+      "pageid": 42589475,
+      "name": "Mansudae Grand Monument",
+      "title": "Mansudae Grand Monument",
+      "lat": 39.03194444444444,
+      "lon": 125.75333333333333,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Mansudae_Grand_Monument",
+      "distKm": 0
+    },
+    {
+      "pageid": 40048130,
+      "name": "Marble Palace (Tehran)",
+      "title": "Marble Palace (Tehran)",
+      "lat": 35.689072,
+      "lon": 51.401789,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Marble_Palace_(Tehran)",
+      "distKm": 0
+    },
+    {
+      "pageid": 4535524,
+      "name": "Maslak",
+      "title": "Maslak",
+      "lat": 41.10888888888889,
+      "lon": 29.02111111111111,
+      "extract": "Maslak is a neighbourhood in Sar\u0131yer, Istanbul Province, in Turkey. Its population is 12,260 (2022). It is one of the main business districts of Istanbul, located on the European side of the city. It was formerly an exclave of the municipality of \u015ei\u015fli, though being far north and actually closer to ",
+      "url": "https://en.wikipedia.org/wiki/Maslak",
+      "distKm": 0
+    },
+    {
+      "pageid": 17025202,
+      "name": "Maslak Pavilion",
+      "title": "Maslak Pavilion",
+      "lat": 41.11944444444445,
+      "lon": 29.025,
+      "extract": "Maslak Pavilion (Turkish: Maslak Kasr\u0131) is a former imperial Ottoman pavilion located in Istanbul, Turkey. It was constructed during the reign of Sultan Abd\u00fclaziz (1861\u20131876). It is under the administration of the Turkish Directorate of National Palaces.",
+      "url": "https://en.wikipedia.org/wiki/Maslak_Pavilion",
+      "distKm": 0
+    },
+    {
+      "pageid": 3688594,
+      "name": "Memory of Azov (Faberg\u00e9 egg)",
+      "title": "Memory of Azov (Faberg\u00e9 egg)",
+      "lat": 55.74951388888889,
+      "lon": 37.613305555555556,
+      "extract": "The Memory of Azov (or the Azova Egg) is a jewelled Easter egg made under the supervision of the Russian jeweller Peter Carl Faberg\u00e9 in 1891 for Tsar Alexander III of Russia. It was presented by Alexander III as an Easter gift to his wife, the Tsarina Maria Feodorovna. It is currently held in the Kr",
+      "url": "https://en.wikipedia.org/wiki/Memory_of_Azov_(Faberg%C3%A9_egg)",
+      "distKm": 0
+    },
+    {
+      "pageid": 38234979,
+      "name": "Meydan-e Azadi Metro Station",
+      "title": "Meydan-e Azadi Metro Station",
+      "lat": 35.7008,
+      "lon": 51.3785,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Meydan-e_Azadi_Metro_Station",
+      "distKm": 0
+    },
+    {
+      "pageid": 24142365,
+      "name": "Meydan-e Enghelab-e Eslami Metro Station",
+      "title": "Meydan-e Enghelab-e Eslami Metro Station",
+      "lat": 35.7011,
+      "lon": 51.3897,
+      "extract": "Enghelab Metro Station is a station of Tehran Metro Line 4. It is located in Enghelab Square, the junctions of Azadi Street, Enqelab Street and Kargar Street. It is between Teatr-e Shahr Metro Station and Tohid Metro Station.",
+      "url": "https://en.wikipedia.org/wiki/Meydan-e_Enghelab-e_Eslami_Metro_Station",
+      "distKm": 0
+    },
+    {
+      "pageid": 24152890,
+      "name": "Meydan-e Horr Metro Station",
+      "title": "Meydan-e Horr Metro Station",
+      "lat": 35.69083333333333,
+      "lon": 51.38861111111111,
+      "extract": "Meydan-e Horr Metro Station is a station in Tehran Metro Line 2. It is located in Hor Square the junction of Imam Khomeini Street and Kargar Street. It is between Imam Ali University Metro Station and Navvab Metro Station.",
+      "url": "https://en.wikipedia.org/wiki/Meydan-e_Horr_Metro_Station",
+      "distKm": 0
+    },
+    {
+      "pageid": 50799410,
+      "name": "Mihrabat Nature Park",
+      "title": "Mihrabat Nature Park",
+      "lat": 41.095,
+      "lon": 29.07,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Mihrabat_Nature_Park",
+      "distKm": 0
+    },
+    {
+      "pageid": 58792183,
+      "name": "Ministry of External Economic Relations",
+      "title": "Ministry of External Economic Relations",
+      "lat": 39.018672,
+      "lon": 125.752247,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Ministry_of_External_Economic_Relations",
+      "distKm": 0
+    },
+    {
+      "pageid": 71195048,
+      "name": "Moghadam House and Museum",
+      "title": "Moghadam House and Museum",
+      "lat": 35.68691,
+      "lon": 51.40483,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Moghadam_House_and_Museum",
+      "distKm": 0
+    },
+    {
+      "pageid": 31127595,
+      "name": "Mohammad Mokhtari (protester)",
+      "title": "Mohammad Mokhtari (protester)",
+      "lat": 35.703784,
+      "lon": 51.377839,
+      "extract": "Mohammad Mokhtari (Persian: \u0645\u062d\u0645\u062f \u0645\u062e\u062a\u0627\u0631\u06cc) (September 10, 1989 \u2013 February 15, 2011) was an Iranian university student fatally wounded by a gunshot fired by the forces of the Islamic Regime on the February 14 2011 protests in Tehran. He died the next day, while hospitalized. Like Sane Jaleh, the regime",
+      "url": "https://en.wikipedia.org/wiki/Mohammad_Mokhtari_(protester)",
+      "distKm": 0
+    },
+    {
+      "pageid": 3097499,
+      "name": "Monument to Minin and Pozharsky",
+      "title": "Monument to Minin and Pozharsky",
+      "lat": 55.752778,
+      "lon": 37.6225,
+      "extract": "The Monument to Minin and Pozharsky (Russian: \u041f\u0430\u0301\u043c\u044f\u0442\u043d\u0438\u043a \u041c\u0438\u0301\u043d\u0438\u043d\u0443 \u0438 \u041f\u043e\u0436\u0430\u0301\u0440\u0441\u043a\u043e\u043c\u0443) is a bronze statue designed by Ivan Martos and located on the Red Square in Moscow, Russia, in front of Saint Basil's Cathedral. The statue commemorates two Russian national heroes Prince Dmitry Pozharsky and Kuzma Minin,",
+      "url": "https://en.wikipedia.org/wiki/Monument_to_Minin_and_Pozharsky",
+      "distKm": 0
+    },
+    {
+      "pageid": 553605,
+      "name": "Monument to the People's Heroes",
+      "title": "Monument to the People's Heroes",
+      "lat": 39.903055555555554,
+      "lon": 116.39166666666668,
+      "extract": "The Monument to the People's Heroes (Chinese: \u4eba\u6c11\u82f1\u96c4\u7eaa\u5ff5\u7891; pinyin: R\u00e9nm\u00edn Y\u012bngxi\u00f3ng J\u00ecni\u00e0nb\u0113i) is a ten-story obelisk that was erected as a national monument of China to the martyrs of revolutionary struggle during the 19th and 20th centuries. It is located in the southern part of Tiananmen Square in Be",
+      "url": "https://en.wikipedia.org/wiki/Monument_to_the_People%27s_Heroes",
+      "distKm": 0
+    },
+    {
+      "pageid": 55623038,
+      "name": "Monument to the Victorious Fatherland Liberation War",
+      "title": "Monument to the Victorious Fatherland Liberation War",
+      "lat": 39.039503,
+      "lon": 125.739126,
+      "extract": "The Monument to the Victorious Fatherland Liberation War is an outdoor monument in Pyongyang, North Korea. The monument is outside of the Victorious Fatherland Liberation War Museum. The monument itself is a series of statues depicting soldiers of the various branches of the Korean People's Army. Th",
+      "url": "https://en.wikipedia.org/wiki/Monument_to_the_Victorious_Fatherland_Liberation_War",
+      "distKm": 0
+    },
+    {
+      "pageid": 4298857,
+      "name": "Moranbong",
+      "title": "Moranbong",
+      "lat": 39.040277777777774,
+      "lon": 125.75833333333334,
+      "extract": "Moranbong (Korean: \ubaa8\ub780\ubd09; lit. 'Peony Hill; Peony Peak') or Moran Hill forms a park located in central Pyongyang, the capital of North Korea. Its 312-foot (95 m) summit is the location of the Pyongyang TV Tower.\nThere are multiple monumental structures located on Moran Hill. They include the Arch of T",
+      "url": "https://en.wikipedia.org/wiki/Moranbong",
+      "distKm": 0
+    },
+    {
+      "pageid": 39001816,
+      "name": "Moranbong Theatre",
+      "title": "Moranbong Theatre",
+      "lat": 39.0357,
+      "lon": 125.7551,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Moranbong_Theatre",
+      "distKm": 0
+    },
+    {
+      "pageid": 47629389,
+      "name": "Moranbong station",
+      "title": "Moranbong station",
+      "lat": 39.03194444444444,
+      "lon": 125.75638888888889,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Moranbong_station",
+      "distKm": 0
+    },
+    {
+      "pageid": 11715845,
+      "name": "Moscow Governorate",
+      "title": "Moscow Governorate",
+      "lat": 55.7517,
+      "lon": 37.6178,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Moscow_Governorate",
+      "distKm": 0
+    },
+    {
+      "pageid": 1899288,
+      "name": "Moscow International Film Festival",
+      "title": "Moscow International Film Festival",
+      "lat": 55.750556,
+      "lon": 37.6175,
+      "extract": "The Moscow International Film Festival (Russian: \u041c\u043e\u0441\u043a\u043e\u0301\u0432\u0441\u043a\u0438\u0439 \u043c\u0435\u0436\u0434\u0443\u043d\u0430\u0440\u043e\u0301\u0434\u043d\u044b\u0439 \u043a\u0438\u043d\u043e\u0444\u0435\u0441\u0442\u0438\u0432\u0430\u0301\u043b\u044c, translit. Mosk\u00f3vskiy myezhdunar\u00f3dniy kinofyestiv\u00e1l; abbreviated as MIFF) is a film festival first held in Moscow in 1935 and became regular since 1959. From its inception to 1959, it was held every second yea",
+      "url": "https://en.wikipedia.org/wiki/Moscow_International_Film_Festival",
+      "distKm": 0
+    },
+    {
+      "pageid": 2242282,
+      "name": "Moscow Kremlin Wall",
+      "title": "Moscow Kremlin Wall",
+      "lat": 55.74916666666667,
+      "lon": 37.61666666666667,
+      "extract": "The Moscow Kremlin Wall is a defensive wall that surrounds the Moscow Kremlin, recognisable by the characteristic notches and its Kremlin towers. The original walls were likely a simple wooden fence with guard towers built in 1156. The Kremlin walls, like many cathedrals in the Kremlin, were built b",
+      "url": "https://en.wikipedia.org/wiki/Moscow_Kremlin_Wall",
+      "distKm": 0
+    },
+    {
+      "pageid": 46684519,
+      "name": "Najmieh Hospital",
+      "title": "Najmieh Hospital",
+      "lat": 35.69430555555555,
+      "lon": 51.41095277777777,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Najmieh_Hospital",
+      "distKm": 0
+    },
+    {
+      "pageid": 7471921,
+      "name": "National Fish and Wildlife Foundation",
+      "title": "National Fish and Wildlife Foundation",
+      "lat": 38.901555555555554,
+      "lon": -77.03758333333333,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/National_Fish_and_Wildlife_Foundation",
+      "distKm": 0
+    },
+    {
+      "pageid": 55615031,
+      "name": "National Library for the Blind (United States)",
+      "title": "National Library for the Blind (United States)",
+      "lat": 38.90041,
+      "lon": -77.04108,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/National_Library_for_the_Blind_(United_States)",
+      "distKm": 0
+    },
+    {
+      "pageid": 4478888,
+      "name": "National Museum of China",
+      "title": "National Museum of China",
+      "lat": 39.9036,
+      "lon": 116.395,
+      "extract": "The National Museum of China is an art and history museum located on the eastern side of Tiananmen Square in Beijing. The National Museum of China has a total construction area of about 200,000 square meters, a collection of more than 1.4 million items, and 48 exhibition halls. It is the museum with",
+      "url": "https://en.wikipedia.org/wiki/National_Museum_of_China",
+      "distKm": 0
+    },
+    {
+      "pageid": 65614518,
+      "name": "National Organization for Civil Registration of Iran",
+      "title": "National Organization for Civil Registration of Iran",
+      "lat": 35.6888224,
+      "lon": 51.4074849,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/National_Organization_for_Civil_Registration_of_Iran",
+      "distKm": 0
+    },
+    {
+      "pageid": 52846396,
+      "name": "Natural History Museum of \u0130hsan Ketin",
+      "title": "Natural History Museum of \u0130hsan Ketin",
+      "lat": 41.10472222222222,
+      "lon": 29.02611111111111,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Natural_History_Museum_of_%C4%B0hsan_Ketin",
+      "distKm": 0
+    },
+    {
+      "pageid": 14725106,
+      "name": "Navvab (district)",
+      "title": "Navvab (district)",
+      "lat": 35.69522499999999,
+      "lon": 51.37825,
+      "extract": "Navv\u0101b (Persian: \u0646\u0648\u0627\u0628) is a district in the south-west of the central district of Tehran, Iran.",
+      "url": "https://en.wikipedia.org/wiki/Navvab_(district)",
+      "distKm": 0
+    },
+    {
+      "pageid": 59866821,
+      "name": "Neapolis (Bosphorus)",
+      "title": "Neapolis (Bosphorus)",
+      "lat": 41.12194,
+      "lon": 29.059723,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Neapolis_(Bosphorus)",
+      "distKm": 0
+    },
+    {
+      "pageid": 949352,
+      "name": "Neglinnaya (river)",
+      "title": "Neglinnaya (river)",
+      "lat": 55.749722222222225,
+      "lon": 37.62638888888889,
+      "extract": "The Neglinnaya (Russian: \u041d\u0435\u0433\u043b\u0438\u043d\u043d\u0430\u044f, IPA: [n\u02b2\u026a\u02c8\u0261l\u02b2in\u02d0\u0259j\u0259]), also known as Neglinka, Neglinna,  Neglimna (\u041d\u0435\u0433\u043b\u0438\u043d\u043a\u0430, \u041d\u0435\u0433\u043b\u0438\u043d\u043d\u0430, \u041d\u0435\u0433\u043b\u0438\u043c\u043d\u0430), is a 7.5 km underground river in the central part of Moscow and a tributary of the river Moskva. It flows in the tunnels under Samotechnaya Street, Tsvetnoy Boulevar",
+      "url": "https://en.wikipedia.org/wiki/Neglinnaya_(river)",
+      "distKm": 0
+    },
+    {
+      "pageid": 20843370,
+      "name": "New Executive Office Building",
+      "title": "New Executive Office Building",
+      "lat": 38.89952777777778,
+      "lon": -77.03897222222221,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/New_Executive_Office_Building",
+      "distKm": 0
+    },
+    {
+      "pageid": 15199132,
+      "name": "Nikitari",
+      "title": "Nikitari",
+      "lat": 35.06666666666667,
+      "lon": 32.983333333333334,
+      "extract": "Nikitari (Greek: \u039d\u03b9\u03ba\u03b7\u03c4\u03ac\u03c1\u03b9) is a village in Cyprus. It is located in the Nicosia District.",
+      "url": "https://en.wikipedia.org/wiki/Nikitari",
+      "distKm": 0
+    },
+    {
+      "pageid": 79758025,
+      "name": "Office Building of the National People's Congress",
+      "title": "Office Building of the National People's Congress",
+      "lat": 39.8999,
+      "lon": 116.3877,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Office_Building_of_the_National_People%27s_Congress",
+      "distKm": 0
+    },
+    {
+      "pageid": 51025254,
+      "name": "Office of the Supreme Leader of Iran",
+      "title": "Office of the Supreme Leader of Iran",
+      "lat": 35.69194444444444,
+      "lon": 51.39861111111111,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Office_of_the_Supreme_Leader_of_Iran",
+      "distKm": 0
+    },
+    {
+      "pageid": 27857113,
+      "name": "Okryu-gwan",
+      "title": "Okryu-gwan",
+      "lat": 39.02861111111111,
+      "lon": 125.75833333333334,
+      "extract": "Okryu-gwan or Okryu Restaurant is a restaurant in Pyongyang, North Korea, founded in 1960. South Korea analyst Andrei Lankov describes it as one of two restaurants, the other being Ch'ongryugwan, which have \"defined the culinary life of Pyongyang\" since the 1980s, and a \"living museum of culinary ar",
+      "url": "https://en.wikipedia.org/wiki/Okryu-gwan",
+      "distKm": 0
+    },
+    {
+      "pageid": 27914234,
+      "name": "Ongryu Bridge",
+      "title": "Ongryu Bridge",
+      "lat": 39.025,
+      "lon": 125.7611111111111,
+      "extract": "Ongryu Bridge, also spelled Okryu Bridge and Ongnyu Bridge, is a bridge on the Taedong River in and near Pyongyang, North Korea. Construction began in March 1958; the bridge was opened in August 1960.\nLocated between the old Taedong Bridge before it and the Rungra Bridge above it, it is the fourth (",
+      "url": "https://en.wikipedia.org/wiki/Ongryu_Bridge",
+      "distKm": 0
+    },
+    {
+      "pageid": 33905019,
+      "name": "Ostad Moein Metro Station",
+      "title": "Ostad Moein Metro Station",
+      "lat": 35.7008,
+      "lon": 51.3785,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Ostad_Moein_Metro_Station",
+      "distKm": 0
+    },
+    {
+      "pageid": 18422483,
+      "name": "PNC Bank Building (Washington, D.C.)",
+      "title": "PNC Bank Building (Washington, D.C.)",
+      "lat": 38.90061111111111,
+      "lon": -77.03975,
+      "extract": "PNC Bank Building is a high-rise skyscraper building located at 800 17th Street NW, Washington, D.C., United States. The building broke ground in 2008, and was completed in 2010. The building serves as an office building for PNC Financial Services, and serves as the regional headquarters for PNC Fin",
+      "url": "https://en.wikipedia.org/wiki/PNC_Bank_Building_(Washington,_D.C.)",
+      "distKm": 0
+    },
+    {
+      "pageid": 735411,
+      "name": "Palace of Facets",
+      "title": "Palace of Facets",
+      "lat": 55.750277777777775,
+      "lon": 37.61666666666667,
+      "extract": "The Palace of the Facets (Russian: \u0413\u0440\u0430\u043d\u043e\u0432\u0438\u0442\u0430\u044f \u043f\u0430\u043b\u0430\u0442\u0430, romanized: Granovitaya palata) is a building in the Moscow Kremlin, Russia, which contains what used to be the main banquet reception hall of the Russian tsars. It is the oldest preserved secular building in Moscow. Located on Kremlin Cathedral S",
+      "url": "https://en.wikipedia.org/wiki/Palace_of_Facets",
+      "distKm": 0
+    },
+    {
+      "pageid": 55388592,
+      "name": "Panagia tou Araka",
+      "title": "Panagia tou Araka",
+      "lat": 34.96545555555556,
+      "lon": 33.00713888888889,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Panagia_tou_Araka",
+      "distKm": 0
+    },
+    {
+      "pageid": 24849,
+      "name": "Panama Canal",
+      "title": "Panama Canal",
+      "lat": 9.12,
+      "lon": -79.75,
+      "extract": "The Panama Canal (Spanish: Canal de Panam\u00e1) is an artificial 82-kilometer (51-mile) waterway in Panama that connects the Caribbean Sea with the Pacific Ocean. It cuts across the narrowest point of the Isthmus of Panama, and is a conduit for maritime trade between the Atlantic Ocean and the Pacific O",
+      "url": "https://en.wikipedia.org/wiki/Panama_Canal",
+      "distKm": 0
+    },
+    {
+      "pageid": 315787,
+      "name": "Panama Canal Zone",
+      "title": "Panama Canal Zone",
+      "lat": 9.117777777777778,
+      "lon": -79.72027777777778,
+      "extract": "The Panama Canal Zone (Spanish: Zona del Canal de Panam\u00e1), also known as just the Canal Zone, was a concession of the United States located in the Isthmus of Panama that existed from 1903 to 1979. It consisted of the Panama Canal and an area generally extending five miles (8 km) on each side of the ",
+      "url": "https://en.wikipedia.org/wiki/Panama_Canal_Zone",
+      "distKm": 0
+    },
+    {
+      "pageid": 43334234,
+      "name": "Panama Formation",
+      "title": "Panama Formation",
+      "lat": 9.1,
+      "lon": -79.7,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Panama_Formation",
+      "distKm": 0
+    },
+    {
+      "pageid": 8218761,
+      "name": "Para\u00edso, Panam\u00e1 Province",
+      "title": "Para\u00edso, Panam\u00e1 Province",
+      "lat": 9.033333333333333,
+      "lon": -79.625,
+      "extract": "Para\u00edso is a town in the Republic of Panama, located just north of the Panama Canal's Pedro Miguel Locks.  It was a vibrant township of the old Canal Zone, though it was segregated for most of its history.",
+      "url": "https://en.wikipedia.org/wiki/Para%C3%ADso,_Panam%C3%A1_Province",
+      "distKm": 0
+    },
+    {
+      "pageid": 20763738,
+      "name": "Parque Municipal Summit",
+      "title": "Parque Municipal Summit",
+      "lat": 9.066161,
+      "lon": -79.6455574,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Parque_Municipal_Summit",
+      "distKm": 0
+    },
+    {
+      "pageid": 7261795,
+      "name": "Peking Legation Quarter",
+      "title": "Peking Legation Quarter",
+      "lat": 39.903055555555554,
+      "lon": 116.40166666666667,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Peking_Legation_Quarter",
+      "distKm": 0
+    },
+    {
+      "pageid": 63906019,
+      "name": "People's Palace of Culture",
+      "title": "People's Palace of Culture",
+      "lat": 39.0254,
+      "lon": 125.7384,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/People%27s_Palace_of_Culture",
+      "distKm": 0
+    },
+    {
+      "pageid": 17352853,
+      "name": "Peter Parker House",
+      "title": "Peter Parker House",
+      "lat": 38.899,
+      "lon": -77.03816666666667,
+      "extract": "The Peter Parker House, also known as the former headquarters of the Carnegie Endowment for International Peace, is a historic row house at 700 Jackson Place NW in Washington D.C. Built in 1860, it is historically significant for its association with the Carnegie Endowment, whose headquarters it was",
+      "url": "https://en.wikipedia.org/wiki/Peter_Parker_House",
+      "distKm": 0
+    },
+    {
+      "pageid": 61141526,
+      "name": "Pharmakia",
+      "title": "Pharmakia",
+      "lat": 41.133339,
+      "lon": 29.049999,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Pharmakia",
+      "distKm": 0
+    },
+    {
+      "pageid": 61142357,
+      "name": "Phidalia Petra",
+      "title": "Phidalia Petra",
+      "lat": 41.099551,
+      "lon": 29.050838,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Phidalia_Petra",
+      "distKm": 0
+    },
+    {
+      "pageid": 61141645,
+      "name": "Pitheci Portus",
+      "title": "Pitheci Portus",
+      "lat": 41.129578,
+      "lon": 29.061516,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Pitheci_Portus",
+      "distKm": 0
+    },
+    {
+      "pageid": 23195919,
+      "name": "Platanistasa",
+      "title": "Platanistasa",
+      "lat": 34.94638888888888,
+      "lon": 33.04472222222222,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Platanistasa",
+      "distKm": 0
+    },
+    {
+      "pageid": 23195874,
+      "name": "Polystypos",
+      "title": "Polystypos",
+      "lat": 34.93944444444444,
+      "lon": 33.019444444444446,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Polystypos",
+      "distKm": 0
+    },
+    {
+      "pageid": 56786656,
+      "name": "Ponghwa Clinic",
+      "title": "Ponghwa Clinic",
+      "lat": 39.03444444444444,
+      "lon": 125.74311666666667,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Ponghwa_Clinic",
+      "distKm": 0
+    },
+    {
+      "pageid": 19432486,
+      "name": "Potongmun",
+      "title": "Potongmun",
+      "lat": 39.02722222222222,
+      "lon": 125.74166666666667,
+      "extract": "Potongmun (Korean: \ubcf4\ud1b5\ubb38; lit. 'Potong Gate') is the western gate of the inner system of the walled city of Pyongyang (Pyongyang Castle).  It was originally built in the sixth century   as an official Koguryo construction, and was later rebuilt in 1473. It features a granite base topped by a two-story",
+      "url": "https://en.wikipedia.org/wiki/Potongmun",
+      "distKm": 0
+    },
+    {
+      "pageid": 46410970,
+      "name": "Presidential Administration of Iran",
+      "title": "Presidential Administration of Iran",
+      "lat": 35.689722222222215,
+      "lon": 51.400277777777774,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Presidential_Administration_of_Iran",
+      "distKm": 0
+    },
+    {
+      "pageid": 38400721,
+      "name": "Presidential Townhouse",
+      "title": "Presidential Townhouse",
+      "lat": 38.899277777777776,
+      "lon": -77.03813888888888,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Presidential_Townhouse",
+      "distKm": 0
+    },
+    {
+      "pageid": 926707,
+      "name": "Presidium of the Supreme Soviet of the Soviet Union",
+      "title": "Presidium of the Supreme Soviet of the Soviet Union",
+      "lat": 55.7523,
+      "lon": 37.62,
+      "extract": "The Presidium of the Supreme Soviet (Russian: \u041f\u0440\u0435\u0437\u0438\u0434\u0438\u0443\u043c \u0412\u0435\u0440\u0445\u043e\u0432\u043d\u043e\u0433\u043e \u0421\u043e\u0432\u0435\u0442\u0430, romanized: Prezidium Verkhovnogo Soveta) was the standing organ of the highest body of state authority in the Union of Soviet Socialist Republics (USSR). The presidium was elected by joint session of both houses of the Suprem",
+      "url": "https://en.wikipedia.org/wiki/Presidium_of_the_Supreme_Soviet_of_the_Soviet_Union",
+      "distKm": 0
+    },
+    {
+      "pageid": 47629410,
+      "name": "Pulgunbyol station",
+      "title": "Pulgunbyol station",
+      "lat": 39.033166666666666,
+      "lon": 125.75683333333333,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Pulgunbyol_station",
+      "distKm": 0
+    },
+    {
+      "pageid": 47948,
+      "name": "Pyongyang",
+      "title": "Pyongyang",
+      "lat": 39.016666666666666,
+      "lon": 125.7475,
+      "extract": "Pyongyang (Korean: \ud3c9\uc591; Hancha: \u5e73\u58e4) is the capital and largest city of North Korea. According to the 2008 population census, it has a population of 3,255,288. Pyongyang is located on the Taedong River about 109 kilometers (68 miles) upstream from its mouth on the Yellow Sea. Pyongyang is a directly a",
+      "url": "https://en.wikipedia.org/wiki/Pyongyang",
+      "distKm": 0
+    },
+    {
+      "pageid": 42595859,
+      "name": "Pyongyang Bell",
+      "title": "Pyongyang Bell",
+      "lat": 39.0228,
+      "lon": 125.7569,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Pyongyang_Bell",
+      "distKm": 0
+    },
+    {
+      "pageid": 42595668,
+      "name": "Pyongyang Castle",
+      "title": "Pyongyang Castle",
+      "lat": 39.0235,
+      "lon": 125.757,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Pyongyang_Castle",
+      "distKm": 0
+    },
+    {
+      "pageid": 38128749,
+      "name": "Pyongyang Gymnasium",
+      "title": "Pyongyang Gymnasium",
+      "lat": 39.022777777777776,
+      "lon": 125.73444444444445,
+      "extract": "Pyongyang Gymnasium, also known as Pyongyang Indoor Stadium, is an indoor sporting arena located in Pyongyang, North Korea. The capacity of the arena is for 20,100 people and it was opened in 1973.\nIt is used to host indoor sporting events, such as basketball and volleyball, as well as concerts. Not",
+      "url": "https://en.wikipedia.org/wiki/Pyongyang_Gymnasium",
+      "distKm": 0
+    },
+    {
+      "pageid": 51311926,
+      "name": "Pyongyang Skatepark",
+      "title": "Pyongyang Skatepark",
+      "lat": 39.028742,
+      "lon": 125.767359,
+      "extract": "Pyongyang Skatepark (Korean: \ud3c9\uc591 \ub85c\ub77c\uc2a4\ucf00\ud2b8\uc7a5) is the first skatepark in North Korea. It was opened in November 2012 and is contained within the Ryugyong Health Complex. The skatepark includes half-pipes, ramps, grind rails and a track.\nIn November 2012, the Pyongyang Skatepark was visited by Kim Jong Un, ",
+      "url": "https://en.wikipedia.org/wiki/Pyongyang_Skatepark",
+      "distKm": 0
+    },
+    {
+      "pageid": 71781646,
+      "name": "Qianmen Subdistrict",
+      "title": "Qianmen Subdistrict",
+      "lat": 39.89944444444444,
+      "lon": 116.40861111111111,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Qianmen_Subdistrict",
+      "distKm": 0
+    },
+    {
+      "pageid": 19479634,
+      "name": "Qianmen station",
+      "title": "Qianmen station",
+      "lat": 39.898653,
+      "lon": 116.391659,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Qianmen_station",
+      "distKm": 0
+    },
+    {
+      "pageid": 45471843,
+      "name": "Qiaowan station",
+      "title": "Qiaowan station",
+      "lat": 39.892725,
+      "lon": 116.408464,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Qiaowan_station",
+      "distKm": 0
+    },
+    {
+      "pageid": 8552149,
+      "name": "Rams Beyond",
+      "title": "Rams Beyond",
+      "lat": 41.10944444444445,
+      "lon": 29.023888888888887,
+      "extract": "Etro Residences-Rams Beyond (formerly known as Diamond of Istanbul) is the tallest building under construction in Istanbul, Turkey, being built on the B\u00fcy\u00fckdere Avenue in the city's Maslak central business district of Sar\u0131yer. When completed, it will rise 40 floors above ground level and reach an ab",
+      "url": "https://en.wikipedia.org/wiki/Rams_Beyond",
+      "distKm": 0
+    },
+    {
+      "pageid": 66931,
+      "name": "Red Square",
+      "title": "Red Square",
+      "lat": 55.75416666666667,
+      "lon": 37.62,
+      "extract": "Red Square (Russian: \u041a\u0440\u0430\u0441\u043d\u0430\u044f \u043f\u043b\u043e\u0449\u0430\u0434\u044c, romanized: Krasnaya ploshchad', IPA: [\u02c8krasn\u0259j\u0259 \u02c8plo\u0255\u02d0\u026at\u02b2]) is one of the oldest and largest squares in Moscow, Russia. It is located in Moscow's historic centre, along the eastern walls of the Kremlin. It is the city's most prominent landmark, with famous build",
+      "url": "https://en.wikipedia.org/wiki/Red_Square",
+      "distKm": 0
+    },
+    {
+      "pageid": 39700772,
+      "name": "Reindalen",
+      "title": "Reindalen",
+      "lat": 77.9462,
+      "lon": 15.8227,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Reindalen",
+      "distKm": 0
+    },
+    {
+      "pageid": 39700774,
+      "name": "Reindalselva",
+      "title": "Reindalselva",
+      "lat": 77.9434,
+      "lon": 15.7682,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Reindalselva",
+      "distKm": 0
+    },
+    {
+      "pageid": 2454998,
+      "name": "Renwick Gallery",
+      "title": "Renwick Gallery",
+      "lat": 38.89911111111111,
+      "lon": -77.03905555555555,
+      "extract": "The Renwick Gallery is a branch of the Smithsonian American Art Museum located in Washington, D.C. that displays American craft and decorative arts from the 19th to 21st century. The gallery is housed in a National Historic Landmark building that was opened in 1859 on Pennsylvania Avenue and origina",
+      "url": "https://en.wikipedia.org/wiki/Renwick_Gallery",
+      "distKm": 0
+    },
+    {
+      "pageid": 23178127,
+      "name": "Room 39",
+      "title": "Room 39",
+      "lat": 39.016758,
+      "lon": 125.740979,
+      "extract": "Room 39 (officially Central Committee Bureau 39 of the Workers' Party of Korea, also referred to as Bureau 39, Division 39, or Office 39) is a secretive North Korean party organization that seeks ways to maintain the foreign currency slush fund for the country's leaders.\nThe organization is estimate",
+      "url": "https://en.wikipedia.org/wiki/Room_39",
+      "distKm": 0
+    },
+    {
+      "pageid": 64386840,
+      "name": "Roozbeh Hospital",
+      "title": "Roozbeh Hospital",
+      "lat": 35.679426,
+      "lon": 51.393813,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Roozbeh_Hospital",
+      "distKm": 0
+    },
+    {
+      "pageid": 57971883,
+      "name": "Roudaki Metro Station",
+      "title": "Roudaki Metro Station",
+      "lat": 35.6827326,
+      "lon": 51.3796743,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Roudaki_Metro_Station",
+      "distKm": 0
+    },
+    {
+      "pageid": 27914769,
+      "name": "Rungra Bridge",
+      "title": "Rungra Bridge",
+      "lat": 39.03388888888889,
+      "lon": 125.76472222222222,
+      "extract": "The Rungra Bridge is a bridge in Pyongyang, North Korea, one of the city's six bridges on the Taedong River. Located between the Okryu Bridge to the south and Chongryu Bridge to the north, it connects Moranbong-guyok on the right (west) bank of the Taedong River with Taedonggang-guyok on the left ba",
+      "url": "https://en.wikipedia.org/wiki/Rungra_Bridge",
+      "distKm": 0
+    },
+    {
+      "pageid": 23195534,
+      "name": "Ryongwang Pavilion",
+      "title": "Ryongwang Pavilion",
+      "lat": 39.02333333333333,
+      "lon": 125.75722222222223,
+      "extract": "Ryongwang Pavilion is a scenic overlook located in the central district of Pyongyang, North Korea. Located on the bank of the Taedong River, the pavilion was first constructed during the Goguryeo dynasty as \"Sansu Pavilion\", and was part of the defenses of the walled city of Pyongyang (along with th",
+      "url": "https://en.wikipedia.org/wiki/Ryongwang_Pavilion",
+      "distKm": 0
+    },
+    {
+      "pageid": 30733636,
+      "name": "Saint Abraham's Church, Tehran",
+      "title": "Saint Abraham's Church, Tehran",
+      "lat": 35.70345,
+      "lon": 51.38702,
+      "extract": "Saint Abraham's Church (Persian: \u06a9\u0644\u06cc\u0633\u0627\u06cc \u062d\u0636\u0631\u062a \u0627\u0628\u0631\u0627\u0647\u06cc\u0645) is a Dominican Catholic church in Tehran, Iran.",
+      "url": "https://en.wikipedia.org/wiki/Saint_Abraham%27s_Church,_Tehran",
+      "distKm": 0
+    },
+    {
+      "pageid": 156783,
+      "name": "Saint Basil's Cathedral",
+      "title": "Saint Basil's Cathedral",
+      "lat": 55.7525,
+      "lon": 37.62305555555555,
+      "extract": "The Cathedral of Vasily the Blessed (Russian: \u0421\u043e\u0431\u043e\u0440 \u0412\u0430\u0441\u0438\u043b\u0438\u044f \u0411\u043b\u0430\u0436\u0435\u043d\u043d\u043e\u0433\u043e, romanized: Sobor Vasiliya Blazhennogo), commonly known as Saint Basil's Cathedral, is a Russian Orthodox church on Red Square in the historic centre of Moscow. It is one of the most popular cultural symbols of Russia. The buildi",
+      "url": "https://en.wikipedia.org/wiki/Saint_Basil%27s_Cathedral",
+      "distKm": 0
+    },
+    {
+      "pageid": 37525467,
+      "name": "Saint Sophia Church, Moscow",
+      "title": "Saint Sophia Church, Moscow",
+      "lat": 55.7481,
+      "lon": 37.6215,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Saint_Sophia_Church,_Moscow",
+      "distKm": 0
+    },
+    {
+      "pageid": 2827056,
+      "name": "Sak\u0131p Sabanc\u0131 Museum",
+      "title": "Sak\u0131p Sabanc\u0131 Museum",
+      "lat": 41.099116,
+      "lon": 29.053704,
+      "extract": "The Sabanc\u0131 University Sak\u0131p Sabanc\u0131 Museum (Turkish: Sak\u0131p Sabanc\u0131 M\u00fczesi) is a private fine arts museum in Istanbul, Turkey, dedicated to calligraphic art, religious and state documents, as well as paintings of the Ottoman era. The museum was founded by Sak\u0131p Sabanc\u0131, and was opened in June 2002. ",
+      "url": "https://en.wikipedia.org/wiki/Sak%C4%B1p_Sabanc%C4%B1_Museum",
+      "distKm": 0
+    },
+    {
+      "pageid": 22282155,
+      "name": "Santa Clara, Panam\u00e1 Oeste",
+      "title": "Santa Clara, Panam\u00e1 Oeste",
+      "lat": 9.04,
+      "lon": -79.752,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Santa_Clara,_Panam%C3%A1_Oeste",
+      "distKm": 0
+    },
+    {
+      "pageid": 23187867,
+      "name": "Saranti",
+      "title": "Saranti",
+      "lat": 34.968611111111116,
+      "lon": 33.00194444444445,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Saranti",
+      "distKm": 0
+    },
+    {
+      "pageid": 5542443,
+      "name": "Senate of Iran",
+      "title": "Senate of Iran",
+      "lat": 35.688005555555556,
+      "lon": 51.39964444444444,
+      "extract": "The Senate (Persian: \u0645\u062c\u0644\u0633 \u0633\u0646\u0627, romanized: Majles-e Sen\u0101) was the upper house legislative chamber in the Imperial State of Iran from 1949 to 1979. A bicameral legislature had been established in the 1906 Persian Constitutional Revolution but the Senate was not actually formed until after the 1949 Con",
+      "url": "https://en.wikipedia.org/wiki/Senate_of_Iran",
+      "distKm": 0
+    },
+    {
+      "pageid": 11391245,
+      "name": "Seolmacheon",
+      "title": "Seolmacheon",
+      "lat": 37.93333333333333,
+      "lon": 126.93333333333334,
+      "extract": "Seolmacheon (Korean: \uc124\ub9c8\ucc9c) is a stream in South Korea. It is a tributary of the Imjin River, which it joins at Jeokseong. It was on Gloster Hill, between the two rivers, that the British Gloucestershire Regiment made their last stand against the Chinese in the Battle of the Imjin River, a major event",
+      "url": "https://en.wikipedia.org/wiki/Seolmacheon",
+      "distKm": 0
+    },
+    {
+      "pageid": 24152931,
+      "name": "Shahid Navvab-e Safavi Metro Station",
+      "title": "Shahid Navvab-e Safavi Metro Station",
+      "lat": 35.6955,
+      "lon": 51.3782,
+      "extract": "Shahid Navvab-e Safavi Metro Station is a station in Tehran Metro Line 2 and Line 7. It is located in  the junction of Navvab Expressway and Azarbayjan Street. It is between Hor Square Metro Station and Shademan Metro Station (Formerly known as Azadi Station)in line 2 and between roudaki metro stati",
+      "url": "https://en.wikipedia.org/wiki/Shahid_Navvab-e_Safavi_Metro_Station",
+      "distKm": 0
+    },
+    {
+      "pageid": 24600368,
+      "name": "Shahr-e No",
+      "title": "Shahr-e No",
+      "lat": 35.671917,
+      "lon": 51.388208,
+      "extract": "Shahr-e No (Persian: \u0634\u0647\u0631\u0646\u0648, lit.\u2009'New City') was the red-light district located in Gomrok, a south-western district of Tehran, Iran. It appeared in the 1920s and was destroyed in 1979; it employed about 1,500 women. Its location is now replaced with a park and a hospital.",
+      "url": "https://en.wikipedia.org/wiki/Shahr-e_No",
+      "distKm": 0
+    },
+    {
+      "pageid": 222657,
+      "name": "Siege of Zhongdu",
+      "title": "Siege of Zhongdu",
+      "lat": 39.906666666666666,
+      "lon": 116.39750000000001,
+      "extract": "The Siege of Zhongdu was a major military conflict during the Mongol conquest of the Jin dynasty. Zhongdu, the capital of the Jin dynasty and located in present-day Beijing, was progressively isolated by the forces of the Mongol Empire under Genghis Khan. After earlier Mongol incursions and the relo",
+      "url": "https://en.wikipedia.org/wiki/Siege_of_Zhongdu",
+      "distKm": 0
+    },
+    {
+      "pageid": 28830252,
+      "name": "Siege of the International Legations",
+      "title": "Siege of the International Legations",
+      "lat": 39.903055555555554,
+      "lon": 116.40166666666667,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Siege_of_the_International_Legations",
+      "distKm": 0
+    },
+    {
+      "pageid": 23196449,
+      "name": "Sinaoros",
+      "title": "Sinaoros",
+      "lat": 35.00833333333333,
+      "lon": 32.899166666666666,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Sinaoros",
+      "distKm": 0
+    },
+    {
+      "pageid": 52233937,
+      "name": "Skyland \u0130stanbul",
+      "title": "Skyland \u0130stanbul",
+      "lat": 41.108333333333334,
+      "lon": 29.022222222222222,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Skyland_%C4%B0stanbul",
+      "distKm": 0
+    },
+    {
+      "pageid": 15932096,
+      "name": "Soberan\u00eda National Park",
+      "title": "Soberan\u00eda National Park",
+      "lat": 9.0742977,
+      "lon": -79.6598053,
+      "extract": "Soberan\u00eda National Park (Parque Nacional Soberan\u00eda) is a national park in Panama near the banks of the Panama Canal in the provinces of Panam\u00e1 and Col\u00f3n, some 25 kilometres (16 mi) from Panama City. The Chagres River runs through the park. Established as a national park in 1980, the park covers 55,0",
+      "url": "https://en.wikipedia.org/wiki/Soberan%C3%ADa_National_Park",
+      "distKm": 0
+    },
+    {
+      "pageid": 55302431,
+      "name": "Soureh International University",
+      "title": "Soureh International University",
+      "lat": 35.7002,
+      "lon": 51.3705,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Soureh_International_University",
+      "distKm": 0
+    },
+    {
+      "pageid": 14328796,
+      "name": "Soyosan station",
+      "title": "Soyosan station",
+      "lat": 37.948611111111106,
+      "lon": 127.06083333333333,
+      "extract": "Soyosan station (Korean: \uc18c\uc694\uc0b0\uc5ed; Hanja: \u900d\u9059\u5c71\u9a5b; RR: Soyosan-yeok) is a ground-level metro station on Line 1 of the Seoul Subway in Sangbongam Dong, Dongducheon, South Korea. It is named after the nearby Soyosan (587 m), a mountain beside the U.S. Army base Camp Casey. It is on this mountain, at the Jaja",
+      "url": "https://en.wikipedia.org/wiki/Soyosan_station",
+      "distKm": 0
+    },
+    {
+      "pageid": 26158745,
+      "name": "Spasskaya Tower",
+      "title": "Spasskaya Tower",
+      "lat": 55.752544,
+      "lon": 37.621425,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Spasskaya_Tower",
+      "distKm": 0
+    },
+    {
+      "pageid": 23187928,
+      "name": "Spilia, Cyprus",
+      "title": "Spilia, Cyprus",
+      "lat": 34.96555555555556,
+      "lon": 32.95416666666667,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Spilia,_Cyprus",
+      "distKm": 0
+    },
+    {
+      "pageid": 17306157,
+      "name": "St. Barnabas's Hospital in Beijing",
+      "title": "St. Barnabas's Hospital in Beijing",
+      "lat": 39.906666666666666,
+      "lon": 116.39750000000001,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/St._Barnabas%27s_Hospital_in_Beijing",
+      "distKm": 0
+    },
+    {
+      "pageid": 44376170,
+      "name": "St. Michael's Church, Beijing",
+      "title": "St. Michael's Church, Beijing",
+      "lat": 39.9016,
+      "lon": 116.406,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/St._Michael%27s_Church,_Beijing",
+      "distKm": 0
+    },
+    {
+      "pageid": 17306183,
+      "name": "St. Stephen's Hospital in Beijing",
+      "title": "St. Stephen's Hospital in Beijing",
+      "lat": 39.906666666666666,
+      "lon": 116.39750000000001,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/St._Stephen%27s_Hospital_in_Beijing",
+      "distKm": 0
+    },
+    {
+      "pageid": 4790948,
+      "name": "State Kremlin Palace",
+      "title": "State Kremlin Palace",
+      "lat": 55.75138888888889,
+      "lon": 37.61555555555556,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/State_Kremlin_Palace",
+      "distKm": 0
+    },
+    {
+      "pageid": 27881484,
+      "name": "Statue of David Farragut (Washington, D.C.)",
+      "title": "Statue of David Farragut (Washington, D.C.)",
+      "lat": 38.90193055555555,
+      "lon": -77.03895833333333,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Statue_of_David_Farragut_(Washington,_D.C.)",
+      "distKm": 0
+    },
+    {
+      "pageid": 31334287,
+      "name": "Statue of Friedrich Wilhelm von Steuben",
+      "title": "Statue of Friedrich Wilhelm von Steuben",
+      "lat": 38.9,
+      "lon": -77.0377,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Statue_of_Friedrich_Wilhelm_von_Steuben",
+      "distKm": 0
+    },
+    {
+      "pageid": 31334019,
+      "name": "Statue of the Comte de Rochambeau",
+      "title": "Statue of the Comte de Rochambeau",
+      "lat": 38.89901111111111,
+      "lon": -77.03773055555556,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Statue_of_the_Comte_de_Rochambeau",
+      "distKm": 0
+    },
+    {
+      "pageid": 29323,
+      "name": "Suez Canal",
+      "title": "Suez Canal",
+      "lat": 30.705,
+      "lon": 32.344166666666666,
+      "extract": "The Suez Canal (; Arabic: \u0642\u0646\u0627\u0629 \u0627\u0644\u0633\u0648\u064a\u0633, Qan\u0101t as-Suwais) is an artificial sea-level waterway in Egypt, connecting the Mediterranean Sea to the Red Sea through the Isthmus of Suez and dividing Africa and Asia (and by extension, the Sinai Peninsula from the rest of Egypt).  It is the border between Afr",
+      "url": "https://en.wikipedia.org/wiki/Suez_Canal",
+      "distKm": 0
+    },
+    {
+      "pageid": 54381614,
+      "name": "Sultan Mahmut Fountain",
+      "title": "Sultan Mahmut Fountain",
+      "lat": 41.146388888888886,
+      "lon": 29.052777777777777,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Sultan_Mahmut_Fountain",
+      "distKm": 0
+    },
+    {
+      "pageid": 38280118,
+      "name": "Sungin Hall",
+      "title": "Sungin Hall",
+      "lat": 39.02472222222222,
+      "lon": 125.75111111111111,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Sungin_Hall",
+      "distKm": 0
+    },
+    {
+      "pageid": 47629386,
+      "name": "Sungni station",
+      "title": "Sungni station",
+      "lat": 39.025888888888886,
+      "lon": 125.75508333333333,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Sungni_station",
+      "distKm": 0
+    },
+    {
+      "pageid": 27694283,
+      "name": "Sungryong Hall",
+      "title": "Sungryong Hall",
+      "lat": 39.02444444444444,
+      "lon": 125.75111111111111,
+      "extract": "Sungnyong Hall is a shrine dedicated to the founding kings of ancient Korea located in the center of Pyongyang, North Korea. It is listed as National Treasure #6.",
+      "url": "https://en.wikipedia.org/wiki/Sungryong_Hall",
+      "distKm": 0
+    },
+    {
+      "pageid": 695507,
+      "name": "Supreme People's Assembly",
+      "title": "Supreme People's Assembly",
+      "lat": 39.02861111111111,
+      "lon": 125.74972222222222,
+      "extract": "The Supreme People's Assembly (SPA; Korean: \ucd5c\uace0\uc778\ubbfc\ud68c\uc758; MR: Ch'oego Inmin Hoe\u016di) is the highest state organ of power of the Democratic People's Republic of Korea (DPRK) according to the country's Socialist Constitution. Under the principle of unified power, it is the only branch of government in North K",
+      "url": "https://en.wikipedia.org/wiki/Supreme_People%27s_Assembly",
+      "distKm": 0
+    },
+    {
+      "pageid": 1459051,
+      "name": "Supreme People's Court",
+      "title": "Supreme People's Court",
+      "lat": 39.90297222222222,
+      "lon": 116.40525000000001,
+      "extract": "The Supreme People's Court of the People's Republic of China (SPC)  is the highest court of the People's Republic of China. It hears appeals of cases from the high people's courts and is the trial court for cases about matters of national importance.\nThe Supreme People's Court was established in Oct",
+      "url": "https://en.wikipedia.org/wiki/Supreme_People%27s_Court",
+      "distKm": 0
+    },
+    {
+      "pageid": 21551332,
+      "name": "Taedongmun",
+      "title": "Taedongmun",
+      "lat": 39.0225,
+      "lon": 125.75666666666666,
+      "extract": "Taedongmun (Korean: \ub300\ub3d9\ubb38; lit. 'Taedong Gate') is the eastern gate of the inner castle of the walled city of Pyongyang (Pyongyang Castle), and one of the National Treasures of North Korea. Located on the banks of the Taedong River, from which it gets its name, the gate was originally built in the six",
+      "url": "https://en.wikipedia.org/wiki/Taedongmun",
+      "distKm": 0
+    },
+    {
+      "pageid": 705401,
+      "name": "Tank Man",
+      "title": "Tank Man",
+      "lat": 39.906527777777775,
+      "lon": 116.39994444444446,
+      "extract": "Tank Man (also known as the Unknown Protester or the Unknown Rebel) is the nickname given to an unidentified individual, presumed to be a Chinese man, who stood in front of a column of Type 59 tanks on Chang'an Avenue near Tiananmen Square in Beijing on June 5, 1989. The confrontation occurred one d",
+      "url": "https://en.wikipedia.org/wiki/Tank_Man",
+      "distKm": 0
+    },
+    {
+      "pageid": 8356304,
+      "name": "Tarabya",
+      "title": "Tarabya",
+      "lat": 41.13333333333333,
+      "lon": 29.05,
+      "extract": "Tarabya (Ottoman Turkish: Tarabiye, Greek: \u0398\u03b5\u03c1\u03b1\u03c0\u03b5\u03b9\u03ac, romanized: Therapi\u00e1) is a neighbourhood in the municipality and district of Sar\u0131yer, Istanbul Province, Turkey. Its population is 17,852 (2022). It is located on the European shoreline of the Bosphorus strait, between the neighbourhoods of Yenik\u00f6y",
+      "url": "https://en.wikipedia.org/wiki/Tarabya",
+      "distKm": 0
+    },
+    {
+      "pageid": 32655211,
+      "name": "Taynitsky Garden",
+      "title": "Taynitsky Garden",
+      "lat": 55.750277777777775,
+      "lon": 37.620555555555555,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Taynitsky_Garden",
+      "distKm": 0
+    },
+    {
+      "pageid": 31421574,
+      "name": "Teatr-e Shahr Metro Station",
+      "title": "Teatr-e Shahr Metro Station",
+      "lat": 35.70111111111111,
+      "lon": 51.40555555555555,
+      "extract": "Teatr-e Shahr Metro Station is a station in Tehran Metro Line 4 and  Line 3. It is located at the intersection of Enghelab Street and Valiasr Street near the location of Teatr-e Shahr, in Daneshjoo Park. The station was formerly known as Vali Asr Metro Station. However, its name was officially chang",
+      "url": "https://en.wikipedia.org/wiki/Teatr-e_Shahr_Metro_Station",
+      "distKm": 0
+    },
+    {
+      "pageid": 57654,
+      "name": "Tehran",
+      "title": "Tehran",
+      "lat": 35.6889,
+      "lon": 51.3897,
+      "extract": "Tehran is the capital and largest city of Iran. It is also the capital of Tehran province and the administrative center for Tehran County and its Central District. With a population of around 9 million in the city, and 16.8 million in the metropolitan area, Tehran is the most populous city in Iran a",
+      "url": "https://en.wikipedia.org/wiki/Tehran",
+      "distKm": 0
+    },
+    {
+      "pageid": 3977331,
+      "name": "Tehran University of Medical Sciences",
+      "title": "Tehran University of Medical Sciences",
+      "lat": 35.706,
+      "lon": 51.394,
+      "extract": "Tehran University of Medical Sciences (TUMS) (Persian: \u062f\u0627\u0646\u0634\u06af\u0627\u0647 \u0639\u0644\u0648\u0645 \u067e\u0632\u0634\u06a9\u06cc \u062a\u0647\u0631\u0627\u0646, Danushgah-e 'lum Pezeshki-ye Tehran) is a medical university in Iran.\nLocated in Tehran, adjacent to the main University of Tehran campus, it was founded as part of Dar ol-Fonoon in 1851, and absorbed into the Universit",
+      "url": "https://en.wikipedia.org/wiki/Tehran_University_of_Medical_Sciences",
+      "distKm": 0
+    },
+    {
+      "pageid": 732684,
+      "name": "Terem Palace",
+      "title": "Terem Palace",
+      "lat": 55.75055555555556,
+      "lon": 37.61555555555556,
+      "extract": "Terem Palace or Teremnoy Palace (Russian: \u0422\u0435\u0440\u0435\u043c\u043d\u043e\u0439 \u0434\u0432\u043e\u0440\u0435\u0446) is a historical building in the Moscow Kremlin, Russia, which used to be the main residence of the Russian czars in the 17th century. Its name is derived from the Greek word \u03c4\u03ad\u03c1\u03b5\u03bc\u03bd\u03bf\u03bd (i.e., \"dwelling\"). Currently, the structure is not access",
+      "url": "https://en.wikipedia.org/wiki/Terem_Palace",
+      "distKm": 0
+    },
+    {
+      "pageid": 19472446,
+      "name": "Tian'anmendong station",
+      "title": "Tian'anmendong station",
+      "lat": 39.90778,
+      "lon": 116.401216,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Tian%27anmendong_station",
+      "distKm": 0
+    },
+    {
+      "pageid": 19472433,
+      "name": "Tian'anmenxi station",
+      "title": "Tian'anmenxi station",
+      "lat": 39.907472,
+      "lon": 116.391278,
+      "extract": "Tian'anmenxi Station (\u5929\u5b89\u95e8\u897f\u7ad9) is a station on Line 1 of the Beijing Subway. It is located near Tiananmen Square, the Forbidden City, and the National Centre for the Performing Arts.",
+      "url": "https://en.wikipedia.org/wiki/Tian%27anmenxi_station",
+      "distKm": 0
+    },
+    {
+      "pageid": 343359,
+      "name": "Tiananmen",
+      "title": "Tiananmen",
+      "lat": 39.907333333333334,
+      "lon": 116.39108333333334,
+      "extract": "The Tiananmen , also Tian'anmen, is the entrance gate of the Forbidden City imperial palace complex and Imperial City in the center of Beijing, China. It is widely used as a national symbol.\nFirst built in 1420 during the Ming dynasty, Tiananmen was the entrance to the Emperor's residence, through w",
+      "url": "https://en.wikipedia.org/wiki/Tiananmen",
+      "distKm": 0
+    },
+    {
+      "pageid": 21193952,
+      "name": "Tiananmen Square",
+      "title": "Tiananmen Square",
+      "lat": 39.90333333333333,
+      "lon": 116.39166666666668,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Tiananmen_Square",
+      "distKm": 0
+    },
+    {
+      "pageid": 41462870,
+      "name": "Timeline of Moscow",
+      "title": "Timeline of Moscow",
+      "lat": 55.75,
+      "lon": 37.616667,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Timeline_of_Moscow",
+      "distKm": 0
+    },
+    {
+      "pageid": 29975552,
+      "name": "Tohid Tunnel",
+      "title": "Tohid Tunnel",
+      "lat": 35.69277777777778,
+      "lon": 51.37888888888889,
+      "extract": "Tohid (or Towheed) Tunnel is a tunnel in Tehran, Iran, the third longest urban tunnel in the Middle East. Towheed Tunnel Project is an urban underground structure, located within the area of Chamran Highway, Towheed Square, Jomhouri Square, and Navab Highway, with a length of about 3 km (Tunnel + en",
+      "url": "https://en.wikipedia.org/wiki/Tohid_Tunnel",
+      "distKm": 0
+    },
+    {
+      "pageid": 30128589,
+      "name": "Towhid Metro Station",
+      "title": "Towhid Metro Station",
+      "lat": 35.7008,
+      "lon": 51.3785,
+      "extract": "Towhid Metro Station is a station of Tehran Metro Line 4. It is located in Tohid Square on top of Tohid Tunnel. It is between Enghelab Metro Station and Shademan Metro Station (formerly known as Azadi Station). The station was opened on 7 February 2011. The station will also serve Line 7 when it ope",
+      "url": "https://en.wikipedia.org/wiki/Towhid_Metro_Station",
+      "distKm": 0
+    },
+    {
+      "pageid": 33460250,
+      "name": "Trams in Moscow",
+      "title": "Trams in Moscow",
+      "lat": 55.75,
+      "lon": 37.61666666666667,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Trams_in_Moscow",
+      "distKm": 0
+    },
+    {
+      "pageid": 20265173,
+      "name": "Trowbridge House",
+      "title": "Trowbridge House",
+      "lat": 38.899138888888885,
+      "lon": -77.03813888888888,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Trowbridge_House",
+      "distKm": 0
+    },
+    {
+      "pageid": 863735,
+      "name": "Tsar Bell",
+      "title": "Tsar Bell",
+      "lat": 55.75083333333333,
+      "lon": 37.61833333333333,
+      "extract": "The Tsar Bell (Russian: \u0426\u0430\u0440\u044c\u2013\u043a\u043e\u043b\u043e\u043a\u043e\u043b; Tsar'-kolokol), also known as the Tsarsky Kolokol, Tsar Kolokol III, or Royal Bell, is a 6.14-metre-tall (20.1 ft), 6.6-metre-diameter (22 ft) bell on display on the grounds of the Moscow Kremlin. The bell was commissioned by Empress Anna Ivanovna, niece of Pete",
+      "url": "https://en.wikipedia.org/wiki/Tsar_Bell",
+      "distKm": 0
+    },
+    {
+      "pageid": 863670,
+      "name": "Tsar Cannon",
+      "title": "Tsar Cannon",
+      "lat": 55.75111111111111,
+      "lon": 37.61805555555556,
+      "extract": "The Tsar Cannon (Russian: \u0426\u0430\u0440\u044c-\u043f\u0443\u0448\u043a\u0430, Tsar'-pushka) is a large early modern period artillery piece (known as a bombarda in Russian) on display on the grounds of the Moscow Kremlin. It is a monument of Russian artillery casting art, cast in bronze in 1586 in Moscow, by the Russian master bronze caste",
+      "url": "https://en.wikipedia.org/wiki/Tsar_Cannon",
+      "distKm": 0
+    },
+    {
+      "pageid": 50594031,
+      "name": "T\u00fcrkmenba\u015f\u0131 Nature Park",
+      "title": "T\u00fcrkmenba\u015f\u0131 Nature Park",
+      "lat": 41.14055555555556,
+      "lon": 29.0275,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/T%C3%BCrkmenba%C5%9F%C4%B1_Nature_Park",
+      "distKm": 0
+    },
+    {
+      "pageid": 30059311,
+      "name": "U.S. Chamber of Commerce Building",
+      "title": "U.S. Chamber of Commerce Building",
+      "lat": 38.9005,
+      "lon": -77.0376111111111,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/U.S._Chamber_of_Commerce_Building",
+      "distKm": 0
+    },
+    {
+      "pageid": 22376446,
+      "name": "U.S. Global Change Research Program",
+      "title": "U.S. Global Change Research Program",
+      "lat": 38.89931,
+      "lon": -77.040305,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/U.S._Global_Change_Research_Program",
+      "distKm": 0
+    },
+    {
+      "pageid": 415946,
+      "name": "USS Pueblo (AGER-2)",
+      "title": "USS Pueblo (AGER-2)",
+      "lat": 39.04055555555556,
+      "lon": 125.73972222222223,
+      "extract": "USS Pueblo (AGER-2) is a Banner-class technical research ship, placed into service during World War II, then converted to a spy ship in 1967 by the United States Navy. She gathered intelligence and oceanographic information, monitoring electronic and radio signals from North Korea. On 23 January 196",
+      "url": "https://en.wikipedia.org/wiki/USS_Pueblo_(AGER-2)",
+      "distKm": 0
+    },
+    {
+      "pageid": 18431021,
+      "name": "Underground City (Beijing)",
+      "title": "Underground City (Beijing)",
+      "lat": 39.899885,
+      "lon": 116.406122,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Underground_City_(Beijing)",
+      "distKm": 0
+    },
+    {
+      "pageid": 1448498,
+      "name": "United States Chamber of Commerce",
+      "title": "United States Chamber of Commerce",
+      "lat": 38.9005,
+      "lon": -77.0376111111111,
+      "extract": "The United States Chamber of Commerce (USCC) is a business association advocacy group and is the largest lobbying group in the United States. The group was founded in April 23, 1912, out of local chambers of commerce at the urging of President William Howard Taft and his secretary of commerce and la",
+      "url": "https://en.wikipedia.org/wiki/United_States_Chamber_of_Commerce",
+      "distKm": 0
+    },
+    {
+      "pageid": 46454336,
+      "name": "United States Digital Service",
+      "title": "United States Digital Service",
+      "lat": 38.899614,
+      "lon": -77.038026,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/United_States_Digital_Service",
+      "distKm": 0
+    },
+    {
+      "pageid": 38315057,
+      "name": "University of Art",
+      "title": "University of Art",
+      "lat": 35.70333333333333,
+      "lon": 51.406388888888884,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/University_of_Art",
+      "distKm": 0
+    },
+    {
+      "pageid": 67545089,
+      "name": "Vali-e-Asr Mosque",
+      "title": "Vali-e-Asr Mosque",
+      "lat": 35.699474,
+      "lon": 51.405541,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Vali-e-Asr_Mosque",
+      "distKm": 0
+    },
+    {
+      "pageid": 71586343,
+      "name": "Verkhospassky Cathedral",
+      "title": "Verkhospassky Cathedral",
+      "lat": 55.75055555555556,
+      "lon": 37.61611111111111,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Verkhospassky_Cathedral",
+      "distKm": 0
+    },
+    {
+      "pageid": 39002272,
+      "name": "Victorious War Museum",
+      "title": "Victorious War Museum",
+      "lat": 39.03833,
+      "lon": 125.74056,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Victorious_War_Museum",
+      "distKm": 0
+    },
+    {
+      "pageid": 23196052,
+      "name": "Vyzakia",
+      "title": "Vyzakia",
+      "lat": 35.0775,
+      "lon": 33.01444444444444,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Vyzakia",
+      "distKm": 0
+    },
+    {
+      "pageid": 35220544,
+      "name": "Washington Bookshop",
+      "title": "Washington Bookshop",
+      "lat": 38.9021,
+      "lon": -77.0396,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Washington_Bookshop",
+      "distKm": 0
+    },
+    {
+      "pageid": 17664504,
+      "name": "White House Conference Center",
+      "title": "White House Conference Center",
+      "lat": 38.89952777777778,
+      "lon": -77.03816666666667,
+      "extract": "The White House Conference Center is an annex building of the White House in Washington, D.C. The Colonial Revival building is located across Pennsylvania Avenue at 726 Jackson Place and was used as a temporary press location during remodeling of the James S. Brady Press Briefing Room from August 20",
+      "url": "https://en.wikipedia.org/wiki/White_House_Conference_Center",
+      "distKm": 0
+    },
+    {
+      "pageid": 15203452,
+      "name": "White House Office of Presidential Correspondence",
+      "title": "White House Office of Presidential Correspondence",
+      "lat": 38.89756666666667,
+      "lon": -77.03914722222223,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/White_House_Office_of_Presidential_Correspondence",
+      "distKm": 0
+    },
+    {
+      "pageid": 33251189,
+      "name": "Winder Building",
+      "title": "Winder Building",
+      "lat": 38.8975,
+      "lon": -77.04027777777777,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Winder_Building",
+      "distKm": 0
+    },
+    {
+      "pageid": 37322288,
+      "name": "World Bank Infoshop",
+      "title": "World Bank Infoshop",
+      "lat": 38.899,
+      "lon": -77.041,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/World_Bank_Infoshop",
+      "distKm": 0
+    },
+    {
+      "pageid": 23196413,
+      "name": "Xyliatos",
+      "title": "Xyliatos",
+      "lat": 35.028888888888886,
+      "lon": 33.04138888888889,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Xyliatos",
+      "distKm": 0
+    },
+    {
+      "pageid": 78807562,
+      "name": "Yenik\u00f6y Cemetery",
+      "title": "Yenik\u00f6y Cemetery",
+      "lat": 41.11832,
+      "lon": 29.05661,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Yenik%C3%B6y_Cemetery",
+      "distKm": 0
+    },
+    {
+      "pageid": 16665362,
+      "name": "Yenik\u00f6y Synagogue",
+      "title": "Yenik\u00f6y Synagogue",
+      "lat": 41.118275,
+      "lon": 29.066256,
+      "extract": "The Yenik\u00f6y Synagogue (Turkish: Yenik\u00f6y Sinagogu), also known as the Tiferet Israel Synagogue, is a Jewish congregation and synagogue, located at 132 K\u00f6yba\u015f\u0131 Avenue, along the northern part of the Bosphorus in the Yenik\u00f6y neighborhood of Istanbul, in the Istanbul Province of Turkey. \nThe synagogue, ",
+      "url": "https://en.wikipedia.org/wiki/Yenik%C3%B6y_Synagogue",
+      "distKm": 0
+    },
+    {
+      "pageid": 23176834,
+      "name": "Yenik\u00f6y, Sar\u0131yer",
+      "title": "Yenik\u00f6y, Sar\u0131yer",
+      "lat": 41.118,
+      "lon": 29.066,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Yenik%C3%B6y,_Sar%C4%B1yer",
+      "distKm": 0
+    },
+    {
+      "pageid": 25999911,
+      "name": "Yongmyong Temple",
+      "title": "Yongmyong Temple",
+      "lat": 39.0415,
+      "lon": 125.762,
+      "extract": "Yongmyong Temple (Korean: \uc601\uba85\uc0ac; MR: Y\u014fngmy\u014fngsa) was a Korean Buddhist temple located at the foot of Moranbong hill in Pyongyang, North Korea. Prior to its destruction in the Korean War, it was the largest and most important center of Buddhist worship in Pyongyang. It is unknown when the temple was f",
+      "url": "https://en.wikipedia.org/wiki/Yongmyong_Temple",
+      "distKm": 0
+    },
+    {
+      "pageid": 43052212,
+      "name": "Zargarian Synagogue",
+      "title": "Zargarian Synagogue",
+      "lat": 35.707145,
+      "lon": 51.389491,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Zargarian_Synagogue",
+      "distKm": 0
+    },
+    {
+      "pageid": 29243765,
+      "name": "Zemlyanoy Gorod",
+      "title": "Zemlyanoy Gorod",
+      "lat": 55.75,
+      "lon": 37.61666666666667,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Zemlyanoy_Gorod",
+      "distKm": 0
+    },
+    {
+      "pageid": 4790420,
+      "name": "Zhengyangmen",
+      "title": "Zhengyangmen",
+      "lat": 39.899166666666666,
+      "lon": 116.39147222222223,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Zhengyangmen",
+      "distKm": 0
+    },
+    {
+      "pageid": 45328703,
+      "name": "Zhushikou station",
+      "title": "Zhushikou station",
+      "lat": 39.8912,
+      "lon": 116.3982,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/Zhushikou_station",
+      "distKm": 0
+    },
+    {
+      "pageid": 54523812,
+      "name": "\u00c7ubuklu",
+      "title": "\u00c7ubuklu",
+      "lat": 41.1075,
+      "lon": 29.080555555555556,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/%C3%87ubuklu",
+      "distKm": 0
+    },
+    {
+      "pageid": 45100481,
+      "name": "\u0130.T.\u00dc.\u2014Ayaza\u011fa (Istanbul Metro)",
+      "title": "\u0130.T.\u00dc.\u2014Ayaza\u011fa (Istanbul Metro)",
+      "lat": 41.1302,
+      "lon": 29.025,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/%C4%B0.T.%C3%9C.%E2%80%94Ayaza%C4%9Fa_(Istanbul_Metro)",
+      "distKm": 0
+    },
+    {
+      "pageid": 50796985,
+      "name": "\u0130skender Pasha Mosque, Kanl\u0131ca",
+      "title": "\u0130skender Pasha Mosque, Kanl\u0131ca",
+      "lat": 41.10002,
+      "lon": 29.06587,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/%C4%B0skender_Pasha_Mosque,_Kanl%C4%B1ca",
+      "distKm": 0
+    },
+    {
+      "pageid": 5490160,
+      "name": "\u0130stinye",
+      "title": "\u0130stinye",
+      "lat": 41.11527777777778,
+      "lon": 29.054166666666667,
+      "extract": "\u0130stinye is a neighbourhood in the municipality and district of Sar\u0131yer, Istanbul Province, Turkey. Its population was 15,721 in 2022. It is on the European side of the city between the neighbourhoods of Emirgan and Yenik\u00f6y, on the northwestern shore of the Bosporus strait.\nIn classical antiquity it ",
+      "url": "https://en.wikipedia.org/wiki/%C4%B0stinye",
+      "distKm": 0
+    },
+    {
+      "pageid": 21668561,
+      "name": "\u0130stinye Park",
+      "title": "\u0130stinye Park",
+      "lat": 41.11043888888889,
+      "lon": 29.032919444444442,
+      "extract": "",
+      "url": "https://en.wikipedia.org/wiki/%C4%B0stinye_Park",
+      "distKm": 0
+    }
+  ]
+}

@@ -8,7 +8,7 @@ import { registerLayerLoader } from '../layerregistry.js';
 
 const layer = createDataLayer({
   layerKey: 'mines',
-  dataUrl: 'data/mines.json',
+  dataUrl: 'data/layers/points/mines.json',
   idPrefix: 'mine',
   iconSize: DISPLAY.MINE_ICON_SIZE,
   countId: 'mines-count',
@@ -23,7 +23,7 @@ const layer = createDataLayer({
   },
 });
 
-registerLayerLoader('mines', { load: layer.load, flyTo: layer.FLY_TO, reset: layer.reset, dataUrl: 'data/mines.json' });
+registerLayerLoader('mines', { load: layer.load, flyTo: layer.FLY_TO, reset: layer.reset, dataUrl: 'data/layers/points/mines.json' });
 
 export const fetchMines    = layer.load;
 export const isMinesLoaded = layer.isLoaded;

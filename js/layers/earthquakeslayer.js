@@ -8,7 +8,7 @@ import { registerLayerLoader } from '../layerregistry.js';
 
 const layer = createDataLayer({
   layerKey: 'earthquakes',
-  dataUrl: 'data/earthquakes.json',
+  dataUrl: 'data/layers/points/earthquakes.json',
   idPrefix: 'quake',
   iconSize: DISPLAY.MINE_ICON_SIZE,
   countId: 'earthquakes-count',
@@ -21,7 +21,7 @@ const layer = createDataLayer({
   },
 });
 
-registerLayerLoader('earthquakes', { load: layer.load, flyTo: layer.FLY_TO, reset: layer.reset, dataUrl: 'data/earthquakes.json' });
+registerLayerLoader('earthquakes', { load: layer.load, flyTo: layer.FLY_TO, reset: layer.reset, dataUrl: 'data/layers/points/earthquakes.json' });
 
 export const fetchEarthquakes     = layer.load;
 export const isEarthquakesLoaded  = layer.isLoaded;

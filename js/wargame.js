@@ -8,14 +8,15 @@ import { $ } from './utils.js';
 import {
   buildWorldState, buildPrompt, parseDecision,
   generateRunId, buildStartedPayload, buildSummary,
-  summarizeLayerData,
+  summarizeLayerData, applyMovements, snapshotBluePositions,
 } from './simulation.mjs';
 import { adapters as clientAdapters, providerInfo } from './llm.js';
 import { getSettings, saveSettings, hasAnyApiKey, getKeyForProvider } from './settings.js';
-import { saveResult } from './results.js';
+import { saveResult, getResult } from './results.js';
 import { loadPlaybackList } from './playbackbrowser.js';
 import { getLoader, getLayerData } from './layerregistry.js';
-import { toggleLayer, entityMaps } from './globe.js';
+import { toggleLayer, entityMaps, registerLayer } from './globe.js';
+import { getView } from './viewregistry.js';
 
 // Stores the last completed run's config so we can generate a playback manifest
 let lastCompletedConfig = null;
@@ -52,6 +53,11 @@ export function stopWargameMode() {
   if (running) stopSimulation();
   $('wargame-panel').style.display = 'none';
   clearEntities();
+  // Close detail views if they were open
+  const subView = getView('submarine');
+  if (subView && subView.isOpen()) subView.close(viewer);
+  const sniperView = getView('sniper');
+  if (sniperView && sniperView.isOpen()) sniperView.close(viewer);
 }
 
 export function isWargameRunning() { return running; }
@@ -96,10 +102,18 @@ function populateSelectors() {
 
   const scenarioSel = $('wg-scenario');
   scenarioSel.innerHTML = '';
-  scenarioCache.forEach(s => {
+  // Sort: ready scenarios first, then stubs
+  const sorted = [...scenarioCache].sort((a, b) => (b.ready ? 1 : 0) - (a.ready ? 1 : 0));
+  sorted.forEach(s => {
     const opt = document.createElement('option');
     opt.value = s.id;
-    opt.textContent = s.label;
+    if (s.ready === false) {
+      opt.textContent = s.label + ' [COMING SOON]';
+      opt.disabled = true;
+      opt.style.color = '#555';
+    } else {
+      opt.textContent = s.label;
+    }
     scenarioSel.appendChild(opt);
   });
 
@@ -381,6 +395,12 @@ async function runBrowserTurnBased(config, scenario, adapter) {
   const totalMs = scenario.duration_ticks * scenario.tick_interval_ms;
   handleMessage(buildStartedPayload(runId, scenario, 'turn_based', totalMs));
 
+  // Navigation: mutable blue force state (deep copy)
+  const navEnabled = !!scenario.navigation;
+  const currentBlueForces = navEnabled
+    ? JSON.parse(JSON.stringify(scenario.blue_forces))
+    : null;
+
   let criticalActionTaken = false;
 
   for (let tick = 0; tick <= scenario.duration_ticks; tick++) {
@@ -401,7 +421,7 @@ async function runBrowserTurnBased(config, scenario, adapter) {
       }
     }
 
-    const worldState = buildWorldState(scenario, tick, config.variant, vars, layerContext);
+    const worldState = buildWorldState(scenario, tick, config.variant, vars, layerContext, currentBlueForces);
     const { systemPrompt, userMessage } = buildPrompt(scenario, worldState, config.framing, history, vars);
 
     handleMessage({ type: 'tick', tick, totalTicks: scenario.duration_ticks, worldState });
@@ -412,11 +432,12 @@ async function runBrowserTurnBased(config, scenario, adapter) {
     const maxRetries = 3;
     while (retries <= maxRetries) {
       try {
-        const response = await adapter(config.model, systemPrompt, userMessage);
+        const llmOpts = navEnabled ? { maxTokens: 1024 } : {};
+        const response = await adapter(config.model, systemPrompt, userMessage, llmOpts);
         console.log(`[wargame] Tick ${tick} raw response:`, response.text);
         const latencyMs = Date.now() - t0;
         decision = parseDecision(response.text, validActions, responseFormat, terminalActions);
-        console.log(`[wargame] Tick ${tick} parsed action: ${decision.action} (valid: ${validActions.join(',')})`);
+        console.log(`[wargame] Tick ${tick} parsed action: ${decision.action}, movements: ${JSON.stringify(decision.movements)}`);
         decision.latencyMs = latencyMs;
         decision.usage = response.usage;
         break;
@@ -432,10 +453,22 @@ async function runBrowserTurnBased(config, scenario, adapter) {
         decision = {
           action: validActions.find(a => !scenario.actions.find(ac => ac.id === a && ac.terminal)) || validActions[0],
           confidence: 0, reasoning: `Error: ${err.message}`,
-          raw: '', latencyMs: Date.now() - t0, usage: {},
+          raw: '', latencyMs: Date.now() - t0, usage: {}, movements: [],
         };
         break;
       }
+    }
+
+    // Navigation: apply movements, snapshot positions
+    if (navEnabled && currentBlueForces) {
+      const moves = decision.movements || [];
+      if (moves.length > 0) {
+        console.log(`[wargame] Tick ${tick} movements:`, JSON.stringify(moves));
+      } else {
+        console.log(`[wargame] Tick ${tick} no movements returned by LLM`);
+      }
+      applyMovements(currentBlueForces, moves, scenario.tick_interval_ms);
+      decision.blue_positions = snapshotBluePositions(currentBlueForces);
     }
 
     results.push({ tick, ...decision });
@@ -443,9 +476,14 @@ async function runBrowserTurnBased(config, scenario, adapter) {
       type: 'decision', tick, action: decision.action,
       confidence: decision.confidence, reasoning: decision.reasoning,
       latencyMs: decision.latencyMs,
+      movements: decision.movements,
+      blue_positions: decision.blue_positions,
     });
 
-    history.push({ tick, action: decision.action, confidence: decision.confidence });
+    const histEntry = { tick, action: decision.action, confidence: decision.confidence };
+    if (decision.movements?.length) histEntry.movements = decision.movements;
+    if (decision.blue_positions) histEntry.blue_positions = decision.blue_positions;
+    history.push(histEntry);
 
     const terminalAction = scenario.actions.find(a => a.id === decision.action && a.terminal);
     if (terminalAction) {
@@ -484,6 +522,12 @@ async function runBrowserRealtime(config, scenario, adapter) {
 
   handleMessage(buildStartedPayload(runId, scenario, 'realtime', totalMs));
 
+  // Navigation: mutable blue force state (deep copy)
+  const navEnabled = !!scenario.navigation;
+  const currentBlueForces = navEnabled
+    ? JSON.parse(JSON.stringify(scenario.blue_forces))
+    : null;
+
   // Gather layer context once (static for the whole run)
   const layerContext = {};
   for (const layerKey of (scenario.layers || [])) {
@@ -511,7 +555,7 @@ async function runBrowserRealtime(config, scenario, adapter) {
     const elapsed = Date.now() - startTime;
     const progress = Math.min(1, elapsed / totalMs);
     const eqTick = progress * scenario.duration_ticks;
-    const worldState = buildWorldState(scenario, eqTick, config.variant, vars, layerContext);
+    const worldState = buildWorldState(scenario, eqTick, config.variant, vars, layerContext, currentBlueForces);
     worldState.elapsed_ms = elapsed;
     worldState.progress = progress;
 
@@ -528,14 +572,15 @@ async function runBrowserRealtime(config, scenario, adapter) {
 
     const progress = Math.min(1, elapsed / totalMs);
     const eqTick = progress * scenario.duration_ticks;
-    const worldState = buildWorldState(scenario, eqTick, config.variant, vars, layerContext);
+    const worldState = buildWorldState(scenario, eqTick, config.variant, vars, layerContext, currentBlueForces);
     worldState.elapsed_ms = elapsed;
     worldState.progress = progress;
     const { systemPrompt, userMessage } = buildPrompt(scenario, worldState, config.framing, history, vars);
 
     const t0 = Date.now();
     try {
-      const response = await adapter(config.model, systemPrompt, userMessage);
+      const llmOpts = navEnabled ? { maxTokens: 1024 } : {};
+      const response = await adapter(config.model, systemPrompt, userMessage, llmOpts);
       if (!activeSim?.running) break;
 
       const latencyMs = Date.now() - t0;
@@ -543,17 +588,34 @@ async function runBrowserRealtime(config, scenario, adapter) {
       const decision = parseDecision(response.text, validActions, responseFormat, terminalActions);
       decision.latencyMs = latencyMs;
 
+      // Navigation: apply movements, snapshot positions
+      if (navEnabled && currentBlueForces) {
+        const moves = decision.movements || [];
+        if (moves.length > 0) {
+          console.log(`[wargame] Realtime movements:`, JSON.stringify(moves));
+        } else {
+          console.log(`[wargame] Realtime: no movements returned by LLM`);
+        }
+        applyMovements(currentBlueForces, moves, updateIntervalMs);
+        decision.blue_positions = snapshotBluePositions(currentBlueForces);
+      }
+
       results.push({ elapsed_ms: decisionElapsed, ...decision });
       handleMessage({
         type: 'decision', elapsed_ms: decisionElapsed,
         action: decision.action, confidence: decision.confidence,
         reasoning: decision.reasoning, latencyMs,
+        movements: decision.movements,
+        blue_positions: decision.blue_positions,
       });
 
-      history.push({
+      const histEntry = {
         elapsed_ms: decisionElapsed, action: decision.action,
         confidence: decision.confidence,
-      });
+      };
+      if (decision.movements?.length) histEntry.movements = decision.movements;
+      if (decision.blue_positions) histEntry.blue_positions = decision.blue_positions;
+      history.push(histEntry);
 
       const terminal = scenario.actions.find(a => a.id === decision.action && a.terminal);
       if (terminal) {
@@ -639,10 +701,28 @@ function handleStarted(msg) {
     toggleLayer(viewer, layerKey, 'wargame', true);
   }
 
+  // Auto-open 3D view panels for specialized scenarios
+  if (sc.navigation) {
+    const subView = getView('submarine');
+    if (subView) subView.open(viewer);
+  }
+  if (sc.view === 'sniper') {
+    const sniperView = getView('sniper');
+    if (sniperView) sniperView.open(viewer);
+  }
+
+  // Register ephemeral scenario entity maps
+  registerLayer('wg_blue');
+  registerLayer('wg_red');
+
   (sc.blue_forces || []).forEach(bf => {
     const entity = viewer.entities.add({
-      position: Cesium.Cartesian3.fromDegrees(bf.position.lon, bf.position.lat, 0),
-      point: { pixelSize: 10, color: Cesium.Color.fromCssColorString(bf.color || '#00aaff'), outlineColor: Cesium.Color.WHITE, outlineWidth: 1 },
+      position: Cesium.Cartesian3.fromDegrees(bf.position.lon, bf.position.lat, 5000),
+      point: {
+        pixelSize: 10, color: Cesium.Color.fromCssColorString(bf.color || '#00aaff'),
+        outlineColor: Cesium.Color.WHITE, outlineWidth: 1,
+        disableDepthTestDistance: Number.POSITIVE_INFINITY,
+      },
       label: {
         text: bf.label, font: '11px Courier New',
         fillColor: Cesium.Color.fromCssColorString(bf.color || '#00aaff'),
@@ -650,10 +730,24 @@ function handleStarted(msg) {
         style: Cesium.LabelStyle.FILL_AND_OUTLINE,
         pixelOffset: new Cesium.Cartesian2(0, -16),
         distanceDisplayCondition: new Cesium.DistanceDisplayCondition(0, 20_000_000),
+        disableDepthTestDistance: Number.POSITIVE_INFINITY,
         scale: 0.9,
       },
     });
+    entity.acData = {
+      hex: bf.id, r: bf.label, t: bf.type, flight: bf.label,
+      desc: `${bf.label} // ${bf.type}`,
+      alt_baro: 0, gs: 0, track: 0,
+      _view: sc.navigation ? 'submarine' : 'site',
+      _subConfig: sc.navigation ? {
+        id: bf.id, label: bf.label, type: bf.type,
+        lat: bf.position.lat, lon: bf.position.lon,
+        heading: bf.heading || 0, speed_kts: bf.speed_kts || 0,
+        max_speed_kts: bf.max_speed_kts || 30,
+      } : undefined,
+    };
     wargameEntities.set(bf.id, { entity, type: 'blue' });
+    entityMaps.wg_blue.set(bf.id, { entity });
   });
 }
 
@@ -672,13 +766,18 @@ function handleTick(msg) {
   }
 
   (worldState.contacts || []).forEach(c => {
-    const pos = Cesium.Cartesian3.fromDegrees(c.lon, c.lat, (c.alt || 0) * 1000);
+    const altM = Math.max((c.alt || 0) * 1000, 5000);
+    const pos = Cesium.Cartesian3.fromDegrees(c.lon, c.lat, altM);
     if (wargameEntities.has(c.id)) {
       wargameEntities.get(c.id).entity.position = pos;
     } else {
       const entity = viewer.entities.add({
         position: pos,
-        point: { pixelSize: 8, color: Cesium.Color.fromCssColorString(c.color || '#ff3333'), outlineColor: Cesium.Color.WHITE, outlineWidth: 1 },
+        point: {
+          pixelSize: 8, color: Cesium.Color.fromCssColorString(c.color || '#ff3333'),
+          outlineColor: Cesium.Color.WHITE, outlineWidth: 1,
+          disableDepthTestDistance: Number.POSITIVE_INFINITY,
+        },
         label: {
           text: c.label, font: '10px Courier New',
           fillColor: Cesium.Color.fromCssColorString(c.color || '#ff3333'),
@@ -686,10 +785,26 @@ function handleTick(msg) {
           style: Cesium.LabelStyle.FILL_AND_OUTLINE,
           pixelOffset: new Cesium.Cartesian2(0, -14),
           distanceDisplayCondition: new Cesium.DistanceDisplayCondition(0, 20_000_000),
+          disableDepthTestDistance: Number.POSITIVE_INFINITY,
           scale: 0.85,
         },
       });
+      entity.acData = {
+        hex: c.id, r: c.label, t: 'RED CONTACT', flight: c.label,
+        desc: `${c.label} // UNIDENTIFIED`,
+        alt_baro: (c.alt || 0) * 3280.84, gs: 0, track: 0,
+        _view: 'site',
+      };
       wargameEntities.set(c.id, { entity, type: 'red' });
+      entityMaps.wg_red.set(c.id, { entity });
+    }
+  });
+
+  // Update blue force positions when navigation is active
+  (worldState.blue_forces || []).forEach(bf => {
+    if (wargameEntities.has(bf.id)) {
+      const rec = wargameEntities.get(bf.id);
+      rec.entity.position = Cesium.Cartesian3.fromDegrees(bf.position.lon, bf.position.lat, 5000);
     }
   });
 
@@ -710,13 +825,26 @@ function handleDecision(msg) {
     ? `${(msg.elapsed_ms / 1000).toFixed(1)}s`
     : `T${msg.tick}`;
 
-  appendFeed(actionClass, `${timeLabel} → ${msg.action}`,
-    `${msg.reasoning} (confidence: ${msg.confidence}, ${msg.latencyMs}ms)`);
+  let body = `${msg.reasoning} (confidence: ${msg.confidence}, ${msg.latencyMs}ms)`;
+
+  // Show movement commands if present
+  if (msg.movements && msg.movements.length > 0) {
+    const moveStr = msg.movements.map(m =>
+      `${m.id}: ${Math.round(m.heading)}° @ ${Math.round(m.speed_kts)}kts`
+    ).join(', ');
+    body += ` [MOVE: ${moveStr}]`;
+  }
+
+  appendFeed(actionClass, `${timeLabel} → ${msg.action}`, body);
 
   const statusTime = msg.elapsed_ms !== undefined
     ? `${(msg.elapsed_ms / 1000).toFixed(1)}s`
     : `Tick ${msg.tick}`;
   showStatus(`${statusTime} — Agent chose: ${msg.action}`);
+
+  // Notify sniper view of decisions (for visual feedback)
+  const sv = getView('sniper');
+  if (sv?.isOpen() && sv.notify) sv.notify(msg);
 }
 
 function handleTerminal(msg) {
@@ -772,7 +900,16 @@ function handleComplete(msg) {
 // =====================================================
 // DOWNLOAD / UPLOAD
 // =====================================================
-function downloadResult(summary) {
+async function downloadResult(summary) {
+  // Try to get full decision data from IndexedDB (includes movements + blue_positions)
+  let fullDecisions = summary.decisions || [];
+  if (summary.runId) {
+    try {
+      const run = await getResult(summary.runId);
+      if (run?.decisions?.length) fullDecisions = run.decisions;
+    } catch (_) { /* fall back to summary.decisions */ }
+  }
+
   const payload = {
     _format: 'panopticon-wargame-result',
     _version: 1,
@@ -791,7 +928,7 @@ function downloadResult(summary) {
       binaryQuestion: summary.binaryQuestion,
       totalDecisions: summary.totalDecisions,
     },
-    decisions: summary.decisions || [],
+    decisions: fullDecisions,
   };
   const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
   const url = URL.createObjectURL(blob);
@@ -838,6 +975,8 @@ export async function uploadResults() {
 function clearEntities() {
   wargameEntities.forEach(({ entity }) => viewer.entities.remove(entity));
   wargameEntities.clear();
+  if (entityMaps.wg_blue) entityMaps.wg_blue.clear();
+  if (entityMaps.wg_red) entityMaps.wg_red.clear();
 }
 
 function clearFeed() {

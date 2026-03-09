@@ -4,6 +4,48 @@
    with the layer registry. No exports — side-effect only.
    =================================================================== */
 
+// Critical minerals layers
+import './lithiumlayer.js';
+import './cobaltlayer.js';
+import './nickellayer.js';
+import './graphitelayer.js';
+import './manganeselayer.js';
+import './vanadiumlayer.js';
+import './reelightlayer.js';
+import './reehavylayer.js';
+import './copperlayer.js';
+import './bauxitelayer.js';
+import './siliconlayer.js';
+import './tinlayer.js';
+import './galliumlayer.js';
+import './germaniumlayer.js';
+import './indiumlayer.js';
+import './tantalumlayer.js';
+import './niobiumlayer.js';
+import './tungstenlayer.js';
+import './titaniumlayer.js';
+import './berylliumlayer.js';
+import './chromiumlayer.js';
+import './antimonylayer.js';
+import './platinumlayer.js';
+import './palladiumlayer.js';
+import './uraniumlayer.js';
+import './telluriumlayer.js';
+import './fluorsparlayer.js';
+import './magnesiumlayer.js';
+import './zinclayer.js';
+import './phosphatelayer.js';
+import './iridiumlayer.js';
+import './rhodiumlayer.js';
+import './molybdenumlayer.js';
+import './zirconiumlayer.js';
+import './hafniumlayer.js';
+import './seleniumlayer.js';
+import './bismuthlayer.js';
+import './cadmiumlayer.js';
+import './silverlayer.js';
+import './scandiumlayer.js';
+
 // Data layers (createDataLayer)
 import './mines.js';
 import './infrastructure.js';
@@ -54,3 +96,12 @@ import './fishingfleetslayer.js';
 // Bespoke layers
 import './airports.js';
 import './webcams.js';
+import './underwatercams.js';
+
+// Ambient layers
+import './kalshilayer.js';
+import './cryptolayer.js';
+import './commoditieslayer.js';
+import './newslayer.js';
+import './whalebtclayer.js';
+import './wikipedialayer.js';

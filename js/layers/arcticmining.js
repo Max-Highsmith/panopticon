@@ -8,7 +8,7 @@ import { registerLayerLoader } from '../layerregistry.js';
 
 const layer = createDataLayer({
   layerKey: 'arcticmining',
-  dataUrl: 'data/arctic_mining.json',
+  dataUrl: 'data/layers/points/arctic_mining.json',
   idPrefix: 'arctic',
   iconSize: DISPLAY.MINE_ICON_SIZE,
   countId: 'arcticmining-count',
@@ -22,7 +22,7 @@ const layer = createDataLayer({
   },
 });
 
-registerLayerLoader('arcticmining', { load: layer.load, flyTo: layer.FLY_TO, reset: layer.reset, dataUrl: 'data/arctic_mining.json' });
+registerLayerLoader('arcticmining', { load: layer.load, flyTo: layer.FLY_TO, reset: layer.reset, dataUrl: 'data/layers/points/arctic_mining.json' });
 
 export const fetchArcticMining     = layer.load;
 export const isArcticMiningLoaded  = layer.isLoaded;

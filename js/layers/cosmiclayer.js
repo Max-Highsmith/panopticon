@@ -8,7 +8,7 @@ import { registerLayerLoader } from '../layerregistry.js';
 
 const layer = createDataLayer({
   layerKey: 'cosmic',
-  dataUrl: 'data/cosmic_radiation.json',
+  dataUrl: 'data/layers/points/cosmic_radiation.json',
   idPrefix: 'cosm',
   iconSize: DISPLAY.MINE_ICON_SIZE,
   countId: 'cosmic-count',
@@ -19,7 +19,7 @@ const layer = createDataLayer({
   },
 });
 
-registerLayerLoader('cosmic', { load: layer.load, flyTo: layer.FLY_TO, reset: layer.reset, dataUrl: 'data/cosmic_radiation.json' });
+registerLayerLoader('cosmic', { load: layer.load, flyTo: layer.FLY_TO, reset: layer.reset, dataUrl: 'data/layers/points/cosmic_radiation.json' });
 
 export const fetchCosmic     = layer.load;
 export const isCosmicLoaded  = layer.isLoaded;

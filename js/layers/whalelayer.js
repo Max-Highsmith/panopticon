@@ -7,7 +7,7 @@ import { registerLayerLoader } from '../layerregistry.js';
 
 const layer = createPathLayer({
   layerKey: 'whales',
-  dataUrl: 'data/whale_migrations.json',
+  layerType: 'path', dataUrl: 'data/layers/paths/whale_migrations.json',
   idPrefix: 'whale',
   countId: 'whales-count',
   logLabel: 'WHALES',
@@ -19,7 +19,7 @@ const layer = createPathLayer({
   },
 });
 
-registerLayerLoader('whales', { load: layer.load, flyTo: layer.FLY_TO, reset: layer.reset, dataUrl: 'data/whale_migrations.json' });
+registerLayerLoader('whales', { load: layer.load, flyTo: layer.FLY_TO, reset: layer.reset, layerType: 'path', dataUrl: 'data/layers/paths/whale_migrations.json' });
 
 export const fetchWhales     = layer.load;
 export const isWhalesLoaded  = layer.isLoaded;

@@ -8,7 +8,7 @@ import { registerLayerLoader } from '../layerregistry.js';
 
 const layer = createDataLayer({
   layerKey: 'volcanoes',
-  dataUrl: 'data/volcanoes.json',
+  dataUrl: 'data/layers/points/volcanoes.json',
   idPrefix: 'volc',
   iconSize: DISPLAY.MINE_ICON_SIZE,
   countId: 'volcanoes-count',
@@ -22,7 +22,7 @@ const layer = createDataLayer({
   },
 });
 
-registerLayerLoader('volcanoes', { load: layer.load, flyTo: layer.FLY_TO, reset: layer.reset, dataUrl: 'data/volcanoes.json' });
+registerLayerLoader('volcanoes', { load: layer.load, flyTo: layer.FLY_TO, reset: layer.reset, dataUrl: 'data/layers/points/volcanoes.json' });
 
 export const fetchVolcanoes     = layer.load;
 export const isVolcanoesLoaded  = layer.isLoaded;

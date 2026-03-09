@@ -1,0 +1,189 @@
+{
+  "_source": {
+    "description": "Commodity prices across energy, metals, and agriculture categories",
+    "origin": "Compiled from: World Bank Commodity Price Data (Pink Sheet) — https://www.worldbank.org/en/research/commodity-markets; EIA Short-Term Energy Outlook — https://www.eia.gov/outlooks/steo/; LME — https://www.lme.com; Fortune/JM Bullion precious metals quotes; USDA WASDE — https://www.usda.gov/about-usda/general-information/staff-offices/office-chief-economist/commodity-markets/wasde-report",
+    "retrieved": "2026-03-08",
+    "license": "CC-BY 4.0 (World Bank), public domain (EIA, USDA)",
+    "notes": "Energy prices reflect Iran conflict surge (March 2026). Precious metals at multi-year highs. Agriculture prices from USDA 2026 marketing year projections. All prices in nominal USD."
+  },
+  "snapshot_ts": "2026-03-08T00:00:00Z",
+  "categories": ["Agriculture", "Base Metals", "Energy", "Precious Metals"],
+  "commodities": [
+    {
+      "name": "Brent Crude Oil",
+      "indicator": "CRUDE_BRENT",
+      "category": "Energy",
+      "price": 114.25,
+      "unit": "$/bbl",
+      "change_pct": 35.0
+    },
+    {
+      "name": "WTI Crude Oil",
+      "indicator": "CRUDE_WTI",
+      "category": "Energy",
+      "price": 114.90,
+      "unit": "$/bbl",
+      "change_pct": 35.0
+    },
+    {
+      "name": "Natural Gas (US)",
+      "indicator": "NGAS_US",
+      "category": "Energy",
+      "price": 4.30,
+      "unit": "$/mmbtu",
+      "change_pct": 8.5
+    },
+    {
+      "name": "Coal (Australian)",
+      "indicator": "COAL_AUS",
+      "category": "Energy",
+      "price": 133.40,
+      "unit": "$/mt",
+      "change_pct": 4.2
+    },
+    {
+      "name": "Gold",
+      "indicator": "GOLD",
+      "category": "Precious Metals",
+      "price": 5100.58,
+      "unit": "$/toz",
+      "change_pct": 1.2
+    },
+    {
+      "name": "Silver",
+      "indicator": "SILVER",
+      "category": "Precious Metals",
+      "price": 85.29,
+      "unit": "$/toz",
+      "change_pct": 3.5
+    },
+    {
+      "name": "Platinum",
+      "indicator": "PLATINUM",
+      "category": "Precious Metals",
+      "price": 1430.0,
+      "unit": "$/toz",
+      "change_pct": 2.1
+    },
+    {
+      "name": "Copper",
+      "indicator": "COPPER",
+      "category": "Base Metals",
+      "price": 12800.0,
+      "unit": "$/mt",
+      "change_pct": 5.8
+    },
+    {
+      "name": "Aluminum",
+      "indicator": "ALUMINUM",
+      "category": "Base Metals",
+      "price": 2720.0,
+      "unit": "$/mt",
+      "change_pct": 1.5
+    },
+    {
+      "name": "Nickel",
+      "indicator": "NICKEL",
+      "category": "Base Metals",
+      "price": 16200.0,
+      "unit": "$/mt",
+      "change_pct": -1.8
+    },
+    {
+      "name": "Zinc",
+      "indicator": "ZINC",
+      "category": "Base Metals",
+      "price": 3220.0,
+      "unit": "$/mt",
+      "change_pct": 0.9
+    },
+    {
+      "name": "Tin",
+      "indicator": "TIN",
+      "category": "Base Metals",
+      "price": 30500.0,
+      "unit": "$/mt",
+      "change_pct": 3.2
+    },
+    {
+      "name": "Lead",
+      "indicator": "LEAD",
+      "category": "Base Metals",
+      "price": 2100.0,
+      "unit": "$/mt",
+      "change_pct": -0.8
+    },
+    {
+      "name": "Iron Ore",
+      "indicator": "IRON_ORE",
+      "category": "Base Metals",
+      "price": 108.0,
+      "unit": "$/dmt",
+      "change_pct": -3.5
+    },
+    {
+      "name": "Wheat (US HRW)",
+      "indicator": "WHEAT_US_HRW",
+      "category": "Agriculture",
+      "price": 233.0,
+      "unit": "$/mt",
+      "change_pct": 5.0
+    },
+    {
+      "name": "Corn/Maize",
+      "indicator": "MAIZE",
+      "category": "Agriculture",
+      "price": 173.0,
+      "unit": "$/mt",
+      "change_pct": 2.3
+    },
+    {
+      "name": "Rice (Thai 5%)",
+      "indicator": "RICE_05",
+      "category": "Agriculture",
+      "price": 540.0,
+      "unit": "$/mt",
+      "change_pct": -2.1
+    },
+    {
+      "name": "Soybeans",
+      "indicator": "SOYBEANS",
+      "category": "Agriculture",
+      "price": 393.0,
+      "unit": "$/mt",
+      "change_pct": 1.8
+    },
+    {
+      "name": "Sugar (World)",
+      "indicator": "SUGAR_WLD",
+      "category": "Agriculture",
+      "price": 44.50,
+      "unit": "cents/kg",
+      "change_pct": 6.2
+    },
+    {
+      "name": "Coffee (Arabica)",
+      "indicator": "COFFEE_ARABIC",
+      "category": "Agriculture",
+      "price": 850.0,
+      "unit": "cents/kg",
+      "change_pct": 12.5
+    },
+    {
+      "name": "Cocoa",
+      "indicator": "COCOA",
+      "category": "Agriculture",
+      "price": 11.20,
+      "unit": "$/kg",
+      "change_pct": 18.5
+    },
+    {
+      "name": "Cotton",
+      "indicator": "COTTON_A_INDX",
+      "category": "Agriculture",
+      "price": 185.0,
+      "unit": "cents/kg",
+      "change_pct": -1.5
+    }
+  ]
+}

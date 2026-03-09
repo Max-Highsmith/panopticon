@@ -9,7 +9,7 @@ import { registerLayerLoader } from '../layerregistry.js';
 
 const layer = createDataLayer({
   layerKey: 'strategicnuclear',
-  dataUrl: 'data/strategic_nuclear.json',
+  dataUrl: 'data/layers/points/strategic_nuclear.json',
   idPrefix: 'strnuc',
   iconSize: DISPLAY.BASE_ICON_SIZE,
   countId: 'strategicnuclear-count',
@@ -24,7 +24,7 @@ const layer = createDataLayer({
   },
 });
 
-registerLayerLoader('strategicnuclear', { load: layer.load, flyTo: layer.FLY_TO, reset: layer.reset, dataUrl: 'data/strategic_nuclear.json' });
+registerLayerLoader('strategicnuclear', { load: layer.load, flyTo: layer.FLY_TO, reset: layer.reset, dataUrl: 'data/layers/points/strategic_nuclear.json' });
 
 export const fetchStrategicNuclear     = layer.load;
 export const isStrategicNuclearLoaded  = layer.isLoaded;

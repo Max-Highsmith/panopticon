@@ -1,0 +1,36 @@
+{
+  "_source": {
+    "description": "Recent large Bitcoin transactions (whale movements) from the mempool and recent blocks",
+    "origin": "mempool.space REST API \u2014 https://mempool.space/docs/api/rest",
+    "retrieved": "2026-03-09",
+    "license": "mempool.space is open source (AGPL-3.0). API is free, no authentication required.",
+    "notes": "Threshold set at 10 BTC. Transaction values calculated from output sums. USD estimates based on snapshot BTC price."
+  },
+  "snapshot_ts": "2026-03-09T03:46:28Z",
+  "btc_price_usd": 67145,
+  "threshold_btc": 10,
+  "transactions": [
+    {
+      "txid": "b2a7e739e8f3e9bb2f0e9e3b81bc14fcfcfc7040b0d90fd4c6b22fe8e591b912",
+      "value_btc": 219.3048,
+      "value_usd": 14725219.88,
+      "fee_sats": 124375,
+      "size": 11581,
+      "weight": 19783,
+      "time": "2026-03-09T03:18:54+00:00",
+      "inputs": 35,
+      "outputs": 2
+    },
+    {
+      "txid": "f731ff63508a16b5ae3eccef9e170b060666999a20d5aa74430123b3e8a49bda",
+      "value_btc": 38.0319,
+      "value_usd": 2553649.31,
+      "fee_sats": 10000,
+      "size": 248,
+      "weight": 662,
+      "time": "2026-03-09T03:33:03+00:00",
+      "inputs": 1,
+      "outputs": 2
+    }
+  ]
+}

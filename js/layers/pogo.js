@@ -6,6 +6,7 @@ import { API, DISPLAY } from '../config.js';
 import { $ } from '../utils.js';
 import { icons } from '../icons.js';
 import { layers, entityMaps } from '../globe.js';
+import { registerLayerLoader } from '../layerregistry.js';
 
 const entities = entityMaps.pokemon;
 let loaded = false;
@@ -57,3 +58,5 @@ out 300;`;
     $('pogo-count').textContent = 'ERR';
   }
 }
+
+registerLayerLoader('pokemon', { load: fetchPogoStops, reset: resetPogo, view: 'site', layerType: 'live' });

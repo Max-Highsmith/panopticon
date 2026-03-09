@@ -8,7 +8,7 @@ import { registerLayerLoader } from '../layerregistry.js';
 
 const layer = createDataLayer({
   layerKey: 'meteors',
-  dataUrl: 'data/meteor_impacts.json',
+  dataUrl: 'data/layers/points/meteor_impacts.json',
   idPrefix: 'mtr',
   iconSize: DISPLAY.MINE_ICON_SIZE,
   countId: 'meteors-count',
@@ -20,7 +20,7 @@ const layer = createDataLayer({
   },
 });
 
-registerLayerLoader('meteors', { load: layer.load, flyTo: layer.FLY_TO, reset: layer.reset, dataUrl: 'data/meteor_impacts.json' });
+registerLayerLoader('meteors', { load: layer.load, flyTo: layer.FLY_TO, reset: layer.reset, dataUrl: 'data/layers/points/meteor_impacts.json' });
 
 export const fetchMeteors     = layer.load;
 export const isMeteorsLoaded  = layer.isLoaded;

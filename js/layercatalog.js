@@ -6,9 +6,9 @@
 
 export const LAYER_CATALOG = [
   // === LIVE TRACKING ===
-  { key: 'military',     label: 'MILITARY',           shortLabel: 'MIL',      category: 'Live Tracking',  color: '#00ff41', defaultOn: true,  defaultPinned: true  },
-  { key: 'commercial',   label: 'COMMERCIAL',         shortLabel: 'CIV',      category: 'Live Tracking',  color: '#cccccc', defaultOn: true,  defaultPinned: true  },
-  { key: 'satellites',   label: 'SATELLITES',          shortLabel: 'SAT',      category: 'Live Tracking',  color: '#ffaa00', defaultOn: true,  defaultPinned: true  },
+  { key: 'military',     label: 'MILITARY',           shortLabel: 'MIL',      category: 'Live Tracking',  color: '#00ff41', defaultOn: false, defaultPinned: false },
+  { key: 'commercial',   label: 'COMMERCIAL',         shortLabel: 'CIV',      category: 'Live Tracking',  color: '#cccccc', defaultOn: false, defaultPinned: false },
+  { key: 'satellites',   label: 'SATELLITES',          shortLabel: 'SAT',      category: 'Live Tracking',  color: '#ffaa00', defaultOn: false, defaultPinned: false },
   { key: 'ships',        label: 'AIS SHIPS',           shortLabel: 'SHIPS',    category: 'Live Tracking',  color: '#4488ff', defaultOn: false, defaultPinned: false },
   { key: 'pokemon',      label: 'POKEMON GO',          shortLabel: 'POGO',     category: 'Live Tracking',  color: '#ff4444', defaultOn: false, defaultPinned: false },
 
@@ -19,6 +19,48 @@ export const LAYER_CATALOG = [
   { key: 'infra',        label: 'DATACENTERS',         shortLabel: 'INFRA',    category: 'Infrastructure', color: '#ff8800', defaultOn: false, defaultPinned: false },
   { key: 'nuclear',      label: 'NUCLEAR SITES',       shortLabel: 'NUCLEAR',  category: 'Infrastructure', color: '#ff2222', defaultOn: false, defaultPinned: false },
   { key: 'airports',     label: 'AIRPORTS',            shortLabel: 'AIRPORTS', category: 'Infrastructure', color: '#00ccff', defaultOn: false, defaultPinned: false },
+
+  // === CRITICAL MINERALS ===
+  { key: 'lithium',      label: 'LITHIUM',             shortLabel: 'Li',       category: 'Critical Minerals', color: '#00ddcc', defaultOn: false, defaultPinned: false },
+  { key: 'cobalt',       label: 'COBALT',              shortLabel: 'Co',       category: 'Critical Minerals', color: '#cc44ff', defaultOn: false, defaultPinned: false },
+  { key: 'nickel',       label: 'NICKEL',              shortLabel: 'Ni',       category: 'Critical Minerals', color: '#44cc88', defaultOn: false, defaultPinned: false },
+  { key: 'graphite',     label: 'GRAPHITE',            shortLabel: 'C',        category: 'Critical Minerals', color: '#888888', defaultOn: false, defaultPinned: false },
+  { key: 'manganese',    label: 'MANGANESE',           shortLabel: 'Mn',       category: 'Critical Minerals', color: '#cc6688', defaultOn: false, defaultPinned: false },
+  { key: 'vanadium',     label: 'VANADIUM',            shortLabel: 'V',        category: 'Critical Minerals', color: '#7744cc', defaultOn: false, defaultPinned: false },
+  { key: 'reelight',     label: 'RARE EARTH (LIGHT)',  shortLabel: 'La',       category: 'Critical Minerals', color: '#dd88ff', defaultOn: false, defaultPinned: false },
+  { key: 'reeheavy',     label: 'RARE EARTH (HEAVY)',  shortLabel: 'Dy',       category: 'Critical Minerals', color: '#ff66cc', defaultOn: false, defaultPinned: false },
+  { key: 'copper',       label: 'COPPER',              shortLabel: 'Cu',       category: 'Critical Minerals', color: '#cc7744', defaultOn: false, defaultPinned: false },
+  { key: 'bauxite',      label: 'BAUXITE / ALUMINUM',  shortLabel: 'Al',       category: 'Critical Minerals', color: '#dd8855', defaultOn: false, defaultPinned: false },
+  { key: 'silicon',      label: 'SILICON (MET.)',      shortLabel: 'Si',       category: 'Critical Minerals', color: '#8888cc', defaultOn: false, defaultPinned: false },
+  { key: 'tin',          label: 'TIN',                 shortLabel: 'Sn',       category: 'Critical Minerals', color: '#aabb99', defaultOn: false, defaultPinned: false },
+  { key: 'gallium',      label: 'GALLIUM',             shortLabel: 'Ga',       category: 'Critical Minerals', color: '#6688cc', defaultOn: false, defaultPinned: false },
+  { key: 'germanium',    label: 'GERMANIUM',           shortLabel: 'Ge',       category: 'Critical Minerals', color: '#7799bb', defaultOn: false, defaultPinned: false },
+  { key: 'indium',       label: 'INDIUM',              shortLabel: 'In',       category: 'Critical Minerals', color: '#5588bb', defaultOn: false, defaultPinned: false },
+  { key: 'tantalum',     label: 'TANTALUM',            shortLabel: 'Ta',       category: 'Critical Minerals', color: '#bb7744', defaultOn: false, defaultPinned: false },
+  { key: 'niobium',      label: 'NIOBIUM',             shortLabel: 'Nb',       category: 'Critical Minerals', color: '#cc8855', defaultOn: false, defaultPinned: false },
+  { key: 'tungsten',     label: 'TUNGSTEN',            shortLabel: 'W',        category: 'Critical Minerals', color: '#9999bb', defaultOn: false, defaultPinned: false },
+  { key: 'titanium',     label: 'TITANIUM',            shortLabel: 'Ti',       category: 'Critical Minerals', color: '#88aacc', defaultOn: false, defaultPinned: false },
+  { key: 'beryllium',    label: 'BERYLLIUM',           shortLabel: 'Be',       category: 'Critical Minerals', color: '#aacc88', defaultOn: false, defaultPinned: false },
+  { key: 'chromium',     label: 'CHROMIUM',            shortLabel: 'Cr',       category: 'Critical Minerals', color: '#dd5566', defaultOn: false, defaultPinned: false },
+  { key: 'antimony',     label: 'ANTIMONY',            shortLabel: 'Sb',       category: 'Critical Minerals', color: '#bb6699', defaultOn: false, defaultPinned: false },
+  { key: 'platinum',     label: 'PLATINUM',            shortLabel: 'Pt',       category: 'Critical Minerals', color: '#ccccee', defaultOn: false, defaultPinned: false },
+  { key: 'palladium',    label: 'PALLADIUM',           shortLabel: 'Pd',       category: 'Critical Minerals', color: '#bbbbdd', defaultOn: false, defaultPinned: false },
+  { key: 'uranium',      label: 'URANIUM',             shortLabel: 'U',        category: 'Critical Minerals', color: '#44dd44', defaultOn: false, defaultPinned: false },
+  { key: 'tellurium',    label: 'TELLURIUM',           shortLabel: 'Te',       category: 'Critical Minerals', color: '#779988', defaultOn: false, defaultPinned: false },
+  { key: 'fluorspar',    label: 'FLUORSPAR',           shortLabel: 'F',        category: 'Critical Minerals', color: '#66bbcc', defaultOn: false, defaultPinned: false },
+  { key: 'magnesium',    label: 'MAGNESIUM',           shortLabel: 'Mg',       category: 'Critical Minerals', color: '#99bb66', defaultOn: false, defaultPinned: false },
+  { key: 'zinc',         label: 'ZINC',                shortLabel: 'Zn',       category: 'Critical Minerals', color: '#8899aa', defaultOn: false, defaultPinned: false },
+  { key: 'phosphate',    label: 'PHOSPHATE',           shortLabel: 'P',        category: 'Critical Minerals', color: '#ccaa44', defaultOn: false, defaultPinned: false },
+  { key: 'iridium',      label: 'IRIDIUM',             shortLabel: 'Ir',       category: 'Critical Minerals', color: '#ccddee', defaultOn: false, defaultPinned: false },
+  { key: 'rhodium',      label: 'RHODIUM',             shortLabel: 'Rh',       category: 'Critical Minerals', color: '#ddccbb', defaultOn: false, defaultPinned: false },
+  { key: 'molybdenum',   label: 'MOLYBDENUM',          shortLabel: 'Mo',       category: 'Critical Minerals', color: '#4466aa', defaultOn: false, defaultPinned: false },
+  { key: 'zirconium',    label: 'ZIRCONIUM',           shortLabel: 'Zr',       category: 'Critical Minerals', color: '#88bbaa', defaultOn: false, defaultPinned: false },
+  { key: 'hafnium',      label: 'HAFNIUM',             shortLabel: 'Hf',       category: 'Critical Minerals', color: '#9988cc', defaultOn: false, defaultPinned: false },
+  { key: 'selenium',     label: 'SELENIUM',            shortLabel: 'Se',       category: 'Critical Minerals', color: '#cc6655', defaultOn: false, defaultPinned: false },
+  { key: 'bismuth',      label: 'BISMUTH',             shortLabel: 'Bi',       category: 'Critical Minerals', color: '#aa88cc', defaultOn: false, defaultPinned: false },
+  { key: 'cadmium',      label: 'CADMIUM',             shortLabel: 'Cd',       category: 'Critical Minerals', color: '#aa7755', defaultOn: false, defaultPinned: false },
+  { key: 'silver',       label: 'SILVER',              shortLabel: 'Ag',       category: 'Critical Minerals', color: '#cccccc', defaultOn: false, defaultPinned: false },
+  { key: 'scandium',     label: 'SCANDIUM',            shortLabel: 'Sc',       category: 'Critical Minerals', color: '#55ccaa', defaultOn: false, defaultPinned: false },
 
   // === RESOURCES ===
   { key: 'mines',        label: 'RESOURCE MINES',      shortLabel: 'MINES',    category: 'Resources',      color: '#cc44ff', defaultOn: false, defaultPinned: false },
@@ -91,7 +133,18 @@ export const LAYER_CATALOG = [
   { key: 'arcticdeposits', label: 'ARCTIC DEPOSITS',    shortLabel: 'ADEP',     category: 'Resources',      color: '#cc6633', defaultOn: false, defaultPinned: false },
 
   // === SURVEILLANCE ===
-  { key: 'webcams',      label: 'LIVE WEBCAMS',        shortLabel: 'CAMS',     category: 'Surveillance',   color: '#00ddff', defaultOn: false, defaultPinned: false },
+  { key: 'webcams',         label: 'LIVE WEBCAMS',        shortLabel: 'CAMS',     category: 'Surveillance',   color: '#00ddff', defaultOn: false, defaultPinned: false },
+  { key: 'underwatercams',  label: 'UNDERWATER CAMS',     shortLabel: 'OCEAN',    category: 'Surveillance',   color: '#00aaff', defaultOn: false, defaultPinned: false },
+
+  // === MARKETS ===
+  { key: 'kalshi',      label: 'PREDICTION MARKETS', shortLabel: 'MKTS',  category: 'Markets', color: '#ffaa00', defaultOn: false, defaultPinned: false },
+  { key: 'crypto',      label: 'CRYPTO MARKETS',     shortLabel: 'CRYPT', category: 'Markets', color: '#f7931a', defaultOn: false, defaultPinned: false },
+  { key: 'commodities', label: 'COMMODITY PRICES',    shortLabel: 'CMDTY', category: 'Markets', color: '#cc8844', defaultOn: false, defaultPinned: false },
+  { key: 'news',        label: 'TRENDING NEWS',       shortLabel: 'NEWS',  category: 'Markets', color: '#44aaff', defaultOn: false, defaultPinned: false },
+  { key: 'whalebtc',    label: 'BTC WHALE TXS',       shortLabel: 'WHALE', category: 'Markets', color: '#f7931a', defaultOn: false, defaultPinned: false },
+
+  // === REFERENCE ===
+  { key: 'wikipedia',  label: 'WIKIPEDIA GEO',       shortLabel: 'WIKI',  category: 'Reference', color: '#aaaaaa', defaultOn: false, defaultPinned: false },
 ];
 
 // Runtime additions (custom datasets, future layers)

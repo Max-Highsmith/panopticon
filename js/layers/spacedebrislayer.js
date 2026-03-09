@@ -8,7 +8,7 @@ import { registerLayerLoader } from '../layerregistry.js';
 
 const layer = createDataLayer({
   layerKey: 'spacedebris',
-  dataUrl: 'data/space_debris.json',
+  dataUrl: 'data/layers/points/space_debris.json',
   idPrefix: 'debris',
   iconSize: DISPLAY.CUSTOM_ICON_SIZE,
   countId: 'spacedebris-count',
@@ -21,7 +21,7 @@ const layer = createDataLayer({
   },
 });
 
-registerLayerLoader('spacedebris', { load: layer.load, flyTo: layer.FLY_TO, reset: layer.reset, dataUrl: 'data/space_debris.json' });
+registerLayerLoader('spacedebris', { load: layer.load, flyTo: layer.FLY_TO, reset: layer.reset, dataUrl: 'data/layers/points/space_debris.json' });
 
 export const fetchSpaceDebris     = layer.load;
 export const isSpaceDebrisLoaded  = layer.isLoaded;

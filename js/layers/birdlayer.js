@@ -7,7 +7,7 @@ import { registerLayerLoader } from '../layerregistry.js';
 
 const layer = createPathLayer({
   layerKey: 'birds',
-  dataUrl: 'data/bird_migration.json',
+  layerType: 'path', dataUrl: 'data/layers/paths/bird_migration.json',
   idPrefix: 'bird',
   countId: 'birds-count',
   logLabel: 'BIRDS',
@@ -19,7 +19,7 @@ const layer = createPathLayer({
   },
 });
 
-registerLayerLoader('birds', { load: layer.load, flyTo: layer.FLY_TO, reset: layer.reset, dataUrl: 'data/bird_migration.json' });
+registerLayerLoader('birds', { load: layer.load, flyTo: layer.FLY_TO, reset: layer.reset, layerType: 'path', dataUrl: 'data/layers/paths/bird_migration.json' });
 
 export const fetchBirds     = layer.load;
 export const isBirdsLoaded  = layer.isLoaded;

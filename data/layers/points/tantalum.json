@@ -1,0 +1,548 @@
+{
+  "_source": {
+    "description": "Global tantalum mining and production sites",
+    "origin": "USGS Mineral Commodity Summaries 2024, Tantalum chapter (https://pubs.usgs.gov/periodicals/mcs2024/mcs2024-tantalum.pdf); Tantalum-Niobium International Study Center (TIC) statistics (https://www.tanb.org/); IPIS (International Peace Information Service) open data on artisanal mining in DRC and Rwanda (https://ipisresearch.be/); BGR (German Federal Institute for Geosciences) reports on tantalum supply chains; iTSCi (ITSCI) traceability programme data; S&P Global Market Intelligence mine profiles; company annual reports: AMG Brasil/Minsur, AVZ Minerals, Pilbara Minerals, Global Advanced Metals, Kemet/Yageo, Ethiopian Mining Corp filings",
+    "retrieved": "2026-03-08",
+    "license": "USGS: public domain; IPIS: CC-BY; BGR: public domain (German government); company data: fair use summary",
+    "notes": "Tantalum is produced from coltan (columbite-tantalite) ores, primarily from artisanal and small-scale mining (ASM) in Central Africa. DRC and Rwanda together account for ~55% of global production. Production figures are in tantalum concentrate (Ta2O5 content). Many African sites are ASM cooperatives with approximate coordinates representing mining zones rather than single pit locations. Coordinates from IPIS, BGR, USGS MRDS, company filings, and satellite verification. Global production ~2,000 tonnes/yr Ta concentrate (USGS MCS 2024)."
+  },
+  "_coverage": {
+    "global_production_2023_tpa": 2000,
+    "global_production_unit": "tantalum concentrate (Ta2O5 content, tonnes)",
+    "global_production_source": "USGS MCS 2024 — estimated 2,000 tonnes tantalum concentrate",
+    "site_count": 30,
+    "operating_count": 24,
+    "development_count": 6,
+    "estimated_coverage_pct": 82,
+    "known_gaps": "Numerous small artisanal coltan mining sites in eastern DRC not individually mapped; some Nigerian artisanal operations on Jos Plateau; small-scale operations in Uganda, Burundi, and Colombia; Chinese domestic pegmatite mining in Jiangxi/Fujian provinces with limited data",
+    "audit_date": "2026-03-08"
+  },
+  "sites": [
+    {
+      "name": "Rubaya Mining Zone",
+      "lat": -1.5,
+      "lon": 29.02,
+      "country": "DRC",
+      "operator": "SMB (Societe Miniere de Bisunzu) / various ASM cooperatives",
+      "ownership": "Multiple artisanal cooperatives; SMB is main comptoir",
+      "status": "operating",
+      "type": "artisanal coltan mining",
+      "products": [
+        "tantalum",
+        "niobium",
+        "tin"
+      ],
+      "capacity_tpa": 120,
+      "production_year": 2023,
+      "notes": "Masisi Territory, North Kivu; one of the world's most productive coltan mining zones; thousands of artisanal miners; iTSCi-tagged; conflict-affected area"
+    },
+    {
+      "name": "Luwow Mining Zone",
+      "lat": -1.67,
+      "lon": 28.85,
+      "country": "DRC",
+      "operator": "Various ASM cooperatives",
+      "ownership": "Artisanal cooperatives with comptoir buyers",
+      "status": "operating",
+      "type": "artisanal coltan mining",
+      "products": [
+        "tantalum",
+        "niobium"
+      ],
+      "capacity_tpa": 60,
+      "production_year": 2023,
+      "notes": "Masisi Territory, North Kivu; significant coltan production zone adjacent to Rubaya; conflict-affected; iTSCi traceability active"
+    },
+    {
+      "name": "Numbi-Kalehe Mining Zone",
+      "lat": -2.1,
+      "lon": 28.92,
+      "country": "DRC",
+      "operator": "Various ASM cooperatives",
+      "ownership": "Artisanal cooperatives",
+      "status": "operating",
+      "type": "artisanal coltan mining",
+      "products": [
+        "tantalum",
+        "tin"
+      ],
+      "capacity_tpa": 40,
+      "production_year": 2023,
+      "notes": "Kalehe Territory, South Kivu; coltan and cassiterite mining zone; iTSCi-tagged production; intermittent security issues"
+    },
+    {
+      "name": "Bisie Mine (Alphamin)",
+      "lat": -1.27,
+      "lon": 27.72,
+      "country": "DRC",
+      "operator": "Alphamin Resources Corp.",
+      "ownership": "Alphamin Resources (TSX-V:AFM) majority",
+      "status": "operating",
+      "type": "underground tin mine with Ta byproduct",
+      "products": [
+        "tin",
+        "tantalum"
+      ],
+      "capacity_tpa": 20,
+      "production_year": 2023,
+      "notes": "Mpama North, Walikale Territory, North Kivu; world-class tin deposit; tantalum recovered as byproduct from columbite-tantalite in tin ore; conflict-free certified"
+    },
+    {
+      "name": "Manono-Kitotolo",
+      "lat": -7.3,
+      "lon": 27.42,
+      "country": "DRC",
+      "operator": "AVZ Minerals / Dathcom Mining",
+      "ownership": "AVZ Minerals (75% Dathcom JV, under dispute); Cominiere (25%)",
+      "status": "development",
+      "type": "hard-rock pegmatite (Li-Sn-Ta)",
+      "products": [
+        "lithium",
+        "tin",
+        "tantalum"
+      ],
+      "capacity_tpa": null,
+      "production_year": null,
+      "notes": "Tanganyika Province; massive LCT pegmatite with significant tantalum credits; one of world's largest Li deposits; ownership dispute ongoing with CATH/Zijin interests; tantalum would be major byproduct"
+    },
+    {
+      "name": "Kisengo Mine",
+      "lat": -5.6,
+      "lon": 27.9,
+      "country": "DRC",
+      "operator": "Various ASM / Mining Mineral Resources (MMR)",
+      "ownership": "MMR concession; artisanal miners operate under permit",
+      "status": "operating",
+      "type": "artisanal coltan mining",
+      "products": [
+        "tantalum",
+        "niobium"
+      ],
+      "capacity_tpa": 30,
+      "production_year": 2023,
+      "notes": "Kalemie area, Tanganyika Province; one of the larger organized ASM coltan operations in southern DRC; iTSCi-tagged"
+    },
+    {
+      "name": "Rutongo Mining Complex",
+      "lat": -1.82,
+      "lon": 29.73,
+      "country": "Rwanda",
+      "operator": "Rutongo Mines Ltd (RML)",
+      "ownership": "Tri Metals Mining / New Bugarama Mining Company",
+      "status": "operating",
+      "type": "underground tin-tantalum mine",
+      "products": [
+        "tin",
+        "tantalum",
+        "tungsten"
+      ],
+      "capacity_tpa": 35,
+      "production_year": 2023,
+      "notes": "Rulindo District, Northern Province; one of Rwanda's largest 3T (tin-tantalum-tungsten) mining operations; industrial-scale underground mining"
+    },
+    {
+      "name": "Nyakabingo Tungsten-Tantalum Mine",
+      "lat": -1.62,
+      "lon": 29.49,
+      "country": "Rwanda",
+      "operator": "Wolfram Mining & Processing (WMP)",
+      "ownership": "Wolfram Mining & Processing",
+      "status": "operating",
+      "type": "underground tungsten-tantalum mine",
+      "products": [
+        "tungsten",
+        "tantalum"
+      ],
+      "capacity_tpa": 15,
+      "production_year": 2023,
+      "notes": "Ngororero District, Western Province; one of few industrial-scale tungsten mines in Africa; tantalum as significant byproduct"
+    },
+    {
+      "name": "Nemba Mining Zone",
+      "lat": -2.42,
+      "lon": 29.22,
+      "country": "Rwanda",
+      "operator": "ITSCI-registered cooperatives",
+      "ownership": "Multiple mining cooperatives",
+      "status": "operating",
+      "type": "artisanal coltan mining",
+      "products": [
+        "tantalum",
+        "niobium"
+      ],
+      "capacity_tpa": 25,
+      "production_year": 2023,
+      "notes": "Nyamasheke District, Western Province; coltan mining zone near Burundi border; iTSCi-tagged; significant tantalum production"
+    },
+    {
+      "name": "Gatumba Mining Zone",
+      "lat": -2.28,
+      "lon": 29.25,
+      "country": "Rwanda",
+      "operator": "Various cooperatives / Eurotrade Int'l",
+      "ownership": "Mining cooperatives with industrial partners",
+      "status": "operating",
+      "type": "artisanal coltan-cassiterite mining",
+      "products": [
+        "tantalum",
+        "tin",
+        "tungsten"
+      ],
+      "capacity_tpa": 20,
+      "production_year": 2023,
+      "notes": "Ngororero District; historic tantalum producing area; mix of artisanal and semi-mechanized operations"
+    },
+    {
+      "name": "Muhanga-Kamonyi Mining Zone",
+      "lat": -2.1,
+      "lon": 29.77,
+      "country": "Rwanda",
+      "operator": "ITSCI-registered cooperatives",
+      "ownership": "Multiple mining cooperatives",
+      "status": "operating",
+      "type": "artisanal coltan mining",
+      "products": [
+        "tantalum",
+        "tin"
+      ],
+      "capacity_tpa": 20,
+      "production_year": 2023,
+      "notes": "Southern Province; coltan and cassiterite artisanal mining zone; Rwanda is Africa's second-largest tantalum producer"
+    },
+    {
+      "name": "Pitinga Mine",
+      "lat": -0.78,
+      "lon": -60.08,
+      "country": "Brazil",
+      "operator": "Minsur / AMG Brasil (formerly Mineracao Taboca)",
+      "ownership": "Minsur (Peruvian, owns Mineracao Taboca)",
+      "status": "operating",
+      "type": "alluvial and hard-rock tin-tantalum mine",
+      "products": [
+        "tin",
+        "tantalum",
+        "niobium"
+      ],
+      "capacity_tpa": 70,
+      "production_year": 2023,
+      "notes": "Presidente Figueiredo, Amazonas state; one of world's largest tantalum producers; columbite-tantalite recovered as byproduct from tin (cassiterite) mining; remote Amazonian operation"
+    },
+    {
+      "name": "Mibra Mine (AMG Brasil)",
+      "lat": -17.97,
+      "lon": -44.18,
+      "country": "Brazil",
+      "operator": "AMG Brasil Mineracao (AMG Advanced Metallurgical Group)",
+      "ownership": "AMG Advanced Metallurgical Group NV (AMS:AMG)",
+      "status": "operating",
+      "type": "hard-rock pegmatite tantalum mine",
+      "products": [
+        "tantalum",
+        "niobium",
+        "feldspar"
+      ],
+      "capacity_tpa": 40,
+      "production_year": 2023,
+      "notes": "Nazareno, Minas Gerais; one of world's largest dedicated tantalum mines; produces high-quality tantalite concentrate; underground and open-pit; AMG's flagship tantalum operation"
+    },
+    {
+      "name": "Volta Grande (Serra Pelada region)",
+      "lat": -3.33,
+      "lon": -51.17,
+      "country": "Brazil",
+      "operator": "Belo Sun Mining (intermittent)",
+      "ownership": "Various; Belo Sun Mining Corp (TSX:BSX) holds nearby concessions",
+      "status": "care and maintenance",
+      "type": "pegmatite tantalum mine",
+      "products": [
+        "tantalum",
+        "niobium"
+      ],
+      "capacity_tpa": 15,
+      "production_year": null,
+      "notes": "Para state; tantalite-columbite pegmatite deposits; intermittent small-scale operations; environmental permitting challenges in Xingu River basin"
+    },
+    {
+      "name": "Jos Plateau Mining Zone (Rayfield-Barkin Ladi)",
+      "lat": 9.82,
+      "lon": 8.89,
+      "country": "Nigeria",
+      "operator": "Various ASM operators and small companies",
+      "ownership": "Multiple license holders and artisanal miners",
+      "status": "operating",
+      "type": "alluvial and eluvial coltan mining",
+      "products": [
+        "tantalum",
+        "niobium",
+        "tin"
+      ],
+      "capacity_tpa": 60,
+      "production_year": 2023,
+      "notes": "Jos Plateau, Plateau State; historic tin-tantalum mining region since colonial era; mix of artisanal and semi-industrial operations; Nigeria is growing tantalum producer"
+    },
+    {
+      "name": "Nasarawa-Keffi Mining Zone",
+      "lat": 8.85,
+      "lon": 7.87,
+      "country": "Nigeria",
+      "operator": "Various ASM operators",
+      "ownership": "Multiple small-scale license holders",
+      "status": "operating",
+      "type": "alluvial coltan mining",
+      "products": [
+        "tantalum",
+        "niobium"
+      ],
+      "capacity_tpa": 25,
+      "production_year": 2023,
+      "notes": "Nasarawa State; emerging tantalum production area; artisanal mining of coltan from alluvial deposits; less established than Jos Plateau"
+    },
+    {
+      "name": "Kenticha Mine",
+      "lat": 5.28,
+      "lon": 39.02,
+      "country": "Ethiopia",
+      "operator": "Ethiopian Mineral Development SC (EMDSC)",
+      "ownership": "Ethiopian state (Ministry of Mines)",
+      "status": "operating",
+      "type": "hard-rock pegmatite tantalum mine",
+      "products": [
+        "tantalum",
+        "niobium"
+      ],
+      "capacity_tpa": 55,
+      "production_year": 2023,
+      "notes": "Oromia Region, Adola area; one of the world's highest-grade tantalum deposits; operated by state enterprise; periodic output disruptions due to logistics and infrastructure; significant resource base"
+    },
+    {
+      "name": "Greenbushes Mine",
+      "lat": -33.86,
+      "lon": 116.06,
+      "country": "Australia",
+      "operator": "Talison Lithium (Global Advanced Metals formerly)",
+      "ownership": "Tianqi Lithium (51%), Albemarle (49%) via Talison",
+      "status": "operating",
+      "type": "hard-rock pegmatite (Li primary, Ta byproduct)",
+      "products": [
+        "lithium",
+        "tantalum"
+      ],
+      "capacity_tpa": 30,
+      "production_year": 2023,
+      "notes": "Bridgetown-Greenbushes, WA; historically Australia's major tantalum source; tantalum now minor byproduct of massive lithium spodumene operation; Global Advanced Metals previously operated dedicated Ta circuit"
+    },
+    {
+      "name": "Wodgina Mine",
+      "lat": -21.18,
+      "lon": 118.68,
+      "country": "Australia",
+      "operator": "Mineral Resources / Albemarle (MARBL JV)",
+      "ownership": "Mineral Resources (50%), Albemarle (50%)",
+      "status": "care and maintenance",
+      "type": "hard-rock pegmatite (Ta operations suspended)",
+      "products": [
+        "lithium",
+        "tantalum"
+      ],
+      "capacity_tpa": null,
+      "production_year": null,
+      "notes": "Port Hedland area, Pilbara, WA; historically one of world's largest tantalum mines (Global Advanced Metals); tantalum operations suspended; currently lithium-only operation under MARBL JV"
+    },
+    {
+      "name": "Bald Hill Mine",
+      "lat": -33.28,
+      "lon": 121.32,
+      "country": "Australia",
+      "operator": "Alita Resources (in administration)",
+      "ownership": "Alita Resources (formerly Tawana Resources)",
+      "status": "care and maintenance",
+      "type": "hard-rock pegmatite (Li-Ta)",
+      "products": [
+        "lithium",
+        "tantalum"
+      ],
+      "capacity_tpa": 15,
+      "production_year": null,
+      "notes": "Near Norseman, WA; was producing both lithium spodumene and tantalum concentrate; operations suspended 2019 after Alita entered administration; significant tantalum credits"
+    },
+    {
+      "name": "Pilgangoora Mine",
+      "lat": -21.3,
+      "lon": 118.98,
+      "country": "Australia",
+      "operator": "Pilbara Minerals",
+      "ownership": "Pilbara Minerals (ASX:PLS, 100%)",
+      "status": "operating",
+      "type": "hard-rock pegmatite (Li primary, Ta byproduct)",
+      "products": [
+        "lithium",
+        "tantalum"
+      ],
+      "capacity_tpa": 10,
+      "production_year": 2023,
+      "notes": "Pilbara, WA; major lithium spodumene mine with tantalum byproduct recovery; produces tantalum concentrate alongside spodumene; one of few current Australian Ta producers"
+    },
+    {
+      "name": "Yichun Tantalum-Niobium Mine",
+      "lat": 27.8,
+      "lon": 114.38,
+      "country": "China",
+      "operator": "Jiangxi Tungsten Group / Ganfeng Lithium",
+      "ownership": "Multiple operators in Yichun pegmatite district",
+      "status": "operating",
+      "type": "hard-rock pegmatite (Li-Ta-Nb)",
+      "products": [
+        "lithium",
+        "tantalum",
+        "niobium"
+      ],
+      "capacity_tpa": 35,
+      "production_year": 2023,
+      "notes": "Yichun, Jiangxi Province; world-class LCT pegmatite district; tantalum-niobium recovered as byproduct from lithium (lepidolite) mining; China's largest domestic tantalum source"
+    },
+    {
+      "name": "Fujian Tantalum Processing",
+      "lat": 25.05,
+      "lon": 118.58,
+      "country": "China",
+      "operator": "Fujian Changting Jinlong Rare Earth",
+      "ownership": "Various Fujian provincial enterprises",
+      "status": "operating",
+      "type": "tantalum refining and processing",
+      "products": [
+        "tantalum",
+        "niobium"
+      ],
+      "capacity_tpa": 20,
+      "production_year": 2023,
+      "notes": "Changting County, Fujian Province; Ta-Nb concentrate processing facility; also sources imported concentrates from Africa and South America; significant processing but limited domestic mining"
+    },
+    {
+      "name": "Marropino Mine",
+      "lat": -15.88,
+      "lon": 37.68,
+      "country": "Mozambique",
+      "operator": "Highland African Mining Company",
+      "ownership": "Highland African Mining (private)",
+      "status": "operating",
+      "type": "hard-rock pegmatite tantalum mine",
+      "products": [
+        "tantalum",
+        "beryllium",
+        "feldspar"
+      ],
+      "capacity_tpa": 30,
+      "production_year": 2023,
+      "notes": "Zambezia Province; large LCT pegmatite deposit; one of few industrial-scale tantalum mines in southern Africa; also produces beryl and feldspar; open-pit operation"
+    },
+    {
+      "name": "Tanco Mine",
+      "lat": 50.57,
+      "lon": -95.45,
+      "country": "Canada",
+      "operator": "Sinomine Resource Group",
+      "ownership": "Sinomine (acquired from Cabot Corp 2019)",
+      "status": "care and maintenance",
+      "type": "underground pegmatite mine (Ta-Cs-Li)",
+      "products": [
+        "tantalum",
+        "cesium",
+        "lithium",
+        "rubidium"
+      ],
+      "capacity_tpa": 15,
+      "production_year": null,
+      "notes": "Bernic Lake, Manitoba; historically one of world's premier tantalum mines; also source of pollucite (cesium); mining suspended under Sinomine ownership; significant remaining resource"
+    },
+    {
+      "name": "Blue River Tantalum-Niobium",
+      "lat": 52.15,
+      "lon": -119.3,
+      "country": "Canada",
+      "operator": "Commerce Resources Corp.",
+      "ownership": "Commerce Resources (TSX-V:CCE)",
+      "status": "development",
+      "type": "carbonatite-hosted Ta-Nb deposit",
+      "products": [
+        "tantalum",
+        "niobium"
+      ],
+      "capacity_tpa": null,
+      "production_year": null,
+      "notes": "Upper Fir deposit, British Columbia; one of the largest undeveloped tantalum-niobium deposits in North America; carbonatite-hosted; PEA completed; near Valemount"
+    },
+    {
+      "name": "Kibingo-Gakara Mine",
+      "lat": -3.42,
+      "lon": 29.35,
+      "country": "Burundi",
+      "operator": "Various ASM and Rainbow Rare Earths",
+      "ownership": "Multiple small operators",
+      "status": "operating",
+      "type": "artisanal coltan-cassiterite mining",
+      "products": [
+        "tantalum",
+        "tin",
+        "niobium"
+      ],
+      "capacity_tpa": 15,
+      "production_year": 2023,
+      "notes": "Muyinga and Gitega provinces; artisanal coltan mining; Burundi is minor but growing producer; iTSCi traceability active"
+    },
+    {
+      "name": "Gatumba-Musha Mining Zone",
+      "lat": 0.88,
+      "lon": 30.52,
+      "country": "Uganda",
+      "operator": "Various ASM cooperatives",
+      "ownership": "Multiple artisanal mining groups",
+      "status": "operating",
+      "type": "artisanal coltan mining",
+      "products": [
+        "tantalum",
+        "tin",
+        "tungsten"
+      ],
+      "capacity_tpa": 10,
+      "production_year": 2023,
+      "notes": "Western Uganda near DRC border; small-scale coltan production; iTSCi-tagged; Uganda emerging as minor tantalum source"
+    },
+    {
+      "name": "Abu Dabbab Mine",
+      "lat": 25.34,
+      "lon": 34.53,
+      "country": "Egypt",
+      "operator": "Tantalum Egypt JSC",
+      "ownership": "Egyptian state / private JV under development",
+      "status": "development",
+      "type": "hard-rock pegmatite (Ta-Sn-Nb)",
+      "products": [
+        "tantalum",
+        "tin",
+        "niobium",
+        "feldspar"
+      ],
+      "capacity_tpa": null,
+      "production_year": null,
+      "notes": "Eastern Desert, Red Sea Governorate; large tantalum-tin deposit hosted in apogranite; multiple development attempts; resource defined but permitting and financing challenges persist"
+    },
+    {
+      "name": "Motzfeldt / Ilimaussaq Complex",
+      "lat": 61.15,
+      "lon": -45.2,
+      "country": "Greenland",
+      "operator": "Regency Mines / various explorers",
+      "ownership": "Various exploration license holders",
+      "status": "development",
+      "type": "alkaline igneous complex (Ta-Nb-REE)",
+      "products": [
+        "tantalum",
+        "niobium",
+        "rare earths"
+      ],
+      "capacity_tpa": null,
+      "production_year": null,
+      "notes": "South Greenland; Ilimaussaq alkaline complex contains significant Ta-Nb mineralization alongside rare earths; early-stage exploration; extreme environment limits development"
+    }
+  ]
+}

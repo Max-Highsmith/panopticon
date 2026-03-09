@@ -19,7 +19,7 @@
     "startUTC": 57720
   },
   "data": {
-    "file": "military_feb28.json"
+    "file": "data/playback/military_feb28.json"
   },
   "display": {
     "localTz": { "name": "IRST", "offset": 3.5 },

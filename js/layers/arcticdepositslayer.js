@@ -7,7 +7,7 @@ import { registerLayerLoader } from '../layerregistry.js';
 
 const layer = createRegionLayer({
   layerKey: 'arcticdeposits',
-  dataUrl: 'data/arctic_deposits.json',
+  dataUrl: 'data/layers/points/arctic_deposits.json',
   idPrefix: 'adep',
   countId: 'arcticdeposits-count',
   logLabel: 'ARCTIC DEPOSITS',
@@ -18,7 +18,7 @@ const layer = createRegionLayer({
   },
 });
 
-registerLayerLoader('arcticdeposits', { load: layer.load, flyTo: layer.FLY_TO, reset: layer.reset, dataUrl: 'data/arctic_deposits.json' });
+registerLayerLoader('arcticdeposits', { load: layer.load, flyTo: layer.FLY_TO, reset: layer.reset, dataUrl: 'data/layers/points/arctic_deposits.json' });
 
 export const fetchArcticDeposits     = layer.load;
 export const isArcticDepositsLoaded  = layer.isLoaded;

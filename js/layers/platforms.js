@@ -8,7 +8,7 @@ import { registerLayerLoader } from '../layerregistry.js';
 
 const layer = createDataLayer({
   layerKey: 'platforms',
-  dataUrl: 'data/offshore_platforms.json',
+  dataUrl: 'data/layers/points/offshore_platforms.json',
   idPrefix: 'plat',
   iconSize: DISPLAY.INFRA_ICON_SIZE,
   countId: 'platforms-count',
@@ -21,7 +21,7 @@ const layer = createDataLayer({
   },
 });
 
-registerLayerLoader('platforms', { load: layer.load, flyTo: layer.FLY_TO, reset: layer.reset, dataUrl: 'data/offshore_platforms.json' });
+registerLayerLoader('platforms', { load: layer.load, flyTo: layer.FLY_TO, reset: layer.reset, dataUrl: 'data/layers/points/offshore_platforms.json' });
 
 export const fetchPlatforms     = layer.load;
 export const isPlatformsLoaded  = layer.isLoaded;

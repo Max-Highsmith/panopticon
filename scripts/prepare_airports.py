@@ -46,7 +46,7 @@ def main():
             'type': row['type'],
         })
 
-    out_path = 'data/airports.json'
+    out_path = 'data/layers/points/airports.json'
     with open(out_path, 'w') as f:
         json.dump({'airports': airports}, f, separators=(',', ':'))
 

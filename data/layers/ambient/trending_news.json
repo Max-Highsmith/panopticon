@@ -1,0 +1,234 @@
+{
+  "_source": {
+    "description": "Recent top news headlines from Google News RSS feed",
+    "origin": "Google News RSS \u2014 https://news.google.com/rss",
+    "retrieved": "2026-03-09",
+    "license": "Google News Terms of Service. Headlines are factual titles, fair use for display.",
+    "notes": "Static snapshot for fallback. Live polling uses rss2json.com as CORS proxy."
+  },
+  "snapshot_ts": "2026-03-09T03:46:26Z",
+  "headlines": [
+    {
+      "title": "U.S. Tomahawk Hit Naval Base Beside Iranian School, Video Shows",
+      "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxOZWpvOEJSSnVxc0w2QmQyclZZeGVtRUVMWVlVM2RHZkNLdFE5NzFkb203Q2Y0MERlQjhvNlhLNW5hR3FVU215T21uUFB4WE1zU0c5OGRVTkxKWkJ3WmJJU1QzVjF6UllYSnpkd3J4amlBSktqcjdJUmxQVDNtS2Z2WE1WMUZxSDh3?oc=5",
+      "source": "The New York Times",
+      "pubDate": "2026-03-09T01:39:43+00:00"
+    },
+    {
+      "title": "Fox News uses old clip of Trump after he wore hat while saluting slain US soldiers",
+      "link": "https://news.google.com/rss/articles/CBMiigFBVV95cUxPMEEzaThrRXY0MjlqUVUwTVI2LVJKb2hZT3U4bTNGa1FyUlhfZ2xrSlhMSkdEWkFKMHV6Z1ZsNUVablVwbHJvb1M5eF9hT29zZzdldHVJdnowTXlCNU9ZYWxMUmxydUdieXJTaXRzN1hzbGFuQnVOQnNmN2tOb2pxQXRzeUcwaFlQNlE?oc=5",
+      "source": "The Guardian",
+      "pubDate": "2026-03-08T23:18:00+00:00"
+    },
+    {
+      "title": "Scoop: U.S. dismayed by Israel's Iran fuel strikes, sources say",
+      "link": "https://news.google.com/rss/articles/CBMieEFVX3lxTE9ncXc2bjNDUnQ2V25qa1o5ZU85Y0ZDLU90LUJtbnNnbDQ4SklhWTR1dVRwWm1wdVpHWWloTnppNE16cGQzSXNhU0hsNmRIdWJYb2J6cmxjSExBVWNJc1g4bEJ6V0lvdW96TVZ4SHlFSFRaX21lVjVnWg?oc=5",
+      "source": "Axios",
+      "pubDate": "2026-03-08T21:56:54+00:00"
+    },
+    {
+      "title": "Nepal election 2026 results - follow live",
+      "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE9abmV0bWJidU5mbnBXbkJuTWk2T19ta3p3Vm83LVkwWHkxSEUwX0pIY3VtNjBiaG5WWDVpdjh1cEJCNTgzUzdpUVFqYVAydjdPNkJOZQ?oc=5",
+      "source": "BBC",
+      "pubDate": "2026-03-09T03:35:00+00:00"
+    },
+    {
+      "title": "\u2018Beloved\u2019 East Bay teacher identified as victim in fatal Downtown Oakland shooting",
+      "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxORTY1U0lYVlYyUGVGTW1wa0FWNTRQdTdTQU1UcjVRaktGdXJESld2eFREQkpWb0ZWdTJ3YWxGa0YyNlFKLUk3R2VJZl9jZUNSQmFYODRqekRRanZpZDlzQngyaERzS09TcFlGN1IxRF9pdDliYk5ycHk1VHZkcHhjWkJrcUh1bEhLZlBjVTVpZVRtdXdKYWp1aDNWanI5LUkyY2fSAacBQVVfeXFMUFphc01VeVp1aVJxNXdjRzBndFRieHNQVlNvX0dHbFV5bnRaR3hCR2FRRlZTQ3AtVVlEcUpic21hODJvRHd0bXdIbi1UYnRBR3BTd2RfZV9zNUdSaTVRenRPVFlQdEdzLVgxOHVGNFJOQ3ExeFRHMXFNaTFZUlVhRGwyU3JLZjVrU3IxYnFQYi11ZnBxNW5FVVRNVzQweGtmdjFsajd5UmM?oc=5",
+      "source": "KTVU",
+      "pubDate": "2026-03-08T20:07:26+00:00"
+    },
+    {
+      "title": "Crew of Iran navy vessel IRIS Bushehr flee to Sri Lanka, source says",
+      "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE9kZ0E0QWttNTlud1ZGN2RGUWVVamF5VEhGRExJVFpLVEhCY0Q1OU42SlpDX3FCVldKbi1BYlAzczlkUy15dC1oQXRoYVFMbkoyRXc?oc=5",
+      "source": "\u0627\u06cc\u0631\u0627\u0646 \u0627\u06cc\u0646\u062a\u0631\u0646\u0634\u0646\u0627\u0644",
+      "pubDate": "2026-03-08T17:31:47+00:00"
+    },
+    {
+      "title": "U.S. Carries Out Another Boat Strike, Killing Six",
+      "link": "https://news.google.com/rss/articles/CBMilAFBVV95cUxQanowVS12blY5Wk9vSUgyZlRSZmppN3lVbXlhcmM2T1hzTGUxLU01Mjh3UEhRbkt6c0o0a0tkRHdFLTl5clA4Vjl3a3cyc2Zma0F6cGVvemdaRXotOEJIdjJLV1RNeFl2cmk1c1ZrNjQ2dTVRQUxRX0dmYlRiV3dXU3YzUlhRWFdFVmVXV1I3MVl5QUxI?oc=5",
+      "source": "The New York Times",
+      "pubDate": "2026-03-09T02:18:07+00:00"
+    },
+    {
+      "title": "Trump Wants to \u2018Take Over\u2019 Elections. These States Are Prime Targets. - The New York Times",
+      "link": "https://news.google.com/rss/articles/CBMikwFBVV95cUxPcXBXS2hpVk9EaTJXdHpBUm5BdnNqOWhMOU9qbFJoNWQzc0NFTERhYXg4eGFNZF8tYklUWktXTmRDc0lxMGsyTUN1b09LMTJfblJkR3FicEVxOVBhVWVXMHpVNXlKQTc4aGlONHF3cWlOTU82OGtqeThKSmF0aXlTVUVpcmRUZ2ZTeFpWdU5XX0N0MDg?oc=5",
+      "source": "The New York Times",
+      "pubDate": "2026-03-08T18:37:49+00:00"
+    },
+    {
+      "title": "The \u2018Great Iran Collapse\u2019 Narrative Is Missing a Huge Chunk of the Story",
+      "link": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxPclZsWUJDWUZjSmlGSTlKV01ITXFicE5RMDFrTUhmR2dsYlhVcWc0VjJFaEFJbHBKZFJsMHhUcWZiOERqbHRPYlFzTFlJZElMTUVLTHVlNmlrMHBQZ21fVldvdHl1d3RONXh4U3IwdndTU0p6Sk9kRjhLemJtTldaZEJiSEZQWGVaSFVhSVpPUUhVWnllV3E3UDV2blJjTkd4RTRGS3FycXVPaU0?oc=5",
+      "source": "19FortyFive",
+      "pubDate": "2026-03-08T15:40:36+00:00"
+    },
+    {
+      "title": "International Women\u2019s Day is a celebration and a call to action. Here are things to know",
+      "link": "https://news.google.com/rss/articles/CBMinwFBVV95cUxPT0hkT0swN08yY1ZQNE43UnVrUGoxNlFMMlBHVUU2VmdEaHB1bHlRRHVBZEYzM004THFLRkw3Sm15R09RX2JzQ3poYkoxZjRnT0kzTVNXdWJIcVVoX211MC00ZnAzODFmbXp3aWFETXFoeVpBNUtsUTl5MGVsSC1UT2sxSk5qUVM2OHlqUHVXS2Z1X0ZueHhRM1E0NlhkNTg?oc=5",
+      "source": "AP News",
+      "pubDate": "2026-03-08T20:50:00+00:00"
+    },
+    {
+      "title": "HORMUZ TRACKER: Iran-Linked Ships Are the Only Ones to Transit",
+      "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxNc0ltMTQxc0F6TS11NFhiSXgzNHJiTENSMlhBNTVHajYzNUdmZFpNQk81ZWdkWFNiUF9NTWY4VlFWZUhPTXZRWGhBTXYzR05fMUhwN2tUMXNMVXBGZjhaTjRMQkhzSUl3RXowQkFkR2RTcS1SaEFPcVdWRE8yb290YVdnNUtJVkxacmw5UDROVUUta19CWktoakVUaERpZnl2WEdvR0FZbzBBRmJEVnpsbDBn?oc=5",
+      "source": "Bloomberg.com",
+      "pubDate": "2026-03-08T16:25:34+00:00"
+    },
+    {
+      "title": "Syria's Kurds caution Iran's Kurds against aligning with US against Tehran",
+      "link": "https://news.google.com/rss/articles/CBMixAFBVV95cUxPZVRacHlEUDBzU1hKOVZmLW1zN2I2SWNzSTlGS1FZZDMwSy1NanNCS2pQeGhYZ2x5MHRRZEdlTTNHZUQ3b09tLW1aMVpxNEsyR1BoQ2R0Z1QwOVAzdlBHblk3MWl4bkJ2ZlYxbmVOQzAtdGJkNERDMHJ1U185OXFMcFdpOVJ2XzhaZmlhSkVIY24tV3JhaVc3Mk5rMEctdXFMdGVGRjhldVpMeTFiNDEyZGQ1M3FtdG1tUEtSS05wbDdlcUZF?oc=5",
+      "source": "Reuters",
+      "pubDate": "2026-03-08T17:05:15+00:00"
+    },
+    {
+      "title": "Photos: These bold women stand up for justice, rights ... and freedom",
+      "link": "https://news.google.com/rss/articles/CBMinAFBVV95cUxQVVFtUkdNVUljMkZmS2FkWVRYYkFUQWowcXg4NUJHNmV3WW9vc1BoclNHOW1SUV9Mb2IyZ3AtbFBHMlg0Z2R4SWRTT2trRnRCWGw3QkNpUGpfTC1GV0U5ZWR3WUFPX19kaGpZMC1GVnhZd1N2OHJfY1ZicUpiQVh6UHNUZDFteXIySnZ3MVdFb2ljZWt0bEdUZDlvRHE?oc=5",
+      "source": "NPR",
+      "pubDate": "2026-03-08T11:57:12+00:00"
+    },
+    {
+      "title": "Dow futures tumble over 1,000 points as U.S. oil nears $120 a barrel to begin the week's trading: Live updates",
+      "link": "https://news.google.com/rss/articles/CBMid0FVX3lxTE1jZWVOSjdmd0MxR1ZqTGtMX21STEwxMVdfNW1NZklIMFFGejZTQ3AtOXB4SWFwSTBBeTVWNllvMzd6QktndW1kR3hNMmVhdFAwTktwd180Rmg2c1B0NkwyX2M1ald2RFVocGRYQnptY0ZyczJBaGdR0gF8QVVfeXFMTlRmVVlSTGRhSW4wS2RpVVNmOV9STTVYUnlRNHVzcjlvSW5vdVQzSG9kTXFGakFSRm4xcUJPcXRFWmpBUGZIWTVSekpRNndGWGJoM2FtZVJpX1hfWGkxNnRlZWNVU3QtNmlGLTZuQTkwclpzMWg1UzFQb01tUg?oc=5",
+      "source": "CNBC",
+      "pubDate": "2026-03-09T03:35:00+00:00"
+    },
+    {
+      "title": "Asia markets tumble as oil nears $120; marks largest one day gain in almost 40 years",
+      "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxQSmxmSjNuZUwwa0g2cVlyVFpBejJLLVRuV3dBdzdfcVhBUjk5bDdVdUdCQzFQZXhYa0t1Y0tGSUJwcUdkaUs5RHdBZmVOYUVFODc0cXNvSEhnMU9icHk3b1lTM0Jic1ByVmVxbHVqam1LN0FmTzBBTHN2dkhKV3ZBd0phX3VEX3FMbjd5X2VtVEhhSnJmVXI0VTQwbWF4ZXF4VFJtLXRUWnIzVjA2M1pTZkxyODN5NmZXVnfSAb8BQVVfeXFMUE82Ul85ZmlvQTltbjNOVGVGbTBVQXRYUkNkVHptTUhxb290d3VWX1VzaDFTcVgxbmFQVkN6VEFyTkN0YjA0bFVhbGpsSUhMWldsbEVsRmhvUlF5MU5ULXJULW9YZEZSaHNiUTRiZW8wUGEyMEpNd0hSZllxWDY1M0xoSGtSSVpjSXdtbEs1MkppNnlBU004dWdIeGpuWDE2cDVnUjBKRXp0YUhHLU1WY09RVGlkR21obk9tdlE4M28?oc=5",
+      "source": "CNBC",
+      "pubDate": "2026-03-08T23:55:09+00:00"
+    },
+    {
+      "title": "Trump\u2019s \u2018roaring\u2019 economy meets a rough start to 2026: What the latest numbers show",
+      "link": "https://news.google.com/rss/articles/CBMipwFBVV95cUxPM2VBVy1xdnNKN0dodE11N1htLUoxY3QyXzR3eXhZNDc3MFlXbXE1VWFSMVZVLUlhdTRHNUdwQlpzZ0JzQjdVTXRPZ005clBwRngwYlhKSXNxUU4tUUQ0NzVhQjB3OFg1YXhweGhvQ0FSWUFPSnZodUlhdi1qUWMwUHpUdnhGaWZrYTVReU5pcU4yNHlyVmJXVm9JMndSQW80blRBXy1LMA?oc=5",
+      "source": "AP News",
+      "pubDate": "2026-03-09T00:26:00+00:00"
+    },
+    {
+      "title": "Analyzing the SpaceX IPO: What would it take to justify a $1.5 trillion market cap?",
+      "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxOTGdaMENaMVJ4eFRUbXczdEE4QW4zQXo0YnpfSHRxQ0RMVHMxTHFZUXc0NmNEYWlPTlNsS3BzWHpSSWpFZEpWMjJyd2pxM0Z4WXpQbjhvX25DdVM4UUZrNDVSNkF5SHhzNGxwcjV5QXBSSVRVQWRfX011S1I2cXh2ZmxnYmljc2QzdFZqcDJR?oc=5",
+      "source": "Fortune",
+      "pubDate": "2026-03-08T16:32:00+00:00"
+    },
+    {
+      "title": "A Wink, a Nod or a Duck: The Secrets Behind Car Owners\u2019 Secret Handshakes",
+      "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxQQnpzZWpGNjE0aERHMWxjbzktV2JiSS12R2xVQnpPcl9qeDd5OE81R0Y3NUpESEpwcUpPRlpldXphc29uQUFadXpQZ1pHdE4zZTJnYzcwMFVRVlAtTl9YVGY5RnpCRWVuTmMyM2RCYWc0aUJNOEstU2FlSl9jODVObHpLWFllTVA2a0JENVVR?oc=5",
+      "source": "The New York Times",
+      "pubDate": "2026-03-08T10:00:21+00:00"
+    },
+    {
+      "title": "Palmer Luckey\u2019s retro gaming startup ModRetro reportedly seeks funding at $1B valuation",
+      "link": "https://news.google.com/rss/articles/CBMivAFBVV95cUxQZmNodkdYdU9kVEFkU2JlRkJESXlnSVlwNTJpVjhvME41elg4RnE5Yi1ZMHhQd3RQdWw1NzJvX3RpN0VjRnpZeldqQWxsSWc1YU14UnlfS3ZycVpja2pnRGhqSFRlQ1BHOWFLX1FLMDVrYnAtNmFkSFVlb0pWejVVRnhvUTVhOTJXRHRHMlo4b0xPZ0cyWHJ3eW5VWWlocHJ0Tk1TdlJrM2kxam9DZ05PMmJfYVBXNk9xOVM5eA?oc=5",
+      "source": "TechCrunch",
+      "pubDate": "2026-03-08T21:26:07+00:00"
+    },
+    {
+      "title": "Microsoft's CEO to Xbox: We will \"always\" invest in gaming.",
+      "link": "https://news.google.com/rss/articles/CBMiygFBVV95cUxQVHhiTUtmbjJqRHBSbjBGRGUxUFBXTFBiZUFKOEE2VWhTRkhrR29vUmxfaHFNaUh1XzFuTHR5TWJ1Y3hYRUxLQzZWOEdYUlFidVpVbml0MVJYQWoxNWxZVWppWF9vYWQ4TGV1Z0ROdUFJbnJ1cVFiLTVhay1UcGFTekJmajNWVHI5TjdsbTJOMVhrdi1CeVl1QXQ2QkV6QnBZRkJtYWM5S0p0Ry1FcUxJUFFnWGlzaHlkYW85VWV0dHRmRUZ4OEFOZHpB?oc=5",
+      "source": "Windows Central",
+      "pubDate": "2026-03-08T22:55:45+00:00"
+    },
+    {
+      "title": "Some buyers return Samsung Galaxy S26 Ultra over screen issue",
+      "link": "https://news.google.com/rss/articles/CBMioAFBVV95cUxNSTZWT2VMSkNuRmVYX2g0R0MzdmVpQkpVZjdra3owUHYybHlXbVk2eXBneEtqWW1OaDZLU1kxZkZlbjllZF9vQktMaVZvNDZjZjhidEFUNjFqU0VDVUdBd2hQeUVWRFpzUzg0QkdvRHZVZy1Fc2NFVEQtYjR3Ui0tb3RSeUZibGFyRXZJQ3hCZWl1bjdUQ0VWZmlqOVJvUzZW0gGmAUFVX3lxTE01OHF2WjF1b2tZUnEyYzRyT2xwMVZtZTJLRzdOQjdSd19qOUlvU1ZHWjNQYjRzZWRnWmtGM0x6eXBrb2hQZ0MtZEN2YjNpaFM0aTFqbnRack9yUmVLdkEwTDJvNUtZdjQ3bHNxekh3NS1lc2NYSFZkZlpFUzl4SjkzYlNUTmhzanNzaVZFRnk3ckg3Zy11ejBFSzZmNjJjOUZuZmF3T2c?oc=5",
+      "source": "Sammy Fans",
+      "pubDate": "2026-03-08T00:07:05+00:00"
+    },
+    {
+      "title": "Box Office: \u2018Hoppers\u2019 Redeems Pixar in Bounding to Seminal $46M U.S. Win, \u2018The Bride!\u2019 Bombs With $7.3M",
+      "link": "https://news.google.com/rss/articles/CBMipAFBVV95cUxNM2wtcUhrXzRiUERpZmdRa2tkbWJFcEZuM3dReE1NOVJGbnZyU3ZVV0VBdTYxQk5TMTlSRXhRbzRBTlgwOEJ1SzRSbXhtSldNUzJMTVU5MklWUlBFa0NzM0NzT3FFWElhTHlmUjVNYjdCd3Z4VlQtTGRZV0tmd0ZOX1BmNHN4UnVVejA4VVlOQ29uQmpuaWZXNGlBX1dZSTFITGNjdA?oc=5",
+      "source": "The Hollywood Reporter",
+      "pubDate": "2026-03-08T23:20:20+00:00"
+    },
+    {
+      "title": "Justin Bieber Throws Water Bottle at Paparazzi During L.A. Date Night With Wife Hailey",
+      "link": "https://news.google.com/rss/articles/CBMipgFBVV95cUxNVE5tYUxhbldhMERkbnBJUHBuS1pwREtiNG55U3ZEeGw0a0NCRzlqaXpENGpKbmRTbHVMMGRNeDNyUHhjMFlKSjN4SWVsOEFNMjhNeUNqc1B2Rl9hYy1ObGlUUVY4YmpUeng4R3o0amZFbHpvbnoxQzNzQ3JGWENfelVNOUF5MXlZS3Yta3dZd21oR2cxZjBWbkN0dGxlZjhBRlA4MDJ3?oc=5",
+      "source": "Yahoo",
+      "pubDate": "2026-03-08T19:57:35+00:00"
+    },
+    {
+      "title": "Kardashian-Jenner Family Is Growing Again After Latest Pregnancy Announcement",
+      "link": "https://news.google.com/rss/articles/CBMirAFBVV95cUxORWI1SzZ3eXlzZlpzSHhtNnAxaHFkdDRtcFBJeXRiQ05QVFQySW9yeE9aNi14RGdEc0VGanNYV2xZc1JId3JpNVlzSUU2M1dFZ2Q1ajZjbXBFQ2FleWdmYUhvRGw3UkNLcVYtWUFZdzA3TGd3NUxiaG8xd2pzS1hpLTlkbTI5ejJNWDZLUW1ndGpfT3phRG9DQnJaTGR4emszX2JWWldCenNDWDZK?oc=5",
+      "source": "Yahoo",
+      "pubDate": "2026-03-08T16:28:34+00:00"
+    },
+    {
+      "title": "Vengeance Day 2026 recap: More like Tuesday night",
+      "link": "https://news.google.com/rss/articles/CBMimAFBVV95cUxQdWJuUlZsUFV4Qkh3ZTJKb1ZNUm9zNUhWRy12VGpNSnMxVTNZdW52eV9zN1NlQnFzQUUyZFh0T2ZnbUdpSnpCa0dfVG9LX1JxSEU5bHRKSmZVNFA5XzFxRzNHa09mU2kzeU5IYjVHbmNpT0EwbHFhaTl4bG1vTExkTGpfdDd1T3pmaUxjX1Y3cGlrdFZ3RHB3bg?oc=5",
+      "source": "Cageside Seats",
+      "pubDate": "2026-03-08T04:08:00+00:00"
+    },
+    {
+      "title": "Albert Breer\u2019s Pre-Free Agency Takeaways: Why Linemen Could Receive \u2018Wow\u2019 Contracts",
+      "link": "https://news.google.com/rss/articles/CBMingFBVV95cUxNbTk1VlpIaU4yWEtkZTFPeTVsWERSaFhEQy1TX2Jsb3NGOUd5OTlCa0tGU2c4SEhvMXNaa3V5WDBFNm5nYlJTYWh5Qjk5SG5IXzlYTWxBVDFXaGlvQ2tWZ3FDMllZdHhLZFk4a21vOTBfcDBUdTh4YTQ5TEV2dFFFUU9VODVfZ0pOeDBzUHNRMkZVcm9YQTU3cDk2dHhjQQ?oc=5",
+      "source": "Sports Illustrated",
+      "pubDate": "2026-03-09T01:42:17+00:00"
+    },
+    {
+      "title": "Everything Dawn Staley said after South Carolina women's basketball loss in the SEC Championship",
+      "link": "https://news.google.com/rss/articles/CBMi5wFBVV95cUxQUU1qSDVwZEFSSTlxd2hGT1ZYejdvSzBJOVRwUC1BbGhoeGFpVUxNNXdCZzR1TThmWm0zcXlxUGR2bDNVWVhxdUFSQlBlYTJOOXJDRHBFRnAzSXJTM2Z0UzhkSGVRaG84UlBxc0d4bloydk85Q3FBVVFNM0dUM0NWeWZ3MkpGNEdCdW9Zam9qQXI3VXQ5dUNqMnhjXzNEWWthNnJqZlFtOTRyektmcG4xN1VzbFNyLVVJWkVQZHFJQXBsY2N1V2c2OXFpam5PSnpuVnJvZkZXLVhSVTZrY3JBdTYydWktbzg?oc=5",
+      "source": "On3",
+      "pubDate": "2026-03-08T22:31:40+00:00"
+    },
+    {
+      "title": "Raiders will trade for Bills CB Taron Johnson",
+      "link": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxQR2Q3aXNNeGk5ZThjQ2c1dU84eDRycVJwSlVLcms4Rmt2SzhPSktMQ1pEZVBnelI1TkYzVm15TzRTd0VzTzdsM1ZVc2NBSTduRndmbDdKNWVuYm91NHlrbU9ORGQ5TFItaWpBNlFhX1dJSjF6cmo2b1JnbFptelBReHBUTTJpbWtFN1hoYldOUVRuYklZVzA4cVowWnItNDdobmdRSEsyd1J4STQ?oc=5",
+      "source": "NBC Sports",
+      "pubDate": "2026-03-09T01:54:51+00:00"
+    },
+    {
+      "title": "There's beauty in Poga\u010dar's dominance, magic in Siena, and too much of a good thing on the route \u2013 Reflections from Strade Bianche 2026",
+      "link": "https://news.google.com/rss/articles/CBMiiAJBVV95cUxOZWhQY21FX0R3ZlV3SHByRHBzWUoxdTVCSTgwSVE4X0cwZkptYzIyVXhtcTFaT1dRbFoydkwwS2lQcTMyN3JpeV9mOEh3anhFSG5TaFVEdFNkTFJ0MUNvaTN2cGVYVk1rNnZxUWFyalFTcGFXUnV5ZTZ5eXVKcUFYVEk1WFBMM1NvODZiTGFYeFdCcmZBYXlmeVMzNWNJU3JnRVFYOWJLakJxSDl1cFF0OGswOUkxbzZ1aDVPUkhqNlJVVWlIaTVRN3lpV0FTUGZ0TWZub2VMNEt6ZENBT0t2QUtuMmZHbjJJMWNsZ01wUlpGRDFybXUyU2hleXE1dWd0Z193UnEtTkw?oc=5",
+      "source": "Cyclingnews",
+      "pubDate": "2026-03-08T17:04:17+00:00"
+    },
+    {
+      "title": "Engineered magnetic films follow graphene's equations for massless electron waves",
+      "link": "https://news.google.com/rss/articles/CBMihwFBVV95cUxObDMwbWplS1Izbk1Yak02TXhtNldhQ1Z2X3lyWlVMOEJIdDRoeVBSZEhwRkl2a1hoLVZJdS1zaFcxcWJ1SHA0ZHRfOVMyNjFWWFhGVUFHaXlMT1FCX2JIY3pjSmc5LXhHQzJha281YVJVWEV0TFJtUnVWd3VMTUQwTUF5TGd1SGM?oc=5",
+      "source": "Phys.org",
+      "pubDate": "2026-03-08T17:20:03+00:00"
+    },
+    {
+      "title": "Stormy space weather may be garbling messages from aliens, new research suggests",
+      "link": "https://news.google.com/rss/articles/CBMijAFBVV95cUxOaVNlSkxWTERPVnM1NzNxZF9RQUhqV1FlTTJrbVBPVVoyVHJ5Mkd2aTdzY3ptM2l4UVF2UmJWZ1NPV0Z5NDVkSjR3dERuUG5naE9MNXU0dnhYSElmXy1vSEtaa2VUSFJNU08xRUpkNjVQbGR2YXZSczdqamJpSzR1YkI5OEZ6eHZMN3pCQQ?oc=5",
+      "source": "The Guardian",
+      "pubDate": "2026-03-08T15:35:00+00:00"
+    },
+    {
+      "title": "Antarctica has a strange gravity hole and scientists finally know why",
+      "link": "https://news.google.com/rss/articles/CBMib0FVX3lxTFBXRFRQc21TVnNsQjBzRlQyZk45Z2UxRktxQkpfekVtX1BBNGtqQzBvQXhYNU5GUHlGSVdPWWNFZTJiaEMwTXRuYUNZQTN3aFR6UmY5ZVd2dDdrOTg3Z05xc2tHbWxHckc5VGsyZnM5dw?oc=5",
+      "source": "ScienceDaily",
+      "pubDate": "2026-03-07T05:48:18+00:00"
+    },
+    {
+      "title": "March could be an active month for northern lights displays",
+      "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxOeUdzYzMzUFpMOVpyQ2QzcEFZVExIdzFZQkxnWlRFZGo1UXlYY3RRZGhaWUtQU1hBWHhNLTFuYkhfM2pKcWdsSm4tRzRnTEtDMzJEb2FENjZJdWJlNmF0UEc4LUZYTTVlRjBwTlBuMG4zdkNMelMxNWN6TEItWDRBSG9adEFRRms5VHJnM0R30gGTAUFVX3lxTFBwOTE4YUk0cEZLVHFBelo5MDVXM2M0VTFBekstLUtJY3lXenNXeWhONjROTnpJYkVWZHFveF9uQ2NQRk5YT2pjRXg5cWRYWGNWNF95OU85SV9ZenhHOG5hd3NRcGwtMUttdXZzcVRhaFF0bFE3MVZ2RG5LTkJuajJiRDg2OUkyRU0waW9YM1JvaWFBNA?oc=5",
+      "source": "abcnews.com",
+      "pubDate": "2026-03-07T03:56:17+00:00"
+    },
+    {
+      "title": "How a Measles Outbreak Begins, Featuring the State of Colorado",
+      "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxQOWxIeWFlTWdRZWx6WHdIQjF2czdtczljM2F0czJpVkwwdF81NEZkNWlDMDdCVlA0eW91ZjZDeE84QnIyNFRmN0pUN2kwbEtfSTV2RVR4bk1OTkNKak1YMTVHdUpKeENjUV85dFBma3Q3ZE8xWF9Nb3NLb2ozUjh2RkFiSlg0MzV2ajhxeGRVV3AwN0Q4dHVaTm1CMy1RSWJuWnFyUHgyRHJ4U1hGWVF3akNjV1lmQQ?oc=5",
+      "source": "jezebel.com",
+      "pubDate": "2026-03-07T16:57:35+00:00"
+    },
+    {
+      "title": "Why so many dead geese in New Jersey? Over 4,000 lifeless birds found in a month",
+      "link": "https://news.google.com/rss/articles/CBMieEFVX3lxTE1VeEFKQjg5d20tNTFnRkRxVmpDZktQak1MeWtGOFlLODdQZjFpcDhzWmZJemh4cHJoY2VhUUdyd3RHT21jODdvSF9tRjQyTmRPVDQ1emxFdS1ndjBTam9acG1UZy1LOEhUM0pUQWI1WjZyb3lUUjZQMw?oc=5",
+      "source": "The US Sun",
+      "pubDate": "2026-03-08T19:56:45+00:00"
+    },
+    {
+      "title": "Measles exposure possible from several Big Island locations because of infected visitor",
+      "link": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxPdU9YeW8zWTRxRUtKVjVmLVM4cXVEMmhQUFlsZDNQTVluMWFieDdHdVNKNTRHTTZFUm9EWGtLTWxSOVdaM1p0ai1QVC1lOVlHOXdsS3BDcEstZTZVYlE0V3dNYjRaWk5KbVFFS2h0UlJidTZUNTk5cnk3SVpha25ZbmFia1Z3WVl0d0lSRDFuV3NxT3VDSnpubXNILUV6NEpvRG5kNWJab3dkM0hXelpOd3JyZHFEbmFXNzVOZjFtYlZLZw?oc=5",
+      "source": "Big Island Now",
+      "pubDate": "2026-03-08T13:35:00+00:00"
+    },
+    {
+      "title": "Teens are sleeping less than ever and screens aren\u2019t primarily to blame",
+      "link": "https://news.google.com/rss/articles/CBMiggFBVV95cUxPc3JIbWpBVFJXTmU4NWpxeXlHa2NuLVpnYUVUNGRqRk5ZQ3o2cXNRQlZmWnhoZ2xWMFBXR3k5N1BwTkFSRUNKaTFaQjBNREVBM0E3NzhmZFBURFA4aThiSUoxakpLRFVSOVZDeFJ4OHRqam1KYmVldi1yVVR3UU9zNWN3?oc=5",
+      "source": "NPR",
+      "pubDate": "2026-03-08T11:04:00+00:00"
+    }
+  ]
+}

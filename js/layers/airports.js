@@ -3,81 +3,34 @@
    =================================================================== */
 
 import { DISPLAY } from '../config.js';
-import { $ } from '../utils.js';
-import { icons } from '../icons.js';
-import { layers, entityMaps } from '../globe.js';
-import { registerLayerLoader, cacheLayerData } from '../layerregistry.js';
+import { registerLayerLoader } from '../layerregistry.js';
+import { createDataLayer } from './datalayer.js';
 
-const entities = entityMaps.airports;
-let loaded = false;
+const DATA_URL = 'data/layers/points/airports.json';
 
-export function isAirportsLoaded() { return loaded; }
-export function resetAirports()    { loaded = false; }
+const layer = createDataLayer({
+  layerKey:   'airports',
+  dataUrl:    DATA_URL,
+  idPrefix:   'apt',
+  iconSize:   DISPLAY.AIRPORT_ICON_SIZE_MD,
+  categories: {
+    major:    { icon: 'airportLarge',  color: '#00ccff', label: 'MAJOR AIRPORT',
+                iconSize: DISPLAY.AIRPORT_ICON_SIZE_LG, displayDist: 15_000_000, labelDist: 2_000_000 },
+    regional: { icon: 'airportMedium', color: '#00ccff', label: 'AIRPORT',
+                iconSize: DISPLAY.AIRPORT_ICON_SIZE_MD, displayDist: 3_000_000, labelDist: 2_000_000 },
+  },
+  viewType:   'airport',
+  flyTo:      { lon: 0, lat: 30, alt: 20_000_000 },
+  countId:    'airport-count',
+  logLabel:   'AIRPORTS',
+  labelFn:    (item) => item.iata || item.icao || '',
+  idFn:       (item) => item.icao || `${item.lat}_${item.lon}`,
+  altFn:      (item) => ((item.elevation_ft || 0) * 0.3048) + 100,
+  descFn:     (item) => `${item.name} // ${item.country}${item.iata ? ' // IATA: ' + item.iata : ''}${item.icao ? ' // ICAO: ' + item.icao : ''}`,
+  acDataFn:   (item) => ({ alt_baro: item.elevation_ft || 0 }),
+});
 
-export async function fetchAirports(viewer) {
-  if (loaded) return;
-  try {
-    const res = await fetch('data/airports.json');
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    const data = await res.json();
-    cacheLayerData('airports', data);
-
-    for (const ap of (data.airports || [])) {
-      const id = ap.icao || `${ap.lat}_${ap.lon}`;
-      if (entities.has(id)) continue;
-
-      const isLarge = ap.type === 'large_airport';
-      const icon = isLarge ? icons.airportLarge : icons.airportMedium;
-      const iconSize = isLarge ? DISPLAY.AIRPORT_ICON_SIZE_LG : DISPLAY.AIRPORT_ICON_SIZE_MD;
-      const label = ap.iata || ap.icao || '';
-      const elevMeters = (ap.elevation_ft || 0) * 0.3048;
-
-      const entity = viewer.entities.add({
-        position: Cesium.Cartesian3.fromDegrees(ap.lon, ap.lat, elevMeters + 100),
-        billboard: {
-          image: icon,
-          width: iconSize,
-          height: iconSize,
-          alignedAxis: Cesium.Cartesian3.ZERO,
-          disableDepthTestDistance: 0,
-          distanceDisplayCondition: isLarge
-            ? new Cesium.DistanceDisplayCondition(0, 15_000_000)
-            : new Cesium.DistanceDisplayCondition(0, 3_000_000),
-        },
-        label: {
-          text: label,
-          font: '10px Courier New',
-          fillColor: Cesium.Color.fromCssColorString('#00ccff'),
-          outlineColor: Cesium.Color.BLACK,
-          outlineWidth: 2,
-          style: Cesium.LabelStyle.FILL_AND_OUTLINE,
-          pixelOffset: new Cesium.Cartesian2(12, -3),
-          distanceDisplayCondition: new Cesium.DistanceDisplayCondition(0, 2_000_000),
-          scale: 0.75,
-        },
-      });
-      entity.show = layers.airports;
-      entity.acData = {
-        hex: id,
-        r: ap.name,
-        t: isLarge ? 'MAJOR AIRPORT' : 'AIRPORT',
-        flight: label,
-        desc: `${ap.name} // ${ap.country}${ap.iata ? ' // IATA: ' + ap.iata : ''}${ap.icao ? ' // ICAO: ' + ap.icao : ''}`,
-        alt_baro: ap.elevation_ft || 0,
-        gs: 0,
-        track: 0,
-        _view: 'airport',
-      };
-      entities.set(id, { entity });
-    }
-
-    loaded = true;
-    $('airport-count').textContent = entities.size;
-    console.log(`AIRPORTS: loaded ${entities.size} locations`);
-  } catch (err) {
-    console.error('AIRPORTS fetch error:', err);
-    $('airport-count').textContent = 'ERR';
-  }
-}
-
-registerLayerLoader('airports', { load: fetchAirports, reset: resetAirports, dataUrl: 'data/airports.json', view: 'airport' });
+registerLayerLoader('airports', {
+  load: layer.load, flyTo: layer.FLY_TO, reset: layer.reset,
+  dataUrl: DATA_URL, view: 'airport',
+});

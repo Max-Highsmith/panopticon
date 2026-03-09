@@ -8,7 +8,7 @@ import { registerLayerLoader } from '../layerregistry.js';
 
 const layer = createDataLayer({
   layerKey: 'lightning',
-  dataUrl: 'data/lightning.json',
+  dataUrl: 'data/layers/points/lightning.json',
   idPrefix: 'bolt',
   iconSize: DISPLAY.MINE_ICON_SIZE,
   countId: 'lightning-count',
@@ -19,7 +19,7 @@ const layer = createDataLayer({
   },
 });
 
-registerLayerLoader('lightning', { load: layer.load, flyTo: layer.FLY_TO, reset: layer.reset, dataUrl: 'data/lightning.json' });
+registerLayerLoader('lightning', { load: layer.load, flyTo: layer.FLY_TO, reset: layer.reset, dataUrl: 'data/layers/points/lightning.json' });
 
 export const fetchLightning     = layer.load;
 export const isLightningLoaded  = layer.isLoaded;

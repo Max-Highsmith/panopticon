@@ -8,7 +8,7 @@ import { registerLayerLoader } from '../layerregistry.js';
 
 const layer = createDataLayer({
   layerKey: 'powerplants',
-  dataUrl: 'data/power_plants.json',
+  dataUrl: 'data/layers/points/power_plants.json',
   idPrefix: 'power',
   iconSize: DISPLAY.INFRA_ICON_SIZE,
   countId: 'powerplants-count',
@@ -25,7 +25,7 @@ const layer = createDataLayer({
   },
 });
 
-registerLayerLoader('powerplants', { load: layer.load, flyTo: layer.FLY_TO, reset: layer.reset, dataUrl: 'data/power_plants.json' });
+registerLayerLoader('powerplants', { load: layer.load, flyTo: layer.FLY_TO, reset: layer.reset, dataUrl: 'data/layers/points/power_plants.json' });
 
 export const fetchPowerPlants     = layer.load;
 export const isPowerPlantsLoaded  = layer.isLoaded;

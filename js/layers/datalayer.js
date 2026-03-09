@@ -15,12 +15,16 @@ import { cacheLayerData } from '../layerregistry.js';
  * @param {string} cfg.layerKey      - Key into `layers` and `entityMaps`
  * @param {string} cfg.dataUrl       - URL of the JSON data file
  * @param {string} cfg.idPrefix      - Prefix for entity IDs (e.g. 'arctic', 'drill')
- * @param {Object} cfg.categories    - Map of data-key → { icon, color, label }
+ * @param {Object} cfg.categories    - Map of data-key → { icon, color, label, iconSize?, displayDist? }
  * @param {Object} cfg.flyTo         - { lon, lat, alt } camera target
- * @param {number} cfg.iconSize      - Billboard size in pixels
+ * @param {number} cfg.iconSize      - Default billboard size in pixels (overridden by category iconSize)
  * @param {string} cfg.countId       - DOM element ID for the count display
  * @param {string} cfg.logLabel      - Console log prefix
  * @param {Function} [cfg.descFn]    - (item, category) → description string
+ * @param {Function} [cfg.labelFn]   - (item, category) → label text (default: item.name)
+ * @param {Function} [cfg.idFn]      - (item, category) → entity ID string
+ * @param {Function} [cfg.acDataFn]  - (item, category) → extra fields merged into acData
+ * @param {Function} [cfg.altFn]     - (item) → altitude in meters (default: 500)
  */
 export function createDataLayer(cfg) {
   const entities = entityMaps[cfg.layerKey];
@@ -38,38 +42,51 @@ export function createDataLayer(cfg) {
       cacheLayerData(cfg.layerKey, data);
 
       for (const [category, meta] of Object.entries(cfg.categories)) {
+        const size = meta.iconSize || cfg.iconSize;
+        const bbDisplayDist = meta.displayDist
+          ? new Cesium.DistanceDisplayCondition(0, meta.displayDist)
+          : undefined;
+
         for (const item of (data[category] || [])) {
-          const id = `${cfg.idPrefix}_${category}_${item.name}`;
+          const id = cfg.idFn ? cfg.idFn(item, category) : `${cfg.idPrefix}_${category}_${item.name}`;
           if (entities.has(id)) continue;
 
+          const alt = cfg.altFn ? cfg.altFn(item) : 500;
+          const labelText = cfg.labelFn ? cfg.labelFn(item, category) : item.name;
+
+          const billboardOpts = {
+            image: icons[meta.icon],
+            width: size,
+            height: size,
+            alignedAxis: Cesium.Cartesian3.ZERO,
+            disableDepthTestDistance: 0,
+          };
+          if (bbDisplayDist) billboardOpts.distanceDisplayCondition = bbDisplayDist;
+
           const entity = viewer.entities.add({
-            position: Cesium.Cartesian3.fromDegrees(item.lon, item.lat, 500),
-            billboard: {
-              image: icons[meta.icon],
-              width: cfg.iconSize,
-              height: cfg.iconSize,
-              alignedAxis: Cesium.Cartesian3.ZERO,
-              disableDepthTestDistance: 0,
-            },
+            position: Cesium.Cartesian3.fromDegrees(item.lon, item.lat, alt),
+            billboard: billboardOpts,
             label: {
-              text: item.name,
+              text: labelText,
               font: '10px Courier New',
               fillColor: Cesium.Color.fromCssColorString(meta.color),
               outlineColor: Cesium.Color.BLACK,
               outlineWidth: 2,
               style: Cesium.LabelStyle.FILL_AND_OUTLINE,
               pixelOffset: new Cesium.Cartesian2(12, -3),
-              distanceDisplayCondition: new Cesium.DistanceDisplayCondition(0, 3_000_000),
+              distanceDisplayCondition: new Cesium.DistanceDisplayCondition(0, meta.labelDist || 3_000_000),
               scale: 0.8,
             },
           });
           entity.show = layers[cfg.layerKey];
-          entity.acData = {
-            hex: id, r: item.name, t: meta.label, flight: item.name,
+          const acData = {
+            hex: id, r: item.name, t: meta.label, flight: labelText,
             desc: (cfg.descFn || defaultDesc)(item, category),
             alt_baro: 0, gs: 0, track: 0,
             _view: cfg.viewType || 'site',
           };
+          if (cfg.acDataFn) Object.assign(acData, cfg.acDataFn(item, category));
+          entity.acData = acData;
           entities.set(id, { entity });
         }
       }

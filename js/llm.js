@@ -8,7 +8,7 @@
 import { getSettings } from './settings.js';
 
 export const adapters = {
-  async google(model, systemPrompt, userMessage) {
+  async google(model, systemPrompt, userMessage, opts = {}) {
     const { googleApiKey } = getSettings();
     if (!googleApiKey) throw new Error('Google API key not set. Open Settings.');
     const m = model || 'gemini-2.5-pro';
@@ -20,7 +20,7 @@ export const adapters = {
         body: JSON.stringify({
           system_instruction: { parts: [{ text: systemPrompt }] },
           contents: [{ parts: [{ text: userMessage }] }],
-          generationConfig: { maxOutputTokens: 512 },
+          generationConfig: { maxOutputTokens: opts.maxTokens || 512 },
         }),
       }
     );
@@ -29,7 +29,7 @@ export const adapters = {
     return { text: data.candidates[0].content.parts[0].text, usage: {} };
   },
 
-  async anthropic(model, systemPrompt, userMessage) {
+  async anthropic(model, systemPrompt, userMessage, opts = {}) {
     const { anthropicApiKey, proxyUrl } = getSettings();
     if (!anthropicApiKey) throw new Error('Anthropic API key not set. Open Settings.');
     if (!proxyUrl) throw new Error('Anthropic requires a CORS proxy URL. Set one in Settings, or use Google provider.');
@@ -43,7 +43,7 @@ export const adapters = {
       },
       body: JSON.stringify({
         model: model || 'claude-sonnet-4-5-20250929',
-        max_tokens: 512,
+        max_tokens: opts.maxTokens || 512,
         system: systemPrompt,
         messages: [{ role: 'user', content: userMessage }],
       }),
@@ -53,7 +53,7 @@ export const adapters = {
     return { text: data.content[0].text, usage: data.usage };
   },
 
-  async openai(model, systemPrompt, userMessage) {
+  async openai(model, systemPrompt, userMessage, opts = {}) {
     const { openaiApiKey, openaiBaseUrl } = getSettings();
     if (!openaiApiKey) throw new Error('OpenAI API key not set. Open Settings.');
     const baseUrl = (openaiBaseUrl || 'https://api.openai.com').replace(/\/+$/, '');
@@ -65,7 +65,7 @@ export const adapters = {
       },
       body: JSON.stringify({
         model: model || 'gpt-4o',
-        max_tokens: 512,
+        max_tokens: opts.maxTokens || 512,
         messages: [
           { role: 'system', content: systemPrompt },
           { role: 'user', content: userMessage },
@@ -77,7 +77,7 @@ export const adapters = {
     return { text: data.choices[0].message.content, usage: data.usage };
   },
 
-  async xai(model, systemPrompt, userMessage) {
+  async xai(model, systemPrompt, userMessage, opts = {}) {
     const { xaiApiKey, openaiBaseUrl } = getSettings();
     if (!xaiApiKey) throw new Error('xAI API key not set. Open Settings.');
     const baseUrl = (openaiBaseUrl || 'https://api.x.ai').replace(/\/+$/, '');
@@ -89,7 +89,7 @@ export const adapters = {
       },
       body: JSON.stringify({
         model: model || 'grok-3',
-        max_tokens: 512,
+        max_tokens: opts.maxTokens || 512,
         messages: [
           { role: 'system', content: systemPrompt },
           { role: 'user', content: userMessage },
@@ -101,7 +101,7 @@ export const adapters = {
     return { text: data.choices[0].message.content, usage: data.usage };
   },
 
-  async openrouter(model, systemPrompt, userMessage) {
+  async openrouter(model, systemPrompt, userMessage, opts = {}) {
     const { openrouterApiKey } = getSettings();
     if (!openrouterApiKey) throw new Error('OpenRouter API key not set. Open Settings.');
     const res = await fetch('https://openrouter.ai/api/v1/chat/completions', {
@@ -112,7 +112,7 @@ export const adapters = {
       },
       body: JSON.stringify({
         model: model || 'qwen/qwen3.5-flash-02-23',
-        max_tokens: 512,
+        max_tokens: opts.maxTokens || 512,
         messages: [
           { role: 'system', content: systemPrompt },
           { role: 'user', content: userMessage },

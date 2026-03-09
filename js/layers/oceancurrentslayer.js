@@ -7,7 +7,7 @@ import { registerLayerLoader } from '../layerregistry.js';
 
 const layer = createPathLayer({
   layerKey: 'oceancurrents',
-  dataUrl: 'data/ocean_currents.json',
+  layerType: 'path', dataUrl: 'data/layers/paths/ocean_currents.json',
   idPrefix: 'curr',
   countId: 'oceancurrents-count',
   logLabel: 'OCEAN CURRENTS',
@@ -19,7 +19,7 @@ const layer = createPathLayer({
   },
 });
 
-registerLayerLoader('oceancurrents', { load: layer.load, flyTo: layer.FLY_TO, reset: layer.reset, dataUrl: 'data/ocean_currents.json' });
+registerLayerLoader('oceancurrents', { load: layer.load, flyTo: layer.FLY_TO, reset: layer.reset, layerType: 'path', dataUrl: 'data/layers/paths/ocean_currents.json' });
 
 export const fetchOceanCurrents     = layer.load;
 export const isOceanCurrentsLoaded  = layer.isLoaded;

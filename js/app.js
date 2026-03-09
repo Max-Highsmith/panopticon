@@ -12,9 +12,10 @@ import {
   getManifest, getTimeSeconds,
 } from './playback.js';
 import { initLayerSelector, openLayerPanel, refreshCatalog } from './layerselector.js';
+import { getCatalogByKey } from './layercatalog.js';
 import { initCitySelector, openCityPanel } from './cityselector.js';
 import { getCityByKey } from './citycatalog.js';
-import { setVisualFilter, initFilterUpdater, openFilterPanel } from './filters.js';
+import { setVisualFilter, initFilterUpdater, openFilterPanel, showCountryPanel, closeCountryPanel } from './filters.js';
 import { initAudioPlayer, toggleAudio } from './audio.js';
 import { startMilitary, stopMilitary, extrapolateMilitaryPositions } from './layers/military.js';
 import { startCommercial, stopCommercial } from './layers/commercial.js';
@@ -23,20 +24,24 @@ import { startAIS, stopAIS } from './layers/ships.js';
 import { fetchPogoStops, isPogoLoaded, resetPogo } from './layers/pogo.js';
 import { loadCustomDatasets } from './layers/custom.js';
 import { createBlackoutOverlays, removeBlackoutOverlays, createDataBoundsOverlay, removeDataBoundsOverlay } from './overlays.js';
-import { closeAllViews, resizeAllViews, getView } from './viewregistry.js';
+import { closeAllViews, resizeAllViews, getView, tickAllViews } from './viewregistry.js';
 // View modules imported for side-effect registration:
 import './satview.js';
 import './planeview.js';
 import './siteview.js';
 import './airportview.js';
 import './webcamview.js';
+import './pathview.js';
+import './submarineview.js';
+import './sniperview.js';
 import { startWargameMode, stopWargameMode } from './wargame.js';
-import { getLoader, resetAllLayers, registerLayerLoader } from './layerregistry.js';
+import { getLoader, resetAllLayers, registerLayerLoader, getLayerType } from './layerregistry.js';
 import './layers/index.js'; // triggers self-registration of all data layers
 import { initPlaybackBrowser, loadPlaybackList } from './playbackbrowser.js';
 
 // --- Globe ---
 const viewer = createViewer('cesiumContainer');
+window._panopticonViewer = viewer;
 viewer.camera.setView({ destination: Cesium.Cartesian3.fromDegrees(53, 32, 5_000_000) });
 
 // --- Filter System ---
@@ -50,7 +55,7 @@ let currentMode = 'playback';
 let activeScenario = 'iran'; // tracks which ADS-B scenario is active (legacy compat)
 
 // --- Detail-panel helpers (delegated to view registry) ---
-function closeAllDetailPanels() { closeAllViews(viewer); }
+function closeAllDetailPanels(except) { closeAllViews(viewer, except); }
 function resizeAllPanels() { resizeAllViews(); }
 
 // Layer loaders are now self-registered via js/layerregistry.js
@@ -69,10 +74,73 @@ function syncStatChip(layer) {
   if (chip) chip.classList.toggle('active', !!layers[layer]);
 }
 
+function updateLegend() {
+  const container = $('layer-legend');
+  if (!container) return;
+  container.innerHTML = '';
+
+  // Collect active layers
+  const active = [];
+  for (const key in layers) {
+    if (layers[key]) {
+      const cat = getCatalogByKey(key);
+      if (cat) active.push({ key, cat });
+    }
+  }
+
+  if (active.length === 0) {
+    container.style.display = 'none';
+    return;
+  }
+
+  // Title
+  const title = document.createElement('div');
+  title.className = 'll-title';
+  title.textContent = 'ACTIVE LAYERS';
+  container.appendChild(title);
+
+  // Shape class per layer type
+  const shapeClass = { point: 'll-swatch-diamond', path: 'll-swatch-line', region: 'll-swatch-rect', live: 'll-swatch-circle', ambient: 'll-swatch-bar' };
+
+  for (const { key, cat } of active) {
+    const item = document.createElement('div');
+    item.className = 'll-item';
+
+    const swatch = document.createElement('span');
+    const lt = getLayerType(key);
+    swatch.className = shapeClass[lt] || 'll-swatch-circle';
+    swatch.style.backgroundColor = cat.color;
+    if (lt === 'ambient') swatch.style.borderColor = cat.color;
+
+    const label = document.createElement('span');
+    label.textContent = cat.label;
+
+    item.appendChild(swatch);
+    item.appendChild(label);
+    container.appendChild(item);
+  }
+
+  container.style.display = 'block';
+}
+
 function handleLayerToggle(layer, enabled) {
+  // Ambient layers: no globe entities — show/hide sidebar panel instead
+  const ambientLoader = getLoader(layer);
+  if (ambientLoader && ambientLoader.layerType === 'ambient') {
+    layers[layer] = enabled !== undefined ? enabled : !layers[layer];
+    syncStatChip(layer);
+    if (layers[layer]) {
+      if (ambientLoader.show) ambientLoader.show();
+    } else {
+      if (ambientLoader.hide) ambientLoader.hide();
+    }
+    updateLegend();
+    return;
+  }
+
   toggleLayer(viewer, layer, currentMode, enabled);
   syncStatChip(layer);
-  $('mines-legend').style.display = (layer === 'mines' && layers.mines) ? 'block' : (layer === 'mines' ? 'none' : $('mines-legend').style.display);
+  updateLegend();
 
   if (layers[layer]) {
     // Live-only auto-start layers
@@ -87,16 +155,29 @@ function handleLayerToggle(layer, enabled) {
       if (layer === 'pokemon' && entityMaps.pokemon.size === 0) fetchPogoStops(viewer);
     }
 
-    // Data layers with lazy loading + optional flyTo (via registry)
+    // Data layers with lazy loading + fly-to-entities
     const loader = getLoader(layer);
     if (loader) {
-      if (entityMaps[layer].size === 0) loader.load(viewer);
-      if (loader.flyTo) {
-        const { lon, lat, alt } = loader.flyTo;
-        viewer.camera.flyTo({ destination: Cesium.Cartesian3.fromDegrees(lon, lat, alt), duration: 1.5 });
+      if (entityMaps[layer].size === 0) {
+        loader.load(viewer).then(() => flyToLayerEntities(layer));
+      } else {
+        flyToLayerEntities(layer);
       }
     }
   }
+}
+
+function flyToLayerEntities(layer) {
+  const map = entityMaps[layer];
+  if (!map || map.size === 0) return;
+  const positions = [];
+  for (const [, rec] of map) {
+    const pos = rec.entity.position;
+    if (pos) positions.push(pos.getValue(Cesium.JulianDate.now()));
+  }
+  if (positions.length === 0) return;
+  const sphere = Cesium.BoundingSphere.fromPoints(positions);
+  viewer.camera.flyToBoundingSphere(sphere, { duration: 1.5 });
 }
 
 initLayerSelector({ toggleFn: handleLayerToggle });
@@ -119,6 +200,8 @@ window.closePlaneView  = () => { const v = getView('plane'); if (v) v.close(view
 window.closeSiteView   = () => { const v = getView('site'); if (v) v.close(viewer); };
 window.closeAirportView = () => { const v = getView('airport'); if (v) v.close(viewer); };
 window.closeWebcamView  = () => { const v = getView('webcam'); if (v) v.close(viewer); };
+window.closePathView    = () => { const v = getView('path'); if (v) v.close(viewer); };
+window.closeSubmarineView = () => { const v = getView('submarine'); if (v) v.close(viewer); };
 window.togglePlaybackSidebar = () => {
   const sb = document.getElementById('playback-sidebar');
   const btn = document.getElementById('playback-toggle');
@@ -301,6 +384,7 @@ function startReplay() {
 
 function stopReplay() {
   stopPlayback();
+  closeAllViews(viewer);
   $('timeline-bar').style.display = 'none';
   $('playback-sidebar').style.display = 'none';
   $('playback-feed').style.display = 'none';
@@ -395,11 +479,31 @@ function startWargamePlayback(manifest) {
   // Render tick marks on the timeline slider
   renderTimelineTicks(manifest);
 
+  // Open specialized view panels for scenarios that have them (e.g. sniper scope)
+  const scenarioId = manifest.data?.scenarioId || manifest.data?.scenarioFile;
+  if (scenarioId) {
+    const scenarioFile = scenarioId.includes('/') ? scenarioId : `scenarios/${scenarioId}.json`;
+    fetch(scenarioFile).then(r => r.ok ? r.json() : null).then(sc => {
+      if (!sc) return;
+      if (sc.view === 'sniper') {
+        const sniperView = getView('sniper');
+        if (sniperView) sniperView.open(viewer);
+      }
+      if (sc.navigation) {
+        const subView = getView('submarine');
+        if (subView) subView.open(viewer);
+      }
+    }).catch(() => {});
+  }
+
+  const totalTicks = manifest.timeline?.totalTicks || 8;
+
   loadPlayback(viewer, manifest, {
-    onTimeUpdate: (timeSec, durSec) => {
+    onTimeUpdate: (timeSec, durSec, progress) => {
       $('timeline-slider').max = durSec;
       $('timeline-slider').value = timeSec;
       $('btn-play').textContent = isPlaying() ? 'PAUSE' : 'PLAY';
+      tickAllViews(progress, progress * totalTicks, totalTicks);
     },
     onFrameInfo: (info) => {
       $('time-current').textContent = info.timeLabel;
@@ -529,14 +633,26 @@ function deselectEntity() {
 function selectEntity(entity) {
   if (selectedEntity === entity) return;
   deselectEntity();
-  if (!entity || !entity.billboard) return;
+  if (!entity) return;
   selectedEntity = entity;
-  reticleEntity.show = true;
+  // Only show reticle for billboard entities (points); polylines/polygons skip it
+  if (entity.billboard) reticleEntity.show = true;
 }
 
 handler.setInputAction((click) => {
   const picked = viewer.scene.pick(click.position);
+
+  // Country polygon click (BORDER filter)
+  if (Cesium.defined(picked) && picked.id && picked.id._countryData) {
+    showCountryPanel(picked.id._countryData);
+    infoPanel.style.display = 'none';
+    selectEntity(picked.id);
+    closeAllDetailPanels();
+    return;
+  }
+
   if (Cesium.defined(picked) && picked.id && picked.id.acData) {
+    closeCountryPanel();
     const ac = picked.id.acData;
     $('info-callsign').textContent = (ac.flight || ac.r || '---').trim();
     $('info-hex').textContent = ac.hex || '---';
@@ -550,15 +666,16 @@ handler.setInputAction((click) => {
 
     selectEntity(picked.id);
 
-    closeAllDetailPanels();
-
     // View dispatch: each entity declares its view type via _view field
     const viewType = ac._view || 'plane';
+    closeAllDetailPanels(viewType);
+
     const view = getView(viewType);
     if (view) view.open(viewer, picked.id);
   } else {
     deselectEntity();
     infoPanel.style.display = 'none';
+    closeCountryPanel();
     closeAllDetailPanels();
   }
 }, Cesium.ScreenSpaceEventType.LEFT_CLICK);

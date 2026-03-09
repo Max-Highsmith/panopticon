@@ -6,6 +6,7 @@ import { API, LIMITS, SCENARIOS, DISPLAY } from '../config.js';
 import { $ } from '../utils.js';
 import { icons } from '../icons.js';
 import { layers, entityMaps } from '../globe.js';
+import { registerLayerLoader } from '../layerregistry.js';
 
 const entities = entityMaps.satellites;
 let satRecords = [];
@@ -271,3 +272,5 @@ export function updateSatellitePositions(viewer, activeScenario, atDate) {
     } catch { /* skip */ }
   }
 }
+
+registerLayerLoader('satellites', { load: loadSatellites, reset: () => { satLoaded = false; }, view: 'satellite', layerType: 'live' });

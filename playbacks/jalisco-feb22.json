@@ -19,7 +19,7 @@
     "startUTC": 39600
   },
   "data": {
-    "file": "jalisco_feb22.json"
+    "file": "data/playback/jalisco_feb22.json"
   },
   "display": {
     "localTz": { "name": "CST", "offset": -6 },

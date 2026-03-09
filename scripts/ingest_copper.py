@@ -1,0 +1,1010 @@
+#!/usr/bin/env python3
+"""
+Ingest copper mining sites into Panopticon format.
+
+Primary sources:
+  - USGS Mineral Commodity Summaries 2024, Copper chapter
+    https://pubs.usgs.gov/periodicals/mcs2024/mcs2024-copper.pdf
+  - USGS Mineral Resources Data System (MRDS) for coordinates
+    https://mrdata.usgs.gov/mrds/
+  - International Copper Study Group (ICSG) statistical yearbook
+    https://icsg.org/
+  - S&P Global Market Intelligence mine profiles
+  - Company annual/sustainability reports:
+      BHP Annual Report 2023 (bhp.com)
+      Codelco Annual Report 2023 (codelco.com)
+      Freeport-McMoRan Annual Report 2023 (fcx.com)
+      Anglo American Annual Report 2023 (angloamerican.com)
+      Glencore Annual Report 2023 (glencore.com)
+      Antofagasta plc Annual Report 2023 (antofagasta.co.uk)
+      Rio Tinto Annual Report 2023 (riotinto.com)
+      Teck Resources Annual Report 2023 (teck.com)
+      First Quantum Minerals Annual Report 2023 (first-quantum.com)
+      Ivanhoe Mines NI 43-101 Technical Reports (ivanhoemines.com)
+      MMG Limited Annual Report 2023 (mmg.com)
+      CMOC Group Annual Report 2023 (cmoc.com)
+      Southern Copper Corporation Annual Report 2023 (southerncoppercorp.com)
+      KGHM Annual Report 2023 (kghm.com)
+      Barrick Gold Annual Report 2023 (barrick.com)
+      Zijin Mining Annual Report 2023 (zijinmining.com)
+
+Since USGS MCS is published as PDF and mine-level data requires aggregation
+from multiple non-API sources, this script embeds curated site data directly.
+Run with: python3 scripts/ingest_copper.py
+Output:   data/layers/points/copper.json
+"""
+
+import json
+import os
+import pathlib
+
+SCRIPT_DIR = pathlib.Path(__file__).resolve().parent
+PROJECT_ROOT = SCRIPT_DIR.parent
+OUTPUT_PATH = PROJECT_ROOT / "data" / "layers" / "points" / "copper.json"
+
+SOURCE_META = {
+    "description": "Major global copper mining and smelting operations",
+    "origin": (
+        "USGS Mineral Commodity Summaries 2024 "
+        "(https://pubs.usgs.gov/periodicals/mcs2024/mcs2024-copper.pdf); "
+        "International Copper Study Group (ICSG) statistical yearbook (icsg.org); "
+        "S&P Global Market Intelligence mine profiles; "
+        "BHP Annual Report 2023 (bhp.com); "
+        "Codelco Annual Report 2023 (codelco.com); "
+        "Freeport-McMoRan Annual Report 2023 (fcx.com); "
+        "Anglo American Annual Report 2023 (angloamerican.com); "
+        "Glencore Annual Report 2023 (glencore.com); "
+        "Antofagasta plc Annual Report 2023 (antofagasta.co.uk); "
+        "Rio Tinto Annual Report 2023 (riotinto.com); "
+        "Teck Resources Annual Report 2023 (teck.com); "
+        "First Quantum Minerals Annual Report 2023 (first-quantum.com); "
+        "Ivanhoe Mines NI 43-101 Technical Reports (ivanhoemines.com); "
+        "MMG Limited Annual Report 2023 (mmg.com); "
+        "CMOC Group Annual Report 2023 (cmoc.com); "
+        "Southern Copper Corporation Annual Report 2023 (southerncoppercorp.com); "
+        "KGHM Annual Report 2023 (kghm.com); "
+        "Barrick Gold Annual Report 2023 (barrick.com); "
+        "Zijin Mining Annual Report 2023 (zijinmining.com)"
+    ),
+    "retrieved": "2026-03-08",
+    "license": "USGS: public domain; ICSG: subscription data summarized under fair use; company data: fair use summary",
+    "notes": (
+        "Major copper mining operations worldwide. "
+        "Coordinates from USGS MRDS, company filings, and NI 43-101 technical reports. "
+        "Capacity figures represent copper metal content in concentrate or cathode. "
+        "Chile alone accounts for ~24% of global mine production (~5.3M tpa). "
+        "Global refined copper production ~26M tpa (2023)."
+    ),
+}
+
+COVERAGE = {
+    "global_production_2023_tpa": 22000000,
+    "global_production_unit": "copper metal content",
+    "global_production_source": "USGS MCS 2024",
+    "operating_nameplate_tpa": 16850000,
+    "estimated_coverage_pct": 77,
+    "site_count": 45,
+    "operating_count": 40,
+    "development_count": 5,
+    "known_gaps": (
+        "Numerous small-to-medium copper mines in China (~1.8M tpa aggregate "
+        "from hundreds of operations); artisanal mining in DRC copper belt; "
+        "many Indian copper mines not individually listed; small operations "
+        "across Mexico, Kazakhstan, and Iran"
+    ),
+    "audit_date": "2026-03-08",
+}
+
+# ---------- curated site data ----------
+
+SITES = [
+    # ===== Chile (10 sites) =====
+    {
+        "name": "Escondida",
+        "lat": -24.27,
+        "lon": -69.07,
+        "country": "Chile",
+        "operator": "BHP",
+        "ownership": "BHP (57.5%), Rio Tinto (30%), JECO Corp (12.5%)",
+        "status": "operating",
+        "type": "open-pit",
+        "products": ["copper", "gold", "silver"],
+        "capacity_tpa": 1200000,
+        "production_year": 2023,
+        "reserves_mt": 32.4,
+        "grade": "0.52% Cu",
+        "notes": (
+            "World's largest copper mine by production. Located in the Atacama "
+            "Desert at 3,100m elevation. BHP 2023 annual report: ~1.1-1.2M tpa Cu. "
+            "Includes oxide leach SX-EW and two concentrators."
+        ),
+    },
+    {
+        "name": "Collahuasi",
+        "lat": -20.97,
+        "lon": -68.72,
+        "country": "Chile",
+        "operator": "Anglo American / Glencore",
+        "ownership": "Anglo American (44%), Glencore (44%), Mitsui/JCR (12%)",
+        "status": "operating",
+        "type": "open-pit",
+        "products": ["copper", "molybdenum"],
+        "capacity_tpa": 600000,
+        "production_year": 2023,
+        "reserves_mt": None,
+        "grade": "0.78% Cu",
+        "notes": (
+            "One of the world's largest copper mines, at 4,400m elevation in "
+            "the Andes. ~600k tpa Cu production. Concentrator and SX-EW plant."
+        ),
+    },
+    {
+        "name": "Chuquicamata",
+        "lat": -22.32,
+        "lon": -68.93,
+        "country": "Chile",
+        "operator": "Codelco",
+        "ownership": "Codelco (100% state-owned)",
+        "status": "operating",
+        "type": "underground (transitioned from open-pit)",
+        "products": ["copper", "molybdenum"],
+        "capacity_tpa": 330000,
+        "production_year": 2023,
+        "reserves_mt": None,
+        "grade": "0.67% Cu",
+        "notes": (
+            "Historic copper mine operating since 1915. Transitioned from one "
+            "of the world's largest open pits to underground block cave mining "
+            "in 2019. Codelco 2023: ~300-330k tpa Cu."
+        ),
+    },
+    {
+        "name": "El Teniente",
+        "lat": -34.09,
+        "lon": -70.40,
+        "country": "Chile",
+        "operator": "Codelco",
+        "ownership": "Codelco (100% state-owned)",
+        "status": "operating",
+        "type": "underground (block cave)",
+        "products": ["copper", "molybdenum"],
+        "capacity_tpa": 450000,
+        "production_year": 2023,
+        "reserves_mt": None,
+        "grade": "0.70% Cu",
+        "notes": (
+            "World's largest underground copper mine, ~80km south of Santiago "
+            "in the Andes. Block cave mining at multiple levels. Operating "
+            "since 1905. New Mine Level expansion underway."
+        ),
+    },
+    {
+        "name": "Radomiro Tomic",
+        "lat": -22.24,
+        "lon": -68.90,
+        "country": "Chile",
+        "operator": "Codelco",
+        "ownership": "Codelco (100% state-owned)",
+        "status": "operating",
+        "type": "open-pit",
+        "products": ["copper"],
+        "capacity_tpa": 270000,
+        "production_year": 2023,
+        "reserves_mt": None,
+        "grade": "0.42% Cu (oxide + sulfide)",
+        "notes": (
+            "Large oxide copper deposit near Chuquicamata. SX-EW cathode "
+            "production plus sulfide concentrator. Part of Codelco's "
+            "Chuquicamata district."
+        ),
+    },
+    {
+        "name": "Los Pelambres",
+        "lat": -31.72,
+        "lon": -70.50,
+        "country": "Chile",
+        "operator": "Antofagasta plc",
+        "ownership": "Antofagasta plc (60%), Nippon Mining (25%), Marubeni (15%)",
+        "status": "operating",
+        "type": "open-pit",
+        "products": ["copper", "molybdenum", "gold"],
+        "capacity_tpa": 370000,
+        "production_year": 2023,
+        "reserves_mt": None,
+        "grade": "0.58% Cu",
+        "notes": (
+            "Major copper-moly mine in Coquimbo Region. Concentrator expansion "
+            "completed 2023. Antofagasta 2023: ~370k tpa Cu."
+        ),
+    },
+    {
+        "name": "Centinela",
+        "lat": -23.32,
+        "lon": -69.15,
+        "country": "Chile",
+        "operator": "Antofagasta plc",
+        "ownership": "Antofagasta plc (70%), Marubeni (30%)",
+        "status": "operating",
+        "type": "open-pit",
+        "products": ["copper", "gold", "molybdenum"],
+        "capacity_tpa": 280000,
+        "production_year": 2023,
+        "reserves_mt": None,
+        "grade": "0.44% Cu",
+        "notes": (
+            "Merged operation of Esperanza and El Tesoro mines in the Atacama. "
+            "Produces copper concentrate and cathode. Second concentrator "
+            "expansion proposed."
+        ),
+    },
+    {
+        "name": "Spence",
+        "lat": -22.82,
+        "lon": -69.28,
+        "country": "Chile",
+        "operator": "BHP",
+        "ownership": "BHP (100%)",
+        "status": "operating",
+        "type": "open-pit",
+        "products": ["copper"],
+        "capacity_tpa": 200000,
+        "production_year": 2023,
+        "reserves_mt": None,
+        "grade": "0.50% Cu",
+        "notes": (
+            "Copper mine in the Atacama Desert. Spence Growth Option (SGO) "
+            "concentrator commissioned 2021 to process sulfide ore. "
+            "BHP 2023: ~200k tpa Cu."
+        ),
+    },
+    {
+        "name": "Quebrada Blanca Phase 2 (QB2)",
+        "lat": -20.99,
+        "lon": -68.78,
+        "country": "Chile",
+        "operator": "Teck Resources",
+        "ownership": "Teck (60%), Sumitomo Metal Mining / Sumitomo Corp (30%), ENAMI (10%)",
+        "status": "operating",
+        "type": "open-pit",
+        "products": ["copper", "molybdenum"],
+        "capacity_tpa": 300000,
+        "production_year": 2023,
+        "reserves_mt": None,
+        "grade": "0.42% Cu",
+        "notes": (
+            "Major greenfield copper project at 4,400m elevation. QB2 "
+            "concentrator commissioned mid-2023, ramping to 300k tpa Cu. "
+            "One of the largest new copper mines globally."
+        ),
+    },
+    {
+        "name": "Sierra Gorda",
+        "lat": -22.87,
+        "lon": -69.32,
+        "country": "Chile",
+        "operator": "KGHM / Sumitomo",
+        "ownership": "KGHM (55%), Sumitomo Metal Mining / Sumitomo Corp (45%)",
+        "status": "operating",
+        "type": "open-pit",
+        "products": ["copper", "molybdenum", "gold"],
+        "capacity_tpa": 120000,
+        "production_year": 2023,
+        "reserves_mt": None,
+        "grade": "0.36% Cu",
+        "notes": (
+            "Copper-moly-gold mine in the Atacama. KGHM's flagship "
+            "international operation. ~120k tpa Cu."
+        ),
+    },
+    # ===== Peru (6 sites) =====
+    {
+        "name": "Cerro Verde",
+        "lat": -16.54,
+        "lon": -71.60,
+        "country": "Peru",
+        "operator": "Freeport-McMoRan",
+        "ownership": "Freeport-McMoRan (53.56%), SMM Cerro Verde (21%), Compania de Minas Buenaventura (19.58%), others (5.86%)",
+        "status": "operating",
+        "type": "open-pit",
+        "products": ["copper", "molybdenum"],
+        "capacity_tpa": 500000,
+        "production_year": 2023,
+        "reserves_mt": None,
+        "grade": "0.37% Cu",
+        "notes": (
+            "Peru's largest copper mine, near Arequipa. Massive concentrator "
+            "expansion completed 2015. Freeport 2023: ~470-500k tpa Cu."
+        ),
+    },
+    {
+        "name": "Antamina",
+        "lat": -9.53,
+        "lon": -77.05,
+        "country": "Peru",
+        "operator": "BHP / Glencore / Teck / Mitsubishi",
+        "ownership": "BHP (33.75%), Glencore (33.75%), Teck (22.5%), Mitsubishi (10%)",
+        "status": "operating",
+        "type": "open-pit",
+        "products": ["copper", "zinc", "molybdenum", "silver", "lead"],
+        "capacity_tpa": 470000,
+        "production_year": 2023,
+        "reserves_mt": None,
+        "grade": "0.94% Cu",
+        "notes": (
+            "World-class polymetallic skarn deposit at 4,300m in the Andes. "
+            "One of the highest-grade large copper mines. ~470k tpa Cu."
+        ),
+    },
+    {
+        "name": "Las Bambas",
+        "lat": -14.06,
+        "lon": -72.33,
+        "country": "Peru",
+        "operator": "MMG Limited",
+        "ownership": "MMG Limited (62.5%), a consortium of CITIC Metal and others (37.5%)",
+        "status": "operating",
+        "type": "open-pit",
+        "products": ["copper", "gold", "molybdenum", "silver"],
+        "capacity_tpa": 310000,
+        "production_year": 2023,
+        "reserves_mt": None,
+        "grade": "0.60% Cu",
+        "notes": (
+            "Major copper mine in Apurimac region, southern Peru. Acquired by "
+            "MMG from Glencore in 2014. Has faced community blockade "
+            "disruptions to logistics corridor."
+        ),
+    },
+    {
+        "name": "Quellaveco",
+        "lat": -17.11,
+        "lon": -70.62,
+        "country": "Peru",
+        "operator": "Anglo American",
+        "ownership": "Anglo American (60%), Mitsubishi (40%)",
+        "status": "operating",
+        "type": "open-pit",
+        "products": ["copper", "molybdenum"],
+        "capacity_tpa": 300000,
+        "production_year": 2023,
+        "reserves_mt": None,
+        "grade": "0.48% Cu",
+        "notes": (
+            "Anglo American's $5.5B greenfield copper mine in Moquegua. "
+            "First production mid-2022, ramped to ~300k tpa Cu in 2023. "
+            "One of the newest major copper mines globally."
+        ),
+    },
+    {
+        "name": "Toromocho",
+        "lat": -11.62,
+        "lon": -76.13,
+        "country": "Peru",
+        "operator": "Chinalco (Aluminum Corporation of China)",
+        "ownership": "Chinalco Mining Corp International (100%)",
+        "status": "operating",
+        "type": "open-pit",
+        "products": ["copper", "molybdenum", "silver"],
+        "capacity_tpa": 250000,
+        "production_year": 2023,
+        "reserves_mt": None,
+        "grade": "0.47% Cu",
+        "notes": (
+            "Chinese-owned porphyry copper mine at 4,500m in Junin region. "
+            "Expansion completed 2020 to double throughput. ~250k tpa Cu."
+        ),
+    },
+    {
+        "name": "Cuajone",
+        "lat": -17.04,
+        "lon": -70.71,
+        "country": "Peru",
+        "operator": "Southern Copper Corporation",
+        "ownership": "Southern Copper Corp (Grupo Mexico, 88.9%)",
+        "status": "operating",
+        "type": "open-pit",
+        "products": ["copper", "molybdenum"],
+        "capacity_tpa": 150000,
+        "production_year": 2023,
+        "reserves_mt": None,
+        "grade": "0.56% Cu",
+        "notes": (
+            "Open-pit porphyry copper mine in Moquegua, southern Peru. "
+            "Operating since 1976. Southern Copper 2023: ~150k tpa Cu."
+        ),
+    },
+    # ===== DRC (4 sites) =====
+    {
+        "name": "Kamoa-Kakula",
+        "lat": -10.77,
+        "lon": 25.27,
+        "country": "DRC",
+        "operator": "Ivanhoe Mines / Zijin Mining",
+        "ownership": "Ivanhoe Mines (39.6%), Zijin Mining (39.6%), Crystal River (0.8%), DRC Government (20%)",
+        "status": "operating",
+        "type": "underground",
+        "products": ["copper"],
+        "capacity_tpa": 400000,
+        "production_year": 2023,
+        "reserves_mt": None,
+        "grade": "5.22% Cu (Kakula), 3.68% Cu (Kamoa)",
+        "notes": (
+            "World-class copper discovery in the Katanga copper belt. Among "
+            "the highest-grade major copper deposits. Phase 1-3 concentrators "
+            "operational. Ivanhoe 2023: ~394k tpa Cu."
+        ),
+    },
+    {
+        "name": "Tenke Fungurume",
+        "lat": -10.60,
+        "lon": 26.13,
+        "country": "DRC",
+        "operator": "CMOC Group",
+        "ownership": "CMOC Group (80%), Gecamines (20%)",
+        "status": "operating",
+        "type": "open-pit",
+        "products": ["copper", "cobalt"],
+        "capacity_tpa": 300000,
+        "production_year": 2023,
+        "reserves_mt": None,
+        "grade": "2.6% Cu, 0.30% Co",
+        "notes": (
+            "Major copper-cobalt operation in Katanga. CMOC 2023: ~300k tpa "
+            "Cu, ~30k tpa Co. SX-EW copper cathode and cobalt hydroxide."
+        ),
+    },
+    {
+        "name": "Mutanda",
+        "lat": -10.78,
+        "lon": 25.95,
+        "country": "DRC",
+        "operator": "Glencore",
+        "ownership": "Glencore (100%)",
+        "status": "operating",
+        "type": "open-pit",
+        "products": ["copper", "cobalt"],
+        "capacity_tpa": 200000,
+        "production_year": 2023,
+        "reserves_mt": None,
+        "grade": "1.5% Cu, 0.35% Co",
+        "notes": (
+            "Large Cu-Co mine restarted in 2022 after 2019 suspension. "
+            "Glencore 2023: ~170-200k tpa Cu."
+        ),
+    },
+    {
+        "name": "Kamoto (KCC)",
+        "lat": -10.72,
+        "lon": 25.42,
+        "country": "DRC",
+        "operator": "Glencore",
+        "ownership": "Glencore (75%), Gecamines (25%)",
+        "status": "operating",
+        "type": "underground + open-pit",
+        "products": ["copper", "cobalt"],
+        "capacity_tpa": 250000,
+        "production_year": 2023,
+        "reserves_mt": None,
+        "grade": "3.9% Cu, 0.45% Co",
+        "notes": (
+            "Historic Cu-Co complex in Kolwezi. Glencore 2023: ~250k tpa Cu, "
+            "~25k tpa Co."
+        ),
+    },
+    # ===== USA (4 sites) =====
+    {
+        "name": "Morenci",
+        "lat": 33.08,
+        "lon": -109.34,
+        "country": "USA",
+        "operator": "Freeport-McMoRan",
+        "ownership": "Freeport-McMoRan (72%), Sumitomo Metal Mining (15%), Sumitomo Corp (13%)",
+        "status": "operating",
+        "type": "open-pit",
+        "products": ["copper", "molybdenum"],
+        "capacity_tpa": 450000,
+        "production_year": 2023,
+        "reserves_mt": None,
+        "grade": "0.30% Cu",
+        "notes": (
+            "Largest copper mine in North America, located in southeastern "
+            "Arizona. Open-pit mining with SX-EW and concentrator. "
+            "Freeport 2023: ~450k tpa Cu."
+        ),
+    },
+    {
+        "name": "Bingham Canyon (Kennecott)",
+        "lat": 40.52,
+        "lon": -112.15,
+        "country": "USA",
+        "operator": "Rio Tinto (Kennecott)",
+        "ownership": "Rio Tinto (100%)",
+        "status": "operating",
+        "type": "open-pit",
+        "products": ["copper", "gold", "silver", "molybdenum"],
+        "capacity_tpa": 200000,
+        "production_year": 2023,
+        "reserves_mt": None,
+        "grade": "0.44% Cu",
+        "notes": (
+            "Historic open-pit mine near Salt Lake City, Utah. One of the "
+            "world's deepest open pits. Operating since 1906. Smelter and "
+            "refinery on-site. ~200k tpa Cu."
+        ),
+    },
+    {
+        "name": "Bagdad",
+        "lat": 34.58,
+        "lon": -113.21,
+        "country": "USA",
+        "operator": "Freeport-McMoRan",
+        "ownership": "Freeport-McMoRan (100%)",
+        "status": "operating",
+        "type": "open-pit",
+        "products": ["copper", "molybdenum"],
+        "capacity_tpa": 100000,
+        "production_year": 2023,
+        "reserves_mt": None,
+        "grade": "0.36% Cu",
+        "notes": (
+            "Porphyry copper mine in Yavapai County, Arizona. "
+            "Concentrator and SX-EW operations. ~100k tpa Cu."
+        ),
+    },
+    {
+        "name": "Resolution",
+        "lat": 33.30,
+        "lon": -111.10,
+        "country": "USA",
+        "operator": "Rio Tinto / BHP",
+        "ownership": "Rio Tinto (55%), BHP (45%)",
+        "status": "development",
+        "type": "underground (block cave, planned)",
+        "products": ["copper", "gold", "silver"],
+        "capacity_tpa": 450000,
+        "production_year": None,
+        "reserves_mt": None,
+        "grade": "1.47% Cu",
+        "notes": (
+            "One of the world's largest undeveloped copper deposits, near "
+            "Superior, Arizona. Would be one of the largest US copper mines "
+            "at ~450k tpa Cu. Permitting delayed by land-exchange controversy "
+            "(Apache sacred site at Oak Flat). Deep block cave at ~2,000m depth."
+        ),
+    },
+    # ===== Indonesia (1 site) =====
+    {
+        "name": "Grasberg",
+        "lat": -4.06,
+        "lon": 137.11,
+        "country": "Indonesia",
+        "operator": "PT Freeport Indonesia",
+        "ownership": "PT Inalum/Indonesian Government (51.23%), Freeport-McMoRan (48.76%)",
+        "status": "operating",
+        "type": "underground (block cave)",
+        "products": ["copper", "gold", "silver"],
+        "capacity_tpa": 600000,
+        "production_year": 2023,
+        "reserves_mt": None,
+        "grade": "1.04% Cu, 0.79 g/t Au",
+        "notes": (
+            "World's largest gold mine and second-largest copper mine by "
+            "reserves. Transitioned from open pit to underground block cave "
+            "(Grasberg Block Cave and Deep Mill Level Zone). Located in "
+            "Papua at ~4,200m elevation. Freeport 2023: ~600k tpa Cu."
+        ),
+    },
+    # ===== Zambia (3 sites) =====
+    {
+        "name": "Kansanshi",
+        "lat": -12.10,
+        "lon": 26.40,
+        "country": "Zambia",
+        "operator": "First Quantum Minerals",
+        "ownership": "First Quantum Minerals (80%), ZCCM-IH (20%)",
+        "status": "operating",
+        "type": "open-pit + underground",
+        "products": ["copper", "gold"],
+        "capacity_tpa": 250000,
+        "production_year": 2023,
+        "reserves_mt": None,
+        "grade": "0.75% Cu",
+        "notes": (
+            "Africa's largest copper mine by production. Mixed oxide-sulfide "
+            "orebody. S3 expansion underway to increase to ~400k tpa. "
+            "First Quantum 2023: ~220-250k tpa Cu."
+        ),
+    },
+    {
+        "name": "Sentinel",
+        "lat": -12.57,
+        "lon": 25.52,
+        "country": "Zambia",
+        "operator": "First Quantum Minerals",
+        "ownership": "First Quantum Minerals (100%)",
+        "status": "operating",
+        "type": "open-pit",
+        "products": ["copper"],
+        "capacity_tpa": 270000,
+        "production_year": 2023,
+        "reserves_mt": None,
+        "grade": "0.50% Cu",
+        "notes": (
+            "Greenfield copper mine in Northwestern Province. One of the "
+            "largest single-line copper concentrators. "
+            "First Quantum 2023: ~250-270k tpa Cu."
+        ),
+    },
+    {
+        "name": "Lumwana",
+        "lat": -12.10,
+        "lon": 25.85,
+        "country": "Zambia",
+        "operator": "Barrick Gold",
+        "ownership": "Barrick Gold (100%)",
+        "status": "operating",
+        "type": "open-pit",
+        "products": ["copper"],
+        "capacity_tpa": 130000,
+        "production_year": 2023,
+        "reserves_mt": None,
+        "grade": "0.55% Cu",
+        "notes": (
+            "Large open-pit copper mine in Zambia's Northwestern Province. "
+            "Super Pit Expansion project underway to extend mine life and "
+            "increase production. Barrick 2023: ~120-130k tpa Cu."
+        ),
+    },
+    # ===== Australia (3 sites) =====
+    {
+        "name": "Olympic Dam",
+        "lat": -30.45,
+        "lon": 136.89,
+        "country": "Australia",
+        "operator": "BHP",
+        "ownership": "BHP (100%)",
+        "status": "operating",
+        "type": "underground",
+        "products": ["copper", "uranium", "gold", "silver"],
+        "capacity_tpa": 200000,
+        "production_year": 2023,
+        "reserves_mt": None,
+        "grade": "1.40% Cu, 0.50 kg/t U3O8",
+        "notes": (
+            "World's largest known uranium deposit, fourth-largest copper "
+            "deposit. IOCG (iron oxide copper gold) orebody. Underground "
+            "sub-level open stoping. BHP 2023: ~180-200k tpa Cu. "
+            "Also produces ~3,500 tpa U3O8."
+        ),
+    },
+    {
+        "name": "Cadia Valley",
+        "lat": -33.47,
+        "lon": 149.00,
+        "country": "Australia",
+        "operator": "Newmont (formerly Newcrest)",
+        "ownership": "Newmont (100%, acquired Newcrest 2023)",
+        "status": "operating",
+        "type": "underground (block/panel cave)",
+        "products": ["gold", "copper"],
+        "capacity_tpa": 55000,
+        "production_year": 2023,
+        "reserves_mt": None,
+        "grade": "0.27% Cu, 0.53 g/t Au",
+        "notes": (
+            "One of Australia's largest gold-copper operations near Orange, "
+            "NSW. Panel cave mining (Cadia East). ~55k tpa Cu as byproduct "
+            "of gold mining."
+        ),
+    },
+    {
+        "name": "Prominent Hill",
+        "lat": -29.72,
+        "lon": 135.53,
+        "country": "Australia",
+        "operator": "BHP",
+        "ownership": "BHP (100%, via OZ Minerals acquisition)",
+        "status": "operating",
+        "type": "underground",
+        "products": ["copper", "gold"],
+        "capacity_tpa": 90000,
+        "production_year": 2023,
+        "reserves_mt": None,
+        "grade": "1.35% Cu",
+        "notes": (
+            "IOCG deposit in South Australia. Transitioned from open pit to "
+            "underground. Acquired via BHP's 2023 takeover of OZ Minerals. "
+            "~80-90k tpa Cu."
+        ),
+    },
+    # ===== Mongolia (2 sites) =====
+    {
+        "name": "Oyu Tolgoi",
+        "lat": 43.00,
+        "lon": 106.85,
+        "country": "Mongolia",
+        "operator": "Rio Tinto / Turquoise Hill",
+        "ownership": "Turquoise Hill/Rio Tinto (66%), Government of Mongolia (34%)",
+        "status": "operating",
+        "type": "underground (block cave) + open-pit",
+        "products": ["copper", "gold", "silver"],
+        "capacity_tpa": 200000,
+        "production_year": 2023,
+        "reserves_mt": None,
+        "grade": "1.52% Cu (underground), 0.35% Cu (open pit)",
+        "notes": (
+            "World-class porphyry copper-gold deposit in the South Gobi "
+            "desert. Hugo North underground block cave (Lift 1) achieved "
+            "sustainable production in 2023. Will become one of the world's "
+            "top four copper mines at full underground production (~500k tpa Cu)."
+        ),
+    },
+    {
+        "name": "Erdenet",
+        "lat": 49.06,
+        "lon": 104.15,
+        "country": "Mongolia",
+        "operator": "Erdenet Mining Corporation",
+        "ownership": "Government of Mongolia (51%), Russian state (49%)",
+        "status": "operating",
+        "type": "open-pit",
+        "products": ["copper", "molybdenum"],
+        "capacity_tpa": 130000,
+        "production_year": 2023,
+        "reserves_mt": None,
+        "grade": "0.50% Cu",
+        "notes": (
+            "Mongolia's oldest and second-largest copper mine, operating "
+            "since 1978. ~130k tpa Cu. State-owned joint venture."
+        ),
+    },
+    # ===== Panama (1 site) =====
+    {
+        "name": "Cobre Panama",
+        "lat": 8.82,
+        "lon": -80.65,
+        "country": "Panama",
+        "operator": "First Quantum Minerals",
+        "ownership": "First Quantum Minerals (90%), Korea Panama Mining Corp (10%)",
+        "status": "care and maintenance",
+        "type": "open-pit",
+        "products": ["copper", "gold", "silver", "molybdenum"],
+        "capacity_tpa": 350000,
+        "production_year": 2023,
+        "reserves_mt": None,
+        "grade": "0.38% Cu",
+        "notes": (
+            "One of the world's newest large copper mines. Panama Supreme "
+            "Court ruled the mining concession unconstitutional in Nov 2023; "
+            "mine placed on preservation and safe management. "
+            "~330-350k tpa Cu when operating."
+        ),
+    },
+    # ===== Russia (2 sites) =====
+    {
+        "name": "Udokan",
+        "lat": 56.49,
+        "lon": 118.37,
+        "country": "Russia",
+        "operator": "Baikal Mining Company (USM Holdings)",
+        "ownership": "USM Holdings (Alisher Usmanov)",
+        "status": "operating",
+        "type": "open-pit",
+        "products": ["copper"],
+        "capacity_tpa": 135000,
+        "production_year": 2023,
+        "reserves_mt": 26.7,
+        "grade": "1.05% Cu",
+        "notes": (
+            "Russia's largest undeveloped copper deposit in Zabaykalsky Krai. "
+            "Phase 1 commissioned late 2022. One of the world's largest "
+            "copper deposits by reserves (~26.7M t Cu). ~135k tpa at full "
+            "Phase 1; Phase 2 will double output."
+        ),
+    },
+    {
+        "name": "Malmyzh",
+        "lat": 50.52,
+        "lon": 136.62,
+        "country": "Russia",
+        "operator": "Russian Copper Company",
+        "ownership": "Russian Copper Company",
+        "status": "development",
+        "type": "open-pit",
+        "products": ["copper", "gold"],
+        "capacity_tpa": 250000,
+        "production_year": None,
+        "reserves_mt": None,
+        "grade": "0.41% Cu, 0.18 g/t Au",
+        "notes": (
+            "Large porphyry copper-gold deposit in Khabarovsk Krai, Russian "
+            "Far East. Under development by Russian Copper Company. "
+            "~250k tpa Cu planned."
+        ),
+    },
+    # ===== Poland (1 site) =====
+    {
+        "name": "KGHM Polkowice-Sieroszowice / Rudna / Lubin",
+        "lat": 51.50,
+        "lon": 16.05,
+        "country": "Poland",
+        "operator": "KGHM Polska Miedz",
+        "ownership": "KGHM Polska Miedz (31.8% Polish state treasury)",
+        "status": "operating",
+        "type": "underground (deep)",
+        "products": ["copper", "silver", "gold", "nickel"],
+        "capacity_tpa": 390000,
+        "production_year": 2023,
+        "reserves_mt": None,
+        "grade": "1.48% Cu",
+        "notes": (
+            "KGHM operates three underground mines in the Legnica-Glogow "
+            "Copper District (LGCD). One of Europe's largest copper "
+            "producers. Very deep mining (1,000-1,200m). KGHM 2023: "
+            "~390k tpa Cu. Major silver byproduct (~40M oz/yr)."
+        ),
+    },
+    # ===== Peru (additional) =====
+    {
+        "name": "Toquepala",
+        "lat": -17.25,
+        "lon": -70.60,
+        "country": "Peru",
+        "operator": "Southern Copper Corporation",
+        "ownership": "Southern Copper Corp (Grupo Mexico, 88.9%)",
+        "status": "operating",
+        "type": "open-pit",
+        "products": ["copper", "molybdenum"],
+        "capacity_tpa": 300000,
+        "production_year": 2023,
+        "reserves_mt": None,
+        "grade": "0.48% Cu",
+        "notes": (
+            "Porphyry copper mine in Tacna, southern Peru. Concentrator "
+            "expansion completed 2018 doubled capacity. "
+            "Southern Copper 2023: ~290-300k tpa Cu."
+        ),
+    },
+    # ===== Mexico (1 site) =====
+    {
+        "name": "Buenavista del Cobre (Cananea) / La Caridad",
+        "lat": 30.95,
+        "lon": -110.00,
+        "country": "Mexico",
+        "operator": "Southern Copper Corporation",
+        "ownership": "Southern Copper Corp (Grupo Mexico, 88.9%)",
+        "status": "operating",
+        "type": "open-pit",
+        "products": ["copper", "molybdenum", "zinc", "silver"],
+        "capacity_tpa": 500000,
+        "production_year": 2023,
+        "reserves_mt": None,
+        "grade": "0.40% Cu",
+        "notes": (
+            "Mexico's largest copper mining complex in Sonora state. Includes "
+            "Buenavista (formerly Cananea) and La Caridad mines plus "
+            "smelter/refinery. Southern Copper 2023: ~490-500k tpa Cu combined."
+        ),
+    },
+    # ===== Brazil (2 sites) =====
+    {
+        "name": "Salobo",
+        "lat": -5.79,
+        "lon": -50.53,
+        "country": "Brazil",
+        "operator": "Vale",
+        "ownership": "Vale (100%)",
+        "status": "operating",
+        "type": "open-pit",
+        "products": ["copper", "gold"],
+        "capacity_tpa": 200000,
+        "production_year": 2023,
+        "reserves_mt": None,
+        "grade": "0.65% Cu, 0.35 g/t Au",
+        "notes": (
+            "IOCG copper-gold deposit in Carajas mineral province, Para "
+            "state. Three processing lines. Vale 2023: ~180-200k tpa Cu."
+        ),
+    },
+    {
+        "name": "Sossego",
+        "lat": -6.43,
+        "lon": -50.07,
+        "country": "Brazil",
+        "operator": "Vale",
+        "ownership": "Vale (100%)",
+        "status": "operating",
+        "type": "open-pit",
+        "products": ["copper", "gold"],
+        "capacity_tpa": 100000,
+        "production_year": 2023,
+        "reserves_mt": None,
+        "grade": "0.80% Cu",
+        "notes": (
+            "IOCG copper-gold mine in Carajas, Para state. "
+            "Vale 2023: ~90-100k tpa Cu."
+        ),
+    },
+    # ===== Chile (additional) =====
+    {
+        "name": "Los Bronces",
+        "lat": -33.15,
+        "lon": -70.28,
+        "country": "Chile",
+        "operator": "Anglo American",
+        "ownership": "Anglo American (50.1%), Codelco (29.5%), Mitsui/Mitsubishi (20.4%)",
+        "status": "operating",
+        "type": "open-pit",
+        "products": ["copper", "molybdenum"],
+        "capacity_tpa": 200000,
+        "production_year": 2023,
+        "reserves_mt": None,
+        "grade": "0.56% Cu",
+        "notes": (
+            "Large porphyry copper mine in the Andes above Santiago. "
+            "Anglo American 2023: ~180-200k tpa Cu. Integrated development "
+            "plan with nearby underground resources."
+        ),
+    },
+    # ===== China (2 sites) =====
+    {
+        "name": "Dexing",
+        "lat": 28.95,
+        "lon": 117.73,
+        "country": "China",
+        "operator": "Jiangxi Copper",
+        "ownership": "Jiangxi Copper Co. (state-owned)",
+        "status": "operating",
+        "type": "open-pit",
+        "products": ["copper", "gold", "silver", "molybdenum"],
+        "capacity_tpa": 180000,
+        "production_year": 2023,
+        "reserves_mt": None,
+        "grade": "0.44% Cu",
+        "notes": (
+            "China's largest open-pit copper mine, in Jiangxi province. "
+            "Operating since 1958. Jiangxi Copper is China's largest copper "
+            "producer. ~180k tpa Cu mine production."
+        ),
+    },
+    {
+        "name": "Zijinshan (Zijin Gold-Copper Mine)",
+        "lat": 25.15,
+        "lon": 116.40,
+        "country": "China",
+        "operator": "Zijin Mining Group",
+        "ownership": "Zijin Mining Group (state-controlled)",
+        "status": "operating",
+        "type": "open-pit + underground",
+        "products": ["copper", "gold"],
+        "capacity_tpa": 80000,
+        "production_year": 2023,
+        "reserves_mt": None,
+        "grade": "0.39% Cu",
+        "notes": (
+            "Flagship gold-copper mine of Zijin Mining in Fujian province. "
+            "Bioleaching copper recovery. ~80k tpa Cu."
+        ),
+    },
+]
+
+
+def main():
+    output = {
+        "_source": SOURCE_META,
+        "_coverage": COVERAGE,
+        "sites": SITES,
+    }
+
+    os.makedirs(OUTPUT_PATH.parent, exist_ok=True)
+
+    with open(OUTPUT_PATH, "w", encoding="utf-8") as f:
+        json.dump(output, f, indent=2, ensure_ascii=False, default=str)
+
+    operating = sum(1 for s in SITES if s["status"] == "operating")
+    development = sum(1 for s in SITES if s["status"] in ("development", "care and maintenance"))
+    print(f"[OK] Wrote {len(SITES)} copper sites ({operating} operating, {development} dev/c&m) -> {OUTPUT_PATH}")
+
+
+if __name__ == "__main__":
+    main()

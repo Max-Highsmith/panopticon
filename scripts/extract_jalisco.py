@@ -19,7 +19,7 @@ TRACES_DIR = "./traces"
 # 2026-02-22 19:00-19:30 UTC
 TIME_START = 68400  # 19:00 UTC
 TIME_END = 70200    # 19:30 UTC
-OUTPUT_FILE = "../jalisco_feb22.json"
+OUTPUT_FILE = "../data/playback/jalisco_feb22.json"
 
 # Bounding box: Western Mexico + Pacific coast + US border states
 LAT_MIN = 12.0

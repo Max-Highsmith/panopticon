@@ -27,8 +27,11 @@ export function createDetailViewer(containerId) {
     animation: false, timeline: false, fullscreenButton: false,
     selectionIndicator: false, infoBox: false, scene3DOnly: true,
     imageryProvider: false,
+    msaaSamples: 4,
   });
   viewer.scene.backgroundColor = Cesium.Color.BLACK;
+  viewer.scene.postProcessStages.fxaa.enabled = true;
+  viewer.resolutionScale = window.devicePixelRatio || 1;
   viewer.imageryLayers.addImageryProvider(
     new Cesium.OpenStreetMapImageryProvider({ url: 'https://tile.openstreetmap.org/' })
   );

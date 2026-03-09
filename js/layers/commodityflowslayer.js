@@ -7,7 +7,7 @@ import { registerLayerLoader } from '../layerregistry.js';
 
 const layer = createPathLayer({
   layerKey: 'commodityflows',
-  dataUrl: 'data/commodity_flows.json',
+  layerType: 'path', dataUrl: 'data/layers/paths/commodity_flows.json',
   idPrefix: 'comm',
   countId: 'commodityflows-count',
   logLabel: 'COMMODITY FLOWS',
@@ -22,7 +22,7 @@ const layer = createPathLayer({
   },
 });
 
-registerLayerLoader('commodityflows', { load: layer.load, flyTo: layer.FLY_TO, reset: layer.reset, dataUrl: 'data/commodity_flows.json' });
+registerLayerLoader('commodityflows', { load: layer.load, flyTo: layer.FLY_TO, reset: layer.reset, layerType: 'path', dataUrl: 'data/layers/paths/commodity_flows.json' });
 
 export const fetchCommodityFlows     = layer.load;
 export const isCommodityFlowsLoaded  = layer.isLoaded;

@@ -8,7 +8,7 @@ import { registerLayerLoader } from '../layerregistry.js';
 
 const layer = createDataLayer({
   layerKey: 'ports',
-  dataUrl: 'data/ports.json',
+  dataUrl: 'data/layers/points/ports.json',
   idPrefix: 'port',
   iconSize: DISPLAY.MINE_ICON_SIZE,
   countId: 'ports-count',
@@ -20,7 +20,7 @@ const layer = createDataLayer({
   },
 });
 
-registerLayerLoader('ports', { load: layer.load, flyTo: layer.FLY_TO, reset: layer.reset, dataUrl: 'data/ports.json' });
+registerLayerLoader('ports', { load: layer.load, flyTo: layer.FLY_TO, reset: layer.reset, dataUrl: 'data/layers/points/ports.json' });
 
 export const fetchPorts     = layer.load;
 export const isPortsLoaded  = layer.isLoaded;

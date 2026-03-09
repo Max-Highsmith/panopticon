@@ -7,7 +7,7 @@ import { registerLayerLoader } from '../layerregistry.js';
 
 const layer = createRegionLayer({
   layerKey: 'chokepoints',
-  dataUrl: 'data/chokepoints.json',
+  layerType: 'region', dataUrl: 'data/layers/regions/chokepoints.json',
   idPrefix: 'choke',
   countId: 'chokepoints-count',
   logLabel: 'CHOKEPOINTS',
@@ -19,7 +19,7 @@ const layer = createRegionLayer({
   },
 });
 
-registerLayerLoader('chokepoints', { load: layer.load, flyTo: layer.FLY_TO, reset: layer.reset, dataUrl: 'data/chokepoints.json' });
+registerLayerLoader('chokepoints', { load: layer.load, flyTo: layer.FLY_TO, reset: layer.reset, layerType: 'region', dataUrl: 'data/layers/regions/chokepoints.json' });
 
 export const fetchChokepoints     = layer.load;
 export const isChokepointsLoaded  = layer.isLoaded;

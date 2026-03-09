@@ -1,26 +1,32 @@
+# Environment / secrets
+.env
+config.local.js
+server/.env
+
+# Dependencies
+server/node_modules/
+node_modules/
+scripts/__pycache__/
+
 # Large data archives
 data/v2026*.tar.*
+data/v2026*.json
 data/traces/
 
-# Screenshots (not needed for site)
-*.png
-
-# Python scripts
-data/*.py
-
-# Large raw data (keep app data files tracked)
-data/v2026*.json
-
-# Local dev config (contains API keys)
-config.local.js
+# Wargame results (regenerable)
+results/
+no_move.json
+submarine_result.json
+wargame-*.json
 
 # macOS
 .DS_Store
 
-# Wargame server
-server/node_modules/
-server/.env
-results/
+# Screenshots
+*.png
+
+# Legacy data scripts
+data/*.py
 
 # Claude
 .claude/

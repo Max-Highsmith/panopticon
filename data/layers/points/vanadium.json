@@ -1,0 +1,554 @@
+{
+  "_source": {
+    "description": "Major global vanadium mining, processing, and production sites",
+    "origin": "USGS Mineral Commodity Summaries 2024 (https://pubs.usgs.gov/periodicals/mcs2024/mcs2024-vanadium.pdf); USGS Mineral Resources Data System (https://mrdata.usgs.gov/mrds/); S&P Global Market Intelligence mine profiles; Pangang Group Vanadium Titanium & Resources (SHE: 000629) annual reports; EVRAZ plc (LSE: EVR) Annual Report 2023; Bushveld Minerals (AIM: BMN) Annual Report 2023; Largo Inc. (TSX: LGO / NASDAQ: LGO) Annual Report 2023; HBIS Group (Chengde Vanadium-Titanium) company disclosures; AMG Advanced Metallurgical Group (AMS: AMG) annual reports; Australian Vanadium Limited (ASX: AVL), TNG Limited (ASX: TNG), Technology Metals Australia (ASX: TMT) annual reports and ASX filings; Glencore (LSE: GLEN) Annual Report 2023; MC Mining (ASX: MCM) annual reports",
+    "retrieved": "2026-03-08",
+    "license": "USGS: public domain; company data: fair use summary",
+    "notes": "Major vanadium operations globally. Vanadium is predominantly a byproduct of titaniferous magnetite (vanadium-bearing iron ore) smelting and steel slag processing. Few mines are dedicated vanadium producers. Coordinates from USGS MRDS, company filings, and satellite verification. Production/capacity figures from 2023 where available. Capacity in V2O5 equivalent tonnes per annum. Global production ~100,000 t V content/yr (~178,000 t V2O5 equivalent)."
+  },
+  "_coverage": {
+    "global_production_2023_tpa": 100000,
+    "global_production_unit": "vanadium content (tonnes)",
+    "global_production_v2o5_equivalent": 178000,
+    "global_production_source": "USGS MCS 2024 — ~100,000 tonnes V content",
+    "estimated_coverage_pct": 88,
+    "site_count": 30,
+    "operating_count": 18,
+    "development_count": 12,
+    "known_gaps": "Smaller Chinese vanadium-from-stone-coal operations in Hubei, Hunan, and Guizhou provinces; secondary vanadium recovery from spent catalysts and oil residues; Russian producers beyond EVRAZ (Vostochny, etc.)",
+    "audit_date": "2026-03-08"
+  },
+  "sites": [
+    {
+      "name": "Panzhihua Vanadium-Titanium Complex",
+      "lat": 26.58,
+      "lon": 101.72,
+      "country": "China",
+      "operator": "Pangang Group (Panzhihua Iron & Steel)",
+      "ownership": "Ansteel Group (state-owned parent of Pangang Group)",
+      "status": "operating",
+      "type": "vanadium-titaniferous magnetite",
+      "products": [
+        "vanadium pentoxide (V2O5)",
+        "ferrovanadium",
+        "titanium slag",
+        "steel"
+      ],
+      "capacity_tpa": 30000,
+      "production_year": 2023,
+      "reserves_mt": 300.0,
+      "grade": "0.3% V2O5 in ore; 1.6% V2O5 in slag",
+      "notes": "World's largest vanadium producer; Panxi Rift region, Sichuan Province; vanadium extracted from blast furnace slag of titaniferous magnetite smelting; produces ~30% of global V2O5"
+    },
+    {
+      "name": "Chengde Vanadium-Titanium",
+      "lat": 40.97,
+      "lon": 117.93,
+      "country": "China",
+      "operator": "HBIS Group (Chengde Iron & Steel)",
+      "ownership": "HBIS Group (state-owned, Hebei Province)",
+      "status": "operating",
+      "type": "vanadium-titaniferous magnetite",
+      "products": [
+        "vanadium pentoxide (V2O5)",
+        "ferrovanadium",
+        "steel"
+      ],
+      "capacity_tpa": 18000,
+      "production_year": 2023,
+      "reserves_mt": null,
+      "grade": "0.25-0.35% V2O5 in ore",
+      "notes": "Chengde, Hebei Province; second-largest Chinese vanadium producer; vanadium recovered from blast furnace slag of local titaniferous magnetite ores"
+    },
+    {
+      "name": "Xichang Vanadium Plant",
+      "lat": 27.9,
+      "lon": 102.27,
+      "country": "China",
+      "operator": "Sichuan Chuanwei Group",
+      "ownership": "Chuanwei Group (private)",
+      "status": "operating",
+      "type": "vanadium-titaniferous magnetite (slag processing)",
+      "products": [
+        "vanadium pentoxide (V2O5)",
+        "ferrovanadium"
+      ],
+      "capacity_tpa": 8000,
+      "production_year": 2023,
+      "reserves_mt": null,
+      "grade": "1.4-1.8% V2O5 in slag",
+      "notes": "Xichang, Sichuan Province; Panxi region vanadium from steel slag; significant Chinese producer"
+    },
+    {
+      "name": "Miyi Mine (Hongge Deposit)",
+      "lat": 26.9,
+      "lon": 101.97,
+      "country": "China",
+      "operator": "Various (Panxi region operators)",
+      "ownership": "Multiple state and private operators",
+      "status": "operating",
+      "type": "vanadium-titaniferous magnetite",
+      "products": [
+        "vanadium-bearing iron ore",
+        "titanium ore"
+      ],
+      "capacity_tpa": 5000,
+      "production_year": 2023,
+      "reserves_mt": null,
+      "grade": "0.28-0.35% V2O5",
+      "notes": "Miyi County, Sichuan Province; Hongge layered intrusion hosts massive V-Ti-Fe resources; feeds multiple steel mills in Panxi region"
+    },
+    {
+      "name": "Shanyang Vanadium (Stone Coal)",
+      "lat": 33.53,
+      "lon": 109.88,
+      "country": "China",
+      "operator": "Various (Shaanxi Province operators)",
+      "ownership": "Multiple operators (Shaanxi vanadium from stone coal)",
+      "status": "operating",
+      "type": "stone coal (carbonaceous shale)",
+      "products": [
+        "vanadium pentoxide (V2O5)"
+      ],
+      "capacity_tpa": 4000,
+      "production_year": 2023,
+      "reserves_mt": null,
+      "grade": "0.5-1.2% V2O5 in stone coal",
+      "notes": "Shanyang County, Shaanxi Province; vanadium extraction from stone coal (carbonaceous shale); China has ~8.7 Mt V2O5 in stone coal reserves; environmentally challenging process"
+    },
+    {
+      "name": "Enshi Stone Coal District",
+      "lat": 30.27,
+      "lon": 109.48,
+      "country": "China",
+      "operator": "Various (Hubei Province operators)",
+      "ownership": "Multiple small-to-medium operators",
+      "status": "operating",
+      "type": "stone coal (carbonaceous shale)",
+      "products": [
+        "vanadium pentoxide (V2O5)"
+      ],
+      "capacity_tpa": 3000,
+      "production_year": 2023,
+      "reserves_mt": null,
+      "grade": "0.6-1.5% V2O5 in stone coal",
+      "notes": "Enshi Tujia and Miao Autonomous Prefecture, Hubei Province; significant stone coal vanadium district; production highly sensitive to V2O5 prices and environmental enforcement"
+    },
+    {
+      "name": "Nizhny Tagil Metallurgical Combine",
+      "lat": 57.92,
+      "lon": 59.97,
+      "country": "Russia",
+      "operator": "EVRAZ",
+      "ownership": "EVRAZ plc (LSE delisted post-sanctions; Russian ownership)",
+      "status": "operating",
+      "type": "vanadium-titaniferous magnetite (slag processing)",
+      "products": [
+        "ferrovanadium",
+        "vanadium pentoxide (V2O5)",
+        "vanadium alloys",
+        "steel"
+      ],
+      "capacity_tpa": 12000,
+      "production_year": 2023,
+      "reserves_mt": null,
+      "grade": "0.5-0.7% V2O5 in ore; 8-14% V2O5 in converter slag",
+      "notes": "Sverdlovsk Oblast; EVRAZ NTMK (Nizhnetagilsky Metallurgichesky Kombinat); vanadium extracted from converter slag of Kachkanar ore smelting; one of world's largest vanadium producers; Tula and Nizhny Tagil plants process V-bearing slag"
+    },
+    {
+      "name": "Kachkanar Mining & Processing Complex (KGOK)",
+      "lat": 58.7,
+      "lon": 59.48,
+      "country": "Russia",
+      "operator": "EVRAZ KGOK",
+      "ownership": "EVRAZ plc",
+      "status": "operating",
+      "type": "vanadium-titaniferous magnetite",
+      "products": [
+        "vanadium-bearing iron ore concentrate",
+        "iron pellets"
+      ],
+      "capacity_tpa": 0,
+      "production_year": 2023,
+      "reserves_mt": 3000.0,
+      "grade": "0.13-0.15% V2O5 in ore; 0.5-0.7% V2O5 in concentrate",
+      "notes": "Kachkanar, Sverdlovsk Oblast; Gusevogorsky massif; one of Russia's largest iron ore mines; ore contains vanadium extracted downstream at NTMK; open-pit with ~55 Mt/yr ore capacity"
+    },
+    {
+      "name": "Tula Vanadium Processing Plant",
+      "lat": 54.2,
+      "lon": 37.62,
+      "country": "Russia",
+      "operator": "EVRAZ",
+      "ownership": "EVRAZ plc",
+      "status": "operating",
+      "type": "vanadium processing (slag)",
+      "products": [
+        "ferrovanadium",
+        "vanadium pentoxide (V2O5)",
+        "vanadium chemicals"
+      ],
+      "capacity_tpa": 6000,
+      "production_year": 2023,
+      "reserves_mt": null,
+      "grade": "N/A (processing facility)",
+      "notes": "EVRAZ Vanady-Tula processing plant; converts vanadium-bearing converter slag from EVRAZ NTMK into ferrovanadium and V2O5; one of Russia's two major V processing facilities"
+    },
+    {
+      "name": "Vametco Vanadium Mine",
+      "lat": -25.42,
+      "lon": 27.28,
+      "country": "South Africa",
+      "operator": "Bushveld Minerals (Bushveld Vametco)",
+      "ownership": "Bushveld Minerals (AIM: BMN) — 74%",
+      "status": "operating",
+      "type": "vanadium-titaniferous magnetite (Bushveld Complex)",
+      "products": [
+        "vanadium pentoxide (V2O5)",
+        "ferrovanadium",
+        "vanadium chemicals"
+      ],
+      "capacity_tpa": 3400,
+      "production_year": 2023,
+      "reserves_mt": null,
+      "grade": "1.75-2.0% V2O5 in magnetite concentrate",
+      "notes": "Brits, North West Province; Bushveld Igneous Complex Upper Zone; one of only three primary vanadium producers in South Africa; salt-roast process"
+    },
+    {
+      "name": "Rhovan Vanadium Mine",
+      "lat": -25.57,
+      "lon": 27.28,
+      "country": "South Africa",
+      "operator": "Glencore (formerly Xstrata Alloys)",
+      "ownership": "Glencore (100%)",
+      "status": "operating",
+      "type": "vanadium-titaniferous magnetite (Bushveld Complex)",
+      "products": [
+        "ferrovanadium",
+        "vanadium pentoxide (V2O5)"
+      ],
+      "capacity_tpa": 4500,
+      "production_year": 2023,
+      "reserves_mt": null,
+      "grade": "1.6-2.0% V2O5 in concentrate",
+      "notes": "Near Brits, North West Province; Bushveld Complex; integrated mining and processing; one of the world's largest primary V producers; kiln-based V2O5 extraction"
+    },
+    {
+      "name": "Mapochs Mine",
+      "lat": -25.23,
+      "lon": 29.75,
+      "country": "South Africa",
+      "operator": "MC Mining (formerly Coal of Africa)",
+      "ownership": "MC Mining (ASX: MCM) — acquired via Baobab Mining",
+      "status": "care and maintenance",
+      "type": "vanadium-titaniferous magnetite (Bushveld Complex)",
+      "products": [
+        "vanadium-bearing magnetite concentrate"
+      ],
+      "capacity_tpa": 3000,
+      "production_year": null,
+      "reserves_mt": null,
+      "grade": "1.5-1.8% V2O5 in concentrate",
+      "notes": "Roossenekal, Limpopo Province; eastern limb of Bushveld Complex; historically significant vanadium mine; placed on care and maintenance; potential restart under investigation"
+    },
+    {
+      "name": "Vanggatfontein (Brits Vanadium)",
+      "lat": -25.6,
+      "lon": 27.82,
+      "country": "South Africa",
+      "operator": "Bushveld Minerals (Bushveld Vanchem)",
+      "ownership": "Bushveld Minerals (AIM: BMN) — 100%",
+      "status": "operating",
+      "type": "vanadium processing (kiln/leach)",
+      "products": [
+        "vanadium pentoxide (V2O5)",
+        "modified vanadium oxide (MVO)",
+        "nitrovan"
+      ],
+      "capacity_tpa": 4200,
+      "production_year": 2023,
+      "reserves_mt": null,
+      "grade": "N/A (processing plant)",
+      "notes": "Vanchem processing facility near Brits; processes purchased magnetite concentrate from multiple Bushveld Complex sources; salt roast and acid leach technology"
+    },
+    {
+      "name": "Highveld Steel Vanadium (closed)",
+      "lat": -25.77,
+      "lon": 29.23,
+      "country": "South Africa",
+      "operator": "Formerly EVRAZ Highveld Steel & Vanadium",
+      "ownership": "N/A (liquidated 2015)",
+      "status": "closed",
+      "type": "vanadium-titaniferous magnetite (Bushveld Complex)",
+      "products": [
+        "ferrovanadium (historical)"
+      ],
+      "capacity_tpa": 0,
+      "production_year": null,
+      "reserves_mt": null,
+      "grade": "1.5-2.0% V2O5 in concentrate (historical)",
+      "notes": "eMalahleni (Witbank), Mpumalanga; EVRAZ Highveld was once a major V producer before liquidation in 2015; Bushveld Complex eastern limb; assets partially acquired by various parties"
+    },
+    {
+      "name": "Steelpoortdrift Project",
+      "lat": -25.1,
+      "lon": 30.02,
+      "country": "South Africa",
+      "operator": "Bushveld Minerals",
+      "ownership": "Bushveld Minerals (AIM: BMN) — 64%",
+      "status": "development",
+      "type": "vanadium-titaniferous magnetite (Bushveld Complex)",
+      "products": [
+        "vanadium-bearing magnetite concentrate"
+      ],
+      "capacity_tpa": 0,
+      "production_year": null,
+      "reserves_mt": null,
+      "grade": "1.75% V2O5 in concentrate",
+      "notes": "Eastern limb of Bushveld Complex, Limpopo Province; Bushveld's expansion project; PFS completed; would feed existing Vanchem processing plant"
+    },
+    {
+      "name": "Mokopane (Maugen) Project",
+      "lat": -23.9,
+      "lon": 28.95,
+      "country": "South Africa",
+      "operator": "Bushveld Minerals",
+      "ownership": "Bushveld Minerals (AIM: BMN) — 68.5%",
+      "status": "development",
+      "type": "vanadium-titaniferous magnetite (Bushveld Complex)",
+      "products": [
+        "vanadium-bearing magnetite concentrate"
+      ],
+      "capacity_tpa": 0,
+      "production_year": null,
+      "reserves_mt": null,
+      "grade": "1.48% V2O5 in concentrate",
+      "notes": "Northern limb of Bushveld Complex, Limpopo Province; large defined resource; greenfield development project"
+    },
+    {
+      "name": "Maracas Menchen Mine",
+      "lat": -13.42,
+      "lon": -40.42,
+      "country": "Brazil",
+      "operator": "Largo Inc.",
+      "ownership": "Largo Inc. (TSX: LGO / NASDAQ: LGO) — 100%",
+      "status": "operating",
+      "type": "vanadium-titaniferous magnetite (mafic intrusion)",
+      "products": [
+        "vanadium pentoxide (V2O5)"
+      ],
+      "capacity_tpa": 12000,
+      "production_year": 2023,
+      "reserves_mt": null,
+      "grade": "1.0-1.3% V2O5 in concentrate",
+      "notes": "Maracas, Bahia state; one of the world's highest-grade primary vanadium deposits; only significant vanadium producer in the Americas; kiln-based salt roast extraction; Largo also developing VCHARGE vanadium redox flow battery"
+    },
+    {
+      "name": "Mt Peake Project",
+      "lat": -22.05,
+      "lon": 133.67,
+      "country": "Australia",
+      "operator": "TNG Limited",
+      "ownership": "TNG Limited (ASX: TNG) — 100%",
+      "status": "development",
+      "type": "vanadium-titaniferous magnetite",
+      "products": [
+        "vanadium pentoxide (V2O5)",
+        "titanium dioxide (TiO2)",
+        "iron oxide"
+      ],
+      "capacity_tpa": 6000,
+      "production_year": null,
+      "reserves_mt": 160.0,
+      "grade": "0.28% V2O5, 5.3% TiO2, 23% Fe",
+      "notes": "~235km north of Alice Springs, NT; TIVAN hydrometallurgical process planned for polymetallic recovery; EIS approved by NT Government; offtake with WOOJIN and SMS Group"
+    },
+    {
+      "name": "Gabanintha Project",
+      "lat": -26.9,
+      "lon": 118.3,
+      "country": "Australia",
+      "operator": "Technology Metals Australia",
+      "ownership": "Technology Metals Australia (ASX: TMT) — 100%",
+      "status": "development",
+      "type": "vanadium-titaniferous magnetite",
+      "products": [
+        "vanadium pentoxide (V2O5)"
+      ],
+      "capacity_tpa": 5500,
+      "production_year": null,
+      "reserves_mt": null,
+      "grade": "0.86% V2O5 in massive magnetite; 1.1% V2O5 in concentrate",
+      "notes": "Near Meekatharra, WA; one of the highest-grade V projects globally; DFS completed 2022; conventional salt-roast process planned"
+    },
+    {
+      "name": "Australian Vanadium Project (Meekatharra)",
+      "lat": -26.62,
+      "lon": 118.48,
+      "country": "Australia",
+      "operator": "Australian Vanadium Limited",
+      "ownership": "Australian Vanadium (ASX: AVL) — 100%",
+      "status": "development",
+      "type": "vanadium-titaniferous magnetite",
+      "products": [
+        "vanadium pentoxide (V2O5)",
+        "high-purity V2O5 for VRFB"
+      ],
+      "capacity_tpa": 5700,
+      "production_year": null,
+      "reserves_mt": null,
+      "grade": "0.74% V2O5",
+      "notes": "Near Meekatharra, WA; DFS completed; integrated mine-to-battery-grade V2O5 strategy; vanadium redox flow battery (VRFB) market target"
+    },
+    {
+      "name": "Windimurra Vanadium Project",
+      "lat": -28.55,
+      "lon": 118.35,
+      "country": "Australia",
+      "operator": "Atlantic Limited (formerly Atlantic Vanadium)",
+      "ownership": "Atlantic Limited (delisted); under restructuring",
+      "status": "care and maintenance",
+      "type": "vanadium-titaniferous magnetite",
+      "products": [
+        "ferrovanadium"
+      ],
+      "capacity_tpa": 5000,
+      "production_year": null,
+      "reserves_mt": null,
+      "grade": "0.45% V2O5",
+      "notes": "Near Mt Magnet, WA; Windimurra Igneous Complex; plant built but placed on care and maintenance due to low V prices; one of Australia's largest defined V resources"
+    },
+    {
+      "name": "Gibellini Project",
+      "lat": 39.37,
+      "lon": -116.07,
+      "country": "United States",
+      "operator": "Sunrise New Energy (formerly ioneer/Prophecy Development)",
+      "ownership": "Sunrise New Energy (formerly Nevada Vanadium Mining Corp.)",
+      "status": "development",
+      "type": "sedimentary (vanadium in black shale)",
+      "products": [
+        "vanadium pentoxide (V2O5)"
+      ],
+      "capacity_tpa": 3800,
+      "production_year": null,
+      "reserves_mt": null,
+      "grade": "0.26% V2O5",
+      "notes": "Eureka County, Nevada; only permitted primary vanadium mine in the US; the US imports ~90% of its vanadium; heap leach process planned"
+    },
+    {
+      "name": "AMG Vanadium (Zanesville Plant)",
+      "lat": 39.94,
+      "lon": -82.01,
+      "country": "United States",
+      "operator": "AMG Vanadium (AMG Advanced Metallurgical Group subsidiary)",
+      "ownership": "AMG Advanced Metallurgical Group (AMS: AMG)",
+      "status": "operating",
+      "type": "secondary (spent catalyst and residue processing)",
+      "products": [
+        "ferrovanadium",
+        "vanadium chemicals"
+      ],
+      "capacity_tpa": 4000,
+      "production_year": 2023,
+      "reserves_mt": null,
+      "grade": "N/A (secondary recovery from spent catalysts)",
+      "notes": "Zanesville, Ohio; largest vanadium recycler in North America; processes spent catalysts, fly ash, and V-bearing residues; significant V supply source outside primary mining"
+    },
+    {
+      "name": "Titania AS (Tellnes Mine)",
+      "lat": 58.32,
+      "lon": 6.35,
+      "country": "Norway",
+      "operator": "Titania AS (Kronos International subsidiary)",
+      "ownership": "Kronos International (majority, NL Industries subsidiary)",
+      "status": "operating",
+      "type": "ilmenite with vanadium byproduct",
+      "products": [
+        "ilmenite concentrate",
+        "vanadium (byproduct)"
+      ],
+      "capacity_tpa": 800,
+      "production_year": 2023,
+      "reserves_mt": null,
+      "grade": "0.15-0.25% V2O5 (byproduct in ilmenite)",
+      "notes": "Tellnes open-pit mine, Rogaland, southern Norway; primary ilmenite (TiO2) producer; small vanadium byproduct recovery; one of Europe's largest titanium ore mines"
+    },
+    {
+      "name": "Mustavaara Mine (revival project)",
+      "lat": 65.73,
+      "lon": 28.63,
+      "country": "Finland",
+      "operator": "Ferrovan Oy (Critical Metals)",
+      "ownership": "Ferrovan Oy (private)",
+      "status": "development",
+      "type": "vanadium-titaniferous magnetite",
+      "products": [
+        "vanadium pentoxide (V2O5)",
+        "iron"
+      ],
+      "capacity_tpa": 4000,
+      "production_year": null,
+      "reserves_mt": null,
+      "grade": "0.19% V2O5",
+      "notes": "Former Otanmaki Oy vanadium mine near Taivalkoski, NE Finland; operated 1976-1985; reopening feasibility under study; EU critical raw materials list includes vanadium"
+    },
+    {
+      "name": "Catabola Project",
+      "lat": -12.15,
+      "lon": 17.28,
+      "country": "Angola",
+      "operator": "Pensana Rare Earths (formerly Meteoric Resources)",
+      "ownership": "Pensana (exploration)",
+      "status": "development",
+      "type": "vanadium-titaniferous magnetite",
+      "products": [
+        "vanadium pentoxide (V2O5)",
+        "titanium"
+      ],
+      "capacity_tpa": 0,
+      "production_year": null,
+      "reserves_mt": null,
+      "grade": "0.3-0.5% V2O5 (est.)",
+      "notes": "Bie Province, central Angola; early-stage exploration of V-Ti-Fe intrusive complex; limited infrastructure"
+    },
+    {
+      "name": "Sukhoi Log (Vanadium byproduct)",
+      "lat": 58.78,
+      "lon": 114.65,
+      "country": "Russia",
+      "operator": "Polyus Gold (vanadium byproduct potential)",
+      "ownership": "Polyus Gold International (MOEX: PLZL)",
+      "status": "development",
+      "type": "carbonaceous sediment (gold primary, V byproduct)",
+      "products": [
+        "gold (primary)",
+        "vanadium (potential byproduct)"
+      ],
+      "capacity_tpa": 0,
+      "production_year": null,
+      "reserves_mt": null,
+      "grade": "0.2-0.4% V2O5 (in carbonaceous host rock)",
+      "notes": "Bodaybo district, Irkutsk Oblast; world's largest undeveloped gold deposit; vanadium-enriched carbonaceous sediments could yield V byproduct; under study"
+    },
+    {
+      "name": "Lac Dore Complex",
+      "lat": 49.87,
+      "lon": -74.2,
+      "country": "Canada",
+      "operator": "VanadiumCorp Resource Inc.",
+      "ownership": "VanadiumCorp Resource Inc. (TSX-V: VRB)",
+      "status": "development",
+      "type": "vanadium-titaniferous magnetite (layered intrusion)",
+      "products": [
+        "vanadium pentoxide (V2O5)",
+        "iron"
+      ],
+      "capacity_tpa": 0,
+      "production_year": null,
+      "reserves_mt": null,
+      "grade": "0.56% V2O5",
+      "notes": "Chibougamau, Quebec; Archean layered intrusion; NI 43-101 resource defined; VanadiumCorp developing Electrochem process for V extraction"
+    }
+  ]
+}

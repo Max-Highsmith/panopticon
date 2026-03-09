@@ -8,7 +8,7 @@ import { registerLayerLoader } from '../layerregistry.js';
 
 const layer = createDataLayer({
   layerKey: 'radar',
-  dataUrl: 'data/radar_installations.json',
+  dataUrl: 'data/layers/points/radar_installations.json',
   idPrefix: 'radar',
   iconSize: DISPLAY.BASE_ICON_SIZE,
   countId: 'radar-count',
@@ -23,7 +23,7 @@ const layer = createDataLayer({
   },
 });
 
-registerLayerLoader('radar', { load: layer.load, flyTo: layer.FLY_TO, reset: layer.reset, dataUrl: 'data/radar_installations.json' });
+registerLayerLoader('radar', { load: layer.load, flyTo: layer.FLY_TO, reset: layer.reset, dataUrl: 'data/layers/points/radar_installations.json' });
 
 export const fetchRadar     = layer.load;
 export const isRadarLoaded  = layer.isLoaded;

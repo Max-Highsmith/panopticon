@@ -8,7 +8,7 @@ import { registerLayerLoader } from '../layerregistry.js';
 
 const layer = createDataLayer({
   layerKey: 'refineries',
-  dataUrl: 'data/oil_refineries.json',
+  dataUrl: 'data/layers/points/oil_refineries.json',
   idPrefix: 'refinery',
   iconSize: DISPLAY.INFRA_ICON_SIZE,
   countId: 'refineries-count',
@@ -21,7 +21,7 @@ const layer = createDataLayer({
   },
 });
 
-registerLayerLoader('refineries', { load: layer.load, flyTo: layer.FLY_TO, reset: layer.reset, dataUrl: 'data/oil_refineries.json' });
+registerLayerLoader('refineries', { load: layer.load, flyTo: layer.FLY_TO, reset: layer.reset, dataUrl: 'data/layers/points/oil_refineries.json' });
 
 export const fetchRefineries     = layer.load;
 export const isRefineriesLoaded  = layer.isLoaded;

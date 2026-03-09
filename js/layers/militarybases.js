@@ -8,7 +8,7 @@ import { registerLayerLoader } from '../layerregistry.js';
 
 const layer = createDataLayer({
   layerKey: 'bases',
-  dataUrl: 'data/military_bases.json',
+  dataUrl: 'data/layers/points/military_bases.json',
   idPrefix: 'base',
   iconSize: DISPLAY.BASE_ICON_SIZE,
   countId: 'bases-count',
@@ -24,7 +24,7 @@ const layer = createDataLayer({
   },
 });
 
-registerLayerLoader('bases', { load: layer.load, flyTo: layer.FLY_TO, reset: layer.reset, dataUrl: 'data/military_bases.json' });
+registerLayerLoader('bases', { load: layer.load, flyTo: layer.FLY_TO, reset: layer.reset, dataUrl: 'data/layers/points/military_bases.json' });
 
 export const fetchMilitaryBases     = layer.load;
 export const isMilitaryBasesLoaded  = layer.isLoaded;

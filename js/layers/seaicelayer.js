@@ -7,7 +7,7 @@ import { registerLayerLoader } from '../layerregistry.js';
 
 const layer = createRegionLayer({
   layerKey: 'seaice',
-  dataUrl: 'data/sea_ice.json',
+  layerType: 'region', dataUrl: 'data/layers/regions/sea_ice.json',
   idPrefix: 'ice',
   countId: 'seaice-count',
   logLabel: 'SEA ICE',
@@ -19,7 +19,7 @@ const layer = createRegionLayer({
   },
 });
 
-registerLayerLoader('seaice', { load: layer.load, flyTo: layer.FLY_TO, reset: layer.reset, dataUrl: 'data/sea_ice.json' });
+registerLayerLoader('seaice', { load: layer.load, flyTo: layer.FLY_TO, reset: layer.reset, layerType: 'region', dataUrl: 'data/layers/regions/sea_ice.json' });
 
 export const fetchSeaIce     = layer.load;
 export const isSeaIceLoaded  = layer.isLoaded;

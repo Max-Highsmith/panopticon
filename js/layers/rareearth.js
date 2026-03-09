@@ -8,7 +8,7 @@ import { registerLayerLoader } from '../layerregistry.js';
 
 const layer = createDataLayer({
   layerKey: 'rareearth',
-  dataUrl: 'data/rare_earth.json',
+  dataUrl: 'data/layers/points/rare_earth.json',
   idPrefix: 'ree',
   iconSize: DISPLAY.MINE_ICON_SIZE,
   countId: 'rareearth-count',
@@ -21,7 +21,7 @@ const layer = createDataLayer({
   },
 });
 
-registerLayerLoader('rareearth', { load: layer.load, flyTo: layer.FLY_TO, reset: layer.reset, dataUrl: 'data/rare_earth.json' });
+registerLayerLoader('rareearth', { load: layer.load, flyTo: layer.FLY_TO, reset: layer.reset, dataUrl: 'data/layers/points/rare_earth.json' });
 
 export const fetchRareEarth     = layer.load;
 export const isRareEarthLoaded  = layer.isLoaded;

@@ -8,7 +8,7 @@ import { registerLayerLoader } from '../layerregistry.js';
 
 const layer = createDataLayer({
   layerKey: 'drilling',
-  dataUrl: 'data/drilling_leases.json',
+  dataUrl: 'data/layers/points/drilling_leases.json',
   idPrefix: 'drill',
   iconSize: DISPLAY.MINE_ICON_SIZE,
   countId: 'drilling-count',
@@ -22,7 +22,7 @@ const layer = createDataLayer({
   },
 });
 
-registerLayerLoader('drilling', { load: layer.load, flyTo: layer.FLY_TO, reset: layer.reset, dataUrl: 'data/drilling_leases.json' });
+registerLayerLoader('drilling', { load: layer.load, flyTo: layer.FLY_TO, reset: layer.reset, dataUrl: 'data/layers/points/drilling_leases.json' });
 
 export const fetchDrilling     = layer.load;
 export const isDrillingLoaded  = layer.isLoaded;

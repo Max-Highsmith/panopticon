@@ -49,7 +49,7 @@ panopticon/
 │   │   ├── regionlayer.js  Region layer factory
 │   │   ├── airports.js     Bespoke: airports layer
 │   │   ├── webcams.js      Bespoke: webcam streams layer
-│   │   └── *.js            ~40 layer modules (self-registering)
+│   │   └── *.js            60+ layer modules (self-registering)
 │   │
 │   ├── wargame.js          Wargame mode controller (browser execution)
 │   ├── simulation.mjs      Shared simulation engine (prompts, parsing, summaries)
@@ -66,8 +66,8 @@ panopticon/
 │   ├── citycatalog.js      City search catalog
 │   └── cityselector.js     City search UI
 │
-├── data/                   Runtime JSON data files (45+ layers)
-├── scenarios/              Wargame scenario definitions (35+ scenarios)
+├── data/                   Runtime JSON data files (60+ layers)
+├── scenarios/              Wargame scenario definitions (38+ scenarios)
 ├── playbacks/              Playback manifest files
 ├── scripts/                Data ingestion scripts (Python)
 ├── server/
@@ -94,7 +94,7 @@ Real-time data feeds rendered on the globe:
 | Commercial aircraft | OpenSky Network | 10s |
 | Satellites | Celestrak TLE | 60s |
 | Ships (AIS) | AIS endpoint | 30s |
-| POGO seismic | USGS | 60s |
+| POI (POGO) | Overpass API | 60s |
 
 Each feed runs an independent polling loop started by `app.js`. Entity positions update in-place on the CesiumJS viewer.
 

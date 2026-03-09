@@ -5,7 +5,7 @@
    =================================================================== */
 
 // Private state
-const _loaders = new Map();    // key → { load, flyTo, reset, dataUrl, view, geographic }
+const _loaders = new Map();    // key → { load, flyTo, reset, dataUrl, view, layerType }
 const _dataCache = new Map();  // key → raw JSON object
 
 /**
@@ -14,10 +14,10 @@ const _dataCache = new Map();  // key → raw JSON object
  *
  * Optional fields:
  *   view: string — which view type opens on click ('site', 'airport', 'webcam', 'satellite', 'plane')
- *   geographic: boolean — whether this layer renders on the globe (default true)
+ *   layerType: string — 'point', 'path', 'region', 'live', 'scenario', or 'ambient' (default 'point')
  */
-export function registerLayerLoader(key, { load, flyTo, reset, dataUrl, view, geographic }) {
-  _loaders.set(key, { load, flyTo, reset, dataUrl, view: view || null, geographic: geographic !== false });
+export function registerLayerLoader(key, { load, flyTo, reset, dataUrl, view, layerType, show, hide }) {
+  _loaders.set(key, { load, flyTo, reset, dataUrl, view: view || null, layerType: layerType || 'point', show: show || null, hide: hide || null });
 }
 
 /**
@@ -30,7 +30,7 @@ export function cacheLayerData(key, rawData) {
 
 /**
  * Get the registered loader for a layer key.
- * Returns { load, flyTo, reset, dataUrl } or null.
+ * Returns { load, flyTo, reset, dataUrl, view, layerType } or null.
  */
 export function getLoader(key) {
   return _loaders.get(key) || null;
@@ -91,10 +91,9 @@ export function getViewForLayer(key) {
 }
 
 /**
- * Check if a layer is geographic (rendered on the globe).
- * Non-geographic layers (markets, prices) render as sidebar panels.
+ * Get the layer type: 'point', 'path', 'region', 'live', 'scenario', or 'ambient'.
+ * Returns 'point' as default if not specified.
  */
-export function isLayerGeographic(key) {
-  const loader = _loaders.get(key);
-  return loader ? loader.geographic : true;
+export function getLayerType(key) {
+  return _loaders.get(key)?.layerType || 'point';
 }

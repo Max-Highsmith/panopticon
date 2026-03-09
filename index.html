@@ -15,6 +15,9 @@
   <!-- HLS Stream Playback -->
   <script src="https://cdn.jsdelivr.net/npm/hls.js@1.5.7/dist/hls.min.js"></script>
 
+  <!-- Three.js 3D Engine (Submarine View) -->
+  <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+
   <!-- Application Styles -->
   <link href="css/styles.css" rel="stylesheet">
 </head>
@@ -52,6 +55,46 @@
       <span class="stat-chip" data-layer="satellites">SAT: <span id="sat-count">---</span></span>
       <span class="stat-chip" data-layer="ships">SHIPS: <span id="ship-count">---</span></span>
       <span class="stat-chip" data-layer="pokemon">POGO: <span id="pogo-count">---</span></span>
+      <span class="stat-chip" data-layer="lithium">Li: <span id="lithium-count">---</span></span>
+      <span class="stat-chip" data-layer="cobalt">Co: <span id="cobalt-count">---</span></span>
+      <span class="stat-chip" data-layer="nickel">Ni: <span id="nickel-count">---</span></span>
+      <span class="stat-chip" data-layer="graphite">C: <span id="graphite-count">---</span></span>
+      <span class="stat-chip" data-layer="manganese">Mn: <span id="manganese-count">---</span></span>
+      <span class="stat-chip" data-layer="vanadium">V: <span id="vanadium-count">---</span></span>
+      <span class="stat-chip" data-layer="reelight">La: <span id="reelight-count">---</span></span>
+      <span class="stat-chip" data-layer="reeheavy">Dy: <span id="reeheavy-count">---</span></span>
+      <span class="stat-chip" data-layer="copper">Cu: <span id="copper-count">---</span></span>
+      <span class="stat-chip" data-layer="bauxite">Al: <span id="bauxite-count">---</span></span>
+      <span class="stat-chip" data-layer="silicon">Si: <span id="silicon-count">---</span></span>
+      <span class="stat-chip" data-layer="tin">Sn: <span id="tin-count">---</span></span>
+      <span class="stat-chip" data-layer="gallium">Ga: <span id="gallium-count">---</span></span>
+      <span class="stat-chip" data-layer="germanium">Ge: <span id="germanium-count">---</span></span>
+      <span class="stat-chip" data-layer="indium">In: <span id="indium-count">---</span></span>
+      <span class="stat-chip" data-layer="tantalum">Ta: <span id="tantalum-count">---</span></span>
+      <span class="stat-chip" data-layer="niobium">Nb: <span id="niobium-count">---</span></span>
+      <span class="stat-chip" data-layer="tungsten">W: <span id="tungsten-count">---</span></span>
+      <span class="stat-chip" data-layer="titanium">Ti: <span id="titanium-count">---</span></span>
+      <span class="stat-chip" data-layer="beryllium">Be: <span id="beryllium-count">---</span></span>
+      <span class="stat-chip" data-layer="chromium">Cr: <span id="chromium-count">---</span></span>
+      <span class="stat-chip" data-layer="antimony">Sb: <span id="antimony-count">---</span></span>
+      <span class="stat-chip" data-layer="platinum">Pt: <span id="platinum-count">---</span></span>
+      <span class="stat-chip" data-layer="palladium">Pd: <span id="palladium-count">---</span></span>
+      <span class="stat-chip" data-layer="uranium">U: <span id="uranium-count">---</span></span>
+      <span class="stat-chip" data-layer="tellurium">Te: <span id="tellurium-count">---</span></span>
+      <span class="stat-chip" data-layer="fluorspar">F: <span id="fluorspar-count">---</span></span>
+      <span class="stat-chip" data-layer="magnesium">Mg: <span id="magnesium-count">---</span></span>
+      <span class="stat-chip" data-layer="zinc">Zn: <span id="zinc-count">---</span></span>
+      <span class="stat-chip" data-layer="phosphate">P: <span id="phosphate-count">---</span></span>
+      <span class="stat-chip" data-layer="iridium">Ir: <span id="iridium-count">---</span></span>
+      <span class="stat-chip" data-layer="rhodium">Rh: <span id="rhodium-count">---</span></span>
+      <span class="stat-chip" data-layer="molybdenum">Mo: <span id="molybdenum-count">---</span></span>
+      <span class="stat-chip" data-layer="zirconium">Zr: <span id="zirconium-count">---</span></span>
+      <span class="stat-chip" data-layer="hafnium">Hf: <span id="hafnium-count">---</span></span>
+      <span class="stat-chip" data-layer="selenium">Se: <span id="selenium-count">---</span></span>
+      <span class="stat-chip" data-layer="bismuth">Bi: <span id="bismuth-count">---</span></span>
+      <span class="stat-chip" data-layer="cadmium">Cd: <span id="cadmium-count">---</span></span>
+      <span class="stat-chip" data-layer="silver">Ag: <span id="silver-count">---</span></span>
+      <span class="stat-chip" data-layer="scandium">Sc: <span id="scandium-count">---</span></span>
       <span class="stat-chip" data-layer="mines">MINES: <span id="mines-count">---</span></span>
       <span class="stat-chip" data-layer="infra">INFRA: <span id="infra-count">---</span></span>
       <span class="stat-chip" data-layer="nuclear">NUCLEAR: <span id="nuclear-count">---</span></span>
@@ -96,6 +139,12 @@
       <span class="stat-chip" data-layer="ionosphere">IONO: <span id="ionosphere-count">---</span></span>
       <span class="stat-chip" data-layer="fishingfleets">FFISH: <span id="fishingfleets-count">---</span></span>
       <span class="stat-chip" data-layer="arcticdeposits">ADEP: <span id="arcticdeposits-count">---</span></span>
+      <span class="stat-chip" data-layer="kalshi">MKTS: <span id="kalshi-count">---</span></span>
+      <span class="stat-chip" data-layer="crypto">CRYPT: <span id="crypto-count">---</span></span>
+      <span class="stat-chip" data-layer="commodities">CMDTY: <span id="commodities-count">---</span></span>
+      <span class="stat-chip" data-layer="news">NEWS: <span id="news-count">---</span></span>
+      <span class="stat-chip" data-layer="whalebtc">WHALE: <span id="whalebtc-count">---</span></span>
+      <span class="stat-chip" data-layer="wikipedia">WIKI: <span id="wiki-count">---</span></span>
       <span id="updated" style="display:none;"></span>
     </div>
   </div>
@@ -127,11 +176,8 @@
     <!-- Built dynamically by cityselector.js -->
   </div>
 
-  <div id="mines-legend">
-    <div class="ml-title">MINES KEY</div>
-    <div class="ml-item"><span class="ml-swatch" style="background:#cc44ff"></span> COBALT</div>
-    <div class="ml-item"><span class="ml-swatch" style="background:#00ddcc"></span> LITHIUM</div>
-    <div class="ml-item"><span class="ml-swatch" style="background:#f7931a"></span> BITCOIN</div>
+  <div id="layer-legend">
+    <!-- Built dynamically by app.js updateLegend() -->
   </div>
 
   <div id="filter-panel" style="display: none;">
@@ -192,6 +238,38 @@
     <!-- Populated during wargame playback with intel + decisions -->
   </div>
 
+  <!-- ==================== Ambient Layer Panels ==================== -->
+
+  <div id="ambient-container" style="display:none;">
+    <div id="ambient-tabs"></div>
+
+    <div id="kalshi-panel" class="ambient-panel">
+      <div class="ambient-content">
+        <!-- Populated by kalshilayer.js -->
+      </div>
+    </div>
+
+    <div id="crypto-panel" class="ambient-panel">
+      <div class="ambient-content"></div>
+    </div>
+
+    <div id="commodities-panel" class="ambient-panel">
+      <div class="ambient-content"></div>
+    </div>
+
+    <div id="news-panel" class="ambient-panel">
+      <div class="ambient-content"></div>
+    </div>
+
+    <div id="whalebtc-panel" class="ambient-panel">
+      <div class="ambient-content"></div>
+    </div>
+
+    <div id="wiki-panel" class="ambient-panel">
+      <div class="ambient-content"></div>
+    </div>
+  </div>
+
   <!-- ==================== Info Panel ==================== -->
 
   <div id="info-panel">
@@ -203,6 +281,27 @@
     <div><span class="label">SPD: </span><span id="info-spd"></span></div>
     <div><span class="label">HDG: </span><span id="info-hdg"></span></div>
     <div><span class="label">SQUAWK: </span><span id="info-squawk"></span></div>
+  </div>
+
+  <!-- ==================== Country Info Panel (BORDER filter) ==================== -->
+
+  <div id="country-panel">
+    <div class="cp-header">
+      <span id="cp-flag" class="cp-flag"></span>
+      <span id="cp-name" class="cp-name"></span>
+    </div>
+    <div id="cp-formal" class="cp-formal"></div>
+    <div class="cp-grid">
+      <div><span class="label">TYPE: </span><span id="cp-type"></span></div>
+      <div><span class="label">CAPITAL: </span><span id="cp-capital"></span></div>
+      <div><span class="label">CONTINENT: </span><span id="cp-continent"></span></div>
+      <div><span class="label">SUBREGION: </span><span id="cp-subregion"></span></div>
+      <div><span class="label">POPULATION: </span><span id="cp-population"></span></div>
+      <div><span class="label">GDP: </span><span id="cp-gdp"></span></div>
+      <div><span class="label">ECONOMY: </span><span id="cp-economy"></span></div>
+      <div><span class="label">INCOME: </span><span id="cp-income"></span></div>
+      <div><span class="label">ISO: </span><span id="cp-iso"></span></div>
+    </div>
   </div>
 
   <!-- ==================== Satellite View Panel ==================== -->
@@ -295,6 +394,38 @@
     <button id="site-view-close" onclick="closeSiteView()">CLOSE ✕</button>
   </div>
 
+  <!-- ==================== Path Route View Panel ==================== -->
+
+  <div id="path-view-panel">
+    <div class="panel-resize-handle"></div>
+    <!-- Path info canvas (route map + dossier) -->
+    <div id="path-info-view">
+      <canvas id="path-info-canvas"></canvas>
+      <div id="path-info-label">ROUTE INTELLIGENCE</div>
+    </div>
+    <!-- Path details bar -->
+    <div id="path-view-stats">
+      <div class="ptv-stats-row">
+        <div class="ptv-title" id="ptv-path-name">---</div>
+        <span class="ptv-stats-tag" id="ptv-type">---</span>
+      </div>
+      <div class="ptv-stats-grid">
+        <div><span class="ptv-label">OPERATOR </span><span id="ptv-operator">---</span></div>
+        <div><span class="ptv-label">COUNTRY </span><span id="ptv-country">---</span></div>
+        <div><span class="ptv-label">LENGTH </span><span id="ptv-length">---</span></div>
+        <div><span class="ptv-label">MIDPOINT </span><span id="ptv-mid">---</span></div>
+        <div class="ptv-notes-row"><span class="ptv-label">NOTES </span><span id="ptv-notes">---</span></div>
+      </div>
+    </div>
+    <!-- Cesium 3D view with route overlay -->
+    <div id="path-view-wrapper">
+      <div id="path-view-container"></div>
+      <canvas id="path-view-overlay"></canvas>
+      <div id="path-view-crosshair"></div>
+    </div>
+    <button id="path-view-close" onclick="closePathView()">CLOSE ✕</button>
+  </div>
+
   <!-- ==================== Airport View Panel ==================== -->
 
   <div id="airport-view-panel">
@@ -352,8 +483,82 @@
     <div id="webcam-embed-wrapper">
       <video id="webcam-hls-video" autoplay muted playsinline></video>
       <iframe id="webcam-embed-iframe" src="about:blank" frameborder="0" allowfullscreen allow="autoplay"></iframe>
+      <canvas id="webcam-video-overlay"></canvas>
     </div>
+    <button id="webcam-surveillance-toggle" class="active">SURVEIL</button>
     <button id="webcam-view-close" onclick="closeWebcamView()">CLOSE ✕</button>
+  </div>
+
+  <!-- ==================== Submarine 3D View Panel ==================== -->
+
+  <div id="submarine-view-panel">
+    <div class="panel-resize-handle"></div>
+    <!-- 3D Viewport -->
+    <div id="submarine-3d-container"></div>
+    <!-- HUD Overlay -->
+    <div id="sub-hud-overlay">
+      <!-- Unit label -->
+      <div id="sub-unit-label">---</div>
+      <!-- Top status bar -->
+      <div id="sub-status-bar">
+        <div id="sub-compass">
+          <span id="sub-compass-heading">000</span><span class="sub-compass-deg">&deg;</span>
+        </div>
+        <div class="sub-stat"><span class="sub-stat-label">HDG</span> <span id="sub-s-hdg">---</span></div>
+        <div class="sub-stat"><span class="sub-stat-label">DEP</span> <span id="sub-s-dep">---</span><span class="sub-stat-unit">m</span></div>
+        <div class="sub-stat"><span class="sub-stat-label">SPD</span> <span id="sub-s-spd">---</span><span class="sub-stat-unit">kts</span></div>
+        <div class="sub-stat"><span class="sub-stat-label">NOISE</span> <span id="sub-s-noise">---</span></div>
+      </div>
+      <!-- Command readout -->
+      <div id="sub-command-bar">CMD: <span id="sub-s-cmd">AWAITING ORDERS</span></div>
+      <!-- Sonar contacts list -->
+      <div id="sub-sonar-panel">
+        <div class="sub-panel-title">SONAR CONTACTS</div>
+        <div id="sub-sonar-list"></div>
+        <canvas id="sub-sonar-ppi" width="180" height="180"></canvas>
+      </div>
+      <!-- AI reasoning -->
+      <div id="sub-hud-ai" style="display:none">
+        <div class="sub-panel-title">AI CAPTAIN</div>
+        <div id="sub-ai-text"></div>
+      </div>
+      <!-- Intel feed -->
+      <div id="sub-hud-intel" style="display:none">
+        <div class="sub-panel-title">INTEL FEED</div>
+        <div id="sub-intel-list"></div>
+      </div>
+      <!-- Depth gauge -->
+      <div id="sub-depth-gauge">
+        <div class="sub-depth-label">0m</div>
+        <div class="sub-depth-track"><div id="sub-depth-indicator"></div></div>
+        <div class="sub-depth-label">500m</div>
+      </div>
+    </div>
+    <button id="submarine-view-close" onclick="closeSubmarineView()">CLOSE</button>
+  </div>
+
+  <!-- ==================== Sniper Scope View Panel ==================== -->
+
+  <div id="sniper-view-panel">
+    <div class="panel-resize-handle"></div>
+    <div id="sniper-3d-container"></div>
+    <div id="sniper-hud-overlay">
+      <div id="sniper-status-bar">
+        <div class="sniper-stat"><span class="sniper-stat-label">RNG</span> <span id="sniper-range">220</span><span class="sniper-stat-unit">m</span></div>
+        <div class="sniper-stat"><span class="sniper-stat-label">WIND</span> <span id="sniper-wind">3 NE</span></div>
+        <div class="sniper-stat"><span class="sniper-stat-label">ELEV</span> <span id="sniper-elev">+2.1&deg;</span></div>
+        <div class="sniper-stat"><span class="sniper-stat-label">HUMID</span> <span id="sniper-humid">42%</span></div>
+      </div>
+      <div id="sniper-target-panel">
+        <div class="sniper-panel-title">TARGET STATUS</div>
+        <div id="sniper-target-status">AWAITING VISUAL</div>
+      </div>
+      <div id="sniper-ai-panel" style="display:none">
+        <div class="sniper-panel-title">OPERATOR DECISION</div>
+        <div id="sniper-ai-text"></div>
+      </div>
+    </div>
+    <button id="sniper-view-close" onclick="closeSniperView()">CLOSE</button>
   </div>
 
   <!-- ==================== Wargame Agent Panel ==================== -->

@@ -6,6 +6,7 @@ import { API, REFRESH } from '../config.js';
 import { $ } from '../utils.js';
 import { entityMaps } from '../globe.js';
 import { createLiveEntity, updateLiveEntity, removeLiveEntity, pruneStale, LIVE_STYLES } from './livelayer.js';
+import { registerLayerLoader } from '../layerregistry.js';
 
 const entities = entityMaps.commercial;
 let interval = null;
@@ -103,3 +104,5 @@ export function startCommercial(viewer) {
 export function stopCommercial() {
   if (interval) { clearInterval(interval); interval = null; }
 }
+
+registerLayerLoader('commercial', { load: fetchCommercial, reset: stopCommercial, view: 'plane', layerType: 'live' });

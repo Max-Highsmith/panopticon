@@ -58,6 +58,38 @@ body {
   margin-bottom: 6px; letter-spacing: 2px;
 }
 
+/* --- Country Info Panel (BORDER filter) --- */
+#country-panel {
+  position: absolute; bottom: 100px; right: 16px;
+  background: rgba(0, 0, 0, 0.90);
+  border: 1px solid #00ff4180;
+  padding: 16px 20px;
+  font-size: 13px; line-height: 1.7;
+  z-index: 10; display: none;
+  min-width: 280px; max-width: 340px;
+  box-shadow: 0 0 20px rgba(0, 255, 65, 0.15);
+}
+#country-panel .label { opacity: 0.5; }
+.cp-header {
+  display: flex; align-items: center; gap: 8px;
+  margin-bottom: 4px;
+}
+.cp-flag { font-size: 24px; }
+.cp-name {
+  font-size: 18px; font-weight: bold;
+  letter-spacing: 2px;
+}
+.cp-formal {
+  font-size: 10px; opacity: 0.5;
+  margin-bottom: 8px; letter-spacing: 1px;
+}
+.cp-grid { line-height: 1.6; }
+.filter-border #country-panel {
+  border-color: #00ff4160;
+  color: #00ff41;
+  text-shadow: 0 0 6px rgba(0, 255, 65, 0.3);
+}
+
 /* --- Mode Switcher --- */
 #mode-bar {
   position: absolute; top: 16px; left: 50%; transform: translateX(-50%);
@@ -186,29 +218,47 @@ body.site-panel-open #city-panel      { left: calc((100vw - var(--panel-width)) 
 body.airport-panel-open #city-panel   { left: calc((100vw - var(--panel-width)) / 2); }
 body.webcam-panel-open #city-panel    { left: calc((100vw - var(--panel-width)) / 2); }
 
-/* --- Mines Legend --- */
-#mines-legend {
-  position: absolute; top: 52px; right: 24px;
+/* --- Dynamic Layer Legend --- */
+#layer-legend {
+  position: absolute; bottom: 40px; right: 24px;
   z-index: 10; display: none;
   background: rgba(0, 0, 0, 0.85);
-  border: 1px solid #cc44ff40;
-  padding: 8px 14px; border-radius: 4px;
+  border: 1px solid #00ff4125;
+  padding: 8px 12px; border-radius: 4px;
   font-size: 10px; letter-spacing: 1px;
-  box-shadow: 0 0 12px rgba(204, 68, 255, 0.1);
+  max-height: 60vh; overflow-y: auto;
+  min-width: 120px;
 }
-#mines-legend .ml-title {
-  color: #cc44ff; opacity: 0.6;
+#layer-legend .ll-title {
+  color: #00ff41; opacity: 0.5;
   margin-bottom: 6px; font-size: 9px;
   letter-spacing: 2px;
 }
-#mines-legend .ml-item {
+#layer-legend .ll-item {
   display: flex; align-items: center; gap: 8px;
   color: #ccc; margin-bottom: 3px;
-  line-height: 1.6;
+  line-height: 1.6; white-space: nowrap;
 }
-#mines-legend .ml-swatch {
-  display: inline-block; width: 10px; height: 10px;
+#layer-legend .ll-swatch-diamond {
+  display: inline-block; width: 8px; height: 8px;
   transform: rotate(45deg); flex-shrink: 0;
+}
+#layer-legend .ll-swatch-line {
+  display: inline-block; width: 14px; height: 2px;
+  flex-shrink: 0; border-radius: 1px;
+}
+#layer-legend .ll-swatch-rect {
+  display: inline-block; width: 12px; height: 8px;
+  flex-shrink: 0; border-radius: 1px; opacity: 0.7;
+}
+#layer-legend .ll-swatch-circle {
+  display: inline-block; width: 8px; height: 8px;
+  border-radius: 50%; flex-shrink: 0;
+}
+#layer-legend .ll-swatch-bar {
+  display: inline-block; width: 10px; height: 8px;
+  flex-shrink: 0; border-left: 2px solid; border-right: 2px solid;
+  border-bottom: 2px solid; border-top: none; opacity: 0.8;
 }
 
 /* --- Timeline Scrubber --- */
@@ -464,6 +514,334 @@ body.webcam-panel-open #city-panel    { left: calc((100vw - var(--panel-width)) 
   font-size: 11px;
 }
 
+/* ===================================================================
+   Ambient Layer Panels — Tabbed Container
+   =================================================================== */
+
+#ambient-container {
+  position: absolute;
+  top: 80px;
+  right: 0;
+  bottom: 80px;
+  width: 320px;
+  z-index: 10;
+  background: rgba(0, 0, 0, 0.92);
+  border-left: 1px solid #ffaa0030;
+  display: none;
+  flex-direction: column;
+  font-size: 11px;
+  overflow: hidden;
+}
+
+#ambient-tabs {
+  display: flex;
+  border-bottom: 1px solid #ffffff10;
+  min-height: 32px;
+  overflow-x: auto;
+  flex-shrink: 0;
+}
+
+.ambient-tab {
+  padding: 8px 14px;
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  color: #888;
+  cursor: pointer;
+  white-space: nowrap;
+  border-bottom: 2px solid transparent;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.ambient-tab:hover { color: #ccc; }
+
+.ambient-tab.active {
+  color: var(--tab-color, #ffaa00);
+  border-bottom-color: var(--tab-color, #ffaa00);
+}
+
+.ambient-panel {
+  display: none;
+  flex-direction: column;
+  flex: 1;
+  overflow: hidden;
+}
+
+.ambient-panel.active {
+  display: flex;
+}
+
+.ambient-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0;
+}
+
+/* --- Kalshi Market Cards --- */
+
+.kalshi-search {
+  width: 100%;
+  background: rgba(255, 170, 0, 0.05);
+  border: none;
+  border-bottom: 1px solid #ffaa0020;
+  color: #ffaa00;
+  font-family: 'Courier New', monospace;
+  font-size: 11px;
+  padding: 8px 14px;
+  outline: none;
+  letter-spacing: 1px;
+  box-sizing: border-box;
+}
+.kalshi-search::placeholder { color: #ffaa0040; }
+
+.kalshi-filters {
+  display: flex;
+  gap: 4px;
+  padding: 8px 12px;
+  overflow-x: auto;
+  flex-wrap: nowrap;
+  border-bottom: 1px solid #ffaa0015;
+}
+
+.kalshi-filter-pill {
+  background: rgba(255, 170, 0, 0.08);
+  border: 1px solid #ffaa0030;
+  color: #ffaa0080;
+  font-family: 'Courier New', monospace;
+  font-size: 9px;
+  padding: 2px 8px;
+  cursor: pointer;
+  border-radius: 2px;
+  letter-spacing: 1px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.kalshi-filter-pill:hover { border-color: #ffaa00; color: #ffaa00; }
+.kalshi-filter-pill.active {
+  background: #ffaa0020;
+  border-color: #ffaa0060;
+  color: #ffaa00;
+}
+
+.kalshi-market-list {
+  padding: 4px 0;
+}
+
+.kalshi-card {
+  padding: 10px 14px;
+  border-bottom: 1px solid #ffffff08;
+  cursor: default;
+  transition: background 0.1s;
+}
+.kalshi-card:hover { background: rgba(255, 170, 0, 0.04); }
+
+.kalshi-card-title {
+  font-size: 11px;
+  color: #ccc;
+  line-height: 1.4;
+  margin-bottom: 6px;
+}
+
+.kalshi-price-bar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 4px;
+}
+
+.kalshi-yes-price {
+  font-size: 12px;
+  color: #00ff41;
+  font-weight: bold;
+  min-width: 36px;
+}
+
+.kalshi-no-price {
+  font-size: 12px;
+  color: #ff4444;
+  font-weight: bold;
+  min-width: 36px;
+  text-align: right;
+}
+
+.kalshi-bar-track {
+  flex: 1;
+  height: 4px;
+  background: #ff444440;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.kalshi-bar-fill {
+  height: 100%;
+  background: #00ff41;
+  border-radius: 2px;
+  transition: width 0.3s ease;
+}
+
+.kalshi-card-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 9px;
+  opacity: 0.5;
+  letter-spacing: 0.5px;
+}
+
+.kalshi-cat-tag {
+  display: inline-block;
+  font-size: 8px;
+  letter-spacing: 1px;
+  padding: 1px 5px;
+  border-radius: 2px;
+  background: #ffaa0015;
+  color: #ffaa0080;
+  border: 1px solid #ffaa0020;
+}
+
+.kalshi-empty {
+  padding: 20px 14px;
+  color: #ffaa0040;
+  text-align: center;
+  letter-spacing: 2px;
+  font-size: 10px;
+}
+
+
+
+/* --- Crypto Market Cards --- */
+.crypto-search {
+  width: 100%; border: none; background: transparent;
+  color: #f7931a; padding: 8px 14px; font-family: 'Courier New', monospace;
+  font-size: 11px; letter-spacing: 1px; outline: none;
+  border-bottom: 1px solid #f7931a10;
+}
+.crypto-search::placeholder { color: #f7931a40; }
+.crypto-card {
+  padding: 10px 14px; border-bottom: 1px solid #ffffff08;
+  display: flex; align-items: center; gap: 10px;
+}
+.crypto-card:hover { background: rgba(247, 147, 26, 0.04); }
+.crypto-rank { font-size: 9px; opacity: 0.3; min-width: 20px; }
+.crypto-symbol { font-size: 12px; font-weight: bold; color: #f7931a; min-width: 50px; }
+.crypto-name { font-size: 10px; color: #666; flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.crypto-price { font-size: 12px; color: #ccc; text-align: right; min-width: 80px; }
+.crypto-change { font-size: 11px; font-weight: bold; min-width: 60px; text-align: right; }
+.crypto-change.positive { color: #00ff41; }
+.crypto-change.negative { color: #ff4444; }
+.crypto-meta { font-size: 9px; opacity: 0.4; display: flex; gap: 12px; margin-top: 2px; }
+.crypto-empty { padding: 20px 14px; color: #f7931a40; text-align: center; letter-spacing: 2px; font-size: 10px; }
+
+/* --- Commodity Price Items --- */
+.commodity-filters {
+  display: flex; gap: 4px; flex-wrap: nowrap; overflow-x: auto;
+  padding: 8px 14px; border-bottom: 1px solid #cc884410;
+}
+.commodity-pill {
+  background: rgba(204, 136, 68, 0.08); border: 1px solid #cc884420; border-radius: 2px;
+  padding: 3px 8px; font-size: 9px; letter-spacing: 1px; color: #cc884080;
+  cursor: pointer; white-space: nowrap;
+}
+.commodity-pill.active { background: #cc884020; color: #cc8844; }
+.commodity-category-header {
+  padding: 8px 14px; color: #cc8844; opacity: 0.5;
+  font-size: 9px; letter-spacing: 2px;
+  border-bottom: 1px solid #cc884410;
+}
+.commodity-item {
+  padding: 8px 14px; border-bottom: 1px solid #ffffff08;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.commodity-item:hover { background: rgba(204, 136, 68, 0.04); }
+.commodity-name { color: #ccc; font-size: 11px; }
+.commodity-price { color: #cc8844; font-size: 12px; font-weight: bold; }
+.commodity-unit { font-size: 9px; opacity: 0.4; margin-left: 4px; }
+.commodity-change { font-size: 10px; font-weight: bold; min-width: 50px; text-align: right; }
+.commodity-change.positive { color: #00ff41; }
+.commodity-change.negative { color: #ff4444; }
+.commodity-empty { padding: 20px 14px; color: #cc884440; text-align: center; letter-spacing: 2px; font-size: 10px; }
+
+/* --- News Feed Items --- */
+.news-item {
+  padding: 10px 14px; border-bottom: 1px solid #ffffff08; cursor: pointer;
+}
+.news-item:hover { background: rgba(68, 170, 255, 0.04); }
+.news-title {
+  color: #ccc; font-size: 11px; line-height: 1.4; margin-bottom: 4px;
+}
+.news-title:hover { color: #44aaff; }
+.news-meta {
+  display: flex; justify-content: space-between; font-size: 9px; opacity: 0.5;
+}
+.news-source { color: #44aaff; letter-spacing: 0.5px; }
+.news-time { color: #888; }
+.news-empty { padding: 20px 14px; color: #44aaff40; text-align: center; letter-spacing: 2px; font-size: 10px; }
+
+/* --- Whale Transaction Feed --- */
+.whale-tx {
+  padding: 10px 14px; border-bottom: 1px solid #ffffff08;
+}
+.whale-tx:hover { background: rgba(247, 147, 26, 0.04); }
+.whale-amount {
+  font-size: 14px; font-weight: bold; color: #f7931a;
+  text-shadow: 0 0 6px rgba(247, 147, 26, 0.3);
+}
+.whale-usd { font-size: 10px; color: #888; margin-left: 6px; }
+.whale-txid {
+  font-size: 9px; color: #f7931a80; letter-spacing: 0.5px;
+  cursor: pointer; margin-top: 4px;
+}
+.whale-txid:hover { color: #f7931a; text-decoration: underline; }
+.whale-meta {
+  display: flex; justify-content: space-between;
+  font-size: 9px; opacity: 0.4; margin-top: 4px;
+}
+.whale-empty {
+  padding: 20px 14px; color: #f7931a40;
+  text-align: center; letter-spacing: 2px; font-size: 10px;
+}
+
+/* --- Wikipedia Articles --- */
+.wiki-location {
+  padding: 8px 14px;
+  font-size: 9px;
+  letter-spacing: 1.5px;
+  color: #aaaaaa;
+  background: rgba(170, 170, 170, 0.04);
+  border-bottom: 1px solid #aaaaaa15;
+}
+.wiki-card {
+  padding: 10px 14px;
+  border-bottom: 1px solid #ffffff08;
+  cursor: pointer;
+}
+.wiki-card:hover { background: rgba(170, 170, 170, 0.04); }
+.wiki-title {
+  color: #ccc;
+  font-size: 11px;
+  font-weight: bold;
+  line-height: 1.3;
+  margin-bottom: 4px;
+}
+.wiki-title:hover { color: #aaaaaa; }
+.wiki-extract {
+  color: #888;
+  font-size: 10px;
+  line-height: 1.4;
+  margin-bottom: 6px;
+}
+.wiki-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 9px;
+  opacity: 0.5;
+}
+.wiki-dist { color: #aaaaaa; letter-spacing: 0.5px; }
+.wiki-coords { color: #888; }
+.wiki-empty {
+  padding: 20px 14px; color: #aaaaaa40;
+  text-align: center; letter-spacing: 2px; font-size: 10px;
+}
+
 /* --- Filter Dropdown Panel --- */
 #filter-panel {
   position: absolute; top: 82px;
@@ -632,24 +1010,23 @@ body.webcam-panel-open #city-panel    { left: calc((100vw - var(--panel-width)) 
   -webkit-text-stroke: 0.3px currentColor;
 }
 
-/* BORDER political map — flat desaturated map look */
+/* BORDER geopolitical — dark globe with country border outlines */
 .filter-border #filter-overlay::before {
   content: ''; position: absolute; inset: 0;
-  background: rgba(220, 215, 200, 0.15);
-  mix-blend-mode: overlay; opacity: var(--fi); z-index: 1;
+  background: transparent; z-index: 1;
 }
 .filter-border #filter-overlay::after {
   content: ''; position: absolute; inset: 0;
-  background: radial-gradient(ellipse at center, transparent 55%, rgba(40, 35, 25, 0.35) 100%);
+  background: radial-gradient(ellipse at center, transparent 60%, rgba(0, 0, 0, 0.5) 100%);
   opacity: var(--fi); z-index: 2;
 }
 .filter-border #hud, .filter-border #mode-bar,
 .filter-border #layer-toggles, .filter-border #pin-tray,
 .filter-border #info-panel {
-  color: #cc4444;
-  text-shadow: 0 0 8px rgba(200, 60, 60, 0.6);
+  color: #00ff41;
+  text-shadow: 0 0 8px rgba(0, 255, 65, 0.4);
 }
-.filter-border #title { text-shadow: 0 0 10px rgba(200, 60, 60, 0.6); }
+.filter-border #title { text-shadow: 0 0 10px rgba(0, 255, 65, 0.4); }
 
 
 /* ===================================================================
@@ -1045,6 +1422,120 @@ body.site-panel-open #info-panel            { right: calc(var(--panel-width) + 1
 body.site-panel-open #timeline-bar          { right: var(--panel-width); }
 
 /* ===================================================================
+   Path Route View Panel — Route Intelligence + 3D Route View
+   =================================================================== */
+#path-view-panel {
+  position: absolute; top: 0; right: 0; bottom: 0;
+  width: 0; z-index: 15;
+  background: #000;
+  border-left: 2px solid #00ffa060;
+  transition: width 0.35s ease;
+  overflow: hidden;
+  display: flex; flex-direction: column;
+}
+#path-view-panel.open { width: var(--panel-width); }
+
+/* --- Path info canvas (top section) --- */
+#path-info-view {
+  width: 100%; height: 200px; flex-shrink: 0;
+  position: relative; z-index: 18;
+  border-bottom: 1px solid #00ffa030;
+  background: #000;
+}
+#path-info-canvas { width: 100%; height: 100%; display: block; }
+#path-info-label {
+  position: absolute; top: 6px; left: 50%; transform: translateX(-50%);
+  font-size: 9px; letter-spacing: 4px; color: #00ffa060;
+  pointer-events: none;
+}
+
+/* --- Stats bar --- */
+#path-view-stats {
+  width: 100%; flex-shrink: 0;
+  background: rgba(0, 8, 20, 0.95);
+  padding: 10px 16px;
+  border-bottom: 1px solid #00ffa020;
+  z-index: 18;
+}
+.ptv-stats-row {
+  display: flex; align-items: center; gap: 10px;
+  margin-bottom: 6px;
+}
+#path-view-stats .ptv-title {
+  font-size: 15px; font-weight: bold; letter-spacing: 3px;
+  color: #00ffa0; text-shadow: 0 0 8px #00ffa0;
+}
+.ptv-stats-tag {
+  font-size: 9px; letter-spacing: 1px;
+  color: #00ffa0; opacity: 0.6;
+  border: 1px solid #00ffa040;
+  padding: 1px 6px; border-radius: 2px;
+  font-family: 'Courier New', monospace;
+}
+.ptv-stats-grid {
+  display: flex; flex-wrap: wrap; gap: 4px 16px;
+  font-size: 11px; color: #00ffa0; opacity: 0.85;
+  line-height: 1.5;
+}
+.ptv-stats-grid .ptv-label {
+  opacity: 0.45; font-size: 10px;
+}
+.ptv-notes-row {
+  width: 100%;
+}
+
+/* --- Cesium viewer wrapper --- */
+#path-view-wrapper {
+  position: relative; flex: 1; min-height: 0;
+  overflow: hidden;
+}
+#path-view-container { width: 100%; height: 100%; }
+
+#path-view-overlay {
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+  pointer-events: none; z-index: 17;
+}
+
+/* Close button */
+#path-view-close {
+  position: absolute; top: 10px; right: 12px;
+  z-index: 19; pointer-events: all;
+  background: none; border: 1px solid #00ffa040;
+  color: #00ffa0; font: 10px 'Courier New'; padding: 4px 10px;
+  cursor: pointer; letter-spacing: 2px;
+  border-radius: 3px;
+}
+#path-view-close:hover { background: #00ffa020; }
+
+/* Crosshair overlay */
+#path-view-crosshair {
+  position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+  pointer-events: none; z-index: 16;
+}
+#path-view-crosshair::before {
+  content: ''; position: absolute;
+  top: 50%; left: 0; right: 0; height: 1px;
+  background: linear-gradient(to right,
+    transparent 0%, #00ffa025 20%, #00ffa045 50%, #00ffa025 80%, transparent 100%);
+}
+#path-view-crosshair::after {
+  content: ''; position: absolute;
+  left: 50%; top: 0; bottom: 0; width: 1px;
+  background: linear-gradient(to bottom,
+    transparent 0%, #00ffa025 20%, #00ffa045 50%, #00ffa025 80%, transparent 100%);
+}
+
+/* Resize main viewer when path panel is open */
+body.path-panel-open #cesiumContainer       { width: calc(100vw - var(--panel-width)); }
+body.path-panel-open #hud                   { right: var(--panel-width); }
+body.path-panel-open #mode-bar              { left: calc((100vw - var(--panel-width)) / 2); }
+body.path-panel-open #layer-toggles         { left: calc((100vw - var(--panel-width)) / 2); }
+body.path-panel-open #pin-tray               { left: calc((100vw - var(--panel-width)) / 2); }
+body.path-panel-open #filter-panel            { left: calc((100vw - var(--panel-width)) / 2); }
+body.path-panel-open #info-panel            { right: calc(var(--panel-width) + 16px); }
+body.path-panel-open #timeline-bar          { right: var(--panel-width); }
+
+/* ===================================================================
    Airport View Panel — Flight Schedule + Aerial Imagery
    =================================================================== */
 #airport-view-panel {
@@ -1229,10 +1720,39 @@ body.airport-panel-open #timeline-bar          { right: var(--panel-width); }
 #webcam-hls-video {
   width: 100%; height: 100%; border: none;
   background: #000; object-fit: cover;
+  transition: filter 0.4s ease;
+}
+/* Surveillance filter on video/iframe — toggled via .surveillance class */
+#webcam-embed-wrapper.surveillance #webcam-embed-iframe,
+#webcam-embed-wrapper.surveillance #webcam-hls-video {
+  filter: saturate(0.3) contrast(1.3) brightness(0.9) sepia(0.15) hue-rotate(80deg);
 }
 #webcam-hls-video { display: none; }
 #webcam-embed-wrapper.hls-mode #webcam-hls-video { display: block; }
 #webcam-embed-wrapper.hls-mode #webcam-embed-iframe { display: none; }
+
+/* HUD overlay canvas on top of video — hidden when surveillance mode off */
+#webcam-video-overlay {
+  position: absolute; top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  z-index: 5;
+  opacity: 0; transition: opacity 0.4s ease;
+}
+#webcam-embed-wrapper.surveillance #webcam-video-overlay { opacity: 1; }
+
+/* Surveillance toggle button */
+#webcam-surveillance-toggle {
+  position: absolute; bottom: 10px; right: 12px;
+  z-index: 19; pointer-events: all;
+  background: rgba(0,8,20,0.7); border: 1px solid #00ff4140;
+  color: #00ff4180; font-family: 'Courier New', monospace;
+  font-size: 10px; padding: 3px 8px; cursor: pointer;
+  border-radius: 3px; letter-spacing: 1px;
+  transition: all 0.25s ease;
+}
+#webcam-surveillance-toggle:hover { background: #00ff4115; color: #00ff41; }
+#webcam-surveillance-toggle.active { border-color: #00ff41a0; color: #00ff41; background: rgba(0,255,65,0.1); }
 
 /* Close button */
 #webcam-view-close {
@@ -1254,6 +1774,253 @@ body.webcam-panel-open #pin-tray               { left: calc((100vw - var(--panel
 body.webcam-panel-open #filter-panel            { left: calc((100vw - var(--panel-width)) / 2); }
 body.webcam-panel-open #info-panel            { right: calc(var(--panel-width) + 16px); }
 body.webcam-panel-open #timeline-bar          { right: var(--panel-width); }
+
+/* ===================================================================
+   Submarine 3D View Panel — Underwater Pursuit
+   =================================================================== */
+#submarine-view-panel {
+  position: absolute; top: 0; right: 0; bottom: 0;
+  width: 0; z-index: 15;
+  background: #000;
+  border-left: 2px solid #22ccaa60;
+  transition: width 0.35s ease;
+  overflow: hidden;
+  display: flex; flex-direction: column;
+}
+#submarine-view-panel.open { width: var(--panel-width); }
+
+/* 3D container fills panel */
+#submarine-3d-container {
+  width: 100%; flex: 1; min-height: 0;
+  position: relative;
+}
+
+/* HUD overlay on top of 3D */
+#sub-hud-overlay {
+  position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+  pointer-events: none; z-index: 16;
+  font-family: 'Courier New', monospace;
+}
+#sub-hud-overlay * { pointer-events: none; }
+
+/* Unit label */
+#sub-unit-label {
+  position: absolute; top: 10px; left: 14px;
+  font-size: 13px; font-weight: bold; letter-spacing: 1px;
+  color: #22ccaa; text-shadow: 0 0 6px rgba(34,204,170,0.5);
+  text-transform: uppercase;
+}
+
+/* Top status bar */
+#sub-status-bar {
+  display: flex; align-items: center; gap: 16px;
+  padding: 10px 14px;
+  background: linear-gradient(to bottom, rgba(0,10,8,0.85) 0%, transparent 100%);
+}
+#sub-compass {
+  font-size: 22px; font-weight: bold; color: #22ccaa;
+  text-shadow: 0 0 8px #22ccaa;
+  letter-spacing: 2px;
+}
+.sub-compass-deg { font-size: 14px; opacity: 0.6; }
+.sub-stat {
+  font-size: 12px; color: #22ccaa; letter-spacing: 1px;
+}
+.sub-stat-label { opacity: 0.5; font-size: 10px; }
+.sub-stat-unit { opacity: 0.4; font-size: 9px; }
+
+/* Command readout */
+#sub-command-bar {
+  padding: 4px 14px;
+  font-size: 10px; letter-spacing: 1px;
+  color: #22ccaa80;
+}
+
+/* Sonar panel (bottom-left) */
+#sub-sonar-panel {
+  position: absolute; bottom: 50px; left: 10px;
+  width: 200px;
+  background: rgba(0, 10, 8, 0.7);
+  border: 1px solid #22ccaa30;
+  border-radius: 3px;
+  padding: 8px;
+}
+.sub-panel-title {
+  font-size: 9px; letter-spacing: 2px;
+  color: #22ccaa; opacity: 0.5;
+  margin-bottom: 6px;
+}
+#sub-sonar-list {
+  margin-bottom: 8px;
+  max-height: 100px; overflow-y: auto;
+}
+#sub-sonar-ppi {
+  display: block; width: 180px; height: 180px;
+}
+
+/* AI reasoning (bottom-center) */
+#sub-hud-ai {
+  position: absolute; bottom: 50px; left: 220px; right: 90px;
+  background: rgba(0, 10, 8, 0.7);
+  border: 1px solid #22ccaa30;
+  border-radius: 3px;
+  padding: 8px 12px;
+  max-height: 150px; overflow-y: auto;
+}
+#sub-ai-text {
+  font-size: 11px; color: #aac; line-height: 1.5;
+}
+
+/* Intel feed (top-right) */
+#sub-hud-intel {
+  position: absolute; top: 60px; right: 10px;
+  width: 200px;
+  background: rgba(0, 10, 8, 0.7);
+  border: 1px solid #ffaa0030;
+  border-radius: 3px;
+  padding: 8px 10px;
+  max-height: 200px; overflow-y: auto;
+}
+#sub-hud-intel .sub-panel-title { color: #ffaa00; }
+.sub-intel-msg {
+  font-size: 10px; color: #ffaa00; opacity: 0.8;
+  line-height: 1.5; margin-bottom: 4px;
+  padding-bottom: 4px; border-bottom: 1px solid #ffaa0015;
+}
+
+/* Depth gauge (right side) */
+#sub-depth-gauge {
+  position: absolute; bottom: 50px; right: 10px;
+  width: 30px; height: 200px;
+  display: flex; flex-direction: column; align-items: center;
+}
+.sub-depth-label {
+  font-size: 8px; color: #22ccaa; opacity: 0.4; letter-spacing: 1px;
+}
+.sub-depth-track {
+  flex: 1; width: 4px;
+  background: #22ccaa20;
+  border-radius: 2px;
+  position: relative;
+  margin: 4px 0;
+}
+#sub-depth-indicator {
+  position: absolute; left: -4px;
+  width: 12px; height: 4px;
+  background: #22ccaa;
+  border-radius: 2px;
+  box-shadow: 0 0 6px #22ccaa;
+  transition: top 0.3s ease;
+}
+
+/* Close button */
+#submarine-view-close {
+  position: absolute; top: 10px; right: 12px;
+  z-index: 19; pointer-events: all;
+  background: rgba(0,10,8,0.7); border: 1px solid #22ccaa60;
+  color: #22ccaa; font-family: 'Courier New', monospace;
+  font-size: 14px; padding: 4px 10px; cursor: pointer;
+  border-radius: 3px; letter-spacing: 2px;
+}
+#submarine-view-close:hover { background: #22ccaa20; }
+
+/* Resize main viewer when submarine panel is open */
+body.submarine-panel-open #cesiumContainer       { width: calc(100vw - var(--panel-width)); }
+body.submarine-panel-open #hud                   { right: var(--panel-width); }
+body.submarine-panel-open #mode-bar              { left: calc((100vw - var(--panel-width)) / 2); }
+body.submarine-panel-open #layer-toggles         { left: calc((100vw - var(--panel-width)) / 2); }
+body.submarine-panel-open #pin-tray               { left: calc((100vw - var(--panel-width)) / 2); }
+body.submarine-panel-open #filter-panel            { left: calc((100vw - var(--panel-width)) / 2); }
+body.submarine-panel-open #info-panel            { right: calc(var(--panel-width) + 16px); }
+body.submarine-panel-open #timeline-bar          { right: var(--panel-width); }
+body.submarine-panel-open #layer-panel           { left: calc((100vw - var(--panel-width)) / 2); }
+body.submarine-panel-open #city-panel            { left: calc((100vw - var(--panel-width)) / 2); }
+
+/* ==================== Sniper Scope View Panel ==================== */
+#sniper-view-panel {
+  position: absolute; top: 0; right: 0; bottom: 0;
+  width: 0; z-index: 15;
+  background: #000;
+  border-left: 2px solid #ff444460;
+  transition: width 0.35s ease;
+  overflow: hidden;
+  display: flex; flex-direction: column;
+}
+#sniper-view-panel.open { width: var(--panel-width); }
+
+#sniper-3d-container {
+  width: 100%; flex: 1; min-height: 0;
+  position: relative;
+}
+
+#sniper-hud-overlay {
+  position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+  pointer-events: none; z-index: 3;
+  font-family: 'Courier New', monospace;
+}
+#sniper-hud-overlay * { pointer-events: none; }
+
+#sniper-status-bar {
+  display: flex; align-items: center; gap: 16px;
+  padding: 10px 14px;
+  background: linear-gradient(to bottom, rgba(10,0,0,0.85) 0%, transparent 100%);
+}
+.sniper-stat {
+  font-size: 12px; color: #ff4444; letter-spacing: 1px;
+}
+.sniper-stat-label { opacity: 0.5; font-size: 10px; }
+.sniper-stat-unit { opacity: 0.4; font-size: 9px; }
+
+#sniper-target-panel {
+  position: absolute; bottom: 50px; left: 10px;
+  width: 250px;
+  background: rgba(10, 0, 0, 0.7);
+  border: 1px solid #ff444430;
+  border-radius: 3px;
+  padding: 8px 10px;
+}
+.sniper-panel-title {
+  font-size: 9px; letter-spacing: 2px;
+  color: #ff4444; opacity: 0.5;
+  margin-bottom: 6px;
+}
+#sniper-target-status {
+  font-size: 11px; color: #888; line-height: 1.5;
+  font-weight: bold; letter-spacing: 1px;
+}
+
+#sniper-ai-panel {
+  position: absolute; bottom: 50px; left: 270px; right: 20px;
+  background: rgba(10, 0, 0, 0.7);
+  border: 1px solid #ff444430;
+  border-radius: 3px;
+  padding: 8px 12px;
+  max-height: 150px; overflow-y: auto;
+}
+#sniper-ai-text {
+  font-size: 11px; color: #cc9; line-height: 1.5;
+}
+
+#sniper-view-close {
+  position: absolute; top: 10px; right: 12px;
+  z-index: 19; pointer-events: all;
+  background: rgba(10,0,0,0.7); border: 1px solid #ff444460;
+  color: #ff4444; font-family: 'Courier New', monospace;
+  font-size: 14px; padding: 4px 10px; cursor: pointer;
+  border-radius: 3px; letter-spacing: 2px;
+}
+#sniper-view-close:hover { background: #ff444420; }
+
+body.sniper-panel-open #cesiumContainer       { width: calc(100vw - var(--panel-width)); }
+body.sniper-panel-open #hud                   { right: var(--panel-width); }
+body.sniper-panel-open #mode-bar              { left: calc((100vw - var(--panel-width)) / 2); }
+body.sniper-panel-open #layer-toggles         { left: calc((100vw - var(--panel-width)) / 2); }
+body.sniper-panel-open #pin-tray              { left: calc((100vw - var(--panel-width)) / 2); }
+body.sniper-panel-open #filter-panel          { left: calc((100vw - var(--panel-width)) / 2); }
+body.sniper-panel-open #info-panel            { right: calc(var(--panel-width) + 16px); }
+body.sniper-panel-open #timeline-bar          { right: var(--panel-width); }
+body.sniper-panel-open #layer-panel           { left: calc((100vw - var(--panel-width)) / 2); }
+body.sniper-panel-open #city-panel            { left: calc((100vw - var(--panel-width)) / 2); }
 
 /* --- Panel Resize Handle --- */
 .panel-resize-handle {

@@ -8,7 +8,7 @@ import { registerLayerLoader } from '../layerregistry.js';
 
 const layer = createDataLayer({
   layerKey: 'nuclearplants',
-  dataUrl: 'data/nuclear_plants.json',
+  dataUrl: 'data/layers/points/nuclear_plants.json',
   idPrefix: 'npp',
   iconSize: DISPLAY.INFRA_ICON_SIZE,
   countId: 'nuclearplants-count',
@@ -21,7 +21,7 @@ const layer = createDataLayer({
   },
 });
 
-registerLayerLoader('nuclearplants', { load: layer.load, flyTo: layer.FLY_TO, reset: layer.reset, dataUrl: 'data/nuclear_plants.json' });
+registerLayerLoader('nuclearplants', { load: layer.load, flyTo: layer.FLY_TO, reset: layer.reset, dataUrl: 'data/layers/points/nuclear_plants.json' });
 
 export const fetchNuclearPlants     = layer.load;
 export const isNuclearPlantsLoaded  = layer.isLoaded;

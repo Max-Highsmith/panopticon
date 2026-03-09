@@ -2,11 +2,16 @@
    PANOPTICON — Canvas Icon Generators
    =================================================================== */
 
+const DPR = Math.min(window.devicePixelRatio || 1, 2);
+
 function createCanvas(size) {
   const c = document.createElement('canvas');
-  c.width = size;
-  c.height = size;
-  return { canvas: c, ctx: c.getContext('2d'), cx: size / 2, cy: size / 2 };
+  const px = size * DPR;
+  c.width = px;
+  c.height = px;
+  const ctx = c.getContext('2d');
+  ctx.scale(DPR, DPR);
+  return { canvas: c, ctx, cx: size / 2, cy: size / 2 };
 }
 
 function strokeAndFill(ctx, color, lineWidth) {
@@ -898,92 +903,139 @@ export function makeReticleIcon(color, size) {
   return canvas;
 }
 
+// Icon render sizes — matched to DISPLAY sizes in config.js to avoid
+// bitmap resampling in Cesium. DPR scaling is handled by createCanvas().
+const SZ_MIL = 42, SZ_CIV = 28, SZ_SHIP = 42, SZ_SAT = 24;
+const SZ_POGO = 22, SZ_MINE = 28, SZ_INFRA = 28, SZ_BASE = 28;
+const SZ_CUSTOM = 18, SZ_APT_LG = 24, SZ_APT_MD = 18, SZ_WCAM = 22;
+
 // Pre-rendered icon cache
 export const icons = {
-  planeGreen:  makePlaneIcon('#00ff41', 96),
-  planeBlue:   makePlaneIcon('#4488ff', 96),
-  planeMilLive:makePlaneIcon('#00ff41', 96),
-  shipBlue:    makeShipIcon('#4488ff', 48),
-  satYellow:   makeSatIcon('#ffaa00', 96),
-  pogo:        makePogoIcon(36),
-  mineCobalt:   makeDiamondIcon('#cc44ff', 48),
-  mineLithium:  makeDiamondIcon('#00ddcc', 48),
-  mineBitcoin:  makeDiamondIcon('#f7931a', 48),
-  datacenter:   makeServerIcon('#ff8800', 48),
-  nuclear:      makeRadiationIcon('#ff2222', 48),
-  militaryBase: makeMilitaryBaseIcon('#ff6644', 48),
-  customDot:    makeCircleIcon('#ff00ff', 48),
-  airportLarge: makeAirportIcon('#00ccff', 48),
-  airportMedium:makeAirportIcon('#00ccff88', 48),
-  webcam:       makeWebcamIcon('#00ddff', 48),
+  planeGreen:  makePlaneIcon('#00ff41', SZ_MIL),
+  planeBlue:   makePlaneIcon('#4488ff', SZ_CIV),
+  planeMilLive:makePlaneIcon('#00ff41', SZ_MIL),
+  shipBlue:    makeShipIcon('#4488ff', SZ_SHIP),
+  satYellow:   makeSatIcon('#ffaa00', SZ_SAT),
+  pogo:        makePogoIcon(SZ_POGO),
+  mineCobalt:   makeDiamondIcon('#cc44ff', SZ_MINE),
+  mineLithium:  makeDiamondIcon('#00ddcc', SZ_MINE),
+  mineBitcoin:  makeDiamondIcon('#f7931a', SZ_MINE),
+  datacenter:   makeServerIcon('#ff8800', SZ_INFRA),
+  nuclear:      makeRadiationIcon('#ff2222', SZ_INFRA),
+  militaryBase: makeMilitaryBaseIcon('#ff6644', SZ_BASE),
+  customDot:    makeCircleIcon('#ff00ff', SZ_CUSTOM),
+  airportLarge: makeAirportIcon('#00ccff', SZ_APT_LG),
+  airportMedium:makeAirportIcon('#00ccff88', SZ_APT_MD),
+  webcam:       makeWebcamIcon('#00ddff', SZ_WCAM),
   reticle:      makeReticleIcon('#ffffff', 128),
   // Arctic mining
-  mineIron:      makePickaxeIcon('#cc6633', 48),
-  mineRareEarth: makePickaxeIcon('#ff44cc', 48),
-  mineZinc:      makePickaxeIcon('#88aadd', 48),
-  mineGold:      makePickaxeIcon('#ffcc00', 48),
+  mineIron:      makePickaxeIcon('#cc6633', SZ_MINE),
+  mineRareEarth: makePickaxeIcon('#ff44cc', SZ_MINE),
+  mineZinc:      makePickaxeIcon('#88aadd', SZ_MINE),
+  mineGold:      makePickaxeIcon('#ffcc00', SZ_MINE),
   // Rare earth deposits
-  reeHeavy:      makeHexIcon('#ff44cc', 48),
-  reeLight:      makeHexIcon('#cc88ff', 48),
-  reeStrategic:  makeHexIcon('#ffaa44', 48),
+  reeHeavy:      makeHexIcon('#ff44cc', SZ_MINE),
+  reeLight:      makeHexIcon('#cc88ff', SZ_MINE),
+  reeStrategic:  makeHexIcon('#ffaa44', SZ_MINE),
+  // Critical minerals
+  mineralLithium:    makeDiamondIcon('#00ddcc', SZ_MINE),
+  mineralCobalt:     makeDiamondIcon('#cc44ff', SZ_MINE),
+  mineralNickel:     makeDiamondIcon('#44cc88', SZ_MINE),
+  mineralGraphite:   makeDiamondIcon('#888888', SZ_MINE),
+  mineralManganese:  makeDiamondIcon('#cc6688', SZ_MINE),
+  mineralVanadium:   makeDiamondIcon('#7744cc', SZ_MINE),
+  mineralReeLight:   makeDiamondIcon('#dd88ff', SZ_MINE),
+  mineralReeHeavy:   makeDiamondIcon('#ff66cc', SZ_MINE),
+  mineralCopper:     makeDiamondIcon('#cc7744', SZ_MINE),
+  mineralBauxite:    makeDiamondIcon('#dd8855', SZ_MINE),
+  mineralSilicon:    makeDiamondIcon('#8888cc', SZ_MINE),
+  mineralTin:        makeDiamondIcon('#aabb99', SZ_MINE),
+  mineralGallium:    makeDiamondIcon('#6688cc', SZ_MINE),
+  mineralGermanium:  makeDiamondIcon('#7799bb', SZ_MINE),
+  mineralIndium:     makeDiamondIcon('#5588bb', SZ_MINE),
+  mineralTantalum:   makeDiamondIcon('#bb7744', SZ_MINE),
+  mineralNiobium:    makeDiamondIcon('#cc8855', SZ_MINE),
+  mineralTungsten:   makeDiamondIcon('#9999bb', SZ_MINE),
+  mineralTitanium:   makeDiamondIcon('#88aacc', SZ_MINE),
+  mineralBeryllium:  makeDiamondIcon('#aacc88', SZ_MINE),
+  mineralChromium:   makeDiamondIcon('#dd5566', SZ_MINE),
+  mineralAntimony:   makeDiamondIcon('#bb6699', SZ_MINE),
+  mineralPlatinum:   makeDiamondIcon('#ccccee', SZ_MINE),
+  mineralPalladium:  makeDiamondIcon('#bbbbdd', SZ_MINE),
+  mineralUranium:    makeDiamondIcon('#44dd44', SZ_MINE),
+  mineralTellurium:  makeDiamondIcon('#779988', SZ_MINE),
+  mineralFluorspar:  makeDiamondIcon('#66bbcc', SZ_MINE),
+  mineralMagnesium:  makeDiamondIcon('#99bb66', SZ_MINE),
+  mineralZinc:       makeDiamondIcon('#8899aa', SZ_MINE),
+  mineralPhosphate:  makeDiamondIcon('#ccaa44', SZ_MINE),
+  mineralIridium:    makeDiamondIcon('#ccddee', SZ_MINE),
+  mineralRhodium:    makeDiamondIcon('#ddccbb', SZ_MINE),
+  mineralMolybdenum: makeDiamondIcon('#4466aa', SZ_MINE),
+  mineralZirconium:  makeDiamondIcon('#88bbaa', SZ_MINE),
+  mineralHafnium:    makeDiamondIcon('#9988cc', SZ_MINE),
+  mineralSelenium:   makeDiamondIcon('#cc6655', SZ_MINE),
+  mineralBismuth:    makeDiamondIcon('#aa88cc', SZ_MINE),
+  mineralCadmium:    makeDiamondIcon('#aa7755', SZ_MINE),
+  mineralSilver:     makeDiamondIcon('#cccccc', SZ_MINE),
+  mineralScandium:   makeDiamondIcon('#55ccaa', SZ_MINE),
   // Drilling leases
-  drillUS:       makeDerrickIcon('#ff8844', 48),
-  drillNorway:   makeDerrickIcon('#44aaff', 48),
-  drillRussia:   makeDerrickIcon('#ff4444', 48),
-  drillCanada:   makeDerrickIcon('#ff6688', 48),
+  drillUS:       makeDerrickIcon('#ff8844', SZ_MINE),
+  drillNorway:   makeDerrickIcon('#44aaff', SZ_MINE),
+  drillRussia:   makeDerrickIcon('#ff4444', SZ_MINE),
+  drillCanada:   makeDerrickIcon('#ff6688', SZ_MINE),
   // Power plants
-  powerCoal:     makePowerPlantIcon('#aa6633', 48),
-  powerGas:      makePowerPlantIcon('#cc8844', 48),
-  powerHydro:    makePowerPlantIcon('#4488ff', 48),
-  powerSolar:    makePowerPlantIcon('#ffcc00', 48),
-  powerWind:     makePowerPlantIcon('#66ccaa', 48),
+  powerCoal:     makePowerPlantIcon('#aa6633', SZ_INFRA),
+  powerGas:      makePowerPlantIcon('#cc8844', SZ_INFRA),
+  powerHydro:    makePowerPlantIcon('#4488ff', SZ_INFRA),
+  powerSolar:    makePowerPlantIcon('#ffcc00', SZ_INFRA),
+  powerWind:     makePowerPlantIcon('#66ccaa', SZ_INFRA),
   // Nuclear power plants
-  nuclearPlant:  makeNuclearPlantIcon('#ff4444', 48),
+  nuclearPlant:  makeNuclearPlantIcon('#ff4444', SZ_INFRA),
   // Oil refineries
-  refinery:      makeRefineryIcon('#ff6600', 48),
+  refinery:      makeRefineryIcon('#ff6600', SZ_INFRA),
   // Offshore platforms
-  platform:      makePlatformIcon('#ff8844', 48),
+  platform:      makePlatformIcon('#ff8844', SZ_INFRA),
   // Radar installations
-  radarBmews:    makeRadarIcon('#ff3333', 48),
-  radarAegis:    makeRadarIcon('#4488ff', 48),
-  radarOthr:     makeRadarIcon('#ffaa00', 48),
+  radarBmews:    makeRadarIcon('#ff3333', SZ_BASE),
+  radarAegis:    makeRadarIcon('#4488ff', SZ_BASE),
+  radarOthr:     makeRadarIcon('#ffaa00', SZ_BASE),
   // Strategic nuclear
-  weaponsLab:    makeWarheadIcon('#ff2222', 48),
-  subBase:       makeWarheadIcon('#ff4466', 48),
-  missileSilo:   makeWarheadIcon('#ff0000', 48),
+  weaponsLab:    makeWarheadIcon('#ff2222', SZ_BASE),
+  subBase:       makeWarheadIcon('#ff4466', SZ_BASE),
+  missileSilo:   makeWarheadIcon('#ff0000', SZ_BASE),
   // Volcanoes
-  volcanoActive: makeVolcanoIcon('#ff4400', 48),
-  volcanoDormant:makeVolcanoIcon('#aa6644', 48),
+  volcanoActive: makeVolcanoIcon('#ff4400', SZ_MINE),
+  volcanoDormant:makeVolcanoIcon('#aa6644', SZ_MINE),
   // Earthquakes
-  earthquake:    makeEarthquakeIcon('#ff6600', 48),
+  earthquake:    makeEarthquakeIcon('#ff6600', SZ_MINE),
   // Wildfires
-  wildfire:      makeFireIcon('#ff4400', 48),
+  wildfire:      makeFireIcon('#ff4400', SZ_MINE),
   // Space debris
-  debris:        makeCircleIcon('#888888', 48),
+  debris:        makeCircleIcon('#888888', SZ_CUSTOM),
   // Wildlife (reuse existing shapes)
-  whale:         makeCircleIcon('#4488ff', 48),
-  turtle:        makeCircleIcon('#00cc88', 48),
-  elephant:      makeCircleIcon('#cc8844', 48),
+  whale:         makeCircleIcon('#4488ff', SZ_MINE),
+  turtle:        makeCircleIcon('#00cc88', SZ_MINE),
+  elephant:      makeCircleIcon('#cc8844', SZ_MINE),
   // Spaceports / launch sites
-  rocketActive:  makeRocketIcon('#ff4400', 48),
-  rocketHistoric:makeRocketIcon('#888888', 48),
+  rocketActive:  makeRocketIcon('#ff4400', SZ_MINE),
+  rocketHistoric:makeRocketIcon('#888888', SZ_MINE),
   // Lightning
-  lightning:     makeLightningIcon('#ffff00', 48),
+  lightning:     makeLightningIcon('#ffff00', SZ_MINE),
   // Ports
-  portMega:      makeAnchorIcon('#00ccff', 48),
-  portMajor:     makeAnchorIcon('#4488ff', 48),
+  portMega:      makeAnchorIcon('#00ccff', SZ_MINE),
+  portMajor:     makeAnchorIcon('#4488ff', SZ_MINE),
   // Internet exchanges
-  ixpTier1:      makeServerIcon('#00ff88', 48),
-  ixpRegional:   makeServerIcon('#44cc88', 48),
+  ixpTier1:      makeServerIcon('#00ff88', SZ_MINE),
+  ixpRegional:   makeServerIcon('#44cc88', SZ_MINE),
   // Ocean temperature
-  tempWarm:      makeCircleIcon('#ff4400', 48),
-  tempCold:      makeCircleIcon('#4488ff', 48),
+  tempWarm:      makeCircleIcon('#ff4400', SZ_MINE),
+  tempCold:      makeCircleIcon('#4488ff', SZ_MINE),
   // Meteor impacts
-  craterMajor:   makeCircleIcon('#aa6644', 48),
-  craterRecent:  makeEarthquakeIcon('#ff6600', 48),
+  craterMajor:   makeCircleIcon('#aa6644', SZ_MINE),
+  craterRecent:  makeEarthquakeIcon('#ff6600', SZ_MINE),
   // Cosmic radiation
-  cosmicMonitor: makeRadarIcon('#aa44ff', 48),
+  cosmicMonitor: makeRadarIcon('#aa44ff', SZ_MINE),
   // Ionosphere
-  ionoRadar:     makeRadarIcon('#44ffaa', 48),
-  ionoGNSS:      makeRadarIcon('#44ccaa', 48),
+  ionoRadar:     makeRadarIcon('#44ffaa', SZ_MINE),
+  ionoGNSS:      makeRadarIcon('#44ccaa', SZ_MINE),
 };
