@@ -13,9 +13,10 @@ const layer = createDataLayer({
   dataUrl:    DATA_URL,
   idPrefix:   'surv_cam',
   categories: {
-    cameras: { icon: 'webcam', color: '#ff4444', label: 'SURVEILLANCE', displayDist: 20_000_000, labelDist: 5_000_000 },
+    cameras: { icon: 'webcam', color: '#ff4444', label: 'SURVEILLANCE', labelDist: 50_000_000 },
   },
   viewType:   'webcam',
+  disableDepthTest: true,
   flyTo:      { lon: 50.08, lat: 35.12, alt: 5_000_000 },
   logLabel:   'SURVEILLANCE CAMS',
   labelFn:    (item) => item.name,

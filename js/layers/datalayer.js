@@ -72,7 +72,7 @@ export function createDataLayer(cfg) {
             width: size,
             height: size,
             alignedAxis: Cesium.Cartesian3.ZERO,
-            disableDepthTestDistance: 0,
+            disableDepthTestDistance: cfg.disableDepthTest ? Number.POSITIVE_INFINITY : 0,
           };
           if (bbDisplayDist) billboardOpts.distanceDisplayCondition = bbDisplayDist;
 
