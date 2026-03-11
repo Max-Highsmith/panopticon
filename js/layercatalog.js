@@ -132,9 +132,20 @@ export const LAYER_CATALOG = [
   // === ARCTIC ===
   { key: 'arcticdeposits', label: 'ARCTIC DEPOSITS',    shortLabel: 'ADEP',     category: 'Resources',      color: '#cc6633', defaultOn: false, defaultPinned: false },
 
-  // === SURVEILLANCE ===
-  { key: 'webcams',         label: 'LIVE WEBCAMS',        shortLabel: 'CAMS',     category: 'Surveillance',   color: '#00ddff', defaultOn: false, defaultPinned: false },
-  { key: 'underwatercams',  label: 'UNDERWATER CAMS',     shortLabel: 'OCEAN',    category: 'Surveillance',   color: '#00aaff', defaultOn: false, defaultPinned: false },
+  // === WEBCAMS ===
+  { key: 'webcams',           label: 'ALL WEBCAMS',         shortLabel: 'CAMS',     category: 'Webcams',   color: '#00ddff', defaultOn: false, defaultPinned: false },
+  { key: 'webcams_cities',    label: 'CAM: CITIES',         shortLabel: 'CITY',     category: 'Webcams',   color: '#00ddff', defaultOn: false, defaultPinned: false },
+  { key: 'webcams_beaches',   label: 'CAM: BEACHES',        shortLabel: 'BEACH',    category: 'Webcams',   color: '#44ccff', defaultOn: false, defaultPinned: false },
+  { key: 'webcams_landmarks', label: 'CAM: LANDMARKS',      shortLabel: 'LNDMK',    category: 'Webcams',   color: '#ffaa00', defaultOn: false, defaultPinned: false },
+  { key: 'webcams_wildlife',  label: 'CAM: WILDLIFE',       shortLabel: 'WILD',     category: 'Webcams',   color: '#44ff88', defaultOn: false, defaultPinned: false },
+  { key: 'webcams_aviation',  label: 'CAM: AVIATION',       shortLabel: 'AVIAT',    category: 'Webcams',   color: '#00ccff', defaultOn: false, defaultPinned: false },
+  { key: 'webcams_maritime',  label: 'CAM: MARITIME',       shortLabel: 'MARIT',    category: 'Webcams',   color: '#ff8844', defaultOn: false, defaultPinned: false },
+  { key: 'webcams_volcanoes', label: 'CAM: VOLCANOES',      shortLabel: 'VOLC',     category: 'Webcams',   color: '#ff4422', defaultOn: false, defaultPinned: false },
+  { key: 'webcams_rail',      label: 'CAM: RAIL',           shortLabel: 'RAIL',     category: 'Webcams',   color: '#ff6688', defaultOn: false, defaultPinned: false },
+  { key: 'webcams_space',     label: 'CAM: SPACE',          shortLabel: 'SPACE',    category: 'Webcams',   color: '#cc88ff', defaultOn: false, defaultPinned: false },
+  { key: 'webcams_aurora',    label: 'CAM: AURORA',         shortLabel: 'AURRA',    category: 'Webcams',   color: '#88ff44', defaultOn: false, defaultPinned: false },
+  { key: 'webcams_nature',    label: 'CAM: NATURE',         shortLabel: 'NATR',     category: 'Webcams',   color: '#22cc88', defaultOn: false, defaultPinned: false },
+  { key: 'webcams_traffic',   label: 'CAM: TRAFFIC',        shortLabel: 'TRAFC',    category: 'Webcams',   color: '#ffcc00', defaultOn: false, defaultPinned: false },
 
   // === MARKETS ===
   { key: 'kalshi',      label: 'PREDICTION MARKETS', shortLabel: 'MKTS',  category: 'Markets', color: '#ffaa00', defaultOn: false, defaultPinned: false },

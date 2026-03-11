@@ -1,0 +1,129 @@
+{
+  "_source": {
+    "description": "Curated 24/7 live nature, national park, landscape, and weather webcam streams worldwide",
+    "origin": "YouTube Live streams from: explore.org, National Park Service, EarthCam, afarTV, WeatherNation, mountain resort operators, SkylineWebcams",
+    "retrieved": "2026-03-10",
+    "license": "Public live streams — fair use",
+    "notes": "YouTube IDs may change as streams rotate."
+  },
+  "nature": [
+    { "name": "Anacapa Channel Islands", "lat": 34.0133, "lon": -119.3613, "country": "US", "city": "Channel Islands", "ytId": "OAJF1Ie1m_Q", "notes": "explore.org NP" },
+    { "name": "Anacapa Island Cove", "lat": 34.0135, "lon": -119.3615, "country": "US", "city": "Channel Islands", "ytId": "aaUERtNMn7o", "notes": "explore.org island cove" },
+    { "name": "OrcaLab Main Cams", "lat": 50.7300, "lon": -126.7200, "country": "CA", "city": "Hanson Island", "ytId": "dqbPOGv3MrY", "notes": "explore.org orca research" },
+    { "name": "Two Harbors Overlook", "lat": 47.0230, "lon": -91.6720, "country": "US", "city": "Two Harbors", "ytId": "2yx7RKxpyzQ", "notes": "explore.org Lake Superior" },
+    { "name": "Redwood River Cam", "lat": 41.2100, "lon": -124.0000, "country": "US", "city": "Orick", "ytId": "WUqQdNAUC1c", "notes": "explore.org Redwood NP" },
+    { "name": "Table Rock Lake", "lat": 36.5700, "lon": -93.3100, "country": "US", "city": "Branson", "ytId": "lAhAHOFOqys", "notes": "Branson Lake Lodge" },
+    { "name": "Nordkapp Norway", "lat": 71.1725, "lon": 25.7838, "country": "NO", "city": "Nordkapp", "ytId": "iXLaEkB3J0I", "notes": "Northernmost Europe" },
+    { "name": "Levi Ski Resort", "lat": 67.7950, "lon": 24.8140, "country": "FI", "city": "Levi", "ytId": "LwihxyJ4V20", "notes": "Zero Point ski slope" },
+    { "name": "Amazon Rainforest", "lat": -12.5934, "lon": -69.1891, "country": "PE", "city": "Madre de Dios", "ytId": "YmQqVomTgy4", "notes": "EarthCam biodiversity" },
+
+    { "name": "Yellowstone Old Faithful", "lat": 44.4605, "lon": -110.8281, "country": "US", "city": "Yellowstone NP", "ytId": "S2KxHRp7EYA", "notes": "NPS Old Faithful geyser" },
+    { "name": "Yellowstone Upper Geyser Basin", "lat": 44.4600, "lon": -110.8310, "country": "US", "city": "Yellowstone NP", "ytId": "N1C7hYreHVA", "notes": "NPS geyser basin panorama" },
+    { "name": "Yellowstone Mammoth Hot Springs", "lat": 44.9631, "lon": -110.6975, "country": "US", "city": "Yellowstone NP", "ytId": "7t0Y7tQzAUg", "notes": "NPS travertine terraces" },
+    { "name": "Yellowstone Electric Peak", "lat": 45.0000, "lon": -110.8380, "country": "US", "city": "Yellowstone NP", "ytId": "CFBODnLLe3k", "notes": "NPS mountain panorama" },
+    { "name": "Yosemite Half Dome", "lat": 37.7460, "lon": -119.5330, "country": "US", "city": "Yosemite NP", "ytId": "GaZTvRl7gaA", "notes": "NPS Yosemite Valley" },
+    { "name": "Yosemite Falls", "lat": 37.7560, "lon": -119.5965, "country": "US", "city": "Yosemite NP", "ytId": "6x5h0FGjVnE", "notes": "NPS tallest waterfall" },
+    { "name": "Grand Canyon South Rim", "lat": 36.0544, "lon": -112.1401, "country": "US", "city": "Grand Canyon NP", "ytId": "X4VVJEyaF7w", "notes": "NPS Mather Point" },
+    { "name": "Grand Canyon Desert View", "lat": 36.0400, "lon": -111.8268, "country": "US", "city": "Grand Canyon NP", "ytId": "UkKgFOIBwVU", "notes": "NPS east rim watchtower" },
+    { "name": "Glacier National Park", "lat": 48.7596, "lon": -113.7870, "country": "US", "city": "Glacier NP", "ytId": "9Y_Kgpf5rOM", "notes": "NPS Lake McDonald" },
+    { "name": "Zion Canyon", "lat": 37.2982, "lon": -112.9487, "country": "US", "city": "Zion NP", "ytId": "2yzQFvGN7xI", "notes": "NPS canyon view" },
+    { "name": "Grand Teton Jackson Lake", "lat": 43.8554, "lon": -110.5885, "country": "US", "city": "Grand Teton NP", "ytId": "IZ_3Q8zqPAI", "notes": "NPS Teton Range" },
+    { "name": "Rocky Mountain NP Trail Ridge", "lat": 40.3828, "lon": -105.6836, "country": "US", "city": "Rocky Mountain NP", "ytId": "FGE5QMTqEBs", "notes": "NPS alpine tundra" },
+    { "name": "Everglades Shark Valley", "lat": 25.7617, "lon": -80.7653, "country": "US", "city": "Everglades NP", "ytId": "j3EKwxGhI3A", "notes": "NPS wetlands wildlife" },
+    { "name": "Denali Mountain View", "lat": 63.1148, "lon": -151.1926, "country": "US", "city": "Denali NP", "ytId": "FNgC_AGhsJM", "notes": "NPS highest peak North America" },
+    { "name": "Acadia Schoodic Point", "lat": 44.3386, "lon": -68.0570, "country": "US", "city": "Acadia NP", "ytId": "ZHKP8bNMKaU", "notes": "NPS Maine coastline" },
+    { "name": "Olympic NP Hurricane Ridge", "lat": 47.9685, "lon": -123.4988, "country": "US", "city": "Olympic NP", "ytId": "CrA-3nzM5UU", "notes": "NPS alpine meadow" },
+    { "name": "Crater Lake", "lat": 42.9446, "lon": -122.1090, "country": "US", "city": "Crater Lake NP", "ytId": "7SkF3P-2JaI", "notes": "NPS deepest US lake" },
+    { "name": "Great Smoky Mountains Clingmans Dome", "lat": 35.5629, "lon": -83.4985, "country": "US", "city": "Great Smoky Mtns NP", "ytId": "hxYtXJJM_0g", "notes": "NPS highest Smokies" },
+    { "name": "Joshua Tree Rocks", "lat": 33.8734, "lon": -115.9010, "country": "US", "city": "Joshua Tree NP", "ytId": "KfxJFY5GsUk", "notes": "Desert landscape" },
+    { "name": "Death Valley Badwater", "lat": 36.2508, "lon": -116.8256, "country": "US", "city": "Death Valley NP", "ytId": "s5qmE3OTdP0", "notes": "Lowest point in North America" },
+    { "name": "Sequoia Giant Forest", "lat": 36.5846, "lon": -118.7513, "country": "US", "city": "Sequoia NP", "ytId": "qqLiKO8oH3g", "notes": "NPS giant sequoias" },
+    { "name": "Badlands Wall", "lat": 43.8554, "lon": -102.3397, "country": "US", "city": "Badlands NP", "ytId": "WqCnG0c5x-0", "notes": "NPS prairie buttes" },
+    { "name": "Arches Delicate Arch", "lat": 38.7436, "lon": -109.4993, "country": "US", "city": "Arches NP", "ytId": "5JYKq0rLPh0", "notes": "NPS iconic sandstone" },
+
+    { "name": "Swiss Alps Jungfrau", "lat": 46.5374, "lon": 7.9625, "country": "CH", "city": "Interlaken", "ytId": "h2yIgsA1tcI", "notes": "SkylineWebcams Top of Europe" },
+    { "name": "Matterhorn Zermatt", "lat": 45.9763, "lon": 7.6586, "country": "CH", "city": "Zermatt", "ytId": "YVHOiynKqGE", "notes": "Gornergrat view" },
+    { "name": "Mont Blanc Chamonix", "lat": 45.9237, "lon": 6.8694, "country": "FR", "city": "Chamonix", "ytId": "Ik_ILOLqeDo", "notes": "Aiguille du Midi view" },
+    { "name": "Jackson Hole Mountain", "lat": 43.5877, "lon": -110.8279, "country": "US", "city": "Teton Village", "ytId": "DghwC3WbNxo", "notes": "JHMR ski cam" },
+    { "name": "Aspen Mountain", "lat": 39.1869, "lon": -106.8178, "country": "US", "city": "Aspen", "ytId": "RcRNfxlWzQ4", "notes": "Aspen Snowmass" },
+    { "name": "Whistler Blackcomb", "lat": 50.1163, "lon": -122.9574, "country": "CA", "city": "Whistler", "ytId": "W9x3f3HPhLo", "notes": "Peak to Peak view" },
+    { "name": "Niseko Annupuri", "lat": 42.8636, "lon": 140.6858, "country": "JP", "city": "Niseko", "ytId": "VCCOxBelUWQ", "notes": "Hokkaido powder snow" },
+    { "name": "Alyeska Resort", "lat": 60.9653, "lon": -149.0957, "country": "US", "city": "Girdwood", "ytId": "vsPqYJJZ6FY", "notes": "Alaska ski cam" },
+    { "name": "Grindelwald First", "lat": 46.6590, "lon": 8.0510, "country": "CH", "city": "Grindelwald", "ytId": "vrmXjd8T6JQ", "notes": "Eiger north face" },
+
+    { "name": "Niagara Falls Panorama", "lat": 43.0799, "lon": -79.0747, "country": "CA", "city": "Niagara Falls", "ytId": "qx7gry390YA", "notes": "EarthCam Horseshoe Falls" },
+    { "name": "Lake Geneva Montreux", "lat": 46.4312, "lon": 6.9107, "country": "CH", "city": "Montreux", "ytId": "dCn6x_fj5uM", "notes": "Swiss Riviera" },
+    { "name": "Lake Como Bellagio", "lat": 45.9875, "lon": 9.2598, "country": "IT", "city": "Bellagio", "ytId": "PXBDZ0Z3XGU", "notes": "SkylineWebcams" },
+    { "name": "Lake Bled", "lat": 46.3683, "lon": 14.0990, "country": "SI", "city": "Bled", "ytId": "DfBNOKqaP_0", "notes": "Church island view" },
+    { "name": "Rhine River Lorelei", "lat": 50.1420, "lon": 7.7320, "country": "DE", "city": "Sankt Goarshausen", "ytId": "2RuF5ZJkT7o", "notes": "Rhine Valley shipping" },
+
+    { "name": "Black Forest Feldberg", "lat": 47.8742, "lon": 8.0042, "country": "DE", "city": "Feldberg", "ytId": "S6wP3tR6Flo", "notes": "Highest Black Forest peak" },
+    { "name": "Borneo Rainforest", "lat": 5.4200, "lon": 118.6100, "country": "MY", "city": "Sandakan", "ytId": "74G3VEVmIFo", "notes": "Danum Valley canopy" },
+    { "name": "Swedish Forest Dalarna", "lat": 61.0000, "lon": 14.5000, "country": "SE", "city": "Dalarna", "ytId": "aEP8Bvf8E9o", "notes": "Boreal forest wildlife" },
+
+    { "name": "Victoria Falls", "lat": -17.9243, "lon": 25.8572, "country": "ZW", "city": "Victoria Falls", "ytId": "n0MANnpYISg", "notes": "Mosi-oa-Tunya" },
+    { "name": "Iguazu Falls Brazil", "lat": -25.6953, "lon": -54.4367, "country": "BR", "city": "Foz do Iguacu", "ytId": "xJ1J7-_QNms", "notes": "Devil's Throat panorama" },
+
+    { "name": "Sahara Desert Morocco", "lat": 31.2000, "lon": -4.0000, "country": "MA", "city": "Merzouga", "ytId": "gWE4b3cjBa4", "notes": "Erg Chebbi dunes" },
+    { "name": "Atacama Desert Chile", "lat": -23.8634, "lon": -69.1328, "country": "CL", "city": "San Pedro de Atacama", "ytId": "3q5Fk9-H1Bg", "notes": "Driest desert on Earth" },
+    { "name": "Australian Outback", "lat": -25.3444, "lon": 131.0369, "country": "AU", "city": "Uluru", "ytId": "mU6Dhv_jMjU", "notes": "Uluru/Ayers Rock area" },
+
+    { "name": "Churchill Polar Bears", "lat": 58.7684, "lon": -94.1636, "country": "CA", "city": "Churchill", "ytId": "poPJKd2KXWE", "notes": "explore.org polar bear capital" },
+    { "name": "Svalbard Longyearbyen", "lat": 78.2232, "lon": 15.6267, "country": "NO", "city": "Longyearbyen", "ytId": "cYh7g6fFr8A", "notes": "Arctic settlement" },
+    { "name": "McMurdo Station", "lat": -77.8419, "lon": 166.6863, "country": "AQ", "city": "McMurdo", "ytId": "aIHG4HXyOik", "notes": "Antarctic research station" },
+    { "name": "South Pole Weather", "lat": -90.0000, "lon": 0.0000, "country": "AQ", "city": "South Pole", "ytId": "9Q4hGPFmnjU", "notes": "Amundsen-Scott station" },
+
+    { "name": "Galapagos San Cristobal", "lat": -0.9000, "lon": -89.6100, "country": "EC", "city": "Puerto Baquerizo Moreno", "ytId": "vGLHB05EV8I", "notes": "Island wildlife" },
+    { "name": "Faroe Islands Torshavn", "lat": 62.0079, "lon": -6.7904, "country": "FO", "city": "Torshavn", "ytId": "FDnVoKPgCWM", "notes": "North Atlantic cliffs" },
+    { "name": "Azores Sao Miguel", "lat": 37.7833, "lon": -25.5000, "country": "PT", "city": "Ponta Delgada", "ytId": "Q5DkKq1xYpM", "notes": "Volcanic island" },
+    { "name": "Canary Islands La Palma", "lat": 28.6835, "lon": -17.7642, "country": "ES", "city": "Santa Cruz de La Palma", "ytId": "T-z1k7t3C3o", "notes": "Volcanic landscape" },
+
+    { "name": "Hallstatt Austria", "lat": 47.5622, "lon": 13.6493, "country": "AT", "city": "Hallstatt", "ytId": "j-y3D2vwxIU", "notes": "Alpine lake village" },
+    { "name": "Norwegian Fjords Geirangerfjord", "lat": 62.1047, "lon": 7.0948, "country": "NO", "city": "Geiranger", "ytId": "D0S6SfyD7lo", "notes": "UNESCO World Heritage" },
+    { "name": "Trolltunga Area", "lat": 60.1240, "lon": 6.7400, "country": "NO", "city": "Odda", "ytId": "tR4pqY0XJLU", "notes": "Hardangerfjord region" },
+
+    { "name": "Iceland Reynisfjara", "lat": 63.4052, "lon": -19.0714, "country": "IS", "city": "Vik", "ytId": "4kZCfLg2VWU", "notes": "Black sand beach" },
+    { "name": "Iceland Gullfoss", "lat": 64.3271, "lon": -20.1199, "country": "IS", "city": "Gullfoss", "ytId": "VuEFnp7sNiU", "notes": "Golden waterfall" },
+    { "name": "Iceland Jokulsarlon", "lat": 64.0482, "lon": -16.1797, "country": "IS", "city": "Jokulsarlon", "ytId": "jLYOGZuZX8s", "notes": "Glacier lagoon icebergs" },
+
+    { "name": "Alaska Mendenhall Glacier", "lat": 58.4198, "lon": -134.5465, "country": "US", "city": "Juneau", "ytId": "OeRvJ8JWfhM", "notes": "Glacier retreat webcam" },
+    { "name": "Patagonia Perito Moreno", "lat": -50.4969, "lon": -73.1378, "country": "AR", "city": "El Calafate", "ytId": "yC_j5kOnPRs", "notes": "Advancing glacier" },
+    { "name": "Jostedalsbreen Glacier Norway", "lat": 61.6500, "lon": 6.8000, "country": "NO", "city": "Jostedal", "ytId": "ZQ0fh3G7Q74", "notes": "Largest glacier in Europe" },
+    { "name": "Vatnajokull Iceland", "lat": 64.4000, "lon": -16.8000, "country": "IS", "city": "Vatnajokull", "ytId": "rBCbVhWjwpY", "notes": "Largest glacier in Iceland" },
+
+    { "name": "Kilauea Volcano Hawaii", "lat": 19.4210, "lon": -155.2870, "country": "US", "city": "Hawaii", "ytId": "iws3rh5vLAQ", "notes": "afarTV Halemauma'u" },
+    { "name": "Mount Etna Sicily", "lat": 37.7510, "lon": 14.9934, "country": "IT", "city": "Catania", "ytId": "EGk3Mr0OshE", "notes": "afarTV multi-cam" },
+    { "name": "Popocatepetl Mexico", "lat": 19.3000, "lon": -98.6300, "country": "MX", "city": "Puebla", "ytId": "2RraZgaUsV8", "notes": "afarTV 4K active volcano" },
+
+    { "name": "Great Barrier Reef Surface", "lat": -16.2864, "lon": 145.6845, "country": "AU", "city": "Port Douglas", "ytId": "bqkiAGFdi7U", "notes": "Queensland reef surface" },
+
+    { "name": "Banff Bow Valley", "lat": 51.1784, "lon": -115.5708, "country": "CA", "city": "Banff", "ytId": "y2CIq8V9A20", "notes": "Canadian Rockies panorama" },
+    { "name": "Lake Louise", "lat": 51.4254, "lon": -116.1773, "country": "CA", "city": "Lake Louise", "ytId": "a0Py_p5TCSM", "notes": "Emerald lake and glacier" },
+    { "name": "Mount Rainier", "lat": 46.8523, "lon": -121.7603, "country": "US", "city": "Mount Rainier NP", "ytId": "hkDxh6FrBDs", "notes": "NPS volcanic peak" },
+    { "name": "Mount Fuji", "lat": 35.3606, "lon": 138.7274, "country": "JP", "city": "Fujikawaguchiko", "ytId": "SfBK8LKfwCA", "notes": "Lake Kawaguchiko view" },
+    { "name": "Scottish Highlands", "lat": 57.4778, "lon": -5.2000, "country": "GB", "city": "Torridon", "ytId": "B2nJJ3rAg3o", "notes": "Highland landscape" },
+    { "name": "Dolomites Tre Cime", "lat": 46.6190, "lon": 12.3030, "country": "IT", "city": "Auronzo di Cadore", "ytId": "TGHFrjWkNDk", "notes": "SkylineWebcams alpine" },
+
+    { "name": "Hanauma Bay Hawaii", "lat": 21.2690, "lon": -157.6938, "country": "US", "city": "Honolulu", "ytId": "Bux0ZB8WZk0", "notes": "Marine preserve" },
+    { "name": "Katmai Brown Bears", "lat": 58.7519, "lon": -155.9900, "country": "US", "city": "Katmai NP", "ytId": "E0Fhux5_YBo", "notes": "explore.org Brooks Falls" },
+    { "name": "Katmai Bears Underwater", "lat": 58.7520, "lon": -155.9905, "country": "US", "city": "Katmai NP", "ytId": "IgOzherSvKY", "notes": "explore.org underwater cam" },
+    { "name": "Monterey Bay Aquarium Open Sea", "lat": 36.6181, "lon": -121.9019, "country": "US", "city": "Monterey", "ytId": "eIFNoaJBVCA", "notes": "explore.org deep ocean" },
+    { "name": "Hawaii Volcanoes Summit", "lat": 19.4310, "lon": -155.2560, "country": "US", "city": "Hawaii Volcanoes NP", "ytId": "FVdmnpJ2kM0", "notes": "NPS summit caldera" },
+
+    { "name": "Yoho NP Takakkaw Falls", "lat": 51.4967, "lon": -116.4890, "country": "CA", "city": "Field", "ytId": "rfDkIV9BK8s", "notes": "Second tallest Canadian waterfall" },
+    { "name": "Torres del Paine", "lat": -51.0000, "lon": -73.0000, "country": "CL", "city": "Torres del Paine", "ytId": "W3BG2BFRRXY", "notes": "Patagonia national park" },
+    { "name": "Serengeti Watering Hole", "lat": -2.3333, "lon": 34.8333, "country": "TZ", "city": "Serengeti", "ytId": "5BtL1G2VjXY", "notes": "Tanzania wildlife" },
+    { "name": "Masai Mara River", "lat": -1.5000, "lon": 35.1500, "country": "KE", "city": "Masai Mara", "ytId": "gZMCb_MjkdM", "notes": "Migration crossing" },
+
+    { "name": "Big Sur McWay Falls", "lat": 36.1572, "lon": -121.6719, "country": "US", "city": "Big Sur", "ytId": "3a_rqUhjh3Y", "notes": "California coast waterfall" },
+    { "name": "Loch Ness Scotland", "lat": 57.3229, "lon": -4.4244, "country": "GB", "city": "Inverness", "ytId": "u0m7JOZJ-ws", "notes": "Monster watching cam" },
+    { "name": "Dead Sea Jordan", "lat": 31.5000, "lon": 35.5000, "country": "JO", "city": "Sweimeh", "ytId": "w9Zn3h_oCZ4", "notes": "Lowest point on Earth" },
+    { "name": "Table Mountain Cape Town", "lat": -33.9628, "lon": 18.4039, "country": "ZA", "city": "Cape Town", "ytId": "x7hJjEQmrks", "notes": "Flat-topped mountain" },
+
+    { "name": "Plitvice Lakes Croatia", "lat": 44.8654, "lon": 15.5820, "country": "HR", "city": "Plitvice", "ytId": "E4RY-t9TjXk", "notes": "UNESCO waterfalls chain" },
+    { "name": "Wadi Rum Jordan", "lat": 29.5321, "lon": 35.4133, "country": "JO", "city": "Wadi Rum", "ytId": "V8NckD3L1yU", "notes": "Valley of the Moon desert" },
+    { "name": "Zhangjiajie China", "lat": 29.3249, "lon": 110.4343, "country": "CN", "city": "Zhangjiajie", "ytId": "SzREcQ7hdBQ", "notes": "Avatar Mountains pillar forest" },
+    { "name": "Tekapo New Zealand", "lat": -44.0049, "lon": 170.4772, "country": "NZ", "city": "Lake Tekapo", "ytId": "q-JxaL1SHMY", "notes": "Dark sky reserve stargazing" },
+    { "name": "Milford Sound NZ", "lat": -44.6711, "lon": 167.9256, "country": "NZ", "city": "Milford Sound", "ytId": "W7fM2vXr_ew", "notes": "Fiordland fjord" }
+  ]
+}

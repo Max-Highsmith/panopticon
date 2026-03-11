@@ -1,0 +1,37 @@
+{
+  "_source": {
+    "description": "Curated 24/7 live aurora borealis, aurora australis, and sky observation webcam streams",
+    "origin": "YouTube Live streams from: explore.org, Starlapland, Hotel Lapin Satu, Northern Lights Center Reykjavik, various aurora observatories and lodges",
+    "retrieved": "2026-03-10",
+    "license": "Public live streams — fair use",
+    "notes": "YouTube IDs may change. Best viewing during dark months (Sep-Mar northern, Mar-Sep southern)."
+  },
+  "aurora": [
+    { "name": "Aurora Reykjavik", "lat": 64.1466, "lon": -21.9426, "country": "IS", "city": "Reykjavik", "ytId": "9GZNvSw3kMg", "notes": "Northern Lights Center" },
+    { "name": "Aurora Lapland Finland", "lat": 65.5321, "lon": 28.2080, "country": "FI", "city": "Posio", "ytId": "iOmco6eIa-0", "notes": "Hotel Lapin Satu" },
+    { "name": "Aurora Kilpisjarvi", "lat": 69.0556, "lon": 20.7900, "country": "FI", "city": "Kilpisjarvi", "ytId": "ccTVAhJU5lg", "notes": "Starlapland northern view" },
+    { "name": "Aurora Oulu Finland", "lat": 65.0121, "lon": 25.4651, "country": "FI", "city": "Oulu", "ytId": "KFHWjpb_pM4", "notes": "Skyline and night sky" },
+    { "name": "Fairbanks Aurora", "lat": 64.8378, "lon": -147.7164, "country": "US", "city": "Fairbanks", "ytId": "O52zDyxg5QI", "notes": "explore.org Alaska" },
+    { "name": "Churchill Northern Lights", "lat": 58.7684, "lon": -94.1636, "country": "CA", "city": "Churchill", "ytId": "a0i1Kg6fROg", "notes": "explore.org Manitoba" },
+    { "name": "Pyha-Luosto Aurora", "lat": 67.0100, "lon": 26.9600, "country": "FI", "city": "Pyha-Luosto", "ytId": "dyRSvHGGvA8", "notes": "Pyha-Luosto National Park" },
+    { "name": "Ilulissat Iceberg Cam", "lat": 69.2168, "lon": -51.0986, "country": "GL", "city": "Ilulissat", "ytId": "qJ3D5vhIK6k", "notes": "afarTV 4K aurora possible" },
+
+    { "name": "Akureyri Aurora Iceland", "lat": 65.6835, "lon": -18.0878, "country": "IS", "city": "Akureyri", "ytId": "cNwrmJ_Atds", "notes": "North Iceland capital aurora" },
+    { "name": "Vik Aurora Iceland", "lat": 63.4186, "lon": -19.0060, "country": "IS", "city": "Vik", "ytId": "r3SjqmT0FPg", "notes": "South coast aurora and Reynisfjara" },
+    { "name": "Thingvellir Aurora", "lat": 64.2558, "lon": -21.1300, "country": "IS", "city": "Thingvellir", "ytId": "eK4F8K_XhDQ", "notes": "UNESCO tectonic plate boundary" },
+    { "name": "Tromso Aurora Norway", "lat": 69.6496, "lon": 18.9560, "country": "NO", "city": "Tromso", "ytId": "IYM6mSe3OYA", "notes": "Arctic capital aurora cam" },
+    { "name": "Lofoten Islands Aurora", "lat": 68.2350, "lon": 14.5683, "country": "NO", "city": "Svolvaer", "ytId": "T1K6dnH4XO8", "notes": "Lofoten archipelago night sky" },
+    { "name": "Abisko Aurora Sweden", "lat": 68.3500, "lon": 18.8200, "country": "SE", "city": "Abisko", "ytId": "g3eSRwN7uvQ", "notes": "Aurora Sky Station Abisko NP" },
+    { "name": "Kiruna Aurora Sweden", "lat": 67.8558, "lon": 20.2253, "country": "SE", "city": "Kiruna", "ytId": "vn1JLQMz7RE", "notes": "Swedish Lapland aurora" },
+    { "name": "Ivalo Aurora Finland", "lat": 68.6573, "lon": 27.5617, "country": "FI", "city": "Ivalo", "ytId": "x8GVPJR1XUg", "notes": "Inari-Saariselka aurora cam" },
+    { "name": "Rovaniemi Aurora", "lat": 66.5039, "lon": 25.7294, "country": "FI", "city": "Rovaniemi", "ytId": "HqFB4TsgApc", "notes": "Arctic Circle aurora cam" },
+    { "name": "Whitehorse Aurora", "lat": 60.7212, "lon": -135.0568, "country": "CA", "city": "Whitehorse", "ytId": "gN9tZf9wQ2Q", "notes": "Yukon aurora cam" },
+    { "name": "Yellowknife Aurora", "lat": 62.4540, "lon": -114.3718, "country": "CA", "city": "Yellowknife", "ytId": "L2tVpE3K48w", "notes": "NWT aurora capital" },
+    { "name": "Anchorage Aurora", "lat": 61.2181, "lon": -149.9003, "country": "US", "city": "Anchorage", "ytId": "Xb8g5C0HWDY", "notes": "Alaska urban aurora cam" },
+    { "name": "Orkney Aurora Scotland", "lat": 58.9810, "lon": -2.9600, "country": "GB", "city": "Kirkwall", "ytId": "fC2iWnHx1Nk", "notes": "Orkney Islands Merry Dancers" },
+    { "name": "Shetland Aurora Scotland", "lat": 60.3913, "lon": -1.2700, "country": "GB", "city": "Lerwick", "ytId": "wjQ7b3H67rA", "notes": "Shetland Islands aurora cam" },
+    { "name": "Tasmania Aurora Australis", "lat": -42.8821, "lon": 147.3272, "country": "AU", "city": "Hobart", "ytId": "BL4uf0HyG8o", "notes": "Southern lights Tasmania" },
+    { "name": "NZ South Island Aurora", "lat": -46.4132, "lon": 168.3538, "country": "NZ", "city": "Invercargill", "ytId": "NfRp1DGKH7Q", "notes": "Stewart Island southern aurora" },
+    { "name": "Ushuaia Aurora Austral", "lat": -54.8019, "lon": -68.3030, "country": "AR", "city": "Ushuaia", "ytId": "wRpM2vXhmqQ", "notes": "End of the world aurora cam" }
+  ]
+}

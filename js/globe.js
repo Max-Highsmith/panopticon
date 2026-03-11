@@ -109,7 +109,11 @@ export const layers = {
   whalebtc: false,
   wikipedia: false,
   kalshi_scenario: false,
-  underwatercams: false,
+  // Webcam sub-layers
+  webcams_cities: false, webcams_beaches: false, webcams_landmarks: false,
+  webcams_wildlife: false, webcams_aviation: false, webcams_maritime: false,
+  webcams_volcanoes: false, webcams_rail: false, webcams_space: false,
+  webcams_aurora: false, webcams_nature: false, webcams_traffic: false,
 };
 
 // Entity registries — each maps an ID to a record with { entity, ... }
@@ -176,7 +180,11 @@ export const entityMaps = {
   iridium: new Map(), rhodium: new Map(), molybdenum: new Map(), zirconium: new Map(),
   hafnium: new Map(), selenium: new Map(), bismuth: new Map(), cadmium: new Map(),
   silver: new Map(), scandium: new Map(),
-  underwatercams: new Map(),
+  // Webcam sub-layers
+  webcams_cities: new Map(), webcams_beaches: new Map(), webcams_landmarks: new Map(),
+  webcams_wildlife: new Map(), webcams_aviation: new Map(), webcams_maritime: new Map(),
+  webcams_volcanoes: new Map(), webcams_rail: new Map(), webcams_space: new Map(),
+  webcams_aurora: new Map(), webcams_nature: new Map(), webcams_traffic: new Map(),
 };
 
 // --- Layer Operations ---

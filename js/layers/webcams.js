@@ -1,18 +1,30 @@
 /* ===================================================================
-   PANOPTICON — Webcams Layer (HLS + YouTube Live Streams)
-   Curated webcams from iconic civilian locations worldwide.
-   Data loaded from JSON — add new webcam sets as additional categories.
+   PANOPTICON — Webcams Master Layer (ALL webcam categories combined)
+   Loads all 12 webcam sub-category files and displays them as one layer.
    =================================================================== */
 
 import { DISPLAY } from '../config.js';
 import { registerLayerLoader } from '../layerregistry.js';
 import { createDataLayer } from './datalayer.js';
 
-const DATA_URL = 'data/layers/points/webcams.json';
+const DATA_URLS = [
+  'data/layers/points/webcams_cities.json',
+  'data/layers/points/webcams_beaches.json',
+  'data/layers/points/webcams_landmarks.json',
+  'data/layers/points/webcams_wildlife.json',
+  'data/layers/points/webcams_aviation.json',
+  'data/layers/points/webcams_maritime.json',
+  'data/layers/points/webcams_volcanoes.json',
+  'data/layers/points/webcams_rail.json',
+  'data/layers/points/webcams_space.json',
+  'data/layers/points/webcams_aurora.json',
+  'data/layers/points/webcams_nature.json',
+  'data/layers/points/webcams_traffic.json',
+];
 
 const layer = createDataLayer({
   layerKey:   'webcams',
-  dataUrl:    DATA_URL,
+  dataUrl:    DATA_URLS,
   idPrefix:   'wcam',
   iconSize:   DISPLAY.WEBCAM_ICON_SIZE,
   categories: {
@@ -50,5 +62,5 @@ const layer = createDataLayer({
 
 registerLayerLoader('webcams', {
   load: layer.load, flyTo: layer.FLY_TO, reset: layer.reset,
-  dataUrl: DATA_URL, view: 'webcam',
+  dataUrl: DATA_URLS, view: 'webcam',
 });

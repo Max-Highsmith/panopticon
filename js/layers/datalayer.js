@@ -36,9 +36,22 @@ export function createDataLayer(cfg) {
   async function load(viewer) {
     if (loaded) return;
     try {
-      const res = await fetch(cfg.dataUrl);
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      const data = await res.json();
+      let data;
+      const urls = Array.isArray(cfg.dataUrl) ? cfg.dataUrl : [cfg.dataUrl];
+      if (urls.length === 1) {
+        const res = await fetch(urls[0]);
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        data = await res.json();
+      } else {
+        data = {};
+        const results = await Promise.all(urls.map(u => fetch(u).then(r => { if (!r.ok) throw new Error(`HTTP ${r.status}`); return r.json(); })));
+        for (const d of results) {
+          for (const [key, val] of Object.entries(d)) {
+            if (key === '_source') continue;
+            if (Array.isArray(val)) data[key] = [...(data[key] || []), ...val];
+          }
+        }
+      }
       cacheLayerData(cfg.layerKey, data);
 
       for (const [category, meta] of Object.entries(cfg.categories)) {

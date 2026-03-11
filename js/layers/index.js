@@ -96,7 +96,18 @@ import './fishingfleetslayer.js';
 // Bespoke layers
 import './airports.js';
 import './webcams.js';
-import './underwatercams.js';
+import './webcams_cities.js';
+import './webcams_beaches.js';
+import './webcams_landmarks.js';
+import './webcams_wildlife.js';
+import './webcams_aviation.js';
+import './webcams_maritime.js';
+import './webcams_volcanoes.js';
+import './webcams_rail.js';
+import './webcams_space.js';
+import './webcams_aurora.js';
+import './webcams_nature.js';
+import './webcams_traffic.js';
 
 // Ambient layers
 import './kalshilayer.js';
