@@ -72,21 +72,21 @@ CRT · NVG · FLIR · Anime · Border · Off
 
 ## Agent API
 
-External AI agents can control Panopticon via REST endpoints on the wargame server (`localhost:3001`). All actions are broadcast to the browser in real-time.
+External AI agents can control Panopticon via REST endpoints at `https://api.panopticon.network`. All actions are broadcast to the browser in real-time.
 
 **Explore the globe:**
 
 ```bash
 # List all 110+ layers
-curl http://localhost:3001/api/layers
+curl https://api.panopticon.network/api/layers
 
 # Toggle a layer
-curl -X POST http://localhost:3001/api/command \
+curl -X POST https://api.panopticon.network/api/command \
   -H 'Content-Type: application/json' \
   -d '{"command": "toggleLayer", "args": {"layer": "airports", "enabled": true}}'
 
 # Fly camera to coordinates
-curl -X POST http://localhost:3001/api/command \
+curl -X POST https://api.panopticon.network/api/command \
   -H 'Content-Type: application/json' \
   -d '{"command": "flyTo", "args": {"lat": 48.8566, "lon": 2.3522, "altitude": 500000}}'
 ```
@@ -95,19 +95,23 @@ curl -X POST http://localhost:3001/api/command \
 
 ```bash
 # Start a session
-curl -X POST http://localhost:3001/api/play/start \
+curl -X POST https://api.panopticon.network/api/play/start \
   -H 'Content-Type: application/json' \
   -d '{"scenarioId": "prediction-market-assassination"}'
 
 # Call a tool (returns result + any new intel)
-curl -X POST http://localhost:3001/api/play/SESSION_ID/tool \
+curl -X POST https://api.panopticon.network/api/play/SESSION_ID/tool \
   -H 'Content-Type: application/json' \
   -d '{"toolName": "query_prediction_markets", "toolArgs": {}}'
 ```
 
 See [SKILL.md](SKILL.md) for the full API reference (compatible with Claude Code / OpenClaw skills).
 
-## Quick Start
+## Live Site
+
+**[panopticon.network](https://panopticon.network)** — Open the globe in your browser. Wargames run client-side with your own API key (set in Settings).
+
+## Quick Start (Local Development)
 
 ### 1. Clone
 
@@ -139,7 +143,7 @@ Any static file server works:
 python3 -m http.server 8080
 ```
 
-Open `http://localhost:8080`.
+Open `http://localhost:8080`. Or just use the live site at [panopticon.network](https://panopticon.network).
 
 ### 4. Wargame Server (Optional)
 

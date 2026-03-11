@@ -13,7 +13,7 @@ triggers:
 
 Panopticon is a geospatial intelligence platform with a 3D Cesium globe, 100+ data layers (military bases, submarine cables, satellites, minerals, wildlife migrations, etc.), and an AI wargame engine. You can control it via HTTP.
 
-**Base URL:** `http://localhost:3001` (default server port)
+**Base URL:** `https://api.panopticon.network`
 
 ---
 
@@ -22,7 +22,7 @@ Panopticon is a geospatial intelligence platform with a 3D Cesium globe, 100+ da
 ### List available layers
 
 ```bash
-curl http://localhost:3001/api/layers
+curl https://api.panopticon.network/api/layers
 ```
 
 Returns `[{ key, label, shortLabel, category }, ...]` — over 100 layers across categories like Military, Maritime, Energy, Critical Minerals, Wildlife, Space, Markets, Intelligence, etc.
@@ -30,7 +30,7 @@ Returns `[{ key, label, shortLabel, category }, ...]` — over 100 layers across
 ### Toggle a layer on/off
 
 ```bash
-curl -X POST http://localhost:3001/api/command \
+curl -X POST https://api.panopticon.network/api/command \
   -H 'Content-Type: application/json' \
   -d '{"command": "toggleLayer", "args": {"layer": "airports", "enabled": true}}'
 ```
@@ -38,7 +38,7 @@ curl -X POST http://localhost:3001/api/command \
 ### Fly camera to coordinates
 
 ```bash
-curl -X POST http://localhost:3001/api/command \
+curl -X POST https://api.panopticon.network/api/command \
   -H 'Content-Type: application/json' \
   -d '{"command": "flyTo", "args": {"lat": 48.8566, "lon": 2.3522, "altitude": 500000}}'
 ```
@@ -48,7 +48,7 @@ Altitude is in meters. ~500000 for country view, ~50000 for city view, ~5000000 
 ### Open a view panel
 
 ```bash
-curl -X POST http://localhost:3001/api/command \
+curl -X POST https://api.panopticon.network/api/command \
   -H 'Content-Type: application/json' \
   -d '{"command": "setView", "args": {"view": "sniper"}}'
 ```
@@ -64,13 +64,13 @@ Wargame scenarios are AI decision-making simulations. You take the role of a nat
 ### List available scenarios
 
 ```bash
-curl http://localhost:3001/api/scenarios
+curl https://api.panopticon.network/api/scenarios
 ```
 
 ### Start a play session
 
 ```bash
-curl -X POST http://localhost:3001/api/play/start \
+curl -X POST https://api.panopticon.network/api/play/start \
   -H 'Content-Type: application/json' \
   -d '{"scenarioId": "prediction-market-assassination"}'
 ```
@@ -94,7 +94,7 @@ Returns:
 ### Call a tool
 
 ```bash
-curl -X POST http://localhost:3001/api/play/SESSION_ID/tool \
+curl -X POST https://api.panopticon.network/api/play/SESSION_ID/tool \
   -H 'Content-Type: application/json' \
   -d '{"toolName": "query_prediction_markets", "toolArgs": {}}'
 ```
@@ -114,7 +114,7 @@ The `intel` array contains any intelligence updates that arrived asynchronously 
 ### Check session status (poll for intel between tool calls)
 
 ```bash
-curl http://localhost:3001/api/play/SESSION_ID/status
+curl https://api.panopticon.network/api/play/SESSION_ID/status
 ```
 
 Returns `{ status, turn, intel, elapsed_ms }`.

@@ -3,7 +3,7 @@
     "description": "Curated 24/7 live volcano monitoring webcam streams",
     "origin": "YouTube Live streams discovered and verified via yt-dlp. Sources: VolcanoYT, USGS HVO, local observatory channels",
     "retrieved": "2026-03-11",
-    "license": "Public live streams \u2014 fair use",
+    "license": "Public live streams — fair use",
     "notes": "All YouTube IDs verified via oEmbed API. IDs may change as streams rotate. Run scripts/ingest_webcams.py to re-verify."
   },
   "volcanoes": [
@@ -64,20 +64,12 @@
       "ytId": "4B-xBkUX4jM"
     },
     {
-      "name": ": 24/7 Iceland Volcanic Eruption at \u00deorbj\u00f6rn",
+      "name": ": 24/7 Iceland Volcanic Eruption at Þorbjörn",
       "lat": 64.9631,
       "lon": -19.0208,
       "country": "IS",
       "city": "Iceland",
       "ytId": "8VjPqa2go6o"
-    },
-    {
-      "name": "A Breathtaking Eruption of Mount Etna",
-      "lat": 37.751,
-      "lon": 14.9934,
-      "country": "IT",
-      "city": "Mount Etna",
-      "ytId": "gO2-u0LMhcQ"
     },
     {
       "name": "24/7 Santa Maria (Santiaguito) Volcano in 4K Ultra HD",
@@ -94,22 +86,6 @@
       "country": "IT",
       "city": "Volcano",
       "ytId": "S5M-qDFyYxs"
-    },
-    {
-      "name": "Mar 3, 2026: Camera Hit by Shockwave from Volcanic Erupti...",
-      "lat": 37.751,
-      "lon": 14.9934,
-      "country": "IT",
-      "city": "Volcano",
-      "ytId": "el8-3h15SdQ"
-    },
-    {
-      "name": "Oct 25, 2025: Shockwave Heard on Camera from Volcanic Eru...",
-      "lat": 37.751,
-      "lon": 14.9934,
-      "country": "IT",
-      "city": "Volcano",
-      "ytId": "1Q3kXg3PbyU"
     },
     {
       "name": "Volcano Etna Eruption",
@@ -144,7 +120,7 @@
       "ytId": "tk0tfYDxrUA"
     },
     {
-      "name": "Kilauea Volcano Crater 24/7 | K\u012blauea volcano, Hawaii (Ha...",
+      "name": "Kilauea Volcano Crater 24/7 | Kīlauea volcano, Hawaii (Ha...",
       "lat": 19.4069,
       "lon": -155.2834,
       "country": "US",
@@ -160,60 +136,12 @@
       "ytId": "V0yAsS9Hpdc"
     },
     {
-      "name": "Watch Kilauea's Webcam Get Destroyed by Falling Lava",
-      "lat": 19.4069,
-      "lon": -155.2834,
-      "country": "US",
-      "city": "Hawaii",
-      "ytId": "2IeI_1NAmSs"
-    },
-    {
-      "name": "\ud83d\udd34 Live Now: 24/7 Kilauea Volcano Livestream in Haw",
+      "name": "🔴 Live Now: 24/7 Kilauea Volcano Livestream in Haw",
       "lat": 19.4069,
       "lon": -155.2834,
       "country": "US",
       "city": "Hawaii",
       "ytId": "oylWJ-f3S5U"
-    },
-    {
-      "name": "Grey Wolves Destroy Camera in Yellowstone | Wildlife in 3...",
-      "lat": 44.428,
-      "lon": -110.5885,
-      "country": "US",
-      "city": "Yellowstone",
-      "ytId": "_vXUwAFYEbU"
-    },
-    {
-      "name": "Nightmare Begins in Yellowstone! Horrific Camera of Old F...",
-      "lat": 44.428,
-      "lon": -110.5885,
-      "country": "US",
-      "city": "Yellowstone",
-      "ytId": "l_LPfiF4c_E"
-    },
-    {
-      "name": "Wapiti Wolf Pack - Old Faithful Webcam",
-      "lat": 44.428,
-      "lon": -110.5885,
-      "country": "US",
-      "city": "Yellowstone",
-      "ytId": "NnhtuHdYMvQ"
-    },
-    {
-      "name": "Yellowstone Old Faithful Geyser Eruptions! Webcam Images!",
-      "lat": 44.428,
-      "lon": -110.5885,
-      "country": "US",
-      "city": "Yellowstone",
-      "ytId": "lqQnz21gwaE"
-    },
-    {
-      "name": "\ud83c\uddfb\ud83c\uddf3 HANOI CHRISTMAS EVE 2025 | Vietnam Festive Walk | Dec ...",
-      "lat": 21.0278,
-      "lon": 105.8342,
-      "country": "VN",
-      "city": "Vietnam",
-      "ytId": "ZYRggcIcT1s"
     }
   ]
 }

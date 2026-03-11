@@ -3,18 +3,10 @@
     "description": "Curated 24/7 live airport runway, terminal, and aviation webcam streams",
     "origin": "YouTube Live streams discovered and verified via yt-dlp. Sources: AirlineVideosLive+, Flightradar24, airport authority channels",
     "retrieved": "2026-03-11",
-    "license": "Public live streams \u2014 fair use",
+    "license": "Public live streams — fair use",
     "notes": "All YouTube IDs verified via oEmbed API. IDs may change as streams rotate. Run scripts/ingest_webcams.py to re-verify."
   },
   "aviation": [
-    {
-      "name": "Watch ABC NEWS Australia | ABC NEWS",
-      "lat": 33.8688,
-      "lon": 151.2093,
-      "country": "AU",
-      "city": "Australia",
-      "ytId": "vOTiJkg1voo"
-    },
     {
       "name": "camera sydney",
       "lat": 33.8688,
@@ -40,7 +32,7 @@
       "ytId": "nNcfuDt4Xbs"
     },
     {
-      "name": "Z\u00fcrich Webcam - cam Zurich Switzerland (near by Airport Z...",
+      "name": "Zürich Webcam - cam Zurich Switzerland (near by Airport Z...",
       "lat": 46.8182,
       "lon": 8.2275,
       "country": "CH",
@@ -54,14 +46,6 @@
       "country": "CZ",
       "city": "Prague",
       "ytId": "pKbUd8n5p5Y"
-    },
-    {
-      "name": "Barcelona SCAMS and Tourist Traps to watch out for!",
-      "lat": 41.3874,
-      "lon": 2.1686,
-      "country": "ES",
-      "city": "Barcelona",
-      "ytId": "kNvV53MPwHs"
     },
     {
       "name": "Lanzarote Airport",
@@ -88,14 +72,6 @@
       "ytId": "yrx0fvj-4QI"
     },
     {
-      "name": "[4K] PARIS 2025 \ud83c\uddeb\ud83c\uddf7 1 Hour Aerial Drone Relaxation Film UH...",
-      "lat": 48.8566,
-      "lon": 2.3522,
-      "country": "FR",
-      "city": "France",
-      "ytId": "WHNNHAoaZD4"
-    },
-    {
       "name": "Kulusuk Airport Greenland",
       "lat": 65.5736,
       "lon": -37.1236,
@@ -104,7 +80,7 @@
       "ytId": "fpaqR1d_K0g"
     },
     {
-      "name": ": Israel\u2013Iran War Watch | Tel Aviv & Jerusalem Cameras \u2013 ...",
+      "name": ": Israel–Iran War Watch | Tel Aviv & Jerusalem Cameras – ...",
       "lat": 31.7683,
       "lon": 35.2137,
       "country": "IL",
@@ -136,20 +112,12 @@
       "ytId": "Ad210DlxTlY"
     },
     {
-      "name": "\ud83d\udd34LIVE 24/7 : -Tel aviv-jarusalem-beirut-tehran Non",
+      "name": "🔴LIVE 24/7 : -Tel aviv-jarusalem-beirut-tehran Non",
       "lat": 32.0853,
       "lon": 34.7818,
       "country": "IL",
       "city": "Tel Aviv",
       "ytId": "bjl0Mit_KSs"
-    },
-    {
-      "name": "ON CAM: Moment Dubai Airport Was Bombed; Huge Explosion, ...",
-      "lat": 28.6139,
-      "lon": 77.209,
-      "country": "IN",
-      "city": "India",
-      "ytId": "f43HfYCp8-s"
     },
     {
       "name": "Camview: Wellington Airport Webcam Stream",
@@ -176,7 +144,7 @@
       "ytId": "dIeWVuZ3esM"
     },
     {
-      "name": "\ud83d\udd34 LIVE 24/7 Lisbon Airport 01.02.2026 \u2022 Livestream",
+      "name": "🔴 LIVE 24/7 Lisbon Airport 01.02.2026 • Livestream",
       "lat": 38.7223,
       "lon": -9.1393,
       "country": "PT",
@@ -184,7 +152,7 @@
       "ytId": "q4IBSEv3jLk"
     },
     {
-      "name": "\ud83d\udd34 LIVE 24/7 Lisbon Airport 02.01.2026 \u2022 Livestream",
+      "name": "🔴 LIVE 24/7 Lisbon Airport 02.01.2026 • Livestream",
       "lat": 38.7223,
       "lon": -9.1393,
       "country": "PT",
@@ -192,7 +160,7 @@
       "ytId": "aKqCFusFhgE"
     },
     {
-      "name": "\ud83d\udd34 LIVE 24/7 Lisbon Airport 21.12.2025 \u2022 Livestream",
+      "name": "🔴 LIVE 24/7 Lisbon Airport 21.12.2025 • Livestream",
       "lat": 38.7223,
       "lon": -9.1393,
       "country": "PT",
@@ -200,7 +168,7 @@
       "ytId": "apySjkSzmVg"
     },
     {
-      "name": "\ud83d\udd34 LIVE 24/7 Lisbon Airport 22.01.2026 \u2022 Livestream",
+      "name": "🔴 LIVE 24/7 Lisbon Airport 22.01.2026 • Livestream",
       "lat": 38.7223,
       "lon": -9.1393,
       "country": "PT",
@@ -208,7 +176,7 @@
       "ytId": "7EhvNHHeO1w"
     },
     {
-      "name": "\ud83d\udd34 LIVE 24/7 Lisbon Airport 22.02.2026 \u2022 Livestream",
+      "name": "🔴 LIVE 24/7 Lisbon Airport 22.02.2026 • Livestream",
       "lat": 38.7223,
       "lon": -9.1393,
       "country": "PT",
@@ -216,7 +184,7 @@
       "ytId": "SW_KnnhwW5o"
     },
     {
-      "name": "\ud83d\udd34 LIVE 24/7 Lisbon Airport 23.01.2026 \u2022 Livestream",
+      "name": "🔴 LIVE 24/7 Lisbon Airport 23.01.2026 • Livestream",
       "lat": 38.7223,
       "lon": -9.1393,
       "country": "PT",
@@ -224,7 +192,7 @@
       "ytId": "lFCLK4D5nRo"
     },
     {
-      "name": "\ud83d\udd34 LIVE 24/7 Lisbon Airport 28.01.2026 \u2022 Livestream",
+      "name": "🔴 LIVE 24/7 Lisbon Airport 28.01.2026 • Livestream",
       "lat": 38.7223,
       "lon": -9.1393,
       "country": "PT",
@@ -232,7 +200,7 @@
       "ytId": "fISZKlWI6TU"
     },
     {
-      "name": "\ud83d\udd34 LIVE 24/7 Lisbon Airport 30.01.2026 \u2022 Livestream",
+      "name": "🔴 LIVE 24/7 Lisbon Airport 30.01.2026 • Livestream",
       "lat": 38.7223,
       "lon": -9.1393,
       "country": "PT",
@@ -336,14 +304,6 @@
       "ytId": "WEED1DLax80"
     },
     {
-      "name": "WATCH: Maui cam captures moment of Kaanapali explosion",
-      "lat": 20.7984,
-      "lon": -156.3319,
-      "country": "US",
-      "city": "Maui",
-      "ytId": "qd5RshMQZYU"
-    },
-    {
       "name": "MSP Airport",
       "lat": 44.8848,
       "lon": -93.2223,
@@ -398,14 +358,6 @@
       "country": "VN",
       "city": "Hanoi",
       "ytId": "4NhM_guEk-g"
-    },
-    {
-      "name": "WATCH : Tornado warning issued for Kinney County : Mar 10...",
-      "lat": 0,
-      "lon": 0,
-      "country": "XX",
-      "city": "ISS",
-      "ytId": "SEkOxlfqJuc"
     }
   ]
 }

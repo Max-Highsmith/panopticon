@@ -199,7 +199,12 @@ function inferProvider(modelVal) {
   if (OPENROUTER_PREFIXES.includes(prefix)) return 'openrouter';
   // Direct mapping: anthropic, openai, google, x-ai
   const providerMap = { 'x-ai': 'xai' };
-  return providerMap[prefix] || prefix;
+  const directProvider = providerMap[prefix] || prefix;
+  // Fall back to OpenRouter if no direct key but OpenRouter key exists
+  if (!getKeyForProvider(directProvider) && getKeyForProvider('openrouter')) {
+    return 'openrouter';
+  }
+  return directProvider;
 }
 
 function readConfigFromUI() {

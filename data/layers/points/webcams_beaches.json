@@ -3,7 +3,7 @@
     "description": "Curated 24/7 live beach, surf, and coastal webcam streams",
     "origin": "YouTube Live streams discovered and verified via yt-dlp. Sources: EarthCam, SkylineWebcams, surf cam operators, beach tourism channels",
     "retrieved": "2026-03-11",
-    "license": "Public live streams \u2014 fair use",
+    "license": "Public live streams — fair use",
     "notes": "All YouTube IDs verified via oEmbed API. IDs may change as streams rotate. Run scripts/ingest_webcams.py to re-verify."
   },
   "beaches": [
@@ -38,14 +38,6 @@
       "country": "BR",
       "city": "Rio de Janeiro",
       "ytId": "CwSma3j21Mk"
-    },
-    {
-      "name": "Walking on Copacabana Beach \ud83c\udde7\ud83c\uddf7 Rio de Janeiro, Brazil \u3010 4...",
-      "lat": 22.9068,
-      "lon": -43.1729,
-      "country": "BR",
-      "city": "Rio de Janeiro",
-      "ytId": "sRRODmeZjPc"
     },
     {
       "name": "Curacao Mambo Beach",
@@ -104,22 +96,6 @@
       "ytId": "Znrw-rnisNY"
     },
     {
-      "name": "Dubrovnik, Banje Beach 1.7.2018",
-      "lat": 42.6507,
-      "lon": 18.0944,
-      "country": "HR",
-      "city": "Dubrovnik",
-      "ytId": "JxywvKIh0TQ"
-    },
-    {
-      "name": "ON CAM: Tel Aviv, Haifa EXPLODING As Iran\u2019s Worst WAVE RA...",
-      "lat": 32.0853,
-      "lon": 34.7818,
-      "country": "IL",
-      "city": "Tel Aviv",
-      "ytId": "TvcV39yC2Wo"
-    },
-    {
       "name": "Naples Beach Hotel & Golf Club Beachcam Stream",
       "lat": 40.8518,
       "lon": 14.2681,
@@ -168,15 +144,7 @@
       "ytId": "_BMi3usEwi8"
     },
     {
-      "name": "\u3010Camera\u3011Singapore Sentosa Siloso Beach Cam 26 Aug 2020",
-      "lat": 1.3521,
-      "lon": 103.8198,
-      "country": "SG",
-      "city": "Singapore",
-      "ytId": "lDJu1Wxxq9Q"
-    },
-    {
-      "name": "Beach Stream \u00b7 House of Sanskara \u00b7 Koh Phangan, Thailand",
+      "name": "Beach Stream · House of Sanskara · Koh Phangan, Thailand",
       "lat": 13.7563,
       "lon": 100.5018,
       "country": "TH",
@@ -384,14 +352,6 @@
       "ytId": "98jOtUeM3m8"
     },
     {
-      "name": "Malibu Earthquake from Venice Beach Cam",
-      "lat": 33.985,
-      "lon": -118.4695,
-      "country": "US",
-      "city": "Los Angeles",
-      "ytId": "T3bMEqvLGJA"
-    },
-    {
       "name": "Santa Monica Pier & Pacific Park 4K | California Beach Vi...",
       "lat": 34.0195,
       "lon": -118.4912,
@@ -494,14 +454,6 @@
       "country": "US",
       "city": "Pacifica",
       "ytId": "zYi_5AF6B2A"
-    },
-    {
-      "name": "Hidden camera disguised as pen found in bathrooms on Ocea...",
-      "lat": 39.9526,
-      "lon": -75.1652,
-      "country": "US",
-      "city": "Philadelphia",
-      "ytId": "r7nyXIiicOg"
     },
     {
       "name": "Pier 23 Cafe, San Francisco Bay | San Francisco, CA USA |...",

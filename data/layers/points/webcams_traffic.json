@@ -3,7 +3,7 @@
     "description": "Curated 24/7 live highway, road, and city traffic webcam streams worldwide",
     "origin": "YouTube Live streams discovered and verified via yt-dlp channel scan + search. Sources: state DOT cameras, TrafficWatcha, city transportation departments",
     "retrieved": "2026-03-11",
-    "license": "Public live streams \u2014 fair use",
+    "license": "Public live streams — fair use",
     "notes": "All YouTube IDs verified via oEmbed API. IDs may change as streams rotate. Run scripts/ingest_webcams.py to re-verify."
   },
   "traffic": [
@@ -32,14 +32,6 @@
       "ytId": "2tzNg6tcLDw"
     },
     {
-      "name": "(1896) The first Traffic Webcam ever. Hyde Park, London. ...",
-      "lat": 51.5074,
-      "lon": -0.1278,
-      "country": "GB",
-      "city": "London",
-      "ytId": "etUyVhQpqXo"
-    },
-    {
       "name": "STREAM: from Jakarta!",
       "lat": 6.2088,
       "lon": 106.8456,
@@ -64,7 +56,7 @@
       "ytId": "PB8-N38arMg"
     },
     {
-      "name": "Middle East Multi-Cams | Israel \ud83c\uddee\ud83c\uddf1 Lebanon | Sky Views",
+      "name": "Middle East Multi-Cams | Israel 🇮🇱 Lebanon | Sky Views",
       "lat": 31.7683,
       "lon": 35.2137,
       "country": "IL",
@@ -184,7 +176,7 @@
       "ytId": "D2tqr5ekXO8"
     },
     {
-      "name": "\u2b55 Traffic Camera - Car Spotting - Police Scanner - From F...",
+      "name": "⭕ Traffic Camera - Car Spotting - Police Scanner - From F...",
       "lat": 36.1162,
       "lon": -119.6816,
       "country": "US",
@@ -192,7 +184,7 @@
       "ytId": "1xl0hX-nF2E"
     },
     {
-      "name": "\u2b55 Traffic Camera - Police Scanner - From Fresno, California",
+      "name": "⭕ Traffic Camera - Police Scanner - From Fresno, California",
       "lat": 36.1162,
       "lon": -119.6816,
       "country": "US",
@@ -232,36 +224,12 @@
       "ytId": "LK9pZn7rckc"
     },
     {
-      "name": "New York City to add hundreds of red light cameras to int...",
-      "lat": 40.7128,
-      "lon": -74.006,
-      "country": "US",
-      "city": "New York",
-      "ytId": "snAmZ_KnKtU"
-    },
-    {
       "name": "San Francisco Bay Bridge",
       "lat": 37.7983,
       "lon": -122.3778,
       "country": "US",
       "city": "San Francisco",
       "ytId": "CXYr04BWvmc"
-    },
-    {
-      "name": "Crashes caught on Seattle traffic cameras",
-      "lat": 47.6062,
-      "lon": -122.3321,
-      "country": "US",
-      "city": "Seattle",
-      "ytId": "oPf3sBExNLE"
-    },
-    {
-      "name": "Clearing up traffic camera confusion",
-      "lat": 27.9506,
-      "lon": -82.4572,
-      "country": "US",
-      "city": "Tampa",
-      "ytId": "4koxy_7uqcg"
     },
     {
       "name": "24/7 Live Stream: George Washington Bridge (GWB) N",

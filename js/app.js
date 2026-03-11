@@ -276,7 +276,7 @@ function scenarioToManifest(id) {
       domain: 'wallclock',
       startUTC: sc.timeStartUTC,
     },
-    data: { file: sc.file },
+    data: { file: 'data/playback/' + sc.file },
     display: {
       localTz: sc.localTz,
       dataBounds: sc.dataBounds,

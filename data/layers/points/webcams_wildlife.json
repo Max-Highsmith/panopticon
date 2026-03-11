@@ -3,7 +3,7 @@
     "description": "Curated 24/7 live wildlife, safari, and nature observation webcam streams",
     "origin": "YouTube Live streams discovered and verified via yt-dlp. Sources: explore.org, Africam, Cornell Lab, EarthCam, zoo/sanctuary channels",
     "retrieved": "2026-03-11",
-    "license": "Public live streams \u2014 fair use",
+    "license": "Public live streams — fair use",
     "notes": "All YouTube IDs verified via oEmbed API. IDs may change as streams rotate. Run scripts/ingest_webcams.py to re-verify."
   },
   "wildlife": [
@@ -72,7 +72,7 @@
       "ytId": "tJ0fHAHihPA"
     },
     {
-      "name": "Ever wonder what Penguins do when no one\u2019s watching? Chec...",
+      "name": "Ever wonder what Penguins do when no one’s watching? Chec...",
       "lat": 43.6532,
       "lon": -79.3832,
       "country": "CA",
@@ -128,7 +128,7 @@
       "ytId": "PQHAoBJkXe4"
     },
     {
-      "name": "Barn Owl/ Pigeon Israel 4K Cam 1|\u05ea\u05e0\u05e9\u05de\u05ea |WBAIS GAIA |The C...",
+      "name": "Barn Owl/ Pigeon Israel 4K Cam 1|תנשמת |WBAIS GAIA |The C...",
       "lat": 31.7683,
       "lon": 35.2137,
       "country": "IL",
@@ -142,14 +142,6 @@
       "country": "IN",
       "city": "India",
       "ytId": "bZish-38Bbs"
-    },
-    {
-      "name": "Shark attack caught on camera . Great white Shark attacks...",
-      "lat": 28.6139,
-      "lon": 77.209,
-      "country": "IN",
-      "city": "India",
-      "ytId": "PhhNeCI0lVo"
     },
     {
       "name": "Bird Feeder Cam Mumbai # 15",
@@ -496,7 +488,7 @@
       "ytId": "ad3Em2r7YMM"
     },
     {
-      "name": "FAT Bear Week 2025 \u25aa FINAL \u25aa 32 Chunk vs. 856 \u25aa Katmai Br...",
+      "name": "FAT Bear Week 2025 ▪ FINAL ▪ 32 Chunk vs. 856 ▪ Katmai Br...",
       "lat": 58.6,
       "lon": -154.0,
       "country": "US",
@@ -760,7 +752,7 @@
       "ytId": "QGvjAPzImR8"
     },
     {
-      "name": "Naledi Dam | Wildlife Stream \u2013 Greater Kruger National Park",
+      "name": "Naledi Dam | Wildlife Stream – Greater Kruger National Park",
       "lat": 24.0112,
       "lon": 31.4847,
       "country": "ZA",

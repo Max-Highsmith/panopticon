@@ -700,9 +700,31 @@ def is_webcam_stream(title, author=""):
         "shooting", "stabbing", "robbery",
         "dash cam", "dashcam", "body cam", "bodycam",
         "security camera", "cctv footage",
-        "drone footage", "drone video",
+        "drone footage", "drone video", "aerial drone",
         "time lapse", "timelapse",
         "gopro", "go pro",
+        # Walking videos / city walks
+        "night walk", "city walk", "4k walk", "walking",
+        "festive walk",
+        # Christmas / holiday event recordings
+        "christmas lights", "christmas eve", "christmas decorat",
+        "festive christmas", "festive moscow",
+        # Historical / archived / dated
+        "stream archive", "the first traffic webcam",
+        # Attack / war clickbait
+        "attack on camera", "on cam:", "was bombed",
+        "exploding as", "destroy camera", "horrific camera",
+        "nightmare begins", "shockwave",
+        # News / scams / non-webcam
+        "scams and tourist", "new scammers",
+        "crashes caught on", "clearing up traffic camera",
+        "to add hundreds of", "tornado warning",
+        "captures moment of",
+        "abc news", "hidden camera disguised",
+        # Tours
+        "complete tour", "january tour",
+        # Relaxation films
+        "relaxation film",
     ]
     for kw in exclude2:
         if kw in title_lower:
@@ -888,7 +910,27 @@ def main():
     webcam_streams = {}
     bad_content = ["recorded footage", "recorded live", "walking tour",
                    "exploring", "trip to", "travel guide", "i am surprised",
-                   "snowstorm", "blizzard"]
+                   "snowstorm", "blizzard",
+                   # Walking / tours
+                   "night walk", "city walk", "4k walk", "walking",
+                   "complete tour", "january tour", "festive walk",
+                   # Christmas / holiday events
+                   "christmas lights", "christmas eve", "christmas decorat",
+                   "festive christmas", "festive moscow",
+                   # Historical / archived
+                   "stream archive", "the first traffic webcam",
+                   # Attack / war clickbait
+                   "attack on camera", "on cam:", "was bombed",
+                   "exploding as", "destroy camera", "horrific camera",
+                   "nightmare begins", "shockwave",
+                   # News / scams
+                   "scams and tourist", "new scammers",
+                   "crashes caught on", "clearing up traffic camera",
+                   "to add hundreds of", "tornado warning",
+                   "captures moment of", "abc news",
+                   "hidden camera disguised",
+                   # Drone / relaxation
+                   "aerial drone", "relaxation film"]
     for ytid, stream in all_streams.items():
         title = stream.get("yt_title", "") or stream.get("name", "")
         author = stream.get("yt_author", "")

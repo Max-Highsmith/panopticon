@@ -3,7 +3,7 @@
     "description": "Curated 24/7 live nature, mountain, lake, and scenic webcam streams",
     "origin": "YouTube Live streams discovered and verified via yt-dlp. Sources: EarthCam, national park channels, ski resort operators, weather stations",
     "retrieved": "2026-03-11",
-    "license": "Public live streams \u2014 fair use",
+    "license": "Public live streams — fair use",
     "notes": "All YouTube IDs verified via oEmbed API. IDs may change as streams rotate. Run scripts/ingest_webcams.py to re-verify."
   },
   "nature": [
@@ -38,14 +38,6 @@
       "country": "CA",
       "city": "Vancouver",
       "ytId": "Dn2VLBKRf14"
-    },
-    {
-      "name": "SUPER Snow Storm City Walk 24/7 Winter in Finland Februar...",
-      "lat": 60.1699,
-      "lon": 24.9384,
-      "country": "FI",
-      "city": "Helsinki",
-      "ytId": "9h42Y9gHqnI"
     },
     {
       "name": "Levi Ski Resort",
@@ -96,15 +88,7 @@
       "ytId": "u1HnmqcuUyg"
     },
     {
-      "name": "Walk in Kyoto Midnight Rainstorm - 4K HDR",
-      "lat": 35.6762,
-      "lon": 139.6503,
-      "country": "JP",
-      "city": "Japan",
-      "ytId": "qgfd-uWTVwg"
-    },
-    {
-      "name": "\u96ea \u4eac\u90fd \u30e9\u30a4\u30d6 \u30ab\u30e1\u30e9 | Massive Snow Storm in Kyoto Japan Camera",
+      "name": "雪 京都 ライブ カメラ | Massive Snow Storm in Kyoto Japan Camera",
       "lat": 35.6762,
       "lon": 139.6503,
       "country": "JP",
@@ -112,7 +96,7 @@
       "ytId": "1kK6Gpj590o"
     },
     {
-      "name": "\u304a\u5929\u6c17\u30ab\u30e1\u30e9 \u5927\u962a\uff0fOSAKA,JAPAN",
+      "name": "お天気カメラ 大阪／OSAKA,JAPAN",
       "lat": 34.6937,
       "lon": 135.5023,
       "country": "JP",
@@ -128,7 +112,7 @@
       "ytId": "jIh2FYqMOw0"
     },
     {
-      "name": "\uc11c\uc6b8 \ud55c\uac15 \ub77c\uc774\ube0c \uc2e4\uc2dc\uac04 \ud55c\uac15\uacf5\uc6d0 \uc62c\ub9bc\ud53d\ub300\ub85c \ubc18\ud3ec\ub300\uad50 \ubd84\uc218\uc1fc Seoul Han River Park Fl...",
+      "name": "서울 한강 라이브 실시간 한강공원 올림픽대로 반포대교 분수쇼 Seoul Han River Park Fl...",
       "lat": 37.5665,
       "lon": 126.978,
       "country": "KR",
@@ -184,7 +168,7 @@
       "ytId": "YmQqVomTgy4"
     },
     {
-      "name": "\u3010Taipei Cam\u3011\u5927\u4f73\u6cb3\u6ff1\u516c\u5712 - 4K\u5373\u6642\u5f71\u50cf | Taipei Dajia Riverside Park...",
+      "name": "【Taipei Cam】大佳河濱公園 - 4K即時影像 | Taipei Dajia Riverside Park...",
       "lat": 25.033,
       "lon": 121.5654,
       "country": "TW",
@@ -232,14 +216,6 @@
       "ytId": "MqzQdTHCTOg"
     },
     {
-      "name": "US Winter Storm Cam: Snow, Ice, And Extreme Cold Spread A...",
-      "lat": 38.9072,
-      "lon": -77.0369,
-      "country": "US",
-      "city": "Cam: Snow",
-      "ytId": "BGKUMoKV3ss"
-    },
-    {
       "name": "Anacapa Channel Islands",
       "lat": 34.0133,
       "lon": -119.3613,
@@ -256,28 +232,12 @@
       "ytId": "aaUERtNMn7o"
     },
     {
-      "name": "Chicago & NW Indiana Lake Effect Snow - Stream Archive",
-      "lat": 41.8781,
-      "lon": -87.6298,
-      "country": "US",
-      "city": "Chicago",
-      "ytId": "ZAKmz8FA_5M"
-    },
-    {
       "name": "Chocorua Lake, New Hampshire - Cam",
       "lat": 43.4525,
       "lon": -71.5639,
       "country": "US",
       "city": "Chocorua Lake",
       "ytId": "2XptTNJC0ZU"
-    },
-    {
-      "name": "Clearwater Beach Florida 4K January Tour at Sunrise Cam",
-      "lat": 27.9659,
-      "lon": -82.8001,
-      "country": "US",
-      "city": "Clearwater",
-      "ytId": "lYZ0NQAKkZw"
     },
     {
       "name": "Jimmy's Crows Nest - Sunrise",
@@ -304,14 +264,6 @@
       "ytId": "8pvXU1aEQZ0"
     },
     {
-      "name": "48 hour Denver Colorado Snow Storm Height Cam - March 14-...",
-      "lat": 39.7392,
-      "lon": -104.9903,
-      "country": "US",
-      "city": "Denver",
-      "ytId": "vvcWiWcfJhI"
-    },
-    {
       "name": "Detroit River Cam from the Dossin Museum, Detroit, Michig...",
       "lat": 42.3314,
       "lon": -83.0458,
@@ -326,14 +278,6 @@
       "country": "US",
       "city": "Grand Lake",
       "ytId": "5hjtEsqLn9c"
-    },
-    {
-      "name": "Hawaii Green Flash at Sunset Captured on the 4K Stream",
-      "lat": 19.8968,
-      "lon": -155.5828,
-      "country": "US",
-      "city": "Hawaii",
-      "ytId": "yJ6klGvXspU"
     },
     {
       "name": "Maui Beach Cam | Napili Kai Beach Resort | Hawaii Cams",
@@ -440,14 +384,6 @@
       "ytId": "GKOyGoRE0Tg"
     },
     {
-      "name": "New York is hit by a snowstorm. Follow our coverage from ...",
-      "lat": 40.7831,
-      "lon": -73.9712,
-      "country": "US",
-      "city": "New York",
-      "ytId": "t1hdsD9DIbo"
-    },
-    {
       "name": "Redwood River Cam",
       "lat": 41.21,
       "lon": -124.0,
@@ -504,7 +440,7 @@
       "ytId": "z1PJqpgZccg"
     },
     {
-      "name": "Olifants River | Wildlife Stream \u2013 Greater Kruger Nationa...",
+      "name": "Olifants River | Wildlife Stream – Greater Kruger Nationa...",
       "lat": 24.0112,
       "lon": 31.4847,
       "country": "ZA",
@@ -512,7 +448,7 @@
       "ytId": "NapztoCaKFY"
     },
     {
-      "name": "Langebaan Lagoon Camera | Pearly\u2019s Restaurant",
+      "name": "Langebaan Lagoon Camera | Pearly’s Restaurant",
       "lat": 33.9249,
       "lon": 18.4241,
       "country": "ZA",

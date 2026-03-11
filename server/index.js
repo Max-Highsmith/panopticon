@@ -98,6 +98,37 @@ function loadLayerContext(scenario) {
 // =====================================================
 const app = express();
 app.use(express.json());
+
+// CORS — allow panopticon.network (and localhost for dev) to call API
+app.use('/api', (req, res, next) => {
+  res.set('Access-Control-Allow-Origin', '*');
+  res.set('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+  res.set('Access-Control-Allow-Headers', 'Content-Type');
+  if (req.method === 'OPTIONS') return res.sendStatus(204);
+  next();
+});
+
+// Rate limiting — 60 requests per minute per IP on API routes
+const rateLimitMap = new Map();
+const RATE_LIMIT_WINDOW_MS = 60_000;
+const RATE_LIMIT_MAX = 60;
+setInterval(() => rateLimitMap.clear(), RATE_LIMIT_WINDOW_MS);
+
+app.use('/api', (req, res, next) => {
+  const ip = req.headers['x-forwarded-for']?.split(',')[0]?.trim() || req.ip;
+  const count = (rateLimitMap.get(ip) || 0) + 1;
+  rateLimitMap.set(ip, count);
+  if (count > RATE_LIMIT_MAX) {
+    return res.status(429).json({ error: 'Rate limit exceeded. Try again in a minute.' });
+  }
+  next();
+});
+
+// Redirect bare URL to the main site
+app.get('/', (_req, res) => {
+  res.redirect(301, 'https://panopticon.network');
+});
+
 app.use(express.static(ROOT, {
   setHeaders: (res, filePath) => {
     if (filePath.endsWith('.js') || filePath.endsWith('.mjs')) {
