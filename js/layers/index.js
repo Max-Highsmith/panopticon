@@ -108,6 +108,7 @@ import './webcams_space.js';
 import './webcams_aurora.js';
 import './webcams_nature.js';
 import './webcams_traffic.js';
+import './surveillance_cameras_scenario.js';
 
 // Ambient layers
 import './kalshilayer.js';

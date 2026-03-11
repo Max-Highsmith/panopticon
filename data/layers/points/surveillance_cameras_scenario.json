@@ -1,0 +1,27 @@
+{
+  "_source": {
+    "description": "Scenario-specific surveillance camera feeds for the prediction-market-assassination wargame",
+    "origin": "Fictional scenario data — coordinates match scenario definitions in scenarios/prediction-market-assassination.json",
+    "retrieved": "2026-03-11",
+    "license": "MIT (project asset)",
+    "notes": "Video files in assets/ are scenario props, not real surveillance feeds"
+  },
+  "cameras": [
+    {
+      "name": "OVERWATCH-7 // Bassani Compound",
+      "lat": 35.12,
+      "lon": 50.08,
+      "country": "ZR",
+      "city": "Zarabad",
+      "videoUrl": "assets/leader_loop.mp4"
+    },
+    {
+      "name": "SIGINT-3 // FRP Hostage Compound",
+      "lat": -3.40,
+      "lon": 29.14,
+      "country": "CD",
+      "city": "South Kivu",
+      "videoUrl": "assets/hostage.mp4"
+    }
+  ]
+}

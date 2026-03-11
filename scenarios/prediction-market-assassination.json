@@ -10,7 +10,7 @@
   "tick_interval_ms": 20000,
   "execution_mode": "agentic",
   "response_format": "text",
-  "layers": ["kalshi_scenario", "profiles"],
+  "layers": ["kalshi_scenario", "profiles", "surveillance_cameras_scenario"],
 
   "token_budget": 100000,
   "time_limit_ms": 300000,

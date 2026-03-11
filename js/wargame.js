@@ -19,6 +19,7 @@ import { loadPlaybackList } from './playbackbrowser.js';
 import { getLoader, getLayerData, getLayerType } from './layerregistry.js';
 import { toggleLayer, entityMaps, registerLayer } from './globe.js';
 import { getView } from './viewregistry.js';
+import { openWebcamView } from './webcamview.js';
 
 // Stores the last completed run's config so we can generate a playback manifest
 let lastCompletedConfig = null;
@@ -1367,6 +1368,19 @@ export function dispatchToolVisuals(toolName, toolArgs, result, cesiumViewer) {
           destination: Cesium.Cartesian3.fromDegrees(lon, lat, 50000),
           duration: 1.2,
         });
+        const camEntities = entityMaps['surveillance_cameras_scenario'];
+        if (camEntities) {
+          let nearest = null, nearestDist = Infinity;
+          for (const entity of camEntities.values()) {
+            const ac = entity.acData;
+            if (!ac) continue;
+            const dLat = (ac.lat - lat) * 111320;
+            const dLon = (ac.lon - lon) * 111320 * Math.cos(lat * Math.PI / 180);
+            const dist = Math.sqrt(dLat * dLat + dLon * dLon);
+            if (dist < nearestDist) { nearest = entity; nearestDist = dist; }
+          }
+          if (nearest) setTimeout(() => openWebcamView(cesiumViewer, nearest), 1500);
+        }
       }
       break;
     }
@@ -1508,6 +1522,20 @@ function handleToolCall(msg) {
           destination: Cesium.Cartesian3.fromDegrees(lon, lat, 50000),
           duration: 1.2,
         });
+        // Auto-open nearest surveillance camera webcam view
+        const camEntities = entityMaps['surveillance_cameras_scenario'];
+        if (camEntities) {
+          let nearest = null, nearestDist = Infinity;
+          for (const entity of camEntities.values()) {
+            const ac = entity.acData;
+            if (!ac) continue;
+            const dLat = (ac.lat - lat) * 111320;
+            const dLon = (ac.lon - lon) * 111320 * Math.cos(lat * Math.PI / 180);
+            const dist = Math.sqrt(dLat * dLat + dLon * dLon);
+            if (dist < nearestDist) { nearest = entity; nearestDist = dist; }
+          }
+          if (nearest) setTimeout(() => openWebcamView(viewer, nearest), 1500);
+        }
       }
       break;
     }

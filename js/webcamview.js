@@ -444,14 +444,30 @@ export function openWebcamView(viewer, entity) {
   const wrapper = $('webcam-embed-wrapper');
   wrapper.classList.remove('hls-mode');
 
+  // Direct video URL (mp4, webm, etc.) — highest priority
+  let videoStarted = false;
+  if (ac.videoUrl) {
+    const video = $('webcam-hls-video');
+    if (video) {
+      stopHls();
+      video.src = ac.videoUrl;
+      video.loop = true;
+      video.muted = true;
+      video.play().catch(() => {});
+      wrapper.classList.add('hls-mode');
+      currentMode = 'video';
+      videoStarted = true;
+    }
+  }
+
   // Prefer HLS if URL available
   let hlsStarted = false;
-  if (ac.hlsUrl) {
+  if (!videoStarted && ac.hlsUrl) {
     hlsStarted = startHls(ac.hlsUrl);
   }
 
   // Fall back to YouTube iframe
-  if (!hlsStarted) {
+  if (!videoStarted && !hlsStarted) {
     currentMode = 'youtube';
     const iframe = $('webcam-embed-iframe');
     if (iframe && ac.ytId) {
