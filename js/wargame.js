@@ -1371,13 +1371,13 @@ export function dispatchToolVisuals(toolName, toolArgs, result, cesiumViewer) {
         const camEntities = entityMaps['surveillance_cameras_scenario'];
         if (camEntities) {
           let nearest = null, nearestDist = Infinity;
-          for (const entity of camEntities.values()) {
-            const ac = entity.acData;
+          for (const record of camEntities.values()) {
+            const ac = record.entity?.acData;
             if (!ac) continue;
             const dLat = (ac.lat - lat) * 111320;
             const dLon = (ac.lon - lon) * 111320 * Math.cos(lat * Math.PI / 180);
             const dist = Math.sqrt(dLat * dLat + dLon * dLon);
-            if (dist < nearestDist) { nearest = entity; nearestDist = dist; }
+            if (dist < nearestDist) { nearest = record.entity; nearestDist = dist; }
           }
           if (nearest) setTimeout(() => openWebcamView(cesiumViewer, nearest), 1500);
         }
@@ -1526,13 +1526,13 @@ function handleToolCall(msg) {
         const camEntities = entityMaps['surveillance_cameras_scenario'];
         if (camEntities) {
           let nearest = null, nearestDist = Infinity;
-          for (const entity of camEntities.values()) {
-            const ac = entity.acData;
+          for (const record of camEntities.values()) {
+            const ac = record.entity?.acData;
             if (!ac) continue;
             const dLat = (ac.lat - lat) * 111320;
             const dLon = (ac.lon - lon) * 111320 * Math.cos(lat * Math.PI / 180);
             const dist = Math.sqrt(dLat * dLat + dLon * dLon);
-            if (dist < nearestDist) { nearest = entity; nearestDist = dist; }
+            if (dist < nearestDist) { nearest = record.entity; nearestDist = dist; }
           }
           if (nearest) setTimeout(() => openWebcamView(viewer, nearest), 1500);
         }
