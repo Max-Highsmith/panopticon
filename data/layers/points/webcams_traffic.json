@@ -8,6 +8,14 @@
   },
   "traffic": [
     {
+      "name": "24 Hours From the Shangri-La Hotel Dubai Webcam",
+      "lat": 25.2048,
+      "lon": 55.2708,
+      "country": "AE",
+      "city": "Dubai",
+      "ytId": "Q8ZbL9xMvjY"
+    },
+    {
       "name": "Melbourne City Life Unfolded: 24/7 Street Watch - Bustlin...",
       "lat": 37.8136,
       "lon": 144.9631,
@@ -32,6 +40,14 @@
       "ytId": "etUyVhQpqXo"
     },
     {
+      "name": "STREAM: from Jakarta!",
+      "lat": 6.2088,
+      "lon": 106.8456,
+      "country": "ID",
+      "city": "Indonesia",
+      "ytId": "rxYSAcKnueI"
+    },
+    {
       "name": ": Israel and US Attack Iran - Non-Stop Multi-Cam Stream",
       "lat": 31.7683,
       "lon": 35.2137,
@@ -46,6 +62,14 @@
       "country": "IL",
       "city": "Israel",
       "ytId": "PB8-N38arMg"
+    },
+    {
+      "name": "Middle East Multi-Cams | Israel \ud83c\uddee\ud83c\uddf1 Lebanon | Sky Views",
+      "lat": 31.7683,
+      "lon": 35.2137,
+      "country": "IL",
+      "city": "Israel",
+      "ytId": "ogpiatxBmas"
     },
     {
       "name": "Middle East Real-time War cameras from Iran, Israel, Beir...",
@@ -88,12 +112,28 @@
       "ytId": "B32hbj_qDPU"
     },
     {
+      "name": "Cam 55",
+      "lat": 35.6762,
+      "lon": 139.6503,
+      "country": "JP",
+      "city": "Japan",
+      "ytId": "Va5xWcQ8V2A"
+    },
+    {
       "name": "Cam 65",
       "lat": 35.6762,
       "lon": 139.6503,
       "country": "JP",
       "city": "Japan",
       "ytId": "9lV6zOORQUE"
+    },
+    {
+      "name": "Cam 78",
+      "lat": 35.6762,
+      "lon": 139.6503,
+      "country": "JP",
+      "city": "Japan",
+      "ytId": "qwKkMK-FdEY"
     },
     {
       "name": "Cam 88",
@@ -118,6 +158,14 @@
       "country": "JP",
       "city": "Japan",
       "ytId": "Y7pnHmb53tk"
+    },
+    {
+      "name": "WATCH ISTANBUL 24/7 (Touristic & Traffic Cameras)",
+      "lat": 41.0082,
+      "lon": 28.9784,
+      "country": "TR",
+      "city": "Istanbul",
+      "ytId": "5UOLtygL3q8"
     },
     {
       "name": "I-26 Columbia SC",
@@ -168,12 +216,28 @@
       "ytId": "Vi0JiFqB5dc"
     },
     {
+      "name": "DoubleTree by Hilton Grand Hotel Biscayne Bay | Miami Tra...",
+      "lat": 25.7617,
+      "lon": -80.1918,
+      "country": "US",
+      "city": "Miami",
+      "ytId": "4UzQd1dVPlo"
+    },
+    {
       "name": "4K Test Williamsburg Bridge Traffic Cam Brooklyn NYC New ...",
       "lat": 40.7128,
       "lon": -74.006,
       "country": "US",
       "city": "New York",
       "ytId": "LK9pZn7rckc"
+    },
+    {
+      "name": "New York City to add hundreds of red light cameras to int...",
+      "lat": 40.7128,
+      "lon": -74.006,
+      "country": "US",
+      "city": "New York",
+      "ytId": "snAmZ_KnKtU"
     },
     {
       "name": "San Francisco Bay Bridge",

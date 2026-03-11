@@ -8,6 +8,70 @@
   },
   "rail": [
     {
+      "name": "4K : Trainspotting on Prague Main Station",
+      "lat": 50.0755,
+      "lon": 14.4378,
+      "country": "CZ",
+      "city": "Prague",
+      "ytId": "tmlE1ct0cYk"
+    },
+    {
+      "name": "CAM - Kidderminster Platform on the Severn Valley Railway",
+      "lat": 52.3885,
+      "lon": -2.249,
+      "country": "GB",
+      "city": "Kidderminster",
+      "ytId": "SKKMJSd6KQs"
+    },
+    {
+      "name": "cam4k | Corfe Castle Station | Swanage Railway , United K...",
+      "lat": 51.5074,
+      "lon": -0.1278,
+      "country": "GB",
+      "city": "Swanage Railway",
+      "ytId": "RcyIeNJGH-0"
+    },
+    {
+      "name": "Japan Webcam: Shibuya Crossing, busiest crossing in Tokyo!",
+      "lat": 35.6595,
+      "lon": 139.7004,
+      "country": "JP",
+      "city": "Tokyo",
+      "ytId": "DVHoPNiNxNo"
+    },
+    {
+      "name": "Amsterdam De Vijf Bruggen camera 1",
+      "lat": 52.3676,
+      "lon": 4.9041,
+      "country": "NL",
+      "city": "Amsterdam",
+      "ytId": "2tgHBRFHMm8"
+    },
+    {
+      "name": "Station Amsterdam Centraal - De Vijf Bruggen, camera 2 | ...",
+      "lat": 52.3676,
+      "lon": 4.9041,
+      "country": "NL",
+      "city": "Amsterdam",
+      "ytId": "FHJH2yMe6Hw"
+    },
+    {
+      "name": "Station Amsterdam Centraal Dijksgracht, stream ProRail",
+      "lat": 52.3676,
+      "lon": 4.9041,
+      "country": "NL",
+      "city": "Amsterdam",
+      "ytId": "vmNQjvCC3Ws"
+    },
+    {
+      "name": "stream RailCam Netherlands",
+      "lat": 52.3676,
+      "lon": 4.9041,
+      "country": "NL",
+      "city": "Netherlands",
+      "ytId": "TcJvbahPke8"
+    },
+    {
       "name": "Muscatine Merrill Hotel Muscatine, IA",
       "lat": 23.588,
       "lon": 58.3829,
@@ -22,6 +86,22 @@
       "country": "PR",
       "city": "San Juan",
       "ytId": "-g1qAvXyIyQ"
+    },
+    {
+      "name": ": RailCam Singapore (SMRT)",
+      "lat": 1.3521,
+      "lon": 103.8198,
+      "country": "SG",
+      "city": "Singapore",
+      "ytId": "dcYwUDy2MoM"
+    },
+    {
+      "name": "[Camera] Singapore train MRT station North South Line vir...",
+      "lat": 1.3521,
+      "lon": 103.8198,
+      "country": "SG",
+      "city": "Singapore",
+      "ytId": "rHVDC9tLpCM"
     },
     {
       "name": "Adrian, MI Adrian, MI",
@@ -152,6 +232,14 @@
       "ytId": "w6OiGEdUuY0"
     },
     {
+      "name": "Bellevue 2nd Street Station Bellevue, IA",
+      "lat": 42.0115,
+      "lon": -93.2105,
+      "country": "US",
+      "city": "Bellevue",
+      "ytId": "ZyW1tTwBDeg"
+    },
+    {
       "name": "Belvidere Spring Creek Model Trains Belvidere, NE",
       "lat": 41.1254,
       "lon": -98.2681,
@@ -208,6 +296,22 @@
       "ytId": "8BGuqY0HIQo"
     },
     {
+      "name": "Carroll Depot Railcam East - Carroll, IA",
+      "lat": 42.0115,
+      "lon": -93.2105,
+      "country": "US",
+      "city": "Carroll",
+      "ytId": "pDpLr5z_vas"
+    },
+    {
+      "name": "Cedar Falls Junction Cedar Falls, IA",
+      "lat": 42.0115,
+      "lon": -93.2105,
+      "country": "US",
+      "city": "Cedar Falls",
+      "ytId": "Sdf1bWkMwdg"
+    },
+    {
       "name": "Charlotte Charlotte, MI",
       "lat": 35.2271,
       "lon": -80.8431,
@@ -222,6 +326,14 @@
       "country": "US",
       "city": "Chehalis",
       "ytId": "dyelb2wGOAE"
+    },
+    {
+      "name": "Lewis County Historical Museum Railcam - Chehalis, WA",
+      "lat": 47.4009,
+      "lon": -121.4905,
+      "country": "US",
+      "city": "Chehalis",
+      "ytId": "YV8hzUJCp88"
     },
     {
       "name": "Chesterton, Indiana, USA | Train Camera",
@@ -264,12 +376,12 @@
       "ytId": "2EtdSlg6dkw"
     },
     {
-      "name": "RECORDING: SANDWICHES & TRAINS! SHENANDOAH JUNCTION, WV R...",
-      "lat": 41.9742,
-      "lon": -87.9073,
+      "name": "Clarence Sundstop Clarence, Iowa",
+      "lat": 42.0115,
+      "lon": -93.2105,
       "country": "US",
-      "city": "Chicago",
-      "ytId": "SBnI59yEW4s"
+      "city": "Clarence",
+      "ytId": "v1io7sqlpEI"
     },
     {
       "name": "Clinton County Historical Society Clinton, IA",
@@ -294,6 +406,14 @@
       "country": "US",
       "city": "Columbia",
       "ytId": "fIMbMz2P7Bs"
+    },
+    {
+      "name": "Julie's Java House Columbus, WI",
+      "lat": 44.2685,
+      "lon": -89.6165,
+      "country": "US",
+      "city": "Columbus",
+      "ytId": "SMy2WbhabKs"
     },
     {
       "name": "Cordele, Georgia, USA | Train Camera",
@@ -336,6 +456,14 @@
       "ytId": "nUdVtKcprJU"
     },
     {
+      "name": "Deshler, Ohio, USA | Train Camera",
+      "lat": 40.3888,
+      "lon": -82.7649,
+      "country": "US",
+      "city": "Deshler",
+      "ytId": "Y28qU7UsFko"
+    },
+    {
       "name": "Dubuque Junction Dubuque, IA",
       "lat": 42.0115,
       "lon": -93.2105,
@@ -358,6 +486,14 @@
       "country": "US",
       "city": "Elkhart",
       "ytId": "VoeGG-WgsKY"
+    },
+    {
+      "name": "Epping Signal Cabin, Epping Essex, UK - London Undergroun...",
+      "lat": 43.0339,
+      "lon": -71.0742,
+      "country": "US",
+      "city": "Epping",
+      "ytId": "8VDxX8P2w6M"
     },
     {
       "name": "Fairport, New York, USA | Train Camera",
@@ -390,6 +526,22 @@
       "country": "US",
       "city": "Flossmoor",
       "ytId": "Ll6hkJDEPL8"
+    },
+    {
+      "name": "Folkston, Georgia, USA | Train Camera",
+      "lat": 33.0406,
+      "lon": -83.6431,
+      "country": "US",
+      "city": "Folkston",
+      "ytId": "xKUkjFJkKgc"
+    },
+    {
+      "name": "Fort Madison Lost Duck Brewing Fort Madison, IA",
+      "lat": 40.6297,
+      "lon": -91.3149,
+      "country": "US",
+      "city": "Fort Madison",
+      "ytId": "mexGMd6-8ik"
     },
     {
       "name": "Fort Madison, Iowa, USA | Train Camera",
@@ -432,6 +584,30 @@
       "ytId": "HJM22MARr6w"
     },
     {
+      "name": "Fridley Forgotten Star Brewing - Fridley, MN",
+      "lat": 45.6945,
+      "lon": -93.9002,
+      "country": "US",
+      "city": "Fridley",
+      "ytId": "mBaIa2kIP9w"
+    },
+    {
+      "name": "City of Fruitland, Iowa Fruitland, IA",
+      "lat": 42.0115,
+      "lon": -93.2105,
+      "country": "US",
+      "city": "Fruitland",
+      "ytId": "RuX0VyPT7d4"
+    },
+    {
+      "name": "Galesburg Peck Park Galesburg, IL",
+      "lat": 40.3495,
+      "lon": -88.9861,
+      "country": "US",
+      "city": "Galesburg",
+      "ytId": "aTJk4EFBJRs"
+    },
+    {
       "name": "Galesburg, Illinois, USA | Train Camera",
       "lat": 40.3495,
       "lon": -88.9861,
@@ -448,12 +624,28 @@
       "ytId": "uqSg5r1hv4g"
     },
     {
+      "name": "Gervais Gervais, OR",
+      "lat": 44.572,
+      "lon": -122.0709,
+      "country": "US",
+      "city": "Gervais",
+      "ytId": "WFxjLkaf4FY"
+    },
+    {
       "name": "Glendale, Ohio, USA | Train Camera",
       "lat": 40.3888,
       "lon": -82.7649,
       "country": "US",
       "city": "Glendale",
       "ytId": "vF4ZdG-_6FE"
+    },
+    {
+      "name": "Grand Mound Depot Museum Grand Mound, IA",
+      "lat": 42.0115,
+      "lon": -93.2105,
+      "country": "US",
+      "city": "Grand Mound",
+      "ytId": "65DKq9HIhSs"
     },
     {
       "name": "Grandy Brass Rail Grandy, MN",
@@ -470,6 +662,62 @@
       "country": "US",
       "city": "Greeley",
       "ytId": "zwwquuBxOic"
+    },
+    {
+      "name": "Greencastle, Pennsylvania, USA | Train Camera",
+      "lat": 40.5908,
+      "lon": -77.2098,
+      "country": "US",
+      "city": "Greencastle",
+      "ytId": "Q5eSocWD-4c"
+    },
+    {
+      "name": "Griffith Tower Griffith, IN",
+      "lat": 39.8494,
+      "lon": -86.2583,
+      "country": "US",
+      "city": "Griffith",
+      "ytId": "0QjUVC1cE0o"
+    },
+    {
+      "name": "Grinnell Mayflower Community Grinnell, IA",
+      "lat": 42.0115,
+      "lon": -93.2105,
+      "country": "US",
+      "city": "Grinnell",
+      "ytId": "RJPr5kgvacI"
+    },
+    {
+      "name": "City of Guttenberg, IA Guttenberg, IA",
+      "lat": 42.0115,
+      "lon": -93.2105,
+      "country": "US",
+      "city": "Guttenberg",
+      "ytId": "DV2ADV6XbmA"
+    },
+    {
+      "name": "Hearne, TX | UPRR Diamond/Hearne Yard - PTZ (Chat) | Sout...",
+      "lat": 31.0545,
+      "lon": -97.5635,
+      "country": "US",
+      "city": "Hearne",
+      "ytId": "qzCDW6w9ayM"
+    },
+    {
+      "name": "Trains Railcam | Houston, Texas (Tower 26) PTZ",
+      "lat": 29.7604,
+      "lon": -95.3698,
+      "country": "US",
+      "city": "Houston",
+      "ytId": "wKLX7B3Q01Q"
+    },
+    {
+      "name": "Trains Railcam | Houston, Texas PTZ (Baer Jct)",
+      "lat": 29.7604,
+      "lon": -95.3698,
+      "country": "US",
+      "city": "Houston",
+      "ytId": "gpSR9c0p6lI"
     },
     {
       "name": "Mills Tower Iowa Falls, IA",
@@ -576,6 +824,14 @@
       "ytId": "LRTTZdNTW_0"
     },
     {
+      "name": "Las Vegas, NM | BNSF Raton Sub (770) - PTZ (Chat) | South...",
+      "lat": 36.1699,
+      "lon": -115.1398,
+      "country": "US",
+      "city": "Las Vegas",
+      "ytId": "rz9SlRo_xzg"
+    },
+    {
       "name": "Lincoln, Nebraska, USA | Train Camera",
       "lat": 41.1254,
       "lon": -98.2681,
@@ -606,6 +862,14 @@
       "country": "US",
       "city": "MPH Trains at Davisville",
       "ytId": "9uAn-VdurrE"
+    },
+    {
+      "name": "Major Earthquake in Anchorage, Alaska!",
+      "lat": 61.3707,
+      "lon": -152.4044,
+      "country": "US",
+      "city": "Major Earthquake in Anchorage",
+      "ytId": "BvJ48UMh-D4"
     },
     {
       "name": "Mendota Union Depot Railroad Museum - Mendota, IL",
@@ -640,12 +904,36 @@
       "ytId": "aB9PBxM8U6A"
     },
     {
+      "name": "Mount Vernon Mount Vernon, IA",
+      "lat": 42.0115,
+      "lon": -93.2105,
+      "country": "US",
+      "city": "Mount Vernon",
+      "ytId": "eJ1N-aojmag"
+    },
+    {
       "name": "Muncie, Indiana, USA | Train Camera",
       "lat": 39.8494,
       "lon": -86.2583,
       "country": "US",
       "city": "Muncie",
       "ytId": "5JG-4mwWWrQ"
+    },
+    {
+      "name": "Munger Tavern & Grill Munger, MN",
+      "lat": 45.6945,
+      "lon": -93.9002,
+      "country": "US",
+      "city": "Munger",
+      "ytId": "9kmCDg_hZR8"
+    },
+    {
+      "name": "Necedah, WI Necedah, WI",
+      "lat": 44.2685,
+      "lon": -89.6165,
+      "country": "US",
+      "city": "Necedah",
+      "ytId": "-f4m0xQSCwc"
     },
     {
       "name": "Mississippi River Cam | Newport, MN, USA | Mile Marker 830.5",
@@ -670,6 +958,14 @@
       "country": "US",
       "city": "North Platte",
       "ytId": "xtL9XwkBW8Y"
+    },
+    {
+      "name": "North Platte Golden Spike Tower (West) North Platte, NE",
+      "lat": 41.1254,
+      "lon": -98.2681,
+      "country": "US",
+      "city": "North Platte",
+      "ytId": "laKzBnfVIsQ"
     },
     {
       "name": "Ottumwa Main Street Donuts Multi Railcam - Ottumwa, IA",
@@ -792,6 +1088,22 @@
       "ytId": "vio6cp536gQ"
     },
     {
+      "name": "Red Oak Depot & Museum Red Oak, IA",
+      "lat": 42.0115,
+      "lon": -93.2105,
+      "country": "US",
+      "city": "Red Oak",
+      "ytId": "lyNS3Z23iSo"
+    },
+    {
+      "name": "Ritzville Railroad Depot Museum (Static) - Ritzville, WA",
+      "lat": 47.4009,
+      "lon": -121.4905,
+      "country": "US",
+      "city": "Ritzville",
+      "ytId": "HHGwSo93VdM"
+    },
+    {
       "name": "Ritzville Railroad Depot Museum - Ritzville, WA",
       "lat": 47.4009,
       "lon": -121.4905,
@@ -830,6 +1142,14 @@
       "country": "US",
       "city": "Russellville",
       "ytId": "ya36dX89dGU"
+    },
+    {
+      "name": "City of Savanna Savanna, IL",
+      "lat": 40.3495,
+      "lon": -88.9861,
+      "country": "US",
+      "city": "Savanna",
+      "ytId": "9G7k0C8E9PQ"
     },
     {
       "name": "Sedalia Osage Pawn & Gun Sedalia, MO",
@@ -936,6 +1256,14 @@
       "ytId": "fzq7IQvL-oQ"
     },
     {
+      "name": "City of Stuart, Iowa Stuart, IA",
+      "lat": 42.0115,
+      "lon": -93.2105,
+      "country": "US",
+      "city": "Stuart",
+      "ytId": "0N3uSNFFrec"
+    },
+    {
       "name": "Sweetwater, Tennessee, USA | Train Camera",
       "lat": 35.7478,
       "lon": -86.6923,
@@ -1000,6 +1328,14 @@
       "ytId": "ELXZRHDU-tc"
     },
     {
+      "name": "Mount Washington Cog Railway Webcam 10/13/2022",
+      "lat": 38.9072,
+      "lon": -77.0369,
+      "country": "US",
+      "city": "Washington DC",
+      "ytId": "CIy2KbfC-cI"
+    },
+    {
       "name": "Olympia-Lacey Centennial Station Olympia-Lacey, Washington",
       "lat": 38.9072,
       "lon": -77.0369,
@@ -1032,6 +1368,14 @@
       "ytId": "A2QXDT4p1Uw"
     },
     {
+      "name": "Waupaca Airport Airport Camera - Waupaca, Wisconsin",
+      "lat": 44.2685,
+      "lon": -89.6165,
+      "country": "US",
+      "city": "Waupaca",
+      "ytId": "NlUXfUwJBiY"
+    },
+    {
       "name": "Waupaca Nelson's Strike Zone Waupaca, WI",
       "lat": 44.2685,
       "lon": -89.6165,
@@ -1054,6 +1398,14 @@
       "country": "US",
       "city": "Wauwatosa",
       "ytId": "emkGnUzdx1s"
+    },
+    {
+      "name": "Waycross, Georgia, USA | Train Camera",
+      "lat": 33.0406,
+      "lon": -83.6431,
+      "country": "US",
+      "city": "Waycross",
+      "ytId": "bCIIn4c5LrM"
     },
     {
       "name": "West Liberty Depot West Liberty, IA",
@@ -1102,6 +1454,22 @@
       "country": "US",
       "city": "in Fort Worth",
       "ytId": "blcDjPvPbss"
+    },
+    {
+      "name": "CJ's Lawn & Landscaping Missouri Valley, IA",
+      "lat": 0,
+      "lon": 0,
+      "country": "XX",
+      "city": "ISS",
+      "ytId": "WK46BMR4_jE"
+    },
+    {
+      "name": "Trains Railcam | St Louis, Missouri",
+      "lat": 0,
+      "lon": 0,
+      "country": "XX",
+      "city": "ISS",
+      "ytId": "NXmFAhX_3vY"
     }
   ]
 }

@@ -24,6 +24,14 @@
       "ytId": "ccTVAhJU5lg"
     },
     {
+      "name": "Northern Lights Camera at Levi Igloos",
+      "lat": 67.7948,
+      "lon": 24.8129,
+      "country": "FI",
+      "city": "Levi",
+      "ytId": "NkmU8SFjuIY"
+    },
+    {
       "name": "Aurora Lapland Finland",
       "lat": 65.5321,
       "lon": 28.208,
@@ -72,6 +80,14 @@
       "ytId": "MfLGYf3XRy8"
     },
     {
+      "name": "Northern Lights : Stream the aurora borealis all night long",
+      "lat": 42.3314,
+      "lon": -83.0458,
+      "country": "US",
+      "city": "Detroit",
+      "ytId": "ZzLj399uryg"
+    },
+    {
       "name": "Fairbanks Aurora",
       "lat": 64.8378,
       "lon": -147.7164,
@@ -86,6 +102,14 @@
       "country": "US",
       "city": "Greenland",
       "ytId": "0s7jeNkzoSs"
+    },
+    {
+      "name": "Meteor shower & MaunaKea West view from CFHT, hawaii",
+      "lat": 21.0943,
+      "lon": -157.4983,
+      "country": "US",
+      "city": "from CFHT",
+      "ytId": "qJ8lYplu1y0"
     }
   ]
 }

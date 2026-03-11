@@ -8,28 +8,12 @@
   },
   "wildlife": [
     {
-      "name": "Full House Puppy Cam at Warrior Canine Connection",
-      "lat": 22.9068,
-      "lon": -43.1729,
-      "country": "BR",
-      "city": "Rio de Janeiro",
-      "ytId": "Qeq2Kax0v64"
-    },
-    {
-      "name": "Puppy Playroom at Warrior Canine Connection",
-      "lat": 22.9068,
-      "lon": -43.1729,
-      "country": "BR",
-      "city": "Rio de Janeiro",
-      "ytId": "h-Z0wCdD3dI"
-    },
-    {
-      "name": "Winter Boreal Birds at the Snowy Ontario FeederWatch Cam!...",
-      "lat": 22.9068,
-      "lon": -43.1729,
-      "country": "BR",
-      "city": "Rio de Janeiro",
-      "ytId": "YQ2vfNZA5SE"
+      "name": "Perth Manning Park Manning Lake Long-Neck Turtle Movement...",
+      "lat": 31.9505,
+      "lon": 115.8605,
+      "country": "AU",
+      "city": "Perth",
+      "ytId": "meGuJ4ngyJo"
     },
     {
       "name": "Moela Safari Lodge - Zebra Migration | Boteti River, Bots...",
@@ -112,14 +96,6 @@
       "ytId": "F0GOOP82094"
     },
     {
-      "name": "Dec 4, 2025: Nice Humpback Whale Breach Caught on Camera",
-      "lat": 43.7102,
-      "lon": 7.262,
-      "country": "FR",
-      "city": "Nice",
-      "ytId": "bEGWZ3V95uQ"
-    },
-    {
       "name": "Flying eagle point of view by Sony Action Cam Mini (A fli...",
       "lat": 48.8566,
       "lon": 2.3522,
@@ -144,6 +120,14 @@
       "ytId": "1zcIUk66HX4"
     },
     {
+      "name": "Baby and Dad Vulture in the Griffon Vulture Nest Israel C...",
+      "lat": 31.7683,
+      "lon": 35.2137,
+      "country": "IL",
+      "city": "Israel",
+      "ytId": "PQHAoBJkXe4"
+    },
+    {
       "name": "Barn Owl/ Pigeon Israel 4K Cam 1|\u05ea\u05e0\u05e9\u05de\u05ea |WBAIS GAIA |The C...",
       "lat": 31.7683,
       "lon": 35.2137,
@@ -158,6 +142,14 @@
       "country": "IN",
       "city": "India",
       "ytId": "bZish-38Bbs"
+    },
+    {
+      "name": "Shark attack caught on camera . Great white Shark attacks...",
+      "lat": 28.6139,
+      "lon": 77.209,
+      "country": "IN",
+      "city": "India",
+      "ytId": "PhhNeCI0lVo"
     },
     {
       "name": "Bird Feeder Cam Mumbai # 15",
@@ -192,12 +184,28 @@
       "ytId": "bEmFpjwMOvs"
     },
     {
+      "name": "Mahali Mzuri Lodge Cam | Maasai Mara, Kenya",
+      "lat": 0.405,
+      "lon": 37.9062,
+      "country": "KE",
+      "city": "Kenya",
+      "ytId": "ZWhvO6R37ck"
+    },
+    {
       "name": "Cayman Reef Cam",
       "lat": 19.3133,
       "lon": -81.2546,
       "country": "KY",
       "city": "Grand Cayman",
       "ytId": "ZpnyPXloF2U"
+    },
+    {
+      "name": "Malta CCTV 4K - Real City Sound",
+      "lat": 35.8989,
+      "lon": 14.5146,
+      "country": "MT",
+      "city": "Malta",
+      "ytId": "ML6s-Cf7TzI"
     },
     {
       "name": "Malta Cam 4K - Real City Sound",
@@ -248,6 +256,14 @@
       "ytId": "Gd9d4q6WvUY"
     },
     {
+      "name": "Hummingbird Cam in Peru: Giant Hummingbird, Sword-billed ...",
+      "lat": 12.0464,
+      "lon": -77.0428,
+      "country": "PE",
+      "city": "Peru",
+      "ytId": "nllueA0D7TY"
+    },
+    {
       "name": "Bird Feeder Cam - Forest Nook - Poland, Zywiec",
       "lat": 52.2297,
       "lon": 21.0122,
@@ -270,6 +286,22 @@
       "country": "TZ",
       "city": "Serengeti",
       "ytId": "BmOLK7LTKbY"
+    },
+    {
+      "name": "NEWS: FOX LOCAL Austin",
+      "lat": 30.2672,
+      "lon": -97.7431,
+      "country": "US",
+      "city": "Austin",
+      "ytId": "4qiWy7ohNUI"
+    },
+    {
+      "name": "Texas Wildlife in an Austin Backyard",
+      "lat": 30.2672,
+      "lon": -97.7431,
+      "country": "US",
+      "city": "Austin",
+      "ytId": "Jng6h2xYapk"
     },
     {
       "name": "Aquarium Cam (Baltimore, Maryland)",
@@ -304,12 +336,12 @@
       "ytId": "Dizx0Z2eDv8"
     },
     {
-      "name": "Great White Shark Seal Attack in Cape Cod Caught On Camera",
-      "lat": 41.6688,
-      "lon": -70.2962,
+      "name": "Charlotte's Pasture at Farm Sanctuary",
+      "lat": 35.2271,
+      "lon": -80.8431,
       "country": "US",
-      "city": "Cape Cod",
-      "ytId": "SrYxnsgAHWw"
+      "city": "Charlotte",
+      "ytId": "ub6TVvmQnhA"
     },
     {
       "name": "Nicholas Dolphin Cam | Clearwater Marine Aquarium Webcam ...",
@@ -358,6 +390,14 @@
       "country": "US",
       "city": "Ely",
       "ytId": "5e4lsEe4Vew"
+    },
+    {
+      "name": "Eustis Deer Cam - Daily Feedings - Eustis, Maine",
+      "lat": 44.6939,
+      "lon": -69.3819,
+      "country": "US",
+      "city": "Eustis",
+      "ytId": "KpTtpM4s-J0"
     },
     {
       "name": "Lower Florida Keys Underwater",
@@ -414,14 +454,6 @@
       "country": "US",
       "city": "Hummingbird Feeder Cam",
       "ytId": "pXe8MpU7uzk"
-    },
-    {
-      "name": "Feb 12, 2026: Caught on Camera - Humpback Whale Breaching...",
-      "lat": 21.0943,
-      "lon": -157.4983,
-      "country": "US",
-      "city": "Humpback Whale Breaching out of the water in Maui",
-      "ytId": "PwEKdz0oqRo"
     },
     {
       "name": "Cornell Lab FeederWatch",
@@ -504,38 +536,6 @@
       "ytId": "tLJZyRmWP1k"
     },
     {
-      "name": "African Safari 4K \u2022 Wildlife Relaxation Film | Nature 4K ...",
-      "lat": 33.9425,
-      "lon": -118.4081,
-      "country": "US",
-      "city": "Los Angeles",
-      "ytId": "Krh9ccPOx-M"
-    },
-    {
-      "name": "Bird Feeder Spring Forest Wildlife Bird Songs Relaxing Re...",
-      "lat": 33.9425,
-      "lon": -118.4081,
-      "country": "US",
-      "city": "Los Angeles",
-      "ytId": "D1VM6V6wmU0"
-    },
-    {
-      "name": "Magellanic Penguin Nest - Isla Tova",
-      "lat": 34.0522,
-      "lon": -118.2437,
-      "country": "US",
-      "city": "Los Angeles",
-      "ytId": "0Ox2Ka_T9BY"
-    },
-    {
-      "name": "Relaxing Winter Bird Feeder 4K Cam \u2013 Nature Sounds \u2013 Hungary",
-      "lat": 33.9425,
-      "lon": -118.4081,
-      "country": "US",
-      "city": "Los Angeles",
-      "ytId": "A5L9TmjGI5A"
-    },
-    {
       "name": "Santa Monica Beach Cam",
       "lat": 34.0195,
       "lon": -118.4912,
@@ -550,30 +550,6 @@
       "country": "US",
       "city": "Maui",
       "ytId": "VMz165U1f-Q"
-    },
-    {
-      "name": "Dec 21, 2025: Multiple Humpback Whale Breaches Caught on ...",
-      "lat": 20.7984,
-      "lon": -156.3319,
-      "country": "US",
-      "city": "Maui",
-      "ytId": "shUvh7N4gEA"
-    },
-    {
-      "name": "Dec 4, 2025: Caught on Camera Humpback Whale Breaching in...",
-      "lat": 20.7984,
-      "lon": -156.3319,
-      "country": "US",
-      "city": "Maui",
-      "ytId": "2xZ_eHngeoE"
-    },
-    {
-      "name": "Mar 3, 2026: Mother and Baby Humpback Whales Breaching Ca...",
-      "lat": 20.7984,
-      "lon": -156.3319,
-      "country": "US",
-      "city": "Maui",
-      "ytId": "tTcuvH30cgc"
     },
     {
       "name": "Coral City Camera",
@@ -664,12 +640,36 @@
       "ytId": "ADXWeM9wsDw"
     },
     {
+      "name": "WEBCAMS around the world | December 1",
+      "lat": 33.4484,
+      "lon": -112.074,
+      "country": "US",
+      "city": "Phoenix",
+      "ytId": "vAJx704ireo"
+    },
+    {
+      "name": "WEBCAMS around the world | January 24 | FOX 10 Phoenix",
+      "lat": 33.4484,
+      "lon": -112.074,
+      "country": "US",
+      "city": "Phoenix",
+      "ytId": "Y351vl9e61E"
+    },
+    {
       "name": "WEBCAMS around the world | March 9 | FOX 10 Phoenix",
       "lat": 33.4484,
       "lon": -112.074,
       "country": "US",
       "city": "Phoenix",
       "ytId": "hs2D1OieDEA"
+    },
+    {
+      "name": "WEBCAMS around the world | November 27",
+      "lat": 33.4484,
+      "lon": -112.074,
+      "country": "US",
+      "city": "Phoenix",
+      "ytId": "gTi94kggV38"
     },
     {
       "name": "Penguin Cam | Pittsburgh Zoo & PPG Aquarium Webcam",
@@ -680,12 +680,12 @@
       "ytId": "cTi5sCsUSfc"
     },
     {
-      "name": "San Diego Zoo - Walking Tour | 4K UHD",
+      "name": "Polar Bear Cam - San Diego Zoo",
       "lat": 32.7157,
       "lon": -117.1611,
       "country": "US",
       "city": "San Diego",
-      "ytId": "vbUlJr1s7qU"
+      "ytId": "CpsQzkGobTA"
     },
     {
       "name": "SeaWorld San Diego revives Penguin Cam for holiday joy wi...",
@@ -742,22 +742,6 @@
       "country": "XX",
       "city": "ISS",
       "ytId": "_wnjeiATFk4"
-    },
-    {
-      "name": "Bird feeder Cam Ozarks Missouri",
-      "lat": 0,
-      "lon": 0,
-      "country": "XX",
-      "city": "ISS",
-      "ytId": "km5RyC6jlYA"
-    },
-    {
-      "name": "Mississippi River Flyway Cam",
-      "lat": 0,
-      "lon": 0,
-      "country": "XX",
-      "city": "ISS",
-      "ytId": "Hkj9L-HKXJU"
     },
     {
       "name": "HESC Rhino Cam",

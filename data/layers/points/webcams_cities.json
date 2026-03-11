@@ -16,14 +16,6 @@
       "ytId": "AB2EOGI1Hjw"
     },
     {
-      "name": "Recorded footage from Dubai",
-      "lat": 25.2048,
-      "lon": 55.2708,
-      "country": "AE",
-      "city": "Dubai",
-      "ytId": "Dw8Z7RNC8zs"
-    },
-    {
       "name": "Webcam from Dubai",
       "lat": 25.2048,
       "lon": 55.2708,
@@ -32,12 +24,28 @@
       "ytId": "ka9MsehA8I4"
     },
     {
+      "name": "NECOCHEA EN VIVO, Mir\u00e1 la mejor playa Argentina en vivo. ...",
+      "lat": 34.6037,
+      "lon": -58.3816,
+      "country": "AR",
+      "city": "Argentina",
+      "ytId": "TC1Eqb2NSi4"
+    },
+    {
       "name": "from Ushuaia - Argentina",
       "lat": 34.6037,
       "lon": -58.3816,
       "country": "AR",
       "city": "Argentina",
       "ytId": "V44-PCyhLcA"
+    },
+    {
+      "name": "Camera Buenos Aires, Argentina/Obelisco - Tango",
+      "lat": 34.6037,
+      "lon": -58.3816,
+      "country": "AR",
+      "city": "Buenos Aires",
+      "ytId": "qM3uP-Tu2bs"
     },
     {
       "name": "24/7 HD from the balcony Vienna City Austria\ud83c\udde6\ud83c\uddf9 Europe @Ro...",
@@ -62,14 +70,6 @@
       "country": "AT",
       "city": "Vienna",
       "ytId": "nNRQSkfpR4I"
-    },
-    {
-      "name": "Sydney Australia Walking Tour - George Street Evening Rus...",
-      "lat": 33.8688,
-      "lon": 151.2093,
-      "country": "AU",
-      "city": "Australia",
-      "ytId": "HRg1gJi6yqc"
     },
     {
       "name": "Melbourne Skyline",
@@ -97,27 +97,11 @@
     },
     {
       "name": "AO VIVO Rio de Janeiro Cristo Redentor \ud83c\udde7\ud83c\uddf7 Cam Christ the ...",
-      "lat": 15.7975,
-      "lon": -47.8919,
+      "lat": 22.9068,
+      "lon": -43.1729,
       "country": "BR",
-      "city": "Brazil",
+      "city": "Rio de Janeiro",
       "ytId": "moUl-CBrXp4"
-    },
-    {
-      "name": "Webcam from Rio de Janeiro - Brazil",
-      "lat": 15.7975,
-      "lon": -47.8919,
-      "country": "BR",
-      "city": "Brazil",
-      "ytId": "PQqNnuWlfLU"
-    },
-    {
-      "name": "\ud83c\udde7\ud83c\uddf7 Webcam from Rio de Janeiro - Brazil | Copacabana Cam",
-      "lat": 15.7975,
-      "lon": -47.8919,
-      "country": "BR",
-      "city": "Brazil",
-      "ytId": "MKptOzPxVV8"
     },
     {
       "name": "Rio De Janeiro",
@@ -136,12 +120,28 @@
       "ytId": "Hj7o-HOoOCc"
     },
     {
-      "name": "webcam Rio de Janeiro - Time Lapse",
+      "name": "Webcam from Rio de Janeiro - Brazil",
       "lat": 22.9068,
       "lon": -43.1729,
       "country": "BR",
       "city": "Rio de Janeiro",
-      "ytId": "Kt0cqK0W0ls"
+      "ytId": "PQqNnuWlfLU"
+    },
+    {
+      "name": "\ud83c\udde7\ud83c\uddf7 Webcam from Rio de Janeiro - Brazil | Copacabana Cam",
+      "lat": 22.9068,
+      "lon": -43.1729,
+      "country": "BR",
+      "city": "Rio de Janeiro",
+      "ytId": "MKptOzPxVV8"
+    },
+    {
+      "name": "Calgary Camera",
+      "lat": 51.0447,
+      "lon": -114.0719,
+      "country": "CA",
+      "city": "Calgary",
+      "ytId": "MwcqP3ta6RI"
     },
     {
       "name": "Ottawa O-Train",
@@ -176,12 +176,44 @@
       "ytId": "tcAMJdgRlkA"
     },
     {
+      "name": "Ledrium - Providencia, Las Condes, Santiago, Chile, cam, ...",
+      "lat": 33.4489,
+      "lon": -70.6693,
+      "country": "CL",
+      "city": "Santiago",
+      "ytId": "r5NI-XqLobs"
+    },
+    {
+      "name": "Santiago STREAMING Chile",
+      "lat": 33.4489,
+      "lon": -70.6693,
+      "country": "CL",
+      "city": "Santiago",
+      "ytId": "emfl_yYziUE"
+    },
+    {
       "name": "Shanghai",
       "lat": 31.2304,
       "lon": 121.4737,
       "country": "CN",
       "city": "Shanghai",
       "ytId": "76EwqI5XZIc"
+    },
+    {
+      "name": "Webcam cartagena",
+      "lat": 10.391,
+      "lon": -75.5364,
+      "country": "CO",
+      "city": "Cartagena",
+      "ytId": "E6I6bLaiqXs"
+    },
+    {
+      "name": "Online Models Pro - Estudio WebCam en Pereira, Colombia",
+      "lat": 4.711,
+      "lon": -74.0721,
+      "country": "CO",
+      "city": "Estudio WebCam en Pereira",
+      "ytId": "N3n8ZlDfwQs"
     },
     {
       "name": "Creative streaming from Prague (Czech Republic) by CamStr...",
@@ -206,14 +238,6 @@
       "country": "CZ",
       "city": "Prague",
       "ytId": "0FvTdT3EJY4"
-    },
-    {
-      "name": "webcam from Prague - Time Lapse",
-      "lat": 50.0755,
-      "lon": 14.4378,
-      "country": "CZ",
-      "city": "Prague",
-      "ytId": "jbN6czYv0os"
     },
     {
       "name": "Mori Point, Pacifica CA 4K",
@@ -264,30 +288,6 @@
       "ytId": "D8OX81BWMpU"
     },
     {
-      "name": "Recorded footage from the Pyramids of Giza - Egypt",
-      "lat": 30.0444,
-      "lon": 31.2357,
-      "country": "EG",
-      "city": "Cairo",
-      "ytId": "kBW5_t-3iOo"
-    },
-    {
-      "name": "Barcelona Pickpocket CAUGHT ON CAMERA",
-      "lat": 41.3874,
-      "lon": 2.1686,
-      "country": "ES",
-      "city": "Barcelona",
-      "ytId": "o6UK--KbK1c"
-    },
-    {
-      "name": "Barcelona, Spain \ud83c\uddea\ud83c\uddf8 - July 2025 - 4K-HDR Walking Tour (\u25b61...",
-      "lat": 41.3874,
-      "lon": 2.1686,
-      "country": "ES",
-      "city": "Barcelona",
-      "ytId": "1C62qgTLV7o"
-    },
-    {
       "name": "DIRECT: Barcelona webcam cam 2020 - camera",
       "lat": 41.3874,
       "lon": 2.1686,
@@ -320,28 +320,12 @@
       "ytId": "IYXg7m2w52o"
     },
     {
-      "name": "Webcam Barcelona - Time Lapse",
-      "lat": 41.3874,
-      "lon": 2.1686,
-      "country": "ES",
-      "city": "Barcelona",
-      "ytId": "VTczseK1UbM"
-    },
-    {
       "name": "Your summer holidays start today with our cam in Barcelon...",
       "lat": 41.3874,
       "lon": 2.1686,
       "country": "ES",
       "city": "Barcelona",
       "ytId": "hloRHM2cPUo"
-    },
-    {
-      "name": "Recorded footage from the Benidorm - Spain",
-      "lat": 40.4168,
-      "lon": -3.7038,
-      "country": "ES",
-      "city": "Spain",
-      "ytId": "pKYw5D0W1mA"
     },
     {
       "name": "Weather Alert in Malaga - Spain",
@@ -360,28 +344,12 @@
       "ytId": "PMhVgTcDd1o"
     },
     {
-      "name": "Webcam Los Cristianos Tenerife - Time Lapse",
-      "lat": 28.2916,
-      "lon": -16.6291,
-      "country": "ES",
-      "city": "Tenerife",
-      "ytId": "kIOC06UTvPA"
-    },
-    {
       "name": "Webcam from Los Cristianos - Tenerife",
       "lat": 28.2916,
       "lon": -16.6291,
       "country": "ES",
       "city": "Tenerife",
       "ytId": "X1QXaw4arJk"
-    },
-    {
-      "name": "cam in Playa de Los Cristianos, Tenerife - Time Lapse",
-      "lat": 28.2916,
-      "lon": -16.6291,
-      "country": "ES",
-      "city": "Tenerife",
-      "ytId": "s1BNGrInus4"
     },
     {
       "name": "from Santa Cruz de Tenerife!",
@@ -398,14 +366,6 @@
       "country": "FI",
       "city": "Levi",
       "ytId": "rKfecmmzzw0"
-    },
-    {
-      "name": "Recorded footage from Porto-Vecchio - France",
-      "lat": 48.8566,
-      "lon": 2.3522,
-      "country": "FR",
-      "city": "France",
-      "ytId": "HNvF5Vjs32w"
     },
     {
       "name": "webcams france",
@@ -448,14 +408,6 @@
       "ytId": "us-oghTOlY8"
     },
     {
-      "name": "Pickpocket Paris caught on camera - Pickpocket dans un re...",
-      "lat": 48.8566,
-      "lon": 2.3522,
-      "country": "FR",
-      "city": "Paris",
-      "ytId": "o4WD2pDH-Dw"
-    },
-    {
       "name": "Snowfall in Paris !",
       "lat": 48.8566,
       "lon": 2.3522,
@@ -496,14 +448,6 @@
       "ytId": "Lxqcg1qt0XU"
     },
     {
-      "name": "London Best Christmas Lights and Shops Displays 2025 | Lo...",
-      "lat": 51.5074,
-      "lon": -0.1278,
-      "country": "GB",
-      "city": "London",
-      "ytId": "iDtBEZGeixo"
-    },
-    {
       "name": "London Christmas Lights 2025 | New Bond Street Luxury Chr...",
       "lat": 51.5074,
       "lon": -0.1278,
@@ -518,14 +462,6 @@
       "country": "GB",
       "city": "London",
       "ytId": "GZH56TgdSvQ"
-    },
-    {
-      "name": "London walk: London Street Walk",
-      "lat": 51.5074,
-      "lon": -0.1278,
-      "country": "GB",
-      "city": "London",
-      "ytId": "WKGK_hYnlGE"
     },
     {
       "name": "Walworth Road London",
@@ -560,14 +496,6 @@
       "ytId": "M_E1_ZdRv7I"
     },
     {
-      "name": "Webcam Athens - Time Lapse",
-      "lat": 37.9838,
-      "lon": 23.7275,
-      "country": "GR",
-      "city": "Athens",
-      "ytId": "zL2lCAE_uaY"
-    },
-    {
       "name": "Webcam \u03b1\u03c0\u03cc \u03c4\u03bf Athens YouTube Partners Event",
       "lat": 37.9838,
       "lon": 23.7275,
@@ -576,36 +504,12 @@
       "ytId": "LzVWwe2Tq44"
     },
     {
-      "name": "webcam from Athens - Time Lapse",
-      "lat": 37.9838,
-      "lon": 23.7275,
-      "country": "GR",
-      "city": "Athens",
-      "ytId": "RQZwSaXnET4"
-    },
-    {
       "name": "A magic place called Santorini. Watch it ! - SkylineWebcams",
       "lat": 36.3932,
       "lon": 25.4615,
       "country": "GR",
       "city": "Santorini",
       "ytId": "deBaLoAsGwo"
-    },
-    {
-      "name": "Recorded footage from Santorini - Greece | Cameras from t...",
-      "lat": 36.3932,
-      "lon": 25.4615,
-      "country": "GR",
-      "city": "Santorini",
-      "ytId": "2PozJ2F-xEs"
-    },
-    {
-      "name": "Recorded footage webcam from Santorini - Greece",
-      "lat": 36.3932,
-      "lon": 25.4615,
-      "country": "GR",
-      "city": "Santorini",
-      "ytId": "zC-S84OGXFs"
     },
     {
       "name": "Santorini EARTHQUAKE CAM",
@@ -630,14 +534,6 @@
       "country": "GR",
       "city": "Santorini",
       "ytId": "zA_ydT1zmnk"
-    },
-    {
-      "name": "webcam Santorini - Time Lapse",
-      "lat": 36.3932,
-      "lon": 25.4615,
-      "country": "GR",
-      "city": "Santorini",
-      "ytId": "b4vx-aFo7ZA"
     },
     {
       "name": "Hong Kong Final Day in Hong Kong! Last Minute Shopping! S...",
@@ -744,14 +640,6 @@
       "ytId": "0wHWHAFnNh0"
     },
     {
-      "name": "Recorded footage from Lopar - Croatia",
-      "lat": 43.5081,
-      "lon": 16.4402,
-      "country": "HR",
-      "city": "Split",
-      "ytId": "s_aWIJkROTc"
-    },
-    {
       "name": "Stradun Dubrovnik - CamCroatia",
       "lat": 43.5081,
       "lon": 16.4402,
@@ -776,6 +664,22 @@
       "ytId": "jgsOVSo9-9o"
     },
     {
+      "name": "[POV] stream 24/7 Jakarta",
+      "lat": 6.2088,
+      "lon": 106.8456,
+      "country": "ID",
+      "city": "Jakarta",
+      "ytId": "5yqRsQDIEL8"
+    },
+    {
+      "name": "[POV] stream 24/7 Jakarta, insta360 go 3",
+      "lat": 6.2088,
+      "lon": 106.8456,
+      "country": "ID",
+      "city": "Jakarta",
+      "ytId": "KF0YGbXbzjY"
+    },
+    {
       "name": "Dublin, Ireland",
       "lat": 53.3498,
       "lon": -6.2603,
@@ -790,6 +694,14 @@
       "country": "IE",
       "city": "Dublin",
       "ytId": "Ia7KWuogSEk"
+    },
+    {
+      "name": ": A Window for Prayer and Peace | Jerusalem",
+      "lat": 31.7683,
+      "lon": 35.2137,
+      "country": "IL",
+      "city": "Israel",
+      "ytId": "FGUKbzulB_Y"
     },
     {
       "name": ": Middle East real-time cameras from Iran, Israel, Qatar ...",
@@ -824,6 +736,22 @@
       "ytId": "mU9nKRChYEc"
     },
     {
+      "name": "Pray : Jerusalem Views. A Biblical Journey",
+      "lat": 31.7683,
+      "lon": 35.2137,
+      "country": "IL",
+      "city": "Israel",
+      "ytId": "fTaKsyMuP_M"
+    },
+    {
+      "name": ": Tel Aviv and Jerusalem skyline view during Iran war",
+      "lat": 31.7683,
+      "lon": 35.2137,
+      "country": "IL",
+      "city": "Jerusalem",
+      "ytId": "X4ev27ijOW8"
+    },
+    {
       "name": "Jerusalem",
       "lat": 31.7683,
       "lon": 35.2137,
@@ -832,20 +760,44 @@
       "ytId": "fIurYTprwzg"
     },
     {
-      "name": "Recorded footage Jerusalem: The Western Wall",
-      "lat": 31.7683,
-      "lon": 35.2137,
-      "country": "IL",
-      "city": "Jerusalem",
-      "ytId": "3BIDtO5DSEg"
-    },
-    {
       "name": "Tel Aviv",
       "lat": 32.0853,
       "lon": 34.7818,
       "country": "IL",
       "city": "Tel Aviv",
       "ytId": "gmtlJ_m2r5A"
+    },
+    {
+      "name": "Tel Aviv - Tel Aviv Skyline Cam",
+      "lat": 32.0853,
+      "lon": 34.7818,
+      "country": "IL",
+      "city": "Tel Aviv",
+      "ytId": "KMZbvDRgAh8"
+    },
+    {
+      "name": "WATCH : Tel Aviv Skyline as Israel Targets \u2018Heart of the ...",
+      "lat": 32.0853,
+      "lon": 34.7818,
+      "country": "IL",
+      "city": "Tel Aviv",
+      "ytId": "FSOwv_OI9bc"
+    },
+    {
+      "name": "Best Warehouse CCTV Camera Services in Delhi NCR Mind Sof...",
+      "lat": 28.7041,
+      "lon": 77.1025,
+      "country": "IN",
+      "city": "Delhi",
+      "ytId": "2z24FKVLzDE"
+    },
+    {
+      "name": "CCTV cameras capture terrifying Red Fort blast as crowds ...",
+      "lat": 28.6139,
+      "lon": 77.209,
+      "country": "IN",
+      "city": "India",
+      "ytId": "DiMpi80P6H4"
     },
     {
       "name": "Mumbai Accident 4 || Cam 1 || 2019",
@@ -862,14 +814,6 @@
       "country": "IN",
       "city": "Mumbai",
       "ytId": "3GAdDlBwRyc"
-    },
-    {
-      "name": "Walking Streets of Mumbai, India Walking Tour 4K HDR",
-      "lat": 19.076,
-      "lon": 72.8777,
-      "country": "IN",
-      "city": "Mumbai",
-      "ytId": "-OBxM3WqiNs"
     },
     {
       "name": "graphic cam@Central mall mumbai",
@@ -944,14 +888,6 @@
       "ytId": "yhJEW02TfZU"
     },
     {
-      "name": "cam in Piazza della Signoria, Florence - Time Lapse",
-      "lat": 43.7696,
-      "lon": 11.2558,
-      "country": "IT",
-      "city": "Florence",
-      "ytId": "ofTe-aKNfyA"
-    },
-    {
       "name": "Cyclone Harry hits Southern Italy. from Catanzaro",
       "lat": 41.9028,
       "lon": 12.4964,
@@ -966,14 +902,6 @@
       "country": "IT",
       "city": "Italy",
       "ytId": "MsRyrYYGrRU"
-    },
-    {
-      "name": "Recorded footage from Stintino - Italy",
-      "lat": 41.9028,
-      "lon": 12.4964,
-      "country": "IT",
-      "city": "Italy",
-      "ytId": "9y1czZJn01k"
     },
     {
       "name": "Stormy vibes in Catanzaro - Italy",
@@ -998,22 +926,6 @@
       "country": "IT",
       "city": "Milan",
       "ytId": "2IbscUBSFe8"
-    },
-    {
-      "name": "MILAN, Italy 4K Walking Tour - Captions & Immersive Sound...",
-      "lat": 45.4642,
-      "lon": 9.19,
-      "country": "IT",
-      "city": "Milan",
-      "ytId": "8FCkb7NZ7SI"
-    },
-    {
-      "name": "Webcam Milano - Time Lapse",
-      "lat": 45.4642,
-      "lon": 9.19,
-      "country": "IT",
-      "city": "Milan",
-      "ytId": "Mi9je1u01UQ"
     },
     {
       "name": "Webcam from Milan - Italy",
@@ -1048,14 +960,6 @@
       "ytId": "P4k1O_8ZwQ8"
     },
     {
-      "name": "Naples Florida \u2013 The Place to in the US \u00b7 Walking Tour 4K",
-      "lat": 40.8518,
-      "lon": 14.2681,
-      "country": "IT",
-      "city": "Naples",
-      "ytId": "Yg-bdmD6mfw"
-    },
-    {
       "name": "Naples Webcam: A Real-Time Window to the Vibrant Bay",
       "lat": 40.8518,
       "lon": 14.2681,
@@ -1078,38 +982,6 @@
       "country": "IT",
       "city": "Rome",
       "ytId": "CYV3uypVppc"
-    },
-    {
-      "name": "Recorded Footage Webcam from Rome | Watch the Trevi Fount...",
-      "lat": 41.9028,
-      "lon": 12.4964,
-      "country": "IT",
-      "city": "Rome",
-      "ytId": "jXYQoWAKgFE"
-    },
-    {
-      "name": "Recorded footage Rome - Piazza Navona",
-      "lat": 41.9028,
-      "lon": 12.4964,
-      "country": "IT",
-      "city": "Rome",
-      "ytId": "qQEHZ7rgpCc"
-    },
-    {
-      "name": "Recorded footage from Rome - Piazza di Spagna | Cameras f...",
-      "lat": 41.9028,
-      "lon": 12.4964,
-      "country": "IT",
-      "city": "Rome",
-      "ytId": "EQOEzK7OE4o"
-    },
-    {
-      "name": "Recorded footage from Trastevere Rome",
-      "lat": 41.9028,
-      "lon": 12.4964,
-      "country": "IT",
-      "city": "Rome",
-      "ytId": "ei-ZJu8kbWA"
     },
     {
       "name": "Roma Five Suites - Piazza Venezia - Webcam from Rome",
@@ -1150,14 +1022,6 @@
       "country": "IT",
       "city": "Rome",
       "ytId": "gPjAH7-OD_E"
-    },
-    {
-      "name": "Webcam Rome - Time Lapse",
-      "lat": 41.9028,
-      "lon": 12.4964,
-      "country": "IT",
-      "city": "Rome",
-      "ytId": "nfaK3zU8kPc"
     },
     {
       "name": "Webcam from Piazza Navona in Rome",
@@ -1248,6 +1112,14 @@
       "ytId": "gx3cmSJhJSk"
     },
     {
+      "name": "\ud83c\uddee\ud83c\uddf9 Walking busy streets of Venice - September 2023 - 4K U...",
+      "lat": 45.4408,
+      "lon": 12.3155,
+      "country": "IT",
+      "city": "Venice",
+      "ytId": "exWhJ5EN5kA"
+    },
+    {
       "name": "Devon House Kingston 24/7 \u2013 From YCMA \ud83c\uddef\ud83c\uddf2",
       "lat": 18.1096,
       "lon": -77.2975,
@@ -1280,20 +1152,52 @@
       "ytId": "4X9dtsZmSw8"
     },
     {
-      "name": "CAM : MYSTERIOUS THINGS CAUGHT ON CAMERA IN HONG KONG CAM...",
-      "lat": 35.6762,
-      "lon": 139.6503,
-      "country": "JP",
-      "city": "Japan",
-      "ytId": "Fw8tg9Y5oSk"
-    },
-    {
       "name": "\u30104K HDR\u3011Night Walk in Tokyo Shibuya (\u6771\u4eac\u6563\u6b69)",
       "lat": 35.6762,
       "lon": 139.6503,
       "country": "JP",
       "city": "Japan",
       "ytId": "0nTO4zSEpOs"
+    },
+    {
+      "name": "\u4eac\u90fd \u54f2\u5b66\u306e\u9053\u30e9\u30a4\u30d6\u30ab\u30e1\u30e9\uff08\u4eac\u90fd\u5e02\u89b3\u5149\u5354\u4f1a\u516c\u5f0f\uff09\uff0fThe Philosopher\u2019s Path, Kyoto ca...",
+      "lat": 35.0116,
+      "lon": 135.7681,
+      "country": "JP",
+      "city": "Kyoto",
+      "ytId": "S6IkZhhwG4A"
+    },
+    {
+      "name": "\u4eac\u90fd\u30e9\u30a4\u30d6\u30ab\u30e1\u30e9 \u6771\u672c\u9858\u5bfa (KYOTO JAPAN CAMERA) \u68ee\u4fe1\u4e09\u90ce\u5546\u8217\u304b\u3089\u751f\u4e2d\u7d99 \u5373\u6642\u5f71\u50cf cam",
+      "lat": 35.0116,
+      "lon": 135.7681,
+      "country": "JP",
+      "city": "Kyoto",
+      "ytId": "Y1XxYLwpJy4"
+    },
+    {
+      "name": "\u4eac\u90fd\u99c5\u524d\u30d0\u30b9\u4e57\u308a\u5834\u30e9\u30a4\u30d6\u30ab\u30e1\u30e9\uff08\u4eac\u90fd\u5e02\u89b3\u5149\u5354\u4f1a\u516c\u5f0f\uff09\uff0fKyoto Station Bus Terminal, Ky...",
+      "lat": 35.0116,
+      "lon": 135.7681,
+      "country": "JP",
+      "city": "Kyoto",
+      "ytId": "v9rQqa_VTEY"
+    },
+    {
+      "name": "\u82b1\u898b\u5c0f\u8def\uff08\u4eac\u90fd\u5e02\u89b3\u5149\u5354\u4f1a\u516c\u5f0f\uff09\uff0fHanamikoji Street, Kyoto camera",
+      "lat": 35.0116,
+      "lon": 135.7681,
+      "country": "JP",
+      "city": "Kyoto",
+      "ytId": "X5rq4ioggLk"
+    },
+    {
+      "name": "OSAKA Webcam",
+      "lat": 34.6937,
+      "lon": 135.5023,
+      "country": "JP",
+      "city": "Osaka",
+      "ytId": "R70iVKo-p44"
     },
     {
       "name": "Girl\u2019s Tokyo Walk 24/7Shibuya, Nakano, Ikebukuro, etc",
@@ -1310,6 +1214,14 @@
       "country": "JP",
       "city": "Tokyo",
       "ytId": "5xCygGozZsU"
+    },
+    {
+      "name": "Japan Tokyo, Mt. Fuji, Osaka | \u65e5\u672c\u30e9\u30a4\u30d6 \u6771\u4eac\u3001\u5bcc\u58eb\u5c71\u3001\u5927\u962a \ud83c\uddef\ud83c\uddf5",
+      "lat": 35.6762,
+      "lon": 139.6503,
+      "country": "JP",
+      "city": "Tokyo",
+      "ytId": "MDNNL31pBwc"
     },
     {
       "name": "Kabukicho",
@@ -1350,6 +1262,14 @@
       "country": "JP",
       "city": "Tokyo",
       "ytId": "GLQhbRGv5qU"
+    },
+    {
+      "name": "TOKYO Camera 24/7 // City Centre, Shibuya // \u6e0b\u8c37 \u4ea4\u5dee\u70b9",
+      "lat": 35.6595,
+      "lon": 139.7004,
+      "country": "JP",
+      "city": "Tokyo",
+      "ytId": "QRjjSk2V0M8"
     },
     {
       "name": "Tokyo",
@@ -1520,6 +1440,14 @@
       "ytId": "djF-Lkgfp6k"
     },
     {
+      "name": "Cam Moments QUAKE, Over 999+ Killed Morocco Earthquake 6....",
+      "lat": 31.6295,
+      "lon": -7.9811,
+      "country": "MA",
+      "city": "Marrakech",
+      "ytId": "tLWhpcL3Oo4"
+    },
+    {
       "name": "Ramla tal-Mixquqa (Golden Bay) Webcam - TOURISMO Malta Pilot",
       "lat": 35.8989,
       "lon": 14.5146,
@@ -1528,28 +1456,12 @@
       "ytId": "nUiLly2Lr3E"
     },
     {
-      "name": "Recorded footage from St. Julian's - Malta",
-      "lat": 35.8989,
-      "lon": 14.5146,
-      "country": "MT",
-      "city": "Malta",
-      "ytId": "cAi9qTAzzUA"
-    },
-    {
       "name": "from Valletta - Malta",
       "lat": 35.8989,
       "lon": 14.5146,
       "country": "MT",
       "city": "Malta",
       "ytId": "3SW7lmjpPnw"
-    },
-    {
-      "name": "webcam St. Julian's Bay, Malta - Time Lapse",
-      "lat": 35.8989,
-      "lon": 14.5146,
-      "country": "MT",
-      "city": "Malta",
-      "ytId": "tWJqGnriCcY"
     },
     {
       "name": "Valletta Grand Harbour",
@@ -1566,14 +1478,6 @@
       "country": "MV",
       "city": "Maldives",
       "ytId": "hgcILPrxcQY"
-    },
-    {
-      "name": "Recorded footage from the Maldives",
-      "lat": 3.2028,
-      "lon": 73.2207,
-      "country": "MV",
-      "city": "Maldives",
-      "ytId": "XgwlnEEdjus"
     },
     {
       "name": "Underwater Cam from the Maldives | cameras around the world",
@@ -1598,6 +1502,14 @@
       "country": "MV",
       "city": "Maldives",
       "ytId": "4LM3_qzd8MA"
+    },
+    {
+      "name": "Kuala Lumpur \u2013 4K Walk | KL\u2019s Historic Heart to KLCC & Bu...",
+      "lat": 3.139,
+      "lon": 101.6869,
+      "country": "MY",
+      "city": "Kuala Lumpur",
+      "ytId": "befMa4ZXGzM"
     },
     {
       "name": "Amsterdam - Stationseiland - Centraal station (4G mobile ...",
@@ -1632,12 +1544,12 @@
       "ytId": "43qH0tDA6lM"
     },
     {
-      "name": "Oslo Norway - Freezing Cold 4K HDR Walking Tour",
-      "lat": 60.472,
-      "lon": 8.4689,
-      "country": "NO",
-      "city": "Norway",
-      "ytId": "iNJxCOaDThw"
+      "name": "webcam - Grote Markt - Groningen - the Netherlands",
+      "lat": 52.3676,
+      "lon": 4.9041,
+      "country": "NL",
+      "city": "Netherlands",
+      "ytId": "ZjfFGJlkjmE"
     },
     {
       "name": "Auckland Camera | Skyline, Harbour, & Weather | 4K 24/7",
@@ -1648,12 +1560,36 @@
       "ytId": "BQR800Gu28g"
     },
     {
+      "name": "Auckland Skyline, Harbour, & Weather Camera \u2014 4K 24/7",
+      "lat": 36.8485,
+      "lon": 174.7633,
+      "country": "NZ",
+      "city": "Auckland",
+      "ytId": "MnKW4DDB2LE"
+    },
+    {
+      "name": "Travel to Cusco in Peru now from your sofa with our webca...",
+      "lat": 13.532,
+      "lon": -71.9675,
+      "country": "PE",
+      "city": "Cusco",
+      "ytId": "rpyzXCABPv0"
+    },
+    {
       "name": "BOY SAYONG ( CAM 3A ) INSIDE AGDAO PUBLIC MARKET DAVAO CI...",
       "lat": 14.5995,
       "lon": 120.9842,
       "country": "PH",
       "city": "Philippines",
       "ytId": "iMakfrnFtck"
+    },
+    {
+      "name": "EDGE CAM 1 AGDAO CAM, DAVAO CITY PHILIPPINES",
+      "lat": 14.5995,
+      "lon": 120.9842,
+      "country": "PH",
+      "city": "Philippines",
+      "ytId": "u8CbGedbI08"
     },
     {
       "name": "Inside Maria's Living Room 24/7",
@@ -1720,20 +1656,20 @@
       "ytId": "P8v26Beydtc"
     },
     {
-      "name": "NEW YEAR Celebration in MOSCOW ! WALKING RUSSIAN STREETS ...",
-      "lat": 55.7558,
-      "lon": 37.6173,
-      "country": "RU",
-      "city": "Moscow",
-      "ytId": "ROoxPe593-U"
-    },
-    {
       "name": "WATCH: FESTIVE MOSCOW TAKES Over, Streets AWith New Year ...",
       "lat": 55.7558,
       "lon": 37.6173,
       "country": "RU",
       "city": "Moscow",
       "ytId": "uAdWrrGMVyE"
+    },
+    {
+      "name": "You Won't See this Kind of RUSSIA on TV! Moscow-City 2025...",
+      "lat": 55.7558,
+      "lon": 37.6173,
+      "country": "RU",
+      "city": "Moscow",
+      "ytId": "UXIGZ8s8VaE"
     },
     {
       "name": "CAMERA Russia Saint Petersburg interactive PTZ control re...",
@@ -1888,28 +1824,20 @@
       "ytId": "IVa59mpPJTg"
     },
     {
+      "name": "The Deck Beach Club Bang Rak beach - Koh Samui cam",
+      "lat": 13.7563,
+      "lon": 100.5018,
+      "country": "TH",
+      "city": "Thailand",
+      "ytId": "1sJ5KR7n85E"
+    },
+    {
       "name": "Why These New Scammers In Thailand | 7 New Scams Can End ...",
       "lat": 13.7563,
       "lon": 100.5018,
       "country": "TH",
       "city": "Thailand",
       "ytId": "MAf281aGCP8"
-    },
-    {
-      "name": "\ud83c\uddf9\ud83c\udded 4K HDR | Bangkok Christmas Lights 2025 | Best Spots & ...",
-      "lat": 13.7563,
-      "lon": 100.5018,
-      "country": "TH",
-      "city": "Thailand",
-      "ytId": "gQ9I80-Qvlo"
-    },
-    {
-      "name": "\ud83c\uddf9\ud83c\udded 4K HDR | Bangkok The Best City in the World to Visit i...",
-      "lat": 13.7563,
-      "lon": 100.5018,
-      "country": "TH",
-      "city": "Thailand",
-      "ytId": "7w34-ATnd0M"
     },
     {
       "name": "Istanbul Cam",
@@ -1936,12 +1864,28 @@
       "ytId": "Xzp6k_PBvcU"
     },
     {
+      "name": "Camera of Taiwan TaiPei",
+      "lat": 25.033,
+      "lon": 121.5654,
+      "country": "TW",
+      "city": "Taipei",
+      "ytId": "r-HWna8AoGE"
+    },
+    {
       "name": "Taipei 101",
       "lat": 25.027,
       "lon": 121.57,
       "country": "TW",
       "city": "Taipei",
       "ytId": "z_fY1pj1VBw"
+    },
+    {
+      "name": "Taiwan IP Camera,Web Camera! HD ,New Taipei City ! Stream...",
+      "lat": 25.033,
+      "lon": 121.5654,
+      "country": "TW",
+      "city": "Taipei",
+      "ytId": "H-Oc4cfvqq0"
     },
     {
       "name": ": Ukraine HD Camera Feeds from Donetsk, Sumy, Kyiv, Khark...",
@@ -1992,6 +1936,22 @@
       "ytId": "e2gC37ILQmk"
     },
     {
+      "name": "Moose Cam in Anchorage Alaska",
+      "lat": 61.2181,
+      "lon": -149.9003,
+      "country": "US",
+      "city": "Anchorage",
+      "ytId": "CNaknV0Uo0s"
+    },
+    {
+      "name": "Austin Texas",
+      "lat": 30.2672,
+      "lon": -97.7431,
+      "country": "US",
+      "city": "Austin",
+      "ytId": "SupIZAkTD9A"
+    },
+    {
       "name": "Boston, MA Cam - Boston Common at Boylston St",
       "lat": 42.3601,
       "lon": -71.0589,
@@ -2032,60 +1992,44 @@
       "ytId": "O0UGT7AT3aw"
     },
     {
-      "name": "Recorded footage from Akumal Bay - Mexico",
-      "lat": 41.9742,
-      "lon": -87.9073,
-      "country": "US",
-      "city": "Chicago",
-      "ytId": "18RhrpPVcfE"
-    },
-    {
-      "name": "Recorded footage from Canary Islands, storm Oscar arrives...",
-      "lat": 41.9742,
-      "lon": -87.9073,
-      "country": "US",
-      "city": "Chicago",
-      "ytId": "bFYbnmpTexE"
-    },
-    {
-      "name": "Recorded footage from Morro de S\u00e3o Paulo Zip-line!- Skyli...",
-      "lat": 41.9742,
-      "lon": -87.9073,
-      "country": "US",
-      "city": "Chicago",
-      "ytId": "6DU3-T5LdLU"
-    },
-    {
-      "name": "Recorded footage from San Marino - SkylineWebcams",
-      "lat": 41.9742,
-      "lon": -87.9073,
-      "country": "US",
-      "city": "Chicago",
-      "ytId": "n2WX2_juje8"
-    },
-    {
-      "name": "Recorded footage from the Lofoten Islands - SkylineWebcams",
-      "lat": 41.9742,
-      "lon": -87.9073,
-      "country": "US",
-      "city": "Chicago",
-      "ytId": "wVUa7p74F_c"
-    },
-    {
-      "name": "Recorded footage from the Magnificent Treasury of Petra!",
-      "lat": 41.9742,
-      "lon": -87.9073,
-      "country": "US",
-      "city": "Chicago",
-      "ytId": "Fad_2SjBw7I"
-    },
-    {
       "name": "Cleveland Terminal Tower",
       "lat": 41.4983,
       "lon": -81.6928,
       "country": "US",
       "city": "Cleveland",
       "ytId": "iHqqkh_Lths"
+    },
+    {
+      "name": ": Denver Skyline Camera | FOX31 KDVR.com",
+      "lat": 39.7392,
+      "lon": -104.9903,
+      "country": "US",
+      "city": "Denver",
+      "ytId": "X7m2dN-wcbU"
+    },
+    {
+      "name": "Denver City Camera (Sponsored by Boesen Law)",
+      "lat": 39.7392,
+      "lon": -104.9903,
+      "country": "US",
+      "city": "Denver",
+      "ytId": "E_VpviMTH9k"
+    },
+    {
+      "name": "Hundreds pack Denver town hall to share anger, concern on...",
+      "lat": 39.7392,
+      "lon": -104.9903,
+      "country": "US",
+      "city": "Denver",
+      "ytId": "zcGpN0GQYxk"
+    },
+    {
+      "name": "Webcam Fairbanks - Alaska",
+      "lat": 64.8378,
+      "lon": -147.7164,
+      "country": "US",
+      "city": "Fairbanks",
+      "ytId": "v189zZhZv38"
     },
     {
       "name": "Flagstaff Train Cam",
@@ -2126,6 +2070,14 @@
       "country": "US",
       "city": "Giraffe Cam Barn - Greenville",
       "ytId": "8OyZkFcGVeE"
+    },
+    {
+      "name": "Aqualink | MEGA Lab | Hawaii stream",
+      "lat": 19.8968,
+      "lon": -155.5828,
+      "country": "US",
+      "city": "Hawaii",
+      "ytId": "wuzPzIbZk5Q"
     },
     {
       "name": "The world's best starry sky",
@@ -2240,6 +2192,38 @@
       "ytId": "f9pMVLoJfyE"
     },
     {
+      "name": "Southernmost Point Camera - Key West, Florida Stream by T...",
+      "lat": 24.5551,
+      "lon": -81.78,
+      "country": "US",
+      "city": "Key West",
+      "ytId": "HDlmUp4JBLg"
+    },
+    {
+      "name": "Southernmost Point, Key West",
+      "lat": 24.5551,
+      "lon": -81.78,
+      "country": "US",
+      "city": "Key West",
+      "ytId": "OKh2Dhyc3-c"
+    },
+    {
+      "name": "Tough Guy Outside Sloppy Joe's Duval Street, Key West, Fl...",
+      "lat": 24.5551,
+      "lon": -81.78,
+      "country": "US",
+      "city": "Key West",
+      "ytId": "3zvt0e5D6ck"
+    },
+    {
+      "name": "What the Heck? Outside Sloppy Joes, Duval Street, Key Wes...",
+      "lat": 24.5551,
+      "lon": -81.78,
+      "country": "US",
+      "city": "Key West",
+      "ytId": "hhIVFI5X6TY"
+    },
+    {
       "name": "Bellagio Conservatory & Botanical Gardens (Las Vegas, NV)",
       "lat": 36.1699,
       "lon": -115.1398,
@@ -2312,36 +2296,12 @@
       "ytId": "CmngobaMGl8"
     },
     {
-      "name": "Webcam Las Vegas - Time Lapse",
-      "lat": 36.1699,
-      "lon": -115.1398,
-      "country": "US",
-      "city": "Las Vegas",
-      "ytId": "BObspFOetyA"
-    },
-    {
       "name": "Leavenworth",
       "lat": 47.5962,
       "lon": -120.6615,
       "country": "US",
       "city": "Leavenworth",
       "ytId": "TmtVbezZaqg"
-    },
-    {
-      "name": "Venezuela Under Attack: Explosions Rock Caracas On Camera...",
-      "lat": 34.0522,
-      "lon": -118.2437,
-      "country": "US",
-      "city": "Los Angeles",
-      "ytId": "yl10YUCfCd4"
-    },
-    {
-      "name": "Webcam - SBH Col de la Tourmente",
-      "lat": 34.0522,
-      "lon": -118.2437,
-      "country": "US",
-      "city": "Los Angeles",
-      "ytId": "15pVqwQb7A0"
     },
     {
       "name": "\ud83d\udc10 LIVE 24/7 Goat Barn | Cute Goats, Baby Goats, Re",
@@ -2360,6 +2320,14 @@
       "ytId": "F_bENs4GV24"
     },
     {
+      "name": "Central District - Miami Police Radio Scanner Stream - Ci...",
+      "lat": 25.7617,
+      "lon": -80.1918,
+      "country": "US",
+      "city": "Miami",
+      "ytId": "gVjecWQ1DYY"
+    },
+    {
       "name": "Miami",
       "lat": 25.7617,
       "lon": -80.1918,
@@ -2374,6 +2342,14 @@
       "country": "US",
       "city": "Miami",
       "ytId": "GwDXe7RNsZA"
+    },
+    {
+      "name": "South District - Miami Police Radio Scanner Stream - City...",
+      "lat": 25.7617,
+      "lon": -80.1918,
+      "country": "US",
+      "city": "Miami",
+      "ytId": "ndmlN3FT7vM"
     },
     {
       "name": "4K South Beach, Miami Beach 24/7 Street Cam on Collins Av...",
@@ -2416,6 +2392,14 @@
       "ytId": "g7Le4p8jyTU"
     },
     {
+      "name": "Broadway str. Nashville - USA - Webcam HD",
+      "lat": 36.1627,
+      "lon": -86.7816,
+      "country": "US",
+      "city": "Nashville",
+      "ytId": "0XdbJWB_Sx8"
+    },
+    {
       "name": "Nashville Broadway",
       "lat": 36.1627,
       "lon": -86.7816,
@@ -2438,6 +2422,30 @@
       "country": "US",
       "city": "New London",
       "ytId": "AgrYGFuW13g"
+    },
+    {
+      "name": "Bourbon Street - New Orleans - USA - Webcam HD",
+      "lat": 29.9511,
+      "lon": -90.0715,
+      "country": "US",
+      "city": "New Orleans",
+      "ytId": "jZZsipgMSnU"
+    },
+    {
+      "name": "Chaos At Mardi Gras EarthCam New Orleans",
+      "lat": 29.9511,
+      "lon": -90.0715,
+      "country": "US",
+      "city": "New Orleans",
+      "ytId": "rUIMOeEcxF4"
+    },
+    {
+      "name": "Chick Acting Strange And Drinking A Beer At 7AM EarthCam ...",
+      "lat": 29.9511,
+      "lon": -90.0715,
+      "country": "US",
+      "city": "New Orleans",
+      "ytId": "RTUUCpSMLKU"
     },
     {
       "name": "EarthCam - New Orleans",
@@ -2472,20 +2480,28 @@
       "ytId": "Ksrleaxxxhw"
     },
     {
+      "name": "The Anomaly Appears Again EarthCam New Orleans",
+      "lat": 29.9511,
+      "lon": -90.0715,
+      "country": "US",
+      "city": "New Orleans",
+      "ytId": "D8lYE1GxKx0"
+    },
+    {
+      "name": "WTF Moment Bourbon Street EarthCam New Orleans Edited",
+      "lat": 29.9511,
+      "lon": -90.0715,
+      "country": "US",
+      "city": "New Orleans",
+      "ytId": "C45a01CNNJI"
+    },
+    {
       "name": "Cam - New York City Upper Manhattan",
       "lat": 40.7831,
       "lon": -73.9712,
       "country": "US",
       "city": "New York",
       "ytId": "61FbDyMBIo0"
-    },
-    {
-      "name": "Caught On Camera: Rome Escalator Accident",
-      "lat": 40.7128,
-      "lon": -74.006,
-      "country": "US",
-      "city": "New York",
-      "ytId": "qE2Lv-t9BHk"
     },
     {
       "name": "Hamptons.com - ! 4K Main Street, Sag Harbor Village, New ...",
@@ -2510,14 +2526,6 @@
       "country": "US",
       "city": "New York",
       "ytId": "2_PDaUJbfuI"
-    },
-    {
-      "name": "Sandy Hook Bay | NYC Skyline | Highlands NJ Harbor Cam st...",
-      "lat": 40.7128,
-      "lon": -74.006,
-      "country": "US",
-      "city": "New York",
-      "ytId": "SmO5qmzhMk0"
     },
     {
       "name": "The smoke from the fires in Canada arrives in New York, M...",
@@ -2592,6 +2600,14 @@
       "ytId": "WEhuDqlxHmM"
     },
     {
+      "name": "PD: Most Viewed Moments from Richland County, South Carol...",
+      "lat": 33.8569,
+      "lon": -80.945,
+      "country": "US",
+      "city": "PD: Most Viewed Moments from Richland County",
+      "ytId": "2Sj2fd6b_Cg"
+    },
+    {
       "name": "Philadelphia Skyline",
       "lat": 39.9526,
       "lon": -75.1652,
@@ -2608,12 +2624,36 @@
       "ytId": "XoANQufSSXY"
     },
     {
+      "name": "Popular San Diego webcams turned off at the request of th...",
+      "lat": 32.7157,
+      "lon": -117.1611,
+      "country": "US",
+      "city": "San Diego",
+      "ytId": "zWeDY3cNSFU"
+    },
+    {
       "name": "San Diego Rotating Cam",
       "lat": 32.7157,
       "lon": -117.1611,
       "country": "US",
       "city": "San Diego",
       "ytId": "edz0ux7JClE"
+    },
+    {
+      "name": "San Diego Shelter Island (N) Web Cam",
+      "lat": 32.7157,
+      "lon": -117.1611,
+      "country": "US",
+      "city": "San Diego",
+      "ytId": "ct7IRmzDggk"
+    },
+    {
+      "name": "San Diego Web Cam Stream",
+      "lat": 32.7157,
+      "lon": -117.1611,
+      "country": "US",
+      "city": "San Diego",
+      "ytId": "GN2aC9Lu7J8"
     },
     {
       "name": "San Francisco Skyline",
@@ -2648,6 +2688,14 @@
       "ytId": "Dv2XxhsWqWY"
     },
     {
+      "name": "St. Louis Skyline | St. Louis Arch Cam | Enter the Gateway!",
+      "lat": 38.627,
+      "lon": -90.1994,
+      "country": "US",
+      "city": "St. Louis",
+      "ytId": "WLpybhD6viU"
+    },
+    {
       "name": "Web cam 4k Stream from Ala Moana, Honolulu, Hawaii",
       "lat": 21.0943,
       "lon": -157.4983,
@@ -2670,6 +2718,38 @@
       "country": "US",
       "city": "Washington DC",
       "ytId": "1wV9lLe14aU"
+    },
+    {
+      "name": "[WebCam Key West, Florida",
+      "lat": 27.7663,
+      "lon": -81.6868,
+      "country": "US",
+      "city": "[WebCam LIVE #WCLRO2022] Key West",
+      "ytId": "DPuzLBn7WV0"
+    },
+    {
+      "name": "Vanilla stream Signal Hill and Cape Town CBD",
+      "lat": 33.9249,
+      "lon": 18.4241,
+      "country": "ZA",
+      "city": "Cape Town",
+      "ytId": "8xvFxAPpEtc"
+    },
+    {
+      "name": "South Africa webcams, Cape Town webcams",
+      "lat": 33.9249,
+      "lon": 18.4241,
+      "country": "ZA",
+      "city": "South Africa",
+      "ytId": "RyYrV0_zJ3Q"
+    },
+    {
+      "name": "cam: South Luangwa, Zambia",
+      "lat": 15.3875,
+      "lon": 28.3228,
+      "country": "ZM",
+      "city": "cam: South Luangwa",
+      "ytId": "IA8BPvzPhA8"
     }
   ]
 }

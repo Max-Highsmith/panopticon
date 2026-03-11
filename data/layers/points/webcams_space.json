@@ -8,12 +8,12 @@
   },
   "space": [
     {
-      "name": "Watch : 24/7 Artemis 2 Space Launch System rocket, Orion ...",
-      "lat": 22.9068,
-      "lon": -43.1729,
-      "country": "BR",
-      "city": "Rio de Janeiro",
-      "ytId": "M8m9YdxgJ5g"
+      "name": "\u3010Taipei Cam\u3011\u528d\u6f6d\u5c71\u5fae\u98a8\u5e73\u53f0 - 4K\u5373\u6642\u5f71\u50cf | Jiantanshan Weifeng Observ...",
+      "lat": 25.033,
+      "lon": 121.5654,
+      "country": "TW",
+      "city": "Taipei",
+      "ytId": "34h_Cy_n0Ok"
     },
     {
       "name": "SpaceX 24/7 At Port Canaveral Gator's Portside",
@@ -32,6 +32,14 @@
       "ytId": "mhJRzQsLZGg"
     },
     {
+      "name": "Starbase Lab Cam - SpaceX Starship Launch Complex",
+      "lat": 25.997,
+      "lon": -97.1567,
+      "country": "US",
+      "city": "Boca Chica",
+      "ytId": "1_XLpEKtW8Y"
+    },
+    {
       "name": "Starbase Multi-Plex",
       "lat": 25.9976,
       "lon": -97.1555,
@@ -46,6 +54,14 @@
       "country": "US",
       "city": "Boca Chica",
       "ytId": "qw3uaLRrYNY"
+    },
+    {
+      "name": "Starbase Rover 2.0 Cam SpaceX Starship Launch Complex",
+      "lat": 25.997,
+      "lon": -97.1567,
+      "country": "US",
+      "city": "Boca Chica",
+      "ytId": "tS2PHJmvJzo"
     },
     {
       "name": "Starbase Rover 3 Cam - SpaceX Starbase Starship Launch Fa...",
@@ -70,6 +86,14 @@
       "country": "US",
       "city": "Boca Chica",
       "ytId": "IQV0DlS1Ew0"
+    },
+    {
+      "name": "TOWER CAM! SpaceX Starship Flight 5 Launch",
+      "lat": 25.997,
+      "lon": -97.1567,
+      "country": "US",
+      "city": "Boca Chica",
+      "ytId": "0egJ926D7ec"
     },
     {
       "name": "Watch SpaceX launch Starship, the biggest rocket ever",
@@ -168,6 +192,22 @@
       "ytId": "Jm8wRjD3xVA"
     },
     {
+      "name": "Watch : Falcon 9 becomes 100th rocket to fly from Cape Ca...",
+      "lat": 28.3922,
+      "lon": -80.6077,
+      "country": "US",
+      "city": "Cape Canaveral",
+      "ytId": "jTitrkLSg3s"
+    },
+    {
+      "name": "Watch : SpaceX launches 1st Starlink mission of 2026 on F...",
+      "lat": 28.3922,
+      "lon": -80.6077,
+      "country": "US",
+      "city": "Cape Canaveral",
+      "ytId": "LKXCWfEz2xc"
+    },
+    {
       "name": "Goddard Space Flight Center",
       "lat": 38.9914,
       "lon": -76.852,
@@ -182,6 +222,14 @@
       "country": "US",
       "city": "Houston",
       "ytId": "P9C25Un7xaM"
+    },
+    {
+      "name": "24/7 Kennedy Space Center Rocket Launches | SpaceX, NASA,...",
+      "lat": 28.5721,
+      "lon": -80.648,
+      "country": "US",
+      "city": "Kennedy Space Center",
+      "ytId": "yd2CUWAjUWY"
     },
     {
       "name": "ISS Earth View",
@@ -206,94 +254,6 @@
       "country": "US",
       "city": "Kennedy Space Center",
       "ytId": "RdlaihsKnZc"
-    },
-    {
-      "name": "NASA Stream of Earth HD camera [03-18-2024] - Daily Time ...",
-      "lat": 28.5721,
-      "lon": -80.648,
-      "country": "US",
-      "city": "Kennedy Space Center",
-      "ytId": "tsggm3si4zE"
-    },
-    {
-      "name": "NASA Stream of Earth HD camera [04-06-2024] - Daily Time ...",
-      "lat": 28.5721,
-      "lon": -80.648,
-      "country": "US",
-      "city": "Kennedy Space Center",
-      "ytId": "i6lC5Jwt0qU"
-    },
-    {
-      "name": "NASA Stream of Earth HD camera [04-09-2024] - Daily Time ...",
-      "lat": 28.5721,
-      "lon": -80.648,
-      "country": "US",
-      "city": "Kennedy Space Center",
-      "ytId": "2Mk0_xakEr8"
-    },
-    {
-      "name": "NASA Stream of Earth HD camera [04-10-2024] - Daily Time ...",
-      "lat": 28.5721,
-      "lon": -80.648,
-      "country": "US",
-      "city": "Kennedy Space Center",
-      "ytId": "qGISHbiWr_U"
-    },
-    {
-      "name": "NASA Stream of Earth HD camera [04-15-2024] - Daily Time ...",
-      "lat": 28.5721,
-      "lon": -80.648,
-      "country": "US",
-      "city": "Kennedy Space Center",
-      "ytId": "ALvEAO2eqU4"
-    },
-    {
-      "name": "NASA Stream of Earth HD camera [04-22-2024] - Daily Time ...",
-      "lat": 28.5721,
-      "lon": -80.648,
-      "country": "US",
-      "city": "Kennedy Space Center",
-      "ytId": "9SI75RUxiDc"
-    },
-    {
-      "name": "NASA Stream of Earth HD camera [04-25-2024] - Daily Time ...",
-      "lat": 28.5721,
-      "lon": -80.648,
-      "country": "US",
-      "city": "Kennedy Space Center",
-      "ytId": "CdvjcAOghnE"
-    },
-    {
-      "name": "NASA Stream of Earth HD camera [06-10-2024] - Daily Time ...",
-      "lat": 28.5721,
-      "lon": -80.648,
-      "country": "US",
-      "city": "Kennedy Space Center",
-      "ytId": "kA9hLZqhgJE"
-    },
-    {
-      "name": "NASA Stream of Earth HD camera [06-19-2024] - Daily Time ...",
-      "lat": 28.5721,
-      "lon": -80.648,
-      "country": "US",
-      "city": "Kennedy Space Center",
-      "ytId": "yirbeq_7Vb4"
-    },
-    {
-      "name": "NASA Stream of Earth HD camera [07-15-2024] - Daily Time ...",
-      "lat": 28.5721,
-      "lon": -80.648,
-      "country": "US",
-      "city": "Kennedy Space Center",
-      "ytId": "LYcs3LLG5VE"
-    },
-    {
-      "name": "NASA Stream of Earth HD camera [07-18-2024] - Daily Time ...",
-      "lat": 28.5721,
-      "lon": -80.648,
-      "country": "US",
-      "city": "Kennedy Space Center",
-      "ytId": "zAKgsLvBMF8"
     },
     {
       "name": "NASA TV",
@@ -384,6 +344,22 @@
       "ytId": "21X5lGlDOfg"
     },
     {
+      "name": ": Mount Washington Observatory Deck Cam",
+      "lat": 38.9072,
+      "lon": -77.0369,
+      "country": "US",
+      "city": "Washington DC",
+      "ytId": "RUN2G9r136c"
+    },
+    {
+      "name": ": Mount Washington Observatory Northern Presidentials Cam",
+      "lat": 38.9072,
+      "lon": -77.0369,
+      "country": "US",
+      "city": "Washington DC",
+      "ytId": "zJjiTnGlSSM"
+    },
+    {
       "name": ": Mount Washington Observatory Tower Cam",
       "lat": 38.9072,
       "lon": -77.0369,
@@ -392,52 +368,28 @@
       "ytId": "EVW-Q363_b8"
     },
     {
-      "name": "2 HOURS Overview Camera View of Earth from ISS",
-      "lat": 0,
-      "lon": 0,
-      "country": "XX",
-      "city": "ISS",
-      "ytId": "cX2lbqUMgxo"
+      "name": ": Mount Washington Observatory Weather Cam (view from Wil...",
+      "lat": 38.9072,
+      "lon": -77.0369,
+      "country": "US",
+      "city": "Washington DC",
+      "ytId": "Qg-oUHThi20"
     },
     {
-      "name": "Earth From Space Now | ISS Stream 24/7 | Real Space View ...",
-      "lat": 0,
-      "lon": 0,
-      "country": "XX",
-      "city": "ISS",
-      "ytId": "WW0IxqbHs2w"
+      "name": "Mount Washington Observatory West View Cam",
+      "lat": 38.9072,
+      "lon": -77.0369,
+      "country": "US",
+      "city": "Washington DC",
+      "ytId": "qQelttP13Rg"
     },
     {
-      "name": "ISS 4K by Sen",
+      "name": "Watch : 24/7 Artemis 2 Space Launch System rocket, Orion ...",
       "lat": 0,
       "lon": 0,
       "country": "XX",
       "city": "ISS",
-      "ytId": "fO9e9jnhYK8"
-    },
-    {
-      "name": "Overview Camera View of Earth from ISS",
-      "lat": 0,
-      "lon": 0,
-      "country": "XX",
-      "city": "ISS",
-      "ytId": "w6-lbMRopOQ"
-    },
-    {
-      "name": "Watch Earth 24/7 from space via International Space Stati...",
-      "lat": 0,
-      "lon": 0,
-      "country": "XX",
-      "city": "ISS",
-      "ytId": "b-Xzwfi1h4U"
-    },
-    {
-      "name": "[4K] ISS : 24/7 Views of Earth & Station To Ground Comms",
-      "lat": 0,
-      "lon": 0,
-      "country": "XX",
-      "city": "ISS",
-      "ytId": "lmFZ42AR_2E"
+      "ytId": "M8m9YdxgJ5g"
     }
   ]
 }

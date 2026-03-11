@@ -80,6 +80,14 @@
       "ytId": "M3EYAY2MftI"
     },
     {
+      "name": "View Tower of David Jerusalem Israel Holy Land",
+      "lat": 31.7683,
+      "lon": 35.2137,
+      "country": "IL",
+      "city": "Jerusalem",
+      "ytId": "BkBjgKYwAso"
+    },
+    {
       "name": "Western Wall",
       "lat": 31.7767,
       "lon": 35.2345,
@@ -128,12 +136,52 @@
       "ytId": "K_Vg94nBiaY"
     },
     {
+      "name": "Venezia Italia Webcam - Campo Santa Maria Formosa Venice ...",
+      "lat": 45.4408,
+      "lon": 12.3155,
+      "country": "IT",
+      "city": "Venice",
+      "ytId": "WjOGhNDX51M"
+    },
+    {
+      "name": "\u4eac\u90fd \u6c38\u89b3\u5802\u30e9\u30a4\u30d6\u4e2d\u7d99\u30ab\u30e1\u30e9\uff0fEikando (Zenrin-ji Temple), Kyoto camera",
+      "lat": 35.0116,
+      "lon": 135.7681,
+      "country": "JP",
+      "city": "Kyoto",
+      "ytId": "bK9vpKisRnQ"
+    },
+    {
+      "name": "[] \ubd80\uc0b0 \ub77c\uc774\ube0c\ucea0 4K \uc0dd\uc911\uacc4 \uad11\uc548\ub9ac \ub77c\uc774\ube0c \uad11\uc548\ub300\uad50 \uc2e4\uc2dc\uac04 \ubc29\uc1a1 Busan Cam Korea",
+      "lat": 35.1796,
+      "lon": 129.0756,
+      "country": "KR",
+      "city": "Busan",
+      "ytId": "8Gl34_bZ3t8"
+    },
+    {
+      "name": "\ubd80\uc0b0 \uad11\uc548\ub300\uad50 (4K CAM) \u91dc\u5c71 \u5ee3\u5b89\u5927\u6a4b Gwangandaegyo \u30e9\u30a4\u30d6\u30ab\u30e1\u30e9 Busan Diamo...",
+      "lat": 35.1796,
+      "lon": 129.0756,
+      "country": "KR",
+      "city": "Busan",
+      "ytId": "GXvW-dvTbL8"
+    },
+    {
       "name": "\uc11c\uc6b8\uc2e4\uc2dc\uac04 \ud55c\uac15\ub77c\uc774\ube0c \uc7a0\uc2e4\ub300\uad50 Cam I \"Jamsil Bridge\" Seoul,korea I Seou...",
       "lat": 37.5665,
       "lon": 126.978,
       "country": "KR",
       "city": "Seoul",
       "ytId": "ZopiySgQjsc"
+    },
+    {
+      "name": "Watch | New Zealand Welcomes 2026 With Fireworks From Auc...",
+      "lat": 41.2865,
+      "lon": 174.7762,
+      "country": "NZ",
+      "city": "Wellington",
+      "ytId": "GopByRP_kkM"
     },
     {
       "name": "Bridge of Lions",
@@ -158,14 +206,6 @@
       "country": "US",
       "city": "Boston",
       "ytId": "2wURiUS3dSI"
-    },
-    {
-      "name": "Church Tech Tour - Affordable Multicam Broadcast Video Se...",
-      "lat": 41.9742,
-      "lon": -87.9073,
-      "country": "US",
-      "city": "Chicago",
-      "ytId": "aWJNmw8O5qY"
     },
     {
       "name": "Fort Myers FL",

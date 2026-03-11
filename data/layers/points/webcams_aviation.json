@@ -8,6 +8,14 @@
   },
   "aviation": [
     {
+      "name": "Watch ABC NEWS Australia | ABC NEWS",
+      "lat": 33.8688,
+      "lon": 151.2093,
+      "country": "AU",
+      "city": "Australia",
+      "ytId": "vOTiJkg1voo"
+    },
+    {
       "name": "camera sydney",
       "lat": 33.8688,
       "lon": 151.2093,
@@ -72,20 +80,20 @@
       "ytId": "JMFFi4Ma5M4"
     },
     {
+      "name": "WEBCAM from TENERIFE AIRPORT (Canary Islands, Spain)",
+      "lat": 40.4168,
+      "lon": -3.7038,
+      "country": "ES",
+      "city": "Spain",
+      "ytId": "yrx0fvj-4QI"
+    },
+    {
       "name": "[4K] PARIS 2025 \ud83c\uddeb\ud83c\uddf7 1 Hour Aerial Drone Relaxation Film UH...",
       "lat": 48.8566,
       "lon": 2.3522,
       "country": "FR",
       "city": "France",
       "ytId": "WHNNHAoaZD4"
-    },
-    {
-      "name": "FIXED facial recognition cameras quietly switched on in L...",
-      "lat": 51.5074,
-      "lon": -0.1278,
-      "country": "GB",
-      "city": "London",
-      "ytId": "VDSJ-IfsOV4"
     },
     {
       "name": "Kulusuk Airport Greenland",
@@ -96,6 +104,22 @@
       "ytId": "fpaqR1d_K0g"
     },
     {
+      "name": ": Israel\u2013Iran War Watch | Tel Aviv & Jerusalem Cameras \u2013 ...",
+      "lat": 31.7683,
+      "lon": 35.2137,
+      "country": "IL",
+      "city": "Jerusalem",
+      "ytId": "66AELRMCXA0"
+    },
+    {
+      "name": "WATCH: from Jerusalem",
+      "lat": 31.7683,
+      "lon": 35.2137,
+      "country": "IL",
+      "city": "Jerusalem",
+      "ytId": "Ji1K9ORRfkE"
+    },
+    {
       "name": ": Tel aviv-jarusalem-beirut- dubai - Non-Stop Multi-Cam S...",
       "lat": 32.0853,
       "lon": 34.7818,
@@ -104,12 +128,36 @@
       "ytId": "AO_qaBq51B8"
     },
     {
+      "name": "WATCH: from Tel Aviv",
+      "lat": 32.0853,
+      "lon": 34.7818,
+      "country": "IL",
+      "city": "Tel Aviv",
+      "ytId": "Ad210DlxTlY"
+    },
+    {
+      "name": "\ud83d\udd34LIVE 24/7 : -Tel aviv-jarusalem-beirut-tehran Non",
+      "lat": 32.0853,
+      "lon": 34.7818,
+      "country": "IL",
+      "city": "Tel Aviv",
+      "ytId": "bjl0Mit_KSs"
+    },
+    {
       "name": "ON CAM: Moment Dubai Airport Was Bombed; Huge Explosion, ...",
       "lat": 28.6139,
       "lon": 77.209,
       "country": "IN",
       "city": "India",
       "ytId": "f43HfYCp8-s"
+    },
+    {
+      "name": "Camview: Wellington Airport Webcam Stream",
+      "lat": 41.2865,
+      "lon": 174.7762,
+      "country": "NZ",
+      "city": "Wellington",
+      "ytId": "v7xySvhug0Y"
     },
     {
       "name": "Madeira Airport",
@@ -240,6 +288,14 @@
       "ytId": "AwksqYsf6gQ"
     },
     {
+      "name": "Denver International Airport 24/7 Weather Camera",
+      "lat": 39.7392,
+      "lon": -104.9903,
+      "country": "US",
+      "city": "Denver",
+      "ytId": "iYx76DDtHXk"
+    },
+    {
       "name": "Las Vegas Airport",
       "lat": 36.084,
       "lon": -115.1537,
@@ -256,22 +312,6 @@
       "ytId": "3a4dRftiJ9Y"
     },
     {
-      "name": ": Pig Barn Cam Relaxing Farm Sounds (24/7)",
-      "lat": 33.9425,
-      "lon": -118.4081,
-      "country": "US",
-      "city": "Los Angeles",
-      "ytId": "ozFREllTBEc"
-    },
-    {
-      "name": "Cute Pigs Relaxing in the Barn | Pig Farm Cam",
-      "lat": 33.9425,
-      "lon": -118.4081,
-      "country": "US",
-      "city": "Los Angeles",
-      "ytId": "PBesQ0PFsfc"
-    },
-    {
       "name": "LAX Runways 24L/24R",
       "lat": 33.943,
       "lon": -118.4085,
@@ -286,14 +326,6 @@
       "country": "US",
       "city": "Los Angeles",
       "ytId": "UQaSS4_VAV4"
-    },
-    {
-      "name": "REALTIME SIM LAX 24HRS | ADS-B | ATC | PLANESPOTTING #",
-      "lat": 33.9425,
-      "lon": -118.4081,
-      "country": "US",
-      "city": "Los Angeles",
-      "ytId": "t0GrpAgdBFI"
     },
     {
       "name": "Yosemite Webcams | Half Dome, El Capitan, High Sierra Rel...",
@@ -360,12 +392,12 @@
       "ytId": "4wOvgo27Cks"
     },
     {
-      "name": "Moment of plane collision with military helicopter near D...",
-      "lat": 38.9072,
-      "lon": -77.0369,
-      "country": "US",
-      "city": "Washington DC",
-      "ytId": "5vdJ5d-61ic"
+      "name": "Hanoi Camera 24/7 | Planes Flying Over the City part 2 | ...",
+      "lat": 21.0278,
+      "lon": 105.8342,
+      "country": "VN",
+      "city": "Hanoi",
+      "ytId": "4NhM_guEk-g"
     },
     {
       "name": "WATCH : Tornado warning issued for Kinney County : Mar 10...",

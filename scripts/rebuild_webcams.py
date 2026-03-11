@@ -32,7 +32,7 @@ CITY_COORDS = {
     "times square": (40.7580, -73.9855, "US", "New York"),
     "brooklyn": (40.6782, -73.9442, "US", "New York"),
     "los angeles": (34.0522, -118.2437, "US", "Los Angeles"),
-    "la ": (34.0522, -118.2437, "US", "Los Angeles"),
+    # "la " removed — too short, matches false positives
     "hollywood": (34.0928, -118.3287, "US", "Los Angeles"),
     "venice beach": (33.9850, -118.4695, "US", "Los Angeles"),
     "santa monica": (34.0195, -118.4912, "US", "Los Angeles"),
@@ -49,7 +49,7 @@ CITY_COORDS = {
     "seattle": (47.6062, -122.3321, "US", "Seattle"),
     "washington": (38.9072, -77.0369, "US", "Washington DC"),
     "washington dc": (38.9072, -77.0369, "US", "Washington DC"),
-    "dc ": (38.9072, -77.0369, "US", "Washington DC"),
+    # "dc " removed — too short, matches false positives
     "denver": (39.7392, -104.9903, "US", "Denver"),
     "portland": (45.5152, -122.6784, "US", "Portland"),
     "las vegas": (36.1699, -115.1398, "US", "Las Vegas"),
@@ -171,7 +171,7 @@ CITY_COORDS = {
     "guatemala": (14.6349, -90.5069, "GT", "Guatemala City"),
     "panama": (8.9824, -79.5199, "PA", "Panama City"),
     # South America
-    "rio": (22.9068, -43.1729, "BR", "Rio de Janeiro"),
+    "rio de janeiro": (22.9068, -43.1729, "BR", "Rio de Janeiro"),
     "sao paulo": (23.5505, -46.6333, "BR", "São Paulo"),
     "buenos aires": (34.6037, -58.3816, "AR", "Buenos Aires"),
     "bogota": (4.7110, -74.0721, "CO", "Bogotá"),
@@ -641,11 +641,11 @@ def extract_location(title, author=""):
         if len(city_key) > 4 and city_key in author_lower:
             return coords
 
-    # 5. Try to match city names in title (longest match first)
+    # 5. Try to match city names in title (longest match first, min 4 chars)
     best_match = None
     best_len = 0
     for city_key, (lat, lon, country, city_name) in CITY_COORDS.items():
-        if city_key in title_lower and len(city_key) > best_len:
+        if len(city_key) >= 4 and city_key in title_lower and len(city_key) > best_len:
             best_match = (lat, lon, country, city_name)
             best_len = len(city_key)
 
@@ -679,7 +679,8 @@ def is_webcam_stream(title, author=""):
 
     # Additional exclude for non-live content
     exclude2 = [
-        "recorded footage", "recorded stream", "replay", "rerun",
+        "recorded footage", "recorded stream", "recorded live",
+        "replay", "rerun",
         "archived recording", "nye 2026", "nye 2025", "nye 2024",
         "new year's eve", "new years eve", "firework celebration",
         "championship", "parade", "solar eclipse",
@@ -688,6 +689,20 @@ def is_webcam_stream(title, author=""):
         "super bowl", "goat yoga", "dogs for adoption",
         "lawnstream", "figmentcam", "snowman cam",
         "hallmark channel",
+        "under attack", "missiles", "drones rain",
+        "breaking news", "crisis", "war update",
+        "puppy cam", "puppy playroom", "kitten cam",
+        "full house", "unboxing", "product review",
+        "walking tour", "exploring", "trip to",
+        "travel guide", "i am surprised",
+        "caught on camera", "facial recognition",
+        "beachgoers fleeing", "feeding frenzy",
+        "shooting", "stabbing", "robbery",
+        "dash cam", "dashcam", "body cam", "bodycam",
+        "security camera", "cctv footage",
+        "drone footage", "drone video",
+        "time lapse", "timelapse",
+        "gopro", "go pro",
     ]
     for kw in exclude2:
         if kw in title_lower:
@@ -1025,18 +1040,7 @@ def main():
     }
 
     for category, entries in categorized.items():
-        # Sort by country then city
-        entries.sort(key=lambda e: (e.get("country", ""), e.get("city", ""), e.get("name", "")))
-
-        # Remove duplicates by name within same city
-        seen = set()
-        deduped = []
-        for entry in entries:
-            key = (entry["name"], entry["city"])
-            if key not in seen:
-                seen.add(key)
-                deduped.append(entry)
-        entries = deduped
+        # Already sorted and deduped above
 
         data = {
             "_source": {

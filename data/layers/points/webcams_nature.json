@@ -16,6 +16,14 @@
       "ytId": "_ZXMjk5K0_s"
     },
     {
+      "name": "AO VIVO Rio de Janeiro Mirante Corcovado Cristo Scenic Vi...",
+      "lat": 22.9068,
+      "lon": -43.1729,
+      "country": "BR",
+      "city": "Rio de Janeiro",
+      "ytId": "qXJ3IRVHoNg"
+    },
+    {
       "name": "OrcaLab Main Cams",
       "lat": 50.73,
       "lon": -126.72,
@@ -48,12 +56,12 @@
       "ytId": "LwihxyJ4V20"
     },
     {
-      "name": "AO VIVO Rio de Janeiro Mirante Corcovado Cristo Scenic Vi...",
-      "lat": 35.6892,
-      "lon": 51.389,
-      "country": "IR",
-      "city": "Iran",
-      "ytId": "qXJ3IRVHoNg"
+      "name": "Apukka Resort Rovaniemi - Aurora Cam by Aurora Alert Real...",
+      "lat": 66.5039,
+      "lon": 25.7294,
+      "country": "FI",
+      "city": "Rovaniemi",
+      "ytId": "bOEvPL206Hc"
     },
     {
       "name": "Mount Etna Sicily",
@@ -72,12 +80,44 @@
       "ytId": "Ho5zY2E-nl4"
     },
     {
+      "name": ": Naples, Florida, weather cam",
+      "lat": 40.8518,
+      "lon": 14.2681,
+      "country": "IT",
+      "city": "Naples",
+      "ytId": "Et-o9CLuIp4"
+    },
+    {
       "name": "Ammanford | Wales, UK | Betws Mountain View",
       "lat": 31.9454,
       "lon": 35.9284,
       "country": "JO",
       "city": "Amman",
       "ytId": "u1HnmqcuUyg"
+    },
+    {
+      "name": "Walk in Kyoto Midnight Rainstorm - 4K HDR",
+      "lat": 35.6762,
+      "lon": 139.6503,
+      "country": "JP",
+      "city": "Japan",
+      "ytId": "qgfd-uWTVwg"
+    },
+    {
+      "name": "\u96ea \u4eac\u90fd \u30e9\u30a4\u30d6 \u30ab\u30e1\u30e9 | Massive Snow Storm in Kyoto Japan Camera",
+      "lat": 35.6762,
+      "lon": 139.6503,
+      "country": "JP",
+      "city": "Japan",
+      "ytId": "1kK6Gpj590o"
+    },
+    {
+      "name": "\u304a\u5929\u6c17\u30ab\u30e1\u30e9 \u5927\u962a\uff0fOSAKA,JAPAN",
+      "lat": 34.6937,
+      "lon": 135.5023,
+      "country": "JP",
+      "city": "Osaka",
+      "ytId": "O9HzIuolSds"
     },
     {
       "name": "Mahali Mzuri Landscape Cam | Maasai Mara, Kenya",
@@ -128,6 +168,14 @@
       "ytId": "iXLaEkB3J0I"
     },
     {
+      "name": "Clip from Auckland West Webcam",
+      "lat": 36.8485,
+      "lon": 174.7633,
+      "country": "NZ",
+      "city": "Auckland",
+      "ytId": "bjM6SD0oXK4"
+    },
+    {
       "name": "Amazon Rainforest",
       "lat": -12.5934,
       "lon": -69.1891,
@@ -136,12 +184,28 @@
       "ytId": "YmQqVomTgy4"
     },
     {
+      "name": "\u3010Taipei Cam\u3011\u5927\u4f73\u6cb3\u6ff1\u516c\u5712 - 4K\u5373\u6642\u5f71\u50cf | Taipei Dajia Riverside Park...",
+      "lat": 25.033,
+      "lon": 121.5654,
+      "country": "TW",
+      "city": "Taipei",
+      "ytId": "fP4ecxfsJos"
+    },
+    {
       "name": "Big Bear California 24/7 Webcam 4K | Lake | Jackie and Sh...",
       "lat": 34.2439,
       "lon": -116.9114,
       "country": "US",
       "city": "Big Bear",
       "ytId": "c6pYq6ff388"
+    },
+    {
+      "name": "Boston Weather Cam, MA Cam - Green Line",
+      "lat": 42.3601,
+      "lon": -71.0589,
+      "country": "US",
+      "city": "Boston",
+      "ytId": "_oWwfJ3v0oE"
     },
     {
       "name": "Ski Resort Webcams - from New England",
@@ -192,6 +256,14 @@
       "ytId": "aaUERtNMn7o"
     },
     {
+      "name": "Chicago & NW Indiana Lake Effect Snow - Stream Archive",
+      "lat": 41.8781,
+      "lon": -87.6298,
+      "country": "US",
+      "city": "Chicago",
+      "ytId": "ZAKmz8FA_5M"
+    },
+    {
       "name": "Chocorua Lake, New Hampshire - Cam",
       "lat": 43.4525,
       "lon": -71.5639,
@@ -230,6 +302,14 @@
       "country": "US",
       "city": "Clearwater",
       "ytId": "8pvXU1aEQZ0"
+    },
+    {
+      "name": "48 hour Denver Colorado Snow Storm Height Cam - March 14-...",
+      "lat": 39.7392,
+      "lon": -104.9903,
+      "country": "US",
+      "city": "Denver",
+      "ytId": "vvcWiWcfJhI"
     },
     {
       "name": "Detroit River Cam from the Dossin Museum, Detroit, Michig...",
@@ -304,6 +384,14 @@
       "ytId": "JkPjC4fbbQQ"
     },
     {
+      "name": "Ocean Key Resort: Sunset Pier, Key West",
+      "lat": 24.5551,
+      "lon": -81.78,
+      "country": "US",
+      "city": "Key West",
+      "ytId": "j3-4303CjuE"
+    },
+    {
       "name": "Lake Conroe, Texas",
       "lat": 31.0545,
       "lon": -97.5635,
@@ -312,12 +400,12 @@
       "ytId": "UqrwUKSkMEE"
     },
     {
-      "name": ": NEW 24 Hour Walt Disney World Relaxing Stroll & Ambianc...",
-      "lat": 33.9425,
-      "lon": -118.4081,
+      "name": ": Lookout Mountain Camera in Golden, Colorado | FOX31 KDV...",
+      "lat": 39.0598,
+      "lon": -105.3111,
       "country": "US",
-      "city": "Los Angeles",
-      "ytId": "nAZMOF3zhto"
+      "city": "Lookout Mountain Camera in Golden",
+      "ytId": "9oaYcC5C8Zw"
     },
     {
       "name": "Napili Sunset Beachfront Resort | 4K Maui Cam | Maui Beac...",
@@ -344,12 +432,12 @@
       "ytId": "S3rx8s-ltwI"
     },
     {
-      "name": "Feb 23, 2026 - NYC BLIZZARD 4K Walk to Work in Snow Part 2",
-      "lat": 40.7128,
-      "lon": -74.006,
+      "name": "Myrtle Beach View - Captain's Quarters Resort",
+      "lat": 33.6891,
+      "lon": -78.8867,
       "country": "US",
-      "city": "New York",
-      "ytId": "0FpT7SeuJnY"
+      "city": "Myrtle Beach",
+      "ytId": "GKOyGoRE0Tg"
     },
     {
       "name": "New York is hit by a snowstorm. Follow our coverage from ...",
@@ -408,6 +496,14 @@
       "ytId": "VWsZDBUc49w"
     },
     {
+      "name": "Table Mountain Cape Town webcam Stream, Milnerton",
+      "lat": 33.9249,
+      "lon": 18.4241,
+      "country": "ZA",
+      "city": "Cape Town",
+      "ytId": "z1PJqpgZccg"
+    },
+    {
       "name": "Olifants River | Wildlife Stream \u2013 Greater Kruger Nationa...",
       "lat": 24.0112,
       "lon": 31.4847,
@@ -416,12 +512,28 @@
       "ytId": "NapztoCaKFY"
     },
     {
+      "name": "Langebaan Lagoon Camera | Pearly\u2019s Restaurant",
+      "lat": 33.9249,
+      "lon": 18.4241,
+      "country": "ZA",
+      "city": "South Africa",
+      "ytId": "Hhc6vesmrNk"
+    },
+    {
       "name": "Table Mountain & Bloubergstrand Beach Camera",
       "lat": 33.9249,
       "lon": 18.4241,
       "country": "ZA",
       "city": "South Africa",
       "ytId": "YfwTcW1IkN4"
+    },
+    {
+      "name": "Table Mountain Stream | Cape Town Webcam | South Africa",
+      "lat": 33.9249,
+      "lon": 18.4241,
+      "country": "ZA",
+      "city": "South Africa",
+      "ytId": "jOqASqt3vVI"
     }
   ]
 }

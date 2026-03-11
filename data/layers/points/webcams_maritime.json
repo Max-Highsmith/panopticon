@@ -64,14 +64,6 @@
       "ytId": "FV6FjrNDfXI"
     },
     {
-      "name": ": RIO Boat",
-      "lat": 22.9068,
-      "lon": -43.1729,
-      "country": "BR",
-      "city": "Rio de Janeiro",
-      "ytId": "VnsRQvfv_g4"
-    },
-    {
       "name": "Port aux Basques",
       "lat": 47.5707,
       "lon": -59.1353,
@@ -136,6 +128,14 @@
       "ytId": "6hPWq2IG08M"
     },
     {
+      "name": "Port of Helsinki - South Harbour (Camera Axis Q6155-E)",
+      "lat": 60.1699,
+      "lon": 24.9384,
+      "country": "FI",
+      "city": "Helsinki",
+      "ytId": "CvOB-Is_yYU"
+    },
+    {
       "name": "Ramsgate Royal Harbour",
       "lat": 51.3261,
       "lon": 1.4222,
@@ -158,6 +158,14 @@
       "country": "GB",
       "city": "Southampton",
       "ytId": "QO-hO_kwwmY"
+    },
+    {
+      "name": "Dubrovnik, uplovio prvi cruiser nakon korona karantene - ...",
+      "lat": 42.6507,
+      "lon": 18.0944,
+      "country": "HR",
+      "city": "Dubrovnik",
+      "ytId": "SIhaoLLOzgw"
     },
     {
       "name": "Dublin Bay : Watch Ships Enter and Exit Dublin Port",
@@ -184,12 +192,60 @@
       "ytId": "jy3fkOBIolk"
     },
     {
+      "name": "4K Venice Italy - Streaming of Grand Canal from Ca' Angeli",
+      "lat": 45.4408,
+      "lon": 12.3155,
+      "country": "IT",
+      "city": "Venice",
+      "ytId": "HkuZmbVsgF4"
+    },
+    {
+      "name": "4K Webcam on Grand Canal, Venice - Stream from Ristorante...",
+      "lat": 45.4408,
+      "lon": 12.3155,
+      "country": "IT",
+      "city": "Venice",
+      "ytId": "P6JA_YjHMZs"
+    },
+    {
+      "name": "\u010airkewwa Malta - Ferry Terminal cam",
+      "lat": 35.8989,
+      "lon": 14.5146,
+      "country": "MT",
+      "city": "Malta",
+      "ytId": "9u5Aifzex54"
+    },
+    {
       "name": "Namibia: Swakopmund Lighthouse stream",
       "lat": 22.5609,
       "lon": 17.0658,
       "country": "NA",
       "city": "Namibia",
       "ytId": "C6kb6vH14xY"
+    },
+    {
+      "name": ": Forum Machico Webcam, Madeira, Portugal | Madeira-Web",
+      "lat": 38.7223,
+      "lon": -9.1393,
+      "country": "PT",
+      "city": "Portugal",
+      "ytId": "KUnIxGXKox0"
+    },
+    {
+      "name": "CAM - Marina de Portim\u00e3o (Portugal)",
+      "lat": 38.7223,
+      "lon": -9.1393,
+      "country": "PT",
+      "city": "Portugal",
+      "ytId": "w7rzgn6WXs8"
+    },
+    {
+      "name": "Webcam Playas de Albufeira Hotel Sol e Mar Albufeira Alga...",
+      "lat": 38.7223,
+      "lon": -9.1393,
+      "country": "PT",
+      "city": "Portugal",
+      "ytId": "GeQVAs9N490"
     },
     {
       "name": "Beautiful Singapore | CAM",
@@ -206,6 +262,14 @@
       "country": "SG",
       "city": "Singapore",
       "ytId": "2rBJdXa7QTo"
+    },
+    {
+      "name": "\u3010Taipei Cam\u3011\u5927\u7a3b\u57d5\u78bc\u982d - 4K\u5373\u6642\u5f71\u50cf | Taipei Dadaocheng Wharf | \u53f0\u5317...",
+      "lat": 25.033,
+      "lon": 121.5654,
+      "country": "TW",
+      "city": "Taipei",
+      "ytId": "Ndo_8RuefH4"
     },
     {
       "name": "Vilano Boat Ramp 24/7 | St. Augustine, Florida",
@@ -246,6 +310,14 @@
       "country": "US",
       "city": "Giraffe Paddock  Cam - Greenville",
       "ytId": "1NoSs03ZrlY"
+    },
+    {
+      "name": "Key West Bight Marina WebCam - Key West, Florida Keys",
+      "lat": 24.5551,
+      "lon": -81.78,
+      "country": "US",
+      "city": "Key West",
+      "ytId": "Y5ypYTZs-7o"
     },
     {
       "name": "Port Lorain Lake Erie",
@@ -318,6 +390,22 @@
       "country": "US",
       "city": "San Diego",
       "ytId": "hhIUB-W5Z50"
+    },
+    {
+      "name": "Washington Island Ferry Dock Camera (",
+      "lat": 38.9072,
+      "lon": -77.0369,
+      "country": "US",
+      "city": "Washington DC",
+      "ytId": "UmiLYeh8-r8"
+    },
+    {
+      "name": "Outdoor Skating Rink - Patio Cam 1 from Portsmouth, New H...",
+      "lat": 43.4525,
+      "lon": -71.5639,
+      "country": "US",
+      "city": "from Portsmouth",
+      "ytId": "PoZ1Hy7PQig"
     }
   ]
 }
