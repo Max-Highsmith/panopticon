@@ -1276,15 +1276,26 @@ function typeIntoMessagePreview(text) {
 function playMissileVideo(lat, lon) {
   const v = viewer;
   if (!v) return;
-  // Create a synthetic entity so the webcam view can play the missile mp4
+
+  // If strike is near Bassani's compound (35.12, 50.08), play the assassination footage
+  let videoUrl = 'assets/missile.mp4';
+  let label = 'STRIKE FEED';
+  if (lat != null && lon != null) {
+    const dLat = lat - 35.12, dLon = lon - 50.08;
+    if (Math.sqrt(dLat * dLat + dLon * dLon) < 1) {
+      videoUrl = 'assets/leader_shot.mp4';
+      label = 'OVERWATCH-7 // STRIKE CONFIRMED';
+    }
+  }
+
   const syntheticEntity = {
     acData: {
-      flight: 'STRIKE FEED',
+      flight: label,
       city: lat != null ? `${lat.toFixed(2)}N` : '---',
       country: lon != null ? `${lon.toFixed(2)}E` : '---',
       lat: lat ?? 0,
       lon: lon ?? 0,
-      videoUrl: 'assets/missile.mp4',
+      videoUrl,
     },
   };
   openWebcamView(v, syntheticEntity);
