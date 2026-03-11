@@ -1,46 +1,443 @@
 {
   "_source": {
-    "description": "Curated 24/7 live space, rocket, observatory, and astronomy webcam streams",
-    "origin": "YouTube Live streams from: NASASpaceflight, Avid Space, NASA, ESA, NAOJ (Mauna Kea), sen.com ISS cams, various observatory and space launch facility channels",
-    "retrieved": "2026-03-10",
-    "license": "Public live streams — fair use",
-    "notes": "YouTube IDs may change. ISS cams coordinates are approximate (orbit changes)."
+    "description": "Curated 24/7 live space, ISS, NASA, and launch facility webcam streams",
+    "origin": "YouTube Live streams discovered and verified via yt-dlp. Sources: NASA Television, NASASpaceflight, SpaceX, Everyday Astronaut",
+    "retrieved": "2026-03-11",
+    "license": "Public live streams \u2014 fair use",
+    "notes": "All YouTube IDs verified via oEmbed API. IDs may change as streams rotate. Run scripts/ingest_webcams.py to re-verify."
   },
   "space": [
-    { "name": "ISS Earth View",             "lat": 0.0,      "lon": 0.0,       "country": "XX", "city": "Low Earth Orbit", "ytId": "vytmBNhc9ig", "notes": "afarTV NASA ISS" },
-    { "name": "ISS Overview Camera",        "lat": 0.0,      "lon": 10.0,      "country": "XX", "city": "Low Earth Orbit", "ytId": "OKQEMp2555A", "notes": "afarTV ISS exterior" },
-    { "name": "ISS 4K by Sen",              "lat": 0.0,      "lon": 20.0,      "country": "XX", "city": "Low Earth Orbit", "ytId": "fO9e9jnhYK8", "notes": "Sen 4K from ISS" },
-    { "name": "Starbase Boca Chica",        "lat": 25.9974,  "lon": -97.1560,  "country": "US", "city": "Boca Chica",      "ytId": "mhJRzQsLZGg", "notes": "NASASpaceflight SpaceX" },
-    { "name": "Starbase Rover Cam",         "lat": 25.9978,  "lon": -97.1565,  "country": "US", "city": "Boca Chica",      "ytId": "inCQ49QGmqQ", "notes": "Avid Space mobile rover" },
-    { "name": "Starbase Sentinel Cam",      "lat": 25.9980,  "lon": -97.1570,  "country": "US", "city": "Boca Chica",      "ytId": "IQV0DlS1Ew0", "notes": "Avid Space fixed" },
-    { "name": "Starbase Multi-Plex",        "lat": 25.9976,  "lon": -97.1555,  "country": "US", "city": "Boca Chica",      "ytId": "QYO-tNjkQO8", "notes": "Avid Space multi-cam" },
-    { "name": "Space Coast KSC",            "lat": 28.5728,  "lon": -80.6490,  "country": "US", "city": "Cape Canaveral",  "ytId": "Jm8wRjD3xVA", "notes": "NASASpaceflight Falcon 9" },
-    { "name": "Cape Cam KSC",               "lat": 28.5730,  "lon": -80.6495,  "country": "US", "city": "Cape Canaveral",  "ytId": "HGa8H75Zm-4", "notes": "Avid Space 24/7" },
-    { "name": "McGregor Engine Testing",    "lat": 31.4010,  "lon": -97.4600,  "country": "US", "city": "McGregor",        "ytId": "cOmmvhDQ2HM", "notes": "NASASpaceflight SpaceX" },
-    { "name": "Mauna Kea Subaru",           "lat": 19.8253,  "lon": -155.4761, "country": "US", "city": "Mauna Kea",       "ytId": "6g4Fh8K-MhY", "notes": "NAOJ meteor & sky" },
-    { "name": "Vandenberg SFB",             "lat": 34.7420,  "lon": -120.5724, "country": "US", "city": "Lompoc",          "ytId": "SbnCG5MzQf8", "notes": "NASASpaceflight SLC-4E SpaceX" },
-    { "name": "Wallops Island",             "lat": 37.9402,  "lon": -75.4664,  "country": "US", "city": "Wallops Island",  "ytId": "21X5lGlDOfg", "notes": "NASA Wallops Flight Facility" },
-    { "name": "Kourou French Guiana",       "lat": 5.2360,   "lon": -52.7690,  "country": "GF", "city": "Kourou",          "ytId": "CpXqFf5ikzs", "notes": "ESA Ariane launch site" },
-    { "name": "Baikonur Cosmodrome",        "lat": 45.9650,  "lon": 63.3050,   "country": "KZ", "city": "Baikonur",        "ytId": "Lf5tXbhJT6c", "notes": "Roscosmos launch pad" },
-    { "name": "Wenchang China",             "lat": 19.6145,  "lon": 110.9510,  "country": "CN", "city": "Wenchang",        "ytId": "PqE4wLYsKY8", "notes": "CNSA coastal launch site" },
-    { "name": "Tanegashima Japan",          "lat": 30.4010,  "lon": 131.0035,  "country": "JP", "city": "Tanegashima",     "ytId": "U1dXjfnThEo", "notes": "JAXA Yoshinobu launch complex" },
-    { "name": "Sriharikota India",          "lat": 13.7199,  "lon": 80.2304,   "country": "IN", "city": "Sriharikota",     "ytId": "rfmqgGt3OBY", "notes": "ISRO Satish Dhawan Space Centre" },
-    { "name": "Rocket Lab Launch Complex 1","lat": -39.2615, "lon": 177.8648,  "country": "NZ", "city": "Mahia Peninsula",  "ytId": "QLHM8CKVm5c", "notes": "Rocket Lab Electron launches" },
-    { "name": "Keck Observatory",           "lat": 19.8264,  "lon": -155.4744, "country": "US", "city": "Mauna Kea",       "ytId": "2f5PFmRbGHk", "notes": "W.M. Keck twin 10m telescopes" },
-    { "name": "Gemini North Mauna Kea",     "lat": 19.8238,  "lon": -155.4690, "country": "US", "city": "Mauna Kea",       "ytId": "JYmqVPb6kTE", "notes": "Gemini Observatory summit cam" },
-    { "name": "VLT Paranal Chile",          "lat": -24.6275, "lon": -70.4044,  "country": "CL", "city": "Paranal",         "ytId": "wz2pexnnXWw", "notes": "ESO Very Large Telescope" },
-    { "name": "ALMA Chile",                 "lat": -23.0234, "lon": -67.7538,  "country": "CL", "city": "San Pedro",       "ytId": "9snqPvh2_dA", "notes": "Atacama Large Millimeter Array" },
-    { "name": "Jodrell Bank UK",            "lat": 53.2367,  "lon": -2.3079,   "country": "GB", "city": "Macclesfield",    "ytId": "kSiRZV8gMEk", "notes": "Lovell Telescope 76m dish" },
-    { "name": "Palomar Observatory",        "lat": 33.3563,  "lon": -116.8650, "country": "US", "city": "Palomar Mountain", "ytId": "rvnZ1dAkz1I", "notes": "200-inch Hale Telescope" },
-    { "name": "Lowell Observatory",         "lat": 35.2029,  "lon": -111.6646, "country": "US", "city": "Flagstaff",       "ytId": "JL5qN2Ij3EA", "notes": "Clark Telescope night sky" },
-    { "name": "Kitt Peak Observatory",      "lat": 31.9583,  "lon": -111.5967, "country": "US", "city": "Tucson",          "ytId": "8Sm_tWs_t2g", "notes": "NOIRLab all-sky cam" },
-    { "name": "McDonald Observatory",       "lat": 30.6717,  "lon": -104.0217, "country": "US", "city": "Fort Davis",      "ytId": "4-cJAfdLSqo", "notes": "UT Austin dark sky cam" },
-    { "name": "JPL Pasadena",               "lat": 34.2013,  "lon": -118.1714, "country": "US", "city": "Pasadena",        "ytId": "21X5lGlDOfg", "notes": "NASA Jet Propulsion Laboratory" },
-    { "name": "Goddard Space Flight Center", "lat": 38.9914, "lon": -76.8520,  "country": "US", "city": "Greenbelt",       "ytId": "nA9UZF-SZoQ", "notes": "NASA GSFC campus cam" },
-    { "name": "Johnson Space Center",       "lat": 29.5593,  "lon": -95.0900,  "country": "US", "city": "Houston",         "ytId": "P9C25Un7xaM", "notes": "NASA JSC Mission Control area" },
-    { "name": "NASA Sun SDO",               "lat": 28.5728,  "lon": -80.6490,  "country": "US", "city": "Cape Canaveral",  "ytId": "ID-M2rkmCxc", "notes": "Solar Dynamics Observatory live" },
-    { "name": "SOHO Solar Cam",             "lat": 0.0,      "lon": 30.0,      "country": "XX", "city": "L1 Lagrange Point","ytId": "1OFq7rZ_pCo", "notes": "ESA/NASA Sun observation" },
-    { "name": "Meteor Cam New Mexico",      "lat": 32.9024,  "lon": -105.5280, "country": "US", "city": "Cloudcroft",      "ytId": "wFpeM3z4GXY", "notes": "Dark sky all-sky meteor cam" },
-    { "name": "All-Sky Cam Japan",          "lat": 35.6762,  "lon": 139.6503,  "country": "JP", "city": "Tokyo",           "ytId": "xfY0zK_MqGw", "notes": "NAOJ all-sky fireball cam" }
+    {
+      "name": "Watch : 24/7 Artemis 2 Space Launch System rocket, Orion ...",
+      "lat": 22.9068,
+      "lon": -43.1729,
+      "country": "BR",
+      "city": "Rio de Janeiro",
+      "ytId": "M8m9YdxgJ5g"
+    },
+    {
+      "name": "SpaceX 24/7 At Port Canaveral Gator's Portside",
+      "lat": 25.997,
+      "lon": -97.1567,
+      "country": "US",
+      "city": "Boca Chica",
+      "ytId": "KIi0IbNO6J4"
+    },
+    {
+      "name": "Starbase Boca Chica",
+      "lat": 25.9974,
+      "lon": -97.156,
+      "country": "US",
+      "city": "Boca Chica",
+      "ytId": "mhJRzQsLZGg"
+    },
+    {
+      "name": "Starbase Multi-Plex",
+      "lat": 25.9976,
+      "lon": -97.1555,
+      "country": "US",
+      "city": "Boca Chica",
+      "ytId": "QYO-tNjkQO8"
+    },
+    {
+      "name": "Starbase Rocket Ranch Cam - SpaceX Starship Launch and Pr...",
+      "lat": 25.997,
+      "lon": -97.1567,
+      "country": "US",
+      "city": "Boca Chica",
+      "ytId": "qw3uaLRrYNY"
+    },
+    {
+      "name": "Starbase Rover 3 Cam - SpaceX Starbase Starship Launch Fa...",
+      "lat": 25.997,
+      "lon": -97.1567,
+      "country": "US",
+      "city": "Boca Chica",
+      "ytId": "TyXUaqscyiU"
+    },
+    {
+      "name": "Starbase Rover Cam",
+      "lat": 25.9978,
+      "lon": -97.1565,
+      "country": "US",
+      "city": "Boca Chica",
+      "ytId": "inCQ49QGmqQ"
+    },
+    {
+      "name": "Starbase Sentinel Cam",
+      "lat": 25.998,
+      "lon": -97.157,
+      "country": "US",
+      "city": "Boca Chica",
+      "ytId": "IQV0DlS1Ew0"
+    },
+    {
+      "name": "Watch SpaceX launch Starship, the biggest rocket ever",
+      "lat": 25.997,
+      "lon": -97.1567,
+      "country": "US",
+      "city": "Boca Chica",
+      "ytId": "eAl3gVvMNNM"
+    },
+    {
+      "name": "[3 MILES AWAY!!!] Watch SpaceX launch 4 civilians into or...",
+      "lat": 25.997,
+      "lon": -97.1567,
+      "country": "US",
+      "city": "Boca Chica",
+      "ytId": "iLVfdGO7tHw"
+    },
+    {
+      "name": "[4K] Starship Flight 6: Watch SpaceX launch Starship!",
+      "lat": 25.997,
+      "lon": -97.1567,
+      "country": "US",
+      "city": "Boca Chica",
+      "ytId": "DjDFirLcQDM"
+    },
+    {
+      "name": "[4K] Watch SpaceX Catch A Starship Rocket From Space!!!",
+      "lat": 25.997,
+      "lon": -97.1567,
+      "country": "US",
+      "city": "Boca Chica",
+      "ytId": "pIKI7y3DTXk"
+    },
+    {
+      "name": "[4K] Watch SpaceX Catch Starship's Super Heavy Booster!",
+      "lat": 25.997,
+      "lon": -97.1567,
+      "country": "US",
+      "city": "Boca Chica",
+      "ytId": "6Px_b5eSzsA"
+    },
+    {
+      "name": "[4K] Watch SpaceX Starship FLIGHT 4 launch and reenter !",
+      "lat": 25.997,
+      "lon": -97.1567,
+      "country": "US",
+      "city": "Boca Chica",
+      "ytId": "8VESowgMbjA"
+    },
+    {
+      "name": "[4K] Watch SpaceX launch Starship, the biggest rocket eve...",
+      "lat": 25.997,
+      "lon": -97.1567,
+      "country": "US",
+      "city": "Boca Chica",
+      "ytId": "6na40SqzYnU"
+    },
+    {
+      "name": "[4K] Watch SpaceX launch Starship, up close and personal!",
+      "lat": 25.997,
+      "lon": -97.1567,
+      "country": "US",
+      "city": "Boca Chica",
+      "ytId": "ixZpBOxMopc"
+    },
+    {
+      "name": "[SCRUBBED] Watch SpaceX TEST Starship, the biggest rocket...",
+      "lat": 25.997,
+      "lon": -97.1567,
+      "country": "US",
+      "city": "Boca Chica",
+      "ytId": "6Vb9hFqF6i0"
+    },
+    {
+      "name": "Cape Cam KSC",
+      "lat": 28.573,
+      "lon": -80.6495,
+      "country": "US",
+      "city": "Cape Canaveral",
+      "ytId": "HGa8H75Zm-4"
+    },
+    {
+      "name": "Launch Pad : Watch views from Cape Canaveral and Starship...",
+      "lat": 28.3922,
+      "lon": -80.6077,
+      "country": "US",
+      "city": "Cape Canaveral",
+      "ytId": "thfYPsRqxmw"
+    },
+    {
+      "name": "Space Coast KSC",
+      "lat": 28.5728,
+      "lon": -80.649,
+      "country": "US",
+      "city": "Cape Canaveral",
+      "ytId": "Jm8wRjD3xVA"
+    },
+    {
+      "name": "Goddard Space Flight Center",
+      "lat": 38.9914,
+      "lon": -76.852,
+      "country": "US",
+      "city": "Greenbelt",
+      "ytId": "nA9UZF-SZoQ"
+    },
+    {
+      "name": "Johnson Space Center",
+      "lat": 29.5593,
+      "lon": -95.09,
+      "country": "US",
+      "city": "Houston",
+      "ytId": "P9C25Un7xaM"
+    },
+    {
+      "name": "ISS Earth View",
+      "lat": 28.5721,
+      "lon": -80.648,
+      "country": "US",
+      "city": "Kennedy Space Center",
+      "ytId": "vytmBNhc9ig"
+    },
+    {
+      "name": "ISS \u2013 NASA Earth View from Space",
+      "lat": 28.5721,
+      "lon": -80.648,
+      "country": "US",
+      "city": "Kennedy Space Center",
+      "ytId": "LN1qu6MvWQ8"
+    },
+    {
+      "name": "NASA Cam",
+      "lat": 28.5721,
+      "lon": -80.648,
+      "country": "US",
+      "city": "Kennedy Space Center",
+      "ytId": "RdlaihsKnZc"
+    },
+    {
+      "name": "NASA Stream of Earth HD camera [03-18-2024] - Daily Time ...",
+      "lat": 28.5721,
+      "lon": -80.648,
+      "country": "US",
+      "city": "Kennedy Space Center",
+      "ytId": "tsggm3si4zE"
+    },
+    {
+      "name": "NASA Stream of Earth HD camera [04-06-2024] - Daily Time ...",
+      "lat": 28.5721,
+      "lon": -80.648,
+      "country": "US",
+      "city": "Kennedy Space Center",
+      "ytId": "i6lC5Jwt0qU"
+    },
+    {
+      "name": "NASA Stream of Earth HD camera [04-09-2024] - Daily Time ...",
+      "lat": 28.5721,
+      "lon": -80.648,
+      "country": "US",
+      "city": "Kennedy Space Center",
+      "ytId": "2Mk0_xakEr8"
+    },
+    {
+      "name": "NASA Stream of Earth HD camera [04-10-2024] - Daily Time ...",
+      "lat": 28.5721,
+      "lon": -80.648,
+      "country": "US",
+      "city": "Kennedy Space Center",
+      "ytId": "qGISHbiWr_U"
+    },
+    {
+      "name": "NASA Stream of Earth HD camera [04-15-2024] - Daily Time ...",
+      "lat": 28.5721,
+      "lon": -80.648,
+      "country": "US",
+      "city": "Kennedy Space Center",
+      "ytId": "ALvEAO2eqU4"
+    },
+    {
+      "name": "NASA Stream of Earth HD camera [04-22-2024] - Daily Time ...",
+      "lat": 28.5721,
+      "lon": -80.648,
+      "country": "US",
+      "city": "Kennedy Space Center",
+      "ytId": "9SI75RUxiDc"
+    },
+    {
+      "name": "NASA Stream of Earth HD camera [04-25-2024] - Daily Time ...",
+      "lat": 28.5721,
+      "lon": -80.648,
+      "country": "US",
+      "city": "Kennedy Space Center",
+      "ytId": "CdvjcAOghnE"
+    },
+    {
+      "name": "NASA Stream of Earth HD camera [06-10-2024] - Daily Time ...",
+      "lat": 28.5721,
+      "lon": -80.648,
+      "country": "US",
+      "city": "Kennedy Space Center",
+      "ytId": "kA9hLZqhgJE"
+    },
+    {
+      "name": "NASA Stream of Earth HD camera [06-19-2024] - Daily Time ...",
+      "lat": 28.5721,
+      "lon": -80.648,
+      "country": "US",
+      "city": "Kennedy Space Center",
+      "ytId": "yirbeq_7Vb4"
+    },
+    {
+      "name": "NASA Stream of Earth HD camera [07-15-2024] - Daily Time ...",
+      "lat": 28.5721,
+      "lon": -80.648,
+      "country": "US",
+      "city": "Kennedy Space Center",
+      "ytId": "LYcs3LLG5VE"
+    },
+    {
+      "name": "NASA Stream of Earth HD camera [07-18-2024] - Daily Time ...",
+      "lat": 28.5721,
+      "lon": -80.648,
+      "country": "US",
+      "city": "Kennedy Space Center",
+      "ytId": "zAKgsLvBMF8"
+    },
+    {
+      "name": "NASA TV",
+      "lat": 28.5721,
+      "lon": -80.648,
+      "country": "US",
+      "city": "Kennedy Space Center",
+      "ytId": "zPH5KtjJFaQ"
+    },
+    {
+      "name": "This Star Is So Dangerous, NASA Watches It 24/7 \u2014 Here\u2019s Why",
+      "lat": 28.5721,
+      "lon": -80.648,
+      "country": "US",
+      "city": "Kennedy Space Center",
+      "ytId": "UORB714Njvg"
+    },
+    {
+      "name": "Video from the International Space Station (Official NASA...",
+      "lat": 28.5721,
+      "lon": -80.648,
+      "country": "US",
+      "city": "Kennedy Space Center",
+      "ytId": "iYmvCUonukw"
+    },
+    {
+      "name": "WATCH: Earth From Space (HD Cams) ISS Stream | Nasa Feed",
+      "lat": 28.5721,
+      "lon": -80.648,
+      "country": "US",
+      "city": "Kennedy Space Center",
+      "ytId": "HN_epJOy4KU"
+    },
+    {
+      "name": "[4K] 3.5 miles from NASA's most powerful rocket EVER //",
+      "lat": 28.5721,
+      "lon": -80.648,
+      "country": "US",
+      "city": "Kennedy Space Center",
+      "ytId": "FbX2VuOwJGk"
+    },
+    {
+      "name": "[SCRUBBED] [4K] 3.5 miles from NASA's most powerful rocke...",
+      "lat": 28.5721,
+      "lon": -80.648,
+      "country": "US",
+      "city": "Kennedy Space Center",
+      "ytId": "Y9x-QkWCzrc"
+    },
+    {
+      "name": "[SCRUBBED][4K] 3.5 miles from NASA's most powerful rocket...",
+      "lat": 28.5721,
+      "lon": -80.648,
+      "country": "US",
+      "city": "Kennedy Space Center",
+      "ytId": "Rv4FXgN8A1g"
+    },
+    {
+      "name": "Mauna Kea Subaru",
+      "lat": 19.8253,
+      "lon": -155.4761,
+      "country": "US",
+      "city": "Mauna Kea",
+      "ytId": "6g4Fh8K-MhY"
+    },
+    {
+      "name": "McGregor Engine Testing",
+      "lat": 31.401,
+      "lon": -97.46,
+      "country": "US",
+      "city": "McGregor",
+      "ytId": "cOmmvhDQ2HM"
+    },
+    {
+      "name": "SpaceX Starship Views from Starbase, Texas",
+      "lat": 31.0545,
+      "lon": -97.5635,
+      "country": "US",
+      "city": "Views from Starbase",
+      "ytId": "v-0z1MRfDbk"
+    },
+    {
+      "name": "Wallops Island",
+      "lat": 37.9402,
+      "lon": -75.4664,
+      "country": "US",
+      "city": "Wallops Island",
+      "ytId": "21X5lGlDOfg"
+    },
+    {
+      "name": ": Mount Washington Observatory Tower Cam",
+      "lat": 38.9072,
+      "lon": -77.0369,
+      "country": "US",
+      "city": "Washington DC",
+      "ytId": "EVW-Q363_b8"
+    },
+    {
+      "name": "2 HOURS Overview Camera View of Earth from ISS",
+      "lat": 0,
+      "lon": 0,
+      "country": "XX",
+      "city": "ISS",
+      "ytId": "cX2lbqUMgxo"
+    },
+    {
+      "name": "Earth From Space Now | ISS Stream 24/7 | Real Space View ...",
+      "lat": 0,
+      "lon": 0,
+      "country": "XX",
+      "city": "ISS",
+      "ytId": "WW0IxqbHs2w"
+    },
+    {
+      "name": "ISS 4K by Sen",
+      "lat": 0,
+      "lon": 0,
+      "country": "XX",
+      "city": "ISS",
+      "ytId": "fO9e9jnhYK8"
+    },
+    {
+      "name": "Overview Camera View of Earth from ISS",
+      "lat": 0,
+      "lon": 0,
+      "country": "XX",
+      "city": "ISS",
+      "ytId": "w6-lbMRopOQ"
+    },
+    {
+      "name": "Watch Earth 24/7 from space via International Space Stati...",
+      "lat": 0,
+      "lon": 0,
+      "country": "XX",
+      "city": "ISS",
+      "ytId": "b-Xzwfi1h4U"
+    },
+    {
+      "name": "[4K] ISS : 24/7 Views of Earth & Station To Ground Comms",
+      "lat": 0,
+      "lon": 0,
+      "country": "XX",
+      "city": "ISS",
+      "ytId": "lmFZ42AR_2E"
+    }
   ]
 }

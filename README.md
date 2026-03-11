@@ -1,6 +1,6 @@
 # PANOPTICON
 
-Real-time OSINT globe with 60+ data layers, AI wargame simulations, and historical playback.
+Real-time OSINT globe with 110+ data layers, AI wargame simulations, and historical playback.
 
 ![PANOPTICON](https://img.shields.io/badge/status-active-00ff41?style=flat-square&labelColor=000)
 ![License](https://img.shields.io/badge/license-MIT-blue?style=flat-square&labelColor=000)
@@ -21,18 +21,31 @@ Panopticon renders live tracking data, static intelligence layers, and AI-driven
 
 **PLAYBACK** — Replay historical events and completed wargame results with timeline scrubbing, variable speed (0.25x–100x), and full data layer visibility.
 
-**WARGAME** — Run AI-driven geopolitical crisis simulations using LLMs (Anthropic, OpenAI, Google, xAI, OpenRouter). 35+ scenarios across naval confrontations, cyber attacks, nuclear escalation, and more. Results automatically generate playback manifests for replay.
+**WARGAME** — Run AI-driven geopolitical crisis simulations using LLMs (Anthropic, OpenAI, Google, xAI, OpenRouter). 40 scenarios across naval confrontations, cyber attacks, nuclear escalation, hostage crises, and more. Results automatically generate playback manifests for replay.
 
 ## Data Layers
 
-60+ toggleable data layers across four categories:
+110+ toggleable data layers across 17 categories:
 
 | Category | Examples | Count |
 |----------|----------|-------|
-| **Critical Minerals** | Lithium, cobalt, rare earths, uranium, tungsten, gallium... | 40+ |
-| **Energy & Infrastructure** | Nuclear plants, oil refineries, pipelines, power grids, subsea cables | 10+ |
-| **Military & Intelligence** | Bases, radar installations, strategic nuclear sites, spaceports | 5+ |
-| **Natural & Environmental** | Volcanoes, earthquakes, wildfires, ocean currents, sea ice, wildlife migrations | 10+ |
+| **Critical Minerals** | Lithium, cobalt, rare earths, uranium, tungsten, gallium, scandium... | 40 |
+| **Webcams** | Cities, beaches, landmarks, wildlife, aviation, maritime, volcanoes, aurora... | 13 |
+| **Maritime** | Subsea cables, trade routes, chokepoints, ocean currents, fisheries | 7 |
+| **Energy** | Nuclear reactors, oil refineries, pipelines, power plants, offshore platforms | 6 |
+| **Live Tracking** | Military aircraft, commercial aircraft, satellites, AIS ships | 5 |
+| **Markets** | Prediction markets (Kalshi), crypto, commodity prices, BTC whale txs, news | 5 |
+| **Resources** | Mines, Arctic mining, rare earth deposits, offshore drilling | 5 |
+| **Natural Hazards** | Volcanoes, earthquakes, wildfires, lightning, meteor impacts | 5 |
+| **Wildlife** | Whale migrations, sea turtles, bird migration, elephant corridors | 4 |
+| **Space** | Space debris, launch sites, cosmic radiation, ionosphere | 4 |
+| **Infrastructure** | Datacenters, nuclear sites, airports, internet exchanges | 4 |
+| **Military** | Bases, radar systems, strategic nuclear | 3 |
+| **Climate** | Sea ice extent, ocean temperature | 2 |
+| **Transport** | Cargo flight routes, major ports | 2 |
+| **Intelligence** | Heads of state | 1 |
+| **Trade** | Commodity flows | 1 |
+| **Reference** | Wikipedia geo-articles | 1 |
 
 Every data file includes a `_source` field with specific provenance (database, publication, URL). Each layer has a corresponding ingestion script in `scripts/` to reproduce the data from source.
 
@@ -56,6 +69,43 @@ Click any entity on the globe to open a detail panel. Eight specialized view typ
 Six altitude-adaptive filters that scale intensity with camera height:
 
 CRT · NVG · FLIR · Anime · Border · Off
+
+## Agent API
+
+External AI agents can control Panopticon via REST endpoints on the wargame server (`localhost:3001`). All actions are broadcast to the browser in real-time.
+
+**Explore the globe:**
+
+```bash
+# List all 110+ layers
+curl http://localhost:3001/api/layers
+
+# Toggle a layer
+curl -X POST http://localhost:3001/api/command \
+  -H 'Content-Type: application/json' \
+  -d '{"command": "toggleLayer", "args": {"layer": "airports", "enabled": true}}'
+
+# Fly camera to coordinates
+curl -X POST http://localhost:3001/api/command \
+  -H 'Content-Type: application/json' \
+  -d '{"command": "flyTo", "args": {"lat": 48.8566, "lon": 2.3522, "altitude": 500000}}'
+```
+
+**Play a wargame scenario:**
+
+```bash
+# Start a session
+curl -X POST http://localhost:3001/api/play/start \
+  -H 'Content-Type: application/json' \
+  -d '{"scenarioId": "prediction-market-assassination"}'
+
+# Call a tool (returns result + any new intel)
+curl -X POST http://localhost:3001/api/play/SESSION_ID/tool \
+  -H 'Content-Type: application/json' \
+  -d '{"toolName": "query_prediction_markets", "toolArgs": {}}'
+```
+
+See [SKILL.md](SKILL.md) for the full API reference (compatible with Claude Code / OpenClaw skills).
 
 ## Quick Start
 
@@ -126,7 +176,7 @@ panopticon/
 │   │   ├── datalayer.js       Point layer factory
 │   │   ├── pathlayer.js       Path layer factory
 │   │   ├── regionlayer.js     Region layer factory
-│   │   └── *.js               60+ self-registering layer modules
+│   │   └── *.js               110+ self-registering layer modules
 │   │
 │   ├── viewregistry.js        Central view registry
 │   ├── viewbase.js            Shared view utilities
@@ -150,10 +200,11 @@ panopticon/
 │       ├── regions/           Region layer JSON (chokepoints, fisheries...)
 │       └── ambient/           Non-geographic data (markets, feeds)
 │
-├── scenarios/                 35+ wargame scenario definitions
+├── scenarios/                 40 wargame scenario definitions
 ├── playbacks/                 Playback manifest files
 ├── scripts/                   Python data ingestion scripts
-├── server/                    Express + WebSocket wargame server
+├── server/                    Express + WebSocket wargame server + agent API
+├── SKILL.md                   Agent skill definition (Claude Code / OpenClaw)
 └── docs/                      Architecture and spec documents
 ```
 

@@ -624,17 +624,6 @@
       <div id="wg-layers" class="wg-layers"></div>
       <label>VARIANT<select id="wg-variant"></select></label>
       <label>FRAMING<select id="wg-framing"></select></label>
-      <label>PROVIDER
-        <select id="wg-provider">
-          <option value="openrouter">OPENROUTER (direct)</option>
-          <option value="google">GOOGLE GEMINI (direct)</option>
-          <option value="anthropic">ANTHROPIC (needs proxy)</option>
-          <option value="openai">OPENAI (needs proxy)</option>
-          <option value="xai">XAI (needs proxy)</option>
-          <option value="baseline">BASELINE (no API key)</option>
-        </select>
-      </label>
-      <div id="wg-provider-note" class="wg-provider-note"></div>
       <label>MODEL
         <select id="wg-model">
           <optgroup label="Anthropic">
@@ -677,16 +666,6 @@
             <option value="always-launch">Baseline: Always Launch</option>
           </optgroup>
         </select>
-      </label>
-      <label>MODE
-        <select id="wg-execution-mode">
-          <option value="turn_based">TURN-BASED</option>
-          <option value="realtime">REALTIME</option>
-          <option value="agentic">AGENTIC</option>
-        </select>
-      </label>
-      <label>VARIABLES (JSON override)
-        <textarea id="wg-variables" rows="2" placeholder='{"key": "value"}'></textarea>
       </label>
     </div>
     <div class="wg-controls">

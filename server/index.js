@@ -167,6 +167,18 @@ app.get('/hlsproxy', async (req, res) => {
 });
 
 // =====================================================
+// PROVIDER INFERENCE
+// =====================================================
+const OPENROUTER_PREFIXES = ['deepseek', 'qwen', 'moonshotai'];
+function inferProvider(modelVal) {
+  if (modelVal === 'always-hold' || modelVal === 'always-launch') return 'baseline';
+  const prefix = modelVal.split('/')[0];
+  if (OPENROUTER_PREFIXES.includes(prefix)) return 'openrouter';
+  const providerMap = { 'x-ai': 'xai' };
+  return providerMap[prefix] || prefix;
+}
+
+// =====================================================
 // AGENT ADAPTERS
 // =====================================================
 const adapters = {
@@ -833,6 +845,7 @@ async function runAgenticSimulation(config, scenario) {
 // =====================================================
 async function runSimulation(config) {
   const scenario = loadScenario(config.scenario);
+  if (!config.provider && config.model) config.provider = inferProvider(config.model);
   const mode = config.execution_mode || scenario.execution_mode || 'turn_based';
   config.execution_mode = mode;
 
@@ -911,11 +924,13 @@ app.get('/api/scenarios', (_req, res) => {
 app.post('/api/wargame/start', async (req, res) => {
   if (activeSim) return res.status(409).json({ error: 'Simulation already running' });
   const { scenario, variant, framing, provider, model, execution_mode, variables } = req.body;
-  if (!scenario || !variant || !framing || !provider) {
-    return res.status(400).json({ error: 'Missing required fields: scenario, variant, framing, provider' });
+  if (!scenario || !variant || !framing) {
+    return res.status(400).json({ error: 'Missing required fields: scenario, variant, framing' });
   }
+  // Infer provider from model if not explicitly provided
+  const resolvedProvider = provider || inferProvider(model || '');
   res.json({ status: 'started', runId: 'pending' });
-  runSimulation({ scenario, variant, framing, provider, model, execution_mode, variables }).catch(err => {
+  runSimulation({ scenario, variant, framing, provider: resolvedProvider, model, execution_mode, variables }).catch(err => {
     console.error('Simulation failed:', err);
     broadcast({ type: 'error', message: err.message });
     activeSim = null;

@@ -2461,12 +2461,6 @@ body.resizing * { transition: none !important; cursor: col-resize !important; }
   color: #00ff41;
   margin-bottom: 8px;
 }
-.wg-provider-note {
-  font-size: 10px;
-  padding: 2px 0 4px 0;
-  color: #888;
-}
-
 /* Hide Cesium default UI */
 .cesium-viewer-toolbar,
 .cesium-viewer-animationContainer,

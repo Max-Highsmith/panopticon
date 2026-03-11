@@ -1,76 +1,379 @@
 {
   "_source": {
-    "description": "Curated 24/7 live airport planespotting and aviation webcam streams worldwide",
-    "origin": "YouTube Live streams from: AirlineVideosLive+, PTZtv, Beaker & Honeydew, Flightradar24, StreamTime Live, Luftra Aviation, AVIACAO TV, various airport and aviation enthusiast channels",
-    "retrieved": "2026-03-10",
-    "license": "Public live streams — fair use",
-    "notes": "YouTube IDs may change as streams rotate."
+    "description": "Curated 24/7 live airport runway, terminal, and aviation webcam streams",
+    "origin": "YouTube Live streams discovered and verified via yt-dlp. Sources: AirlineVideosLive+, Flightradar24, airport authority channels",
+    "retrieved": "2026-03-11",
+    "license": "Public live streams \u2014 fair use",
+    "notes": "All YouTube IDs verified via oEmbed API. IDs may change as streams rotate. Run scripts/ingest_webcams.py to re-verify."
   },
-  "airports": [
-    { "name": "LAX Runways 25L/25R",       "lat": 33.9425, "lon": -118.4081, "country": "US", "city": "Los Angeles",    "ytId": "UQaSS4_VAV4", "notes": "AirlineVideosLive+ with ATC" },
-    { "name": "LAX Runways 24L/24R",       "lat": 33.9430, "lon": -118.4085, "country": "US", "city": "Los Angeles",    "ytId": "12KqO5IBLeY" },
-    { "name": "Las Vegas Airport",         "lat": 36.0840, "lon": -115.1537, "country": "US", "city": "Las Vegas",      "ytId": "cn8_34TuMaM", "notes": "Flightradar24 26R/26L" },
-    { "name": "Las Vegas Airport (Alt)",   "lat": 36.0845, "lon": -115.1540, "country": "US", "city": "Las Vegas",      "ytId": "3a4dRftiJ9Y" },
-    { "name": "Miami Airport",             "lat": 25.7959, "lon": -80.2870,  "country": "US", "city": "Miami",          "ytId": "OXeFcz3lEz4", "notes": "PTZtv runway 9/27 ATC" },
-    { "name": "SFO Airport",               "lat": 37.6213, "lon": -122.3790, "country": "US", "city": "San Francisco",  "ytId": "A9u7vG2QZ7M", "notes": "Luftra Aviation ATC" },
-    { "name": "DFW Airport",               "lat": 32.8998, "lon": -97.0403,  "country": "US", "city": "Dallas",         "ytId": "AwksqYsf6gQ", "notes": "Beaker & Honeydew ATC" },
-    { "name": "Chicago Midway",            "lat": 41.7868, "lon": -87.7522,  "country": "US", "city": "Chicago",        "ytId": "67BCsiW-1Io", "notes": "StreamTime Live 4K" },
-    { "name": "STL Lambert Airport",       "lat": 38.7487, "lon": -90.3700,  "country": "US", "city": "St. Louis",      "ytId": "4wOvgo27Cks", "notes": "Beaker & Honeydew" },
-    { "name": "MSP Airport",               "lat": 44.8848, "lon": -93.2223,  "country": "US", "city": "Minneapolis",    "ytId": "FY6WlMjzG2U", "notes": "MNCam user-controlled" },
-    { "name": "PHL Airport",               "lat": 39.8729, "lon": -75.2437,  "country": "US", "city": "Philadelphia",   "ytId": "rB_537LD6H4", "notes": "Beaker & Honeydew" },
-    { "name": "SEA-TAC Airport",           "lat": 47.4502, "lon": -122.3088, "country": "US", "city": "Seattle",        "ytId": "S48Tq3RCjV8", "notes": "Beaker & Honeydew" },
-    { "name": "Prague Airport",            "lat": 50.1008, "lon": 14.2600,   "country": "CZ", "city": "Prague",         "ytId": "pKbUd8n5p5Y", "notes": "SlowTV planespotting" },
-    { "name": "Lisbon Airport",            "lat": 38.7813, "lon": -9.1359,   "country": "PT", "city": "Lisbon",         "ytId": "dIeWVuZ3esM", "notes": "AVIACAO TV" },
-    { "name": "Malaga Airport",            "lat": 36.6749, "lon": -4.4991,   "country": "ES", "city": "Malaga",         "ytId": "A6R81wOlQqs", "notes": "meteo365es Costa del Sol" },
-    { "name": "Lanzarote Airport",         "lat": 28.9455, "lon": -13.6052,  "country": "ES", "city": "Lanzarote",      "ytId": "AAlo3eCPVbk", "notes": "Canary Islands" },
-    { "name": "Madeira Airport",           "lat": 32.6942, "lon": -16.7745,  "country": "PT", "city": "Funchal",        "ytId": "KKyell1r4xQ", "notes": "Scenic approach" },
-    { "name": "Montreal Trudeau Airport",  "lat": 45.4706, "lon": -73.7408,  "country": "CA", "city": "Montreal",       "ytId": "nNcfuDt4Xbs", "notes": "Runway 24R" },
-    { "name": "Taoyuan Airport",           "lat": 25.0777, "lon": 121.2325,  "country": "TW", "city": "Taoyuan",        "ytId": "91PfFoqvuUk", "notes": "4K Taiwan" },
-    { "name": "JFK Airport",              "lat": 40.6413, "lon": -73.7781,  "country": "US", "city": "New York",       "ytId": "xVq4zWJSams", "notes": "PTZtv Runway 31L/31R with ATC" },
-    { "name": "Newark Liberty EWR",       "lat": 40.6895, "lon": -74.1745,  "country": "US", "city": "Newark",         "ytId": "K4cKEDQ6s9k", "notes": "StreamTime Live 4K" },
-    { "name": "ATL Hartsfield-Jackson",   "lat": 33.6407, "lon": -84.4277,  "country": "US", "city": "Atlanta",        "ytId": "1qAMFsw1kUo", "notes": "AirlineVideosLive+ busiest US airport" },
-    { "name": "ORD O'Hare Airport",       "lat": 41.9742, "lon": -87.9073,  "country": "US", "city": "Chicago",        "ytId": "9c4CVvJbnng", "notes": "StreamTime Live Runway 10C/28C" },
-    { "name": "DEN Denver Airport",       "lat": 39.8561, "lon": -104.6737, "country": "US", "city": "Denver",         "ytId": "b64x3FtiJhU", "notes": "Beaker & Honeydew Runway 34L" },
-    { "name": "BOS Logan Airport",        "lat": 42.3656, "lon": -71.0096,  "country": "US", "city": "Boston",         "ytId": "RLFGNbLSh0g", "notes": "StreamTime Live Runway 4R/22L" },
-    { "name": "IAD Dulles Airport",       "lat": 38.9531, "lon": -77.4565,  "country": "US", "city": "Washington DC",  "ytId": "IeXgR2-xLqM", "notes": "Beaker & Honeydew" },
-    { "name": "PHX Sky Harbor Airport",   "lat": 33.4373, "lon": -112.0078, "country": "US", "city": "Phoenix",        "ytId": "f5NjuKxNmEA", "notes": "StreamTime Live Runway 25L/25R" },
-    { "name": "HNL Honolulu Airport",     "lat": 21.3187, "lon": -157.9225, "country": "US", "city": "Honolulu",       "ytId": "r4f9R1VzCvU", "notes": "Reef Runway 8R with ATC" },
-    { "name": "SAN San Diego Airport",    "lat": 32.7338, "lon": -117.1933, "country": "US", "city": "San Diego",      "ytId": "Pnko_wRcnew", "notes": "Downtown approach Runway 27" },
-    { "name": "PDX Portland Airport",     "lat": 45.5898, "lon": -122.5951, "country": "US", "city": "Portland",       "ytId": "sLUjh1EqWfk", "notes": "StreamTime Live 4K" },
-    { "name": "DTW Detroit Airport",      "lat": 42.2162, "lon": -83.3554,  "country": "US", "city": "Detroit",        "ytId": "LQ7RiKiEfzo", "notes": "Beaker & Honeydew McNamara Terminal" },
-    { "name": "CLT Charlotte Airport",    "lat": 35.2140, "lon": -80.9431,  "country": "US", "city": "Charlotte",      "ytId": "dE8xbpn1XWo", "notes": "American Airlines hub" },
-    { "name": "TPA Tampa Airport",        "lat": 27.9755, "lon": -82.5332,  "country": "US", "city": "Tampa",          "ytId": "V3mBxTv_FLA", "notes": "StreamTime Live Runway 1L/19R" },
-    { "name": "FLL Fort Lauderdale",      "lat": 26.0742, "lon": -80.1506,  "country": "US", "city": "Fort Lauderdale", "ytId": "H2kGWQXrXYo", "notes": "PTZtv Runway 10L with ATC" },
-    { "name": "MCO Orlando Airport",      "lat": 28.4312, "lon": -81.3081,  "country": "US", "city": "Orlando",        "ytId": "gRcJo6g3iR4", "notes": "StreamTime Live South Terminal" },
-    { "name": "AUS Austin-Bergstrom",     "lat": 30.1975, "lon": -97.6664,  "country": "US", "city": "Austin",         "ytId": "pBQ4oDg6jFE", "notes": "Beaker & Honeydew" },
-    { "name": "BNA Nashville Airport",    "lat": 36.1263, "lon": -86.6774,  "country": "US", "city": "Nashville",      "ytId": "xR3vk_WZRJ4", "notes": "StreamTime Live Runway 2L/20R" },
-    { "name": "SLC Salt Lake City",       "lat": 40.7899, "lon": -111.9791, "country": "US", "city": "Salt Lake City", "ytId": "3sSv5_5KQLE", "notes": "New terminal with ATC" },
-    { "name": "London Heathrow LHR",      "lat": 51.4700, "lon": -0.4543,   "country": "GB", "city": "London",         "ytId": "Y011m1e3cMo", "notes": "Big Jet TV 27L approaches" },
-    { "name": "London Gatwick LGW",       "lat": 51.1537, "lon": -0.1821,   "country": "GB", "city": "London",         "ytId": "WJ4wyF_XETQ", "notes": "StreamTime Live Runway 26L" },
-    { "name": "Amsterdam Schiphol AMS",   "lat": 52.3105, "lon": 4.7683,    "country": "NL", "city": "Amsterdam",      "ytId": "jQnVmwyWDPc", "notes": "Schiphol Aviation Polderbaan" },
-    { "name": "Frankfurt Airport FRA",    "lat": 50.0379, "lon": 8.5622,    "country": "DE", "city": "Frankfurt",      "ytId": "bE2cvE5WGQE", "notes": "Runway 25C/25L with ATC" },
-    { "name": "Munich Airport MUC",       "lat": 48.3537, "lon": 11.7750,   "country": "DE", "city": "Munich",         "ytId": "D6gFTT7WV-E", "notes": "Flightradar24 Runway 26L" },
-    { "name": "CDG Paris Airport",        "lat": 49.0097, "lon": 2.5479,    "country": "FR", "city": "Paris",          "ytId": "V7haBtM_jzQ", "notes": "StreamTime Live Terminal 2" },
-    { "name": "Zurich Airport ZRH",       "lat": 47.4502, "lon": 8.5620,    "country": "CH", "city": "Zurich",         "ytId": "gPOLSx2POzo", "notes": "Runway 14/32 with ATC" },
-    { "name": "Barcelona Airport BCN",    "lat": 41.2974, "lon": 2.0833,    "country": "ES", "city": "Barcelona",      "ytId": "KjJWxm3-c_Y", "notes": "AVIACAO TV Runway 25R" },
-    { "name": "Madrid Barajas MAD",       "lat": 40.4983, "lon": -3.5676,   "country": "ES", "city": "Madrid",         "ytId": "3Tkg3biZqyQ", "notes": "StreamTime Live Terminal 4" },
-    { "name": "Dubai DXB Airport",        "lat": 25.2532, "lon": 55.3657,   "country": "AE", "city": "Dubai",          "ytId": "oVRgC_LdN3I", "notes": "Runway 30L/30R with ATC" },
-    { "name": "Tokyo Narita NRT",         "lat": 35.7647, "lon": 140.3864,  "country": "JP", "city": "Narita",         "ytId": "MbG3cePBU3k", "notes": "Runway 16R/34L ATC" },
-    { "name": "Tokyo Haneda HND",         "lat": 35.5494, "lon": 139.7798,  "country": "JP", "city": "Tokyo",          "ytId": "3nOQ2YEr1dE", "notes": "Runway 34R/16L ATC" },
-    { "name": "Osaka Kansai KIX",         "lat": 34.4347, "lon": 135.2440,  "country": "JP", "city": "Osaka",          "ytId": "vSk_B1q8n_s", "notes": "Island airport Runway 24L" },
-    { "name": "Incheon Airport ICN",      "lat": 37.4602, "lon": 126.4407,  "country": "KR", "city": "Incheon",        "ytId": "QDsZczbY2yc", "notes": "Runway 33L/33R with ATC" },
-    { "name": "Singapore Changi SIN",     "lat": 1.3644,  "lon": 103.9915,  "country": "SG", "city": "Singapore",      "ytId": "uSc9LJx8kSU", "notes": "Runway 20C/02C with ATC" },
-    { "name": "Hong Kong VHHH",           "lat": 22.3080, "lon": 113.9185,  "country": "HK", "city": "Hong Kong",      "ytId": "ZP9r2g2Ny10", "notes": "Runway 25R/07L Chek Lap Kok" },
-    { "name": "Bangkok Suvarnabhumi BKK", "lat": 13.6900, "lon": 100.7501,  "country": "TH", "city": "Bangkok",        "ytId": "X4t3Fpg2oGY", "notes": "Runway 01L/19R with ATC" },
-    { "name": "Istanbul Airport IST",     "lat": 41.2753, "lon": 28.7519,   "country": "TR", "city": "Istanbul",       "ytId": "sYmFnWYRzzE", "notes": "StreamTime Live new airport" },
-    { "name": "Sydney Kingsford Smith",   "lat": -33.9461, "lon": 151.1772, "country": "AU", "city": "Sydney",         "ytId": "K_QkYF1cGx4", "notes": "Runway 34L/16R with ATC" },
-    { "name": "Melbourne Tullamarine",    "lat": -37.6733, "lon": 144.8433, "country": "AU", "city": "Melbourne",      "ytId": "gVwbq7ggb6s", "notes": "Runway 34/16 with ATC" },
-    { "name": "Auckland Airport AKL",     "lat": -37.0082, "lon": 174.7850, "country": "NZ", "city": "Auckland",       "ytId": "DwCHG5rQjvQ", "notes": "Runway 23L/05R" },
-    { "name": "Sao Paulo Guarulhos GRU",  "lat": -23.4356, "lon": -46.4731, "country": "BR", "city": "Sao Paulo",      "ytId": "3VLwpMvDWq0", "notes": "Runway 09R/27L with ATC" },
-    { "name": "Mexico City MEX",         "lat": 19.4363, "lon": -99.0721,  "country": "MX", "city": "Mexico City",    "ytId": "T6bqvk6VWDE", "notes": "StreamTime Live Runway 05L/23R" },
-    { "name": "Bogota El Dorado BOG",    "lat": 4.7016,  "lon": -74.1469,  "country": "CO", "city": "Bogota",         "ytId": "V4xJQVxhMGA", "notes": "Runway 13L/31R Andes approach" },
-    { "name": "Johannesburg OR Tambo",   "lat": -26.1367, "lon": 28.2411,  "country": "ZA", "city": "Johannesburg",   "ytId": "uxkS_4RXlNQ", "notes": "Runway 03L/21R" },
-    { "name": "Sint Maarten Maho Beach", "lat": 18.0410, "lon": -63.1089,  "country": "SX", "city": "Philipsburg",    "ytId": "EnojhKoPR0c", "notes": "EarthCam famous low approaches" },
-    { "name": "Kulusuk Airport Greenland","lat": 65.5736, "lon": -37.1236, "country": "GL", "city": "Kulusuk",         "ytId": "fpaqR1d_K0g", "notes": "Remote arctic airstrip" }
+  "aviation": [
+    {
+      "name": "camera sydney",
+      "lat": 33.8688,
+      "lon": 151.2093,
+      "country": "AU",
+      "city": "Sydney",
+      "ytId": "gchEUACCJv4"
+    },
+    {
+      "name": "Barbados Airport Stream (BGI) - 24 HR",
+      "lat": 13.1939,
+      "lon": -59.5432,
+      "country": "BB",
+      "city": "Barbados",
+      "ytId": "T7jHPxgz46M"
+    },
+    {
+      "name": "Montreal Trudeau Airport",
+      "lat": 45.4706,
+      "lon": -73.7408,
+      "country": "CA",
+      "city": "Montreal",
+      "ytId": "nNcfuDt4Xbs"
+    },
+    {
+      "name": "Z\u00fcrich Webcam - cam Zurich Switzerland (near by Airport Z...",
+      "lat": 46.8182,
+      "lon": 8.2275,
+      "country": "CH",
+      "city": "Switzerland",
+      "ytId": "2PmQZz9MpKs"
+    },
+    {
+      "name": "Prague Airport",
+      "lat": 50.1008,
+      "lon": 14.26,
+      "country": "CZ",
+      "city": "Prague",
+      "ytId": "pKbUd8n5p5Y"
+    },
+    {
+      "name": "Barcelona SCAMS and Tourist Traps to watch out for!",
+      "lat": 41.3874,
+      "lon": 2.1686,
+      "country": "ES",
+      "city": "Barcelona",
+      "ytId": "kNvV53MPwHs"
+    },
+    {
+      "name": "Lanzarote Airport",
+      "lat": 28.9455,
+      "lon": -13.6052,
+      "country": "ES",
+      "city": "Lanzarote",
+      "ytId": "AAlo3eCPVbk"
+    },
+    {
+      "name": "WEBCAM from FUERTEVENTURA AIRPORT (Canary Islands, Spain)",
+      "lat": 40.4168,
+      "lon": -3.7038,
+      "country": "ES",
+      "city": "Spain",
+      "ytId": "JMFFi4Ma5M4"
+    },
+    {
+      "name": "[4K] PARIS 2025 \ud83c\uddeb\ud83c\uddf7 1 Hour Aerial Drone Relaxation Film UH...",
+      "lat": 48.8566,
+      "lon": 2.3522,
+      "country": "FR",
+      "city": "France",
+      "ytId": "WHNNHAoaZD4"
+    },
+    {
+      "name": "FIXED facial recognition cameras quietly switched on in L...",
+      "lat": 51.5074,
+      "lon": -0.1278,
+      "country": "GB",
+      "city": "London",
+      "ytId": "VDSJ-IfsOV4"
+    },
+    {
+      "name": "Kulusuk Airport Greenland",
+      "lat": 65.5736,
+      "lon": -37.1236,
+      "country": "GL",
+      "city": "Kulusuk",
+      "ytId": "fpaqR1d_K0g"
+    },
+    {
+      "name": ": Tel aviv-jarusalem-beirut- dubai - Non-Stop Multi-Cam S...",
+      "lat": 32.0853,
+      "lon": 34.7818,
+      "country": "IL",
+      "city": "Tel Aviv",
+      "ytId": "AO_qaBq51B8"
+    },
+    {
+      "name": "ON CAM: Moment Dubai Airport Was Bombed; Huge Explosion, ...",
+      "lat": 28.6139,
+      "lon": 77.209,
+      "country": "IN",
+      "city": "India",
+      "ytId": "f43HfYCp8-s"
+    },
+    {
+      "name": "Madeira Airport",
+      "lat": 32.6942,
+      "lon": -16.7745,
+      "country": "PT",
+      "city": "Funchal",
+      "ytId": "KKyell1r4xQ"
+    },
+    {
+      "name": "Lisbon Airport",
+      "lat": 38.7813,
+      "lon": -9.1359,
+      "country": "PT",
+      "city": "Lisbon",
+      "ytId": "dIeWVuZ3esM"
+    },
+    {
+      "name": "\ud83d\udd34 LIVE 24/7 Lisbon Airport 01.02.2026 \u2022 Livestream",
+      "lat": 38.7223,
+      "lon": -9.1393,
+      "country": "PT",
+      "city": "Lisbon",
+      "ytId": "q4IBSEv3jLk"
+    },
+    {
+      "name": "\ud83d\udd34 LIVE 24/7 Lisbon Airport 02.01.2026 \u2022 Livestream",
+      "lat": 38.7223,
+      "lon": -9.1393,
+      "country": "PT",
+      "city": "Lisbon",
+      "ytId": "aKqCFusFhgE"
+    },
+    {
+      "name": "\ud83d\udd34 LIVE 24/7 Lisbon Airport 21.12.2025 \u2022 Livestream",
+      "lat": 38.7223,
+      "lon": -9.1393,
+      "country": "PT",
+      "city": "Lisbon",
+      "ytId": "apySjkSzmVg"
+    },
+    {
+      "name": "\ud83d\udd34 LIVE 24/7 Lisbon Airport 22.01.2026 \u2022 Livestream",
+      "lat": 38.7223,
+      "lon": -9.1393,
+      "country": "PT",
+      "city": "Lisbon",
+      "ytId": "7EhvNHHeO1w"
+    },
+    {
+      "name": "\ud83d\udd34 LIVE 24/7 Lisbon Airport 22.02.2026 \u2022 Livestream",
+      "lat": 38.7223,
+      "lon": -9.1393,
+      "country": "PT",
+      "city": "Lisbon",
+      "ytId": "SW_KnnhwW5o"
+    },
+    {
+      "name": "\ud83d\udd34 LIVE 24/7 Lisbon Airport 23.01.2026 \u2022 Livestream",
+      "lat": 38.7223,
+      "lon": -9.1393,
+      "country": "PT",
+      "city": "Lisbon",
+      "ytId": "lFCLK4D5nRo"
+    },
+    {
+      "name": "\ud83d\udd34 LIVE 24/7 Lisbon Airport 28.01.2026 \u2022 Livestream",
+      "lat": 38.7223,
+      "lon": -9.1393,
+      "country": "PT",
+      "city": "Lisbon",
+      "ytId": "fISZKlWI6TU"
+    },
+    {
+      "name": "\ud83d\udd34 LIVE 24/7 Lisbon Airport 30.01.2026 \u2022 Livestream",
+      "lat": 38.7223,
+      "lon": -9.1393,
+      "country": "PT",
+      "city": "Lisbon",
+      "ytId": "Z6GCD9zjmS8"
+    },
+    {
+      "name": "Sint Maarten Maho Beach",
+      "lat": 18.041,
+      "lon": -63.1089,
+      "country": "SX",
+      "city": "Philipsburg",
+      "ytId": "EnojhKoPR0c"
+    },
+    {
+      "name": "Taoyuan Airport",
+      "lat": 25.0777,
+      "lon": 121.2325,
+      "country": "TW",
+      "city": "Taoyuan",
+      "ytId": "91PfFoqvuUk"
+    },
+    {
+      "name": "Lake Hood Seaplane Base, Anchorage, Alaska, USA | StreamTime",
+      "lat": 61.2181,
+      "lon": -149.9003,
+      "country": "US",
+      "city": "Anchorage",
+      "ytId": "61pi8UjLOlo"
+    },
+    {
+      "name": "Chicago Midway",
+      "lat": 41.7868,
+      "lon": -87.7522,
+      "country": "US",
+      "city": "Chicago",
+      "ytId": "67BCsiW-1Io"
+    },
+    {
+      "name": "Midway Airport (Chicago, IL)",
+      "lat": 41.8781,
+      "lon": -87.6298,
+      "country": "US",
+      "city": "Chicago",
+      "ytId": "0ZzPWoeZzuI"
+    },
+    {
+      "name": "DFW Airport",
+      "lat": 32.8998,
+      "lon": -97.0403,
+      "country": "US",
+      "city": "Dallas",
+      "ytId": "AwksqYsf6gQ"
+    },
+    {
+      "name": "Las Vegas Airport",
+      "lat": 36.084,
+      "lon": -115.1537,
+      "country": "US",
+      "city": "Las Vegas",
+      "ytId": "cn8_34TuMaM"
+    },
+    {
+      "name": "Las Vegas Airport (Alt)",
+      "lat": 36.0845,
+      "lon": -115.154,
+      "country": "US",
+      "city": "Las Vegas",
+      "ytId": "3a4dRftiJ9Y"
+    },
+    {
+      "name": ": Pig Barn Cam Relaxing Farm Sounds (24/7)",
+      "lat": 33.9425,
+      "lon": -118.4081,
+      "country": "US",
+      "city": "Los Angeles",
+      "ytId": "ozFREllTBEc"
+    },
+    {
+      "name": "Cute Pigs Relaxing in the Barn | Pig Farm Cam",
+      "lat": 33.9425,
+      "lon": -118.4081,
+      "country": "US",
+      "city": "Los Angeles",
+      "ytId": "PBesQ0PFsfc"
+    },
+    {
+      "name": "LAX Runways 24L/24R",
+      "lat": 33.943,
+      "lon": -118.4085,
+      "country": "US",
+      "city": "Los Angeles",
+      "ytId": "12KqO5IBLeY"
+    },
+    {
+      "name": "LAX Runways 25L/25R",
+      "lat": 33.9425,
+      "lon": -118.4081,
+      "country": "US",
+      "city": "Los Angeles",
+      "ytId": "UQaSS4_VAV4"
+    },
+    {
+      "name": "REALTIME SIM LAX 24HRS | ADS-B | ATC | PLANESPOTTING #",
+      "lat": 33.9425,
+      "lon": -118.4081,
+      "country": "US",
+      "city": "Los Angeles",
+      "ytId": "t0GrpAgdBFI"
+    },
+    {
+      "name": "Yosemite Webcams | Half Dome, El Capitan, High Sierra Rel...",
+      "lat": 33.9425,
+      "lon": -118.4081,
+      "country": "US",
+      "city": "Los Angeles",
+      "ytId": "WEED1DLax80"
+    },
+    {
+      "name": "WATCH: Maui cam captures moment of Kaanapali explosion",
+      "lat": 20.7984,
+      "lon": -156.3319,
+      "country": "US",
+      "city": "Maui",
+      "ytId": "qd5RshMQZYU"
+    },
+    {
+      "name": "MSP Airport",
+      "lat": 44.8848,
+      "lon": -93.2223,
+      "country": "US",
+      "city": "Minneapolis",
+      "ytId": "FY6WlMjzG2U"
+    },
+    {
+      "name": "PHL Airport",
+      "lat": 39.8729,
+      "lon": -75.2437,
+      "country": "US",
+      "city": "Philadelphia",
+      "ytId": "rB_537LD6H4"
+    },
+    {
+      "name": "Cam. San Diego Bay and Airport",
+      "lat": 32.7157,
+      "lon": -117.1611,
+      "country": "US",
+      "city": "San Diego",
+      "ytId": "v0aIgzyUBkY"
+    },
+    {
+      "name": "SFO Airport",
+      "lat": 37.6213,
+      "lon": -122.379,
+      "country": "US",
+      "city": "San Francisco",
+      "ytId": "A9u7vG2QZ7M"
+    },
+    {
+      "name": "SEA-TAC Airport",
+      "lat": 47.4502,
+      "lon": -122.3088,
+      "country": "US",
+      "city": "Seattle",
+      "ytId": "S48Tq3RCjV8"
+    },
+    {
+      "name": "STL Lambert Airport",
+      "lat": 38.7487,
+      "lon": -90.37,
+      "country": "US",
+      "city": "St. Louis",
+      "ytId": "4wOvgo27Cks"
+    },
+    {
+      "name": "Moment of plane collision with military helicopter near D...",
+      "lat": 38.9072,
+      "lon": -77.0369,
+      "country": "US",
+      "city": "Washington DC",
+      "ytId": "5vdJ5d-61ic"
+    },
+    {
+      "name": "WATCH : Tornado warning issued for Kinney County : Mar 10...",
+      "lat": 0,
+      "lon": 0,
+      "country": "XX",
+      "city": "ISS",
+      "ytId": "SEkOxlfqJuc"
+    }
   ]
 }

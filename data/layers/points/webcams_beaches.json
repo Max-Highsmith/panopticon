@@ -1,136 +1,547 @@
 {
   "_source": {
-    "description": "Curated 24/7 live beach, surf, and coastal webcam streams worldwide",
-    "origin": "YouTube Live streams from: EarthCam (earthcam.com), Surfline, The Surfers View, explore.org, Teleport.camera, Crystal Bay, SkylineWebcams, local surf cam operators",
-    "retrieved": "2026-03-10",
-    "license": "Public live streams — fair use",
-    "notes": "YouTube IDs may change as streams rotate."
+    "description": "Curated 24/7 live beach, surf, and coastal webcam streams",
+    "origin": "YouTube Live streams discovered and verified via yt-dlp. Sources: EarthCam, SkylineWebcams, surf cam operators, beach tourism channels",
+    "retrieved": "2026-03-11",
+    "license": "Public live streams \u2014 fair use",
+    "notes": "All YouTube IDs verified via oEmbed API. IDs may change as streams rotate. Run scripts/ingest_webcams.py to re-verify."
   },
   "beaches": [
-    { "name": "Venice Beach LA", "lat": 33.9850, "lon": -118.4695, "country": "US", "city": "Los Angeles", "ytId": "EO_1LWqsCNE", "notes": "Teleport.camera" },
-    { "name": "Venice Beach Boardwalk", "lat": 33.9870, "lon": -118.4720, "country": "US", "city": "Los Angeles", "ytId": "33jd99xs63I", "notes": "Venice Vive 1440p" },
-    { "name": "Santa Monica Beach", "lat": 34.0082, "lon": -118.4987, "country": "US", "city": "Santa Monica", "ytId": "OWbI6WtlI-k", "notes": "Pier and beach" },
-    { "name": "The Wedge Newport", "lat": 33.5930, "lon": -117.8820, "country": "US", "city": "Newport Beach", "ytId": "4qxqhe67ejU", "notes": "Famous surf break" },
-    { "name": "Huntington Beach Pier", "lat": 33.6553, "lon": -117.9993, "country": "US", "city": "Huntington Beach", "ytId": "mhQjsLBfOoY", "notes": "Surf City USA" },
-    { "name": "Manhattan Beach", "lat": 33.8847, "lon": -118.4109, "country": "US", "city": "Manhattan Beach", "ytId": "tBEIYdw1HeM", "notes": "The Surfers View" },
-    { "name": "Oceanside CA", "lat": 33.1959, "lon": -117.3795, "country": "US", "city": "Oceanside", "ytId": "cvP_F-c2Upw", "notes": "Rooftop bar view" },
-    { "name": "Pacifica Pier", "lat": 37.6330, "lon": -122.4940, "country": "US", "city": "Pacifica", "ytId": "zYi_5AF6B2A", "notes": "4K south of SF" },
-    { "name": "Cape Kiwanda", "lat": 45.2170, "lon": -123.9670, "country": "US", "city": "Pacific City", "ytId": "S5FRz8m4xWI", "notes": "Oregon Coast surf" },
-    { "name": "Pipeline North Shore", "lat": 21.6640, "lon": -158.0530, "country": "US", "city": "Haleiwa", "ytId": "VI8Wj5EwoRM", "notes": "explore.org Pipeline" },
-    { "name": "Waimea Bay", "lat": 21.6420, "lon": -158.0640, "country": "US", "city": "Haleiwa", "ytId": "wnNrd-VjLsQ", "notes": "North Shore Oahu" },
-    { "name": "Coney Island", "lat": 40.5749, "lon": -73.9710, "country": "US", "city": "New York", "ytId": "H67j7H-7QD0", "notes": "EarthCam boardwalk" },
-    { "name": "Hamptons Main Beach", "lat": 40.9624, "lon": -72.1860, "country": "US", "city": "East Hampton", "ytId": "Ba2cLC3xUpU", "notes": "East Hampton Main Beach" },
-    { "name": "Deerfield Beach", "lat": 26.3184, "lon": -80.0728, "country": "US", "city": "Deerfield Beach", "ytId": "EmulKlmaXrQ", "notes": "Surf camera FL" },
-    { "name": "Hollywood Beach FL", "lat": 26.0112, "lon": -80.1187, "country": "US", "city": "Hollywood", "ytId": "cmkAbDUEoyA", "notes": "Broadwalk cam" },
-    { "name": "30A Beach Florida", "lat": 30.2835, "lon": -86.0155, "country": "US", "city": "Santa Rosa Beach", "ytId": "ftGfQqCA184", "notes": "Scenic 30A" },
-    { "name": "Clearwater Beach", "lat": 27.9758, "lon": -82.8270, "country": "US", "city": "Clearwater", "ytId": "rxBBRLWF0mM", "notes": "Frenchy's Rockaway Grill" },
-    { "name": "Vilano Beach", "lat": 29.9250, "lon": -81.2950, "country": "US", "city": "St. Augustine", "ytId": "mYbn_umeenk", "notes": "North of St. Augustine" },
-    { "name": "St. Augustine Beach", "lat": 29.8563, "lon": -81.2658, "country": "US", "city": "St. Augustine", "ytId": "H2q_DJc33kg", "notes": "Surf Station" },
-    { "name": "Galveston Beach", "lat": 29.2870, "lon": -94.7874, "country": "US", "city": "Galveston", "ytId": "HkHhXsWci7Q", "notes": "ABC13 beach cam" },
-    { "name": "Packery Channel", "lat": 27.6340, "lon": -97.2190, "country": "US", "city": "Corpus Christi", "ytId": "5s6X2045OTs", "notes": "North Padre Island" },
-    { "name": "South Padre Island", "lat": 26.1118, "lon": -97.1681, "country": "US", "city": "South Padre", "ytId": "dzylsC0KcOE", "notes": "Island surf cam" },
-    { "name": "Aquinnah Beach", "lat": 41.3323, "lon": -70.8369, "country": "US", "city": "Martha's Vineyard", "ytId": "V3yWSeZBlaI", "notes": "Gay Head surf cam" },
-    { "name": "Koh Samui", "lat": 9.4770, "lon": 100.0480, "country": "TH", "city": "Koh Samui", "ytId": "kkVrj2cr9Ko", "notes": "Crystal Bay 4K" },
-    { "name": "Paguera Beach Mallorca", "lat": 39.5010, "lon": 2.4530, "country": "ES", "city": "Paguera", "ytId": "JCjl-XzVuuE", "notes": "Tora Beach 4K" },
-    { "name": "Curacao Mambo Beach", "lat": 12.1167, "lon": -68.9333, "country": "CW", "city": "Willemstad", "ytId": "loHbMM9JfCs", "notes": "LionsDive 4K" },
-    { "name": "Argentina Beaches", "lat": -37.2650, "lon": -56.9710, "country": "AR", "city": "Villa Gesell", "ytId": "2u4GnVNtlsY", "notes": "Multi-cam Patagonia" },
-    { "name": "Ambergris Caye", "lat": 17.9214, "lon": -87.9611, "country": "BZ", "city": "San Pedro", "ytId": "r_XFhbOQ-Jo", "notes": "Belize barrier reef" },
-
-    { "name": "Waikiki Beach", "lat": 21.2765, "lon": -157.8270, "country": "US", "city": "Honolulu", "ytId": "nkGJjb4eMNg", "notes": "EarthCam Waikiki" },
-    { "name": "Waikiki Surf Cam", "lat": 21.2750, "lon": -157.8240, "country": "US", "city": "Honolulu", "ytId": "3WEoV2d-8jM", "notes": "Surfline Queens break" },
-    { "name": "Maui Hookipa Beach", "lat": 20.9340, "lon": -156.3560, "country": "US", "city": "Paia", "ytId": "Jx4bJQ9O4tM", "notes": "Windsurfing capital" },
-    { "name": "Kaanapali Beach Maui", "lat": 20.9250, "lon": -156.6940, "country": "US", "city": "Lahaina", "ytId": "p0lSQaF_YdE", "notes": "West Maui resort beach" },
-    { "name": "Poipu Beach Kauai", "lat": 21.8760, "lon": -159.4580, "country": "US", "city": "Koloa", "ytId": "dB3HeL0PxGo", "notes": "Kauai south shore" },
-
-    { "name": "Malibu Surfrider Beach", "lat": 34.0360, "lon": -118.6810, "country": "US", "city": "Malibu", "ytId": "c9MxJ1QOgrk", "notes": "The Surfers View" },
-    { "name": "Laguna Beach", "lat": 33.5427, "lon": -117.7854, "country": "US", "city": "Laguna Beach", "ytId": "zILSJJWnJYE", "notes": "EarthCam Main Beach" },
-    { "name": "Santa Cruz Steamer Lane", "lat": 36.9516, "lon": -122.0263, "country": "US", "city": "Santa Cruz", "ytId": "Z6Y8Vu-T_Xc", "notes": "Iconic NorCal surf" },
-    { "name": "Half Moon Bay", "lat": 37.4636, "lon": -122.4286, "country": "US", "city": "Half Moon Bay", "ytId": "Wph8VYnxwpI", "notes": "Mavericks area" },
-    { "name": "Carmel Beach", "lat": 36.5558, "lon": -121.9289, "country": "US", "city": "Carmel-by-the-Sea", "ytId": "qP4xMjbckR4", "notes": "White sand Monterey Bay" },
-    { "name": "Pismo Beach", "lat": 35.1428, "lon": -120.6413, "country": "US", "city": "Pismo Beach", "ytId": "R4jQkSFwbGU", "notes": "Central Coast pier" },
-    { "name": "San Clemente Pier", "lat": 33.4181, "lon": -117.6224, "country": "US", "city": "San Clemente", "ytId": "dmw9VNxheFo", "notes": "The Surfers View T-Street" },
-
-    { "name": "Miami Beach South Beach", "lat": 25.7826, "lon": -80.1341, "country": "US", "city": "Miami Beach", "ytId": "6CPGaj7vb7Y", "notes": "EarthCam Ocean Drive" },
-    { "name": "Fort Lauderdale Beach", "lat": 26.1224, "lon": -80.1030, "country": "US", "city": "Fort Lauderdale", "ytId": "WqFFm3Wz2I4", "notes": "EarthCam A1A" },
-    { "name": "Cocoa Beach Pier", "lat": 28.3653, "lon": -80.6048, "country": "US", "city": "Cocoa Beach", "ytId": "YEK0kXYNp1g", "notes": "Space Coast surf" },
-    { "name": "Jupiter Inlet", "lat": 26.9443, "lon": -80.0725, "country": "US", "city": "Jupiter", "ytId": "L1J5WLp7l8M", "notes": "Lighthouse inlet cam" },
-    { "name": "Panama City Beach", "lat": 30.1766, "lon": -85.8055, "country": "US", "city": "Panama City Beach", "ytId": "gZZoq7OB-YE", "notes": "Pineapple Willy's pier" },
-    { "name": "Pensacola Beach", "lat": 30.3287, "lon": -87.1392, "country": "US", "city": "Pensacola Beach", "ytId": "3G_wJrnA7AI", "notes": "Casino Beach pier" },
-    { "name": "Destin Beach", "lat": 30.3935, "lon": -86.4958, "country": "US", "city": "Destin", "ytId": "xVIcBNmrV4s", "notes": "Emerald coast" },
-    { "name": "Sanibel Island", "lat": 26.4520, "lon": -82.1018, "country": "US", "city": "Sanibel", "ytId": "sF_7L_8mGC0", "notes": "Causeway beach cam" },
-    { "name": "Marco Island Beach", "lat": 25.9283, "lon": -81.7354, "country": "US", "city": "Marco Island", "ytId": "Cim4LMbXus0", "notes": "EarthCam Tigertail Beach" },
-    { "name": "Key West Smathers Beach", "lat": 24.5477, "lon": -81.7710, "country": "US", "city": "Key West", "ytId": "9yO_g9kHKPQ", "notes": "Southernmost beach" },
-
-    { "name": "Outer Banks Nags Head", "lat": 35.9579, "lon": -75.6240, "country": "US", "city": "Nags Head", "ytId": "UeH7xwBFjzw", "notes": "OBX pier cam" },
-    { "name": "Outer Banks Kill Devil Hills", "lat": 36.0307, "lon": -75.6720, "country": "US", "city": "Kill Devil Hills", "ytId": "bwzE9QYqrwA", "notes": "Avalon Pier" },
-    { "name": "Myrtle Beach Pier", "lat": 33.6891, "lon": -78.8867, "country": "US", "city": "Myrtle Beach", "ytId": "I8RIm9DNz-w", "notes": "EarthCam 2nd Ave Pier" },
-    { "name": "Virginia Beach Boardwalk", "lat": 36.8529, "lon": -75.9775, "country": "US", "city": "Virginia Beach", "ytId": "5q8SrOcM1H0", "notes": "EarthCam oceanfront" },
-    { "name": "Cape May Beach", "lat": 38.9351, "lon": -74.9060, "country": "US", "city": "Cape May", "ytId": "w3mR5BPQTN0", "notes": "Victorian resort beach" },
-    { "name": "Nantucket Beach", "lat": 41.2835, "lon": -70.0995, "country": "US", "city": "Nantucket", "ytId": "jRJHT-0qVf0", "notes": "Surfside Beach" },
-    { "name": "Old Orchard Beach Maine", "lat": 43.5174, "lon": -70.3773, "country": "US", "city": "Old Orchard Beach", "ytId": "kH_6Sp23bF8", "notes": "Pier and beach" },
-    { "name": "Narragansett Beach RI", "lat": 41.4271, "lon": -71.4582, "country": "US", "city": "Narragansett", "ytId": "Z2J5GQ2OcVQ", "notes": "Town Beach surf" },
-    { "name": "Folly Beach SC", "lat": 32.6552, "lon": -79.9404, "country": "US", "city": "Folly Beach", "ytId": "Q7-h6tYxf_c", "notes": "Charleston area beach" },
-
-    { "name": "Gulf Shores Beach", "lat": 30.2460, "lon": -87.7008, "country": "US", "city": "Gulf Shores", "ytId": "RZvqjOxC3L0", "notes": "Alabama gulf beach" },
-    { "name": "Biloxi Beach", "lat": 30.3960, "lon": -88.8853, "country": "US", "city": "Biloxi", "ytId": "h0aKTxWLz3E", "notes": "Mississippi gulf coast" },
-
-    { "name": "Cancun Beach", "lat": 21.1619, "lon": -86.8515, "country": "MX", "city": "Cancun", "ytId": "L2FR0wJHq_Y", "notes": "Hotel zone beach" },
-    { "name": "Playa del Carmen", "lat": 20.6296, "lon": -87.0739, "country": "MX", "city": "Playa del Carmen", "ytId": "8-CkqhwDigY", "notes": "5th Avenue beach" },
-    { "name": "Puerto Vallarta Malecon", "lat": 20.6123, "lon": -105.2367, "country": "MX", "city": "Puerto Vallarta", "ytId": "a2gQjhJAiIA", "notes": "Banderas Bay" },
-    { "name": "Cabo San Lucas", "lat": 22.8905, "lon": -109.9167, "country": "MX", "city": "Cabo San Lucas", "ytId": "fR3j4wHcvjY", "notes": "Medano Beach" },
-    { "name": "Tulum Beach", "lat": 20.2145, "lon": -87.4292, "country": "MX", "city": "Tulum", "ytId": "t8y_uDmqBZ4", "notes": "Riviera Maya ruins beach" },
-
-    { "name": "Tamarindo Beach Costa Rica", "lat": 10.2994, "lon": -85.8375, "country": "CR", "city": "Tamarindo", "ytId": "t9W7FvhZD3k", "notes": "Guanacaste surf" },
-    { "name": "Jaco Beach Costa Rica", "lat": 9.6158, "lon": -84.6267, "country": "CR", "city": "Jaco", "ytId": "8kZE5OYmEPQ", "notes": "Central Pacific surf" },
-    { "name": "Roatan Beach Honduras", "lat": 16.3200, "lon": -86.5300, "country": "HN", "city": "Roatan", "ytId": "xvGU7D-4bz4", "notes": "West Bay beach" },
-
-    { "name": "Ipanema Beach", "lat": -22.9868, "lon": -43.2075, "country": "BR", "city": "Rio de Janeiro", "ytId": "cYF8oiwkctU", "notes": "Posto 9 view" },
-    { "name": "Copacabana Beach", "lat": -22.9711, "lon": -43.1823, "country": "BR", "city": "Rio de Janeiro", "ytId": "CwSma3j21Mk", "notes": "Posto 3 panorama" },
-    { "name": "Florianopolis Joaquina", "lat": -27.6300, "lon": -48.4470, "country": "BR", "city": "Florianopolis", "ytId": "1qTCB9Lk2FA", "notes": "Santa Catarina surf" },
-    { "name": "Punta del Este", "lat": -34.9474, "lon": -54.9415, "country": "UY", "city": "Punta del Este", "ytId": "v4ynXfmKXrE", "notes": "Brava Beach" },
-    { "name": "Cartagena Beach", "lat": 10.3910, "lon": -75.5514, "country": "CO", "city": "Cartagena", "ytId": "YxkNZb68qHE", "notes": "Bocagrande beach" },
-
-    { "name": "Barbados Bathsheba", "lat": 13.2095, "lon": -59.5225, "country": "BB", "city": "Bathsheba", "ytId": "X_pRz3G8FYU", "notes": "Soup Bowl surf" },
-    { "name": "St. Lucia Rodney Bay", "lat": 14.0723, "lon": -60.9530, "country": "LC", "city": "Rodney Bay", "ytId": "mq0gN0F8bYc", "notes": "Pigeon Island view" },
-    { "name": "Aruba Eagle Beach", "lat": 12.5597, "lon": -70.0475, "country": "AW", "city": "Oranjestad", "ytId": "0cWLaHFrcJA", "notes": "Low-rise resort beach" },
-    { "name": "Montego Bay Jamaica", "lat": 18.4762, "lon": -77.8939, "country": "JM", "city": "Montego Bay", "ytId": "HgTqm4O_0H8", "notes": "Doctor's Cave Beach" },
-    { "name": "Turks and Caicos Grace Bay", "lat": 21.7964, "lon": -72.1527, "country": "TC", "city": "Providenciales", "ytId": "kVpgSwU0MYo", "notes": "Grace Bay Beach" },
-    { "name": "Nassau Bahamas Cable Beach", "lat": 25.0800, "lon": -77.3960, "country": "BS", "city": "Nassau", "ytId": "e5pJXL9H7QQ", "notes": "Cable Beach resort strip" },
-    { "name": "Sint Maarten Maho Beach", "lat": 18.0410, "lon": -63.1089, "country": "SX", "city": "Philipsburg", "ytId": "EnojhKoPR0c", "notes": "EarthCam plane approach" },
-
-    { "name": "Algarve Lagos Beach", "lat": 37.0990, "lon": -8.6730, "country": "PT", "city": "Lagos", "ytId": "Q1Dq3CkVn-o", "notes": "Praia de Dona Ana" },
-    { "name": "Algarve Albufeira", "lat": 37.0880, "lon": -8.2500, "country": "PT", "city": "Albufeira", "ytId": "xzXgRGLzFKk", "notes": "Old Town Beach" },
-    { "name": "Fuerteventura Beach", "lat": 28.3587, "lon": -14.0530, "country": "ES", "city": "Corralejo", "ytId": "jD2EZTz2clA", "notes": "Canary Islands surf" },
-    { "name": "Tenerife Playa de las Americas", "lat": 28.0607, "lon": -16.7303, "country": "ES", "city": "Adeje", "ytId": "qLwVEJy80Bc", "notes": "South Tenerife" },
-    { "name": "Sardinia Costa Smeralda", "lat": 41.0900, "lon": 9.5200, "country": "IT", "city": "Porto Cervo", "ytId": "T6q0TQPHqjk", "notes": "SkylineWebcams" },
-    { "name": "Mykonos Beach", "lat": 37.4467, "lon": 25.3289, "country": "GR", "city": "Mykonos", "ytId": "P3UH4gK4WcM", "notes": "Paradise Beach" },
-    { "name": "Crete Elafonissi", "lat": 35.2683, "lon": 23.5400, "country": "GR", "city": "Elafonissi", "ytId": "fqgL7sVEKX4", "notes": "Pink sand beach" },
-    { "name": "Nice Promenade des Anglais", "lat": 43.6942, "lon": 7.2655, "country": "FR", "city": "Nice", "ytId": "Mn5OhQ73X7E", "notes": "French Riviera" },
-    { "name": "Saint-Tropez Beach", "lat": 43.2677, "lon": 6.6406, "country": "FR", "city": "Saint-Tropez", "ytId": "ZCFG9XkECVo", "notes": "Pampelonne area" },
-    { "name": "Cornwall Newquay Fistral", "lat": 50.4150, "lon": -5.1000, "country": "GB", "city": "Newquay", "ytId": "xLkBVP6Kx2Y", "notes": "UK surf capital" },
-    { "name": "Scheveningen Beach", "lat": 52.1075, "lon": 4.2700, "country": "NL", "city": "The Hague", "ytId": "Lxqq2RW5Lxc", "notes": "North Sea beach" },
-    { "name": "Barcelona Barceloneta", "lat": 41.3800, "lon": 2.1890, "country": "ES", "city": "Barcelona", "ytId": "vN2gW8RFYPI", "notes": "City beach" },
-    { "name": "Amalfi Coast Positano", "lat": 40.6281, "lon": 14.4849, "country": "IT", "city": "Positano", "ytId": "g_35_KOznYc", "notes": "SkylineWebcams" },
-
-    { "name": "Bali Kuta Beach", "lat": -8.7184, "lon": 115.1686, "country": "ID", "city": "Kuta", "ytId": "jMbyMVCX6ig", "notes": "Bali surf cam" },
-    { "name": "Bali Canggu", "lat": -8.6478, "lon": 115.1385, "country": "ID", "city": "Canggu", "ytId": "oVp0U4eg1QQ", "notes": "Echo Beach surf" },
-    { "name": "Phuket Patong Beach", "lat": 7.8962, "lon": 98.2960, "country": "TH", "city": "Patong", "ytId": "sT1fNBjJQ9w", "notes": "Andaman Sea resort" },
-    { "name": "Boracay White Beach", "lat": 11.9674, "lon": 121.9246, "country": "PH", "city": "Malay", "ytId": "2xwOzFNt7Yg", "notes": "Station 2 beach" },
-    { "name": "Gold Coast Surfers Paradise", "lat": -28.0023, "lon": 153.4310, "country": "AU", "city": "Surfers Paradise", "ytId": "jVRhGjKqH9g", "notes": "Queensland surf" },
-    { "name": "Bondi Beach", "lat": -33.8915, "lon": 151.2767, "country": "AU", "city": "Sydney", "ytId": "hJeFwjjd8rQ", "notes": "Iconic Australian beach" },
-    { "name": "Byron Bay Main Beach", "lat": -28.6434, "lon": 153.6148, "country": "AU", "city": "Byron Bay", "ytId": "lYK0dPXWmMI", "notes": "NSW surf cam" },
-    { "name": "Manly Beach Sydney", "lat": -33.7970, "lon": 151.2890, "country": "AU", "city": "Sydney", "ytId": "g8D4wOmNdKw", "notes": "Northern Beaches" },
-    { "name": "Noosa Main Beach", "lat": -26.3926, "lon": 153.0901, "country": "AU", "city": "Noosa Heads", "ytId": "FqBXdfKWFkI", "notes": "Sunshine Coast" },
-    { "name": "Mount Maunganui NZ", "lat": -37.6361, "lon": 176.1838, "country": "NZ", "city": "Tauranga", "ytId": "K9eSnuPDpvQ", "notes": "Bay of Plenty surf" },
-    { "name": "Raglan NZ", "lat": -37.8110, "lon": 174.8600, "country": "NZ", "city": "Raglan", "ytId": "P_Xs7q6LIzQ", "notes": "Manu Bay left-hand break" },
-
-    { "name": "Camps Bay Beach", "lat": -33.9506, "lon": 18.3778, "country": "ZA", "city": "Cape Town", "ytId": "ZQ-Yb7ByxKo", "notes": "Table Mountain backdrop" },
-    { "name": "Durban Beach", "lat": -29.8587, "lon": 31.0218, "country": "ZA", "city": "Durban", "ytId": "Q0kqMbqYcbU", "notes": "Golden Mile promenade" },
-    { "name": "Zanzibar Nungwi Beach", "lat": -5.7272, "lon": 39.2985, "country": "TZ", "city": "Nungwi", "ytId": "Xm9ygLLqArQ", "notes": "North Zanzibar coast" },
-
-    { "name": "Waikiki Diamond Head", "lat": 21.2612, "lon": -157.8200, "country": "US", "city": "Honolulu", "ytId": "YfcDhMM7bQQ", "notes": "Diamond Head lookout" },
-    { "name": "Seal Beach CA", "lat": 33.7404, "lon": -118.1060, "country": "US", "city": "Seal Beach", "ytId": "dpfvz-q7Drc", "notes": "Surfline pier cam" },
-    { "name": "Wrightsville Beach NC", "lat": 34.2085, "lon": -77.7963, "country": "US", "city": "Wrightsville Beach", "ytId": "H4S3XzW1EqI", "notes": "Crystal Pier" },
-    { "name": "Siesta Key Beach", "lat": 27.2665, "lon": -82.5512, "country": "US", "city": "Siesta Key", "ytId": "rY9mKjFcBw4", "notes": "Quartz sand beach" }
+    {
+      "name": "Argentina Beaches",
+      "lat": -37.265,
+      "lon": -56.971,
+      "country": "AR",
+      "city": "Villa Gesell",
+      "ytId": "2u4GnVNtlsY"
+    },
+    {
+      "name": "Bondi surf camera shows beachgoers fleeing shooting in Au...",
+      "lat": 33.8688,
+      "lon": 151.2093,
+      "country": "AU",
+      "city": "Australia",
+      "ytId": "USoCKsmmpDA"
+    },
+    {
+      "name": "WALKING TOUR SYDNEY AUSTRALIA | Bondi Beach is SIZZLING |...",
+      "lat": 33.8688,
+      "lon": 151.2093,
+      "country": "AU",
+      "city": "Australia",
+      "ytId": "ISehgdfVlSg"
+    },
+    {
+      "name": "Walking on Copacabana Beach \ud83c\udde7\ud83c\uddf7 Rio de Janeiro, Brazil \u3010 4...",
+      "lat": 15.7975,
+      "lon": -47.8919,
+      "country": "BR",
+      "city": "Brazil",
+      "ytId": "sRRODmeZjPc"
+    },
+    {
+      "name": "Copacabana Beach",
+      "lat": -22.9711,
+      "lon": -43.1823,
+      "country": "BR",
+      "city": "Rio de Janeiro",
+      "ytId": "CwSma3j21Mk"
+    },
+    {
+      "name": "Curacao Mambo Beach",
+      "lat": 12.1167,
+      "lon": -68.9333,
+      "country": "CW",
+      "city": "Willemstad",
+      "ytId": "loHbMM9JfCs"
+    },
+    {
+      "name": "Pacifica Pier Closeup, Pacifica, CA 4k",
+      "lat": 52.52,
+      "lon": 13.405,
+      "country": "DE",
+      "city": "Berlin",
+      "ytId": "16hHfZzf8-I"
+    },
+    {
+      "name": "Paguera Beach Mallorca",
+      "lat": 39.501,
+      "lon": 2.453,
+      "country": "ES",
+      "city": "Paguera",
+      "ytId": "JCjl-XzVuuE"
+    },
+    {
+      "name": "FUENGIROLA - Costa del Sol - SPAIN - Los Bolichos Beach -...",
+      "lat": 40.4168,
+      "lon": -3.7038,
+      "country": "ES",
+      "city": "Spain",
+      "ytId": "RV2Iu0wbgec"
+    },
+    {
+      "name": "WEBCAM from PUERTO del CARMEN BEACH (Lanzarote, Canary Is...",
+      "lat": 40.4168,
+      "lon": -3.7038,
+      "country": "ES",
+      "city": "Spain",
+      "ytId": "AfD16cDYBbE"
+    },
+    {
+      "name": "Gonubie Beach - East London South Africa: stream webcam",
+      "lat": 51.5074,
+      "lon": -0.1278,
+      "country": "GB",
+      "city": "London",
+      "ytId": "Znrw-rnisNY"
+    },
+    {
+      "name": ": Haifa Explodes On Cam As Iran Hammers Israel | IRGC Lau...",
+      "lat": 31.7683,
+      "lon": 35.2137,
+      "country": "IL",
+      "city": "Israel",
+      "ytId": "759_m5RHMEM"
+    },
+    {
+      "name": "ON CAM: Tel Aviv, Haifa EXPLODING As Iran\u2019s Worst WAVE RA...",
+      "lat": 32.0853,
+      "lon": 34.7818,
+      "country": "IL",
+      "city": "Tel Aviv",
+      "ytId": "TvcV39yC2Wo"
+    },
+    {
+      "name": "Rolling Cams Beach - Only Beach Cam around the World",
+      "lat": 45.4408,
+      "lon": 12.3155,
+      "country": "IT",
+      "city": "Venice",
+      "ytId": "OMebkpnYJJo"
+    },
+    {
+      "name": "Ocean Ambience 4K (24/7). Tropical Beach & Ocean Waves So...",
+      "lat": 3.2028,
+      "lon": 73.2207,
+      "country": "MV",
+      "city": "Maldives",
+      "ytId": "_BMi3usEwi8"
+    },
+    {
+      "name": "\u3010Camera\u3011Singapore Sentosa Siloso Beach Cam 26 Aug 2020",
+      "lat": 1.3521,
+      "lon": 103.8198,
+      "country": "SG",
+      "city": "Singapore",
+      "ytId": "lDJu1Wxxq9Q"
+    },
+    {
+      "name": "Beach Stream \u00b7 House of Sanskara \u00b7 Koh Phangan, Thailand",
+      "lat": 13.7563,
+      "lon": 100.5018,
+      "country": "TH",
+      "city": "Thailand",
+      "ytId": "FBYUkqutqzE"
+    },
+    {
+      "name": "Tropical Murphy's Irish Pub | Webcam Stream | Chaweng | K...",
+      "lat": 13.7563,
+      "lon": 100.5018,
+      "country": "TH",
+      "city": "Thailand",
+      "ytId": "OBJ5Q0lWbqk"
+    },
+    {
+      "name": "Clearwater Beach",
+      "lat": 27.9758,
+      "lon": -82.827,
+      "country": "US",
+      "city": "Clearwater",
+      "ytId": "rxBBRLWF0mM"
+    },
+    {
+      "name": "The Edge Hotel Clearwater Beach",
+      "lat": 27.9659,
+      "lon": -82.8001,
+      "country": "US",
+      "city": "Clearwater",
+      "ytId": "V7sUbjD_e3I"
+    },
+    {
+      "name": "Packery Channel",
+      "lat": 27.634,
+      "lon": -97.219,
+      "country": "US",
+      "city": "Corpus Christi",
+      "ytId": "5s6X2045OTs"
+    },
+    {
+      "name": "Beach Camera - Deerfield Beach, Florida",
+      "lat": 27.7663,
+      "lon": -81.6868,
+      "country": "US",
+      "city": "Deerfield Beach",
+      "ytId": "rdeoEeJ00xA"
+    },
+    {
+      "name": "Deerfield Beach",
+      "lat": 26.3184,
+      "lon": -80.0728,
+      "country": "US",
+      "city": "Deerfield Beach",
+      "ytId": "EmulKlmaXrQ"
+    },
+    {
+      "name": "Fishing Pier Camera",
+      "lat": 26.3184,
+      "lon": -80.0998,
+      "country": "US",
+      "city": "Deerfield Beach",
+      "ytId": "H33wtprQqSM"
+    },
+    {
+      "name": "Sport Camera - Deerfield Beach, Florida USA",
+      "lat": 26.3184,
+      "lon": -80.0998,
+      "country": "US",
+      "city": "Deerfield Beach",
+      "ytId": "1PLqzPwXP0c"
+    },
+    {
+      "name": "Okaloosa Island Pier Camera",
+      "lat": 30.3935,
+      "lon": -86.4958,
+      "country": "US",
+      "city": "Destin",
+      "ytId": "NrvJwi9goOE"
+    },
+    {
+      "name": "Galveston Beach",
+      "lat": 29.287,
+      "lon": -94.7874,
+      "country": "US",
+      "city": "Galveston",
+      "ytId": "HkHhXsWci7Q"
+    },
+    {
+      "name": "Pipeline North Shore",
+      "lat": 21.664,
+      "lon": -158.053,
+      "country": "US",
+      "city": "Haleiwa",
+      "ytId": "VI8Wj5EwoRM"
+    },
+    {
+      "name": "Waimea Bay",
+      "lat": 21.642,
+      "lon": -158.064,
+      "country": "US",
+      "city": "Haleiwa",
+      "ytId": "wnNrd-VjLsQ"
+    },
+    {
+      "name": "Pipeline Beach Cam Raw Surfing Footage 4K HDR",
+      "lat": 19.8968,
+      "lon": -155.5828,
+      "country": "US",
+      "city": "Hawaii",
+      "ytId": "RrPEPZF5ZrE"
+    },
+    {
+      "name": "Royal Sonesta Kauai Stream | Poipu Beach Hawaii Cam | Rea...",
+      "lat": 19.8968,
+      "lon": -155.5828,
+      "country": "US",
+      "city": "Hawaii",
+      "ytId": "M6kN1wlNSk4"
+    },
+    {
+      "name": "Surf Cams 24/7 | Hawaii, California, Bali & More",
+      "lat": 19.8968,
+      "lon": -155.5828,
+      "country": "US",
+      "city": "Hawaii",
+      "ytId": "hm9iAviOZ20"
+    },
+    {
+      "name": "Hollywood Beach FL",
+      "lat": 26.0112,
+      "lon": -80.1187,
+      "country": "US",
+      "city": "Hollywood",
+      "ytId": "cmkAbDUEoyA"
+    },
+    {
+      "name": "Park Shore Waikiki Hotel 4K | Waikiki Cam | Hawaii ambience",
+      "lat": 21.2793,
+      "lon": -157.8294,
+      "country": "US",
+      "city": "Honolulu",
+      "ytId": "3ON5m8DRA20"
+    },
+    {
+      "name": "Sheraton Waikiki | Real-Time Hawaii Beach Cam | Waikiki C...",
+      "lat": 21.2793,
+      "lon": -157.8294,
+      "country": "US",
+      "city": "Honolulu",
+      "ytId": "X0idnu7HUmI"
+    },
+    {
+      "name": "Huntington Beach Pier",
+      "lat": 33.6553,
+      "lon": -117.9993,
+      "country": "US",
+      "city": "Huntington Beach",
+      "ytId": "mhQjsLBfOoY"
+    },
+    {
+      "name": "Cam From The Best Western In Jacksonville Beach, Fl",
+      "lat": 30.3322,
+      "lon": -81.6557,
+      "country": "US",
+      "city": "Jacksonville",
+      "ytId": "bZ4uxyLqV-E"
+    },
+    {
+      "name": "Jacksonville Beach Pier Cam / North View / By 911surfrepo...",
+      "lat": 30.3322,
+      "lon": -81.6557,
+      "country": "US",
+      "city": "Jacksonville",
+      "ytId": "ZSFOoTkQB2s"
+    },
+    {
+      "name": "Jacksonville Beach Pier Cam / South View / By 911surfrepo...",
+      "lat": 30.3322,
+      "lon": -81.6557,
+      "country": "US",
+      "city": "Jacksonville",
+      "ytId": "bcqxtDQ6O20"
+    },
+    {
+      "name": "24/7 Venice Beach Boardwalk Cam North View | People Watch...",
+      "lat": 33.985,
+      "lon": -118.4695,
+      "country": "US",
+      "city": "Los Angeles",
+      "ytId": "98jOtUeM3m8"
+    },
+    {
+      "name": "Malibu Earthquake from Venice Beach Cam",
+      "lat": 33.985,
+      "lon": -118.4695,
+      "country": "US",
+      "city": "Los Angeles",
+      "ytId": "T3bMEqvLGJA"
+    },
+    {
+      "name": "Santa Monica Pier & Pacific Park 4K | California Beach Vi...",
+      "lat": 34.0195,
+      "lon": -118.4912,
+      "country": "US",
+      "city": "Los Angeles",
+      "ytId": "DckQwhIzMdA"
+    },
+    {
+      "name": "Seychelles Ocean 4K (24/7). Wild Beach & Ocean Waves Soun...",
+      "lat": 33.9425,
+      "lon": -118.4081,
+      "country": "US",
+      "city": "Los Angeles",
+      "ytId": "Thtj8Ht7Z_c"
+    },
+    {
+      "name": "Venice Beach Boardwalk",
+      "lat": 33.987,
+      "lon": -118.472,
+      "country": "US",
+      "city": "Los Angeles",
+      "ytId": "33jd99xs63I"
+    },
+    {
+      "name": "Venice Beach LA",
+      "lat": 33.985,
+      "lon": -118.4695,
+      "country": "US",
+      "city": "Los Angeles",
+      "ytId": "EO_1LWqsCNE"
+    },
+    {
+      "name": "Manhattan Beach",
+      "lat": 33.8847,
+      "lon": -118.4109,
+      "country": "US",
+      "city": "Manhattan Beach",
+      "ytId": "tBEIYdw1HeM"
+    },
+    {
+      "name": "Marco Island Beach",
+      "lat": 25.9283,
+      "lon": -81.7354,
+      "country": "US",
+      "city": "Marco Island",
+      "ytId": "Cim4LMbXus0"
+    },
+    {
+      "name": "Aquinnah Beach",
+      "lat": 41.3323,
+      "lon": -70.8369,
+      "country": "US",
+      "city": "Martha's Vineyard",
+      "ytId": "V3yWSeZBlaI"
+    },
+    {
+      "name": "Acqualina Sunny Isles Beach Cam | Miami Beach Cam | Flori...",
+      "lat": 25.7907,
+      "lon": -80.13,
+      "country": "US",
+      "city": "Miami Beach",
+      "ytId": "aZQSnI_AEJg"
+    },
+    {
+      "name": "Body camera footage shows police bust expensive jewelry t...",
+      "lat": 25.7907,
+      "lon": -80.13,
+      "country": "US",
+      "city": "Miami Beach",
+      "ytId": "B8fjZHVvPcw"
+    },
+    {
+      "name": "Coney Island",
+      "lat": 40.5749,
+      "lon": -73.971,
+      "country": "US",
+      "city": "New York",
+      "ytId": "H67j7H-7QD0"
+    },
+    {
+      "name": "The Wedge Newport",
+      "lat": 33.593,
+      "lon": -117.882,
+      "country": "US",
+      "city": "Newport Beach",
+      "ytId": "4qxqhe67ejU"
+    },
+    {
+      "name": "Big Waves and Big Wave Surfing in 4K (North Shore, Oahu, ...",
+      "lat": 21.0943,
+      "lon": -157.4983,
+      "country": "US",
+      "city": "North Shore",
+      "ytId": "RLtWW7jNGzE"
+    },
+    {
+      "name": "Oahu, Hawaii 4K - Exploring Hawaii's Stunning Beaches and...",
+      "lat": 21.0943,
+      "lon": -157.4983,
+      "country": "US",
+      "city": "Oahu",
+      "ytId": "d-Gbk7dbMws"
+    },
+    {
+      "name": "Oceanside CA",
+      "lat": 33.1959,
+      "lon": -117.3795,
+      "country": "US",
+      "city": "Oceanside",
+      "ytId": "cvP_F-c2Upw"
+    },
+    {
+      "name": "Cape Kiwanda",
+      "lat": 45.217,
+      "lon": -123.967,
+      "country": "US",
+      "city": "Pacific City",
+      "ytId": "S5FRz8m4xWI"
+    },
+    {
+      "name": "Pacifica Pier",
+      "lat": 37.633,
+      "lon": -122.494,
+      "country": "US",
+      "city": "Pacifica",
+      "ytId": "zYi_5AF6B2A"
+    },
+    {
+      "name": "Hidden camera disguised as pen found in bathrooms on Ocea...",
+      "lat": 39.9526,
+      "lon": -75.1652,
+      "country": "US",
+      "city": "Philadelphia",
+      "ytId": "r7nyXIiicOg"
+    },
+    {
+      "name": "Pier 23 Cafe, San Francisco Bay | San Francisco, CA USA |...",
+      "lat": 37.7749,
+      "lon": -122.4194,
+      "country": "US",
+      "city": "San Francisco",
+      "ytId": "a5IW4I-z2rs"
+    },
+    {
+      "name": "Santa Monica Beach",
+      "lat": 34.0082,
+      "lon": -118.4987,
+      "country": "US",
+      "city": "Santa Monica",
+      "ytId": "OWbI6WtlI-k"
+    },
+    {
+      "name": "30A Beach Florida",
+      "lat": 30.2835,
+      "lon": -86.0155,
+      "country": "US",
+      "city": "Santa Rosa Beach",
+      "ytId": "ftGfQqCA184"
+    },
+    {
+      "name": "Seaside Heights, NJ - North View",
+      "lat": 40.2989,
+      "lon": -74.521,
+      "country": "US",
+      "city": "Seaside Heights",
+      "ytId": "iKmzggEUU0I"
+    },
+    {
+      "name": "South Padre Island",
+      "lat": 26.1118,
+      "lon": -97.1681,
+      "country": "US",
+      "city": "South Padre",
+      "ytId": "dzylsC0KcOE"
+    },
+    {
+      "name": "St. Augustine Beach",
+      "lat": 29.8563,
+      "lon": -81.2658,
+      "country": "US",
+      "city": "St. Augustine",
+      "ytId": "H2q_DJc33kg"
+    },
+    {
+      "name": "Vilano Beach",
+      "lat": 29.925,
+      "lon": -81.295,
+      "country": "US",
+      "city": "St. Augustine",
+      "ytId": "mYbn_umeenk"
+    },
+    {
+      "name": "Sunny Isles Beach, FL",
+      "lat": 27.7663,
+      "lon": -81.6868,
+      "country": "US",
+      "city": "Sunny Isles Beach",
+      "ytId": "M9z5cNyrLxs"
+    },
+    {
+      "name": "WATCH | Sunrise camera over Frederick, Maryland | FOX 5 DC",
+      "lat": 39.0639,
+      "lon": -76.8021,
+      "country": "US",
+      "city": "Sunrise camera over Frederick",
+      "ytId": "G_-LQy5djLU"
+    }
   ]
 }

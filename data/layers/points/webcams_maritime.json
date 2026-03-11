@@ -1,77 +1,323 @@
 {
   "_source": {
-    "description": "Curated 24/7 live port, harbor, and ship spotting webcam streams worldwide",
-    "origin": "YouTube Live streams from: PTZtv, Solent Ships, StreamTime Live, Port Authority channels, cruise ship spotting channels, SkylineWebcams",
-    "retrieved": "2026-03-10",
-    "license": "Public live streams — fair use",
-    "notes": "YouTube IDs may change as streams rotate."
+    "description": "Curated 24/7 live port, harbor, and maritime webcam streams",
+    "origin": "YouTube Live streams discovered and verified via yt-dlp. Sources: port authority channels, marina cams, SkylineWebcams",
+    "retrieved": "2026-03-11",
+    "license": "Public live streams \u2014 fair use",
+    "notes": "All YouTube IDs verified via oEmbed API. IDs may change as streams rotate. Run scripts/ingest_webcams.py to re-verify."
   },
-  "ports": [
-    { "name": "NYC Harbor",                "lat": 40.6782,  "lon": -74.0417,  "country": "US", "city": "New York",         "ytId": "OgqbZLzEbQU", "notes": "StreamTime Live Brooklyn" },
-    { "name": "San Diego Harbor",          "lat": 32.7157,  "lon": -117.1611, "country": "US", "city": "San Diego",        "ytId": "iaBfYxbmwXA", "notes": "Harbor Island 4K" },
-    { "name": "Vancouver Harbour",         "lat": 49.2869,  "lon": -123.1187, "country": "CA", "city": "Vancouver",        "ytId": "GHEmhcWjiTE", "notes": "Cruise ships, marine radio" },
-    { "name": "Sydney Harbour",            "lat": -33.8568, "lon": 151.2153,  "country": "AU", "city": "Sydney",           "ytId": "5uZa3-RMFos", "notes": "WebcamSydney 4K" },
-    { "name": "Sydney Harbour Panning",    "lat": -33.8570, "lon": 151.2155,  "country": "AU", "city": "Sydney",           "ytId": "jshwkG1ZpP8" },
-    { "name": "Port Miami",                "lat": 25.7742,  "lon": -80.1654,  "country": "US", "city": "Miami",            "ytId": "DxZziUUr6CY", "notes": "PTZtv VHF marine radio" },
-    { "name": "Southampton Cruise",        "lat": 50.8981,  "lon": -1.4149,   "country": "GB", "city": "Southampton",      "ytId": "WxdeHH9T7Yk", "notes": "Solent Ships terminal" },
-    { "name": "Southampton Ferry",         "lat": 50.8930,  "lon": -1.3970,   "country": "GB", "city": "Southampton",      "ytId": "QO-hO_kwwmY", "notes": "Solent Ships Red Funnel" },
-    { "name": "Ramsgate Royal Harbour",    "lat": 51.3261,  "lon": 1.4222,    "country": "GB", "city": "Ramsgate",         "ytId": "Fj0SI2pMijk", "notes": "Storm watching" },
-    { "name": "Port aux Basques",          "lat": 47.5707,  "lon": -59.1353,  "country": "CA", "city": "Port aux Basques", "ytId": "sQDv4AeWOyU", "notes": "Tilley Cam Newfoundland" },
-    { "name": "Port Canaveral",            "lat": 28.4085,  "lon": -80.6100,  "country": "US", "city": "Cape Canaveral",   "ytId": "Ru1GqVIyCb4", "notes": "Marine radio, cruise ships" },
-    { "name": "Port Helsinki",             "lat": 60.1555,  "lon": 24.9214,   "country": "FI", "city": "Helsinki",         "ytId": "6hPWq2IG08M", "notes": "West harbour south" },
-    { "name": "Malta Grand Harbour",       "lat": 35.8930,  "lon": 14.5168,   "country": "MT", "city": "Valletta",         "ytId": "bxaR3FvDTGI", "notes": "Ship spotting 4K" },
-    { "name": "Baltimore Shipping",        "lat": 39.2560,  "lon": -76.5785,  "country": "US", "city": "Baltimore",        "ytId": "t_VfYNtprYE", "notes": "StreamTime Live 4K" },
-    { "name": "Curacao Swinging Bridge",   "lat": 12.1090,  "lon": -68.9356,  "country": "CW", "city": "Willemstad",       "ytId": "28U-t3fA9ks", "notes": "Queen Emma pontoon bridge" },
-    { "name": "Port Lorain Lake Erie",     "lat": 41.4690,  "lon": -82.1796,  "country": "US", "city": "Lorain",           "ytId": "1MVB3fgg7kg", "notes": "Lorain Port Authority" },
-    { "name": "Rotterdam Europoort",       "lat": 51.9560,  "lon": 4.1435,    "country": "NL", "city": "Rotterdam",        "ytId": "K8jVFbwRhZc", "notes": "Europe's largest port, Maasmond" },
-    { "name": "Hamburg Port Elbe",         "lat": 53.5443,  "lon": 9.9665,    "country": "DE", "city": "Hamburg",           "ytId": "XgEQ2WBhI7E", "notes": "Container ships Elbe river" },
-    { "name": "Antwerp Port",             "lat": 51.2990,  "lon": 4.2855,    "country": "BE", "city": "Antwerp",           "ytId": "RdTQ7uLYkP0", "notes": "Scheldt river shipping" },
-    { "name": "Piraeus Port Athens",      "lat": 37.9465,  "lon": 23.6418,   "country": "GR", "city": "Piraeus",           "ytId": "pRkJU4o_Y5w", "notes": "Ferry and cruise terminal" },
-    { "name": "Istanbul Bosphorus",       "lat": 41.0602,  "lon": 29.0394,   "country": "TR", "city": "Istanbul",          "ytId": "xCnWkqjHHIo", "notes": "Strait shipping traffic 4K" },
-    { "name": "Istanbul Bosphorus South", "lat": 41.0218,  "lon": 29.0050,   "country": "TR", "city": "Istanbul",          "ytId": "yBcj1RKTQ8w", "notes": "Maiden's Tower view" },
-    { "name": "Suez Canal",              "lat": 30.5852,  "lon": 32.2650,   "country": "EG", "city": "Ismailia",          "ytId": "NbWTmkbf_fA", "notes": "Ship transits live" },
-    { "name": "Panama Canal Gatun",      "lat": 9.2722,   "lon": -79.9217,  "country": "PA", "city": "Colon",             "ytId": "Y7d29JpDlxw", "notes": "Gatun Locks ship transits" },
-    { "name": "Panama Canal Miraflores", "lat": 9.0153,   "lon": -79.5468,  "country": "PA", "city": "Panama City",       "ytId": "vWFvCqMjfes", "notes": "Miraflores Locks Pacific side" },
-    { "name": "Singapore Strait",        "lat": 1.2643,   "lon": 103.8500,  "country": "SG", "city": "Singapore",         "ytId": "EiV3KDptx1Q", "notes": "World's busiest shipping lane" },
-    { "name": "Tokyo Bay Shipping",      "lat": 35.3200,  "lon": 139.7500,  "country": "JP", "city": "Yokohama",          "ytId": "2qm4_N_dkHk", "notes": "Yokohama port and bay traffic" },
-    { "name": "Shanghai Huangpu River",  "lat": 31.2400,  "lon": 121.4900,  "country": "CN", "city": "Shanghai",          "ytId": "AQBn_bJ1rZM", "notes": "Bund waterfront shipping" },
-    { "name": "Hong Kong Victoria Harbour", "lat": 22.2855, "lon": 114.1577, "country": "HK", "city": "Hong Kong",        "ytId": "eaHSUjbK75o", "notes": "Star Ferry and container ships" },
-    { "name": "Dubai Jebel Ali Port",    "lat": 25.0180,  "lon": 55.0600,   "country": "AE", "city": "Dubai",             "ytId": "QDXaNvLW7po", "notes": "Largest Middle East port" },
-    { "name": "Genoa Port",             "lat": 44.4056,  "lon": 8.9289,    "country": "IT", "city": "Genoa",             "ytId": "m7bKCngj9o8", "notes": "Mediterranean cruise hub" },
-    { "name": "Naples Port",            "lat": 40.8365,  "lon": 14.2681,   "country": "IT", "city": "Naples",            "ytId": "cWRMpOKZb80", "notes": "SkylineWebcams Vesuvius view" },
-    { "name": "Barcelona Port",         "lat": 41.3752,  "lon": 2.1756,    "country": "ES", "city": "Barcelona",         "ytId": "J_j8sNPVLTU", "notes": "Cruise and ferry terminal" },
-    { "name": "Lisbon Port Tagus",      "lat": 38.7058,  "lon": -9.1520,   "country": "PT", "city": "Lisbon",            "ytId": "ELwN-M_nNWM", "notes": "Tagus river ship traffic" },
-    { "name": "Bergen Harbour Norway",   "lat": 60.3943,  "lon": 5.3259,    "country": "NO", "city": "Bergen",            "ytId": "1cXKBxF4Vrc", "notes": "Hurtigruten and fishing boats" },
-    { "name": "Copenhagen Harbour",      "lat": 55.6915,  "lon": 12.5979,   "country": "DK", "city": "Copenhagen",        "ytId": "PtGxRlvB-Sk", "notes": "Nyhavn and cruise ships" },
-    { "name": "Stockholm Harbour",       "lat": 59.3253,  "lon": 18.0975,   "country": "SE", "city": "Stockholm",         "ytId": "GTxA6rhiGPo", "notes": "Viking Line and Silja ferries" },
-    { "name": "Gdansk Port",            "lat": 54.3920,  "lon": 18.6596,   "country": "PL", "city": "Gdansk",            "ytId": "LV-bepIxlnY", "notes": "Baltic container port" },
-    { "name": "St. Petersburg Port",    "lat": 59.9343,  "lon": 30.2520,   "country": "RU", "city": "St. Petersburg",    "ytId": "jYAqHC0oZig", "notes": "Neva River cruise terminal" },
-    { "name": "Charleston SC Port",     "lat": 32.7834,  "lon": -79.9228,  "country": "US", "city": "Charleston",        "ytId": "bYP3wkEzN4M", "notes": "Ravenel Bridge and container ships" },
-    { "name": "Savannah Port",          "lat": 32.0805,  "lon": -81.0888,  "country": "US", "city": "Savannah",          "ytId": "qeOj4p_G5gc", "notes": "Savannah River container traffic" },
-    { "name": "New Orleans Port",       "lat": 29.9351,  "lon": -90.0631,  "country": "US", "city": "New Orleans",       "ytId": "u_3NWQ_pAe4", "notes": "Mississippi River shipping" },
-    { "name": "Houston Ship Channel",   "lat": 29.7200,  "lon": -95.0135,  "country": "US", "city": "Houston",           "ytId": "rPAKe1sDvWg", "notes": "Tankers and container ships" },
-    { "name": "Long Beach Port",        "lat": 33.7607,  "lon": -118.1940, "country": "US", "city": "Long Beach",        "ytId": "CVcXMnPR3mI", "notes": "Busiest US West Coast port" },
-    { "name": "Oakland Port",           "lat": 37.7954,  "lon": -122.2780, "country": "US", "city": "Oakland",           "ytId": "NMCiJx9sRyM", "notes": "Container cranes and Bay Bridge" },
-    { "name": "Tacoma Port",            "lat": 47.2810,  "lon": -122.4130, "country": "US", "city": "Tacoma",            "ytId": "HhZsKf_Zr5w", "notes": "Commencement Bay 4K" },
-    { "name": "Halifax Harbour",        "lat": 44.6464,  "lon": -63.5671,  "country": "CA", "city": "Halifax",           "ytId": "s5YkLxr7jd0", "notes": "Container terminal and naval base" },
-    { "name": "Montreal Port",          "lat": 45.5488,  "lon": -73.5226,  "country": "CA", "city": "Montreal",          "ytId": "p2CUZr7oB3c", "notes": "St. Lawrence Seaway" },
-    { "name": "Wellington Harbour",     "lat": -41.2831, "lon": 174.7850,  "country": "NZ", "city": "Wellington",        "ytId": "EW7bfQCHfL0", "notes": "Interislander ferries" },
-    { "name": "Auckland Port",          "lat": -36.8435, "lon": 174.7700,  "country": "NZ", "city": "Auckland",          "ytId": "4V5Y_9BuvJU", "notes": "Waitemata Harbour" },
-    { "name": "Cape Town Port",         "lat": -33.9035, "lon": 18.4328,   "country": "ZA", "city": "Cape Town",         "ytId": "mcW9pK0bHV0", "notes": "Table Mountain and V&A Waterfront" },
-    { "name": "Durban Port",            "lat": -29.8640, "lon": 31.0420,   "country": "ZA", "city": "Durban",            "ytId": "8w2CQ3Kbfxw", "notes": "Busiest African port" },
-    { "name": "Mombasa Port",           "lat": -4.0435,  "lon": 39.6682,   "country": "KE", "city": "Mombasa",           "ytId": "RrqF7oZdvd0", "notes": "East African gateway" },
-    { "name": "Busan Port",             "lat": 35.0979,  "lon": 129.0394,  "country": "KR", "city": "Busan",             "ytId": "HzL4vu_yzJU", "notes": "Busiest Korean port" },
-    { "name": "Kaohsiung Port",         "lat": 22.6150,  "lon": 120.2850,  "country": "TW", "city": "Kaohsiung",         "ytId": "V9xDMccSH5c", "notes": "Container terminal and ferry" },
-    { "name": "Ho Chi Minh Port",       "lat": 10.7625,  "lon": 106.7420,  "country": "VN", "city": "Ho Chi Minh City",  "ytId": "FQ4WdkZ2DPk", "notes": "Saigon River traffic" },
-    { "name": "Mumbai Port",            "lat": 18.9345,  "lon": 72.8527,   "country": "IN", "city": "Mumbai",            "ytId": "T4kTJj2KLzM", "notes": "Gateway of India and port traffic" },
-    { "name": "Colombo Port",           "lat": 6.9419,   "lon": 79.8431,   "country": "LK", "city": "Colombo",           "ytId": "W_ExLGE5K3E", "notes": "Indian Ocean transshipment hub" },
-    { "name": "Kingston Jamaica Port",  "lat": 17.9714,  "lon": -76.7932,  "country": "JM", "city": "Kingston",          "ytId": "5qJn_X1g-ec", "notes": "Caribbean container hub" },
-    { "name": "Bridgetown Port",        "lat": 13.0969,  "lon": -59.6145,  "country": "BB", "city": "Bridgetown",        "ytId": "dRzgH3EgXTM", "notes": "Cruise and cargo terminal" },
-    { "name": "Havana Port",            "lat": 23.1468,  "lon": -82.3515,  "country": "CU", "city": "Havana",            "ytId": "mTDQCvRH-fU", "notes": "Historic harbor entrance" },
-    { "name": "Dover Strait Ferry",     "lat": 51.1219,  "lon": 1.3089,    "country": "GB", "city": "Dover",             "ytId": "BhkXrp_kDiE", "notes": "Cross-channel ferries and shipping" },
-    { "name": "Gibraltar Strait",       "lat": 36.1408,  "lon": -5.3536,   "country": "GI", "city": "Gibraltar",         "ytId": "5SRpWmLnV88", "notes": "Ship traffic through the strait" },
-    { "name": "Kiel Canal Entrance",    "lat": 54.3685,  "lon": 10.1543,   "country": "DE", "city": "Kiel",              "ytId": "kmYXQn_4T5U", "notes": "Busiest canal in the world" },
-    { "name": "Tenerife Port",          "lat": 28.4682,  "lon": -16.2546,  "country": "ES", "city": "Santa Cruz",        "ytId": "z7mhRVEJbWk", "notes": "Canary Islands cruise port" },
-    { "name": "Osaka Bay Port",         "lat": 34.6513,  "lon": 135.4285,  "country": "JP", "city": "Osaka",             "ytId": "QfR3dYhJpNc", "notes": "Kansai shipping terminal" }
+  "maritime": [
+    {
+      "name": "Dubai Marina cam",
+      "lat": 25.2048,
+      "lon": 55.2708,
+      "country": "AE",
+      "city": "Dubai",
+      "ytId": "EDU-qxkv-Nc"
+    },
+    {
+      "name": "Cam: Stunning spring day, at last. This is Sydney Harbour...",
+      "lat": 33.8688,
+      "lon": 151.2093,
+      "country": "AU",
+      "city": "Australia",
+      "ytId": "spilnIbk7d4"
+    },
+    {
+      "name": "CAM: P&O Cruise Ship Leaves White Bay. Sydney Harbour Bri...",
+      "lat": 33.8688,
+      "lon": 151.2093,
+      "country": "AU",
+      "city": "Sydney",
+      "ytId": "cjEMMUjAEog"
+    },
+    {
+      "name": "Cam: Slow day of the world's most beautiful harbour. This...",
+      "lat": 33.8688,
+      "lon": 151.2093,
+      "country": "AU",
+      "city": "Sydney",
+      "ytId": "fG5xY_b1gV0"
+    },
+    {
+      "name": "Near collision of Manly ferry and harbour cruise vessel, ...",
+      "lat": 33.8688,
+      "lon": 151.2093,
+      "country": "AU",
+      "city": "Sydney",
+      "ytId": "ci5EL4fGnA0"
+    },
+    {
+      "name": "Sydney Harbour Panning",
+      "lat": -33.857,
+      "lon": 151.2155,
+      "country": "AU",
+      "city": "Sydney",
+      "ytId": "jshwkG1ZpP8"
+    },
+    {
+      "name": "HM Novelties Cruise Ship Cam - Barbados Port - (24 HR )",
+      "lat": 13.1939,
+      "lon": -59.5432,
+      "country": "BB",
+      "city": "Barbados",
+      "ytId": "FV6FjrNDfXI"
+    },
+    {
+      "name": ": RIO Boat",
+      "lat": 22.9068,
+      "lon": -43.1729,
+      "country": "BR",
+      "city": "Rio de Janeiro",
+      "ytId": "VnsRQvfv_g4"
+    },
+    {
+      "name": "Port aux Basques",
+      "lat": 47.5707,
+      "lon": -59.1353,
+      "country": "CA",
+      "city": "Port aux Basques",
+      "ytId": "sQDv4AeWOyU"
+    },
+    {
+      "name": ": Vancouver Cam | Cruise Ships, Vancouver Harbour, Seawal...",
+      "lat": 49.2827,
+      "lon": -123.1207,
+      "country": "CA",
+      "city": "Vancouver",
+      "ytId": "rxyNjFKwzJA"
+    },
+    {
+      "name": "Vancouver Harbour",
+      "lat": 49.2869,
+      "lon": -123.1187,
+      "country": "CA",
+      "city": "Vancouver",
+      "ytId": "GHEmhcWjiTE"
+    },
+    {
+      "name": "Cam Klein Cura\u00e7ao | Mermaid Boat Trips",
+      "lat": 12.1696,
+      "lon": -68.99,
+      "country": "CW",
+      "city": "Cura\u00e7ao",
+      "ytId": "0ImA9IcyQwA"
+    },
+    {
+      "name": "Curacao Swinging Bridge",
+      "lat": 12.109,
+      "lon": -68.9356,
+      "country": "CW",
+      "city": "Willemstad",
+      "ytId": "28U-t3fA9ks"
+    },
+    {
+      "name": "Barcelona Harbor Stream",
+      "lat": 41.3874,
+      "lon": 2.1686,
+      "country": "ES",
+      "city": "Barcelona",
+      "ytId": "C7659Fbj3nw"
+    },
+    {
+      "name": "WEBCAM from LANZAROTE CRUISE SHIP DOCK (Canary Islands, S...",
+      "lat": 40.4168,
+      "lon": -3.7038,
+      "country": "ES",
+      "city": "Spain",
+      "ytId": "BRXBUNi2J78"
+    },
+    {
+      "name": "Port Helsinki",
+      "lat": 60.1555,
+      "lon": 24.9214,
+      "country": "FI",
+      "city": "Helsinki",
+      "ytId": "6hPWq2IG08M"
+    },
+    {
+      "name": "Ramsgate Royal Harbour",
+      "lat": 51.3261,
+      "lon": 1.4222,
+      "country": "GB",
+      "city": "Ramsgate",
+      "ytId": "Fj0SI2pMijk"
+    },
+    {
+      "name": "Southampton Cruise",
+      "lat": 50.8981,
+      "lon": -1.4149,
+      "country": "GB",
+      "city": "Southampton",
+      "ytId": "WxdeHH9T7Yk"
+    },
+    {
+      "name": "Southampton Ferry",
+      "lat": 50.893,
+      "lon": -1.397,
+      "country": "GB",
+      "city": "Southampton",
+      "ytId": "QO-hO_kwwmY"
+    },
+    {
+      "name": "Dublin Bay : Watch Ships Enter and Exit Dublin Port",
+      "lat": 53.3498,
+      "lon": -6.2603,
+      "country": "IE",
+      "city": "Dublin",
+      "ytId": "oxx7MqjhOpw"
+    },
+    {
+      "name": "Dublin Port City View: Ship Movements on the River Liffey",
+      "lat": 53.3498,
+      "lon": -6.2603,
+      "country": "IE",
+      "city": "Dublin",
+      "ytId": "K_ye7QHXosQ"
+    },
+    {
+      "name": "Dublin Port Poolbeg Lighthouse View: Ship Movements on th...",
+      "lat": 53.3498,
+      "lon": -6.2603,
+      "country": "IE",
+      "city": "Dublin",
+      "ytId": "jy3fkOBIolk"
+    },
+    {
+      "name": "Namibia: Swakopmund Lighthouse stream",
+      "lat": 22.5609,
+      "lon": 17.0658,
+      "country": "NA",
+      "city": "Namibia",
+      "ytId": "C6kb6vH14xY"
+    },
+    {
+      "name": "Beautiful Singapore | CAM",
+      "lat": 1.3521,
+      "lon": 103.8198,
+      "country": "SG",
+      "city": "Singapore",
+      "ytId": "wwmbPNIJqPU"
+    },
+    {
+      "name": "\u00b7 Singapore Marina Bay Webcam Stream | \u30b7\u30f3\u30ac\u30dd\u30fc\u30eb\u30de\u30ea\u30fc\u30ca\u30d9\u30a4",
+      "lat": 1.3521,
+      "lon": 103.8198,
+      "country": "SG",
+      "city": "Singapore",
+      "ytId": "2rBJdXa7QTo"
+    },
+    {
+      "name": "Vilano Boat Ramp 24/7 | St. Augustine, Florida",
+      "lat": 27.7663,
+      "lon": -81.6868,
+      "country": "US",
+      "city": "24/7 | St. Augustine",
+      "ytId": "S8afSTXKkdw"
+    },
+    {
+      "name": "Baltimore Shipping",
+      "lat": 39.256,
+      "lon": -76.5785,
+      "country": "US",
+      "city": "Baltimore",
+      "ytId": "t_VfYNtprYE"
+    },
+    {
+      "name": "Port Canaveral",
+      "lat": 28.4085,
+      "lon": -80.61,
+      "country": "US",
+      "city": "Cape Canaveral",
+      "ytId": "Ru1GqVIyCb4"
+    },
+    {
+      "name": "CRUISE CAM: from the Galveston Cruise Terminals",
+      "lat": 29.3013,
+      "lon": -94.7977,
+      "country": "US",
+      "city": "Galveston",
+      "ytId": "Mnj84qrUbXc"
+    },
+    {
+      "name": "Giraffe Paddock Cam - Greenville, SC",
+      "lat": 33.8569,
+      "lon": -80.945,
+      "country": "US",
+      "city": "Giraffe Paddock  Cam - Greenville",
+      "ytId": "1NoSs03ZrlY"
+    },
+    {
+      "name": "Port Lorain Lake Erie",
+      "lat": 41.469,
+      "lon": -82.1796,
+      "country": "US",
+      "city": "Lorain",
+      "ytId": "1MVB3fgg7kg"
+    },
+    {
+      "name": "LA Waterfront Camera Now Streaming 24/7 on the Port of Lo...",
+      "lat": 34.0522,
+      "lon": -118.2437,
+      "country": "US",
+      "city": "Los Angeles",
+      "ytId": "iaDgpTnagy4"
+    },
+    {
+      "name": ": Watching 8 Cruise Ships Leaving Port Miami ! (Nov. 28, ...",
+      "lat": 25.7617,
+      "lon": -80.1918,
+      "country": "US",
+      "city": "Miami",
+      "ytId": "Jcks1mJRKes"
+    },
+    {
+      "name": "NYC Harbor",
+      "lat": 40.6782,
+      "lon": -74.0417,
+      "country": "US",
+      "city": "New York",
+      "ytId": "OgqbZLzEbQU"
+    },
+    {
+      "name": "NYC Lower Manhattan & New York Harbor Cam",
+      "lat": 40.7831,
+      "lon": -73.9712,
+      "country": "US",
+      "city": "New York",
+      "ytId": "MKJnCn2C1MI"
+    },
+    {
+      "name": "Portland Head Light - View of Casco Bay",
+      "lat": 45.5152,
+      "lon": -122.6784,
+      "country": "US",
+      "city": "Portland",
+      "ytId": "rArvNLNmhOo"
+    },
+    {
+      "name": "Outdoor Skating Rink - Rinkside Cam from Portsmouth, New ...",
+      "lat": 43.4525,
+      "lon": -71.5639,
+      "country": "US",
+      "city": "Rinkside Cam from Portsmouth",
+      "ytId": "6YuIquNmb2E"
+    },
+    {
+      "name": "San Diego Harbor",
+      "lat": 32.7157,
+      "lon": -117.1611,
+      "country": "US",
+      "city": "San Diego",
+      "ytId": "iaBfYxbmwXA"
+    },
+    {
+      "name": "San Diego Harbor Island (S) Web Cam 4K",
+      "lat": 32.7157,
+      "lon": -117.1611,
+      "country": "US",
+      "city": "San Diego",
+      "ytId": "hhIUB-W5Z50"
+    }
   ]
 }

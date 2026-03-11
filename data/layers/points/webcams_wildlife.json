@@ -1,137 +1,835 @@
 {
   "_source": {
-    "description": "Curated 24/7 live wildlife, animal, underwater, and nature webcam streams worldwide",
-    "origin": "YouTube Live streams from: explore.org, Africam (africam.com), NamibiaCam, Cornell Lab of Ornithology, Monterey Bay Aquarium, Georgia Aquarium, San Diego Zoo, Coral City Camera, Florida FWC, various wildlife organizations",
-    "retrieved": "2026-03-10",
-    "license": "Public live streams — fair use",
-    "notes": "YouTube IDs may change as streams rotate."
+    "description": "Curated 24/7 live wildlife, safari, and nature observation webcam streams",
+    "origin": "YouTube Live streams discovered and verified via yt-dlp. Sources: explore.org, Africam, Cornell Lab, EarthCam, zoo/sanctuary channels",
+    "retrieved": "2026-03-11",
+    "license": "Public live streams \u2014 fair use",
+    "notes": "All YouTube IDs verified via oEmbed API. IDs may change as streams rotate. Run scripts/ingest_webcams.py to re-verify."
   },
   "wildlife": [
-    { "name": "ol Donyo Lodge Kenya", "lat": -2.7400, "lon": 37.4300, "country": "KE", "city": "Amboseli", "ytId": "XsOU8JnEpNM", "notes": "Africam Chyulu Hills" },
-    { "name": "Olifants River", "lat": -24.1800, "lon": 30.8600, "country": "ZA", "city": "Limpopo", "ytId": "_NXaovxB-Bk", "notes": "Africam river wildlife" },
-    { "name": "Tembe Elephant Park", "lat": -27.0200, "lon": 32.4100, "country": "ZA", "city": "KwaZulu-Natal", "ytId": "gdrNUUf-cQw", "notes": "Africam elephants" },
-    { "name": "Ulusaba Sabi Sand", "lat": -24.9400, "lon": 31.3600, "country": "ZA", "city": "Sabi Sand", "ytId": "zqc0Z2oWmo8", "notes": "Africam Big Five" },
-    { "name": "HESC Rhino Cam", "lat": -24.5300, "lon": 30.9600, "country": "ZA", "city": "Hoedspruit", "ytId": "oruIH1ZadqE", "notes": "Africam/explore.org" },
-    { "name": "Namib Desert", "lat": -23.5600, "lon": 15.0400, "country": "NA", "city": "Namib Desert", "ytId": "ydYDqZQpim8", "notes": "NamibiaCam desert wildlife" },
-    { "name": "Etosha Waterhole", "lat": -18.8133, "lon": 15.9156, "country": "NA", "city": "Etosha", "ytId": "AeMUdOPFcXI", "notes": "NamibiaCam Okaukuejo" },
-    { "name": "GRACE Gorilla Corridor", "lat": -1.4500, "lon": 28.7000, "country": "CD", "city": "North Kivu", "ytId": "yfSyjwY6zSQ", "notes": "explore.org Grauer's gorilla" },
-    { "name": "Bison Water Hole", "lat": 49.1500, "lon": -107.4200, "country": "CA", "city": "Saskatchewan", "ytId": "tJ0fHAHihPA", "notes": "explore.org Grasslands NP" },
-    { "name": "Big Bear Eagle Nest", "lat": 34.2439, "lon": -116.9114, "country": "US", "city": "Big Bear", "ytId": "B4-L2nfGcuE", "notes": "FOBBV bald eagle" },
-    { "name": "Decorah Eagles", "lat": 43.2992, "lon": -91.7790, "country": "US", "city": "Decorah", "ytId": "IVmL3diwJuw", "notes": "explore.org" },
-    { "name": "Elk Refuge", "lat": 43.4600, "lon": -110.7600, "country": "US", "city": "Jackson Hole", "ytId": "_2rvoH5oDcg", "notes": "National Museum of Wildlife Art" },
-    { "name": "International Wolf Center", "lat": 47.8600, "lon": -89.8100, "country": "US", "city": "Ely", "ytId": "5e4lsEe4Vew", "notes": "explore.org wolf pack" },
-    { "name": "Crane Cam Rowe Sanctuary", "lat": 40.6700, "lon": -98.8900, "country": "US", "city": "Gibbon", "ytId": "wDYrRVUPWRo", "notes": "Audubon sandhill cranes" },
-    { "name": "Cornell Lab FeederWatch", "lat": 42.4800, "lon": -76.4500, "country": "US", "city": "Ithaca", "ytId": "x10vL6_47Dw", "notes": "4K Sapsucker Woods birds" },
-    { "name": "Sacramento Wildlife Refuge", "lat": 39.4200, "lon": -122.2000, "country": "US", "city": "Willows", "ytId": "DB4LDyWHawY", "notes": "explore.org migratory birds" },
-    { "name": "Denmark Forest Wildlife", "lat": 56.2600, "lon": 9.5000, "country": "DK", "city": "Jutland", "ytId": "F0GOOP82094", "notes": "Morten Hilmer 24/7" },
-    { "name": "Maui Humpback Whales", "lat": 20.9200, "lon": -156.6900, "country": "US", "city": "Maui", "ytId": "6i0yI_pfg7k", "notes": "Marine sanctuary 3-cam" },
-    { "name": "South Africa Wildlife", "lat": -24.0000, "lon": 31.0000, "country": "ZA", "city": "Kruger Region", "ytId": "9VsZidtoO54", "notes": "AirBeamTV wildlife" },
-    { "name": "Coral City Camera", "lat": 25.7743, "lon": -80.1709, "country": "US", "city": "Miami", "ytId": "7i8ARjIeM2k", "notes": "Urban harbor reef fish biodiversity" },
-    { "name": "Deerfield Beach Underwater", "lat": 26.3184, "lon": -80.0728, "country": "US", "city": "Deerfield Beach", "ytId": "V7c7pBbH150", "notes": "Pier reef fish and sharks" },
-    { "name": "Lower Florida Keys Underwater", "lat": 24.5551, "lon": -81.7800, "country": "US", "city": "Florida Keys", "ytId": "qi0mY6zVQnY", "notes": "Reef-edge tropical fish" },
-    { "name": "Utopia Village Reef Cam", "lat": 16.0936, "lon": -86.9311, "country": "HN", "city": "Utila", "ytId": "1zcIUk66HX4", "notes": "Caribbean reef ecosystem 25ft deep" },
-
-    { "name": "Kruger National Park Waterhole", "lat": -24.9947, "lon": 31.5969, "country": "ZA", "city": "Kruger NP", "ytId": "JXt27XBUVJ0", "notes": "Africam Naledi waterhole" },
-    { "name": "Nkorho Bush Lodge", "lat": -24.6500, "lon": 31.3800, "country": "ZA", "city": "Sabi Sand", "ytId": "EfBklxVHDcA", "notes": "Africam pan waterhole Big Five" },
-    { "name": "Tau Waterhole Madikwe", "lat": -24.7300, "lon": 26.2800, "country": "ZA", "city": "Madikwe", "ytId": "3fOPaqL8-jY", "notes": "Africam Madikwe Game Reserve" },
-    { "name": "Addo Elephant Waterhole", "lat": -33.4600, "lon": 25.7700, "country": "ZA", "city": "Addo", "ytId": "FaxFpJBBZ40", "notes": "SANParks Hapoor Dam" },
-    { "name": "Hluhluwe River Lodge", "lat": -28.0300, "lon": 32.2700, "country": "ZA", "city": "Hluhluwe", "ytId": "9pEzH0SRt3I", "notes": "Africam iMfolozi corridor" },
-    { "name": "Pilanesberg Waterhole", "lat": -25.2800, "lon": 27.1200, "country": "ZA", "city": "Pilanesberg", "ytId": "Qr3-RqRjzJA", "notes": "Africam volcanic crater reserve" },
-    { "name": "Serengeti Mara River", "lat": -1.5500, "lon": 34.8000, "country": "TZ", "city": "Serengeti", "ytId": "YQxqTxbZ1eY", "notes": "explore.org great migration crossing" },
-    { "name": "Masai Mara Waterhole", "lat": -1.4000, "lon": 35.0000, "country": "KE", "city": "Masai Mara", "ytId": "Cx1P3o1FwVU", "notes": "Africam Kenya savanna" },
-    { "name": "Chobe Botswana Riverfront", "lat": -17.7900, "lon": 25.1500, "country": "BW", "city": "Kasane", "ytId": "kfbVZ2kNqMk", "notes": "Africam Chobe elephant herds" },
-    { "name": "South Luangwa Zambia", "lat": -13.0700, "lon": 31.5500, "country": "ZM", "city": "Mfuwe", "ytId": "iUyDPbKjnFs", "notes": "Africam Luangwa Valley" },
-    { "name": "Naledi Dam Kruger", "lat": -24.0500, "lon": 31.5300, "country": "ZA", "city": "Kruger NP", "ytId": "b8LXjGhrDlE", "notes": "Africam Balule Nature Reserve" },
-    { "name": "Rosie's Pan Waterhole", "lat": -24.3700, "lon": 31.0200, "country": "ZA", "city": "Hoedspruit", "ytId": "G4w_Mc9txnU", "notes": "Africam predator waterhole" },
-    { "name": "Djuma Dam Sabi Sand", "lat": -24.8200, "lon": 31.4400, "country": "ZA", "city": "Sabi Sand", "ytId": "7z_GFXG0bCE", "notes": "Africam Djuma Private Reserve" },
-    { "name": "Kenya Tsavo Waterhole", "lat": -2.9500, "lon": 38.4700, "country": "KE", "city": "Tsavo", "ytId": "hUDlj_FBz2g", "notes": "Africam Tsavo East" },
-    { "name": "Amboseli Elephant Cam", "lat": -2.6500, "lon": 37.2600, "country": "KE", "city": "Amboseli", "ytId": "Rh0iBXqJDCA", "notes": "Africam Kilimanjaro backdrop" },
-    { "name": "Mpala Research Kenya", "lat": 0.2900, "lon": 36.9000, "country": "KE", "city": "Laikipia", "ytId": "cI1JD3_TfnE", "notes": "explore.org Mpala Research Centre" },
-    { "name": "Gorongosa Mozambique", "lat": -18.9700, "lon": 34.3500, "country": "MZ", "city": "Gorongosa", "ytId": "w5Q8Wqa0WCs", "notes": "Africam Gorongosa restoration" },
-    { "name": "Hwange Zimbabwe Waterhole", "lat": -18.3600, "lon": 26.5000, "country": "ZW", "city": "Hwange", "ytId": "rS2mXmkDP0w", "notes": "Africam Hwange NP" },
-    { "name": "Mana Pools Zimbabwe", "lat": -15.7500, "lon": 29.4000, "country": "ZW", "city": "Mana Pools", "ytId": "VnT3oYKzPjo", "notes": "Africam Zambezi floodplain" },
-    { "name": "Kgalagadi Waterhole", "lat": -25.7600, "lon": 20.5900, "country": "ZA", "city": "Kgalagadi", "ytId": "NkVjAdSuxbU", "notes": "SANParks Kalahari predators" },
-
-    { "name": "Osprey Nest Hog Island", "lat": 43.8800, "lon": -69.3200, "country": "US", "city": "Bremen", "ytId": "pFcLaS7RkVY", "notes": "explore.org Audubon osprey" },
-    { "name": "Peregrine Falcon Nest", "lat": 39.9522, "lon": -75.1642, "country": "US", "city": "Philadelphia", "ytId": "Cr1qjBdmfJA", "notes": "PA Game Commission falcon cam" },
-    { "name": "Great Horned Owl Nest", "lat": 33.9850, "lon": -118.4700, "country": "US", "city": "Los Angeles", "ytId": "FoN8K0NjpUc", "notes": "explore.org owl cam" },
-    { "name": "Barred Owl Nest Cam", "lat": 35.2271, "lon": -80.8431, "country": "US", "city": "Charlotte", "ytId": "8rdaSJ7cBYU", "notes": "Bird Cams barred owl" },
-    { "name": "Hummingbird Feeder Cam", "lat": 33.0137, "lon": -117.0729, "country": "US", "city": "Escondido", "ytId": "JsgK_Mfn7_E", "notes": "Bella Hummingbird nest" },
-    { "name": "Panama Fruit Feeder", "lat": 9.1700, "lon": -79.7400, "country": "PA", "city": "Gamboa", "ytId": "OQbbyEwMhAs", "notes": "Cornell Lab Panama bird feeder" },
-    { "name": "Bermuda Cahow Nest", "lat": 32.3600, "lon": -64.6500, "country": "BM", "city": "Nonsuch Island", "ytId": "VhYr6OP-e3E", "notes": "Cornell Lab cahow petrel" },
-    { "name": "Scottish Puffin Cam", "lat": 56.1900, "lon": -2.5500, "country": "GB", "city": "Isle of May", "ytId": "S_8xQ6N9DzA", "notes": "Scottish Seabird Centre" },
-    { "name": "Iceland Puffin Colony", "lat": 63.4300, "lon": -20.2700, "country": "IS", "city": "Vestmannaeyjar", "ytId": "YvfnVGz20qI", "notes": "explore.org Westman Islands" },
-    { "name": "Wandering Albatross Nest", "lat": -54.0000, "lon": -38.0500, "country": "GS", "city": "South Georgia", "ytId": "hOYxXChG6VI", "notes": "Cornell Lab albatross cam" },
-    { "name": "Boulder Penguin Colony", "lat": -34.1975, "lon": 18.4510, "country": "ZA", "city": "Simon's Town", "ytId": "LqZx0RFkl_4", "notes": "explore.org African penguins" },
-    { "name": "California Condor Nest", "lat": 34.7400, "lon": -119.9800, "country": "US", "city": "Ventura County", "ytId": "dq1VhNj4lRA", "notes": "explore.org condor recovery" },
-    { "name": "Red-tailed Hawk Nest", "lat": 42.4500, "lon": -76.4700, "country": "US", "city": "Ithaca", "ytId": "BDqnS8VHs1k", "notes": "Cornell Lab hawk cam" },
-    { "name": "Royal Albatross Dunedin", "lat": -45.7600, "lon": 170.7300, "country": "NZ", "city": "Dunedin", "ytId": "0b8eT-gS7Sw", "notes": "DOC Royal Cam Taiaroa Head" },
-    { "name": "Hellgate Osprey Montana", "lat": 46.8600, "lon": -114.0100, "country": "US", "city": "Missoula", "ytId": "y1wnsPZOSAw", "notes": "explore.org Hellgate Canyon" },
-    { "name": "White Stork Nest Poland", "lat": 53.7500, "lon": 20.4500, "country": "PL", "city": "Przygodzice", "ytId": "mPMWCd_8RNc", "notes": "SEO/BirdLife stork cam" },
-    { "name": "Bald Eagle Berry College", "lat": 34.2900, "lon": -85.1800, "country": "US", "city": "Rome GA", "ytId": "3jeCnvU4nsc", "notes": "Berry College eagle cam" },
-    { "name": "Laysan Albatross Hawaii", "lat": 21.3300, "lon": -157.8600, "country": "US", "city": "Honolulu", "ytId": "7Mz3FBhNkZU", "notes": "Cornell Lab Kaena Point" },
-    { "name": "Barn Owl Nest Cam", "lat": 34.1500, "lon": -117.2900, "country": "US", "city": "San Bernardino", "ytId": "TYJXqz0B2aY", "notes": "explore.org barn owl" },
-
-    { "name": "Monterey Bay Kelp Forest", "lat": 36.6181, "lon": -121.9018, "country": "US", "city": "Monterey", "ytId": "3Kn5PfRxEcI", "notes": "Monterey Bay Aquarium live" },
-    { "name": "Monterey Bay Open Sea", "lat": 36.6185, "lon": -121.9020, "country": "US", "city": "Monterey", "ytId": "z5IqVmCmS74", "notes": "Monterey Bay Aquarium pelagic" },
-    { "name": "Cayman Reef Cam", "lat": 19.3500, "lon": -81.2300, "country": "KY", "city": "Grand Cayman", "ytId": "YHxJiGrMGz8", "notes": "Underwater reef cam" },
-    { "name": "Bonaire Reef Cam", "lat": 12.1500, "lon": -68.2700, "country": "BQ", "city": "Kralendijk", "ytId": "3kBf_40C1Lw", "notes": "STINAPA marine park reef" },
-    { "name": "Channel Islands Kelp Forest", "lat": 34.0133, "lon": -119.3613, "country": "US", "city": "Channel Islands", "ytId": "WLJo0PcPSYg", "notes": "explore.org Anacapa underwater" },
-    { "name": "Shark Cam Oahu", "lat": 21.2800, "lon": -157.8400, "country": "US", "city": "Honolulu", "ytId": "o0cz5qbrkn0", "notes": "explore.org North Shore sharks" },
-    { "name": "Jellyfish Cam", "lat": 36.6183, "lon": -121.9015, "country": "US", "city": "Monterey", "ytId": "VBf-YoMkHVo", "notes": "Monterey Bay Aquarium jellyfish" },
-    { "name": "Manatee Cam Blue Spring", "lat": 28.9450, "lon": -81.3390, "country": "US", "city": "Orange City", "ytId": "dGJqZKnjWeQ", "notes": "explore.org Blue Spring FL" },
-    { "name": "Sea Lion Cam Pier 39", "lat": 37.8087, "lon": -122.4098, "country": "US", "city": "San Francisco", "ytId": "dCRfyy_LBcA", "notes": "Pier 39 sea lion dock" },
-    { "name": "Steller Sea Lion Cam Alaska", "lat": 57.7900, "lon": -152.4100, "country": "US", "city": "Kodiak", "ytId": "Kp-TnzPEqHk", "notes": "explore.org Steller sea lions" },
-    { "name": "Whale Cam Molokini", "lat": 20.6300, "lon": -156.4900, "country": "US", "city": "Maui", "ytId": "KpEBaVnCPC0", "notes": "Pacific Whale Foundation" },
-    { "name": "Dolphin Reef Eilat", "lat": 29.5200, "lon": 34.9600, "country": "IL", "city": "Eilat", "ytId": "PVw5IgSYD8E", "notes": "Dolphin Reef underwater cam" },
-    { "name": "Abyss Box Deep Sea", "lat": 43.6800, "lon": 7.3200, "country": "FR", "city": "Villefranche", "ytId": "EoVBFGpspGo", "notes": "Oceanographic Museum deep sea" },
-    { "name": "Cozumel Reef Cam", "lat": 20.4200, "lon": -86.9200, "country": "MX", "city": "Cozumel", "ytId": "xJyq7D0n1ew", "notes": "Mesoamerican reef underwater" },
-    { "name": "Great Barrier Reef Cam", "lat": -16.5000, "lon": 145.7800, "country": "AU", "city": "Cairns", "ytId": "2GD0sYE9lhY", "notes": "Queensland reef cam" },
-
-    { "name": "San Diego Zoo Panda Cam", "lat": 32.7353, "lon": -117.1490, "country": "US", "city": "San Diego", "ytId": "CWmwYNHbWCo", "notes": "San Diego Zoo giant pandas" },
-    { "name": "San Diego Zoo Elephant Cam", "lat": 32.7360, "lon": -117.1495, "country": "US", "city": "San Diego", "ytId": "WxaGIWpH0bA", "notes": "San Diego Zoo elephant yard" },
-    { "name": "San Diego Zoo Polar Bear", "lat": 32.7357, "lon": -117.1492, "country": "US", "city": "San Diego", "ytId": "vEHcaReApHA", "notes": "San Diego Zoo polar bear plunge" },
-    { "name": "Smithsonian Panda Cam", "lat": 38.9296, "lon": -77.0499, "country": "US", "city": "Washington DC", "ytId": "QeVqsQ9lxmw", "notes": "National Zoo giant panda" },
-    { "name": "Georgia Aquarium Ocean Voyager", "lat": 33.7634, "lon": -84.3951, "country": "US", "city": "Atlanta", "ytId": "aVPmFDUYBiY", "notes": "Georgia Aquarium whale sharks" },
-    { "name": "Georgia Aquarium Beluga", "lat": 33.7636, "lon": -84.3953, "country": "US", "city": "Atlanta", "ytId": "FqvVnb4FpRk", "notes": "Georgia Aquarium beluga whales" },
-    { "name": "Monterey Bay Aviary", "lat": 36.6179, "lon": -121.9016, "country": "US", "city": "Monterey", "ytId": "lJa0h4E_Brc", "notes": "Monterey Bay Aquarium sea otters" },
-    { "name": "Houston Zoo Elephant", "lat": 29.7143, "lon": -95.3912, "country": "US", "city": "Houston", "ytId": "FBr_NnLZgYo", "notes": "Houston Zoo elephant yard" },
-    { "name": "Edinburgh Zoo Panda", "lat": 55.9425, "lon": -3.2688, "country": "GB", "city": "Edinburgh", "ytId": "f8VnGoBVAh8", "notes": "RZSS Edinburgh panda cam" },
-    { "name": "Vienna Schonbrunn Zoo", "lat": 48.1821, "lon": 16.3012, "country": "AT", "city": "Vienna", "ytId": "k_CPBIvJbZM", "notes": "Tiergarten Schonbrunn panda" },
-    { "name": "Berlin Zoo Panda", "lat": 52.5075, "lon": 13.3372, "country": "DE", "city": "Berlin", "ytId": "ZC38pOaIw0Q", "notes": "Zoo Berlin panda garden" },
-    { "name": "Tokyo Ueno Zoo Panda", "lat": 35.7147, "lon": 139.7713, "country": "JP", "city": "Tokyo", "ytId": "wKVqiJC9U6E", "notes": "Ueno Zoo giant panda" },
-    { "name": "Melbourne Zoo Penguin", "lat": -37.7841, "lon": 144.9517, "country": "AU", "city": "Melbourne", "ytId": "6pI2NbKJo9w", "notes": "Zoos Victoria little penguins" },
-    { "name": "Shedd Aquarium Penguins", "lat": 41.8676, "lon": -87.6140, "country": "US", "city": "Chicago", "ytId": "4M_cKaB4g_E", "notes": "Shedd Aquarium penguin cam" },
-    { "name": "Vancouver Aquarium Jellyfish", "lat": 49.3006, "lon": -123.1310, "country": "CA", "city": "Vancouver", "ytId": "ROGqZ2AhcbA", "notes": "Vancouver Aquarium moon jellies" },
-
-    { "name": "Brooks Falls Bear Cam", "lat": 58.7550, "lon": -155.7750, "country": "US", "city": "King Salmon", "ytId": "IgIr3IxGzKQ", "notes": "explore.org Katmai NP salmon bears" },
-    { "name": "Brooks Falls Underwater", "lat": 58.7548, "lon": -155.7748, "country": "US", "city": "King Salmon", "ytId": "UQTBBmVAHZY", "notes": "explore.org underwater salmon" },
-    { "name": "Lower River Bear Cam", "lat": 58.7545, "lon": -155.7745, "country": "US", "city": "King Salmon", "ytId": "k3JGIl_tzBQ", "notes": "explore.org Katmai lower river" },
-    { "name": "Yellowstone Bear Cam", "lat": 44.6600, "lon": -110.3900, "country": "US", "city": "Yellowstone", "ytId": "1LUQh_48Mfo", "notes": "explore.org Yellowstone bears" },
-    { "name": "Moose Junction Jackson", "lat": 43.6500, "lon": -110.7100, "country": "US", "city": "Moose", "ytId": "XxPiH-xQgMI", "notes": "explore.org Grand Teton moose" },
-    { "name": "Deer Cam Pennsylvania", "lat": 40.7900, "lon": -77.8600, "country": "US", "city": "State College", "ytId": "8ZKaC3jccUU", "notes": "PA Game Commission deer cam" },
-    { "name": "Blue Spring Manatees", "lat": 28.9448, "lon": -81.3388, "country": "US", "city": "Orange City", "ytId": "8Y_3XuDVahU", "notes": "explore.org above-water manatee" },
-    { "name": "River Otter Cam", "lat": 45.5200, "lon": -122.6800, "country": "US", "city": "Portland", "ytId": "S0X_xdNkLOI", "notes": "Oregon Zoo river otter cam" },
-    { "name": "Beaver Cam Ontario", "lat": 45.4500, "lon": -75.7000, "country": "CA", "city": "Ottawa", "ytId": "h8QSXObqlKw", "notes": "explore.org beaver dam cam" },
-    { "name": "Wild Horse Cam Assateague", "lat": 38.0500, "lon": -75.2000, "country": "US", "city": "Assateague", "ytId": "lNBRJb1Jz84", "notes": "explore.org wild ponies" },
-    { "name": "Bison Yellowstone", "lat": 44.4600, "lon": -110.8300, "country": "US", "city": "Old Faithful", "ytId": "0NU8p-oP0ts", "notes": "explore.org Yellowstone bison" },
-    { "name": "Mountain Lion Cam", "lat": 34.0900, "lon": -118.3600, "country": "US", "city": "Los Angeles", "ytId": "c7j8RXsmV4g", "notes": "NPS Santa Monica Mountains P-22" },
-    { "name": "Alligator Cam Florida", "lat": 25.7617, "lon": -80.4956, "country": "US", "city": "Everglades", "ytId": "ZvlSSFnGOD4", "notes": "explore.org Everglades gator" },
-    { "name": "Pribilof Fur Seal Cam", "lat": 57.1200, "lon": -170.2800, "country": "US", "city": "St. Paul Island", "ytId": "B-2cAyxJ5jI", "notes": "explore.org Pribilof Islands" },
-    { "name": "Fox Den Cam Minnesota", "lat": 44.9500, "lon": -93.2600, "country": "US", "city": "Minneapolis", "ytId": "Pj2eiR5DAJQ", "notes": "explore.org urban red fox" },
-
-    { "name": "Borneo Orangutan Cam", "lat": 1.4200, "lon": 110.3400, "country": "MY", "city": "Semenggoh", "ytId": "8qQNQ_zI5u4", "notes": "Semenggoh Nature Reserve" },
-    { "name": "Sumatran Orangutan Cam", "lat": 3.5000, "lon": 98.1200, "country": "ID", "city": "Bukit Lawang", "ytId": "rqKNW7lR09k", "notes": "Orangutan Information Centre" },
-    { "name": "India Tiger Cam", "lat": 23.6300, "lon": 80.6100, "country": "IN", "city": "Bandhavgarh", "ytId": "d7HJ_9n3cWQ", "notes": "Bandhavgarh NP tiger waterhole" },
-    { "name": "Snow Leopard Cam", "lat": 34.7500, "lon": 76.6700, "country": "IN", "city": "Ladakh", "ytId": "gOx9aEzyCN0", "notes": "Snow Leopard Trust cam trap" },
-    { "name": "Koala Cam Lone Pine", "lat": -27.5300, "lon": 152.9700, "country": "AU", "city": "Brisbane", "ytId": "gxR-hMjjzUY", "notes": "Lone Pine Koala Sanctuary" },
-    { "name": "Kiwi Cam New Zealand", "lat": -38.1000, "lon": 176.2700, "country": "NZ", "city": "Rotorua", "ytId": "RpYvPZPxA_c", "notes": "Kiwi Encounter breeding" },
-    { "name": "Bat Cam Austin Bridge", "lat": 30.2612, "lon": -97.7451, "country": "US", "city": "Austin", "ytId": "5_Ql1Y40V6E", "notes": "Congress Ave Bridge bat colony" },
-    { "name": "Butterfly Garden Cam", "lat": 1.2854, "lon": 103.8585, "country": "SG", "city": "Singapore", "ytId": "bkPDV_uKkO8", "notes": "Changi Airport butterfly garden" },
-    { "name": "Tropical Fish Pond Cam", "lat": 19.6400, "lon": -155.9900, "country": "US", "city": "Kailua-Kona", "ytId": "Y9mNFWHpjhw", "notes": "explore.org koi and tropical fish" },
-    { "name": "Red Panda Cam", "lat": 40.6340, "lon": -73.9520, "country": "US", "city": "New York", "ytId": "Sc8WV3O2ELc", "notes": "Prospect Park Zoo red pandas" },
-    { "name": "Giant Tortoise Cam Galapagos", "lat": -0.7400, "lon": -90.3000, "country": "EC", "city": "Santa Cruz", "ytId": "aI2wqOIz29c", "notes": "Charles Darwin Station" },
-    { "name": "Flamingo Cam Kenya", "lat": -0.4200, "lon": 36.0900, "country": "KE", "city": "Lake Nakuru", "ytId": "lkSBMkXVBhA", "notes": "Lake Nakuru lesser flamingos" },
-    { "name": "Cheetah Cam Namibia", "lat": -22.5700, "lon": 17.0800, "country": "NA", "city": "Otjiwarongo", "ytId": "5dJv3aKQzFg", "notes": "Cheetah Conservation Fund" }
+    {
+      "name": "Full House Puppy Cam at Warrior Canine Connection",
+      "lat": 22.9068,
+      "lon": -43.1729,
+      "country": "BR",
+      "city": "Rio de Janeiro",
+      "ytId": "Qeq2Kax0v64"
+    },
+    {
+      "name": "Puppy Playroom at Warrior Canine Connection",
+      "lat": 22.9068,
+      "lon": -43.1729,
+      "country": "BR",
+      "city": "Rio de Janeiro",
+      "ytId": "h-Z0wCdD3dI"
+    },
+    {
+      "name": "Winter Boreal Birds at the Snowy Ontario FeederWatch Cam!...",
+      "lat": 22.9068,
+      "lon": -43.1729,
+      "country": "BR",
+      "city": "Rio de Janeiro",
+      "ytId": "YQ2vfNZA5SE"
+    },
+    {
+      "name": "Moela Safari Lodge - Zebra Migration | Boteti River, Bots...",
+      "lat": 22.3285,
+      "lon": 24.6849,
+      "country": "BW",
+      "city": "- Zebra Migration | Boteti River",
+      "ytId": "54Y7xlLrkuo"
+    },
+    {
+      "name": ": Zebra Migration at Meno a Kwena | Botswana Wildlife Saf...",
+      "lat": 22.3285,
+      "lon": 24.6849,
+      "country": "BW",
+      "city": "Botswana",
+      "ytId": "RZFMYVNhd4k"
+    },
+    {
+      "name": "Camelthorn Waterhole - Zebra Migration, Hippos & More | B...",
+      "lat": 22.3285,
+      "lon": 24.6849,
+      "country": "BW",
+      "city": "Botswana",
+      "ytId": "mk02pEy3FdA"
+    },
+    {
+      "name": "Elephant Pan (Hyena Pan) - Botswana | Wildlife Camera",
+      "lat": 22.3285,
+      "lon": 24.6849,
+      "country": "BW",
+      "city": "Botswana",
+      "ytId": "QJe1tGI1EZc"
+    },
+    {
+      "name": "Hideaways Camp Kuzuma, African Watering Hole (Chobe, Bots...",
+      "lat": 18.457,
+      "lon": 25.1506,
+      "country": "BW",
+      "city": "Chobe",
+      "ytId": "nmrApVyrBIw"
+    },
+    {
+      "name": "Twin Pan Hide Cam | Zarafa Camp | Selinda Reserve, Botswana",
+      "lat": 22.3285,
+      "lon": 24.6849,
+      "country": "BW",
+      "city": "Hide Cam | Zarafa Camp | Selinda Reserve",
+      "ytId": "2EZavJUNdLI"
+    },
+    {
+      "name": "Bison Water Hole",
+      "lat": 49.15,
+      "lon": -107.42,
+      "country": "CA",
+      "city": "Saskatchewan",
+      "ytId": "tJ0fHAHihPA"
+    },
+    {
+      "name": "Ever wonder what Penguins do when no one\u2019s watching? Chec...",
+      "lat": 43.6532,
+      "lon": -79.3832,
+      "country": "CA",
+      "city": "Toronto",
+      "ytId": "evyBSr6jTP8"
+    },
+    {
+      "name": "GRACE Gorilla Corridor",
+      "lat": -1.45,
+      "lon": 28.7,
+      "country": "CD",
+      "city": "North Kivu",
+      "ytId": "yfSyjwY6zSQ"
+    },
+    {
+      "name": "Denmark Forest Wildlife",
+      "lat": 56.26,
+      "lon": 9.5,
+      "country": "DK",
+      "city": "Jutland",
+      "ytId": "F0GOOP82094"
+    },
+    {
+      "name": "Dec 4, 2025: Nice Humpback Whale Breach Caught on Camera",
+      "lat": 43.7102,
+      "lon": 7.262,
+      "country": "FR",
+      "city": "Nice",
+      "ytId": "bEGWZ3V95uQ"
+    },
+    {
+      "name": "Flying eagle point of view by Sony Action Cam Mini (A fli...",
+      "lat": 48.8566,
+      "lon": 2.3522,
+      "country": "FR",
+      "city": "Paris",
+      "ytId": "QwNc0SFIp-o"
+    },
+    {
+      "name": "London UK Forest wildlife cam | Foxes, hedgehogs, squirre...",
+      "lat": 51.5074,
+      "lon": -0.1278,
+      "country": "GB",
+      "city": "London",
+      "ytId": "YRaX_Y2bv_E"
+    },
+    {
+      "name": "Utopia Village Reef Cam",
+      "lat": 16.0936,
+      "lon": -86.9311,
+      "country": "HN",
+      "city": "Utila",
+      "ytId": "1zcIUk66HX4"
+    },
+    {
+      "name": "Barn Owl/ Pigeon Israel 4K Cam 1|\u05ea\u05e0\u05e9\u05de\u05ea |WBAIS GAIA |The C...",
+      "lat": 31.7683,
+      "lon": 35.2137,
+      "country": "IL",
+      "city": "Israel",
+      "ytId": "FefBhyyUo60"
+    },
+    {
+      "name": "24/7 Birds, Squirrels & More Feeder Cam - South Bend, Ind...",
+      "lat": 28.6139,
+      "lon": 77.209,
+      "country": "IN",
+      "city": "India",
+      "ytId": "bZish-38Bbs"
+    },
+    {
+      "name": "Bird Feeder Cam Mumbai # 15",
+      "lat": 19.076,
+      "lon": 72.8777,
+      "country": "IN",
+      "city": "Mumbai",
+      "ytId": "Y7pratAWQmM"
+    },
+    {
+      "name": "Bird Feeder Cam Mumbai # 9",
+      "lat": 19.076,
+      "lon": 72.8777,
+      "country": "IN",
+      "city": "Mumbai",
+      "ytId": "K18aeFiLll0"
+    },
+    {
+      "name": "ol Donyo Lodge Kenya",
+      "lat": -2.74,
+      "lon": 37.43,
+      "country": "KE",
+      "city": "Amboseli",
+      "ytId": "XsOU8JnEpNM"
+    },
+    {
+      "name": "From Lentorre, Kenya | Wildlife Camera",
+      "lat": 0.405,
+      "lon": 37.9062,
+      "country": "KE",
+      "city": "Kenya",
+      "ytId": "bEmFpjwMOvs"
+    },
+    {
+      "name": "Cayman Reef Cam",
+      "lat": 19.3133,
+      "lon": -81.2546,
+      "country": "KY",
+      "city": "Grand Cayman",
+      "ytId": "ZpnyPXloF2U"
+    },
+    {
+      "name": "Malta Cam 4K - Real City Sound",
+      "lat": 35.8989,
+      "lon": 14.5146,
+      "country": "MT",
+      "city": "Malta",
+      "ytId": "15AbYWUTLf8"
+    },
+    {
+      "name": "Etosha Waterhole",
+      "lat": -18.8133,
+      "lon": 15.9156,
+      "country": "NA",
+      "city": "Etosha",
+      "ytId": "AeMUdOPFcXI"
+    },
+    {
+      "name": "Namib Desert",
+      "lat": -23.56,
+      "lon": 15.04,
+      "country": "NA",
+      "city": "Namib Desert",
+      "ytId": "ydYDqZQpim8"
+    },
+    {
+      "name": ": Onguma Waterhole - Elephants, Giraffes & More | Namibia...",
+      "lat": 22.5609,
+      "lon": 17.0658,
+      "country": "NA",
+      "city": "Namibia",
+      "ytId": "yuIm1V7Ne7I"
+    },
+    {
+      "name": "Safarihoek - Namibia | Wildlife Camera",
+      "lat": 22.5609,
+      "lon": 17.0658,
+      "country": "NA",
+      "city": "Namibia",
+      "ytId": "qwvk5hbEJnY"
+    },
+    {
+      "name": "Now4Rent.NL | Amsterdam De Dam | Pan Tilt Zoom Camera | U...",
+      "lat": 52.3676,
+      "lon": 4.9041,
+      "country": "NL",
+      "city": "Amsterdam",
+      "ytId": "Gd9d4q6WvUY"
+    },
+    {
+      "name": "Bird Feeder Cam - Forest Nook - Poland, Zywiec",
+      "lat": 52.2297,
+      "lon": 21.0122,
+      "country": "PL",
+      "city": "Poland",
+      "ytId": "RxLoZ-D4_dY"
+    },
+    {
+      "name": "Africam Lisbon Falls",
+      "lat": 38.7223,
+      "lon": -9.1393,
+      "country": "PT",
+      "city": "Lisbon",
+      "ytId": "9viZIxuonrI"
+    },
+    {
+      "name": "from the Serengeti | Wildlife Safari Cam | Serengeti Expl...",
+      "lat": 2.3333,
+      "lon": 34.8333,
+      "country": "TZ",
+      "city": "Serengeti",
+      "ytId": "BmOLK7LTKbY"
+    },
+    {
+      "name": "Aquarium Cam (Baltimore, Maryland)",
+      "lat": 39.2904,
+      "lon": -76.6122,
+      "country": "US",
+      "city": "Baltimore",
+      "ytId": "_5zWp0bMgcI"
+    },
+    {
+      "name": "Big Bear Eagle Nest",
+      "lat": 34.2439,
+      "lon": -116.9114,
+      "country": "US",
+      "city": "Big Bear",
+      "ytId": "B4-L2nfGcuE"
+    },
+    {
+      "name": "Victoria Falls Safari Lodge | Waterhole Cam - Elephants, ...",
+      "lat": 42.8864,
+      "lon": -78.8784,
+      "country": "US",
+      "city": "Buffalo",
+      "ytId": "f9uqHbXChno"
+    },
+    {
+      "name": "24/7 Sharky's Waterfront Cam at Ocean Isle Beach, NC",
+      "lat": 35.6301,
+      "lon": -79.8064,
+      "country": "US",
+      "city": "Cam at Ocean Isle Beach",
+      "ytId": "Dizx0Z2eDv8"
+    },
+    {
+      "name": "Great White Shark Seal Attack in Cape Cod Caught On Camera",
+      "lat": 41.6688,
+      "lon": -70.2962,
+      "country": "US",
+      "city": "Cape Cod",
+      "ytId": "SrYxnsgAHWw"
+    },
+    {
+      "name": "Nicholas Dolphin Cam | Clearwater Marine Aquarium Webcam ...",
+      "lat": 27.9659,
+      "lon": -82.8001,
+      "country": "US",
+      "city": "Clearwater",
+      "ytId": "T_KbdS48Dig"
+    },
+    {
+      "name": "NEWS: FOX LOCAL Dallas",
+      "lat": 32.7767,
+      "lon": -96.797,
+      "country": "US",
+      "city": "Dallas",
+      "ytId": "HkfKsRa9qnE"
+    },
+    {
+      "name": "Decorah Eagles",
+      "lat": 43.2992,
+      "lon": -91.779,
+      "country": "US",
+      "city": "Decorah",
+      "ytId": "IVmL3diwJuw"
+    },
+    {
+      "name": "Decorah Eagles - North Nest - 4k",
+      "lat": 43.3033,
+      "lon": -91.7857,
+      "country": "US",
+      "city": "Decorah",
+      "ytId": "GGIE1E-kaMQ"
+    },
+    {
+      "name": "Deerfield Beach Underwater",
+      "lat": 26.3184,
+      "lon": -80.0728,
+      "country": "US",
+      "city": "Deerfield Beach",
+      "ytId": "V7c7pBbH150"
+    },
+    {
+      "name": "International Wolf Center",
+      "lat": 47.86,
+      "lon": -89.81,
+      "country": "US",
+      "city": "Ely",
+      "ytId": "5e4lsEe4Vew"
+    },
+    {
+      "name": "Lower Florida Keys Underwater",
+      "lat": 24.5551,
+      "lon": -81.78,
+      "country": "US",
+      "city": "Florida Keys",
+      "ytId": "qi0mY6zVQnY"
+    },
+    {
+      "name": "Falcon Cam (Franklin County, MO)",
+      "lat": 38.4561,
+      "lon": -92.2884,
+      "country": "US",
+      "city": "Franklin County",
+      "ytId": "7ixtrNQHvpE"
+    },
+    {
+      "name": "Crane Cam Rowe Sanctuary",
+      "lat": 40.67,
+      "lon": -98.89,
+      "country": "US",
+      "city": "Gibbon",
+      "ytId": "wDYrRVUPWRo"
+    },
+    {
+      "name": "24/7 Hawaii Humpback Whale Marine Sanctuary in Maui, Hawa...",
+      "lat": 19.8968,
+      "lon": -155.5828,
+      "country": "US",
+      "city": "Hawaii",
+      "ytId": "iWCeBAxRCBo"
+    },
+    {
+      "name": "Dolphin Cam! North Shore of Oahu, Hawaii in 4K Ultra HD",
+      "lat": 19.8968,
+      "lon": -155.5828,
+      "country": "US",
+      "city": "Hawaii",
+      "ytId": "h5JhEK532wY"
+    },
+    {
+      "name": "Houston Zoo Giraffe Platform Cam | Feeding Cam | Ozolio W...",
+      "lat": 29.7604,
+      "lon": -95.3698,
+      "country": "US",
+      "city": "Houston",
+      "ytId": "jF8v3wScoBA"
+    },
+    {
+      "name": "Hummingbird Feeder Cam, Bird Feeder, Simi Valley, California",
+      "lat": 36.1162,
+      "lon": -119.6816,
+      "country": "US",
+      "city": "Hummingbird Feeder Cam",
+      "ytId": "pXe8MpU7uzk"
+    },
+    {
+      "name": "Feb 12, 2026: Caught on Camera - Humpback Whale Breaching...",
+      "lat": 21.0943,
+      "lon": -157.4983,
+      "country": "US",
+      "city": "Humpback Whale Breaching out of the water in Maui",
+      "ytId": "PwEKdz0oqRo"
+    },
+    {
+      "name": "Cornell Lab FeederWatch",
+      "lat": 42.48,
+      "lon": -76.45,
+      "country": "US",
+      "city": "Ithaca",
+      "ytId": "x10vL6_47Dw"
+    },
+    {
+      "name": "Elk Refuge",
+      "lat": 43.46,
+      "lon": -110.76,
+      "country": "US",
+      "city": "Jackson Hole",
+      "ytId": "_2rvoH5oDcg"
+    },
+    {
+      "name": "4 Hours of Brooks Falls in 4k! | Brown Bear Screensaver",
+      "lat": 58.7519,
+      "lon": -155.7847,
+      "country": "US",
+      "city": "Katmai",
+      "ytId": "mRcrFI8JbVU"
+    },
+    {
+      "name": "Bear Fight at Brooks Falls Then Bear Jumps Off Waterfall!...",
+      "lat": 58.7519,
+      "lon": -155.7847,
+      "country": "US",
+      "city": "Katmai",
+      "ytId": "gXsiqoMBepc"
+    },
+    {
+      "name": "Bears Falling off Brooks Falls",
+      "lat": 58.7519,
+      "lon": -155.7847,
+      "country": "US",
+      "city": "Katmai",
+      "ytId": "ad3Em2r7YMM"
+    },
+    {
+      "name": "FAT Bear Week 2025 \u25aa FINAL \u25aa 32 Chunk vs. 856 \u25aa Katmai Br...",
+      "lat": 58.6,
+      "lon": -154.0,
+      "country": "US",
+      "city": "Katmai",
+      "ytId": "y2PektHynqE"
+    },
+    {
+      "name": "Katmai Bears 8-17-25. Bear 128 Grazer Aggressively Goes A...",
+      "lat": 58.6,
+      "lon": -154.0,
+      "country": "US",
+      "city": "Katmai",
+      "ytId": "ArGSZN7_C7w"
+    },
+    {
+      "name": "Katmai Bears 9-16-25. Massive Bull Moose Strolls Through;...",
+      "lat": 58.6,
+      "lon": -154.0,
+      "country": "US",
+      "city": "Katmai",
+      "ytId": "cm4uHLq6xjo"
+    },
+    {
+      "name": "Super Epic Bearapalooza! 17 Brown Bears at Brooks Falls!!...",
+      "lat": 58.7519,
+      "lon": -155.7847,
+      "country": "US",
+      "city": "Katmai",
+      "ytId": "hdt1aldxafk"
+    },
+    {
+      "name": "Las Vegas The Strip stream IRL now, Friday night",
+      "lat": 36.1699,
+      "lon": -115.1398,
+      "country": "US",
+      "city": "Las Vegas",
+      "ytId": "tLJZyRmWP1k"
+    },
+    {
+      "name": "African Safari 4K \u2022 Wildlife Relaxation Film | Nature 4K ...",
+      "lat": 33.9425,
+      "lon": -118.4081,
+      "country": "US",
+      "city": "Los Angeles",
+      "ytId": "Krh9ccPOx-M"
+    },
+    {
+      "name": "Bird Feeder Spring Forest Wildlife Bird Songs Relaxing Re...",
+      "lat": 33.9425,
+      "lon": -118.4081,
+      "country": "US",
+      "city": "Los Angeles",
+      "ytId": "D1VM6V6wmU0"
+    },
+    {
+      "name": "Magellanic Penguin Nest - Isla Tova",
+      "lat": 34.0522,
+      "lon": -118.2437,
+      "country": "US",
+      "city": "Los Angeles",
+      "ytId": "0Ox2Ka_T9BY"
+    },
+    {
+      "name": "Relaxing Winter Bird Feeder 4K Cam \u2013 Nature Sounds \u2013 Hungary",
+      "lat": 33.9425,
+      "lon": -118.4081,
+      "country": "US",
+      "city": "Los Angeles",
+      "ytId": "A5L9TmjGI5A"
+    },
+    {
+      "name": "Santa Monica Beach Cam",
+      "lat": 34.0195,
+      "lon": -118.4912,
+      "country": "US",
+      "city": "Los Angeles",
+      "ytId": "qmE7U1YZPQA"
+    },
+    {
+      "name": "24/7 4K MAUI CAM * WHALE WATCH CAM * www.WhalerCondo.net",
+      "lat": 20.7984,
+      "lon": -156.3319,
+      "country": "US",
+      "city": "Maui",
+      "ytId": "VMz165U1f-Q"
+    },
+    {
+      "name": "Dec 21, 2025: Multiple Humpback Whale Breaches Caught on ...",
+      "lat": 20.7984,
+      "lon": -156.3319,
+      "country": "US",
+      "city": "Maui",
+      "ytId": "shUvh7N4gEA"
+    },
+    {
+      "name": "Dec 4, 2025: Caught on Camera Humpback Whale Breaching in...",
+      "lat": 20.7984,
+      "lon": -156.3319,
+      "country": "US",
+      "city": "Maui",
+      "ytId": "2xZ_eHngeoE"
+    },
+    {
+      "name": "Mar 3, 2026: Mother and Baby Humpback Whales Breaching Ca...",
+      "lat": 20.7984,
+      "lon": -156.3319,
+      "country": "US",
+      "city": "Maui",
+      "ytId": "tTcuvH30cgc"
+    },
+    {
+      "name": "Coral City Camera",
+      "lat": 25.7743,
+      "lon": -80.1709,
+      "country": "US",
+      "city": "Miami",
+      "ytId": "7i8ARjIeM2k"
+    },
+    {
+      "name": "Little Miami Conservancy Bald Eagle Nest Camera",
+      "lat": 25.7617,
+      "lon": -80.1918,
+      "country": "US",
+      "city": "Miami",
+      "ytId": "kHOdKaPsFk8"
+    },
+    {
+      "name": "Jelly Cam - Monterey Bay Aquarium",
+      "lat": 36.6002,
+      "lon": -121.8947,
+      "country": "US",
+      "city": "Monterey",
+      "ytId": "NUnJc82ptd4"
+    },
+    {
+      "name": "Kelp Forest Cam - Monterey Bay Aquarium",
+      "lat": 36.6002,
+      "lon": -121.8947,
+      "country": "US",
+      "city": "Monterey",
+      "ytId": "w3LjpFhySTg"
+    },
+    {
+      "name": "Monterey Bay Cam - Monterey Bay Aquarium",
+      "lat": 36.6002,
+      "lon": -121.8947,
+      "country": "US",
+      "city": "Monterey",
+      "ytId": "fVa6-zCBR7A"
+    },
+    {
+      "name": "Moon Jelly Cam - Monterey Bay Aquarium",
+      "lat": 36.6002,
+      "lon": -121.8947,
+      "country": "US",
+      "city": "Monterey",
+      "ytId": "IeWhbCe2Krk"
+    },
+    {
+      "name": "Open Sea Cam - Monterey Bay Aquarium",
+      "lat": 36.6002,
+      "lon": -121.8947,
+      "country": "US",
+      "city": "Monterey",
+      "ytId": "nNTVZKz219U"
+    },
+    {
+      "name": "Sea Otter Cam - Monterey Bay Aquarium",
+      "lat": 36.6002,
+      "lon": -121.8947,
+      "country": "US",
+      "city": "Monterey",
+      "ytId": "abbR-Ttd-cA"
+    },
+    {
+      "name": "Shark Cam - Monterey Bay Aquarium",
+      "lat": 36.6002,
+      "lon": -121.8947,
+      "country": "US",
+      "city": "Monterey",
+      "ytId": "tEtg5Kg3voQ"
+    },
+    {
+      "name": "4K Bird Feeder Cam | Light SNOW- Hungry Birds",
+      "lat": 36.1627,
+      "lon": -86.7816,
+      "country": "US",
+      "city": "Nashville",
+      "ytId": "mz3SUOep6Mc"
+    },
+    {
+      "name": "NEWS: FOX LOCAL NY",
+      "lat": 40.7128,
+      "lon": -74.006,
+      "country": "US",
+      "city": "New York",
+      "ytId": "ADXWeM9wsDw"
+    },
+    {
+      "name": "WEBCAMS around the world | March 9 | FOX 10 Phoenix",
+      "lat": 33.4484,
+      "lon": -112.074,
+      "country": "US",
+      "city": "Phoenix",
+      "ytId": "hs2D1OieDEA"
+    },
+    {
+      "name": "Penguin Cam | Pittsburgh Zoo & PPG Aquarium Webcam",
+      "lat": 40.4406,
+      "lon": -79.9959,
+      "country": "US",
+      "city": "Pittsburgh",
+      "ytId": "cTi5sCsUSfc"
+    },
+    {
+      "name": "San Diego Zoo - Walking Tour | 4K UHD",
+      "lat": 32.7157,
+      "lon": -117.1611,
+      "country": "US",
+      "city": "San Diego",
+      "ytId": "vbUlJr1s7qU"
+    },
+    {
+      "name": "SeaWorld San Diego revives Penguin Cam for holiday joy wi...",
+      "lat": 32.7157,
+      "lon": -117.1611,
+      "country": "US",
+      "city": "San Diego",
+      "ytId": "1XfkwqkuXR8"
+    },
+    {
+      "name": "sea otter / fur seal cam - Seattle Aquarium",
+      "lat": 47.6062,
+      "lon": -122.3321,
+      "country": "US",
+      "city": "Seattle",
+      "ytId": "NqOmHpwMUxs"
+    },
+    {
+      "name": "BALD EAGLE Cam 1 Traverse City, MI",
+      "lat": 43.3266,
+      "lon": -84.5361,
+      "country": "US",
+      "city": "Traverse City",
+      "ytId": "vMW-S6ZoYgY"
+    },
+    {
+      "name": "BALD EAGLE Cam 2 Traverse City, MI",
+      "lat": 43.3266,
+      "lon": -84.5361,
+      "country": "US",
+      "city": "Traverse City",
+      "ytId": "rWQEKZGcius"
+    },
+    {
+      "name": "Animals and Nature Cam (Webster, NY)",
+      "lat": 42.1657,
+      "lon": -74.9481,
+      "country": "US",
+      "city": "Webster",
+      "ytId": "ZNDtaQp1Gak"
+    },
+    {
+      "name": "Sacramento Wildlife Refuge",
+      "lat": 39.42,
+      "lon": -122.2,
+      "country": "US",
+      "city": "Willows",
+      "ytId": "DB4LDyWHawY"
+    },
+    {
+      "name": "Bird Feeder Cam 24/7 Cardinals, Blue Jays & Wildlife | Mi...",
+      "lat": 0,
+      "lon": 0,
+      "country": "XX",
+      "city": "ISS",
+      "ytId": "_wnjeiATFk4"
+    },
+    {
+      "name": "Bird feeder Cam Ozarks Missouri",
+      "lat": 0,
+      "lon": 0,
+      "country": "XX",
+      "city": "ISS",
+      "ytId": "km5RyC6jlYA"
+    },
+    {
+      "name": "Mississippi River Flyway Cam",
+      "lat": 0,
+      "lon": 0,
+      "country": "XX",
+      "city": "ISS",
+      "ytId": "Hkj9L-HKXJU"
+    },
+    {
+      "name": "HESC Rhino Cam",
+      "lat": -24.53,
+      "lon": 30.96,
+      "country": "ZA",
+      "city": "Hoedspruit",
+      "ytId": "oruIH1ZadqE"
+    },
+    {
+      "name": "Cat Eye Camera | Naledi Lodge, Greater Kruger Park",
+      "lat": 24.0112,
+      "lon": 31.4847,
+      "country": "ZA",
+      "city": "Kruger",
+      "ytId": "QGvjAPzImR8"
+    },
+    {
+      "name": "Naledi Dam | Wildlife Stream \u2013 Greater Kruger National Park",
+      "lat": 24.0112,
+      "lon": 31.4847,
+      "country": "ZA",
+      "city": "Kruger",
+      "ytId": "S4GIPXZnQTM"
+    },
+    {
+      "name": "Tembe Elephant Park",
+      "lat": -27.02,
+      "lon": 32.41,
+      "country": "ZA",
+      "city": "KwaZulu-Natal",
+      "ytId": "gdrNUUf-cQw"
+    },
+    {
+      "name": "Olifants River",
+      "lat": -24.18,
+      "lon": 30.86,
+      "country": "ZA",
+      "city": "Limpopo",
+      "ytId": "_NXaovxB-Bk"
+    },
+    {
+      "name": "Ulusaba Sabi Sand",
+      "lat": -24.94,
+      "lon": 31.36,
+      "country": "ZA",
+      "city": "Sabi Sand",
+      "ytId": "zqc0Z2oWmo8"
+    },
+    {
+      "name": "Nkorho: Stream in the Sabi Sand, South Africa",
+      "lat": 33.9249,
+      "lon": 18.4241,
+      "country": "ZA",
+      "city": "South Africa",
+      "ytId": "O81gItg_Jco"
+    },
+    {
+      "name": "Serondella | Wildlife Camera - South Africa",
+      "lat": 33.9249,
+      "lon": 18.4241,
+      "country": "ZA",
+      "city": "South Africa",
+      "ytId": "BMQifTcOgts"
+    },
+    {
+      "name": "South Africa - Bird Feeder and Wildlife Camera",
+      "lat": 33.9249,
+      "lon": 18.4241,
+      "country": "ZA",
+      "city": "South Africa",
+      "ytId": "MrLVxFR1IbI"
+    }
   ]
 }

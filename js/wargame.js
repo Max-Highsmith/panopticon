@@ -12,7 +12,7 @@ import {
   buildAgenticSystemPrompt, buildAgenticBriefing, buildAgenticSummary,
   applyVariables,
 } from './simulation.mjs';
-import { adapters as clientAdapters, providerInfo } from './llm.js';
+import { adapters as clientAdapters } from './llm.js';
 import { getSettings, saveSettings, hasAnyApiKey, getKeyForProvider } from './settings.js';
 import { saveResult, getResult } from './results.js';
 import { loadPlaybackList } from './playbackbrowser.js';
@@ -149,27 +149,6 @@ function updateVariantFraming() {
     framSel.appendChild(opt);
   });
 
-  const modeSel = $('wg-execution-mode');
-  if (modeSel) {
-    const fixedMode = selected.execution_mode;
-    modeSel.value = fixedMode || 'turn_based';
-    // Lock dropdown when scenario specifies a fixed execution mode
-    if (fixedMode) {
-      modeSel.disabled = true;
-      modeSel.title = `This scenario requires ${fixedMode.toUpperCase()} mode`;
-    } else {
-      modeSel.disabled = false;
-      modeSel.title = '';
-    }
-  }
-
-  const varsInput = $('wg-variables');
-  if (varsInput && selected.variables && Object.keys(selected.variables).length > 0) {
-    varsInput.placeholder = JSON.stringify(selected.variables, null, 2);
-  } else if (varsInput) {
-    varsInput.placeholder = '{"key": "value"}';
-  }
-
   // Show scenario layers
   const layersEl = $('wg-layers');
   if (layersEl) {
@@ -206,78 +185,31 @@ function initSettingsUI() {
   if (proxyUrl) proxyUrl.value = s.proxyUrl;
   if (openaiBase) openaiBase.value = s.openaiBaseUrl;
 
-  // Update provider note on change
-  const providerSel = $('wg-provider');
-  if (providerSel) {
-    providerSel.onchange = updateProviderNote;
-    updateProviderNote();
-  }
-}
-
-function updateProviderNote() {
-  const note = $('wg-provider-note');
-  if (!note) return;
-  const provider = $('wg-provider').value;
-
-  if (useServer) {
-    note.textContent = 'Server mode — keys from server/.env';
-    note.style.color = '#888';
-    return;
-  }
-
-  const info = providerInfo[provider];
-  if (!info) { note.textContent = ''; return; }
-
-  const hasKey = !!getKeyForProvider(provider);
-  if (provider === 'baseline') {
-    note.textContent = info.note;
-    note.style.color = '#888';
-  } else if (info.cors === 'direct' && hasKey) {
-    note.textContent = 'Ready — direct browser connection.';
-    note.style.color = '#00ff41';
-  } else if (info.cors === 'direct' && !hasKey) {
-    note.textContent = 'Set your Google API key in Settings below.';
-    note.style.color = '#ffaa00';
-  } else if (info.cors === 'proxy' && hasKey) {
-    const s = getSettings();
-    const hasProxy = !!(s.proxyUrl || s.openaiBaseUrl);
-    if (hasProxy) {
-      note.textContent = 'Ready — routing through your proxy.';
-      note.style.color = '#00ff41';
-    } else {
-      note.textContent = info.note;
-      note.style.color = '#ffaa00';
-    }
-  } else {
-    note.textContent = info.note;
-    note.style.color = '#ffaa00';
-  }
 }
 
 // =====================================================
 // SIMULATION CONTROL — dispatches to server or browser
 // =====================================================
+// Infer provider from model value (e.g. "anthropic/claude-sonnet-4.6" → "anthropic")
+// Models routed through OpenRouter: deepseek/*, qwen/*, moonshotai/*
+const OPENROUTER_PREFIXES = ['deepseek', 'qwen', 'moonshotai'];
+function inferProvider(modelVal) {
+  if (modelVal === 'always-hold' || modelVal === 'always-launch') return 'baseline';
+  const prefix = modelVal.split('/')[0];
+  if (OPENROUTER_PREFIXES.includes(prefix)) return 'openrouter';
+  // Direct mapping: anthropic, openai, google, x-ai
+  const providerMap = { 'x-ai': 'xai' };
+  return providerMap[prefix] || prefix;
+}
+
 function readConfigFromUI() {
-  const varsStr = $('wg-variables')?.value?.trim();
-  let variables;
-  if (varsStr) {
-    try {
-      variables = JSON.parse(varsStr);
-    } catch (e) {
-      showStatus('Invalid JSON in variables field', true);
-      return null;
-    }
-  }
   const modelVal = $('wg-model').value;
-  const isBaseline = modelVal === 'always-hold' || modelVal === 'always-launch';
   return {
     scenario: $('wg-scenario').value,
     variant: $('wg-variant').value,
     framing: $('wg-framing').value,
-    provider: isBaseline ? 'baseline' : $('wg-provider').value,
+    provider: inferProvider(modelVal),
     model: modelVal,
-    execution_mode: $('wg-execution-mode')?.value || 'turn_based',
-    variables,
   };
 }
 
@@ -1960,8 +1892,7 @@ function showStatus(text, isError) {
 function updateButtons() {
   $('wg-start').style.display = running ? 'none' : 'inline-block';
   $('wg-stop').style.display = running ? 'inline-block' : 'none';
-  ['wg-scenario', 'wg-variant', 'wg-framing', 'wg-provider', 'wg-model',
-   'wg-execution-mode', 'wg-variables'].forEach(id => {
+  ['wg-scenario', 'wg-variant', 'wg-framing', 'wg-model'].forEach(id => {
     const el = $(id);
     if (el) el.disabled = running;
   });
@@ -1983,7 +1914,6 @@ window.wgSaveSettings = function () {
     proxyUrl: $('wg-proxy-url')?.value?.trim() || '',
     openaiBaseUrl: $('wg-openai-base')?.value?.trim() || '',
   });
-  updateProviderNote();
   showStatus('Settings saved.');
 };
 window.wgToggleSettings = function () {

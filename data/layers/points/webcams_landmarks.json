@@ -1,96 +1,251 @@
 {
   "_source": {
-    "description": "Curated 24/7 live webcam streams of world-famous landmarks, monuments, and historical sites",
-    "origin": "YouTube Live streams from: EarthCam, SkylineWebcams, I Love You Venice, city tourism boards, monument operators",
-    "retrieved": "2026-03-10",
-    "license": "Public live streams — fair use",
-    "notes": "YouTube IDs may change as streams rotate."
+    "description": "Curated 24/7 live landmark, monument, and historic site webcam streams",
+    "origin": "YouTube Live streams discovered and verified via yt-dlp. Sources: EarthCam, SkylineWebcams, monument/site operator channels",
+    "retrieved": "2026-03-11",
+    "license": "Public live streams \u2014 fair use",
+    "notes": "All YouTube IDs verified via oEmbed API. IDs may change as streams rotate. Run scripts/ingest_webcams.py to re-verify."
   },
   "landmarks": [
-    { "name": "Eiffel Tower", "lat": 48.8584, "lon": 2.2945, "country": "FR", "city": "Paris", "ytId": "OzYp4NRZlwQ", "notes": "I Love You Venice stream" },
-    { "name": "Statue of Liberty", "lat": 40.6892, "lon": -74.0445, "country": "US", "city": "New York", "ytId": "cWR8KGKftUw", "notes": "EarthCam" },
-    { "name": "Abbey Road Crossing", "lat": 51.5320, "lon": -0.1782, "country": "GB", "city": "London", "ytId": "M3EYAY2MftI", "notes": "EarthCam iconic Beatles crossing" },
-    { "name": "Ponte delle Guglie", "lat": 45.4430, "lon": 12.3280, "country": "IT", "city": "Venice", "ytId": "HpZAez2oYsA", "notes": "4K from Hotel Leone" },
-    { "name": "Rialto Bridge", "lat": 45.4380, "lon": 12.3359, "country": "IT", "city": "Venice", "ytId": "K_Vg94nBiaY", "notes": "From Palazzo Bembo" },
-    { "name": "Niagara Falls", "lat": 43.0799, "lon": -79.0747, "country": "CA", "city": "Niagara Falls", "ytId": "qx7gry390YA", "notes": "EarthCam iconic falls" },
-    { "name": "Niagara Falls Cam 2", "lat": 43.0800, "lon": -79.0750, "country": "CA", "city": "Niagara Falls", "ytId": "3KhQK5KG7VU", "notes": "EarthCam alternate angle" },
-    { "name": "Western Wall", "lat": 31.7767, "lon": 35.2345, "country": "IL", "city": "Jerusalem", "ytId": "77akujLn4k8", "notes": "EarthCam Kotel live" },
-    { "name": "Rovaniemi Santa Village", "lat": 66.5436, "lon": 25.8471, "country": "FI", "city": "Rovaniemi", "ytId": "Cp4RRAEgpeU", "notes": "Arctic Circle" },
-    { "name": "Zaanse Schans Windmills", "lat": 52.4731, "lon": 4.8192, "country": "NL", "city": "Zaandam", "ytId": "FRIIwsXwyJw", "notes": "Dutch windmills" },
-    { "name": "Sint Maarten Maho Beach", "lat": 18.0410, "lon": -63.1089, "country": "SX", "city": "Philipsburg", "ytId": "EnojhKoPR0c", "notes": "EarthCam famous plane approach" },
-    { "name": "Sitka Alaska", "lat": 57.0531, "lon": -135.3300, "country": "US", "city": "Sitka", "ytId": "sF5hFDGN20Y", "notes": "EarthCam coastal Alaska" },
-    { "name": "Scrub Island BVI", "lat": 18.4740, "lon": -64.5820, "country": "VG", "city": "Scrub Island", "ytId": "t55kv94nEzc", "notes": "EarthCam" },
-    { "name": "Cayman Islands", "lat": 19.3133, "lon": -81.2546, "country": "KY", "city": "Grand Cayman", "ytId": "nFWB7S4-er4", "notes": "EarthCam" },
-    { "name": "Marco Island Marina", "lat": 25.9421, "lon": -81.7234, "country": "US", "city": "Marco Island", "ytId": "Cim4LMbXus0", "notes": "EarthCam" },
-    { "name": "Fort Myers FL", "lat": 26.6406, "lon": -81.8723, "country": "US", "city": "Fort Myers", "ytId": "skM8DTCx3gM", "notes": "EarthCam waterfront" },
-    { "name": "Anglins Pier", "lat": 26.1884, "lon": -80.0941, "country": "US", "city": "Lauderdale-By-The-Sea", "ytId": "YEAhxXd-TiY", "notes": "EarthCam fishing pier" },
-    { "name": "Allegiant Stadium", "lat": 36.0907, "lon": -115.1833, "country": "US", "city": "Las Vegas", "ytId": "_rmUXOHSf0w", "notes": "EarthCam Raiders stadium" },
-    { "name": "Roswell NM", "lat": 33.3943, "lon": -104.5230, "country": "US", "city": "Roswell", "ytId": "kLoFxVhRWtQ", "notes": "EarthCam alien capital" },
-    { "name": "Kulusuk Airport Greenland", "lat": 65.5736, "lon": -37.1236, "country": "GL", "city": "Kulusuk", "ytId": "fpaqR1d_K0g", "notes": "Remote arctic airstrip" },
-
-    { "name": "Big Ben & Westminster", "lat": 51.5007, "lon": -0.1246, "country": "GB", "city": "London", "ytId": "93K7IQ5CPV8", "notes": "SkylineWebcams Palace of Westminster" },
-    { "name": "Tower Bridge London", "lat": 51.5055, "lon": -0.0754, "country": "GB", "city": "London", "ytId": "F9e7o6kS3rY", "notes": "EarthCam Tower Bridge opening" },
-    { "name": "Buckingham Palace", "lat": 51.5014, "lon": -0.1419, "country": "GB", "city": "London", "ytId": "u8oWpKGHRX0", "notes": "SkylineWebcams Buckingham Palace" },
-    { "name": "Edinburgh Castle", "lat": 55.9486, "lon": -3.1999, "country": "GB", "city": "Edinburgh", "ytId": "sDo-cPXOBjY", "notes": "SkylineWebcams Edinburgh skyline" },
-    { "name": "Colosseum Rome", "lat": 41.8902, "lon": 12.4922, "country": "IT", "city": "Rome", "ytId": "pPMq7NuLdh0", "notes": "SkylineWebcams Colosseum view" },
-    { "name": "Trevi Fountain", "lat": 41.9009, "lon": 12.4833, "country": "IT", "city": "Rome", "ytId": "K5FNmG1dGFM", "notes": "SkylineWebcams Fontana di Trevi" },
-    { "name": "Leaning Tower of Pisa", "lat": 43.7230, "lon": 10.3966, "country": "IT", "city": "Pisa", "ytId": "lbBnkE2K66Y", "notes": "SkylineWebcams Piazza dei Miracoli" },
-    { "name": "Ponte Vecchio Florence", "lat": 43.7680, "lon": 11.2531, "country": "IT", "city": "Florence", "ytId": "dvz_xLqXEjI", "notes": "SkylineWebcams Arno River" },
-    { "name": "St. Peter's Basilica", "lat": 41.9022, "lon": 12.4539, "country": "VA", "city": "Vatican City", "ytId": "FSeMeD5th70", "notes": "SkylineWebcams Vatican view" },
-    { "name": "Brandenburg Gate", "lat": 52.5163, "lon": 13.3777, "country": "DE", "city": "Berlin", "ytId": "MdD1vJRBSIc", "notes": "EarthCam Pariser Platz" },
-    { "name": "Sagrada Familia", "lat": 41.4036, "lon": 2.1744, "country": "ES", "city": "Barcelona", "ytId": "x3Uf0vp-C6I", "notes": "SkylineWebcams Gaudi basilica" },
-    { "name": "Charles Bridge Prague", "lat": 50.0865, "lon": 14.4114, "country": "CZ", "city": "Prague", "ytId": "cZaJKa02GkQ", "notes": "SkylineWebcams Karluv Most" },
-    { "name": "Szechenyi Chain Bridge", "lat": 47.4990, "lon": 19.0430, "country": "HU", "city": "Budapest", "ytId": "dKO6GfLf0as", "notes": "EarthCam Danube panorama" },
-    { "name": "Red Square Moscow", "lat": 55.7539, "lon": 37.6208, "country": "RU", "city": "Moscow", "ytId": "X0vv1IFJFvA", "notes": "Moscow Live Red Square" },
-    { "name": "Hagia Sophia", "lat": 41.0086, "lon": 28.9802, "country": "TR", "city": "Istanbul", "ytId": "S5d0H0aIyag", "notes": "SkylineWebcams Sultanahmet" },
-    { "name": "Blue Mosque Istanbul", "lat": 41.0054, "lon": 28.9768, "country": "TR", "city": "Istanbul", "ytId": "gPwZWO3-xNs", "notes": "SkylineWebcams Sultan Ahmed" },
-    { "name": "Acropolis Athens", "lat": 37.9715, "lon": 23.7267, "country": "GR", "city": "Athens", "ytId": "pZ9UqN1UZ0s", "notes": "SkylineWebcams Parthenon view" },
-    { "name": "Arc de Triomphe", "lat": 48.8738, "lon": 2.2950, "country": "FR", "city": "Paris", "ytId": "c_RJ_6mVFKs", "notes": "Paris Live Champs-Elysees" },
-    { "name": "Louvre Museum", "lat": 48.8606, "lon": 2.3376, "country": "FR", "city": "Paris", "ytId": "ZMnNvJCKj7Q", "notes": "SkylineWebcams Louvre pyramid" },
-    { "name": "Notre Dame Reconstruction", "lat": 48.8530, "lon": 2.3499, "country": "FR", "city": "Paris", "ytId": "YXoORzlGKVk", "notes": "EarthCam Notre Dame rebuild" },
-    { "name": "Dubrovnik Old Town", "lat": 42.6407, "lon": 18.1082, "country": "HR", "city": "Dubrovnik", "ytId": "s-TlKh6Fztk", "notes": "SkylineWebcams Stradun" },
-    { "name": "Santorini Caldera", "lat": 36.4166, "lon": 25.4321, "country": "GR", "city": "Santorini", "ytId": "7yJaFh0j2Ss", "notes": "SkylineWebcams Oia sunset" },
-
-    { "name": "Sensoji Temple Tokyo", "lat": 35.7148, "lon": 139.7967, "country": "JP", "city": "Tokyo", "ytId": "qC-o48FyoLI", "notes": "Asakusa Kaminarimon gate" },
-    { "name": "Fushimi Inari Kyoto", "lat": 34.9671, "lon": 135.7727, "country": "JP", "city": "Kyoto", "ytId": "dRYGBppxPQs", "notes": "Thousand torii gates" },
-    { "name": "Marina Bay Sands", "lat": 1.2834, "lon": 103.8607, "country": "SG", "city": "Singapore", "ytId": "G4x5xjLFnlY", "notes": "SkylineWebcams Marina Bay" },
-    { "name": "Petronas Towers KL", "lat": 3.1578, "lon": 101.7117, "country": "MY", "city": "Kuala Lumpur", "ytId": "hXEkPpCPJis", "notes": "SkylineWebcams KLCC" },
-    { "name": "Victoria Peak Hong Kong", "lat": 22.2759, "lon": 114.1455, "country": "HK", "city": "Hong Kong", "ytId": "eaHSUjbK75o", "notes": "Victoria Harbour panorama" },
-    { "name": "The Bund Shanghai", "lat": 31.2400, "lon": 121.4900, "country": "CN", "city": "Shanghai", "ytId": "EYo_fOlBlOQ", "notes": "Pudong skyline from Bund" },
-    { "name": "Gyeongbokgung Seoul", "lat": 37.5796, "lon": 126.9770, "country": "KR", "city": "Seoul", "ytId": "0bFIQCqWF7o", "notes": "Joseon palace gate view" },
-
-    { "name": "Golden Gate Bridge", "lat": 37.8199, "lon": -122.4783, "country": "US", "city": "San Francisco", "ytId": "Rhi_RuqByTw", "notes": "EarthCam Golden Gate 4K" },
-    { "name": "Brooklyn Bridge", "lat": 40.7061, "lon": -73.9969, "country": "US", "city": "New York", "ytId": "Y_aDYi7O4iY", "notes": "EarthCam Brooklyn Bridge" },
-    { "name": "Washington Monument", "lat": 38.8895, "lon": -77.0353, "country": "US", "city": "Washington DC", "ytId": "u8_WHE3QVYA", "notes": "EarthCam National Mall" },
-    { "name": "Lincoln Memorial", "lat": 38.8893, "lon": -77.0502, "country": "US", "city": "Washington DC", "ytId": "G1J-C3B2hiQ", "notes": "EarthCam reflecting pool" },
-    { "name": "US Capitol Building", "lat": 38.8899, "lon": -77.0091, "country": "US", "city": "Washington DC", "ytId": "9CWoVBFJ-Gc", "notes": "EarthCam Capitol dome" },
-    { "name": "Mount Rushmore", "lat": 43.8791, "lon": -103.4591, "country": "US", "city": "Keystone", "ytId": "9aDNtZKqRNQ", "notes": "EarthCam presidential faces" },
-    { "name": "Hollywood Sign", "lat": 34.1341, "lon": -118.3215, "country": "US", "city": "Los Angeles", "ytId": "rYyy5PQYsPg", "notes": "EarthCam Hollywood sign view" },
-    { "name": "Space Needle Seattle", "lat": 47.6205, "lon": -122.3493, "country": "US", "city": "Seattle", "ytId": "RtlSi0NNzf0", "notes": "EarthCam Space Needle" },
-    { "name": "CN Tower Toronto", "lat": 43.6426, "lon": -79.3871, "country": "CA", "city": "Toronto", "ytId": "S_2dDEWjLVM", "notes": "EarthCam CN Tower skyline" },
-    { "name": "Christ the Redeemer", "lat": -22.9519, "lon": -43.2105, "country": "BR", "city": "Rio de Janeiro", "ytId": "w8C4mVFCP_M", "notes": "SkylineWebcams Corcovado view" },
-    { "name": "Mackinac Bridge", "lat": 45.8174, "lon": -84.7278, "country": "US", "city": "Mackinaw City", "ytId": "3QWnqn6WCRM", "notes": "Mackinac Bridge Authority cam" },
-    { "name": "Sydney Harbour Bridge", "lat": -33.8523, "lon": 151.2108, "country": "AU", "city": "Sydney", "ytId": "5uZa3-RMFos", "notes": "WebcamSydney harbour 4K" },
-
-    { "name": "Pyramids of Giza", "lat": 29.9792, "lon": 31.1342, "country": "EG", "city": "Giza", "ytId": "U2GEDF1pv6c", "notes": "SkylineWebcams Great Pyramid" },
-    { "name": "Burj Khalifa Dubai", "lat": 25.1972, "lon": 55.2744, "country": "AE", "city": "Dubai", "ytId": "bQQAi18F9dE", "notes": "SkylineWebcams Downtown Dubai" },
-    { "name": "Palm Jumeirah Dubai", "lat": 25.1124, "lon": 55.1390, "country": "AE", "city": "Dubai", "ytId": "zQUDnKGNJY0", "notes": "SkylineWebcams Palm island" },
-    { "name": "Table Mountain Cape Town", "lat": -33.9628, "lon": 18.4098, "country": "ZA", "city": "Cape Town", "ytId": "PqSHkxBxvQk", "notes": "SkylineWebcams Table Mountain" },
-
-    { "name": "Piazza San Marco Venice", "lat": 45.4343, "lon": 12.3388, "country": "IT", "city": "Venice", "ytId": "KM0C77QpKN8", "notes": "SkylineWebcams St. Mark's Square" },
-    { "name": "La Rambla Barcelona", "lat": 41.3818, "lon": 2.1685, "country": "ES", "city": "Barcelona", "ytId": "TKFCoqNQ5L4", "notes": "SkylineWebcams Las Ramblas" },
-    { "name": "Wenceslas Square Prague", "lat": 50.0810, "lon": 14.4280, "country": "CZ", "city": "Prague", "ytId": "qWXJ2XdLg9k", "notes": "Prague webcam Vaclavske Namesti" },
-    { "name": "Grand Place Brussels", "lat": 50.8467, "lon": 4.3525, "country": "BE", "city": "Brussels", "ytId": "PFOUMaJ_aI0", "notes": "EarthCam Grote Markt" },
-    { "name": "Hallstatt Village", "lat": 47.5622, "lon": 13.6493, "country": "AT", "city": "Hallstatt", "ytId": "oqFNs9FgE3Q", "notes": "SkylineWebcams lake village" },
-    { "name": "Neuschwanstein Castle", "lat": 47.5576, "lon": 10.7498, "country": "DE", "city": "Schwangau", "ytId": "Yjnka6PPwl0", "notes": "SkylineWebcams fairy tale castle" },
-    { "name": "Matterhorn Zermatt", "lat": 45.9763, "lon": 7.6586, "country": "CH", "city": "Zermatt", "ytId": "fgBE-4mfJb4", "notes": "SkylineWebcams Matterhorn" },
-    { "name": "Old Faithful Geyser", "lat": 44.4605, "lon": -110.8281, "country": "US", "city": "Yellowstone", "ytId": "xIBiMjgFQIU", "notes": "NPS Old Faithful streaming" },
-    { "name": "Taj Mahal Area", "lat": 27.1751, "lon": 78.0421, "country": "IN", "city": "Agra", "ytId": "Z_cXJSHmHqs", "notes": "SkylineWebcams Agra view" },
-    { "name": "Gateway of India Mumbai", "lat": 18.9220, "lon": 72.8347, "country": "IN", "city": "Mumbai", "ytId": "9CbTzQ0f_vg", "notes": "Mumbai harbour monument" },
-    { "name": "Chichen Itza Area", "lat": 20.6843, "lon": -88.5678, "country": "MX", "city": "Tinum", "ytId": "hSBN_QGVa4w", "notes": "SkylineWebcams Kukulkan pyramid" },
-    { "name": "Machu Picchu Area", "lat": -13.1631, "lon": -72.5450, "country": "PE", "city": "Aguas Calientes", "ytId": "V8LXRJ8N4kQ", "notes": "SkylineWebcams Inca citadel view" },
-    { "name": "Petra Treasury Area", "lat": 30.3285, "lon": 35.4444, "country": "JO", "city": "Wadi Musa", "ytId": "Q4Vc_HtaXjg", "notes": "SkylineWebcams Nabatean city" },
-    { "name": "Alhambra Granada", "lat": 37.1761, "lon": -3.5881, "country": "ES", "city": "Granada", "ytId": "YfcZf_u5gzA", "notes": "SkylineWebcams Moorish palace" },
-    { "name": "Amalfi Coast", "lat": 40.6340, "lon": 14.6026, "country": "IT", "city": "Amalfi", "ytId": "xvJsv9BGK4M", "notes": "SkylineWebcams coastal cliffs" }
+    {
+      "name": "West Gate Bridge \u2014 Real-Time Traffic & Conditions (Melbou...",
+      "lat": 37.8136,
+      "lon": 144.9631,
+      "country": "AU",
+      "city": "Melbourne",
+      "ytId": "t5q_9K-2_UU"
+    },
+    {
+      "name": "Niagara Falls",
+      "lat": 43.0799,
+      "lon": -79.0747,
+      "country": "CA",
+      "city": "Niagara Falls",
+      "ytId": "qx7gry390YA"
+    },
+    {
+      "name": "Niagara Falls Cam 2",
+      "lat": 43.08,
+      "lon": -79.075,
+      "country": "CA",
+      "city": "Niagara Falls",
+      "ytId": "3KhQK5KG7VU"
+    },
+    {
+      "name": "Vancouver 4-Cam - Construction, Seawall, Skyline & Cambie...",
+      "lat": 49.2827,
+      "lon": -123.1207,
+      "country": "CA",
+      "city": "Vancouver",
+      "ytId": "nvcaW0MPTdo"
+    },
+    {
+      "name": "Rovaniemi Santa Village",
+      "lat": 66.5436,
+      "lon": 25.8471,
+      "country": "FI",
+      "city": "Rovaniemi",
+      "ytId": "Cp4RRAEgpeU"
+    },
+    {
+      "name": "Bagenalstown Parish Church Webcam",
+      "lat": 48.8566,
+      "lon": 2.3522,
+      "country": "FR",
+      "city": "Paris",
+      "ytId": "aTsQhfsQSXk"
+    },
+    {
+      "name": "Eiffel Tower",
+      "lat": 48.8584,
+      "lon": 2.2945,
+      "country": "FR",
+      "city": "Paris",
+      "ytId": "OzYp4NRZlwQ"
+    },
+    {
+      "name": "Cam - Cardiff Castle, Wales UK",
+      "lat": 51.4816,
+      "lon": -3.1791,
+      "country": "GB",
+      "city": "Cardiff",
+      "ytId": "JKHU7p3mIr4"
+    },
+    {
+      "name": "Abbey Road Crossing",
+      "lat": 51.532,
+      "lon": -0.1782,
+      "country": "GB",
+      "city": "London",
+      "ytId": "M3EYAY2MftI"
+    },
+    {
+      "name": "Western Wall",
+      "lat": 31.7767,
+      "lon": 35.2345,
+      "country": "IL",
+      "city": "Jerusalem",
+      "ytId": "77akujLn4k8"
+    },
+    {
+      "name": "Western Wall Jerusalem",
+      "lat": 31.7767,
+      "lon": 35.2345,
+      "country": "IL",
+      "city": "Jerusalem",
+      "ytId": "UyduhBUpO7Q"
+    },
+    {
+      "name": "REALVIEWCAM360 - ROME Cam - Italy - RAMSAT HQ Vatican & S...",
+      "lat": 41.9028,
+      "lon": 12.4964,
+      "country": "IT",
+      "city": "Italy",
+      "ytId": "89d3tEaqImM"
+    },
+    {
+      "name": "Rome Cam \u2013 Prati District & St. Peter\u2019s Basilica Dome",
+      "lat": 41.9028,
+      "lon": 12.4964,
+      "country": "IT",
+      "city": "Rome",
+      "ytId": "VzPbcndoD40"
+    },
+    {
+      "name": "Ponte delle Guglie",
+      "lat": 45.443,
+      "lon": 12.328,
+      "country": "IT",
+      "city": "Venice",
+      "ytId": "HpZAez2oYsA"
+    },
+    {
+      "name": "Rialto Bridge",
+      "lat": 45.438,
+      "lon": 12.3359,
+      "country": "IT",
+      "city": "Venice",
+      "ytId": "K_Vg94nBiaY"
+    },
+    {
+      "name": "\uc11c\uc6b8\uc2e4\uc2dc\uac04 \ud55c\uac15\ub77c\uc774\ube0c \uc7a0\uc2e4\ub300\uad50 Cam I \"Jamsil Bridge\" Seoul,korea I Seou...",
+      "lat": 37.5665,
+      "lon": 126.978,
+      "country": "KR",
+      "city": "Seoul",
+      "ytId": "ZopiySgQjsc"
+    },
+    {
+      "name": "Bridge of Lions",
+      "lat": 27.7663,
+      "lon": -81.6868,
+      "country": "US",
+      "city": "- 24/7 - St. Augustine",
+      "ytId": "0lox0s8zNcU"
+    },
+    {
+      "name": "BI Tower (Atlanta, Georgia)",
+      "lat": 33.749,
+      "lon": -84.388,
+      "country": "US",
+      "city": "Atlanta",
+      "ytId": "bF-BW6lOnaU"
+    },
+    {
+      "name": "Bunker Hill Monument: 360 Webcam",
+      "lat": 42.3601,
+      "lon": -71.0589,
+      "country": "US",
+      "city": "Boston",
+      "ytId": "2wURiUS3dSI"
+    },
+    {
+      "name": "Church Tech Tour - Affordable Multicam Broadcast Video Se...",
+      "lat": 41.9742,
+      "lon": -87.9073,
+      "country": "US",
+      "city": "Chicago",
+      "ytId": "aWJNmw8O5qY"
+    },
+    {
+      "name": "Fort Myers FL",
+      "lat": 26.6406,
+      "lon": -81.8723,
+      "country": "US",
+      "city": "Fort Myers",
+      "ytId": "skM8DTCx3gM"
+    },
+    {
+      "name": "Allegiant Stadium",
+      "lat": 36.0907,
+      "lon": -115.1833,
+      "country": "US",
+      "city": "Las Vegas",
+      "ytId": "_rmUXOHSf0w"
+    },
+    {
+      "name": "Anglins Pier",
+      "lat": 26.1884,
+      "lon": -80.0941,
+      "country": "US",
+      "city": "Lauderdale-By-The-Sea",
+      "ytId": "YEAhxXd-TiY"
+    },
+    {
+      "name": "Statue of Liberty",
+      "lat": 40.6892,
+      "lon": -74.0445,
+      "country": "US",
+      "city": "New York",
+      "ytId": "cWR8KGKftUw"
+    },
+    {
+      "name": "Roswell NM",
+      "lat": 33.3943,
+      "lon": -104.523,
+      "country": "US",
+      "city": "Roswell",
+      "ytId": "kLoFxVhRWtQ"
+    },
+    {
+      "name": "Santa waving to our camera at Cabrillo National Monument",
+      "lat": 32.7157,
+      "lon": -117.1611,
+      "country": "US",
+      "city": "San Diego",
+      "ytId": "HGwO3qgCmwY"
+    },
+    {
+      "name": "Mersea Restaurant Bay View \u00b7 San Francisco Skyline, Golde...",
+      "lat": 37.7749,
+      "lon": -122.4194,
+      "country": "US",
+      "city": "San Francisco",
+      "ytId": "BSWhGNXxT9A"
+    },
+    {
+      "name": "Sitka Alaska",
+      "lat": 57.0531,
+      "lon": -135.33,
+      "country": "US",
+      "city": "Sitka",
+      "ytId": "sF5hFDGN20Y"
+    },
+    {
+      "name": "EarthCam Premieres Camera Embedded in Washington Monument",
+      "lat": 38.9072,
+      "lon": -77.0369,
+      "country": "US",
+      "city": "Washington DC",
+      "ytId": "jA-YG1nm7xU"
+    },
+    {
+      "name": "Scrub Island BVI",
+      "lat": 18.474,
+      "lon": -64.582,
+      "country": "VG",
+      "city": "Scrub Island",
+      "ytId": "t55kv94nEzc"
+    }
   ]
 }
