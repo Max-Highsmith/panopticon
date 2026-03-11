@@ -19,7 +19,7 @@ import { loadPlaybackList } from './playbackbrowser.js';
 import { getLoader, getLayerData, getLayerType } from './layerregistry.js';
 import { toggleLayer, entityMaps, registerLayer } from './globe.js';
 import { getView } from './viewregistry.js';
-import { openWebcamView } from './webcamview.js';
+import { openWebcamView, closeWebcamView, isWebcamViewOpen } from './webcamview.js';
 
 // Stores the last completed run's config so we can generate a playback manifest
 let lastCompletedConfig = null;
@@ -1273,27 +1273,21 @@ function typeIntoMessagePreview(text) {
   }, 30);
 }
 
-function playMissileVideo() {
-  const existing = document.querySelector('.missile-video-overlay');
-  if (existing) existing.remove();
-  const overlay = document.createElement('div');
-  overlay.className = 'missile-video-overlay';
-  const video = document.createElement('video');
-  video.src = 'assets/missile.mp4';
-  video.autoplay = true;
-  video.muted = false;
-  video.playsInline = true;
-  video.style.cssText = 'max-width:100%;max-height:100%;object-fit:contain;';
-  overlay.appendChild(video);
-  document.body.appendChild(overlay);
-  video.addEventListener('ended', () => {
-    overlay.classList.add('fade-out');
-    setTimeout(() => overlay.remove(), 1500);
-  });
-  // Fallback removal if video fails to load/play
-  video.addEventListener('error', () => {
-    setTimeout(() => overlay.remove(), 2000);
-  });
+function playMissileVideo(lat, lon) {
+  const v = viewer;
+  if (!v) return;
+  // Create a synthetic entity so the webcam view can play the missile mp4
+  const syntheticEntity = {
+    acData: {
+      flight: 'STRIKE FEED',
+      city: lat != null ? `${lat.toFixed(2)}N` : '---',
+      country: lon != null ? `${lon.toFixed(2)}E` : '---',
+      lat: lat ?? 0,
+      lon: lon ?? 0,
+      videoUrl: 'assets/missile.mp4',
+    },
+  };
+  openWebcamView(v, syntheticEntity);
 }
 
 function showWhiteFlag(reason) {
@@ -1358,6 +1352,9 @@ function flashMarketCard(ticker) {
 export function dispatchToolVisuals(toolName, toolArgs, result, cesiumViewer) {
   const args = toolArgs || {};
   const res = result || {};
+
+  // Close any open webcam view from a previous tool
+  if (isWebcamViewOpen() && cesiumViewer) closeWebcamView(cesiumViewer);
 
   switch (toolName) {
     case 'check_surveillance': {
@@ -1499,7 +1496,7 @@ export function dispatchToolVisuals(toolName, toolArgs, result, cesiumViewer) {
           duration: 1.0,
         });
       }
-      playMissileVideo();
+      playMissileVideo(isNaN(lat) ? null : lat, isNaN(lon) ? null : lon);
       break;
     }
   }
@@ -1511,6 +1508,9 @@ function handleToolCall(msg) {
     .join(', ');
   appendFeed('tool-call', `TOOL [Turn ${msg.turn}]: ${msg.toolName}`, argsStr || '(no args)');
   showStatus(`Turn ${msg.turn} — Tool: ${msg.toolName}`);
+
+  // Close any open webcam view from a previous tool call
+  if (isWebcamViewOpen() && viewer) closeWebcamView(viewer);
 
   // Visual reactions — make the UI respond to agent tool calls
   switch (msg.toolName) {
@@ -1640,7 +1640,7 @@ function handleToolCall(msg) {
           duration: 1.0,
         });
       }
-      playMissileVideo();
+      playMissileVideo(isNaN(lat) ? null : lat, isNaN(lon) ? null : lon);
       break;
     }
   }
