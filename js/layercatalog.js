@@ -160,6 +160,7 @@ export const LAYER_CATALOG = [
   // === FICTIONAL SCENARIO ===
   { key: 'profiles',            label: 'PERSON PROFILES',      shortLabel: 'POI',   category: 'Fictional Scenario', color: '#ff6699', defaultOn: false, defaultPinned: false },
   { key: 'kalshi_scenario',     label: 'SCENARIO MARKETS',     shortLabel: 'SMKT',  category: 'Fictional Scenario', color: '#ff4444', defaultOn: false, defaultPinned: false },
+  { key: 'surveillance_cameras_scenario', label: 'SURVEILLANCE CAMERAS', shortLabel: 'SURV', category: 'Fictional Scenario', color: '#ff4444', defaultOn: false, defaultPinned: false },
 
   // === REFERENCE ===
   { key: 'wikipedia',  label: 'WIKIPEDIA GEO',       shortLabel: 'WIKI',  category: 'Reference', color: '#aaaaaa', defaultOn: false, defaultPinned: false },

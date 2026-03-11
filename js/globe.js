@@ -109,6 +109,7 @@ export const layers = {
   whalebtc: false,
   wikipedia: false,
   kalshi_scenario: false,
+  surveillance_cameras_scenario: false,
   // Webcam sub-layers
   webcams_cities: false, webcams_beaches: false, webcams_landmarks: false,
   webcams_wildlife: false, webcams_aviation: false, webcams_maritime: false,
@@ -185,6 +186,8 @@ export const entityMaps = {
   webcams_wildlife: new Map(), webcams_aviation: new Map(), webcams_maritime: new Map(),
   webcams_volcanoes: new Map(), webcams_rail: new Map(), webcams_space: new Map(),
   webcams_aurora: new Map(), webcams_nature: new Map(), webcams_traffic: new Map(),
+  // Scenario layers
+  surveillance_cameras_scenario: new Map(),
 };
 
 // --- Layer Operations ---
