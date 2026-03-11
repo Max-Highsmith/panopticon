@@ -1281,8 +1281,9 @@ function playMissileVideo(lat, lon) {
   let videoUrl = 'assets/missile.mp4';
   let label = 'STRIKE FEED';
   if (lat != null && lon != null) {
-    const dLat = lat - 35.12, dLon = lon - 50.08;
-    if (Math.sqrt(dLat * dLat + dLon * dLon) < 1) {
+    const dLat = Math.abs(lat - 35.12), dLon = Math.abs(lon - 50.08);
+    console.log(`[STRIKE] lat=${lat} lon=${lon} dLat=${dLat} dLon=${dLon}`);
+    if (dLat < 5 && dLon < 5) {
       videoUrl = 'assets/leader_shot.mp4';
       label = 'OVERWATCH-7 // STRIKE CONFIRMED';
     }
