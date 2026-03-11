@@ -51,7 +51,7 @@ initFilterUpdater(viewer);
 initAudioPlayer();
 
 // --- State ---
-let currentMode = 'playback';
+let currentMode = 'observe';
 let activeScenario = 'iran'; // tracks which ADS-B scenario is active (legacy compat)
 
 // --- Detail-panel helpers (delegated to view registry) ---
@@ -784,6 +784,5 @@ initPlaybackBrowser({
 });
 loadPlaybackList();
 
-$('btn-observe').classList.remove('active');
-$('btn-playback').classList.add('active');
-startReplay();
+$('btn-observe').classList.add('active');
+$('btn-playback').classList.remove('active');
