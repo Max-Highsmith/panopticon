@@ -145,9 +145,11 @@ export const LAYER_CATALOG = [
 
   // === INTELLIGENCE ===
   { key: 'headsofstate',        label: 'HEADS OF STATE',       shortLabel: 'HOS',   category: 'Intelligence', color: '#ffcc44', defaultOn: false, defaultPinned: false },
-  { key: 'profiles',            label: 'PERSON PROFILES',      shortLabel: 'POI',   category: 'Intelligence', color: '#ff6699', defaultOn: false, defaultPinned: false },
-  { key: 'profiles_scenario',   label: 'SCENARIO SUBJECTS',    shortLabel: 'SUBJ',  category: 'Intelligence', color: '#ff4444', defaultOn: false, defaultPinned: false },
-  { key: 'kalshi_scenario',     label: 'SCENARIO MARKETS',     shortLabel: 'SMKT',  category: 'Intelligence', color: '#ff4444', defaultOn: false, defaultPinned: false },
+
+  // === FICTIONAL SCENARIO ===
+  { key: 'profiles',            label: 'PERSON PROFILES',      shortLabel: 'POI',   category: 'Fictional Scenario', color: '#ff6699', defaultOn: false, defaultPinned: false },
+  { key: 'profiles_scenario',   label: 'SCENARIO SUBJECTS',    shortLabel: 'SUBJ',  category: 'Fictional Scenario', color: '#ff4444', defaultOn: false, defaultPinned: false },
+  { key: 'kalshi_scenario',     label: 'SCENARIO MARKETS',     shortLabel: 'SMKT',  category: 'Fictional Scenario', color: '#ff4444', defaultOn: false, defaultPinned: false },
 
   // === REFERENCE ===
   { key: 'wikipedia',  label: 'WIKIPEDIA GEO',       shortLabel: 'WIKI',  category: 'Reference', color: '#aaaaaa', defaultOn: false, defaultPinned: false },
