@@ -101,12 +101,16 @@ export const layers = {
   iridium: false, rhodium: false, molybdenum: false, zirconium: false,
   hafnium: false, selenium: false, bismuth: false, cadmium: false,
   silver: false, scandium: false,
+  profiles: false,
   kalshi: false,
   crypto: false,
   commodities: false,
   news: false,
   whalebtc: false,
   wikipedia: false,
+  kalshi_scenario: false,
+  profiles_scenario: false,
+  underwatercams: false,
 };
 
 // Entity registries — each maps an ID to a record with { entity, ... }
@@ -173,6 +177,7 @@ export const entityMaps = {
   iridium: new Map(), rhodium: new Map(), molybdenum: new Map(), zirconium: new Map(),
   hafnium: new Map(), selenium: new Map(), bismuth: new Map(), cadmium: new Map(),
   silver: new Map(), scandium: new Map(),
+  underwatercams: new Map(),
 };
 
 // --- Layer Operations ---

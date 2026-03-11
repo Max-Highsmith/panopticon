@@ -169,5 +169,18 @@ export function createAmbientLayer(cfg) {
     hide();
   }
 
-  return { load, show, hide, reset, isLoaded: () => loaded };
+  /**
+   * Push new data into the layer without fetching.
+   * Useful for layers that display computed/dynamic state
+   * rather than loading from a static file.
+   */
+  function update(newData) {
+    data = newData;
+    cacheLayerData(cfg.layerKey, newData);
+    loaded = true;
+    updateCount();
+    if (visible) render();
+  }
+
+  return { load, show, hide, reset, update, isLoaded: () => loaded };
 }

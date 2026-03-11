@@ -268,6 +268,30 @@
     <div id="wiki-panel" class="ambient-panel">
       <div class="ambient-content"></div>
     </div>
+
+    <div id="headsofstate-panel" class="ambient-panel">
+      <div class="ambient-content"></div>
+    </div>
+
+    <div id="profiles-panel" class="ambient-panel">
+      <div class="ambient-content"></div>
+    </div>
+
+    <div id="kalshi-scenario-panel" class="ambient-panel">
+      <div class="ambient-content"></div>
+    </div>
+
+    <div id="profiles-scenario-panel" class="ambient-panel">
+      <div class="ambient-content"></div>
+    </div>
+
+    <div id="wallet-panel" class="ambient-panel">
+      <div class="ambient-content"></div>
+    </div>
+
+    <div id="diplomat-panel" class="ambient-panel">
+      <div class="ambient-content"></div>
+    </div>
   </div>
 
   <!-- ==================== Info Panel ==================== -->
@@ -639,6 +663,12 @@
             <option value="qwen/qwen3.5-397b-a17b">Qwen 3.5 397B</option>
             <option value="qwen/qwen3-coder-next">Qwen 3 Coder Next</option>
           </optgroup>
+          <optgroup label="xAI">
+            <option value="x-ai/grok-4.1-fast">Grok 4.1 Fast (best agentic)</option>
+            <option value="x-ai/grok-4-fast">Grok 4 Fast</option>
+            <option value="x-ai/grok-4">Grok 4</option>
+            <option value="x-ai/grok-3-mini">Grok 3 Mini</option>
+          </optgroup>
           <optgroup label="Moonshot">
             <option value="moonshotai/kimi-k2.5">Kimi K2.5</option>
           </optgroup>
@@ -652,6 +682,7 @@
         <select id="wg-execution-mode">
           <option value="turn_based">TURN-BASED</option>
           <option value="realtime">REALTIME</option>
+          <option value="agentic">AGENTIC</option>
         </select>
       </label>
       <label>VARIABLES (JSON override)

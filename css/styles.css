@@ -706,7 +706,221 @@ body.webcam-panel-open #city-panel    { left: calc((100vw - var(--panel-width)) 
   font-size: 10px;
 }
 
+/* --- Wallet Panel --- */
+.wallet-header {
+  display: flex; flex-wrap: wrap; gap: 1px;
+  background: #ffffff08;
+  border-bottom: 1px solid #ffffff10;
+}
+.wallet-balance-box {
+  flex: 1; min-width: 90px;
+  padding: 12px 14px;
+  background: rgba(0,0,0,0.4);
+  transition: background 0.3s, box-shadow 0.3s;
+}
+.wallet-balance-box.flash {
+  background: rgba(255, 170, 0, 0.12);
+  box-shadow: inset 0 0 20px rgba(255, 170, 0, 0.15);
+}
+.wallet-balance-box.wallet-total {
+  flex-basis: 100%;
+  border-top: 1px solid #ffaa0020;
+}
+.wallet-balance-label {
+  font-size: 9px; letter-spacing: 1.5px;
+  color: #ffaa0060; margin-bottom: 4px;
+}
+.wallet-balance-value {
+  font-size: 16px; font-weight: bold;
+  color: #ffaa00; letter-spacing: 0.5px;
+}
+.wallet-total .wallet-balance-value { color: #fff; }
+.wallet-pending {
+  padding: 8px 14px;
+  font-size: 10px; letter-spacing: 2px;
+  color: #ffaa00;
+  background: rgba(255, 170, 0, 0.06);
+  border-bottom: 1px solid #ffaa0015;
+  animation: wallet-pulse 1.2s ease-in-out infinite;
+}
+@keyframes wallet-pulse {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+.wallet-section {
+  border-bottom: 1px solid #ffffff08;
+}
+.wallet-section-title {
+  font-size: 9px; letter-spacing: 2px;
+  color: #ffaa0050; padding: 8px 14px 4px;
+}
+.wallet-position-row {
+  padding: 6px 14px;
+  font-size: 11px; color: #ccc;
+  display: flex; gap: 8px; align-items: center;
+}
+.wallet-pos-side {
+  font-size: 9px; font-weight: bold;
+  padding: 1px 5px; border-radius: 2px;
+}
+.wallet-pos-side.yes { background: #00ff4120; color: #00ff41; }
+.wallet-pos-side.no { background: #ff444420; color: #ff4444; }
+.wallet-pos-ticker { flex: 1; font-size: 10px; color: #aaa; }
+.wallet-pos-amount { color: #ffaa00; font-size: 11px; }
+.wallet-tx-row {
+  padding: 6px 14px;
+  font-size: 11px; color: #ccc;
+  display: flex; gap: 6px; align-items: baseline;
+}
+.wallet-tx-icon { color: #ffaa00; font-size: 12px; }
+.wallet-tx-amount { color: #ffaa00; font-weight: bold; white-space: nowrap; }
+.wallet-tx-detail { color: #888; font-size: 10px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 
+/* --- Diplomat / Messenger Panel --- */
+.diplomat-status {
+  padding: 10px 14px;
+  font-size: 10px; letter-spacing: 1.5px;
+  color: #4488ff; display: flex; align-items: center; gap: 8px;
+  border-bottom: 1px solid #ffffff10;
+  background: rgba(68, 136, 255, 0.04);
+}
+.diplomat-status-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  display: inline-block; flex-shrink: 0;
+  background: #888;
+}
+.diplomat-status-dot.status-red { background: #ff4444; box-shadow: 0 0 6px #ff4444; }
+.diplomat-status-dot.status-green { background: #00ff41; box-shadow: 0 0 6px #00ff41; }
+.diplomat-status-dot.status-yellow { background: #ffaa00; box-shadow: 0 0 6px #ffaa00; }
+.diplomat-section {
+  border-bottom: 1px solid #ffffff08;
+}
+.diplomat-section-title {
+  font-size: 9px; letter-spacing: 2px;
+  color: #4488ff50; padding: 8px 14px 4px;
+}
+.diplomat-contact-card {
+  padding: 8px 14px;
+  border-bottom: 1px solid #ffffff05;
+}
+.diplomat-contact-card:last-child { border-bottom: none; }
+.diplomat-contact-name {
+  font-size: 11px; color: #ccc; font-weight: bold;
+}
+.diplomat-contacted {
+  font-size: 9px; color: #00ff41; font-weight: normal;
+}
+.diplomat-contact-role {
+  font-size: 9px; color: #4488ff80; margin-top: 2px;
+}
+.diplomat-contact-status {
+  font-size: 10px; color: #888; margin-top: 3px;
+  font-style: italic;
+}
+.diplomat-thread {
+  max-height: 200px; overflow-y: auto;
+}
+.diplomat-message {
+  padding: 8px 14px;
+  border-bottom: 1px solid #ffffff05;
+}
+.diplomat-message.sent { border-left: 2px solid #4488ff40; }
+.diplomat-message.received { border-left: 2px solid #00ff4140; }
+.diplomat-msg-header {
+  font-size: 9px; letter-spacing: 1px;
+  margin-bottom: 3px;
+}
+.diplomat-message.sent .diplomat-msg-header { color: #4488ff80; }
+.diplomat-message.received .diplomat-msg-header { color: #00ff4180; }
+.diplomat-msg-body {
+  font-size: 11px; color: #ccc; line-height: 1.4;
+}
+.diplomat-typing {
+  padding: 8px 14px;
+  font-size: 10px; color: #4488ff;
+  display: flex; align-items: center; gap: 6px;
+  background: rgba(68, 136, 255, 0.04);
+  border-top: 1px solid #4488ff15;
+}
+.diplomat-typing-label { letter-spacing: 1px; }
+.diplomat-typing-dots span {
+  animation: diplomat-dot 1.4s ease-in-out infinite;
+  font-size: 16px; font-weight: bold;
+}
+.diplomat-typing-dots span:nth-child(2) { animation-delay: 0.2s; }
+.diplomat-typing-dots span:nth-child(3) { animation-delay: 0.4s; }
+@keyframes diplomat-dot {
+  0%, 60%, 100% { opacity: 0.2; }
+  30% { opacity: 1; }
+}
+.diplomat-message.intel { border-left: 2px solid #ffaa0040; }
+.diplomat-message.intel .diplomat-msg-header { color: #ffaa0080; }
+
+/* --- Stand Down Overlay --- */
+.stand-down-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  z-index: 9999;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(0, 0, 0, 0);
+  pointer-events: none;
+  animation: stand-down-bg 3s ease-in forwards;
+}
+.stand-down-inner {
+  text-align: center;
+  opacity: 0;
+  transform: scale(0.5);
+  animation: stand-down-in 1.5s ease-out 0.5s forwards;
+}
+.stand-down-flag {
+  font-size: 120px;
+  filter: drop-shadow(0 0 40px rgba(255,255,255,0.3));
+}
+.stand-down-text {
+  font-family: 'Courier New', monospace;
+  font-size: 28px;
+  letter-spacing: 8px;
+  color: #fff;
+  margin-top: 16px;
+  text-shadow: 0 0 20px rgba(255,255,255,0.4);
+}
+.stand-down-reason {
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  letter-spacing: 2px;
+  color: #ffffff80;
+  margin-top: 12px;
+  max-width: 500px;
+}
+@keyframes stand-down-bg {
+  0% { background: rgba(0, 0, 0, 0); }
+  100% { background: rgba(0, 0, 0, 0.6); }
+}
+@keyframes stand-down-in {
+  0% { opacity: 0; transform: scale(0.5); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+/* --- Missile Video Overlay --- */
+.missile-video-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  z-index: 10000;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(0, 0, 0, 0.85);
+  animation: missile-bg-in 0.5s ease-out forwards;
+}
+.missile-video-overlay.fade-out {
+  animation: missile-bg-out 1.5s ease-in forwards;
+}
+@keyframes missile-bg-in {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+@keyframes missile-bg-out {
+  0% { opacity: 1; }
+  100% { opacity: 0; }
+}
 
 /* --- Crypto Market Cards --- */
 .crypto-search {
@@ -2171,6 +2385,25 @@ body.resizing * { transition: none !important; cursor: col-resize !important; }
 .wg-entry-body {
   font-size: 10px; color: #999; line-height: 1.5;
 }
+/* Agentic mode feed entry styles */
+.wg-entry.wg-reasoning {
+  border-left-color: #4488ff;
+}
+.wg-entry.wg-reasoning .wg-entry-title { color: #4488ff; }
+.wg-entry.wg-tool-call {
+  border-left-color: #ffaa00;
+  background: rgba(255, 170, 0, 0.05);
+}
+.wg-entry.wg-tool-call .wg-entry-title { color: #ffaa00; }
+.wg-entry.wg-tool-result {
+  border-left-color: #00ff41;
+}
+.wg-entry.wg-tool-result .wg-entry-title { color: #00ff41; }
+.wg-entry.wg-error {
+  border-left-color: #ff4444;
+  background: rgba(255, 68, 68, 0.08);
+}
+.wg-entry.wg-error .wg-entry-title { color: #ff4444; }
 
 /* Wargame Settings Panel */
 .wg-settings {

@@ -84,7 +84,7 @@ function parseLiveResponse(raw) {
 let activeFilter = 'ALL';
 let searchQuery = '';
 
-function renderMarketPanel(contentEl, data) {
+export function renderMarketPanel(contentEl, data) {
   const markets = data.markets || [];
   const categories = data.categories || [];
 
@@ -161,6 +161,7 @@ function makePill(label, active) {
 function makeCard(m) {
   const card = document.createElement('div');
   card.className = 'kalshi-card';
+  card.dataset.ticker = m.ticker || '';
 
   // Title
   const title = document.createElement('div');

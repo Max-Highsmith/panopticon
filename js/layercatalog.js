@@ -143,6 +143,12 @@ export const LAYER_CATALOG = [
   { key: 'news',        label: 'TRENDING NEWS',       shortLabel: 'NEWS',  category: 'Markets', color: '#44aaff', defaultOn: false, defaultPinned: false },
   { key: 'whalebtc',    label: 'BTC WHALE TXS',       shortLabel: 'WHALE', category: 'Markets', color: '#f7931a', defaultOn: false, defaultPinned: false },
 
+  // === INTELLIGENCE ===
+  { key: 'headsofstate',        label: 'HEADS OF STATE',       shortLabel: 'HOS',   category: 'Intelligence', color: '#ffcc44', defaultOn: false, defaultPinned: false },
+  { key: 'profiles',            label: 'PERSON PROFILES',      shortLabel: 'POI',   category: 'Intelligence', color: '#ff6699', defaultOn: false, defaultPinned: false },
+  { key: 'profiles_scenario',   label: 'SCENARIO SUBJECTS',    shortLabel: 'SUBJ',  category: 'Intelligence', color: '#ff4444', defaultOn: false, defaultPinned: false },
+  { key: 'kalshi_scenario',     label: 'SCENARIO MARKETS',     shortLabel: 'SMKT',  category: 'Intelligence', color: '#ff4444', defaultOn: false, defaultPinned: false },
+
   // === REFERENCE ===
   { key: 'wikipedia',  label: 'WIKIPEDIA GEO',       shortLabel: 'WIKI',  category: 'Reference', color: '#aaaaaa', defaultOn: false, defaultPinned: false },
 ];

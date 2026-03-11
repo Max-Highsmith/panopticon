@@ -92,11 +92,13 @@ export function createDataLayer(cfg) {
       }
 
       loaded = true;
-      $(cfg.countId).textContent = entities.size;
+      const countEl = $(cfg.countId);
+      if (countEl) countEl.textContent = entities.size;
       console.log(`${cfg.logLabel}: loaded ${entities.size} sites`);
     } catch (err) {
       console.error(`${cfg.logLabel} fetch error:`, err);
-      $(cfg.countId).textContent = 'ERR';
+      const countEl = $(cfg.countId);
+      if (countEl) countEl.textContent = 'ERR';
     }
   }
 

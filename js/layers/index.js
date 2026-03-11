@@ -105,3 +105,13 @@ import './commoditieslayer.js';
 import './newslayer.js';
 import './whalebtclayer.js';
 import './wikipedialayer.js';
+import './profileslayer.js';
+import './headsofstatelayer.js';
+
+// Scenario-specific ambient layers
+import './kalshiscenario.js';
+import './profilesscenario.js';
+
+// Dynamic ambient layers (data pushed via update(), not fetched)
+import './walletlayer.js';
+import './diplomatlayer.js';

@@ -16,8 +16,8 @@ const _dataCache = new Map();  // key → raw JSON object
  *   view: string — which view type opens on click ('site', 'airport', 'webcam', 'satellite', 'plane')
  *   layerType: string — 'point', 'path', 'region', 'live', 'scenario', or 'ambient' (default 'point')
  */
-export function registerLayerLoader(key, { load, flyTo, reset, dataUrl, view, layerType, show, hide }) {
-  _loaders.set(key, { load, flyTo, reset, dataUrl, view: view || null, layerType: layerType || 'point', show: show || null, hide: hide || null });
+export function registerLayerLoader(key, { load, flyTo, reset, dataUrl, view, layerType, show, hide, update }) {
+  _loaders.set(key, { load, flyTo, reset, dataUrl, view: view || null, layerType: layerType || 'point', show: show || null, hide: hide || null, update: update || null });
 }
 
 /**

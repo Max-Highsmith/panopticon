@@ -34,7 +34,7 @@ import './webcamview.js';
 import './pathview.js';
 import './submarineview.js';
 import './sniperview.js';
-import { startWargameMode, stopWargameMode } from './wargame.js';
+import { startWargameMode, stopWargameMode, dispatchToolVisuals } from './wargame.js';
 import { getLoader, resetAllLayers, registerLayerLoader, getLayerType } from './layerregistry.js';
 import './layers/index.js'; // triggers self-registration of all data layers
 import { initPlaybackBrowser, loadPlaybackList } from './playbackbrowser.js';
@@ -394,6 +394,11 @@ function stopReplay() {
     viewer.scene.preRender.removeEventListener(playbackSatHandler);
     playbackSatHandler = null;
   }
+  // Clean up dynamic ambient panels opened during playback
+  for (const key of ['wallet', 'diplomat', 'kalshi_scenario', 'profiles_scenario']) {
+    const loader = getLoader(key);
+    if (loader?.reset) loader.reset();
+  }
 }
 
 function togglePlay() {
@@ -526,8 +531,9 @@ function renderPlaybackFeed(events) {
 
   const feed = $('playback-feed');
 
-  // If events shrunk (seeking backward), rebuild
-  if (events.length < lastRenderedEventCount) {
+  // If events shrunk (seeking backward), rebuild without visual reactions
+  const isSeekBack = events.length < lastRenderedEventCount;
+  if (isSeekBack) {
     feed.innerHTML = '';
     lastRenderedEventCount = 0;
   }
@@ -539,6 +545,12 @@ function renderPlaybackFeed(events) {
     entry.className = `wg-entry wg-${ev.type}`;
     entry.innerHTML = `<div class="wg-entry-title">${ev.title}</div><div class="wg-entry-body">${ev.body}</div>`;
     feed.appendChild(entry);
+
+    // Trigger visual reactions for tool events (ambient panels, camera, etc.)
+    // On seek-back rebuild, only fire visuals for the very last tool event
+    if (ev.toolName && (!isSeekBack || i === events.length - 1)) {
+      dispatchToolVisuals(ev.toolName, ev.toolArgs, ev.result, viewer);
+    }
   }
 
   lastRenderedEventCount = events.length;

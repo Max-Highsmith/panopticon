@@ -903,11 +903,29 @@ export function makeReticleIcon(color, size) {
   return canvas;
 }
 
+export function makePersonIcon(color, size) {
+  const { canvas, ctx, cx, cy } = createCanvas(size);
+  const s = size * 0.4;
+  // Head
+  ctx.beginPath();
+  ctx.arc(cx, cy - s * 0.55, s * 0.35, 0, Math.PI * 2);
+  strokeAndFill(ctx, color, size * 0.04);
+  // Shoulders / torso
+  ctx.beginPath();
+  ctx.moveTo(cx - s * 0.6, cy + s * 0.7);
+  ctx.quadraticCurveTo(cx - s * 0.6, cy, cx, cy - s * 0.1);
+  ctx.quadraticCurveTo(cx + s * 0.6, cy, cx + s * 0.6, cy + s * 0.7);
+  ctx.closePath();
+  strokeAndFill(ctx, color, size * 0.04);
+  return canvas;
+}
+
 // Icon render sizes — matched to DISPLAY sizes in config.js to avoid
 // bitmap resampling in Cesium. DPR scaling is handled by createCanvas().
 const SZ_MIL = 42, SZ_CIV = 28, SZ_SHIP = 42, SZ_SAT = 24;
 const SZ_POGO = 22, SZ_MINE = 28, SZ_INFRA = 28, SZ_BASE = 28;
 const SZ_CUSTOM = 18, SZ_APT_LG = 24, SZ_APT_MD = 18, SZ_WCAM = 22;
+const SZ_PERSON = 28;
 
 // Pre-rendered icon cache
 export const icons = {
@@ -1038,4 +1056,6 @@ export const icons = {
   // Ionosphere
   ionoRadar:     makeRadarIcon('#44ffaa', SZ_MINE),
   ionoGNSS:      makeRadarIcon('#44ccaa', SZ_MINE),
+  // Person-of-interest profiles
+  profilePerson: makePersonIcon('#ff6699', SZ_PERSON),
 };

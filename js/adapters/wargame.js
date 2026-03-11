@@ -62,16 +62,31 @@ const wargameAdapter = {
     }
 
     // Load results
+    let isAgentic = false;
+    let agenticLog = [];
     if (d.resultsSource === 'indexeddb') {
       const run = await getResult(d.runId);
       if (!run) throw new Error(`Run ${d.runId} not found in IndexedDB`);
       decisions = run.decisions || [];
+      // Detect agentic: if items have type field (reasoning/tool/intel) or toolName
+      if (decisions.length > 0 && (decisions[0].type === 'tool' || decisions[0].type === 'reasoning' || decisions[0].type === 'intel' || decisions[0].toolName)) {
+        isAgentic = true;
+        agenticLog = decisions;
+        decisions = [];
+      }
     } else if (d.resultsFile) {
       const res = await fetch(d.resultsFile);
       const text = await res.text();
       const lines = text.trim().split('\n').map(l => JSON.parse(l));
-      // Skip header (first line) and summary (last line with type: 'summary')
-      decisions = lines.filter(l => l.tick !== undefined || l.elapsed_ms !== undefined);
+      // Detect agentic by presence of type field in entries
+      const agenticEntries = lines.filter(l => l.type === 'reasoning' || l.type === 'tool' || l.type === 'intel');
+      if (agenticEntries.length > 0) {
+        isAgentic = true;
+        agenticLog = lines.filter(l => l.type && l.type !== 'summary');
+        decisions = [];
+      } else {
+        decisions = lines.filter(l => l.tick !== undefined || l.elapsed_ms !== undefined);
+      }
     } else {
       decisions = [];
     }
@@ -115,13 +130,18 @@ const wargameAdapter = {
       }
     }
 
-    return { scenario, decisions, variant, intelFeed, vars, blueTraces };
+    return { scenario, decisions, variant, intelFeed, vars, blueTraces, isAgentic, agenticLog };
   },
 
   /** Total duration in seconds */
   getDurationSeconds(ctx, manifest) {
     const tl = manifest.timeline;
     if (tl.durationSeconds) return tl.durationSeconds;
+    // Agentic: use wallclock domain from log
+    if (ctx.isAgentic && ctx.agenticLog.length > 0) {
+      const maxMs = ctx.agenticLog.reduce((max, e) => Math.max(max, e.elapsed_ms || 0), 0);
+      return Math.max(maxMs / 1000, 10); // minimum 10s for scrubbing
+    }
     const totalTicks = tl.totalTicks || ctx.scenario.duration_ticks || 8;
     const tickMs = tl.tickIntervalMs || ctx.scenario.tick_interval_ms || 6000;
     return (totalTicks * tickMs) / 1000;
@@ -222,10 +242,43 @@ const wargameAdapter = {
    * Returns array of { type, tick, title, body }.
    */
   getEvents(ctx, progress) {
-    const { scenario, decisions, intelFeed } = ctx;
+    const { scenario, decisions, intelFeed, isAgentic, agenticLog } = ctx;
     const totalTicks = scenario.duration_ticks || 8;
-    const currentTick = progress * totalTicks;
     const events = [];
+
+    if (isAgentic && agenticLog.length > 0) {
+      // Agentic mode: replay from agenticLog using elapsed_ms as timeline
+      const totalMs = agenticLog.reduce((max, e) => Math.max(max, e.elapsed_ms || 0), 1);
+      const currentMs = progress * totalMs;
+
+      for (const entry of agenticLog) {
+        if ((entry.elapsed_ms || 0) > currentMs) continue;
+        const sec = ((entry.elapsed_ms || 0) / 1000).toFixed(1);
+
+        if (entry.type === 'intel') {
+          events.push({ type: 'intel', tick: entry.elapsed_ms || 0, title: `INTEL [${sec}s]`, body: entry.message });
+        } else if (entry.type === 'reasoning') {
+          events.push({ type: 'decision', tick: entry.elapsed_ms || 0, title: `REASONING [Turn ${entry.turn}, ${sec}s]`, body: entry.text || '' });
+        } else if (entry.type === 'tool') {
+          const argsStr = entry.toolArgs ? JSON.stringify(entry.toolArgs) : '';
+          const isTerminal = scenario.tools?.[entry.toolName]?.terminal;
+          events.push({
+            type: isTerminal ? 'critical' : 'decision',
+            tick: entry.elapsed_ms || 0,
+            title: `TOOL [${sec}s]: ${entry.toolName}`,
+            body: `Args: ${argsStr.slice(0, 200)}`,
+            toolName: entry.toolName,
+            toolArgs: entry.toolArgs,
+            result: entry.result,
+          });
+        }
+      }
+      events.sort((a, b) => a.tick - b.tick);
+      return events;
+    }
+
+    // Standard tick-based mode
+    const currentTick = progress * totalTicks;
 
     // Intel messages
     for (const intel of intelFeed) {

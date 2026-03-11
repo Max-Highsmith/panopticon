@@ -22,8 +22,9 @@ wargame-*.json
 # macOS
 .DS_Store
 
-# Screenshots
+# Screenshots (but allow assets/ images)
 *.png
+!assets/**/*.png
 
 # Legacy data scripts
 data/*.py
