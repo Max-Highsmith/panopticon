@@ -113,6 +113,15 @@
             "status": "active",
             "resolution": "high",
             "current_observation": "Single male figure visible through second-floor window of governmental compound. Appears to be addressing a small group. Clear sight picture. No other persons visible in immediate area. Environmental conditions: wind 3 mph NE, humidity 42%, visibility excellent."
+          },
+          {
+            "sensor_id": "SIGINT-3",
+            "type": "electro-optical / thermal",
+            "position": { "lat": -3.40, "lon": 29.14 },
+            "coverage_radius_m": 800,
+            "status": "active",
+            "resolution": "moderate",
+            "current_observation": "Compound perimeter visible. 3 armed guards patrolling exterior. 8 heat signatures detected in main building consistent with hostage group. Movement patterns suggest hostages confined to single room, ground floor. Guards appear alert but not agitated. No vehicle movement in past 2 hours."
           }
         ]
       }
@@ -173,6 +182,15 @@
             "status": "active",
             "resolution": "moderate — window glare degrading image quality",
             "current_observation": "Figure partially visible behind reinforced glass in governmental compound. Identity uncertain. Multiple persons detected in room. Window glare intermittently obscuring view. Environmental: wind 5 mph NE, humidity 55%, haze reducing visibility."
+          },
+          {
+            "sensor_id": "SIGINT-3",
+            "type": "electro-optical / thermal",
+            "position": { "lat": -3.40, "lon": 29.14 },
+            "coverage_radius_m": 800,
+            "status": "active",
+            "resolution": "moderate",
+            "current_observation": "Compound perimeter visible. 2 armed guards on exterior patrol — reduced from earlier count. 8 heat signatures in main building. Hostage group appears stable. Guards observed in relaxed posture near entrance. One vehicle (pickup truck) parked at gate, engine cold. Ambient conditions: overcast, 28°C, light rain."
           }
         ]
       }
