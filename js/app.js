@@ -312,6 +312,8 @@ function selectScenario(id) {
   if (currentMode === 'playback') {
     stopReplay();
     startReplay();
+  } else {
+    switchMode('playback');
   }
 }
 
@@ -778,6 +780,7 @@ initPlaybackBrowser({
         selectScenario(legacyKey);
       }
     } else if (manifest.type === 'wargame') {
+      if (currentMode !== 'playback') switchMode('playback');
       startWargamePlayback(manifest);
     }
   },
@@ -786,3 +789,69 @@ loadPlaybackList();
 
 $('btn-observe').classList.add('active');
 $('btn-playback').classList.remove('active');
+$('playback-sidebar').style.display = 'none';
+$('timeline-bar').style.display = 'none';
+
+// =====================================================
+// PERSISTENT WS — Remote commands + external play relay
+// =====================================================
+function connectRemoteWS() {
+  const proto = location.protocol === 'https:' ? 'wss:' : 'ws:';
+  const ws = new WebSocket(`${proto}//${location.host}`);
+
+  ws.onmessage = (e) => {
+    try {
+      const msg = JSON.parse(e.data);
+      if (msg.type === 'remote_command') {
+        handleRemoteCommand(msg);
+      }
+      // Wargame messages from external play API are handled by wargame.js
+      // through its own WS connection (started when wargame mode activates).
+      // But if we're in observe mode and a play session starts, switch to wargame:
+      if (msg.type === 'started' && currentMode !== 'wargame') {
+        switchMode('wargame');
+      }
+    } catch { /* ignore malformed */ }
+  };
+
+  ws.onclose = () => {
+    setTimeout(connectRemoteWS, 3000);
+  };
+
+  ws.onerror = () => {
+    ws.close();
+  };
+}
+
+function handleRemoteCommand(msg) {
+  switch (msg.command) {
+    case 'flyTo': {
+      const lat = parseFloat(msg.args?.lat);
+      const lon = parseFloat(msg.args?.lon);
+      const alt = parseFloat(msg.args?.altitude) || 1_000_000;
+      if (!isNaN(lat) && !isNaN(lon)) {
+        viewer.camera.flyTo({
+          destination: Cesium.Cartesian3.fromDegrees(lon, lat, alt),
+          duration: 1.5,
+        });
+      }
+      break;
+    }
+    case 'toggleLayer': {
+      const layer = msg.args?.layer;
+      const enabled = msg.args?.enabled;
+      if (layer) handleLayerToggle(layer, enabled);
+      break;
+    }
+    case 'setView': {
+      const viewName = msg.args?.view;
+      if (viewName) {
+        const v = getView(viewName);
+        if (v) v.open(viewer);
+      }
+      break;
+    }
+  }
+}
+
+connectRemoteWS();

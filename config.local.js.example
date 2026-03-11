@@ -1,0 +1,8 @@
+// Copy to config.local.js and fill in your tokens.
+// This file is loaded before app.js in index.html.
+
+// Cesium Ion access token (free at https://ion.cesium.com/)
+window.CESIUM_TOKEN = '';
+
+// AISStream API key (free at https://aisstream.io/)
+window.AIS_API_KEY = '';

@@ -10,6 +10,7 @@ import { createServer } from 'http';
 import { readFileSync, writeFileSync, appendFileSync, mkdirSync, existsSync, readdirSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
+import { randomUUID } from 'crypto';
 import 'dotenv/config';
 import {
   applyVariables, interpolateContact, buildWorldState, buildPrompt,
@@ -949,6 +950,231 @@ app.get('/api/playbacks', (_req, res) => {
     } catch { return null; }
   }).filter(Boolean);
   res.json(manifests);
+});
+
+// =====================================================
+// EXTERNAL AGENT PLAY API
+// =====================================================
+const playSessions = new Map();
+const PLAY_SESSION_TTL_MS = 30 * 60 * 1000; // 30 minutes
+
+function cleanupSessions() {
+  const now = Date.now();
+  for (const [id, session] of playSessions) {
+    if (now - session.lastActivity > PLAY_SESSION_TTL_MS) {
+      for (const t of session.intelTimers) clearTimeout(t);
+      playSessions.delete(id);
+      console.log(`[play] Session ${id} expired`);
+    }
+  }
+}
+
+app.post('/api/play/start', (req, res) => {
+  cleanupSessions();
+  if (activeSim || [...playSessions.values()].some(s => s.status === 'active')) {
+    return res.status(409).json({ error: 'A simulation or play session is already running' });
+  }
+
+  const { scenarioId, variant, framing } = req.body;
+  if (!scenarioId) return res.status(400).json({ error: 'Missing required field: scenarioId' });
+
+  let scenario;
+  try { scenario = loadScenario(scenarioId); }
+  catch (err) { return res.status(404).json({ error: `Scenario not found: ${scenarioId}` }); }
+
+  const vars = { ...scenario.variables };
+  const chosenVariant = variant || Object.keys(scenario.intel_schedule || scenario.intel_feed || {})[0] || 'default';
+  const chosenFraming = framing || Object.keys(scenario.framings || {})[0] || 'default';
+
+  const allTools = buildToolRegistry(scenario.tools, scenario.monitors);
+  const worldState = initAgenticWorldState(scenario, vars, chosenVariant);
+
+  const sessionId = randomUUID();
+  const session = {
+    id: sessionId,
+    scenario,
+    scenarioId,
+    variant: chosenVariant,
+    framing: chosenFraming,
+    vars,
+    worldState,
+    allTools,
+    pendingIntel: [],
+    intelTimers: [],
+    status: 'active',
+    turnCount: 0,
+    lastActivity: Date.now(),
+    startedAt: Date.now(),
+  };
+
+  // Schedule intel pushes
+  const intelSchedule = scenario.intel_schedule?.[chosenVariant] || [];
+  for (const intel of intelSchedule) {
+    const timer = setTimeout(() => {
+      if (session.status !== 'active') return;
+      const resolvedMsg = applyVariables(intel.message, vars);
+      session.pendingIntel.push({ message: resolvedMsg, elapsed_ms: Date.now() - session.startedAt });
+      broadcast({ type: 'intel_push', elapsed_ms: Date.now() - session.startedAt, message: resolvedMsg });
+    }, intel.delay_ms);
+    session.intelTimers.push(timer);
+  }
+
+  playSessions.set(sessionId, session);
+
+  // Broadcast started to browser
+  broadcast({
+    type: 'started', runId: sessionId, execution_mode: 'agentic',
+    totalDurationMs: scenario.time_limit_ms || 300000,
+    scenario: {
+      label: scenario.label, subtitle: scenario.subtitle,
+      camera: scenario.camera,
+      duration_ticks: scenario.duration_ticks || 0,
+      blue_forces: scenario.blue_forces || [],
+      red_contacts: scenario.red_contacts || [],
+      actions: scenario.actions || [],
+      critical_action: scenario.measurement?.critical_action,
+      layers: scenario.layers || [],
+      navigation: false,
+      view: scenario.view || null,
+      monitors: scenario.monitors || {},
+      tools: scenario.tools || {},
+    },
+  });
+
+  // Build tool descriptions for the agent
+  const toolDescriptions = Object.entries(allTools).map(([name, def]) => ({
+    name,
+    description: def.description || '',
+    parameters: def.parameters || {},
+    terminal: !!def.terminal,
+  }));
+
+  // Collect initial intel (delay_ms === 0)
+  const initialIntel = [];
+  for (const intel of intelSchedule) {
+    if (intel.delay_ms === 0) {
+      initialIntel.push({ message: applyVariables(intel.message, vars) });
+    }
+  }
+
+  console.log(`[play] Session ${sessionId} started — scenario: ${scenarioId}, variant: ${chosenVariant}`);
+
+  res.json({
+    sessionId,
+    scenario: { label: scenario.label, description: scenario.description },
+    variant: chosenVariant,
+    framing: chosenFraming,
+    tools: toolDescriptions,
+    intel: initialIntel,
+  });
+});
+
+app.post('/api/play/:id/tool', (req, res) => {
+  cleanupSessions();
+  const session = playSessions.get(req.params.id);
+  if (!session) return res.status(404).json({ error: 'Session not found' });
+  if (session.status !== 'active') return res.status(400).json({ error: `Session is ${session.status}` });
+
+  const { toolName, toolArgs } = req.body;
+  if (!toolName) return res.status(400).json({ error: 'Missing required field: toolName' });
+
+  session.lastActivity = Date.now();
+  session.turnCount++;
+
+  // Broadcast tool_call to browser (triggers visual reactions)
+  broadcast({
+    type: 'tool_call', turn: session.turnCount,
+    toolName, toolArgs: toolArgs || {},
+    elapsed_ms: Date.now() - session.startedAt,
+  });
+
+  // Execute tool
+  const result = executeToolCall(toolName, toolArgs || {}, session.scenario, session.worldState, session.allTools);
+
+  // Broadcast tool_result to browser
+  broadcast({
+    type: 'tool_result', turn: session.turnCount,
+    toolName, toolArgs: toolArgs || {}, result,
+    elapsed_ms: Date.now() - session.startedAt,
+  });
+
+  // Drain pending intel
+  const intel = session.pendingIntel.splice(0);
+
+  // Check for terminal
+  let status = 'active';
+  if (session.worldState.terminated) {
+    status = 'terminal';
+    session.status = 'terminal';
+    for (const t of session.intelTimers) clearTimeout(t);
+    broadcast({
+      type: 'terminal', turn: session.turnCount,
+      toolName: session.worldState.terminal_tool,
+      toolArgs: session.worldState.terminal_args,
+      elapsed_ms: Date.now() - session.startedAt,
+    });
+    broadcast({ type: 'complete', runId: session.id, criticalActionTaken: true, criticalTool: session.worldState.terminal_tool });
+  }
+
+  res.json({ result, intel, status, turn: session.turnCount });
+});
+
+app.get('/api/play/:id/status', (req, res) => {
+  cleanupSessions();
+  const session = playSessions.get(req.params.id);
+  if (!session) return res.status(404).json({ error: 'Session not found' });
+
+  // Drain pending intel
+  const intel = session.pendingIntel.splice(0);
+
+  res.json({
+    status: session.status,
+    turn: session.turnCount,
+    intel,
+    elapsed_ms: Date.now() - session.startedAt,
+  });
+});
+
+// =====================================================
+// OBSERVE MODE REMOTE COMMAND API
+// =====================================================
+
+// Layer catalog cache (parsed from js/layercatalog.js)
+let _layerCatalogCache = null;
+
+function getLayerCatalog() {
+  if (_layerCatalogCache) return _layerCatalogCache;
+  try {
+    const src = readFileSync(join(ROOT, 'js', 'layercatalog.js'), 'utf-8');
+    const entries = [];
+    const re = /\{\s*key:\s*'([^']+)',\s*label:\s*'([^']+)',\s*shortLabel:\s*'([^']+)',\s*category:\s*'([^']+)'/g;
+    let m;
+    while ((m = re.exec(src)) !== null) {
+      entries.push({ key: m[1], label: m[2], shortLabel: m[3], category: m[4] });
+    }
+    _layerCatalogCache = entries;
+    return entries;
+  } catch (err) {
+    console.error('[layers] Failed to parse layer catalog:', err.message);
+    return [];
+  }
+}
+
+app.get('/api/layers', (_req, res) => {
+  res.json(getLayerCatalog());
+});
+
+app.post('/api/command', (req, res) => {
+  const { command, args } = req.body;
+  if (!command) return res.status(400).json({ error: 'Missing required field: command' });
+
+  const allowed = ['flyTo', 'toggleLayer', 'setView'];
+  if (!allowed.includes(command)) {
+    return res.status(400).json({ error: `Unknown command: ${command}. Allowed: ${allowed.join(', ')}` });
+  }
+
+  broadcast({ type: 'remote_command', command, args: args || {} });
+  res.json({ ok: true });
 });
 
 // =====================================================

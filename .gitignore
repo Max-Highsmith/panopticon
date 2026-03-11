@@ -18,6 +18,7 @@ results/
 no_move.json
 submarine_result.json
 wargame-*.json
+playbacks/wg-*.json
 
 # macOS
 .DS_Store
@@ -28,6 +29,10 @@ wargame-*.json
 
 # Legacy data scripts
 data/*.py
+
+# Media files in root
+*.mp3
+*.wmv
 
 # Claude
 .claude/
