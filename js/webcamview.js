@@ -123,7 +123,7 @@ function renderInfoCanvas() {
   ctx.textAlign = 'right';
   ctx.font = '9px Courier New';
   ctx.fillStyle = HUD_COLOR + '0.3)';
-  const sourceLabel = currentMode === 'hls' ? 'SOURCE: HLS STREAM' : 'SOURCE: YOUTUBE LIVE';
+  const sourceLabel = currentMode === 'video' ? 'SOURCE: DIRECT FEED' : currentMode === 'hls' ? 'SOURCE: HLS STREAM' : 'SOURCE: YOUTUBE LIVE';
   ctx.fillText(sourceLabel, w - 16, 74);
 
   // Bottom border accent
@@ -449,7 +449,7 @@ export function openWebcamView(viewer, entity) {
   if (ac.videoUrl) {
     const video = $('webcam-hls-video');
     if (video) {
-      stopHls();
+      destroyHls();
       video.src = ac.videoUrl;
       video.loop = true;
       video.muted = true;
