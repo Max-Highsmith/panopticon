@@ -397,7 +397,7 @@ function stopReplay() {
     playbackSatHandler = null;
   }
   // Clean up dynamic ambient panels opened during playback
-  for (const key of ['wallet', 'diplomat', 'kalshi_scenario', 'profiles_scenario']) {
+  for (const key of ['wallet', 'diplomat', 'kalshi_scenario']) {
     const loader = getLoader(key);
     if (loader?.reset) loader.reset();
   }

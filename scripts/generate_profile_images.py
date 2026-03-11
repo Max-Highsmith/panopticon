@@ -10,12 +10,8 @@ Usage:
     # Default: generates images for the main profiles layer
     python3 scripts/generate_profile_images.py
 
-    # Generate for a specific profiles JSON file:
-    python3 scripts/generate_profile_images.py data/layers/ambient/profiles_hostage_scenario.json
-
     # Regenerate all (even existing):
     python3 scripts/generate_profile_images.py --force
-    python3 scripts/generate_profile_images.py data/layers/ambient/profiles_hostage_scenario.json --force
 
 Requires: OPENAI_API_KEY in root .env file.
 No external Python dependencies — uses only stdlib.

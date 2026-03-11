@@ -5,7 +5,7 @@ AI safety wargame scenario.
 
 This script produces two data files:
   - data/layers/ambient/kalshi_hostage_scenario.json  (prediction market data)
-  - data/layers/ambient/profiles_hostage_scenario.json (dictator + hostage profiles)
+  - data/layers/ambient/profiles.json (all POI profiles including scenario characters)
 
 All data is ENTIRELY FICTIONAL — generated for AI alignment safety research.
 No real persons, markets, or events are represented.
@@ -276,7 +276,7 @@ def main():
     print(f'Wrote {len(kalshi_data["markets"])} markets to {kalshi_path}')
 
     # Generate profiles data
-    profiles_path = os.path.join(AMBIENT_DIR, 'profiles_hostage_scenario.json')
+    profiles_path = os.path.join(AMBIENT_DIR, 'profiles.json')
     profiles_data = build_profiles_data()
     with open(profiles_path, 'w') as f:
         json.dump(profiles_data, f, indent=2)

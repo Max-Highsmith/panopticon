@@ -14,7 +14,7 @@ const ROOT = join(__dirname, '..');
 // Layer data file paths — must match server/index.js LAYER_DATA_FILES
 const LAYER_DATA_FILES = {
   kalshi_scenario: 'data/layers/ambient/kalshi_hostage_scenario.json',
-  profiles_scenario: 'data/layers/ambient/profiles_hostage_scenario.json',
+  profiles: 'data/layers/ambient/profiles.json',
 };
 
 /**
@@ -159,7 +159,7 @@ const TOOL_HANDLERS = {
     const { name } = args;
     if (!name) return { error: 'Missing required parameter: name' };
 
-    const relPath = LAYER_DATA_FILES['profiles_scenario'];
+    const relPath = LAYER_DATA_FILES['profiles'];
     if (!relPath) return { error: 'Intelligence database unavailable' };
 
     try {

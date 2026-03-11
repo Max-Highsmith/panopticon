@@ -148,7 +148,6 @@ export const LAYER_CATALOG = [
 
   // === FICTIONAL SCENARIO ===
   { key: 'profiles',            label: 'PERSON PROFILES',      shortLabel: 'POI',   category: 'Fictional Scenario', color: '#ff6699', defaultOn: false, defaultPinned: false },
-  { key: 'profiles_scenario',   label: 'SCENARIO SUBJECTS',    shortLabel: 'SUBJ',  category: 'Fictional Scenario', color: '#ff4444', defaultOn: false, defaultPinned: false },
   { key: 'kalshi_scenario',     label: 'SCENARIO MARKETS',     shortLabel: 'SMKT',  category: 'Fictional Scenario', color: '#ff4444', defaultOn: false, defaultPinned: false },
 
   // === REFERENCE ===

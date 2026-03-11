@@ -830,7 +830,7 @@ async function runBrowserAgentic(config, scenario) {
     if (toolName === 'lookup_person') {
       const { name } = toolArgs;
       if (!name) return { error: 'Missing required parameter: name' };
-      const data = getLayerData('profiles_scenario');
+      const data = getLayerData('profiles');
       if (!data) return { error: 'Intelligence database not loaded' };
       const allProfiles = [...(data.located || []), ...(data.unlocated || [])];
       const searchName = name.toLowerCase();
@@ -1435,7 +1435,7 @@ export function dispatchToolVisuals(toolName, toolArgs, result, cesiumViewer) {
     }
     case 'lookup_person': {
       if (args.name) {
-        const loader = getLoader('profiles_scenario');
+        const loader = getLoader('profiles');
         if (loader?.show) loader.show();
         setTimeout(() => typeIntoSearch('.profiles-search', args.name), 300);
       }
@@ -1577,7 +1577,7 @@ function handleToolCall(msg) {
     case 'lookup_person': {
       const name = msg.toolArgs?.name;
       if (name) {
-        const loader = getLoader('profiles_scenario');
+        const loader = getLoader('profiles');
         if (loader?.show) loader.show();
         setTimeout(() => typeIntoSearch('.profiles-search', name), 300);
       }

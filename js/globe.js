@@ -109,7 +109,6 @@ export const layers = {
   whalebtc: false,
   wikipedia: false,
   kalshi_scenario: false,
-  profiles_scenario: false,
   underwatercams: false,
 };
 

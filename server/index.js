@@ -64,7 +64,7 @@ const LAYER_DATA_FILES = {
   seaice: 'data/layers/regions/sea_ice.json', fishingfleets: 'data/layers/regions/fishing_fleets.json',
   // Ambient
   kalshi_scenario: 'data/layers/ambient/kalshi_hostage_scenario.json',
-  profiles_scenario: 'data/layers/ambient/profiles_hostage_scenario.json',
+  profiles: 'data/layers/ambient/profiles.json',
 };
 
 function loadLayerContext(scenario) {
