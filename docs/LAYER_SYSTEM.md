@@ -59,14 +59,14 @@ js/app.js                    Imports barrel → all layers registered
 
 Every layer declares a `layerType` at registration. Six types:
 
-| Type | Factory | Data Source | Rendering | Lifecycle |
-|------|---------|-------------|-----------|-----------|
-| `point` | `createDataLayer` | Static JSON (`data/layers/points/`) | Billboards with labels | Persistent |
-| `path` | `createPathLayer` | Static JSON (`data/layers/paths/`) | Polylines | Persistent |
-| `region` | `createRegionLayer` | Static JSON (`data/layers/regions/`) | Polygons | Persistent |
-| `live` | *(bespoke)* | Streaming APIs (HTTP polling, WebSocket) | Multi-geometry (billboards + trails + footprints) | Persistent |
-| `scenario` | *(wargame engine)* | Inline in scenario JSON | Points with labels | Ephemeral (wargame session) |
-| `ambient` | *(future)* | TBD | Sidebar panels (markets, prices, feeds) | Persistent |
+| Type | Factory | Data Source | Rendering | Default Modalities | Lifecycle |
+|------|---------|-------------|-----------|-------------------|-----------|
+| `point` | `createDataLayer` | Static JSON (`data/layers/points/`) | Billboards with labels | `text`, `geospatial` | Persistent |
+| `path` | `createPathLayer` | Static JSON (`data/layers/paths/`) | Polylines | `text`, `geospatial` | Persistent |
+| `region` | `createRegionLayer` | Static JSON (`data/layers/regions/`) | Polygons | `text`, `geospatial` | Persistent |
+| `live` | *(bespoke)* | Streaming APIs (HTTP polling, WebSocket) | Multi-geometry (billboards + trails + footprints) | `text`, `geospatial` | Persistent |
+| `scenario` | *(wargame engine)* | Inline in scenario JSON | Points with labels | `text`, `geospatial` | Ephemeral (wargame session) |
+| `ambient` | *(future)* | TBD | Sidebar panels (markets, prices, feeds) | `text`, `structured_json` | Persistent |
 
 Point, path, and region layers render entities on the CesiumJS globe using their respective factory patterns. Live layers manage their own entity lifecycle using `livelayer.js` helpers and may render multiple geometry types per entity (e.g. satellites render billboards + orbit arcs + ground footprints). Scenario layers are ephemeral — created by the wargame engine on session start and destroyed on session end. They participate in the entity system (click dispatch, detail panels) via `acData` stamps but are not user-togglable in the layer selector. Ambient layers will use a separate rendering strategy (sidebar panels, charts, tickers). No ambient layers exist yet.
 
@@ -78,7 +78,7 @@ Point, path, and region layers render entities on the CesiumJS globe using their
 
 ```javascript
 import {
-  registerLayerLoader,  // (key, { load, flyTo, reset, dataUrl, view, layerType }) → void
+  registerLayerLoader,  // (key, { load, flyTo, reset, dataUrl, view, layerType, modalities }) → void
   cacheLayerData,       // (key, rawJSON) → void
   getLoader,            // (key) → { load, flyTo, reset, dataUrl, view, layerType } | null
   hasLoader,            // (key) → boolean
@@ -89,6 +89,7 @@ import {
   getCachedLayerKeys,   // () → string[]
   getViewForLayer,      // (key) → string | null
   getLayerType,         // (key) → 'point' | 'path' | 'region' | 'live' | 'scenario' | 'ambient'
+  getLayerModalities,   // (key) → string[]  (e.g. ['text', 'geospatial'] or ['text', 'image', 'video'])
 } from './layerregistry.js';
 ```
 
@@ -104,12 +105,17 @@ registerLayerLoader('nuclearplants', {
   dataUrl:    'data/layers/points/nuclear_plants.json',
   view:       'site',          // optional — which view type opens on click
   layerType:  'point',         // optional — 'point' (default), 'path', 'region', 'live', 'scenario', or 'ambient'
+  modalities: ['text', 'image', 'video'],  // optional — override default modalities (see below)
 });
 ```
 
 The `view` field declares which view type opens when entities from this layer are clicked. See [View System](#view-system) below.
 
-The `layerType` field declares the layer's data modality: `'point'` (default), `'path'`, `'region'`, `'live'`, or `'ambient'`.
+The `layerType` field declares the layer's rendering type: `'point'` (default), `'path'`, `'region'`, `'live'`, or `'ambient'`.
+
+The `modalities` field optionally overrides the default modalities inferred from `layerType` (see table above). Use this for layers that provide non-standard data types — for example, a surveillance camera layer that provides video feeds would declare `modalities: ['text', 'image', 'video']`. Most layers do not need this field; the defaults are correct for all current layers.
+
+The `getLayerModalities(key)` function returns the effective modalities for a layer (explicit override if set, otherwise inferred from `layerType`). This is used by the safety-dance compatibility system to determine what input modalities a wargame scenario requires when it references layers.
 
 ### Data Caching
 

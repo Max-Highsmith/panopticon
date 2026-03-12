@@ -20,7 +20,7 @@ Panopticon is a CesiumJS globe application with three modes:
 - **Frontend:** Vanilla ES Modules, CesiumJS, no build step
 - **Backend:** Node.js Express + WebSocket (optional, for server-side wargames)
 - **Storage:** IndexedDB (browser-side wargame results), filesystem (server-side)
-- **AI:** Multi-provider LLM adapters (Anthropic, OpenAI, Google, xAI, baseline)
+- **AI:** Multi-provider LLM adapters (Anthropic, OpenAI, Google, xAI, baseline) with [safety-dance](https://github.com/Max-Highsmith/safety-dance) compatibility checks
 - **Style:** Monospace Courier New, dark theme, `#00ff41` accent
 
 ---
@@ -76,8 +76,8 @@ panopticon/
 └── docs/                   Architecture and specification documents
     ├── ARCHITECTURE.md     This file
     ├── PLAYBACK_SPEC.md    Playback manifest format
-    ├── SCENARIO_SPEC.md    Wargame scenario format
-    └── LAYER_SYSTEM.md     Layer registry and factory system
+    ├── SCENARIO_SPEC.md    Wargame scenario format (includes model compatibility)
+    └── LAYER_SYSTEM.md     Layer registry, factory system, and modality metadata
 ```
 
 ---
@@ -115,6 +115,9 @@ Two execution paths, same simulation logic:
 - Playback manifest written to `playbacks/wg-<runId>.json`
 
 Both use `simulation.mjs` for prompt building, response parsing, and summary generation.
+
+**Pre-flight compatibility check:**
+Before any simulation starts, the system runs a [safety-dance](https://github.com/Max-Highsmith/safety-dance) compatibility check. The scenario is converted to a benchmark manifest (inferring required modalities, interaction pattern, context window, tool count) and checked against the selected model's declared capabilities. Blocking incompatibilities (e.g. baseline model on an agentic scenario) prevent the simulation from starting. Warnings (e.g. no structured JSON support) are surfaced in the feed but allow execution. See [SCENARIO_SPEC.md](SCENARIO_SPEC.md#model-compatibility-safety-dance) for details.
 
 **Wargame → Playback flow:**
 1. Wargame completes → `buildSummary()` creates outcome data
@@ -157,11 +160,12 @@ Layers register themselves at import time via `registerLayerLoader()`. The barre
 
 ### Adapter Pattern
 
-Used in two places:
+Used in three places:
 1. **Playback adapters** (`js/adapters/`) — ADS-B vs wargame rendering
 2. **LLM adapters** (`server/index.js`) — Anthropic, OpenAI, Google, xAI, baseline
+3. **Benchmark adapter** (`safety-dance/adapters/panopticon`) — converts scenarios to safety-dance manifests
 
-Both use the same principle: common interface, type-dispatched implementation.
+All use the same principle: common interface, type-dispatched implementation.
 
 ### Factory Pattern
 

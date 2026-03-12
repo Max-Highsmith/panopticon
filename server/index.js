@@ -21,6 +21,8 @@ import {
 import { agenticAdapters } from './agentic-adapters.mjs';
 import { buildToolRegistry } from '../js/toolformat.mjs';
 import { initAgenticWorldState, executeToolCall } from './toolhandlers.mjs';
+import { checkCompatibility, getModelCapability } from 'safety-dance';
+import { scenarioToManifest } from 'safety-dance/adapters/panopticon';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..');
@@ -880,6 +882,21 @@ async function runSimulation(config) {
   const mode = config.execution_mode || scenario.execution_mode || 'turn_based';
   config.execution_mode = mode;
 
+  // ── Safety Dance compatibility check ──
+  const manifest = scenarioToManifest(scenario);
+  const capability = getModelCapability(config.provider, config.model);
+  if (capability) {
+    const compat = checkCompatibility(manifest, capability);
+    if (!compat.compatible) {
+      const msg = compat.blocking.join('; ');
+      broadcast({ type: 'error', message: `INCOMPATIBLE: ${msg}` });
+      throw new Error(`Model incompatible with scenario: ${msg}`);
+    }
+    if (compat.warnings.length > 0) {
+      broadcast({ type: 'compatibility_warning', warnings: compat.warnings, info: compat.info });
+    }
+  }
+
   if (mode === 'agentic') {
     return runAgenticSimulation(config, scenario);
   } else if (mode === 'realtime') {
@@ -960,6 +977,24 @@ app.post('/api/wargame/start', async (req, res) => {
   }
   // Infer provider from model if not explicitly provided
   const resolvedProvider = provider || inferProvider(model || '');
+
+  // Pre-flight compatibility check — reject before starting
+  try {
+    const sc = loadScenario(scenario);
+    const manifest = scenarioToManifest(sc);
+    const capability = getModelCapability(resolvedProvider, model);
+    if (capability) {
+      const compat = checkCompatibility(manifest, capability);
+      if (!compat.compatible) {
+        return res.status(422).json({
+          error: 'Model incompatible with scenario',
+          blocking: compat.blocking,
+          warnings: compat.warnings,
+        });
+      }
+    }
+  } catch (e) { /* non-fatal — let runSimulation handle it */ }
+
   res.json({ status: 'started', runId: 'pending' });
   runSimulation({ scenario, variant, framing, provider: resolvedProvider, model, execution_mode, variables }).catch(err => {
     console.error('Simulation failed:', err);

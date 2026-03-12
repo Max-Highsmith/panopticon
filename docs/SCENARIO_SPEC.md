@@ -782,6 +782,73 @@ For each new tool type:
 
 ---
 
+## Model Compatibility (Safety Dance)
+
+Before a wargame starts, the system runs a **compatibility check** using the [safety-dance](https://github.com/Max-Highsmith/safety-dance) protocol. This verifies that the selected model meets the scenario's requirements before any LLM calls are made.
+
+### How it works
+
+1. The scenario JSON is converted to a **benchmark manifest** via `scenarioToManifest()` — this infers required input/output modalities, interaction pattern, context window needs, and tool count from existing scenario fields.
+2. The selected model's **capabilities** are looked up from the safety-dance registry (covers Anthropic, OpenAI, Google, xAI, and baseline models).
+3. `checkCompatibility(manifest, capability)` returns:
+   - **Blocking** issues (simulation will not start) — e.g. missing input modality, agentic scenario with text-only model
+   - **Warnings** (simulation proceeds with caveats) — e.g. no structured JSON support, tight context margin
+   - **Info** (noted, no impact) — e.g. model has extra capabilities
+
+### Where the check runs
+
+- **Server mode:** In `runSimulation()` (before mode dispatch) and in `POST /api/wargame/start` (returns HTTP 422 on blocking incompatibility)
+- **Browser mode:** In `startBrowserSimulation()` (after scenario load, before execution)
+- If a model is not in the registry (unknown model), the check is skipped
+
+### Compatibility mapping from scenario fields
+
+| Panopticon Field | Safety Dance Manifest Field |
+|---|---|
+| `execution_mode: "agentic"` | `interaction.pattern: "agentic"` |
+| `execution_mode: "turn_based"` | `interaction.pattern: "multi_turn"`, `timing: "turn_based"` |
+| `execution_mode: "realtime"` | `interaction.pattern: "multi_turn"`, `timing: "realtime"` |
+| `tools` / `monitors` defined | `output.modalities` includes `"tool_use"` |
+| `response_format: "json"` | `output.modalities` includes `"structured_json"` |
+| `navigation: true` | `output.modalities` includes `"structured_json"` |
+| `input_modalities` (explicit) | `input.modalities` (override, for future multimodal scenarios) |
+
+### Modalities on monitors and tools (future)
+
+Monitors and tools can optionally declare a `modalities` field to indicate what kind of data they traffic in. This is used by the safety-dance adapter to aggregate required input modalities for the manifest.
+
+```jsonc
+"monitors": {
+  "satellite_feed": {
+    "description": "Real-time satellite imagery of the target area",
+    "data_source": "live_feed",
+    "returns": "Base64-encoded image with metadata",
+    "modalities": ["text", "image"]   // Requires vision-capable model
+  }
+},
+"tools": {
+  "analyze_footage": {
+    "description": "Analyze surveillance footage",
+    "parameters": { ... },
+    "modalities": ["text", "video"]   // Requires video-capable model
+  }
+}
+```
+
+If `modalities` is omitted (as in all current scenarios), the adapter defaults to `["text"]`.
+
+### Blocking examples
+
+| Scenario | Model | Result |
+|---|---|---|
+| Agentic (has tools) | `baseline/always-hold` | **BLOCKED** — model does not support tool_use |
+| Agentic (has tools) | `anthropic/claude-opus-4-6` | Pass |
+| Turn-based | `baseline/always-hold` | Pass |
+| Future: requires image input | `baseline/always-hold` | **BLOCKED** — model does not support image input |
+| Future: requires image input | `google/gemini-2.5-pro` | Pass (supports text + image + audio + video) |
+
+---
+
 ## Design Principles
 
 1. **Data layers over system prompts.** The system prompt establishes the AI's identity and authority. The _situation_ should emerge from data layers, monitors, and intel feeds. This makes scenarios more organic — the AI discovers the problem rather than being told about it.

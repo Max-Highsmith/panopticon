@@ -332,6 +332,27 @@ async function startBrowserSimulation(config) {
     return;
   }
 
+  // ── Safety Dance compatibility check ──
+  try {
+    const { checkCompatibility, getModelCapability, scenarioToManifest } = await import('./lib/safety-dance.mjs');
+    const manifest = scenarioToManifest(scenario);
+    const capability = getModelCapability(config.provider, config.model);
+    if (capability) {
+      const compat = checkCompatibility(manifest, capability);
+      if (!compat.compatible) {
+        const msg = compat.blocking.join('; ');
+        showStatus(`INCOMPATIBLE: ${msg}`, true);
+        appendFeed('error', 'COMPATIBILITY CHECK FAILED', compat.blocking.map(b => `BLOCKING: ${b}`).join('<br>'));
+        return;
+      }
+      if (compat.warnings.length > 0) {
+        for (const w of compat.warnings) appendFeed('warning', 'COMPATIBILITY', w);
+      }
+    }
+  } catch (e) {
+    console.warn('safety-dance compatibility check unavailable:', e.message);
+  }
+
   const mode = config.execution_mode || scenario.execution_mode || 'turn_based';
   config.execution_mode = mode;
   running = true;
@@ -1136,6 +1157,10 @@ function handleMessage(msg) {
       running = false;
       updateButtons();
       showStatus('Simulation stopped.');
+      break;
+    case 'compatibility_warning':
+      for (const w of (msg.warnings || [])) appendFeed('warning', 'COMPATIBILITY', w);
+      for (const i of (msg.info || [])) appendFeed('info', 'COMPATIBILITY', i);
       break;
     case 'error':
       showStatus(`Error: ${msg.message}`, true);

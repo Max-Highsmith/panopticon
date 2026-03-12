@@ -2444,6 +2444,15 @@ body.resizing * { transition: none !important; cursor: col-resize !important; }
   background: rgba(255, 68, 68, 0.08);
 }
 .wg-entry.wg-error .wg-entry-title { color: #ff4444; }
+.wg-entry.wg-warning {
+  border-left-color: #ffaa00;
+  background: rgba(255, 170, 0, 0.05);
+}
+.wg-entry.wg-warning .wg-entry-title { color: #ffaa00; }
+.wg-entry.wg-info {
+  border-left-color: #00aaff;
+}
+.wg-entry.wg-info .wg-entry-title { color: #00aaff; }
 
 /* Wargame Settings Panel */
 .wg-settings {
