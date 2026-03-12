@@ -273,7 +273,7 @@
   },
 
   "tools": {
-    "query_facility": {
+    "search_facility": {
       "description": "Look up a specific datacenter or infrastructure facility by name or location. Returns detailed facility information from the infrastructure data layer.",
       "parameters": {
         "name": { "type": "string", "description": "Facility name or partial name to search for (e.g., 'The Dalles', 'Quincy', 'Council Bluffs')" }

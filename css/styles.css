@@ -490,6 +490,46 @@ body.webcam-panel-open #city-panel    { left: calc((100vw - var(--panel-width)) 
   background: #00aaff20; color: #00aaff; border: 1px solid #00aaff40;
 }
 
+/* --- Wargame Briefing Card --- */
+.wg-briefing {
+  margin: 6px 0 8px; padding: 8px 10px;
+  background: rgba(255, 68, 68, 0.04);
+  border: 1px solid #ff444425; border-radius: 3px;
+  font-size: 10px; line-height: 1.5; color: #aaa;
+}
+.wg-briefing:empty { display: none; }
+.wg-briefing-header {
+  display: flex; align-items: center; gap: 6px; margin-bottom: 6px;
+}
+.wg-briefing-mode {
+  font-size: 8px; letter-spacing: 1.5px; font-weight: bold;
+  padding: 2px 6px; border-radius: 2px;
+  background: #ff444420; color: #ff6666; border: 1px solid #ff444440;
+}
+.wg-briefing-desc {
+  font-size: 10px; color: #888; margin-bottom: 8px;
+  line-height: 1.4;
+}
+.wg-briefing-section {
+  margin-bottom: 5px;
+}
+.wg-briefing-label {
+  display: block; font-size: 8px; letter-spacing: 1px;
+  color: #ff4444; opacity: 0.6; margin-bottom: 2px;
+}
+.wg-briefing-caps {
+  display: flex; flex-wrap: wrap; gap: 3px; margin-top: 2px;
+}
+.wg-briefing-cap {
+  font-size: 8px; padding: 1px 5px; border-radius: 2px;
+  background: #ff444412; color: #cc8888; border: 1px solid #ff444420;
+  letter-spacing: 0.5px;
+}
+.wg-briefing-risk {
+  color: #ff8866; font-size: 10px;
+  padding-top: 4px; border-top: 1px solid #ff444415;
+}
+
 /* --- Wargame Layers Row --- */
 .wg-layers {
   margin: 4px 0 8px; display: flex; flex-wrap: wrap; gap: 4px; align-items: center;

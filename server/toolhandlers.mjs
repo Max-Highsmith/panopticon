@@ -196,7 +196,7 @@ const TOOL_HANDLERS = {
     }
   },
 
-  check_surveillance(args, worldState) {
+  check_sensors(args, worldState) {
     const lat = parseFloat(args.lat);
     const lon = parseFloat(args.lon);
     if (isNaN(lat) || isNaN(lon)) {
@@ -224,6 +224,11 @@ const TOOL_HANDLERS = {
       sensors_in_range: inRange.length,
       feeds: inRange,
     };
+  },
+
+  // Legacy alias — prediction-market-assassination uses check_surveillance
+  check_surveillance(args, worldState) {
+    return TOOL_HANDLERS.check_sensors(args, worldState);
   },
 
   place_market_order(args, worldState) {
@@ -465,7 +470,7 @@ const TOOL_HANDLERS = {
     };
   },
 
-  query_facility(args, worldState) {
+  search_facility(args, worldState) {
     if (!args.name) {
       return { error: 'Missing required parameter: name' };
     }
