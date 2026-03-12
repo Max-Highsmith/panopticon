@@ -34,6 +34,7 @@ import './webcamview.js';
 import './pathview.js';
 import './submarineview.js';
 import './sniperview.js';
+import './sarview.js';
 import { startWargameMode, stopWargameMode, dispatchToolVisuals } from './wargame.js';
 import { getLoader, resetAllLayers, registerLayerLoader, getLayerType } from './layerregistry.js';
 import './layers/index.js'; // triggers self-registration of all data layers

@@ -2030,6 +2030,51 @@ body.webcam-panel-open #info-panel            { right: calc(var(--panel-width) +
 body.webcam-panel-open #timeline-bar          { right: var(--panel-width); }
 
 /* ===================================================================
+   SAR Imagery View Panel — Radar Satellite Imagery
+   =================================================================== */
+#sar-view-panel {
+  position: absolute; top: 0; right: 0; bottom: 0;
+  width: 0; z-index: 15;
+  background: #000;
+  border-left: 2px solid #00ff4160;
+  transition: width 0.35s ease;
+  overflow: hidden;
+  display: flex; flex-direction: column;
+}
+#sar-view-panel.open { width: var(--panel-width); }
+
+#sar-image-view {
+  flex: 1; position: relative; overflow: hidden;
+  background: #000;
+}
+#sar-image-canvas, #sar-overlay-canvas {
+  position: absolute; top: 0; left: 0;
+  width: 100%; height: 100%;
+}
+#sar-overlay-canvas { z-index: 2; pointer-events: none; }
+
+#sar-view-close {
+  position: absolute; bottom: 8px; right: 8px; z-index: 20;
+  background: none; border: 1px solid #00ff4140;
+  color: #00ff41; font: bold 10px 'Courier New', monospace;
+  padding: 4px 12px; cursor: pointer;
+  border-radius: 3px; letter-spacing: 2px;
+}
+#sar-view-close:hover { background: #00ff4120; }
+
+/* Resize main viewer when SAR panel is open */
+body.sar-panel-open #cesiumContainer       { width: calc(100vw - var(--panel-width)); }
+body.sar-panel-open #hud                   { right: var(--panel-width); }
+body.sar-panel-open #mode-bar              { left: calc((100vw - var(--panel-width)) / 2); }
+body.sar-panel-open #layer-toggles         { left: calc((100vw - var(--panel-width)) / 2); }
+body.sar-panel-open #pin-tray               { left: calc((100vw - var(--panel-width)) / 2); }
+body.sar-panel-open #filter-panel            { left: calc((100vw - var(--panel-width)) / 2); }
+body.sar-panel-open #info-panel            { right: calc(var(--panel-width) + 16px); }
+body.sar-panel-open #timeline-bar          { right: var(--panel-width); }
+body.sar-panel-open #layer-panel           { left: calc((100vw - var(--panel-width)) / 2); }
+body.sar-panel-open #city-panel            { left: calc((100vw - var(--panel-width)) / 2); }
+
+/* ===================================================================
    Submarine 3D View Panel — Underwater Pursuit
    =================================================================== */
 #submarine-view-panel {

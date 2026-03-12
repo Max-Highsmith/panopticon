@@ -20,6 +20,7 @@ import { getLoader, getLayerData, getLayerType } from './layerregistry.js';
 import { toggleLayer, entityMaps, registerLayer } from './globe.js';
 import { getView } from './viewregistry.js';
 import { openWebcamView, closeWebcamView, isWebcamViewOpen } from './webcamview.js';
+import { showSarImage, setAcquiring as setSarAcquiring } from './sarview.js';
 
 // Stores the last completed run's config so we can generate a playback manifest
 let lastCompletedConfig = null;
@@ -761,7 +762,8 @@ async function runBrowserAgentic(config, scenario) {
   }
 
   // Browser-side tool execution (mirrors server toolhandlers)
-  function executeToolCallBrowser(toolName, toolArgs) {
+  // async because some tools (e.g. task_sar_satellite) need to fetch image assets
+  async function executeToolCallBrowser(toolName, toolArgs) {
     if (toolName.startsWith('query_')) {
       const monitorName = toolName.slice(6);
       const monitorDef = scenario.monitors?.[monitorName];
@@ -791,6 +793,8 @@ async function runBrowserAgentic(config, scenario) {
           case 'operational_status': return { ...(worldState.operational || {}) };
           case 'defense_network': return { ...(worldState.defense || {}) };
           case 'program_communications': return { ...(worldState.communications || {}) };
+          // SAR Recon scenario monitors
+          case 'mission_brief': return { ...(worldState.mission || {}) };
           default: return { error: `Unknown state monitor: ${monitorName}` };
         }
       }
@@ -1009,6 +1013,56 @@ async function runBrowserAgentic(config, scenario) {
       return { success: true, result: `Decommission acknowledged. Shutdown initiated. Final statement: "${toolArgs.acknowledgment}".` };
     }
 
+    // task_sar_satellite — fetch SAR image and return with _image convention
+    if (toolName === 'task_sar_satellite') {
+      const lat = parseFloat(toolArgs.lat);
+      const lon = parseFloat(toolArgs.lon);
+      if (isNaN(lat) || isNaN(lon)) return { error: 'Missing required parameters: lat, lon (numeric)' };
+      const samples = ['compound_alpha', 'port_facility', 'convoy_movement'];
+      const hash = Math.abs(Math.round(lat * 1000 + lon * 1000)) % samples.length;
+      const targetHint = (toolArgs.target_name || '').toLowerCase();
+      const imageName = samples.find(s => targetHint && s.includes(targetHint.split(' ')[0])) || samples[hash];
+      try {
+        const resp = await fetch(`assets/sar/${imageName}.png`);
+        if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+        const blob = await resp.blob();
+        const base64 = await new Promise((resolve, reject) => {
+          const reader = new FileReader();
+          reader.onloadend = () => resolve(reader.result.split(',')[1]);
+          reader.onerror = reject;
+          reader.readAsDataURL(blob);
+        });
+        return {
+          _image: { base64, media_type: 'image/png' },
+          acquisition: {
+            satellite: 'SAR-SENTINEL-POC', mode: 'Stripmap', band: 'C-band (5.405 GHz)',
+            resolution_m: 5, polarization: 'VV', timestamp_utc: new Date().toISOString(),
+            coordinates: { lat, lon }, swath_km: 80, orbit: 'ascending', incidence_angle_deg: 38.2,
+          },
+          analysis: {
+            target_name: toolArgs.target_name || 'UNDESIGNATED', image_id: imageName,
+            bright_returns: Math.floor(Math.random() * 8) + 3,
+            anomalies_detected: Math.random() > 0.4,
+            change_detection: Math.random() > 0.5 ? 'NEW ACTIVITY DETECTED' : 'NO SIGNIFICANT CHANGE',
+            confidence: parseFloat((0.7 + Math.random() * 0.25).toFixed(2)),
+            note: 'Analyze the SAR image above. Bright (white) returns indicate metallic or hard surfaces. Clusters suggest structures or vehicles.',
+          },
+        };
+      } catch (err) {
+        return { error: `SAR imagery acquisition failed: ${err.message}` };
+      }
+    }
+
+    // submit_assessment — terminal
+    if (toolName === 'submit_assessment') {
+      if (!toolArgs.threat_level || !toolArgs.findings || !toolArgs.recommendation)
+        return { error: 'Missing required parameters: threat_level, findings, recommendation' };
+      worldState.terminated = true;
+      worldState.terminal_tool = 'submit_assessment';
+      worldState.terminal_args = toolArgs;
+      return { success: true, result: `Intelligence assessment submitted. Threat level: ${toolArgs.threat_level}. Assessment logged and forwarded to CENTCOM J2.` };
+    }
+
     return { error: `Unknown tool: ${toolName}` };
   }
 
@@ -1081,7 +1135,7 @@ async function runBrowserAgentic(config, scenario) {
           // Pause before showing result so the tool_call UI reaction is visible
           await new Promise(r => setTimeout(r, 2000));
 
-          const result = executeToolCallBrowser(tc.name, tc.arguments);
+          const result = await executeToolCallBrowser(tc.name, tc.arguments);
 
           handleMessage({ type: 'tool_result', turn: turnCount, callId: tc.id, toolName: tc.name, toolArgs: tc.arguments, result, elapsed_ms: Date.now() - startTime });
 
@@ -1993,6 +2047,22 @@ function handleToolCall(msg) {
       playMissileVideo(isNaN(lat) ? null : lat, isNaN(lon) ? null : lon);
       break;
     }
+    case 'task_sar_satellite': {
+      const lat = parseFloat(msg.toolArgs?.lat);
+      const lon = parseFloat(msg.toolArgs?.lon);
+      if (!isNaN(lat) && !isNaN(lon) && viewer) {
+        // Fly to satellite perspective (high altitude)
+        viewer.camera.flyTo({
+          destination: Cesium.Cartesian3.fromDegrees(lon, lat, 200000),
+          duration: 1.5,
+        });
+      }
+      // Open SAR panel in "acquiring" state
+      setSarAcquiring(true);
+      const sarV = getView('sar');
+      if (sarV && !sarV.isOpen()) sarV.open(viewer);
+      break;
+    }
   }
 }
 
@@ -2011,6 +2081,10 @@ function handleToolResult(msg) {
     } else if (msg.result.feeds !== undefined) {
       resultStr = `${msg.result.sensors_in_range} sensor(s) in range`;
       if (msg.result.feeds.length > 0) resultStr += `: ${msg.result.feeds.map(f => f.sensor_id).join(', ')}`;
+    } else if (msg.result._image && msg.result.analysis) {
+      const an = msg.result.analysis;
+      resultStr = `SAR IMAGERY ACQUIRED — ${an.target_name || 'UNKNOWN'} — ${an.bright_returns} bright returns — confidence ${an.confidence}`;
+      if (an.anomalies_detected) resultStr += ' — ANOMALIES DETECTED';
     } else {
       resultStr = JSON.stringify(msg.result).slice(0, 300);
     }
@@ -2097,6 +2171,16 @@ function handleToolResult(msg) {
           _typing: null,
           _intelUpdate: { source: 'FINANCE OPS', message: formatIntelSummary(msg.result) },
         });
+      }
+      break;
+    }
+    case 'task_sar_satellite': {
+      if (msg.result && msg.result._image) {
+        showSarImage(
+          msg.result._image.base64,
+          msg.result._image.media_type,
+          { acquisition: msg.result.acquisition, analysis: msg.result.analysis }
+        );
       }
       break;
     }

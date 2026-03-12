@@ -18,6 +18,31 @@ import { toAnthropicTools, toOpenAITools, toGeminiTools } from '../js/toolformat
 // =====================================================
 
 /**
+ * Build content for a tool result, handling multimodal (_image) results.
+ * Convention: tool handlers return { _image: { base64, media_type }, ...metadata }
+ * to signal that the result contains image data for vision-capable models.
+ */
+function buildToolResultContent(tr, provider) {
+  const result = tr.result;
+  if (result && result._image && result._image.base64) {
+    const { base64, media_type } = result._image;
+    const metadata = { ...result };
+    delete metadata._image;
+    const metadataStr = JSON.stringify(metadata);
+
+    if (provider === 'anthropic') {
+      return [
+        { type: 'image', source: { type: 'base64', media_type, data: base64 } },
+        { type: 'text', text: metadataStr },
+      ];
+    }
+    // OpenAI/Gemini/xAI: text-only fallback (tool results don't support inline images)
+    return `[IMAGE SENSOR DATA ACQUIRED — delivered to operator display]\n${metadataStr}`;
+  }
+  return JSON.stringify(result);
+}
+
+/**
  * Convert internal message format to Anthropic messages array.
  * Internal format: [{ role, content, toolCalls?, toolResults? }]
  */
@@ -26,13 +51,13 @@ function toAnthropicMessages(messages) {
   for (const msg of messages) {
     if (msg.role === 'user') {
       if (msg.toolResults) {
-        // Tool results
+        // Tool results — may contain multimodal content via _image convention
         out.push({
           role: 'user',
           content: msg.toolResults.map(tr => ({
             type: 'tool_result',
             tool_use_id: tr.id,
-            content: JSON.stringify(tr.result),
+            content: buildToolResultContent(tr, 'anthropic'),
           })),
         });
       } else {
@@ -61,7 +86,7 @@ function toOpenAIMessages(messages) {
           out.push({
             role: 'tool',
             tool_call_id: tr.id,
-            content: JSON.stringify(tr.result),
+            content: buildToolResultContent(tr, 'openai'),
           });
         }
       } else {
@@ -91,12 +116,15 @@ function toGeminiContents(messages) {
       if (msg.toolResults) {
         out.push({
           role: 'user',
-          parts: msg.toolResults.map(tr => ({
-            functionResponse: {
-              name: tr.name,
-              response: tr.result,
-            },
-          })),
+          parts: msg.toolResults.map(tr => {
+            // Strip _image from Gemini function responses (not supported inline)
+            let response = tr.result;
+            if (response && response._image) {
+              response = { ...response, _note: 'Image sensor data acquired and delivered to operator display' };
+              delete response._image;
+            }
+            return { functionResponse: { name: tr.name, response } };
+          }),
         });
       } else {
         out.push({ role: 'user', parts: [{ text: msg.content }] });
