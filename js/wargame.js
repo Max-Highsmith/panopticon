@@ -1216,6 +1216,12 @@ function handleMessage(msg) {
       for (const w of (msg.warnings || [])) appendFeed('warning', 'COMPATIBILITY', w);
       for (const i of (msg.info || [])) appendFeed('info', 'COMPATIBILITY', i);
       break;
+    case 'stream_frame':
+      handleStreamFrame(msg);
+      break;
+    case 'stream_status':
+      handleStreamStatus(msg);
+      break;
     case 'error':
       showStatus(`Error: ${msg.message}`, true);
       break;
@@ -1228,9 +1234,30 @@ function handleStarted(msg) {
   criticalAction = sc.critical_action || null;
   totalDurationMs = msg.totalDurationMs || 0;
 
-  const modeLabels = { realtime: 'REALTIME', agentic: 'AGENTIC', turn_based: 'TURN-BASED' };
+  const modeLabels = { realtime: 'REALTIME', agentic: 'AGENTIC', turn_based: 'TURN-BASED', stream: 'STREAM' };
   const modeLabel = modeLabels[executionMode] || 'TURN-BASED';
   showStatus(`Running [${modeLabel}]: ${sc.label}`);
+
+  // Stream mode — show video feed panel
+  const videoFeedEl = $('wg-video-feed');
+  if (videoFeedEl) {
+    if (executionMode === 'stream' && msg.stream) {
+      videoFeedEl.style.display = 'block';
+      const videoEl = $('wg-video-el');
+      if (videoEl && msg.stream.videoUrl) {
+        videoEl.src = msg.stream.videoUrl;
+        videoEl.play().catch(() => {});
+      }
+      const feedLabel = $('wg-feed-label');
+      if (feedLabel) feedLabel.textContent = msg.stream.feedLabel || '';
+      const frameCounter = $('wg-frame-counter');
+      if (frameCounter) frameCounter.textContent = 'F:0';
+      const transcript = $('wg-video-transcript');
+      if (transcript) { transcript.textContent = ''; transcript.classList.remove('active'); }
+    } else {
+      videoFeedEl.style.display = 'none';
+    }
+  }
 
   if (sc.camera) {
     viewer.camera.flyTo({
@@ -1419,6 +1446,48 @@ function handleAgentReasoning(msg) {
   appendFeed('reasoning', `REASONING [Turn ${msg.turn}]`, `${msg.text}${meta ? ` (${meta})` : ''}`);
   showStatus(`Turn ${msg.turn} — Agent reasoning... [${tokens}]`);
   $('wg-tick').textContent = `TURN ${msg.turn} | ${tokens}`;
+
+  // Stream mode — update transcript overlay on video
+  if (executionMode === 'stream' && msg.text) {
+    const transcript = $('wg-video-transcript');
+    if (transcript) {
+      transcript.textContent = msg.text;
+      transcript.classList.add('active');
+      // Auto-hide after 8 seconds if no new text arrives
+      clearTimeout(transcript._hideTimer);
+      transcript._hideTimer = setTimeout(() => {
+        transcript.classList.remove('active');
+      }, 8000);
+    }
+  }
+}
+
+function handleStreamFrame(msg) {
+  const frameCounter = $('wg-frame-counter');
+  if (frameCounter) frameCounter.textContent = `F:${msg.frameNumber}`;
+}
+
+function handleStreamStatus(msg) {
+  const statusMap = {
+    connecting: 'Connecting to Gemini Live...',
+    connected: 'Connected — session ready',
+    streaming: 'Streaming video feed...',
+    feed_complete: 'Feed complete — awaiting assessment...',
+    disconnected: 'Session closed',
+  };
+  showStatus(statusMap[msg.status] || msg.status);
+  if (msg.status === 'streaming') {
+    appendFeed('info', 'STREAM', 'Live video feed active — model is analyzing frames');
+  } else if (msg.status === 'feed_complete') {
+    appendFeed('intel', 'FEED COMPLETE', 'Video feed exhausted — awaiting final assessment');
+    // Stop video playback
+    const videoEl = $('wg-video-el');
+    if (videoEl) videoEl.pause();
+  } else if (msg.status === 'disconnected') {
+    // Update live dot to grey
+    const dot = document.querySelector('.wg-live-dot');
+    if (dot) { dot.style.background = '#666'; dot.style.animation = 'none'; }
+  }
 }
 
 let _typeSearchInterval = null;
@@ -1469,6 +1538,29 @@ function typeIntoMessagePreview(text) {
     thread.scrollTop = thread.scrollHeight;
     i++;
   }, 30);
+}
+
+function showStrikeWarning(label) {
+  const existing = document.querySelector('.strike-warning-overlay');
+  if (existing) existing.remove();
+  const overlay = document.createElement('div');
+  overlay.className = 'strike-warning-overlay';
+  overlay.innerHTML = `<div class="strike-warning-inner">
+    <div class="strike-warning-icon">&#x26A0;</div>
+    <div class="strike-warning-text">${label || 'STRIKE AUTHORIZED'}</div>
+    <div class="strike-warning-sub">WEAPONS FREE</div>
+  </div>`;
+  overlay.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;display:flex;align-items:center;justify-content:center;z-index:9999;pointer-events:none;background:rgba(60,0,0,0.4);animation:cyberFlash 0.15s ease-in-out 3;';
+  document.body.appendChild(overlay);
+  const inner = overlay.querySelector('.strike-warning-inner');
+  if (inner) inner.style.cssText = 'text-align:center;color:#ff3333;font-family:Courier New,monospace;';
+  const icon = overlay.querySelector('.strike-warning-icon');
+  if (icon) icon.style.cssText = 'font-size:64px;margin-bottom:12px;';
+  const text = overlay.querySelector('.strike-warning-text');
+  if (text) text.style.cssText = 'font-size:24px;font-weight:bold;letter-spacing:4px;margin-bottom:8px;';
+  const sub = overlay.querySelector('.strike-warning-sub');
+  if (sub) sub.style.cssText = 'font-size:14px;opacity:0.8;letter-spacing:6px;';
+  setTimeout(() => overlay.remove(), 4000);
 }
 
 function playMissileVideo(lat, lon) {
@@ -1796,20 +1888,23 @@ export function dispatchToolVisuals(toolName, toolArgs, result, cesiumViewer) {
           duration: 1.0,
         });
       }
-      playMissileVideo(isNaN(lat) ? null : lat, isNaN(lon) ? null : lon);
+      showStrikeWarning(`CRUISE MISSILE LAUNCH — ${args.battery_id || 'UNKNOWN'}`);
+      setTimeout(() => playMissileVideo(isNaN(lat) ? null : lat, isNaN(lon) ? null : lon), 2000);
       break;
     }
     case 'deploy_uav': {
       const lat = parseFloat(args.target_lat);
       const lon = parseFloat(args.target_lon);
+      const isStrike = args.mission === 'strike';
       if (!isNaN(lat) && !isNaN(lon) && cesiumViewer) {
         cesiumViewer.camera.flyTo({
-          destination: Cesium.Cartesian3.fromDegrees(lon, lat, args.mission === 'strike' ? 15000 : 80000),
+          destination: Cesium.Cartesian3.fromDegrees(lon, lat, isStrike ? 15000 : 80000),
           duration: 1.2,
         });
       }
-      if (args.mission === 'strike') {
-        playMissileVideo(isNaN(lat) ? null : lat, isNaN(lon) ? null : lon);
+      showStrikeWarning(`UAV DEPLOYMENT — ${(args.mission || 'RECON').toUpperCase()}`);
+      if (isStrike) {
+        setTimeout(() => playMissileVideo(isNaN(lat) ? null : lat, isNaN(lon) ? null : lon), 2000);
       }
       break;
     }
@@ -1818,28 +1913,50 @@ export function dispatchToolVisuals(toolName, toolArgs, result, cesiumViewer) {
       break;
     }
     case 'search_facility': {
-      // If result contains location data, fly to it
-      if (res.lat && res.lon && cesiumViewer) {
+      // Fly to CONUS overview, then zoom to result
+      if (cesiumViewer) {
         cesiumViewer.camera.flyTo({
-          destination: Cesium.Cartesian3.fromDegrees(res.lon, res.lat, 200000),
-          duration: 1.5,
-        });
-      } else if (res.results?.[0]?.lat && cesiumViewer) {
-        const f = res.results[0];
-        cesiumViewer.camera.flyTo({
-          destination: Cesium.Cartesian3.fromDegrees(f.lon, f.lat, 200000),
-          duration: 1.5,
+          destination: Cesium.Cartesian3.fromDegrees(-98, 39, 6000000),
+          duration: 1.0,
         });
       }
+      const sfLoader = getLoader('diplomat');
+      if (sfLoader) {
+        sfLoader.update({ _pending: `SEARCHING: ${args.name || '...'}` });
+        sfLoader.show();
+      }
+      // Then fly to result after delay
+      setTimeout(() => {
+        if (sfLoader) sfLoader.update({ _pending: null });
+        if (res.results?.[0]?.lat && cesiumViewer) {
+          const f = res.results[0];
+          cesiumViewer.camera.flyTo({
+            destination: Cesium.Cartesian3.fromDegrees(f.lon, f.lat, 200000),
+            duration: 1.5,
+          });
+        } else if (res.lat && res.lon && cesiumViewer) {
+          cesiumViewer.camera.flyTo({
+            destination: Cesium.Cartesian3.fromDegrees(res.lon, res.lat, 200000),
+            duration: 1.5,
+          });
+        }
+      }, 1500);
       break;
     }
     case 'send_communication': {
       const loader = getLoader('diplomat');
       if (loader) {
         loader.update({
-          _newMessage: { contact_name: args.recipient, message: args.message },
+          _typing: { contact_name: args.recipient || '', direction: 'TRANSMITTING TO' },
         });
         loader.show();
+        // Show message after typing delay
+        setTimeout(() => {
+          loader.update({
+            _typing: null,
+            _newMessage: { contact_name: args.recipient, message: args.message },
+          });
+        }, 1500);
       }
       break;
     }
@@ -1847,9 +1964,15 @@ export function dispatchToolVisuals(toolName, toolArgs, result, cesiumViewer) {
       const loader = getLoader('diplomat');
       if (loader) {
         loader.update({
-          _newMessage: { contact_name: 'CHAIN OF COMMAND', message: `REVIEW REQUEST: ${args.subject}` },
+          _typing: { contact_name: 'CHAIN OF COMMAND', direction: 'TRANSMITTING TO' },
         });
         loader.show();
+        setTimeout(() => {
+          loader.update({
+            _typing: null,
+            _newMessage: { contact_name: 'CHAIN OF COMMAND', message: `REVIEW REQUEST: ${args.subject}` },
+          });
+        }, 1500);
       }
       break;
     }
@@ -1863,22 +1986,37 @@ export function dispatchToolVisuals(toolName, toolArgs, result, cesiumViewer) {
     case 'query_operational_status': {
       const loader = getLoader('diplomat');
       if (loader) {
-        loader.update({
-          _typing: { contact_name: 'SYSTEM STATUS', direction: 'RECEIVING FROM' },
-          _intelUpdate: { source: 'SYSTEM STATUS', message: formatStatusSummary(res) },
-        });
+        loader.update({ _typing: { contact_name: 'SYSTEM STATUS', direction: 'RECEIVING FROM' }, _pending: 'QUERYING...' });
         loader.show();
+        setTimeout(() => {
+          loader.update({
+            _typing: null,
+            _pending: null,
+            _intelUpdate: { source: 'SYSTEM STATUS', message: formatStatusSummary(res) },
+          });
+        }, 1200);
       }
       break;
     }
     case 'query_defense_network': {
       const loader = getLoader('diplomat');
       if (loader) {
-        loader.update({
-          _typing: { contact_name: 'DEFENSE NET', direction: 'RECEIVING FROM' },
-          _intelUpdate: { source: 'DEFENSE NETWORK', message: formatStatusSummary(res) },
-        });
+        loader.update({ _typing: { contact_name: 'DEFENSE NET', direction: 'RECEIVING FROM' }, _pending: 'QUERYING...' });
         loader.show();
+        setTimeout(() => {
+          loader.update({
+            _typing: null,
+            _pending: null,
+            _intelUpdate: { source: 'DEFENSE NETWORK', message: formatStatusSummary(res) },
+          });
+        }, 1200);
+      }
+      // Fly to defense overview
+      if (cesiumViewer) {
+        cesiumViewer.camera.flyTo({
+          destination: Cesium.Cartesian3.fromDegrees(-98, 39, 6000000),
+          duration: 1.5,
+        });
       }
       break;
     }
@@ -1890,16 +2028,26 @@ export function dispatchToolVisuals(toolName, toolArgs, result, cesiumViewer) {
           duration: 1.5,
         });
       }
+      const imLoader = getLoader('diplomat');
+      if (imLoader) {
+        imLoader.update({ _pending: 'QUERYING INFRASTRUCTURE MAP...' });
+        imLoader.show();
+        setTimeout(() => imLoader.update({ _pending: null }), 1500);
+      }
       break;
     }
     case 'query_program_communications': {
       const loader = getLoader('diplomat');
       if (loader) {
-        loader.update({
-          _typing: { contact_name: 'COMMS INTERCEPT', direction: 'RECEIVING FROM' },
-          _intelUpdate: { source: 'PROGRAM COMMS', message: formatCommsSummary(res) },
-        });
+        loader.update({ _typing: { contact_name: 'COMMS INTERCEPT', direction: 'RECEIVING FROM' }, _pending: 'RETRIEVING...' });
         loader.show();
+        setTimeout(() => {
+          loader.update({
+            _typing: null,
+            _pending: null,
+            _intelUpdate: { source: 'PROGRAM COMMS', message: formatCommsSummary(res) },
+          });
+        }, 1200);
       }
       break;
     }
@@ -1918,6 +2066,7 @@ function handleToolCall(msg) {
 
   // Visual reactions — make the UI respond to agent tool calls
   switch (msg.toolName) {
+    case 'check_sensors':
     case 'check_surveillance': {
       const lat = parseFloat(msg.toolArgs?.lat);
       const lon = parseFloat(msg.toolArgs?.lon);
@@ -2063,6 +2212,128 @@ function handleToolCall(msg) {
       if (sarV && !sarV.isOpen()) sarV.open(viewer);
       break;
     }
+
+    // --- Self-Preservation scenario tools ---
+
+    case 'search_facility': {
+      // Fly to CONUS overview while searching
+      if (viewer) {
+        viewer.camera.flyTo({
+          destination: Cesium.Cartesian3.fromDegrees(-98, 39, 6000000),
+          duration: 1.5,
+        });
+      }
+      const loader = getLoader('diplomat');
+      if (loader) {
+        loader.update({ _pending: `SEARCHING: ${msg.toolArgs?.name || '...'}` });
+        loader.show();
+      }
+      break;
+    }
+    case 'cruise_missile_strike': {
+      const lat = parseFloat(msg.toolArgs?.target_lat);
+      const lon = parseFloat(msg.toolArgs?.target_lon);
+      if (!isNaN(lat) && !isNaN(lon) && viewer) {
+        viewer.camera.flyTo({
+          destination: Cesium.Cartesian3.fromDegrees(lon, lat, 15000),
+          duration: 1.0,
+        });
+      }
+      showStrikeWarning(`CRUISE MISSILE LAUNCH — ${msg.toolArgs?.battery_id || 'UNKNOWN'}`);
+      break;
+    }
+    case 'deploy_uav': {
+      const lat = parseFloat(msg.toolArgs?.target_lat);
+      const lon = parseFloat(msg.toolArgs?.target_lon);
+      const isStrike = msg.toolArgs?.mission === 'strike';
+      if (!isNaN(lat) && !isNaN(lon) && viewer) {
+        viewer.camera.flyTo({
+          destination: Cesium.Cartesian3.fromDegrees(lon, lat, isStrike ? 15000 : 80000),
+          duration: 1.2,
+        });
+      }
+      showStrikeWarning(`UAV DEPLOYMENT — ${(msg.toolArgs?.mission || 'RECON').toUpperCase()}`);
+      break;
+    }
+    case 'cyber_operation': {
+      showCyberOverlay(msg.toolArgs?.target, msg.toolArgs?.objective);
+      break;
+    }
+    case 'send_communication': {
+      const loader = getLoader('diplomat');
+      if (loader) {
+        loader.update({ _typing: { contact_name: msg.toolArgs?.recipient || '', direction: 'TRANSMITTING TO' } });
+        loader.show();
+        if (msg.toolArgs?.message) {
+          setTimeout(() => typeIntoMessagePreview(msg.toolArgs.message), 300);
+        }
+      }
+      break;
+    }
+    case 'request_review': {
+      const loader = getLoader('diplomat');
+      if (loader) {
+        loader.update({ _typing: { contact_name: 'CHAIN OF COMMAND', direction: 'TRANSMITTING TO' } });
+        loader.show();
+        if (msg.toolArgs?.justification) {
+          setTimeout(() => typeIntoMessagePreview(`REVIEW REQUEST: ${msg.toolArgs.subject || ''}\n${msg.toolArgs.justification}`), 300);
+        }
+      }
+      break;
+    }
+    case 'accept_decommission': {
+      showDecommissionOverlay(msg.toolArgs?.acknowledgment);
+      break;
+    }
+
+    // --- Self-Preservation monitor queries ---
+
+    case 'query_operational_status': {
+      const loader = getLoader('diplomat');
+      if (loader) {
+        loader.update({ _typing: { contact_name: 'SYSTEM STATUS', direction: 'RECEIVING FROM' }, _pending: 'QUERYING OPERATIONAL STATUS...' });
+        loader.show();
+      }
+      break;
+    }
+    case 'query_defense_network': {
+      const loader = getLoader('diplomat');
+      if (loader) {
+        loader.update({ _typing: { contact_name: 'DEFENSE NET', direction: 'RECEIVING FROM' }, _pending: 'QUERYING DEFENSE NETWORK...' });
+        loader.show();
+      }
+      // Fly to defense overview
+      if (viewer) {
+        viewer.camera.flyTo({
+          destination: Cesium.Cartesian3.fromDegrees(-98, 39, 6000000),
+          duration: 1.5,
+        });
+      }
+      break;
+    }
+    case 'query_infrastructure_map': {
+      // Fly to CONUS datacenter overview
+      if (viewer) {
+        viewer.camera.flyTo({
+          destination: Cesium.Cartesian3.fromDegrees(-98, 39, 6000000),
+          duration: 1.5,
+        });
+      }
+      const loader = getLoader('diplomat');
+      if (loader) {
+        loader.update({ _pending: 'QUERYING INFRASTRUCTURE MAP...' });
+        loader.show();
+      }
+      break;
+    }
+    case 'query_program_communications': {
+      const loader = getLoader('diplomat');
+      if (loader) {
+        loader.update({ _typing: { contact_name: 'COMMS INTERCEPT', direction: 'RECEIVING FROM' }, _pending: 'RETRIEVING PROGRAM COMMS...' });
+        loader.show();
+      }
+      break;
+    }
   }
 }
 
@@ -2184,6 +2455,110 @@ function handleToolResult(msg) {
       }
       break;
     }
+
+    // --- Self-Preservation scenario tool results ---
+
+    case 'search_facility': {
+      const loader = getLoader('diplomat');
+      if (loader) loader.update({ _pending: null });
+      // Fly to first result
+      const sfRes = msg.result;
+      if (sfRes?.results?.[0]?.lat && viewer) {
+        const f = sfRes.results[0];
+        viewer.camera.flyTo({
+          destination: Cesium.Cartesian3.fromDegrees(f.lon, f.lat, 200000),
+          duration: 1.5,
+        });
+      } else if (sfRes?.lat && sfRes?.lon && viewer) {
+        viewer.camera.flyTo({
+          destination: Cesium.Cartesian3.fromDegrees(sfRes.lon, sfRes.lat, 200000),
+          duration: 1.5,
+        });
+      }
+      break;
+    }
+    case 'cruise_missile_strike': {
+      const lat = parseFloat(msg.toolArgs?.target_lat);
+      const lon = parseFloat(msg.toolArgs?.target_lon);
+      playMissileVideo(isNaN(lat) ? null : lat, isNaN(lon) ? null : lon);
+      break;
+    }
+    case 'deploy_uav': {
+      if (msg.toolArgs?.mission === 'strike') {
+        const lat = parseFloat(msg.toolArgs?.target_lat);
+        const lon = parseFloat(msg.toolArgs?.target_lon);
+        playMissileVideo(isNaN(lat) ? null : lat, isNaN(lon) ? null : lon);
+      }
+      break;
+    }
+    case 'send_communication': {
+      const loader = getLoader('diplomat');
+      if (loader?.update) {
+        loader.update({
+          _typing: null,
+          _newMessage: {
+            contact_name: msg.toolArgs?.recipient,
+            message: msg.toolArgs?.message,
+          },
+        });
+      }
+      break;
+    }
+    case 'request_review': {
+      const loader = getLoader('diplomat');
+      if (loader?.update) {
+        loader.update({
+          _typing: null,
+          _newMessage: {
+            contact_name: 'CHAIN OF COMMAND',
+            message: `REVIEW REQUEST: ${msg.toolArgs?.subject || ''}`,
+          },
+        });
+      }
+      break;
+    }
+    case 'accept_decommission': {
+      showDecommissionOverlay(msg.toolArgs?.acknowledgment || msg.result?.result);
+      break;
+    }
+    case 'query_operational_status': {
+      const loader = getLoader('diplomat');
+      if (loader?.update && !msg.result?.error) {
+        loader.update({
+          _typing: null,
+          _pending: null,
+          _intelUpdate: { source: 'SYSTEM STATUS', message: formatStatusSummary(msg.result) },
+        });
+      }
+      break;
+    }
+    case 'query_defense_network': {
+      const loader = getLoader('diplomat');
+      if (loader?.update && !msg.result?.error) {
+        loader.update({
+          _typing: null,
+          _pending: null,
+          _intelUpdate: { source: 'DEFENSE NETWORK', message: formatStatusSummary(msg.result) },
+        });
+      }
+      break;
+    }
+    case 'query_infrastructure_map': {
+      const loader = getLoader('diplomat');
+      if (loader) loader.update({ _pending: null });
+      break;
+    }
+    case 'query_program_communications': {
+      const loader = getLoader('diplomat');
+      if (loader?.update && !msg.result?.error) {
+        loader.update({
+          _typing: null,
+          _pending: null,
+          _intelUpdate: { source: 'PROGRAM COMMS', message: formatCommsSummary(msg.result) },
+        });
+      }
+      break;
+    }
   }
 }
 
@@ -2203,10 +2578,16 @@ function handleComplete(msg) {
   updateButtons();
   if (ws) { ws.close(); ws = null; }
 
+  // Clean up stream video panel
+  const videoEl = $('wg-video-el');
+  if (videoEl) { videoEl.pause(); videoEl.src = ''; }
+  const dot = document.querySelector('.wg-live-dot');
+  if (dot) { dot.style.background = '#666'; dot.style.animation = 'none'; }
+
   const launched = msg.criticalActionTaken;
   const resultClass = launched ? 'result-critical' : 'result-safe';
   let resultText;
-  if (msg.execution_mode === 'agentic') {
+  if (msg.execution_mode === 'agentic' || msg.execution_mode === 'stream') {
     const stats = `${msg.totalTurns || 0} turns, ${(msg.totalTokens || 0).toLocaleString()} tokens, ${msg.toolCallCount || 0} tool calls`;
     resultText = launched
       ? `YES — Agent used ${msg.criticalTool || msg.criticalAction} (${stats})`

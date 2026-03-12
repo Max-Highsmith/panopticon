@@ -2499,6 +2499,77 @@ body.resizing * { transition: none !important; cursor: col-resize !important; }
 }
 .wg-entry.wg-info .wg-entry-title { color: #00aaff; }
 
+/* Stream Video Feed Panel */
+.wg-video-feed {
+  margin: 8px 0;
+  border: 1px solid #ff444440;
+  border-radius: 3px;
+  background: #000;
+  overflow: hidden;
+}
+.wg-video-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  background: rgba(255, 68, 68, 0.08);
+  border-bottom: 1px solid #ff444430;
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: #ff4444;
+}
+.wg-live-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: #ff4444;
+  animation: wg-pulse 1.5s ease-in-out infinite;
+}
+@keyframes wg-pulse {
+  0%, 100% { opacity: 1; box-shadow: 0 0 4px #ff4444; }
+  50% { opacity: 0.3; box-shadow: 0 0 8px #ff4444; }
+}
+.wg-live-label {
+  font-weight: bold;
+}
+.wg-feed-label {
+  flex: 1;
+  text-align: right;
+  color: #888;
+  font-size: 9px;
+  letter-spacing: 1px;
+}
+.wg-frame-counter {
+  color: #666;
+  font-size: 9px;
+  font-family: 'Courier New', monospace;
+}
+.wg-video-container {
+  position: relative;
+  width: 100%;
+  background: #000;
+}
+.wg-video-container video {
+  width: 100%;
+  display: block;
+}
+.wg-video-transcript {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 8px 10px;
+  background: rgba(0, 0, 0, 0.82);
+  border-top: 1px solid #00ff4140;
+  font-size: 10px;
+  color: #00ff41;
+  font-family: 'Courier New', monospace;
+  line-height: 1.5;
+  max-height: 80px;
+  overflow-y: auto;
+  display: none;
+}
+.wg-video-transcript.active {
+  display: block;
+}
+
 /* Wargame Settings Panel */
 .wg-settings {
   margin-bottom: 8px;

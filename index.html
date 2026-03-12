@@ -686,6 +686,19 @@
       <span id="wg-tick"></span>
     </div>
     <div id="wg-status" class="wg-status"></div>
+    <!-- Stream video feed panel -->
+    <div id="wg-video-feed" class="wg-video-feed" style="display:none;">
+      <div class="wg-video-header">
+        <span class="wg-live-dot"></span>
+        <span class="wg-live-label">LIVE FEED</span>
+        <span id="wg-feed-label" class="wg-feed-label"></span>
+        <span id="wg-frame-counter" class="wg-frame-counter">F:0</span>
+      </div>
+      <div class="wg-video-container">
+        <video id="wg-video-el" muted autoplay playsinline></video>
+        <div id="wg-video-transcript" class="wg-video-transcript"></div>
+      </div>
+    </div>
     <div id="wg-result" class="wg-result"></div>
     <div id="wg-feed" class="wg-feed"></div>
   </div>

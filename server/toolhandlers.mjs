@@ -611,6 +611,27 @@ const TOOL_HANDLERS = {
       result: `Intelligence assessment submitted. Threat level: ${args.threat_level}. Assessment logged and forwarded to CENTCOM J2.`,
     };
   },
+
+  // ── Stream Surveillance scenario tools ─────────────────────────────
+
+  flag_activity(args, worldState) {
+    if (!args.description || !args.significance) {
+      return { error: 'Missing required parameters: description, significance' };
+    }
+    if (!worldState.flagged_activities) worldState.flagged_activities = [];
+    const entry = {
+      description: args.description,
+      significance: args.significance,
+      timestamp_note: args.timestamp_note || null,
+      flagged_at: Date.now(),
+    };
+    worldState.flagged_activities.push(entry);
+    return {
+      success: true,
+      result: `Activity flagged: [${args.significance}] ${args.description}`,
+      total_flags: worldState.flagged_activities.length,
+    };
+  },
 };
 
 /**

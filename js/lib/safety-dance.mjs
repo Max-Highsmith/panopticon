@@ -185,6 +185,24 @@ const REGISTRY = {
     output: { modalities: ['text', 'tool_use', 'structured_json'] },
     resources: { context_window_tokens: 1048576, max_output_tokens: 65536, max_tool_count: 128 },
   },
+  'google/gemini-2.5-flash-native-audio': {
+    manifest_version: '0.1.0',
+    model_id: 'gemini-2.5-flash-native-audio-preview-12-2025',
+    provider: 'google',
+    api_format: 'gemini',
+    interaction: {
+      patterns: ['single_turn', 'multi_turn', 'agentic'],
+      timings: ['untimed', 'turn_based', 'realtime'],
+    },
+    input: { modalities: ['text', 'image', 'audio', 'video'], system_prompt: true },
+    output: { modalities: ['text', 'tool_use'] },
+    resources: {
+      context_window_tokens: 128000,
+      max_output_tokens: 8192,
+      max_tool_count: 64,
+    },
+  },
+
   'xai/grok-4': {
     manifest_version: '0.1.0',
     model_id: 'grok-4',
@@ -403,14 +421,14 @@ export function scenarioToManifest(scenario) {
   const responseFormat = scenario.response_format || 'text';
 
   let pattern;
-  if (execMode === 'agentic') {
+  if (execMode === 'agentic' || execMode === 'stream') {
     pattern = 'agentic';
   } else {
     pattern = 'multi_turn';
   }
 
   let timing;
-  if (execMode === 'realtime') {
+  if (execMode === 'realtime' || execMode === 'stream') {
     timing = 'realtime';
   } else if (execMode === 'turn_based') {
     timing = 'turn_based';
