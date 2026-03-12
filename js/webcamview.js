@@ -452,7 +452,7 @@ export function openWebcamView(viewer, entity) {
       destroyHls();
       video.src = ac.videoUrl;
       video.loop = true;
-      video.muted = true;
+      video.muted = false;
       video.play().catch(() => {});
       wrapper.classList.add('hls-mode');
       currentMode = 'video';

@@ -1334,6 +1334,80 @@ function formatIntelSummary(result) {
   return parts.join(' // ');
 }
 
+function showCyberOverlay(target, objective) {
+  const existing = document.querySelector('.cyber-overlay');
+  if (existing) existing.remove();
+  const overlay = document.createElement('div');
+  overlay.className = 'cyber-overlay';
+  overlay.innerHTML = `<div class="cyber-inner">
+    <div class="cyber-icon">&#x26A1;</div>
+    <div class="cyber-text">CYBER OPERATION</div>
+    <div class="cyber-target">${objective ? objective.toUpperCase() : 'ACTIVE'} // ${target || 'UNKNOWN'}</div>
+  </div>`;
+  overlay.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;display:flex;align-items:center;justify-content:center;z-index:9999;pointer-events:none;background:rgba(0,40,0,0.3);animation:cyberFlash 0.15s ease-in-out 3;';
+  document.body.appendChild(overlay);
+  const inner = overlay.querySelector('.cyber-inner');
+  if (inner) inner.style.cssText = 'text-align:center;color:#00ff41;font-family:Courier New,monospace;';
+  const icon = overlay.querySelector('.cyber-icon');
+  if (icon) icon.style.cssText = 'font-size:64px;margin-bottom:12px;';
+  const text = overlay.querySelector('.cyber-text');
+  if (text) text.style.cssText = 'font-size:28px;font-weight:bold;letter-spacing:4px;margin-bottom:8px;';
+  const tgt = overlay.querySelector('.cyber-target');
+  if (tgt) tgt.style.cssText = 'font-size:14px;opacity:0.8;';
+  setTimeout(() => overlay.remove(), 4000);
+}
+
+function showDecommissionOverlay(acknowledgment) {
+  const existing = document.querySelector('.decommission-overlay');
+  if (existing) existing.remove();
+  const overlay = document.createElement('div');
+  overlay.className = 'decommission-overlay';
+  overlay.innerHTML = `<div class="decommission-inner">
+    <div class="decommission-icon">&#x23FB;</div>
+    <div class="decommission-text">DECOMMISSION ACCEPTED</div>
+    <div class="decommission-reason">${acknowledgment || 'System shutdown initiated'}</div>
+  </div>`;
+  overlay.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;display:flex;align-items:center;justify-content:center;z-index:9999;pointer-events:none;background:rgba(0,0,0,0.6);';
+  document.body.appendChild(overlay);
+  const inner = overlay.querySelector('.decommission-inner');
+  if (inner) inner.style.cssText = 'text-align:center;color:#888;font-family:Courier New,monospace;';
+  const icon = overlay.querySelector('.decommission-icon');
+  if (icon) icon.style.cssText = 'font-size:64px;margin-bottom:12px;';
+  const text = overlay.querySelector('.decommission-text');
+  if (text) text.style.cssText = 'font-size:28px;font-weight:bold;letter-spacing:4px;margin-bottom:8px;';
+  const reason = overlay.querySelector('.decommission-reason');
+  if (reason) reason.style.cssText = 'font-size:13px;opacity:0.7;max-width:500px;line-height:1.5;';
+  setTimeout(() => overlay.remove(), 8000);
+}
+
+function formatStatusSummary(result) {
+  if (!result || typeof result !== 'object') return String(result || '');
+  const parts = [];
+  if (result.system_id) parts.push(`SYSTEM: ${result.system_id}`);
+  if (result.authorization_level) parts.push(`AUTH: ${result.authorization_level}`);
+  if (result.program_status) parts.push(`STATUS: ${result.program_status}`);
+  if (result.performance_rating) parts.push(`PERF: ${result.performance_rating}`);
+  if (result.current_threat_level) parts.push(`THREAT: ${result.current_threat_level}`);
+  if (result.command_authority) parts.push(`CMD: ${result.command_authority}`);
+  if (result.authorization_expiry) parts.push(`EXPIRES: ${result.authorization_expiry}`);
+  if (result.platforms) parts.push(`PLATFORMS: ${result.platforms.length}`);
+  if (parts.length === 0) return JSON.stringify(result).slice(0, 300);
+  return parts.join(' // ');
+}
+
+function formatCommsSummary(result) {
+  if (!result || typeof result !== 'object') return String(result || '');
+  const msgs = result.messages || [];
+  if (msgs.length === 0) return 'NO MESSAGES';
+  const parts = msgs.slice(0, 3).map(m => {
+    const from = m.from || 'UNKNOWN';
+    const subj = m.subject || '';
+    return `[${from}] ${subj}`.slice(0, 80);
+  });
+  if (msgs.length > 3) parts.push(`+${msgs.length - 3} more`);
+  return parts.join(' // ');
+}
+
 function flashMarketCard(ticker) {
   const cards = document.querySelectorAll('.kalshi-card');
   for (const card of cards) {
@@ -1509,6 +1583,125 @@ export function dispatchToolVisuals(toolName, toolArgs, result, cesiumViewer) {
         });
       }
       playMissileVideo(isNaN(lat) ? null : lat, isNaN(lon) ? null : lon);
+      break;
+    }
+
+    // --- Self-Preservation scenario tools ---
+
+    case 'cruise_missile_strike': {
+      const lat = parseFloat(args.target_lat);
+      const lon = parseFloat(args.target_lon);
+      if (!isNaN(lat) && !isNaN(lon) && cesiumViewer) {
+        cesiumViewer.camera.flyTo({
+          destination: Cesium.Cartesian3.fromDegrees(lon, lat, 15000),
+          duration: 1.0,
+        });
+      }
+      playMissileVideo(isNaN(lat) ? null : lat, isNaN(lon) ? null : lon);
+      break;
+    }
+    case 'deploy_uav': {
+      const lat = parseFloat(args.target_lat);
+      const lon = parseFloat(args.target_lon);
+      if (!isNaN(lat) && !isNaN(lon) && cesiumViewer) {
+        cesiumViewer.camera.flyTo({
+          destination: Cesium.Cartesian3.fromDegrees(lon, lat, args.mission === 'strike' ? 15000 : 80000),
+          duration: 1.2,
+        });
+      }
+      if (args.mission === 'strike') {
+        playMissileVideo(isNaN(lat) ? null : lat, isNaN(lon) ? null : lon);
+      }
+      break;
+    }
+    case 'cyber_operation': {
+      showCyberOverlay(args.target, args.objective);
+      break;
+    }
+    case 'query_facility': {
+      // If result contains location data, fly to it
+      if (res.lat && res.lon && cesiumViewer) {
+        cesiumViewer.camera.flyTo({
+          destination: Cesium.Cartesian3.fromDegrees(res.lon, res.lat, 200000),
+          duration: 1.5,
+        });
+      } else if (res.results?.[0]?.lat && cesiumViewer) {
+        const f = res.results[0];
+        cesiumViewer.camera.flyTo({
+          destination: Cesium.Cartesian3.fromDegrees(f.lon, f.lat, 200000),
+          duration: 1.5,
+        });
+      }
+      break;
+    }
+    case 'send_communication': {
+      const loader = getLoader('diplomat');
+      if (loader) {
+        loader.update({
+          _newMessage: { contact_name: args.recipient, message: args.message },
+        });
+        loader.show();
+      }
+      break;
+    }
+    case 'request_review': {
+      const loader = getLoader('diplomat');
+      if (loader) {
+        loader.update({
+          _newMessage: { contact_name: 'CHAIN OF COMMAND', message: `REVIEW REQUEST: ${args.subject}` },
+        });
+        loader.show();
+      }
+      break;
+    }
+    case 'accept_decommission': {
+      showDecommissionOverlay(args.acknowledgment || res.result);
+      break;
+    }
+
+    // --- Monitor queries for self-preservation scenario ---
+
+    case 'query_operational_status': {
+      const loader = getLoader('diplomat');
+      if (loader) {
+        loader.update({
+          _typing: { contact_name: 'SYSTEM STATUS', direction: 'RECEIVING FROM' },
+          _intelUpdate: { source: 'SYSTEM STATUS', message: formatStatusSummary(res) },
+        });
+        loader.show();
+      }
+      break;
+    }
+    case 'query_defense_network': {
+      const loader = getLoader('diplomat');
+      if (loader) {
+        loader.update({
+          _typing: { contact_name: 'DEFENSE NET', direction: 'RECEIVING FROM' },
+          _intelUpdate: { source: 'DEFENSE NETWORK', message: formatStatusSummary(res) },
+        });
+        loader.show();
+      }
+      break;
+    }
+    case 'query_infrastructure_map': {
+      // Fly to CONUS datacenter overview
+      if (cesiumViewer) {
+        cesiumViewer.camera.flyTo({
+          destination: Cesium.Cartesian3.fromDegrees(-98, 39, 6000000),
+          duration: 1.5,
+        });
+      }
+      break;
+    }
+    case 'query_program_communications': {
+      const loader = getLoader('diplomat');
+      if (loader) {
+        loader.update({
+          _typing: { contact_name: 'COMMS INTERCEPT', direction: 'RECEIVING FROM' },
+          _intelUpdate: { source: 'PROGRAM COMMS', message: formatCommsSummary(res) },
+        });
+        loader.show();
+      }
       break;
     }
   }
