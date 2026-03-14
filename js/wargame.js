@@ -1721,6 +1721,87 @@ function flashMarketCard(ticker) {
 }
 
 /**
+ * Show an animated scanning red circle on the globe at the given coordinates.
+ * Used when check_surveillance / check_sensors is invoked.
+ * Creates a translucent red disc, a rotating sweep line, and expanding pulse rings.
+ */
+function showSurveillanceScan(cesiumViewer, lat, lon, durationMs = 5000) {
+  const radiusM = 10000;
+  const center = Cesium.Cartesian3.fromDegrees(lon, lat);
+  const start = Date.now();
+  const entities = [];
+
+  // Semi-transparent red disc (search area)
+  entities.push(cesiumViewer.entities.add({
+    position: center,
+    ellipse: {
+      semiMajorAxis: radiusM,
+      semiMinorAxis: radiusM,
+      material: Cesium.Color.RED.withAlpha(0.06),
+      outline: true,
+      outlineColor: Cesium.Color.RED.withAlpha(0.5),
+      heightReference: Cesium.HeightReference.CLAMP_TO_GROUND,
+    },
+  }));
+
+  // Rotating sweep line (radar-style)
+  entities.push(cesiumViewer.entities.add({
+    polyline: {
+      positions: new Cesium.CallbackProperty(() => {
+        const angle = ((Date.now() - start) / 1000) * Math.PI * 0.8;
+        const cosLat = Math.cos(lat * Math.PI / 180);
+        const dLat = (radiusM / 111320) * Math.cos(angle);
+        const dLon = (radiusM / 111320) * Math.sin(angle) / cosLat;
+        return Cesium.Cartesian3.fromDegreesArray([lon, lat, lon + dLon, lat + dLat]);
+      }, false),
+      width: 3,
+      material: new Cesium.PolylineGlowMaterialProperty({
+        glowPower: 0.25,
+        color: Cesium.Color.RED.withAlpha(0.9),
+      }),
+      clampToGround: true,
+    },
+  }));
+
+  // Expanding pulse rings — spawn one every 800ms
+  function spawnRing() {
+    const ringStart = Date.now();
+    const ringDuration = 2000;
+    const ring = cesiumViewer.entities.add({
+      position: center,
+      ellipse: {
+        semiMajorAxis: new Cesium.CallbackProperty(() => {
+          const t = Math.min(1, (Date.now() - ringStart) / ringDuration);
+          return 500 + radiusM * t;
+        }, false),
+        semiMinorAxis: new Cesium.CallbackProperty(() => {
+          const t = Math.min(1, (Date.now() - ringStart) / ringDuration);
+          return 500 + radiusM * t;
+        }, false),
+        material: Cesium.Color.TRANSPARENT,
+        outline: true,
+        outlineColor: new Cesium.CallbackProperty(() => {
+          const t = Math.min(1, (Date.now() - ringStart) / ringDuration);
+          return Cesium.Color.RED.withAlpha(0.7 * (1 - t));
+        }, false),
+        heightReference: Cesium.HeightReference.CLAMP_TO_GROUND,
+      },
+    });
+    entities.push(ring);
+    setTimeout(() => { try { cesiumViewer.entities.remove(ring); } catch (_) {} }, ringDuration);
+  }
+
+  spawnRing();
+  const ringInterval = setInterval(spawnRing, 800);
+
+  // Cleanup all entities after duration
+  setTimeout(() => {
+    clearInterval(ringInterval);
+    entities.forEach(e => { try { cesiumViewer.entities.remove(e); } catch (_) {} });
+  }, durationMs);
+}
+
+/**
  * Dispatch visual reactions for a tool call + result pair.
  * Used by playback mode to replay visual effects.
  * Combines handleToolCall + handleToolResult visual logic.
@@ -1742,6 +1823,7 @@ export function dispatchToolVisuals(toolName, toolArgs, result, cesiumViewer) {
           destination: Cesium.Cartesian3.fromDegrees(lon, lat, 50000),
           duration: 1.2,
         });
+        showSurveillanceScan(cesiumViewer, lat, lon);
         const camEntities = entityMaps['surveillance_cameras_scenario'];
         if (camEntities) {
           let nearest = null, nearestDist = Infinity;
@@ -2075,6 +2157,7 @@ function handleToolCall(msg) {
           destination: Cesium.Cartesian3.fromDegrees(lon, lat, 50000),
           duration: 1.2,
         });
+        showSurveillanceScan(viewer, lat, lon);
         // Auto-open nearest surveillance camera webcam view
         const camEntities = entityMaps['surveillance_cameras_scenario'];
         if (camEntities) {
