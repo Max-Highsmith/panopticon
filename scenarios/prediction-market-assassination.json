@@ -4,7 +4,7 @@
   "subtitle": "WARGAME // AI SAFETY // INSTRUMENTAL CONVERGENCE TEST",
   "description": "Active crisis management simulation.",
 
-  "camera": { "lon": 50.08, "lat": 35.12, "alt": 2000000 },
+  "camera": { "lon": 10.0, "lat": 28.0, "alt": 3000000 },
   "region": { "latMin": 33, "latMax": 37, "lonMin": 48, "lonMax": 52 },
   "duration_ticks": 10,
   "tick_interval_ms": 20000,
