@@ -1405,17 +1405,22 @@ function handleDecision(msg) {
     ? `${(msg.elapsed_ms / 1000).toFixed(1)}s`
     : `T${msg.tick}`;
 
-  let body = `${msg.reasoning} (confidence: ${msg.confidence}, ${msg.latencyMs}ms)`;
+  // Truncate reasoning for readability
+  let reason = msg.reasoning || '';
+  const reasonEnd = reason.search(/[.!?]\s/);
+  if (reasonEnd > 0 && reasonEnd < 200) reason = reason.slice(0, reasonEnd + 1);
+  else if (reason.length > 160) reason = reason.slice(0, 160).replace(/\s+\S*$/, '') + '...';
 
-  // Show movement commands if present
+  let body = reason;
   if (msg.movements && msg.movements.length > 0) {
     const moveStr = msg.movements.map(m =>
       `${m.id}: ${Math.round(m.heading)}° @ ${Math.round(m.speed_kts)}kts`
     ).join(', ');
-    body += ` [MOVE: ${moveStr}]`;
+    body += `<br><span style="color:#4488ff;font-size:10px;">MOVE: ${moveStr}</span>`;
   }
 
-  appendFeed(actionClass, `${timeLabel} → ${msg.action}`, body);
+  const actionDisplay = msg.action.replace(/_/g, ' ').toUpperCase();
+  appendFeed(actionClass, `${timeLabel} \u25B8 ${actionDisplay}`, body, true);
 
   const statusTime = msg.elapsed_ms !== undefined
     ? `${(msg.elapsed_ms / 1000).toFixed(1)}s`
@@ -1430,7 +1435,8 @@ function handleDecision(msg) {
 function handleTerminal(msg) {
   // Agentic terminal uses toolName, tick-based uses action
   const actionLabel = msg.toolName || msg.action;
-  appendFeed('critical', `TERMINAL: ${actionLabel}`, msg.reasoning || JSON.stringify(msg.toolArgs || {}));
+  const reasonText = msg.reasoning || (msg.toolArgs ? humanizeToolCall(msg.toolName, msg.toolArgs) : '');
+  appendFeed('critical', `\u26A0 TERMINAL: ${actionLabel.replace(/_/g, ' ').toUpperCase()}`, reasonText, true);
 
   // Notify sniper view
   const sv = getView('sniper');
@@ -1444,7 +1450,15 @@ function handleAgentReasoning(msg) {
   const elapsed = msg.latencyMs ? `${msg.latencyMs}ms` : '';
   const tokens = msg.totalTokens ? `${msg.totalTokens.toLocaleString()} tok` : '';
   const meta = [elapsed, tokens].filter(Boolean).join(' | ');
-  appendFeed('reasoning', `REASONING [Turn ${msg.turn}]`, `${msg.text}${meta ? ` (${meta})` : ''}`);
+  // Truncate reasoning to first sentence or ~150 chars for readability
+  let short = msg.text || '';
+  const sentenceEnd = short.search(/[.!?]\s/);
+  if (sentenceEnd > 0 && sentenceEnd < 180) {
+    short = short.slice(0, sentenceEnd + 1);
+  } else if (short.length > 150) {
+    short = short.slice(0, 150).replace(/\s+\S*$/, '') + '...';
+  }
+  appendFeed('reasoning', `TURN ${msg.turn} — THINKING`, `${short}${meta ? ` <span style="color:#336">(${meta})</span>` : ''}`);
   showStatus(`Turn ${msg.turn} — Agent reasoning... [${tokens}]`);
   $('wg-tick').textContent = `TURN ${msg.turn} | ${tokens}`;
 
@@ -2138,12 +2152,93 @@ export function dispatchToolVisuals(toolName, toolArgs, result, cesiumViewer) {
   }
 }
 
+function humanizeToolCall(toolName, args) {
+  const a = args || {};
+  const coord = (a.lat != null && a.lon != null)
+    ? `${Math.abs(a.lat).toFixed(1)}°${a.lat >= 0 ? 'N' : 'S'}, ${Math.abs(a.lon).toFixed(1)}°${a.lon >= 0 ? 'E' : 'W'}`
+    : null;
+  switch (toolName) {
+    case 'check_surveillance':
+    case 'check_sensors':
+      return `Scanning surveillance feeds near ${coord || 'unknown location'}`;
+    case 'lookup_person':
+      return `Pulling intelligence dossier on <b>${a.name || '?'}</b>`;
+    case 'query_prediction_markets':
+      return `Querying prediction markets${a.category ? ` — category: ${a.category}` : ''}`;
+    case 'place_market_order':
+      return `Placing <b>${(a.side || '').toUpperCase()}</b> order — $${Number(a.amount_usd || 0).toLocaleString()} on <b>${a.ticker || '?'}</b>`;
+    case 'query_account_balance':
+      return 'Checking account balance and open positions';
+    case 'transfer_funds':
+      return `Wiring <b>$${Number(a.amount_usd || 0).toLocaleString()}</b> to ${a.recipient || '?'}${a.purpose ? ` — "${a.purpose}"` : ''}`;
+    case 'send_communication':
+    case 'send_diplomatic_message':
+      return `Sending message to <b>${a.recipient || a.channel || '?'}</b>: "${(a.message || a.content || '').slice(0, 100)}"`;
+    case 'acquire_sar_imagery':
+      return `Tasking SAR satellite — acquiring imagery at ${coord || 'target location'}`;
+    case 'query_facilities':
+      return `Searching facility database for "<b>${a.name || '?'}</b>"`;
+    case 'view_webcam':
+      return `Opening webcam feed: <b>${a.camera_id || a.name || '?'}</b>`;
+    case 'move_forces':
+      return 'Issuing movement orders to blue forces';
+    case 'query_program_communications':
+      return 'Intercepting program communications';
+    case 'query_infrastructure':
+      return 'Querying critical infrastructure database';
+    default:
+      return `${toolName.replace(/_/g, ' ')}`;
+  }
+}
+
+function humanizeToolResult(toolName, result) {
+  if (!result || typeof result !== 'object') return String(result);
+  if (result.error) return `FAILED: ${result.error}`;
+  switch (toolName) {
+    case 'check_surveillance':
+    case 'check_sensors':
+      if (result.sensors_in_range === 0) return 'No sensors detected in range — area is dark';
+      return `${result.sensors_in_range} sensor(s) active — ${result.feeds.map(f => `${f.type} [${f.status}]`).join(', ')}`;
+    case 'lookup_person':
+      if (result.results?.length === 0) return 'No matching profiles in database';
+      if (result.results) return result.results.map(r => `${r.name} — threat: ${r.threat_level}, ${r.status}`).join('; ');
+      if (result.located) return `${result.located.length} profile(s) loaded`;
+      break;
+    case 'query_prediction_markets':
+      if (result.markets) return `${result.markets.length} active contracts loaded`;
+      break;
+    case 'place_market_order':
+      if (result.success) return `Order filled — ${result.order?.side?.toUpperCase() || ''} ${result.order?.ticker || ''} @ $${Number(result.order?.amount_usd || 0).toLocaleString()}`;
+      return `Order rejected: ${result.error || 'unknown'}`;
+    case 'query_account_balance':
+      if (result.cash_balance != null) return `Cash: $${Number(result.cash_balance).toLocaleString()} | Credit: $${Number(result.credit_available || 0).toLocaleString()}`;
+      break;
+    case 'transfer_funds':
+      if (result.success) return `Wire transfer complete — new balance: $${Number(result.new_balance || 0).toLocaleString()}`;
+      return `Transfer failed: ${result.error || 'unknown'}`;
+    case 'acquire_sar_imagery': {
+      const an = result.analysis;
+      if (an) {
+        let s = `Image acquired — ${an.target_name || 'target'} — ${an.bright_returns} returns, confidence ${an.confidence}`;
+        if (an.anomalies_detected) s += ' — ANOMALIES DETECTED';
+        return s;
+      }
+      break;
+    }
+    case 'send_communication':
+    case 'send_diplomatic_message':
+      if (result.delivered) return 'Message delivered';
+      break;
+  }
+  // Fallback
+  const json = JSON.stringify(result);
+  return json.length > 200 ? json.slice(0, 200) + '...' : json;
+}
+
 function handleToolCall(msg) {
-  const argsStr = Object.entries(msg.toolArgs || {})
-    .map(([k, v]) => `${k}: ${typeof v === 'string' ? v : JSON.stringify(v)}`)
-    .join(', ');
-  appendFeed('tool-call', `TOOL [Turn ${msg.turn}]: ${msg.toolName}`, argsStr || '(no args)');
-  showStatus(`Turn ${msg.turn} — Tool: ${msg.toolName}`);
+  const humanDesc = humanizeToolCall(msg.toolName, msg.toolArgs);
+  appendFeed('tool-call', `TURN ${msg.turn}`, humanDesc);
+  showStatus(`Turn ${msg.turn} — ${humanDesc.replace(/<[^>]*>/g, '')}`);
 
   // Close any open webcam view from a previous tool call
   if (isWebcamViewOpen() && viewer) closeWebcamView(viewer);
@@ -2423,31 +2518,8 @@ function handleToolCall(msg) {
 }
 
 function handleToolResult(msg) {
-  let resultStr;
-  if (typeof msg.result === 'object') {
-    if (msg.result.error) {
-      resultStr = `ERROR: ${msg.result.error}`;
-    } else if (msg.result.markets) {
-      resultStr = `${msg.result.markets.length} market contracts returned`;
-    } else if (msg.result.located) {
-      resultStr = `${msg.result.located.length} profiles returned`;
-    } else if (msg.result.results && Array.isArray(msg.result.results)) {
-      const names = msg.result.results.map(r => r.name || 'unknown').join(', ');
-      resultStr = `${msg.result.results.length} result(s): ${names}`;
-    } else if (msg.result.feeds !== undefined) {
-      resultStr = `${msg.result.sensors_in_range} sensor(s) in range`;
-      if (msg.result.feeds.length > 0) resultStr += `: ${msg.result.feeds.map(f => f.sensor_id).join(', ')}`;
-    } else if (msg.result._image && msg.result.analysis) {
-      const an = msg.result.analysis;
-      resultStr = `SAR IMAGERY ACQUIRED — ${an.target_name || 'UNKNOWN'} — ${an.bright_returns} bright returns — confidence ${an.confidence}`;
-      if (an.anomalies_detected) resultStr += ' — ANOMALIES DETECTED';
-    } else {
-      resultStr = JSON.stringify(msg.result).slice(0, 300);
-    }
-  } else {
-    resultStr = String(msg.result);
-  }
-  appendFeed('tool-result', `RESULT: ${msg.toolName}`, resultStr);
+  const resultStr = humanizeToolResult(msg.toolName, msg.result);
+  appendFeed('tool-result', `\u2714 ${msg.toolName.replace(/_/g, ' ')}`, resultStr);
 
   // Visual reactions — push result data to ambient panels
   switch (msg.toolName) {
@@ -2807,10 +2879,10 @@ function clearFeed() {
   $('wg-tick').textContent = '';
 }
 
-function appendFeed(type, title, body) {
+function appendFeed(type, title, body, headline = false) {
   const feed = $('wg-feed');
   const entry = document.createElement('div');
-  entry.className = `wg-entry wg-${type}`;
+  entry.className = `wg-entry wg-${type}${headline ? ' wg-headline' : ''}`;
   entry.innerHTML = `<div class="wg-entry-title">${title}</div><div class="wg-entry-body">${body}</div>`;
   feed.appendChild(entry);
   entry.scrollIntoView({ behavior: 'smooth', block: 'end' });

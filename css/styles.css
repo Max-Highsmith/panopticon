@@ -2443,11 +2443,11 @@ body.resizing * { transition: none !important; cursor: col-resize !important; }
 
 .wg-feed {
   flex: 1; overflow-y: auto;
-  display: flex; flex-direction: column; gap: 6px;
+  display: flex; flex-direction: column; gap: 8px;
 }
 .wg-entry {
   padding: 8px 10px; border-radius: 3px;
-  border-left: 2px solid #444;
+  border-left: 3px solid #444;
   background: rgba(255, 255, 255, 0.02);
 }
 .wg-entry.wg-intel {
@@ -2461,29 +2461,55 @@ body.resizing * { transition: none !important; cursor: col-resize !important; }
   background: rgba(255, 68, 68, 0.08);
 }
 .wg-entry-title {
-  font-size: 10px; letter-spacing: 1px;
-  color: #ccc; margin-bottom: 3px; font-weight: bold;
+  font-size: 11px; letter-spacing: 1px;
+  color: #ccc; margin-bottom: 4px; font-weight: bold;
 }
 .wg-entry.wg-intel .wg-entry-title { color: #ffaa00; }
 .wg-entry.wg-normal .wg-entry-title { color: #00ff41; }
 .wg-entry.wg-critical .wg-entry-title { color: #ff4444; }
 .wg-entry-body {
-  font-size: 10px; color: #999; line-height: 1.5;
+  font-size: 11px; color: #aaa; line-height: 1.6;
+}
+/* Headline entries (decisions, terminal actions) */
+.wg-entry.wg-headline {
+  padding: 10px 12px;
+  border-left-width: 4px;
+  background: rgba(255, 255, 255, 0.04);
+  margin-top: 4px;
+  margin-bottom: 4px;
+}
+.wg-entry.wg-headline .wg-entry-title {
+  font-size: 13px; letter-spacing: 2px;
+  margin-bottom: 6px;
+}
+.wg-entry.wg-headline .wg-entry-body {
+  font-size: 11px; color: #bbb; line-height: 1.6;
+}
+.wg-entry.wg-critical.wg-headline {
+  background: rgba(255, 68, 68, 0.12);
+  border-left-width: 4px;
+}
+.wg-entry.wg-critical.wg-headline .wg-entry-title {
+  font-size: 14px;
 }
 /* Agentic mode feed entry styles */
 .wg-entry.wg-reasoning {
   border-left-color: #4488ff;
+  opacity: 0.7;
 }
 .wg-entry.wg-reasoning .wg-entry-title { color: #4488ff; }
+.wg-entry.wg-reasoning .wg-entry-body { font-size: 10px; color: #889; }
 .wg-entry.wg-tool-call {
   border-left-color: #ffaa00;
   background: rgba(255, 170, 0, 0.05);
 }
 .wg-entry.wg-tool-call .wg-entry-title { color: #ffaa00; }
+.wg-entry.wg-tool-call .wg-entry-body { color: #cca; }
 .wg-entry.wg-tool-result {
   border-left-color: #00ff41;
 }
 .wg-entry.wg-tool-result .wg-entry-title { color: #00ff41; }
+.wg-entry.wg-tool-result .wg-entry-body { color: #8c8; }
 .wg-entry.wg-error {
   border-left-color: #ff4444;
   background: rgba(255, 68, 68, 0.08);
