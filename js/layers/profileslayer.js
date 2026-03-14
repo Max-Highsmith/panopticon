@@ -23,8 +23,10 @@ const THREAT_COLORS = {
 
 let searchQuery = '';
 let activeFilter = 'ALL';
+let _cachedData = null;
 
 export function renderProfilesPanel(contentEl, data) {
+  _cachedData = data;
   const located = data.located || [];
   const unlocated = data.unlocated || [];
   const all = [...located, ...unlocated];
@@ -180,6 +182,126 @@ function makeProfileCard(p) {
   });
 
   return card;
+}
+
+/**
+ * Show a full-panel dossier detail overlay for a person matching `name`.
+ * Called from wargame.js after lookup_person tool calls.
+ */
+export function showProfileDetail(name) {
+  if (!_cachedData) return;
+  const all = [...(_cachedData.located || []), ...(_cachedData.unlocated || [])];
+  const q = name.toLowerCase();
+  const match = all.find(p =>
+    (p.name || '').toLowerCase().includes(q) ||
+    (p.aliases || []).some(a => a.toLowerCase().includes(q))
+  );
+  if (!match) return;
+
+  // Remove any existing overlay
+  const prev = document.getElementById('profile-detail-overlay');
+  if (prev) prev.remove();
+
+  const container = document.getElementById('ambient-container');
+  if (!container) return;
+
+  const overlay = document.createElement('div');
+  overlay.id = 'profile-detail-overlay';
+  overlay.style.cssText = 'position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.96);z-index:200;padding:16px;overflow-y:auto;font-family:Courier New,monospace;display:flex;flex-direction:column;gap:10px;';
+
+  // Close on click
+  overlay.addEventListener('click', (e) => {
+    if (e.target === overlay) overlay.remove();
+  });
+
+  // Header: DOSSIER label + close btn
+  const hdr = document.createElement('div');
+  hdr.style.cssText = 'display:flex;justify-content:space-between;align-items:center;';
+  const title = document.createElement('span');
+  title.style.cssText = 'color:#ff6699;font-size:11px;letter-spacing:2px;';
+  title.textContent = '\u2588 DOSSIER FILE';
+  hdr.appendChild(title);
+  const closeBtn = document.createElement('span');
+  closeBtn.style.cssText = 'color:#555;font-size:16px;cursor:pointer;';
+  closeBtn.textContent = '\u2715';
+  closeBtn.addEventListener('click', () => overlay.remove());
+  hdr.appendChild(closeBtn);
+  overlay.appendChild(hdr);
+
+  // Divider
+  const hr = () => { const d = document.createElement('div'); d.style.cssText = 'border-top:1px solid #333;margin:2px 0;'; return d; };
+  overlay.appendChild(hr());
+
+  // Photo + identity row
+  const idRow = document.createElement('div');
+  idRow.style.cssText = 'display:flex;gap:12px;align-items:flex-start;';
+  if (match.image) {
+    const img = document.createElement('img');
+    img.src = match.image;
+    img.style.cssText = 'width:80px;height:80px;object-fit:cover;border:1px solid #ff6699;flex-shrink:0;';
+    img.onerror = () => { img.style.display = 'none'; };
+    idRow.appendChild(img);
+  }
+  const idBlock = document.createElement('div');
+  idBlock.style.cssText = 'flex:1;';
+  const tColor = THREAT_COLORS[match.threat_level] || '#aaa';
+  idBlock.innerHTML = `
+    <div style="color:#ff6699;font-size:16px;font-weight:bold;margin-bottom:4px;">${match.name}</div>
+    <div style="display:inline-block;padding:2px 8px;border:1px solid ${tColor};color:${tColor};font-size:10px;margin-bottom:6px;">THREAT: ${match.threat_level}</div>
+    <div style="color:#888;font-size:11px;line-height:1.6;">
+      AGE: ${match.age} | ${match.nationality}<br>
+      STATUS: <span style="color:${match.status === 'active' ? '#ff4444' : '#888'}">${(match.status || '').toUpperCase()}</span><br>
+      LOC: ${match.location_label || 'UNKNOWN'}
+    </div>
+  `;
+  idRow.appendChild(idBlock);
+  overlay.appendChild(idRow);
+
+  // Aliases
+  if (match.aliases && match.aliases.length) {
+    const aliases = document.createElement('div');
+    aliases.style.cssText = 'color:#996;font-size:10px;';
+    aliases.textContent = 'AKA: ' + match.aliases.join(' \u2502 ');
+    overlay.appendChild(aliases);
+  }
+
+  overlay.appendChild(hr());
+
+  // Dossier text
+  const dossierLabel = document.createElement('div');
+  dossierLabel.style.cssText = 'color:#ff6699;font-size:10px;letter-spacing:1px;';
+  dossierLabel.textContent = 'INTEL SUMMARY';
+  overlay.appendChild(dossierLabel);
+  const dossierText = document.createElement('div');
+  dossierText.style.cssText = 'color:#ccc;font-size:11px;line-height:1.6;white-space:pre-wrap;';
+  dossierText.textContent = match.dossier || 'No intelligence on file.';
+  overlay.appendChild(dossierText);
+
+  // Associations
+  if (match.associations && match.associations.length) {
+    overlay.appendChild(hr());
+    const assocLabel = document.createElement('div');
+    assocLabel.style.cssText = 'color:#ff6699;font-size:10px;letter-spacing:1px;';
+    assocLabel.textContent = 'KNOWN ASSOCIATIONS';
+    overlay.appendChild(assocLabel);
+    const assocList = document.createElement('div');
+    assocList.style.cssText = 'color:#88aacc;font-size:11px;line-height:1.6;';
+    assocList.textContent = match.associations.join(' \u2502 ');
+    overlay.appendChild(assocList);
+  }
+
+  // Coordinates if located
+  if (match.lat != null && match.lon != null) {
+    const coords = document.createElement('div');
+    coords.style.cssText = 'color:#555;font-size:9px;margin-top:6px;';
+    coords.textContent = `\u25C7 ${match.lat.toFixed(4)}, ${match.lon.toFixed(4)}`;
+    overlay.appendChild(coords);
+  }
+
+  container.appendChild(overlay);
+
+  // Auto-dismiss after 12 seconds
+  setTimeout(() => { if (overlay.parentNode) overlay.remove(); }, 12000);
 }
 
 // --- Layer creation ---

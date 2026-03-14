@@ -21,6 +21,7 @@ import { toggleLayer, entityMaps, registerLayer } from './globe.js';
 import { getView } from './viewregistry.js';
 import { openWebcamView, closeWebcamView, isWebcamViewOpen } from './webcamview.js';
 import { showSarImage, setAcquiring as setSarAcquiring } from './sarview.js';
+import { showProfileDetail } from './layers/profileslayer.js';
 
 // Stores the last completed run's config so we can generate a playback manifest
 let lastCompletedConfig = null;
@@ -1506,13 +1507,14 @@ function typeIntoSearch(selector, text) {
     if (i >= text.length) {
       clearInterval(_typeSearchInterval);
       _typeSearchInterval = null;
-      // Click the first matching profile card to expand its dossier
+      // Expand full dossier detail overlay for the matched person
       setTimeout(() => {
         const panel = input.closest('.ambient-panel') || input.parentElement;
         if (panel) {
           const firstCard = panel.querySelector('div[style*="cursor:pointer"]');
           if (firstCard) firstCard.click();
         }
+        showProfileDetail(text);
       }, 300);
       return;
     }
