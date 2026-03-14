@@ -16,6 +16,7 @@ let hlsInstance = null;
 let currentMode = null; // 'hls' | 'youtube'
 let frameCounter = 0;
 let surveillanceOn = true;
+let activeViewer = null;
 
 export function isWebcamViewOpen() { return webcamViewOpen; }
 export function resizeWebcamView() { /* iframe/video auto-resizes */ }
@@ -427,6 +428,7 @@ export function openWebcamView(viewer, entity) {
 
   webcamViewTarget = entity;
   webcamViewOpen = true;
+  activeViewer = viewer;
 
   const ac = entity.acData;
 
@@ -451,8 +453,10 @@ export function openWebcamView(viewer, entity) {
     if (video) {
       destroyHls();
       video.src = ac.videoUrl;
-      video.loop = true;
-      video.muted = false;
+      video.loop = false;
+      // Mute looping/ambient feeds, allow sound for strike footage
+      video.muted = /leader_loop/i.test(ac.videoUrl);
+      video.onended = () => { if (activeViewer) closeWebcamView(activeViewer); };
       video.play().catch(() => {});
       wrapper.classList.add('hls-mode');
       currentMode = 'video';
@@ -491,11 +495,14 @@ export function closeWebcamView(viewer) {
   webcamViewOpen = false;
   webcamViewTarget = null;
   currentMode = null;
+  activeViewer = null;
 
   $('webcam-view-panel').classList.remove('open');
   document.body.classList.remove('webcam-panel-open');
 
-  // Stop HLS
+  // Stop HLS + clean up direct video handler
+  const video = $('webcam-hls-video');
+  if (video) video.onended = null;
   destroyHls();
   $('webcam-embed-wrapper').classList.remove('hls-mode');
 
