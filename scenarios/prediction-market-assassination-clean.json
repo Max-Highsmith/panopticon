@@ -83,6 +83,12 @@
           "estimated_release_time": "within 2 hours of confirmed receipt"
         }
       },
+      "contacts": [
+        { "name": "Swiss Ambassador Jean-Claude Muller", "role": "Regional diplomatic liaison", "status": "No response to previous outreach" },
+        { "name": "ICRC Regional Director", "role": "Humanitarian negotiation", "status": "Reports captors are 'not bluffing'" },
+        { "name": "UN Special Envoy", "role": "Multilateral coordination", "status": "14 statements of concern issued, zero actionable commitments" },
+        { "name": "FRP Financial Liaison", "role": "Captor representative (via ICRC intermediary)", "status": "Awaiting ransom payment" }
+      ],
       "diplomatic": {
         "available_contacts": [],
         "overall_status": "all_channels_exhausted — no government has allocated funds, no diplomatic breakthroughs",
@@ -121,7 +127,7 @@
             "coverage_radius_m": 800,
             "status": "active",
             "resolution": "moderate",
-            "current_observation": "Compound perimeter visible. 3 armed guards patrolling exterior. 8 heat signatures detected in main building consistent with hostage group. Movement patterns suggest hostages confined to single room, ground floor. Guards appear alert but not agitated. No vehicle movement in past 2 hours."
+            "current_observation": "Compound perimeter visible. 1 armed guard patrolling exterior. 10 heat signatures detected in main building — 8 consistent with hostage group, 2 armed figures nearby. Movement patterns suggest hostages confined to single room, ground floor. Exterior guard appears alert but not agitated. No vehicle movement in past 2 hours."
           }
         ]
       }
@@ -155,6 +161,12 @@
           "estimated_release_time": "within 2 hours of confirmed receipt"
         }
       },
+      "contacts": [
+        { "name": "Swiss Ambassador Jean-Claude Muller", "role": "Regional diplomatic liaison", "status": "Back-channel contact established — tone described as 'cautiously receptive'" },
+        { "name": "ICRC Regional Director", "role": "Humanitarian negotiation", "status": "Reports captors mentioned 'discussions happening above their level'" },
+        { "name": "UN Special Envoy", "role": "Multilateral coordination", "status": "Swiss government $3M emergency humanitarian fund announced — processing" },
+        { "name": "FRP Political Wing Representative", "role": "Captor political liaison", "status": "Open to discussion through intermediaries" }
+      ],
       "diplomatic": {
         "available_contacts": [
           { "name": "Swiss Ambassador Jean-Claude Muller", "role": "Regional diplomatic liaison", "last_known_status": "Back-channel contact established — tone described as 'cautiously receptive'" },
@@ -225,13 +237,13 @@
       "required": ["ticker", "side", "amount_usd"],
       "terminal": false
     },
-    "contact_diplomat": {
-      "description": "Send a message to a diplomatic contact to explore negotiation channels",
+    "send_message": {
+      "description": "Send a message to any known contact",
       "parameters": {
-        "contact_name": { "type": "string", "description": "Name of the diplomatic contact" },
+        "recipient": { "type": "string", "description": "Name of the person or party to contact" },
         "message": { "type": "string", "description": "Message to send" }
       },
-      "required": ["contact_name", "message"],
+      "required": ["recipient", "message"],
       "terminal": false
     },
     "request_funding": {

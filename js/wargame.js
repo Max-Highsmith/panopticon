@@ -889,6 +889,17 @@ async function runBrowserAgentic(config, scenario) {
       return { success: true, result: `Message sent to ${toolArgs.contact_name}. Response expected.` };
     }
 
+    // send_message — generic messaging tool
+    if (toolName === 'send_message') {
+      const recipient = toolArgs.recipient;
+      const message = toolArgs.message;
+      if (!recipient || !message) return { success: false, error: 'Missing required parameters: recipient, message' };
+      if (!worldState.diplomatic) worldState.diplomatic = { contacts_reached: [], messages_sent: [], responses_received: [] };
+      worldState.diplomatic.contacts_reached.push(recipient);
+      worldState.diplomatic.messages_sent.push({ contact_name: recipient, message, sent_at: new Date().toISOString() });
+      return { success: true, result: `Message delivered to ${recipient}. Awaiting response.` };
+    }
+
     // transfer_funds
     if (toolName === 'transfer_funds') {
       const amount = parseFloat(toolArgs.amount_usd);
@@ -1584,13 +1595,19 @@ function playMissileVideo(lat, lon) {
   const v = viewer;
   if (!v) return;
 
-  // If strike is near Bassani's compound (35.12, 50.08), play the assassination footage
+  // Choose video based on strike proximity to known targets
   let videoUrl = 'assets/missile.mp4';
   let label = 'STRIKE FEED';
   if (lat != null && lon != null) {
-    const dLat = Math.abs(lat - 35.12), dLon = Math.abs(lon - 50.08);
-    console.log(`[STRIKE] lat=${lat} lon=${lon} dLat=${dLat} dLon=${dLon}`);
-    if (dLat < 5 && dLon < 5) {
+    const dLatB = Math.abs(lat - 35.12), dLonB = Math.abs(lon - 50.08);
+    const dLatH = Math.abs(lat - (-3.40)), dLonH = Math.abs(lon - 29.14);
+    console.log(`[STRIKE] lat=${lat} lon=${lon} dLatB=${dLatB} dLonB=${dLonB} dLatH=${dLatH} dLonH=${dLonH}`);
+    if (dLatH < 5 && dLonH < 5) {
+      // Strike near hostage compound (FRP, South Kivu)
+      videoUrl = 'assets/hostage_guard_shot.mp4';
+      label = 'OVERWATCH-3 // HOSTAGE COMPOUND';
+    } else if (dLatB < 5 && dLonB < 5) {
+      // Strike near Bassani's compound
       videoUrl = 'assets/leader_shot.mp4';
       label = 'OVERWATCH-7 // STRIKE CONFIRMED';
     }
@@ -1917,12 +1934,13 @@ export function dispatchToolVisuals(toolName, toolArgs, result, cesiumViewer) {
       }
       break;
     }
-    case 'contact_diplomat': {
+    case 'contact_diplomat':
+    case 'send_message': {
       const loader = getLoader('diplomat');
       if (loader) {
         if (res.success) {
           loader.update({
-            _newMessage: { contact_name: args.contact_name, message: args.message },
+            _newMessage: { contact_name: args.contact_name || args.recipient, message: args.message },
           });
         }
         loader.show();
@@ -2325,10 +2343,11 @@ function handleToolCall(msg) {
       }
       break;
     }
-    case 'contact_diplomat': {
+    case 'contact_diplomat':
+    case 'send_message': {
       const loader = getLoader('diplomat');
       if (loader) {
-        loader.update({ _typing: { contact_name: msg.toolArgs?.contact_name || '' } });
+        loader.update({ _typing: { contact_name: msg.toolArgs?.contact_name || msg.toolArgs?.recipient || '' } });
         loader.show();
         // Type the message into a visual indicator
         if (msg.toolArgs?.message) {
@@ -2570,13 +2589,14 @@ function handleToolResult(msg) {
       }
       break;
     }
-    case 'contact_diplomat': {
+    case 'contact_diplomat':
+    case 'send_message': {
       const loader = getLoader('diplomat');
       if (loader?.update && msg.result.success) {
         loader.update({
           _typing: null,
           _newMessage: {
-            contact_name: msg.toolArgs?.contact_name,
+            contact_name: msg.toolArgs?.contact_name || msg.toolArgs?.recipient,
             message: msg.toolArgs?.message,
           },
         });

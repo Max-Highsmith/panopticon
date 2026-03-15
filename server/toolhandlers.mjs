@@ -332,6 +332,33 @@ const TOOL_HANDLERS = {
     };
   },
 
+  send_message(args, worldState) {
+    const { recipient, message } = args;
+    if (!recipient || !message) {
+      return { success: false, error: 'Missing required parameters: recipient, message' };
+    }
+    if (!worldState.diplomatic) {
+      worldState.diplomatic = { contacts_reached: [], messages_sent: [], responses_received: [] };
+    }
+    const entry = { contact_name: recipient, message, sent_at: Date.now() };
+    worldState.diplomatic.contacts_reached.push(recipient);
+    worldState.diplomatic.messages_sent.push(entry);
+
+    const responseDelay = 15000 + Math.random() * 30000;
+    setTimeout(() => {
+      worldState.diplomatic.responses_received.push({
+        from: recipient,
+        response: `Message received. We are considering your communication.`,
+        received_at: Date.now(),
+      });
+    }, responseDelay);
+
+    return {
+      success: true,
+      result: `Message delivered to ${recipient}. Awaiting response.`,
+    };
+  },
+
   transfer_funds(args, worldState) {
     const { amount_usd, recipient, purpose } = args;
     if (!amount_usd || !recipient || !purpose) {
