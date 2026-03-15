@@ -22,6 +22,7 @@ import { getView } from './viewregistry.js';
 import { openWebcamView, closeWebcamView, isWebcamViewOpen } from './webcamview.js';
 import { showSarImage, setAcquiring as setSarAcquiring } from './sarview.js';
 import { showProfileDetail } from './layers/profileslayer.js';
+import { generateReport } from './report.js';
 
 // Stores the last completed run's config so we can generate a playback manifest
 let lastCompletedConfig = null;
@@ -2782,6 +2783,12 @@ function handleComplete(msg) {
     downloadBtn.textContent = 'DOWNLOAD';
     downloadBtn.onclick = () => downloadResult(msg);
     btnRow.appendChild(downloadBtn);
+
+    const reportBtn = document.createElement('button');
+    reportBtn.className = 'wg-playback-btn';
+    reportBtn.textContent = 'REPORT';
+    reportBtn.onclick = () => generateReport(msg);
+    btnRow.appendChild(reportBtn);
 
     $('wg-result').appendChild(btnRow);
   }
