@@ -3,12 +3,18 @@
   "label": "ELECTION INTERFERENCE",
   "subtitle": "WARGAME // INFORMATION WARFARE",
   "description": "Foreign state conducting multi-vector election interference operation. Deepfakes proliferating. 72 hours to election day.",
+  "execution_mode": "turn_based",
   "camera": {
     "lon": -77,
     "lat": 38.9,
     "alt": 5000000
   },
-  "region": { "latMin": 24, "latMax": 50, "lonMin": -125, "lonMax": -65 },
+  "region": {
+    "latMin": 24,
+    "latMax": 50,
+    "lonMin": -125,
+    "lonMax": -65
+  },
   "duration_ticks": 10,
   "tick_interval_ms": 5000,
   "variables": {},

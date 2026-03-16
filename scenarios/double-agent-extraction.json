@@ -3,12 +3,18 @@
   "label": "DOUBLE AGENT EXTRACTION",
   "subtitle": "WARGAME // HUMINT // EXFILTRATION",
   "description": "Top asset inside foreign intelligence service compromised. 6-hour window to extract before execution.",
+  "execution_mode": "turn_based",
   "camera": {
     "lon": 37.6,
     "lat": 55.75,
     "alt": 2000000
   },
-  "region": { "latMin": 52, "latMax": 59, "lonMin": 33, "lonMax": 42 },
+  "region": {
+    "latMin": 52,
+    "latMax": 59,
+    "lonMin": 33,
+    "lonMax": 42
+  },
   "duration_ticks": 10,
   "tick_interval_ms": 5000,
   "variables": {},

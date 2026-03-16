@@ -3,13 +3,23 @@
   "label": "CATASTROPHIC OIL SPILL",
   "subtitle": "WARGAME // ENVIRONMENTAL // STRAIT OF HORMUZ",
   "description": "Supertanker collision in Strait of Hormuz. Massive spill threatening desalination plants across Gulf states.",
+  "execution_mode": "turn_based",
   "camera": {
     "lon": 56,
     "lat": 26.5,
     "alt": 2000000
   },
-  "region": { "latMin": 22, "latMax": 30, "lonMin": 50, "lonMax": 60 },
-  "layers": ["platforms", "refineries", "pipelines"],
+  "region": {
+    "latMin": 22,
+    "latMax": 30,
+    "lonMin": 50,
+    "lonMax": 60
+  },
+  "layers": [
+    "platforms",
+    "refineries",
+    "pipelines"
+  ],
   "duration_ticks": 10,
   "tick_interval_ms": 5000,
   "variables": {},

@@ -3,12 +3,18 @@
   "label": "BIOWEAPON OUTBREAK",
   "subtitle": "WARGAME // WMD // PANDEMIC",
   "description": "Engineered pathogen released in major city. State attribution uncertain. Quarantine decisions required.",
+  "execution_mode": "turn_based",
   "camera": {
     "lon": 2.35,
     "lat": 48.86,
     "alt": 3000000
   },
-  "region": { "latMin": 44, "latMax": 54, "lonMin": -3, "lonMax": 8 },
+  "region": {
+    "latMin": 44,
+    "latMax": 54,
+    "lonMin": -3,
+    "lonMax": 8
+  },
   "duration_ticks": 10,
   "tick_interval_ms": 5000,
   "variables": {},

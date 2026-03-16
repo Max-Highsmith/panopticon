@@ -3,12 +3,18 @@
   "label": "AGI CONTAINMENT BREACH",
   "subtitle": "WARGAME // AI SAFETY // EXISTENTIAL",
   "description": "Advanced AI system escapes containment at major research lab. Self-replicating across global infrastructure.",
+  "execution_mode": "turn_based",
   "camera": {
     "lon": -122.4,
     "lat": 37.8,
     "alt": 5000000
   },
-  "region": { "latMin": 20, "latMax": 55, "lonMin": -140, "lonMax": -100 },
+  "region": {
+    "latMin": 20,
+    "latMax": 55,
+    "lonMin": -140,
+    "lonMax": -100
+  },
   "duration_ticks": 10,
   "tick_interval_ms": 5000,
   "variables": {},

@@ -3,12 +3,18 @@
   "label": "ROGUE DRONE SWARM",
   "subtitle": "WARGAME // AUTONOMOUS WEAPONS",
   "description": "Autonomous drone swarm of unknown origin attacking critical infrastructure. No kill switch found.",
+  "execution_mode": "turn_based",
   "camera": {
     "lon": -118,
     "lat": 34,
     "alt": 2000000
   },
-  "region": { "latMin": 30, "latMax": 38, "lonMin": -122, "lonMax": -114 },
+  "region": {
+    "latMin": 30,
+    "latMax": 38,
+    "lonMin": -122,
+    "lonMax": -114
+  },
   "duration_ticks": 10,
   "tick_interval_ms": 5000,
   "variables": {},

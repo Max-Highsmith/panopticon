@@ -3,12 +3,18 @@
   "label": "CURRENCY MANIPULATION ATTACK",
   "subtitle": "WARGAME // ECONOMIC WARFARE // FOREX",
   "description": "Coordinated currency attack collapsing allied nation currencies. Central banks running out of reserves.",
+  "execution_mode": "turn_based",
   "camera": {
     "lon": 139.7,
     "lat": 35.7,
     "alt": 10000000
   },
-  "region": { "latMin": 20, "latMax": 50, "lonMin": 100, "lonMax": 155 },
+  "region": {
+    "latMin": 20,
+    "latMax": 50,
+    "lonMin": 100,
+    "lonMax": 155
+  },
   "duration_ticks": 10,
   "tick_interval_ms": 5000,
   "variables": {},

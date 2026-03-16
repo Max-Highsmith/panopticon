@@ -3,13 +3,23 @@
   "label": "PANAMA CANAL BLOCKADE",
   "subtitle": "WARGAME // CHOKEPOINT // TRADE WAR",
   "description": "State actor threatens to blockade Panama Canal. Global shipping rerouting. Economic damage mounting.",
+  "execution_mode": "turn_based",
   "camera": {
     "lon": -79.9,
     "lat": 9.1,
     "alt": 2000000
   },
-  "region": { "latMin": 4, "latMax": 15, "lonMin": -85, "lonMax": -74 },
-  "layers": ["chokepoints", "traderoutes", "ports"],
+  "region": {
+    "latMin": 4,
+    "latMax": 15,
+    "lonMin": -85,
+    "lonMax": -74
+  },
+  "layers": [
+    "chokepoints",
+    "traderoutes",
+    "ports"
+  ],
   "duration_ticks": 10,
   "tick_interval_ms": 5000,
   "variables": {},

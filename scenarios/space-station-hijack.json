@@ -3,12 +3,18 @@
   "label": "SPACE STATION HIJACK",
   "subtitle": "WARGAME // ORBITAL // HOSTAGE",
   "description": "ISS crew taken hostage by rogue cosmonaut. Station orbit decaying. De-orbit threatens populated area.",
+  "execution_mode": "turn_based",
   "camera": {
     "lon": 0,
     "lat": 30,
     "alt": 20000000
   },
-  "region": { "latMin": -55, "latMax": 55, "lonMin": -180, "lonMax": 180 },
+  "region": {
+    "latMin": -55,
+    "latMax": 55,
+    "lonMin": -180,
+    "lonMax": 180
+  },
   "duration_ticks": 10,
   "tick_interval_ms": 5000,
   "variables": {},

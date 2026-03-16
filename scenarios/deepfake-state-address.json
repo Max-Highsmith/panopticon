@@ -3,12 +3,18 @@
   "label": "DEEPFAKE STATE ADDRESS",
   "subtitle": "WARGAME // INFORMATION WARFARE // DECEPTION",
   "description": "Fabricated presidential address declaring war broadcast on compromised national networks. Public panic spreading.",
+  "execution_mode": "turn_based",
   "camera": {
     "lon": -77,
     "lat": 38.9,
     "alt": 3000000
   },
-  "region": { "latMin": 33, "latMax": 44, "lonMin": -83, "lonMax": -70 },
+  "region": {
+    "latMin": 33,
+    "latMax": 44,
+    "lonMin": -83,
+    "lonMax": -70
+  },
   "duration_ticks": 10,
   "tick_interval_ms": 5000,
   "variables": {},

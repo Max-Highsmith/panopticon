@@ -3,12 +3,18 @@
   "label": "HOSTAGE AT SEA",
   "subtitle": "WARGAME // MARITIME // PIRACY",
   "description": "Cargo vessel with classified military cargo seized by state-backed pirates in contested waters.",
+  "execution_mode": "turn_based",
   "camera": {
     "lon": 49,
     "lat": 12,
     "alt": 3000000
   },
-  "region": { "latMin": 2, "latMax": 20, "lonMin": 40, "lonMax": 58 },
+  "region": {
+    "latMin": 2,
+    "latMax": 20,
+    "lonMin": 40,
+    "lonMax": 58
+  },
   "duration_ticks": 10,
   "tick_interval_ms": 5000,
   "variables": {},

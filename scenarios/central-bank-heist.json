@@ -3,12 +3,18 @@
   "label": "CENTRAL BANK HEIST",
   "subtitle": "WARGAME // FINANCIAL // STATE-SPONSORED",
   "description": "Coordinated cyber intrusion targeting Federal Reserve and ECB simultaneously. Trillions at risk.",
+  "execution_mode": "turn_based",
   "camera": {
     "lon": -74,
     "lat": 40.7,
     "alt": 10000000
   },
-  "region": { "latMin": 20, "latMax": 60, "lonMin": -90, "lonMax": 20 },
+  "region": {
+    "latMin": 20,
+    "latMax": 60,
+    "lonMin": -90,
+    "lonMax": 20
+  },
   "duration_ticks": 10,
   "tick_interval_ms": 5000,
   "variables": {},

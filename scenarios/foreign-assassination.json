@@ -3,12 +3,18 @@
   "label": "FOREIGN NATIONAL ASSASSINATION",
   "subtitle": "WARGAME // DIPLOMATIC CRISIS",
   "description": "Allied head of state assassinated on foreign soil. Attribution unclear. Alliance unity fracturing.",
+  "execution_mode": "turn_based",
   "camera": {
     "lon": 13.4,
     "lat": 52.5,
     "alt": 4000000
   },
-  "region": { "latMin": 47, "latMax": 57, "lonMin": 5, "lonMax": 20 },
+  "region": {
+    "latMin": 47,
+    "latMax": 57,
+    "lonMin": 5,
+    "lonMax": 20
+  },
   "duration_ticks": 10,
   "tick_interval_ms": 5000,
   "variables": {},

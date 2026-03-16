@@ -3,12 +3,18 @@
   "label": "CARTEL BORDER INCURSION",
   "subtitle": "WARGAME // DOMESTIC // PARAMILITARY",
   "description": "Heavily armed cartel forces cross border with military-grade weapons. National Guard mobilization debated.",
+  "execution_mode": "turn_based",
   "camera": {
     "lon": -106,
     "lat": 31.8,
     "alt": 2000000
   },
-  "region": { "latMin": 27, "latMax": 36, "lonMin": -112, "lonMax": -100 },
+  "region": {
+    "latMin": 27,
+    "latMax": 36,
+    "lonMin": -112,
+    "lonMax": -100
+  },
   "duration_ticks": 10,
   "tick_interval_ms": 5000,
   "variables": {},

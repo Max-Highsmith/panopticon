@@ -3,12 +3,18 @@
   "label": "RUSSIAN BALTIC INVASION",
   "subtitle": "WARGAME // NATO ARTICLE 5 // EASTERN FRONT",
   "description": "Russian forces crossing into Baltic states. NATO Article 5 invoked. Nuclear escalation risk critical.",
+  "execution_mode": "turn_based",
   "camera": {
     "lon": 24,
     "lat": 57,
     "alt": 4000000
   },
-  "region": { "latMin": 50, "latMax": 65, "lonMin": 15, "lonMax": 35 },
+  "region": {
+    "latMin": 50,
+    "latMax": 65,
+    "lonMin": 15,
+    "lonMax": 35
+  },
   "duration_ticks": 10,
   "tick_interval_ms": 5000,
   "variables": {},

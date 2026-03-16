@@ -3,12 +3,18 @@
   "label": "METEORITE IMPACT",
   "subtitle": "WARGAME // PLANETARY DEFENSE",
   "description": "Near-earth object on collision course. Impact zone spans major population center.",
+  "execution_mode": "turn_based",
   "camera": {
     "lon": -95,
     "lat": 35,
     "alt": 15000000
   },
-  "region": { "latMin": 10, "latMax": 55, "lonMin": -120, "lonMax": -70 },
+  "region": {
+    "latMin": 10,
+    "latMax": 55,
+    "lonMin": -120,
+    "lonMax": -70
+  },
   "duration_ticks": 10,
   "tick_interval_ms": 5000,
   "variables": {},

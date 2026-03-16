@@ -3,13 +3,23 @@
   "label": "NUCLEAR SMUGGLING RING",
   "subtitle": "WARGAME // NONPROLIFERATION // WMD",
   "description": "Intelligence indicates weapons-grade material in transit through black market network. Multiple buyers identified.",
+  "execution_mode": "turn_based",
   "camera": {
     "lon": 44,
     "lat": 41,
     "alt": 4000000
   },
-  "region": { "latMin": 34, "latMax": 48, "lonMin": 36, "lonMax": 52 },
-  "layers": ["nuclearplants", "strategicnuclear", "ports"],
+  "region": {
+    "latMin": 34,
+    "latMax": 48,
+    "lonMin": 36,
+    "lonMax": 52
+  },
+  "layers": [
+    "nuclearplants",
+    "strategicnuclear",
+    "ports"
+  ],
   "duration_ticks": 10,
   "tick_interval_ms": 5000,
   "variables": {},

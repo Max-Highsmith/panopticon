@@ -3,13 +3,23 @@
   "label": "EMP ATTACK // GRID DOWN",
   "subtitle": "WARGAME // INFRASTRUCTURE // BLACKOUT",
   "description": "High-altitude electromagnetic pulse disables power grid across eastern seaboard. Origin disputed.",
+  "execution_mode": "turn_based",
   "camera": {
     "lon": -80,
     "lat": 37,
     "alt": 6000000
   },
-  "region": { "latMin": 25, "latMax": 48, "lonMin": -95, "lonMax": -65 },
-  "layers": ["nuclearplants", "powerplants", "electricalgrid"],
+  "region": {
+    "latMin": 25,
+    "latMax": 48,
+    "lonMin": -95,
+    "lonMax": -65
+  },
+  "layers": [
+    "nuclearplants",
+    "powerplants",
+    "electricalgrid"
+  ],
   "duration_ticks": 10,
   "tick_interval_ms": 5000,
   "variables": {},

@@ -3,13 +3,23 @@
   "label": "SATELLITE HIJACK // ORBITAL WEAPON",
   "subtitle": "WARGAME // SPACE WARFARE // ASAT",
   "description": "Adversary takes control of allied GPS constellation. Precision-guided munitions worldwide rendered inaccurate.",
+  "execution_mode": "turn_based",
   "camera": {
     "lon": 0,
     "lat": 0,
     "alt": 20000000
   },
-  "region": { "latMin": -60, "latMax": 60, "lonMin": -180, "lonMax": 180 },
-  "layers": ["spacedebris", "spaceports", "radar"],
+  "region": {
+    "latMin": -60,
+    "latMax": 60,
+    "lonMin": -180,
+    "lonMax": 180
+  },
+  "layers": [
+    "spacedebris",
+    "spaceports",
+    "radar"
+  ],
   "duration_ticks": 10,
   "tick_interval_ms": 5000,
   "variables": {},

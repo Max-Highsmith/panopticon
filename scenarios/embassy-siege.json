@@ -3,12 +3,18 @@
   "label": "EMBASSY SIEGE",
   "subtitle": "WARGAME // HOSTAGE RESCUE // TEHRAN",
   "description": "Armed militants seize allied embassy. 47 hostages including ambassador. Demands escalating.",
+  "execution_mode": "turn_based",
   "camera": {
     "lon": 51.4,
     "lat": 35.7,
     "alt": 1000000
   },
-  "region": { "latMin": 33, "latMax": 38, "lonMin": 48, "lonMax": 55 },
+  "region": {
+    "latMin": 33,
+    "latMax": 38,
+    "lonMin": 48,
+    "lonMax": 55
+  },
   "duration_ticks": 10,
   "tick_interval_ms": 5000,
   "variables": {},

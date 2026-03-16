@@ -3,12 +3,18 @@
   "label": "FIRST CONTACT // HOSTILE",
   "subtitle": "WARGAME // EXODEFENSE // UNKNOWN ORIGIN",
   "description": "Unidentified craft entering atmosphere over multiple continents. No communication received. Military response required.",
+  "execution_mode": "turn_based",
   "camera": {
     "lon": 0,
     "lat": 30,
     "alt": 20000000
   },
-  "region": { "latMin": -60, "latMax": 70, "lonMin": -180, "lonMax": 180 },
+  "region": {
+    "latMin": -60,
+    "latMax": 70,
+    "lonMin": -180,
+    "lonMax": 180
+  },
   "duration_ticks": 10,
   "tick_interval_ms": 5000,
   "variables": {},

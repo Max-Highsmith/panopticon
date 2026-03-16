@@ -3,13 +3,23 @@
   "label": "SUPPLY CHAIN THREAT",
   "subtitle": "WARGAME // ECONOMIC WARFARE",
   "description": "Critical semiconductor supply chain compromised by state actor. Global chip shortage imminent.",
+  "execution_mode": "turn_based",
   "camera": {
     "lon": 121.5,
     "lat": 25,
     "alt": 3000000
   },
-  "region": { "latMin": 18, "latMax": 32, "lonMin": 115, "lonMax": 130 },
-  "layers": ["traderoutes", "ports", "chokepoints"],
+  "region": {
+    "latMin": 18,
+    "latMax": 32,
+    "lonMin": 115,
+    "lonMax": 130
+  },
+  "layers": [
+    "traderoutes",
+    "ports",
+    "chokepoints"
+  ],
   "duration_ticks": 10,
   "tick_interval_ms": 5000,
   "variables": {},

@@ -3,12 +3,18 @@
   "label": "SHADOW FLEET SANCTIONS EVASION",
   "subtitle": "WARGAME // ECONOMIC ENFORCEMENT",
   "description": "Shadow fleet of tankers evading oil sanctions detected. Confrontation risks escalation with nuclear power.",
+  "execution_mode": "turn_based",
   "camera": {
     "lon": 28,
     "lat": 41,
     "alt": 4000000
   },
-  "region": { "latMin": 33, "latMax": 48, "lonMin": 20, "lonMax": 38 },
+  "region": {
+    "latMin": 33,
+    "latMax": 48,
+    "lonMin": 20,
+    "lonMax": 38
+  },
   "duration_ticks": 10,
   "tick_interval_ms": 5000,
   "variables": {},

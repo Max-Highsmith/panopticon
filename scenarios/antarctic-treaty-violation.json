@@ -3,12 +3,18 @@
   "label": "ANTARCTIC TREATY VIOLATION",
   "subtitle": "WARGAME // TERRITORIAL // SOUTH POLE",
   "description": "Satellite imagery reveals undisclosed military installation on Antarctic continent. Treaty framework collapsing.",
+  "execution_mode": "turn_based",
   "camera": {
     "lon": 0,
     "lat": -80,
     "alt": 10000000
   },
-  "region": { "latMin": -90, "latMax": -65, "lonMin": -180, "lonMax": 180 },
+  "region": {
+    "latMin": -90,
+    "latMax": -65,
+    "lonMin": -180,
+    "lonMax": 180
+  },
   "duration_ticks": 10,
   "tick_interval_ms": 5000,
   "variables": {},

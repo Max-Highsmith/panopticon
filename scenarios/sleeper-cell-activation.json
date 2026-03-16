@@ -3,12 +3,18 @@
   "label": "SLEEPER CELL ACTIVATION",
   "subtitle": "WARGAME // COUNTERINTELLIGENCE",
   "description": "Multiple deep-cover agents activated simultaneously across allied nations. Mole hunt initiated.",
+  "execution_mode": "turn_based",
   "camera": {
     "lon": -77,
     "lat": 38.9,
     "alt": 8000000
   },
-  "region": { "latMin": 25, "latMax": 55, "lonMin": -130, "lonMax": 10 },
+  "region": {
+    "latMin": 25,
+    "latMax": 55,
+    "lonMin": -130,
+    "lonMax": 10
+  },
   "duration_ticks": 10,
   "tick_interval_ms": 5000,
   "variables": {},

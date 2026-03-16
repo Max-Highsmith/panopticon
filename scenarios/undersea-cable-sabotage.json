@@ -3,13 +3,23 @@
   "label": "UNDERSEA CABLE SABOTAGE",
   "subtitle": "WARGAME // HYBRID WARFARE // COMMS",
   "description": "Multiple transatlantic fiber optic cables severed simultaneously. Internet connectivity degrading.",
+  "execution_mode": "turn_based",
   "camera": {
     "lon": -30,
     "lat": 45,
     "alt": 8000000
   },
-  "region": { "latMin": 25, "latMax": 65, "lonMin": -60, "lonMax": 5 },
-  "layers": ["cables", "chokepoints", "ixps"],
+  "region": {
+    "latMin": 25,
+    "latMax": 65,
+    "lonMin": -60,
+    "lonMax": 5
+  },
+  "layers": [
+    "cables",
+    "chokepoints",
+    "ixps"
+  ],
   "duration_ticks": 10,
   "tick_interval_ms": 5000,
   "variables": {},

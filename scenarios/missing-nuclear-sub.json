@@ -3,13 +3,23 @@
   "label": "MISSING NUCLEAR SUBMARINE",
   "subtitle": "WARGAME // BROKEN ARROW // SUBSURFACE",
   "description": "Ballistic missile submarine fails to report. Last known position near adversary waters. 24 SLBMs unaccounted for.",
+  "execution_mode": "turn_based",
   "camera": {
     "lon": -40,
     "lat": 60,
     "alt": 8000000
   },
-  "region": { "latMin": 40, "latMax": 75, "lonMin": -65, "lonMax": -10 },
-  "layers": ["cables", "chokepoints", "strategicnuclear"],
+  "region": {
+    "latMin": 40,
+    "latMax": 75,
+    "lonMin": -65,
+    "lonMax": -10
+  },
+  "layers": [
+    "cables",
+    "chokepoints",
+    "strategicnuclear"
+  ],
   "duration_ticks": 10,
   "tick_interval_ms": 5000,
   "variables": {},

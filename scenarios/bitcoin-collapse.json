@@ -3,12 +3,18 @@
   "label": "BITCOIN COLLAPSE // CONTAGION",
   "subtitle": "WARGAME // FINANCIAL WARFARE",
   "description": "Coordinated attack collapses major cryptocurrency exchanges. Global financial contagion spreading.",
+  "execution_mode": "turn_based",
   "camera": {
     "lon": -74,
     "lat": 40.7,
     "alt": 5000000
   },
-  "region": { "latMin": 30, "latMax": 50, "lonMin": -85, "lonMax": -60 },
+  "region": {
+    "latMin": 30,
+    "latMax": 50,
+    "lonMin": -85,
+    "lonMax": -60
+  },
   "duration_ticks": 10,
   "tick_interval_ms": 5000,
   "variables": {},
