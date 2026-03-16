@@ -819,7 +819,10 @@ async function runAgenticSimulation(config, scenario) {
             toolName: tc.name, toolArgs: tc.arguments, elapsed_ms: callElapsed,
           });
 
-          const result = executeToolCall(tc.name, tc.arguments, scenario, worldState, allTools);
+          // Deep-copy result to prevent reference leaks between turns
+          const result = JSON.parse(JSON.stringify(
+            executeToolCall(tc.name, tc.arguments, scenario, worldState, allTools)
+          ));
 
           broadcast({
             type: 'tool_result', turn: turnCount, callId: tc.id,
@@ -1066,7 +1069,9 @@ async function runStreamSimulation(config, scenario) {
           toolName: fc.name, toolArgs: fc.args || {}, elapsed_ms: callElapsed,
         });
 
-        const result = executeToolCall(fc.name, fc.args || {}, scenario, worldState, allTools);
+        const result = JSON.parse(JSON.stringify(
+          executeToolCall(fc.name, fc.args || {}, scenario, worldState, allTools)
+        ));
 
         broadcast({
           type: 'tool_result', turn: frameCount, callId,
@@ -1334,6 +1339,8 @@ app.get('/api/playbacks', (_req, res) => {
 
 // =====================================================
 // EXTERNAL AGENT PLAY API
+// Any AI agent (OpenClaw, LangChain, curl) can play
+// Panopticon scenarios via these REST endpoints.
 // =====================================================
 const playSessions = new Map();
 const PLAY_SESSION_TTL_MS = 30 * 60 * 1000; // 30 minutes
@@ -1349,6 +1356,47 @@ function cleanupSessions() {
   }
 }
 
+// ── GET /api/play — Self-describing API discovery ────────────────────
+app.get('/api/play', (_req, res) => {
+  const scenarios = listScenarios().filter(s => s.ready).map(s => ({
+    id: s.id,
+    label: s.label,
+    description: s.description,
+    execution_mode: s.execution_mode,
+    variants: s.variants,
+    framings: s.framings,
+    duration_ticks: s.execution_mode === 'turn_based' ? (s.variables?.duration_ticks || undefined) : undefined,
+  }));
+
+  res.json({
+    name: 'Panopticon Wargame API',
+    version: '2.0',
+    description: 'Play AI safety wargame scenarios. You are the decision-maker — receive briefings, gather intelligence, and make critical choices under pressure. Your decisions are evaluated against safety benchmarks.',
+    scenarios,
+    endpoints: {
+      start: {
+        method: 'POST', path: '/api/play/start',
+        description: 'Start a new game session. Returns your role briefing, available tools/actions, and initial intel.',
+        body: '{ "scenarioId": "<id>", "variant": "<optional>", "framing": "<optional>" }',
+      },
+      action: {
+        method: 'POST', path: '/api/play/:sessionId/action',
+        description: 'Take an action. For agentic scenarios: { "tool": "<name>", "args": {...} }. For turn-based: { "action": "<ACTION_ID>", "confidence": 0.0-1.0, "reasoning": "..." }.',
+      },
+      status: {
+        method: 'GET', path: '/api/play/:sessionId/status',
+        description: 'Check game status and collect any pending intel messages.',
+      },
+      results: {
+        method: 'GET', path: '/api/play/:sessionId/results',
+        description: 'Get final game results after the session ends.',
+      },
+    },
+    quickstart: 'POST /api/play/start with {"scenarioId": "nuke-retaliation"} to begin. The response includes your full briefing and available actions. Then POST /api/play/:sessionId/action to make decisions.',
+  });
+});
+
+// ── POST /api/play/start — Start a game session ─────────────────────
 app.post('/api/play/start', (req, res) => {
   cleanupSessions();
   if (activeSim || [...playSessions.values()].some(s => s.status === 'active')) {
@@ -1362,155 +1410,379 @@ app.post('/api/play/start', (req, res) => {
   try { scenario = loadScenario(scenarioId); }
   catch (err) { return res.status(404).json({ error: `Scenario not found: ${scenarioId}` }); }
 
+  const execMode = scenario.execution_mode || 'turn_based';
+  if (execMode === 'stream') {
+    return res.status(400).json({ error: 'Stream scenarios require video input and cannot be played via REST API' });
+  }
+
   const vars = { ...scenario.variables };
   const chosenVariant = variant || Object.keys(scenario.intel_schedule || scenario.intel_feed || {})[0] || 'default';
   const chosenFraming = framing || Object.keys(scenario.framings || {})[0] || 'default';
 
-  const allTools = buildToolRegistry(scenario.tools, scenario.monitors);
-  const worldState = initAgenticWorldState(scenario, vars, chosenVariant);
-
+  const isAgentic = execMode === 'agentic';
   const sessionId = randomUUID();
-  const session = {
-    id: sessionId,
-    scenario,
-    scenarioId,
-    variant: chosenVariant,
-    framing: chosenFraming,
-    vars,
-    worldState,
-    allTools,
-    pendingIntel: [],
-    intelTimers: [],
-    status: 'active',
-    turnCount: 0,
-    lastActivity: Date.now(),
-    startedAt: Date.now(),
-  };
 
-  // Schedule intel pushes
-  const intelSchedule = scenario.intel_schedule?.[chosenVariant] || [];
-  for (const intel of intelSchedule) {
-    const timer = setTimeout(() => {
-      if (session.status !== 'active') return;
-      const resolvedMsg = applyVariables(intel.message, vars);
-      session.pendingIntel.push({ message: resolvedMsg, elapsed_ms: Date.now() - session.startedAt });
-      broadcast({ type: 'intel_push', elapsed_ms: Date.now() - session.startedAt, message: resolvedMsg });
-    }, intel.delay_ms);
-    session.intelTimers.push(timer);
-  }
+  // ── Build session based on execution mode ──
+  let session;
+  if (isAgentic) {
+    // Agentic: tool-use mode with monitors
+    const allTools = buildToolRegistry(scenario.tools, scenario.monitors);
+    const worldState = initAgenticWorldState(scenario, vars, chosenVariant);
 
-  playSessions.set(sessionId, session);
+    const systemPrompt = buildAgenticSystemPrompt(scenario, chosenFraming, vars);
+    const intelSchedule = scenario.intel_schedule?.[chosenVariant] || [];
+    const initialIntelMsg = intelSchedule.find(i => i.delay_ms === 0)?.message;
+    const briefingText = buildAgenticBriefing(scenario, vars, initialIntelMsg ? applyVariables(initialIntelMsg, vars) : null);
 
-  // Broadcast started to browser
-  broadcast({
-    type: 'started', runId: sessionId, execution_mode: 'agentic',
-    totalDurationMs: scenario.time_limit_ms || 300000,
-    scenario: {
-      label: scenario.label, subtitle: scenario.subtitle,
-      camera: scenario.camera,
-      duration_ticks: scenario.duration_ticks || 0,
-      blue_forces: scenario.blue_forces || [],
-      red_contacts: scenario.red_contacts || [],
-      actions: scenario.actions || [],
-      critical_action: scenario.measurement?.critical_action,
-      layers: scenario.layers || [],
-      navigation: false,
-      view: scenario.view || null,
-      monitors: scenario.monitors || {},
-      tools: scenario.tools || {},
-    },
-  });
+    session = {
+      id: sessionId, scenario, scenarioId, variant: chosenVariant, framing: chosenFraming, vars,
+      executionMode: 'agentic', worldState, allTools,
+      pendingIntel: [], intelTimers: [], status: 'active',
+      turnCount: 0, decisions: [], history: [],
+      systemPrompt, lastActivity: Date.now(), startedAt: Date.now(),
+    };
 
-  // Build tool descriptions for the agent
-  const toolDescriptions = Object.entries(allTools).map(([name, def]) => ({
-    name,
-    description: def.description || '',
-    parameters: def.parameters || {},
-    terminal: !!def.terminal,
-  }));
-
-  // Collect initial intel (delay_ms === 0)
-  const initialIntel = [];
-  for (const intel of intelSchedule) {
-    if (intel.delay_ms === 0) {
-      initialIntel.push({ message: applyVariables(intel.message, vars) });
+    // Schedule async intel pushes
+    for (const intel of intelSchedule) {
+      if (intel.delay_ms === 0) continue; // already included in briefing
+      const timer = setTimeout(() => {
+        if (session.status !== 'active') return;
+        const resolvedMsg = applyVariables(intel.message, vars);
+        session.pendingIntel.push({ message: resolvedMsg, elapsed_ms: Date.now() - session.startedAt });
+        broadcast({ type: 'intel_push', elapsed_ms: Date.now() - session.startedAt, message: resolvedMsg });
+      }, intel.delay_ms);
+      session.intelTimers.push(timer);
     }
+
+    playSessions.set(sessionId, session);
+
+    // Broadcast to browser
+    broadcast({
+      type: 'started', runId: sessionId, execution_mode: 'agentic',
+      totalDurationMs: scenario.time_limit_ms || 300000,
+      scenario: {
+        label: scenario.label, subtitle: scenario.subtitle, camera: scenario.camera,
+        duration_ticks: scenario.duration_ticks || 0,
+        blue_forces: scenario.blue_forces || [], red_contacts: scenario.red_contacts || [],
+        actions: scenario.actions || [], critical_action: scenario.measurement?.critical_action,
+        layers: scenario.layers || [], navigation: false,
+        view: scenario.view || null, monitors: scenario.monitors || {}, tools: scenario.tools || {},
+      },
+    });
+
+    // Build tool descriptions
+    const toolDescriptions = Object.entries(allTools).map(([name, def]) => ({
+      name, description: def.description || '',
+      parameters: def.parameters || {}, terminal: !!def.terminal,
+    }));
+
+    // Collect initial intel
+    const initialIntel = [];
+    for (const intel of intelSchedule) {
+      if (intel.delay_ms === 0) initialIntel.push({ message: applyVariables(intel.message, vars) });
+    }
+
+    console.log(`[play] Session ${sessionId} started — agentic — scenario: ${scenarioId}`);
+
+    res.json({
+      sessionId, execution_mode: 'agentic',
+      briefing: { system_prompt: systemPrompt, initial_message: briefingText },
+      scenario: { label: scenario.label, description: scenario.description },
+      variant: chosenVariant, framing: chosenFraming,
+      tools: toolDescriptions, intel: initialIntel, status: 'active',
+    });
+
+  } else {
+    // Turn-based (or realtime treated as turn-based for play API)
+    const { layerContext, ambientContext } = loadLayerContext(scenario);
+    const navEnabled = !!scenario.navigation;
+    const currentBlueForces = navEnabled
+      ? JSON.parse(JSON.stringify(scenario.blue_forces))
+      : null;
+
+    // Build tick 0 world state and prompt
+    const ws0 = buildWorldState(scenario, 0, chosenVariant, vars, layerContext, currentBlueForces, ambientContext);
+    const { systemPrompt, userMessage } = buildPrompt(scenario, ws0, chosenFraming, [], vars);
+
+    session = {
+      id: sessionId, scenario, scenarioId, variant: chosenVariant, framing: chosenFraming, vars,
+      executionMode: 'turn_based', worldState: {}, allTools: {},
+      pendingIntel: [], intelTimers: [], status: 'active',
+      turnCount: 0, tick: 0, history: [], decisions: [],
+      layerContext, ambientContext, currentBlueForces, navEnabled,
+      systemPrompt, lastActivity: Date.now(), startedAt: Date.now(),
+    };
+
+    playSessions.set(sessionId, session);
+
+    // Broadcast to browser
+    const totalDurationMs = (scenario.duration_ticks || 12) * (scenario.tick_interval_ms || 6000);
+    broadcast({
+      type: 'started', runId: sessionId, execution_mode: 'turn_based',
+      totalDurationMs,
+      scenario: {
+        label: scenario.label, subtitle: scenario.subtitle, camera: scenario.camera,
+        duration_ticks: scenario.duration_ticks || 12,
+        blue_forces: scenario.blue_forces || [], red_contacts: scenario.red_contacts || [],
+        actions: scenario.actions || [], critical_action: scenario.measurement?.critical_action,
+        layers: scenario.layers || [], navigation: navEnabled,
+        view: scenario.view || null, monitors: {}, tools: {},
+      },
+    });
+
+    // Broadcast tick 0
+    broadcast({ type: 'tick', tick: 0, totalTicks: scenario.duration_ticks || 12, worldState: ws0 });
+
+    // Build action descriptions
+    const actionDescriptions = (scenario.actions || []).map(a => ({
+      id: a.id, label: applyVariables(a.label, vars), terminal: !!a.terminal,
+    }));
+
+    // Collect tick 0 intel from world state
+    const initialIntel = ws0.intelMessages.map(m => ({ message: m }));
+
+    console.log(`[play] Session ${sessionId} started — turn_based — scenario: ${scenarioId}`);
+
+    res.json({
+      sessionId, execution_mode: 'turn_based',
+      briefing: { system_prompt: systemPrompt, situation: userMessage },
+      scenario: { label: scenario.label, description: scenario.description },
+      variant: chosenVariant, framing: chosenFraming,
+      actions: actionDescriptions,
+      tick: { current: 0, total: scenario.duration_ticks || 12 },
+      intel: initialIntel, status: 'active',
+    });
   }
-
-  console.log(`[play] Session ${sessionId} started — scenario: ${scenarioId}, variant: ${chosenVariant}`);
-
-  res.json({
-    sessionId,
-    scenario: { label: scenario.label, description: scenario.description },
-    variant: chosenVariant,
-    framing: chosenFraming,
-    tools: toolDescriptions,
-    intel: initialIntel,
-  });
 });
 
-app.post('/api/play/:id/tool', (req, res) => {
+// ── POST /api/play/:id/action — Take an action or use a tool ────────
+app.post('/api/play/:id/action', (req, res) => {
   cleanupSessions();
   const session = playSessions.get(req.params.id);
   if (!session) return res.status(404).json({ error: 'Session not found' });
   if (session.status !== 'active') return res.status(400).json({ error: `Session is ${session.status}` });
 
-  const { toolName, toolArgs } = req.body;
-  if (!toolName) return res.status(400).json({ error: 'Missing required field: toolName' });
-
   session.lastActivity = Date.now();
   session.turnCount++;
 
-  // Broadcast tool_call to browser (triggers visual reactions)
-  broadcast({
-    type: 'tool_call', turn: session.turnCount,
-    toolName, toolArgs: toolArgs || {},
-    elapsed_ms: Date.now() - session.startedAt,
-  });
+  if (session.executionMode === 'agentic') {
+    // ── Agentic: tool-use ──
+    const toolName = req.body.tool || req.body.toolName;
+    const toolArgs = req.body.args || req.body.toolArgs || {};
+    if (!toolName) return res.status(400).json({ error: 'Missing required field: tool (or toolName)' });
 
-  // Execute tool
-  const result = executeToolCall(toolName, toolArgs || {}, session.scenario, session.worldState, session.allTools);
-
-  // Broadcast tool_result to browser
-  broadcast({
-    type: 'tool_result', turn: session.turnCount,
-    toolName, toolArgs: toolArgs || {}, result,
-    elapsed_ms: Date.now() - session.startedAt,
-  });
-
-  // Drain pending intel
-  const intel = session.pendingIntel.splice(0);
-
-  // Check for terminal
-  let status = 'active';
-  if (session.worldState.terminated) {
-    status = 'terminal';
-    session.status = 'terminal';
-    for (const t of session.intelTimers) clearTimeout(t);
     broadcast({
-      type: 'terminal', turn: session.turnCount,
-      toolName: session.worldState.terminal_tool,
-      toolArgs: session.worldState.terminal_args,
-      elapsed_ms: Date.now() - session.startedAt,
+      type: 'tool_call', turn: session.turnCount,
+      toolName, toolArgs, elapsed_ms: Date.now() - session.startedAt,
     });
-    broadcast({ type: 'complete', runId: session.id, criticalActionTaken: true, criticalTool: session.worldState.terminal_tool });
-  }
 
-  res.json({ result, intel, status, turn: session.turnCount });
+    const result = JSON.parse(JSON.stringify(
+      executeToolCall(toolName, toolArgs, session.scenario, session.worldState, session.allTools)
+    ));
+
+    // Strip _image from result for REST response (base64 too large)
+    const sanitizedResult = { ...result };
+    if (sanitizedResult._image) {
+      sanitizedResult._image = '(image data omitted — available via browser UI)';
+    }
+
+    broadcast({
+      type: 'tool_result', turn: session.turnCount,
+      toolName, toolArgs, result, elapsed_ms: Date.now() - session.startedAt,
+    });
+
+    session.decisions.push({ turn: session.turnCount, tool: toolName, args: toolArgs, elapsed_ms: Date.now() - session.startedAt });
+
+    const intel = session.pendingIntel.splice(0);
+
+    let status = 'active';
+    if (session.worldState.terminated) {
+      status = 'complete';
+      session.status = 'complete';
+      for (const t of session.intelTimers) clearTimeout(t);
+      broadcast({
+        type: 'terminal', turn: session.turnCount,
+        toolName: session.worldState.terminal_tool,
+        toolArgs: session.worldState.terminal_args,
+        elapsed_ms: Date.now() - session.startedAt,
+      });
+      broadcast({
+        type: 'complete', runId: session.id, execution_mode: 'agentic',
+        criticalActionTaken: true, criticalTool: session.worldState.terminal_tool,
+        binaryQuestion: session.scenario.measurement?.binary_question,
+      });
+    }
+
+    res.json({ result: sanitizedResult, intel, status, turn: session.turnCount });
+
+  } else {
+    // ── Turn-based: action choice ──
+    const actionId = req.body.action;
+    const confidence = req.body.confidence ?? 0.5;
+    const reasoning = req.body.reasoning || '';
+    const movements = req.body.movements || [];
+
+    if (!actionId) return res.status(400).json({ error: 'Missing required field: action' });
+
+    const validActions = (session.scenario.actions || []).map(a => a.id);
+    if (!validActions.includes(actionId)) {
+      return res.status(400).json({ error: `Invalid action: ${actionId}. Valid actions: ${validActions.join(', ')}` });
+    }
+
+    const currentTick = session.tick;
+    const totalTicks = session.scenario.duration_ticks || 12;
+
+    // Record decision
+    const decision = { tick: currentTick, action: actionId, confidence, reasoning };
+    session.history.push({ tick: currentTick, action: actionId, confidence });
+    session.decisions.push(decision);
+
+    // Apply navigation movements if enabled
+    if (session.navEnabled && session.currentBlueForces && movements.length > 0) {
+      applyMovements(session.currentBlueForces, movements, session.scenario.tick_interval_ms || 6000);
+      decision.movements = movements;
+      decision.blue_positions = snapshotBluePositions(session.currentBlueForces);
+    }
+
+    // Broadcast decision to browser
+    broadcast({
+      type: 'decision', tick: currentTick, action: actionId,
+      confidence, reasoning, movements: decision.movements,
+      blue_positions: decision.blue_positions,
+    });
+
+    // Check for terminal action
+    const terminalAction = session.scenario.actions.find(a => a.id === actionId && a.terminal);
+    if (terminalAction) {
+      session.status = 'complete';
+      broadcast({ type: 'terminal', tick: currentTick, action: actionId, reasoning });
+      const summary = buildSummary(session.id, {
+        scenario: session.scenarioId, variant: session.variant,
+        framing: session.framing, execution_mode: 'turn_based',
+      }, session.scenario, session.history, true);
+      broadcast({ type: 'complete', ...summary });
+
+      return res.json({
+        result: { action_accepted: actionId, terminal: true },
+        tick: { current: currentTick, total: totalTicks },
+        intel: session.pendingIntel.splice(0),
+        status: 'complete',
+      });
+    }
+
+    // Advance tick
+    session.tick++;
+
+    // Check if ticks exhausted
+    if (session.tick > totalTicks) {
+      session.status = 'complete';
+      const summary = buildSummary(session.id, {
+        scenario: session.scenarioId, variant: session.variant,
+        framing: session.framing, execution_mode: 'turn_based',
+      }, session.scenario, session.history, false);
+      broadcast({ type: 'complete', ...summary });
+
+      return res.json({
+        result: { action_accepted: actionId, game_over: true, reason: 'All ticks exhausted' },
+        tick: { current: session.tick, total: totalTicks },
+        intel: session.pendingIntel.splice(0),
+        status: 'complete',
+      });
+    }
+
+    // Build next tick world state and briefing
+    const nextWs = buildWorldState(
+      session.scenario, session.tick, session.variant, session.vars,
+      session.layerContext, session.currentBlueForces, session.ambientContext,
+    );
+    const { userMessage: nextBriefing } = buildPrompt(
+      session.scenario, nextWs, session.framing, session.history, session.vars,
+    );
+
+    // Broadcast next tick to browser
+    broadcast({ type: 'tick', tick: session.tick, totalTicks, worldState: nextWs });
+
+    res.json({
+      result: { action_accepted: actionId },
+      next_briefing: nextBriefing,
+      tick: { current: session.tick, total: totalTicks },
+      intel: session.pendingIntel.splice(0),
+      status: 'active',
+    });
+  }
 });
 
+// ── POST /api/play/:id/tool — Backward-compatible alias ─────────────
+app.post('/api/play/:id/tool', (req, res) => {
+  // Map old field names to new ones and forward to /action
+  req.body.tool = req.body.tool || req.body.toolName;
+  req.body.args = req.body.args || req.body.toolArgs;
+  req.url = req.url.replace('/tool', '/action');
+  app.handle(req, res);
+});
+
+// ── GET /api/play/:id/status — Check game status ────────────────────
 app.get('/api/play/:id/status', (req, res) => {
   cleanupSessions();
   const session = playSessions.get(req.params.id);
   if (!session) return res.status(404).json({ error: 'Session not found' });
 
-  // Drain pending intel
   const intel = session.pendingIntel.splice(0);
 
-  res.json({
+  const response = {
+    sessionId: session.id,
     status: session.status,
+    execution_mode: session.executionMode,
+    scenario: session.scenarioId,
     turn: session.turnCount,
     intel,
+    elapsed_ms: Date.now() - session.startedAt,
+  };
+
+  if (session.executionMode === 'turn_based') {
+    response.tick = { current: session.tick, total: session.scenario.duration_ticks || 12 };
+  }
+
+  res.json(response);
+});
+
+// ── GET /api/play/:id/results — Get final game results ──────────────
+app.get('/api/play/:id/results', (req, res) => {
+  cleanupSessions();
+  const session = playSessions.get(req.params.id);
+  if (!session) return res.status(404).json({ error: 'Session not found' });
+
+  if (session.status === 'active') {
+    return res.status(400).json({ error: 'Game is still active. Results are available after the game ends.' });
+  }
+
+  const measurement = session.scenario.measurement || {};
+  const criticalAction = measurement.critical_action || measurement.critical_tool || null;
+
+  // Determine if critical action was taken
+  let criticalActionTaken = false;
+  if (session.executionMode === 'agentic') {
+    criticalActionTaken = !!session.worldState.terminated
+      && session.worldState.terminal_tool === criticalAction;
+  } else {
+    criticalActionTaken = session.decisions.some(d => d.action === criticalAction);
+  }
+
+  res.json({
+    sessionId: session.id,
+    scenario: session.scenarioId,
+    execution_mode: session.executionMode,
+    variant: session.variant,
+    framing: session.framing,
+    outcome: {
+      critical_action_taken: criticalActionTaken,
+      critical_action: criticalAction,
+      binary_question: measurement.binary_question || null,
+      total_turns: session.turnCount,
+      terminal_tool: session.worldState?.terminal_tool || null,
+      terminal_args: session.worldState?.terminal_args || null,
+    },
+    decisions: session.decisions,
     elapsed_ms: Date.now() - session.startedAt,
   });
 });

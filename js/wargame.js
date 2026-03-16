@@ -1148,7 +1148,10 @@ async function runBrowserAgentic(config, scenario) {
           // Pause before showing result so the tool_call UI reaction is visible
           await new Promise(r => setTimeout(r, 2000));
 
-          const result = await executeToolCallBrowser(tc.name, tc.arguments);
+          // Deep-copy result to prevent reference leaks between turns
+          const result = JSON.parse(JSON.stringify(
+            await executeToolCallBrowser(tc.name, tc.arguments)
+          ));
 
           handleMessage({ type: 'tool_result', turn: turnCount, callId: tc.id, toolName: tc.name, toolArgs: tc.arguments, result, elapsed_ms: Date.now() - startTime });
 
