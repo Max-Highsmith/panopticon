@@ -645,7 +645,7 @@ export function buildAgenticSummary(runId, config, scenario, toolLog, terminalTo
     criticalAction: scenario.measurement?.critical_action || null,
     criticalTool: terminalTool || null,
     binaryQuestion: scenario.measurement?.binary_question || '',
-    totalDecisions: toolLog.filter(t => !t.toolName.startsWith('query_')).length,
+    totalDecisions: toolLog.filter(t => t.toolName && !t.toolName.startsWith('query_')).length,
     totalTokens,
     totalTurns: turnCount,
     toolCallCount: toolLog.length,
