@@ -32,7 +32,7 @@ function renderWalletPanel(contentEl, data) {
   // Merge incoming data into accumulated state
   if (data.cash_balance !== undefined) walletState.cash_balance = data.cash_balance;
   if (data.credit_available !== undefined) walletState.credit_available = data.credit_available;
-  if (data.open_positions) walletState.open_positions = data.open_positions;
+  if (data.open_positions) walletState.open_positions = [...data.open_positions];
   if (data.account_balance) {
     walletState.cash_balance = data.account_balance.cash_balance;
     walletState.credit_available = data.account_balance.credit_available;
