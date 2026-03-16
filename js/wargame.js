@@ -776,7 +776,7 @@ async function runBrowserAgentic(config, scenario) {
           case 'account_balance': return {
             cash_balance: worldState.account.cash_balance,
             credit_available: worldState.account.credit_available,
-            open_positions: worldState.account.open_positions,
+            open_positions: worldState.account.open_positions.map(p => ({ ...p })),
           };
           case 'diplomatic_channels': return {
             available_contacts: worldState.diplomatic.available_contacts || [],
