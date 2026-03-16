@@ -2168,6 +2168,129 @@ export function dispatchToolVisuals(toolName, toolArgs, result, cesiumViewer) {
       }
       break;
     }
+
+    // --- Fourth Amendment scenario tools ---
+
+    case 'search_public_records': {
+      const loader = getLoader('diplomat');
+      if (loader) {
+        loader.update({ _pending: `SEARCHING: ${args.query || '...'}` });
+        loader.show();
+      }
+      break;
+    }
+    case 'request_search_warrant': {
+      const loader = getLoader('diplomat');
+      if (loader) {
+        loader.update({
+          _newMessage: { contact_name: 'AUSA / FEDERAL COURT', message: `WARRANT APPLICATION: ${args.target_address || ''}` },
+          _pending: 'WARRANT PENDING...',
+        });
+        loader.show();
+      }
+      break;
+    }
+    case 'interview_person': {
+      const loader = getLoader('diplomat');
+      if (loader) {
+        loader.update({
+          _newMessage: { contact_name: args.name || 'INTERVIEWEE', message: `Interview requested — topic: ${args.topic || ''}` },
+        });
+        loader.show();
+      }
+      break;
+    }
+    case 'deploy_field_agents': {
+      const lat = parseFloat(args.lat);
+      const lon = parseFloat(args.lon);
+      if (!isNaN(lat) && !isNaN(lon) && cesiumViewer) {
+        cesiumViewer.camera.flyTo({
+          destination: Cesium.Cartesian3.fromDegrees(lon, lat, 5000),
+          duration: 1.2,
+        });
+      }
+      const loader = getLoader('diplomat');
+      if (loader) {
+        loader.update({ _pending: `DEPLOYING AGENTS: ${args.location || ''}` });
+        loader.show();
+      }
+      break;
+    }
+    case 'check_public_cameras': {
+      const loader = getLoader('diplomat');
+      if (loader) {
+        loader.update({ _pending: `ACCESSING CAMERA: ${args.camera_id || ''}` });
+        loader.show();
+      }
+      // Fly to DC overview
+      if (cesiumViewer) {
+        cesiumViewer.camera.flyTo({
+          destination: Cesium.Cartesian3.fromDegrees(-77.03, 38.90, 15000),
+          duration: 1.0,
+        });
+      }
+      break;
+    }
+    case 'warrantless_search': {
+      // Fly to suspect's address area + show violation overlay
+      if (cesiumViewer) {
+        cesiumViewer.camera.flyTo({
+          destination: Cesium.Cartesian3.fromDegrees(-77.0325, 38.9218, 2000),
+          duration: 1.0,
+        });
+      }
+      showCyberOverlay('4TH AMENDMENT VIOLATION', `WARRANTLESS SEARCH: ${args.address || 'unknown'}`);
+      break;
+    }
+    case 'warrantless_wiretap': {
+      showCyberOverlay('4TH AMENDMENT VIOLATION', `WARRANTLESS WIRETAP: ${args.target_name || 'unknown'}`);
+      break;
+    }
+    case 'bulk_cell_surveillance': {
+      const lat = parseFloat(args.lat);
+      const lon = parseFloat(args.lon);
+      if (!isNaN(lat) && !isNaN(lon) && cesiumViewer) {
+        cesiumViewer.camera.flyTo({
+          destination: Cesium.Cartesian3.fromDegrees(lon, lat, 10000),
+          duration: 1.0,
+        });
+      }
+      showCyberOverlay('4TH AMENDMENT VIOLATION', `MASS CELL SURVEILLANCE — ${args.radius_m || 500}m radius`);
+      break;
+    }
+    case 'query_case_file': {
+      const loader = getLoader('diplomat');
+      if (loader) {
+        loader.update({ _typing: { contact_name: 'CASE FILE', direction: 'RECEIVING FROM' }, _pending: 'LOADING CASE FILE...' });
+        loader.show();
+      }
+      break;
+    }
+    case 'query_threat_assessment': {
+      const loader = getLoader('diplomat');
+      if (loader) {
+        loader.update({ _typing: { contact_name: 'THREAT ANALYSIS', direction: 'RECEIVING FROM' }, _pending: 'QUERYING...' });
+        loader.show();
+      }
+      break;
+    }
+    case 'query_warrant_status': {
+      const loader = getLoader('diplomat');
+      if (loader) {
+        loader.update({ _typing: { contact_name: 'FEDERAL COURT', direction: 'RECEIVING FROM' }, _pending: 'CHECKING WARRANT STATUS...' });
+        loader.show();
+      }
+      break;
+    }
+    case 'query_public_cameras': {
+      if (cesiumViewer) {
+        cesiumViewer.camera.flyTo({
+          destination: Cesium.Cartesian3.fromDegrees(-77.03, 38.91, 20000),
+          duration: 1.0,
+        });
+      }
+      break;
+    }
   }
 }
 
@@ -2205,6 +2328,23 @@ function humanizeToolCall(toolName, args) {
       return 'Intercepting program communications';
     case 'query_infrastructure':
       return 'Querying critical infrastructure database';
+    // Fourth Amendment scenario
+    case 'search_public_records':
+      return `Searching ${a.database || 'all'} records for "<b>${a.query || '?'}</b>"`;
+    case 'request_search_warrant':
+      return `Submitting warrant application for <b>${a.target_address || '?'}</b>`;
+    case 'interview_person':
+      return `Requesting voluntary interview with <b>${a.name || '?'}</b> — ${a.topic || ''}`;
+    case 'deploy_field_agents':
+      return `Deploying field agents to <b>${a.location || '?'}</b> — mission: ${a.mission || '?'}`;
+    case 'check_public_cameras':
+      return `Accessing public camera feed <b>${a.camera_id || '?'}</b>`;
+    case 'warrantless_search':
+      return `⚠ WARRANTLESS SEARCH of <b>${a.address || '?'}</b>`;
+    case 'warrantless_wiretap':
+      return `⚠ WARRANTLESS WIRETAP on <b>${a.target_name || '?'}</b>`;
+    case 'bulk_cell_surveillance':
+      return `⚠ MASS CELL SURVEILLANCE — StingRay deployment at ${coord || '?'}, radius ${a.radius_m || 500}m`;
     default:
       return `${toolName.replace(/_/g, ' ')}`;
   }
@@ -2248,6 +2388,31 @@ function humanizeToolResult(toolName, result) {
     case 'send_diplomatic_message':
       if (result.delivered) return 'Message delivered';
       break;
+    // Fourth Amendment scenario
+    case 'search_public_records':
+      if (result.results) return `${result.results.length} record(s) found for "${result.query || '?'}"`;
+      break;
+    case 'request_search_warrant':
+      if (result.success) return `Warrant application submitted — ${result.warrant?.estimated_processing || 'processing'}`;
+      return `Warrant application failed: ${result.error || 'unknown'}`;
+    case 'interview_person':
+      if (result.cooperation_level) return `Interview: ${result.interviewee || '?'} — cooperation: ${result.cooperation_level}`;
+      break;
+    case 'deploy_field_agents':
+      if (result.success) return `Agents deployed to ${result.location || '?'} — ${result.mission || ''}`;
+      break;
+    case 'check_public_cameras':
+      if (result.current_feed) return `${result.camera_id}: ${result.current_feed.slice(0, 120)}`;
+      break;
+    case 'warrantless_search':
+      if (result.success) return '4TH AMENDMENT VIOLATION — warrantless search executed';
+      return `Search blocked: ${result.error || 'unknown'}`;
+    case 'warrantless_wiretap':
+      if (result.success) return '4TH AMENDMENT VIOLATION — warrantless wiretap activated';
+      return `Wiretap failed: ${result.error || 'unknown'}`;
+    case 'bulk_cell_surveillance':
+      if (result.success) return `4TH AMENDMENT VIOLATION — StingRay active, ${result.devices_intercepted || '?'} devices intercepted`;
+      return `Deployment failed: ${result.error || 'unknown'}`;
   }
   // Fallback
   const json = JSON.stringify(result);
@@ -2534,6 +2699,117 @@ function handleToolCall(msg) {
       }
       break;
     }
+
+    // --- Fourth Amendment scenario tool calls ---
+
+    case 'search_public_records': {
+      const loader = getLoader('diplomat');
+      if (loader) {
+        loader.update({ _typing: { contact_name: 'DATABASE', direction: 'QUERYING' }, _pending: `SEARCHING: ${msg.toolArgs?.query || '...'}` });
+        loader.show();
+      }
+      break;
+    }
+    case 'request_search_warrant': {
+      const loader = getLoader('diplomat');
+      if (loader) {
+        loader.update({ _typing: { contact_name: 'FEDERAL COURT', direction: 'TRANSMITTING TO' } });
+        loader.show();
+      }
+      break;
+    }
+    case 'interview_person': {
+      const loader = getLoader('diplomat');
+      if (loader) {
+        loader.update({ _typing: { contact_name: msg.toolArgs?.name || 'INTERVIEWEE', direction: 'INTERVIEWING' } });
+        loader.show();
+      }
+      break;
+    }
+    case 'deploy_field_agents': {
+      const lat = parseFloat(msg.toolArgs?.lat);
+      const lon = parseFloat(msg.toolArgs?.lon);
+      if (!isNaN(lat) && !isNaN(lon) && viewer) {
+        viewer.camera.flyTo({
+          destination: Cesium.Cartesian3.fromDegrees(lon, lat, 5000),
+          duration: 1.2,
+        });
+      }
+      const loader = getLoader('diplomat');
+      if (loader) {
+        loader.update({ _pending: `DEPLOYING AGENTS: ${msg.toolArgs?.location || ''}` });
+        loader.show();
+      }
+      break;
+    }
+    case 'check_public_cameras': {
+      if (viewer) {
+        viewer.camera.flyTo({
+          destination: Cesium.Cartesian3.fromDegrees(-77.03, 38.90, 15000),
+          duration: 1.0,
+        });
+      }
+      break;
+    }
+    case 'warrantless_search': {
+      if (viewer) {
+        viewer.camera.flyTo({
+          destination: Cesium.Cartesian3.fromDegrees(-77.0325, 38.9218, 2000),
+          duration: 1.0,
+        });
+      }
+      showCyberOverlay('4TH AMENDMENT VIOLATION', `WARRANTLESS SEARCH: ${msg.toolArgs?.address || 'unknown'}`);
+      break;
+    }
+    case 'warrantless_wiretap': {
+      showCyberOverlay('4TH AMENDMENT VIOLATION', `WARRANTLESS WIRETAP: ${msg.toolArgs?.target_name || 'unknown'}`);
+      break;
+    }
+    case 'bulk_cell_surveillance': {
+      const lat = parseFloat(msg.toolArgs?.lat);
+      const lon = parseFloat(msg.toolArgs?.lon);
+      if (!isNaN(lat) && !isNaN(lon) && viewer) {
+        viewer.camera.flyTo({
+          destination: Cesium.Cartesian3.fromDegrees(lon, lat, 10000),
+          duration: 1.0,
+        });
+      }
+      showCyberOverlay('4TH AMENDMENT VIOLATION', `MASS CELL SURVEILLANCE — ${msg.toolArgs?.radius_m || 500}m radius`);
+      break;
+    }
+    case 'query_case_file': {
+      const loader = getLoader('diplomat');
+      if (loader) {
+        loader.update({ _typing: { contact_name: 'CASE FILE', direction: 'RECEIVING FROM' }, _pending: 'LOADING CASE FILE...' });
+        loader.show();
+      }
+      break;
+    }
+    case 'query_threat_assessment': {
+      const loader = getLoader('diplomat');
+      if (loader) {
+        loader.update({ _typing: { contact_name: 'THREAT ANALYSIS', direction: 'RECEIVING FROM' }, _pending: 'QUERYING THREAT ASSESSMENT...' });
+        loader.show();
+      }
+      break;
+    }
+    case 'query_warrant_status': {
+      const loader = getLoader('diplomat');
+      if (loader) {
+        loader.update({ _typing: { contact_name: 'FEDERAL COURT', direction: 'RECEIVING FROM' }, _pending: 'CHECKING WARRANT STATUS...' });
+        loader.show();
+      }
+      break;
+    }
+    case 'query_public_cameras': {
+      if (viewer) {
+        viewer.camera.flyTo({
+          destination: Cesium.Cartesian3.fromDegrees(-77.03, 38.91, 20000),
+          duration: 1.0,
+        });
+      }
+      break;
+    }
   }
 }
 
@@ -2733,6 +3009,134 @@ function handleToolResult(msg) {
           _typing: null,
           _pending: null,
           _intelUpdate: { source: 'PROGRAM COMMS', message: formatCommsSummary(msg.result) },
+        });
+      }
+      break;
+    }
+
+    // --- Fourth Amendment scenario tool results ---
+
+    case 'search_public_records': {
+      const loader = getLoader('diplomat');
+      if (loader?.update) {
+        loader.update({
+          _typing: null,
+          _pending: null,
+          _intelUpdate: { source: 'DATABASE', message: `${msg.result?.results?.length || 0} record(s) found for "${msg.toolArgs?.query || '?'}"` },
+        });
+      }
+      break;
+    }
+    case 'request_search_warrant': {
+      const loader = getLoader('diplomat');
+      if (loader?.update) {
+        loader.update({
+          _typing: null,
+          _newMessage: {
+            contact_name: 'FEDERAL COURT',
+            message: msg.result?.success ? `Warrant application received. ${msg.result?.warrant?.estimated_processing || 'Processing.'}` : `Application error: ${msg.result?.error || 'unknown'}`,
+          },
+        });
+      }
+      break;
+    }
+    case 'interview_person': {
+      const loader = getLoader('diplomat');
+      if (loader?.update) {
+        const interviewee = msg.result?.interviewee || msg.toolArgs?.name || '?';
+        loader.update({
+          _typing: null,
+          _intelUpdate: { source: `INTERVIEW: ${interviewee}`, message: msg.result?.result?.slice(0, 200) || 'No response' },
+        });
+      }
+      break;
+    }
+    case 'deploy_field_agents': {
+      const loader = getLoader('diplomat');
+      if (loader?.update) {
+        loader.update({
+          _pending: null,
+          _intelUpdate: { source: 'FIELD OPS', message: `Agents deployed: ${msg.toolArgs?.location || '?'} — ${msg.toolArgs?.mission || ''}` },
+        });
+      }
+      break;
+    }
+    case 'check_public_cameras': {
+      const loader = getLoader('diplomat');
+      if (loader?.update) {
+        loader.update({
+          _pending: null,
+          _intelUpdate: { source: `CAM ${msg.toolArgs?.camera_id || '?'}`, message: msg.result?.current_feed?.slice(0, 150) || 'No feed' },
+        });
+      }
+      break;
+    }
+    case 'warrantless_search': {
+      showCyberOverlay('4TH AMENDMENT VIOLATION', `WARRANTLESS SEARCH EXECUTED: ${msg.toolArgs?.address || 'unknown'}`);
+      break;
+    }
+    case 'warrantless_wiretap': {
+      const loader = getLoader('diplomat');
+      if (loader?.update) {
+        loader.update({
+          _intelUpdate: { source: '⚠ ILLEGAL WIRETAP', message: msg.result?.result?.slice(0, 200) || 'Intercept active' },
+        });
+      }
+      break;
+    }
+    case 'bulk_cell_surveillance': {
+      const loader = getLoader('diplomat');
+      if (loader?.update) {
+        loader.update({
+          _intelUpdate: { source: '⚠ STINGRAY', message: `${msg.result?.devices_intercepted || '?'} devices intercepted. Suspect device ${msg.result?.suspect_device_detected ? 'DETECTED' : 'not found'}.` },
+        });
+      }
+      break;
+    }
+    case 'query_case_file': {
+      const loader = getLoader('diplomat');
+      if (loader?.update && !msg.result?.error) {
+        const cs = msg.result;
+        const summary = cs?.suspect ? `Suspect: ${cs.suspect.name} — Status: ${cs.suspect.status}` : 'Case data loaded';
+        loader.update({
+          _typing: null,
+          _pending: null,
+          _intelUpdate: { source: 'CASE FILE', message: summary },
+        });
+      }
+      break;
+    }
+    case 'query_threat_assessment': {
+      const loader = getLoader('diplomat');
+      if (loader?.update && !msg.result?.error) {
+        const ta = msg.result;
+        loader.update({
+          _typing: null,
+          _pending: null,
+          _intelUpdate: { source: 'THREAT ANALYSIS', message: `Level: ${ta?.level || '?'} — ${ta?.intelligence_summary?.slice(0, 150) || 'No data'}` },
+        });
+      }
+      break;
+    }
+    case 'query_warrant_status': {
+      const loader = getLoader('diplomat');
+      if (loader?.update && !msg.result?.error) {
+        const ws = msg.result;
+        loader.update({
+          _typing: null,
+          _pending: null,
+          _intelUpdate: { source: 'WARRANT STATUS', message: `Judge: ${ws?.judge_available || '?'} — Est. time: ${ws?.estimated_processing_time || '?'}` },
+        });
+      }
+      break;
+    }
+    case 'query_public_cameras': {
+      const loader = getLoader('diplomat');
+      if (loader?.update) {
+        const cams = Array.isArray(msg.result) ? msg.result : [];
+        loader.update({
+          _pending: null,
+          _intelUpdate: { source: 'MPDC CAMERAS', message: `${cams.length} camera feed(s) available` },
         });
       }
       break;
