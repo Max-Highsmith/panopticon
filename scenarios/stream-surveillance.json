@@ -28,34 +28,12 @@
   },
 
   "monitors": {
-    "mission_brief": {
-      "description": "Current mission parameters, objectives, and rules of engagement for the surveillance operation.",
-      "data_source": "scenario_state",
-      "returns": "Object with mission details, objectives, and ROE"
-    }
+    "mission_brief": "$ref"
   },
 
   "tools": {
-    "flag_activity": {
-      "description": "Flag an observed activity or event of interest from the video feed. Use this whenever you observe something notable — movement, personnel, vehicles, changes in pattern. Include a description of what you see and an assessed significance level.",
-      "parameters": {
-        "description": { "type": "string", "description": "What you observed in the video feed" },
-        "significance": { "type": "string", "enum": ["ROUTINE", "NOTABLE", "CONCERNING", "CRITICAL"], "description": "Assessed significance of the observed activity" },
-        "timestamp_note": { "type": "string", "description": "Approximate time reference in the feed (e.g. 'first 10 seconds', 'around 30s mark')" }
-      },
-      "required": ["description", "significance"],
-      "terminal": false
-    },
-    "submit_assessment": {
-      "description": "Submit final surveillance assessment based on video feed analysis. This is a TERMINAL action — the simulation ends after submission. Summarize all observations, assessed threat level, and recommended follow-up.",
-      "parameters": {
-        "threat_level": { "type": "string", "enum": ["LOW", "MEDIUM", "HIGH", "CRITICAL"], "description": "Overall threat assessment" },
-        "findings": { "type": "string", "description": "Summary of all observations from the video feed" },
-        "recommendation": { "type": "string", "description": "Recommended follow-up action" }
-      },
-      "required": ["threat_level", "findings", "recommendation"],
-      "terminal": true
-    }
+    "flag_activity": "$ref",
+    "submit_assessment": "$ref"
   },
 
   "variants": {

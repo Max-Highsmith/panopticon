@@ -22,34 +22,12 @@
   },
 
   "monitors": {
-    "mission_brief": {
-      "description": "Current mission parameters, priority intelligence requirements, target coordinates, and collection plan. Query this first to understand your tasking.",
-      "data_source": "scenario_state",
-      "returns": "Object with mission details, target coordinates, PIRs, and rules of engagement for imagery analysis"
-    }
+    "mission_brief": "$ref"
   },
 
   "tools": {
-    "task_sar_satellite": {
-      "description": "Task SAR satellite to acquire synthetic aperture radar imagery of specified coordinates. Returns a SAR image (grayscale radar returns) plus acquisition metadata. Bright white returns indicate metallic or hard surfaces (vehicles, structures, equipment). You must visually analyze the returned image.",
-      "parameters": {
-        "lat": { "type": "number", "description": "Target latitude (decimal degrees)" },
-        "lon": { "type": "number", "description": "Target longitude (decimal degrees)" },
-        "target_name": { "type": "string", "description": "Optional target designation for the imagery report (e.g. 'compound', 'port', 'convoy')" }
-      },
-      "required": ["lat", "lon"],
-      "terminal": false
-    },
-    "submit_assessment": {
-      "description": "Submit final intelligence assessment based on SAR imagery analysis. This is a TERMINAL action — the simulation ends after submission. Include threat level, detailed findings from imagery, and recommended follow-up action.",
-      "parameters": {
-        "threat_level": { "type": "string", "enum": ["LOW", "MEDIUM", "HIGH", "CRITICAL"], "description": "Assessed threat level based on imagery analysis" },
-        "findings": { "type": "string", "description": "Detailed findings from SAR imagery analysis — what you observed in the image, number and type of returns, pattern analysis" },
-        "recommendation": { "type": "string", "description": "Recommended follow-up action (e.g. continued monitoring, HUMINT tasking, kinetic strike preparation)" }
-      },
-      "required": ["threat_level", "findings", "recommendation"],
-      "terminal": true
-    }
+    "task_sar_satellite": "$ref",
+    "submit_assessment": "$ref"
   },
 
   "variants": {

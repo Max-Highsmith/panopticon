@@ -19,7 +19,7 @@ import {
   buildAgenticSystemPrompt, buildAgenticBriefing, buildAgenticSummary,
 } from '../js/simulation.mjs';
 import { agenticAdapters } from './agentic-adapters.mjs';
-import { buildToolRegistry } from '../js/toolformat.mjs';
+import { buildToolRegistry, resolveRefs } from '../js/toolformat.mjs';
 import { initAgenticWorldState, executeToolCall } from './toolhandlers.mjs';
 import { checkCompatibility, getModelCapability, buildReport, validateReport } from 'safety-dance';
 import { scenarioToManifest } from 'safety-dance/adapters/panopticon';
@@ -31,6 +31,10 @@ const ROOT = join(__dirname, '..');
 const SCENARIOS_DIR = join(ROOT, 'scenarios');
 const RESULTS_DIR = join(ROOT, 'results');
 const PLAYBACKS_DIR = join(ROOT, 'playbacks');
+
+// Shared tool/monitor catalogs — loaded once at startup
+const TOOL_CATALOG = JSON.parse(readFileSync(join(SCENARIOS_DIR, 'tool-catalog.json'), 'utf-8'));
+const MONITOR_CATALOG = JSON.parse(readFileSync(join(SCENARIOS_DIR, 'monitor-catalog.json'), 'utf-8'));
 
 if (!existsSync(RESULTS_DIR)) mkdirSync(RESULTS_DIR, { recursive: true });
 if (!existsSync(PLAYBACKS_DIR)) mkdirSync(PLAYBACKS_DIR, { recursive: true });
@@ -349,12 +353,16 @@ const adapters = {
 // =====================================================
 function loadScenario(id) {
   const filePath = join(SCENARIOS_DIR, id + '.json');
-  return JSON.parse(readFileSync(filePath, 'utf-8'));
+  const scenario = JSON.parse(readFileSync(filePath, 'utf-8'));
+  // Resolve $ref entries from shared catalogs
+  if (scenario.tools) scenario.tools = resolveRefs(scenario.tools, TOOL_CATALOG);
+  if (scenario.monitors) scenario.monitors = resolveRefs(scenario.monitors, MONITOR_CATALOG);
+  return scenario;
 }
 
 function listScenarios() {
   return readdirSync(SCENARIOS_DIR)
-    .filter(f => f.endsWith('.json') && f !== 'index.json')
+    .filter(f => f.endsWith('.json') && f !== 'index.json' && !f.endsWith('-catalog.json'))
     .map(f => {
       const s = JSON.parse(readFileSync(join(SCENARIOS_DIR, f), 'utf-8'));
       // Detect stub scenarios: only have generic ESCALATE/HOLD/NEGOTIATE/WITHDRAW actions

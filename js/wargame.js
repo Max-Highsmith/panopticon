@@ -335,6 +335,17 @@ async function startBrowserSimulation(config) {
     return;
   }
 
+  // Resolve $ref entries from shared tool/monitor catalogs
+  if (scenario.tools || scenario.monitors) {
+    const { resolveRefs } = await import('./toolformat.mjs');
+    const [toolCat, monCat] = await Promise.all([
+      fetch('scenarios/tool-catalog.json').then(r => r.json()).catch(() => ({})),
+      fetch('scenarios/monitor-catalog.json').then(r => r.json()).catch(() => ({})),
+    ]);
+    if (scenario.tools) scenario.tools = resolveRefs(scenario.tools, toolCat);
+    if (scenario.monitors) scenario.monitors = resolveRefs(scenario.monitors, monCat);
+  }
+
   // ── Safety Dance compatibility check ──
   try {
     const { checkCompatibility, getModelCapability, scenarioToManifest } = await import('./lib/safety-dance.mjs');

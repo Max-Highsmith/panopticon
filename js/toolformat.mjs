@@ -6,6 +6,32 @@
    =================================================================== */
 
 /**
+ * Resolve "$ref" entries in a tool or monitor object from a shared catalog.
+ * Entries with value "$ref" are replaced with the full definition from the
+ * catalog. Inline object definitions pass through unchanged.
+ * @param {Object} entries   Tool or monitor definitions from scenario JSON
+ * @param {Object} catalog   The shared catalog (tool-catalog or monitor-catalog)
+ * @returns {Object}         Resolved definitions (all entries are full objects)
+ */
+export function resolveRefs(entries, catalog) {
+  if (!entries || !catalog) return entries || {};
+  const resolved = {};
+  for (const [name, def] of Object.entries(entries)) {
+    if (def === '$ref') {
+      const catalogDef = catalog[name];
+      if (!catalogDef) {
+        console.warn(`[toolformat] "$ref" for "${name}" not found in catalog, skipping`);
+        continue;
+      }
+      resolved[name] = catalogDef;
+    } else {
+      resolved[name] = def;
+    }
+  }
+  return resolved;
+}
+
+/**
  * Convert scenario monitors into read-only query tools.
  * Each monitor becomes a tool named `query_<monitorName>`.
  * @param {Object} monitors  Scenario monitors object
