@@ -118,7 +118,7 @@ This ensures the click-to-view site panel shows rich detail.
 
 ## Icon Convention
 
-All critical mineral layers use `makeDiamondIcon(color, size)` at `SZ_MINE` (28px).
+All critical mineral layers use `makeDiamondIcon(color, size)` at `DISPLAY.MINE_ICON_SIZE` (28px).
 Each mineral gets a unique, visually distinct color.
 
 ## Category in Layer Catalog

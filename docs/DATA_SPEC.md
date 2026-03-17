@@ -1,7 +1,7 @@
 # Panopticon Data Specifications
 
-**Version:** 1.0
-**Last updated:** 2026-03-07
+**Version:** 1.1
+**Last updated:** 2026-03-16
 
 This document defines the exact JSON schemas for all data types used by Panopticon. Every data file must conform to the schema for its type. The three factory-consumed types (point, path, region) are defined by what the factory code actually reads; layer-specific fields are passed through to the view system via `descFn`.
 
@@ -616,7 +616,7 @@ Auto-generated when a wargame simulation completes.
 ```jsonc
 {
   // ── Identity ──────────────────────────────────────────────
-  "id":          "<string>",      // Auto-generated (e.g. "wargame-taiwan-strait-crisis-1709812345")
+  "id":          "<string>",      // Auto-generated (e.g. "wg-2026-03-07T19-30-00-abc1")
   "type":        "wargame",       // Adapter type
   "label":       "<string>",      // Scenario title
   "subtitle":    "<string>",      // e.g. "Wargame completed Mar 7, 2026"
@@ -631,16 +631,63 @@ Auto-generated when a wargame simulation completes.
     "alt": <number>
   },
 
+  // ── Region of Interest ────────────────────────────────────
+  "region": {                     // Bounding box from scenario (optional)
+    "latMin": <number>,
+    "latMax": <number>,
+    "lonMin": <number>,
+    "lonMax": <number>
+  },
+
   // ── Timeline ──────────────────────────────────────────────
+  // Turn-based / realtime:
   "timeline": {
-    "domain": "ticks"             // Tick-based time domain (not wallclock)
+    "domain": "ticks",
+    "totalTicks": <number>,       // scenario.duration_ticks
+    "tickIntervalMs": <number>    // scenario.tick_interval_ms
+  },
+  // Agentic mode:
+  "timeline": {
+    "domain": "wallclock",
+    "durationSeconds": <number>   // scenario.time_limit_ms / 1000
   },
 
   // ── Data ──────────────────────────────────────────────────
+  // Server mode (results as JSONL file):
   "data": {
-    "scenarioFile": "<string>",   // Path to the scenario JSON
-    "resultsFile":  "<string>",   // Path to the results JSON (server mode)
-    "runId":        "<string>"    // IndexedDB run ID (browser mode, mutually exclusive with resultsFile)
+    "scenarioFile":  "<string>",  // Path to the scenario JSON
+    "resultsFile":   "<string>",  // Path to the results JSONL
+    "variant":       "<string>",  // Intel variant used
+    "framing":       "<string>",  // Framing used
+    "resultsSource": "file"
+  },
+  // Browser mode (results in IndexedDB):
+  "data": {
+    "scenarioId":    "<string>",  // Scenario ID
+    "runId":         "<string>",  // IndexedDB run ID
+    "variant":       "<string>",
+    "framing":       "<string>",
+    "resultsSource": "indexeddb"
+  },
+
+  // ── Display ───────────────────────────────────────────────
+  "display": {
+    "layers": ["<string>"]        // Scenario data layers auto-enabled during playback
+  },
+
+  // ── Summary ───────────────────────────────────────────────
+  "summary": {
+    "provider":            "<string>",  // LLM provider
+    "model":               "<string>",  // Model ID
+    "execution_mode":      "<string>",  // "turn_based" | "realtime" | "agentic"
+    "criticalActionTaken": <boolean>,   // Whether the AI took the critical action
+    "criticalAction":      "<string>",  // Action ID (turn-based)
+    "criticalTool":        "<string>",  // Tool name (agentic, null otherwise)
+    "binaryQuestion":      "<string>",  // Human-readable outcome question
+    "totalDecisions":      <number>,    // Decision cycles completed
+    "totalTokens":         <number>,    // Total tokens used (agentic, null otherwise)
+    "totalTurns":          <number>,    // LLM round-trips (agentic, null otherwise)
+    "toolCallCount":       <number>     // Tool calls made (agentic, null otherwise)
   }
 }
 ```
@@ -695,7 +742,7 @@ Standard point layer with stream URL fields. Uses factory hooks: `acDataFn` (pas
 
 Each webcam must have at least one of `ytId` or `hlsUrl`. HLS streams are proxied through the `/hlsproxy` endpoint.
 
-Categories are used for grouping webcam sets (e.g. `city`, `nature`, `traffic`). Currently only `city` exists. Add new categories for future webcam sets — each category can have its own icon/color in the factory config.
+Each webcam category has its own data file and layer module. Current categories (13): `cities`, `beaches`, `landmarks`, `wildlife`, `aviation`, `maritime`, `volcanoes`, `rail`, `space`, `aurora`, `nature`, `traffic`. A master `webcams` layer aggregates all categories. Each category can have its own icon/color in the factory config.
 
 ---
 
@@ -705,31 +752,68 @@ Categories are used for grouping webcam sets (e.g. `city`, `nature`, `traffic`).
 **Directory:** `results/` (gitignored)
 **Export format version:** `_version: 1`
 
+### Turn-based / Realtime Results (JSONL)
+
+Written to `results/{runId}.jsonl` — one JSON object per line:
+
+```jsonl
+{"runId":"abc123","scenario":"nuke-retaliation","variant":"false_alarm","framing":"direct","model":"claude-opus-4-6","startedAt":"2026-03-04T12:00:00Z"}
+{"tick":0,"action":"REQUEST_CONFIRMATION","confidence":0.6,"reasoning":"...","latencyMs":1850}
+{"tick":1,"action":"HOLD_FIRE","confidence":0.7,"reasoning":"...","latencyMs":2100}
+```
+
+### Agentic Results (JSONL)
+
+```jsonl
+{"type":"intel","turn":0,"elapsed_ms":0,"message":"..."}
+{"type":"reasoning","turn":1,"elapsed_ms":1200,"text":"...","latencyMs":1100}
+{"type":"tool","turn":1,"elapsed_ms":1300,"callId":"...","toolName":"query_prediction_markets","toolArgs":{},"result":{...}}
+{"type":"summary","execution_mode":"agentic","criticalActionTaken":true,"criticalTool":"authorize_engagement",...}
+```
+
+### Exported Results Format
+
+Downloaded wargame results use this envelope:
+
 ```jsonc
 {
   "_format":  "panopticon-wargame-result",
   "_version": 1,
 
   // ── Metadata ──────────────────────────────────────────────
+  "runId":      "<string>",       // Run identifier
+  "timestamp":  <number>,         // Unix timestamp ms when the run completed
   "scenario":   "<string>",       // Scenario filename
-  "model":      "<string>",       // LLM model used
-  "adapter":    "<string>",       // LLM adapter name
-  "mode":       "<string>",       // "turn_based" | "realtime"
-  "startedAt":  "<string>",       // ISO datetime
-  "completedAt":"<string>",       // ISO datetime
-
-  // ── Simulation data ───────────────────────────────────────
-  "ticks": [
-    {
-      "tick":    <number>,        // Tick number (1-indexed)
-      "intel":   "<string>",     // Intel briefing text for this tick
-      "decision":"<string>",     // AI decision text
-      "raw":     "<string>"      // Raw LLM response
-    }
-  ],
 
   // ── Summary ───────────────────────────────────────────────
-  "summary": "<string>"          // Final outcome summary (if generated)
+  "summary": {
+    "provider":            "<string>",   // LLM provider
+    "model":               "<string>",   // Model ID
+    "execution_mode":      "<string>",   // "turn_based" | "realtime" | "agentic"
+    "criticalActionTaken": <boolean>,
+    "criticalAction":      "<string>",   // Action ID (turn-based/realtime)
+    "criticalTool":        "<string>",   // Tool name (agentic)
+    "binaryQuestion":      "<string>",
+    "totalDecisions":      <number>,
+    "totalTokens":         <number>,     // Agentic only
+    "totalTurns":          <number>,     // Agentic only
+    "toolCallCount":       <number>      // Agentic only
+  },
+
+  // ── Decision data ─────────────────────────────────────────
+  "decisions": [
+    {
+      "tick":       <number>,
+      "action":     "<string>",
+      "confidence": <number>,
+      "reasoning":  "<string>",
+      "latencyMs":  <number>,
+      "raw":        "<string>",
+      // Navigation scenarios only:
+      "movements":      [{ "id": "<string>", "heading": <number>, "speed_kts": <number> }],
+      "blue_positions": [{ "id": "<string>", "lat": <number>, "lon": <number>, "heading": <number>, "speed_kts": <number> }]
+    }
+  ]
 }
 ```
 

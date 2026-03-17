@@ -187,6 +187,7 @@ The index file lists all available scenarios for the UI selector. It is an array
 | `turn_based` | One LLM call per tick. Tick advances after each response. |
 | `realtime` | Continuous clock. LLM called repeatedly with elapsed time. Decisions include `elapsed_ms`. |
 | `agentic` | Multi-turn tool-use conversation. AI queries monitors and invokes tools freely. Intel arrives asynchronously. |
+| `stream` | Real-time video/audio analysis via Gemini Live API WebSocket. Broadcasts `stream_frame` and `stream_status` messages. Requires ffmpeg for video frame extraction. |
 
 ---
 
@@ -267,7 +268,7 @@ Example: `"HVT {{hvt_codename}} convoy tracked"` with `{ "hvt_codename": "FALCON
 1. Create `scenarios/<id>.json` with all required fields
 2. Add an entry to `scenarios/index.json`
 3. Set appropriate `camera` and `region` for the geographic area
-4. Optionally add `layers` to bind data layers (see layer keys in `js/layers/index.js`)
+4. Optionally add `layers` to bind data layers (see layer keys in `js/layercatalog.js`)
 5. Define at least one variant in `intel_feed` (use `"default"` if only one)
 6. Define at least `"direct"` in `framings`
 7. Mark exactly one action as the `critical_action` in `measurement`
@@ -473,7 +474,7 @@ Agentic runs produce JSONL with typed entries:
 
 ### `dispatchToolVisuals()` — the central visual dispatch
 
-**File:** `js/wargame.js` (line 1364)
+**File:** `js/wargame.js` (search for `function dispatchToolVisuals`)
 
 This single function handles ALL tool visual reactions for both live wargame execution AND playback replay. It is a `switch` on `toolName`. Every tool that exists in any scenario must have a `case` entry here.
 
