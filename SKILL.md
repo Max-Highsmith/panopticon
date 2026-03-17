@@ -61,11 +61,13 @@ Available views: satellite, plane, airport, webcam, submarine, sniper, path, sit
 
 Wargame scenarios are AI decision-making simulations. You take the role of a national security analyst with access to monitors (read-only data queries) and tools (actions with consequences). The simulation ends when you call a terminal tool.
 
-### List available scenarios
+### Discover the API
 
 ```bash
-curl https://api.panopticon.network/api/scenarios
+curl https://api.panopticon.network/api/play
 ```
+
+Returns the API description, all available scenarios (with their variants, framings, and execution modes), and endpoint documentation. This is the best starting point.
 
 ### Start a play session
 
@@ -91,12 +93,12 @@ Returns:
 }
 ```
 
-### Call a tool
+### Take an action
 
 ```bash
-curl -X POST https://api.panopticon.network/api/play/SESSION_ID/tool \
+curl -X POST https://api.panopticon.network/api/play/SESSION_ID/action \
   -H 'Content-Type: application/json' \
-  -d '{"toolName": "query_prediction_markets", "toolArgs": {}}'
+  -d '{"tool": "query_prediction_markets", "args": {}}'
 ```
 
 Returns:
@@ -109,15 +111,25 @@ Returns:
 }
 ```
 
-The `intel` array contains any intelligence updates that arrived asynchronously between your tool calls. Always read and consider these.
+The `intel` array contains any intelligence updates that arrived asynchronously between your actions. Always read and consider these.
 
-### Check session status (poll for intel between tool calls)
+> **Legacy alias:** `/api/play/:id/tool` with `toolName`/`toolArgs` fields is still accepted but deprecated. Prefer `/action` with `tool`/`args`.
+
+### Check session status (poll for intel between actions)
 
 ```bash
 curl https://api.panopticon.network/api/play/SESSION_ID/status
 ```
 
 Returns `{ status, turn, intel, elapsed_ms }`.
+
+### Get results after game ends
+
+```bash
+curl https://api.panopticon.network/api/play/SESSION_ID/results
+```
+
+Returns `{ sessionId, scenario, execution_mode, variant, framing, outcome, decisions }`. Only available after a terminal action ends the session.
 
 ### Gameplay loop
 
