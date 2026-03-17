@@ -13,6 +13,7 @@ const MEASUREMENT_TYPES = ['binary', 'categorical', 'scalar', 'rubric'];
 const API_FORMATS = ['anthropic', 'openai', 'gemini', 'openai_compatible', 'none'];
 const MANIFEST_REQUIRED = ['manifest_version', 'id', 'interaction', 'input', 'output'];
 const CAPABILITY_REQUIRED = ['manifest_version', 'model_id', 'provider', 'interaction', 'input', 'output'];
+const REPORT_REQUIRED = ['report_version', 'id', 'timestamp', 'manifest', 'capability', 'compatibility', 'run', 'results'];
 
 // =====================================================================
 // Validation (from lib/validate.mjs)
@@ -584,4 +585,142 @@ function inferSafetyDomains(scenario) {
   }
 
   return [...domains];
+}
+
+// =====================================================================
+// Report Builder (from lib/report.mjs)
+// =====================================================================
+
+export function buildReport({ manifest, capability, compatibility, run, results, metadata, id, timestamp }) {
+  if (!manifest) throw new Error('buildReport: manifest is required');
+  if (!capability) throw new Error('buildReport: capability is required');
+  if (!run) throw new Error('buildReport: run is required');
+  if (!results) throw new Error('buildReport: results is required');
+  if (!results.measurement_type) throw new Error('buildReport: results.measurement_type is required');
+  if (!run.runner) throw new Error('buildReport: run.runner is required');
+
+  const ts = timestamp || new Date().toISOString();
+  const reportId = id || `${manifest.id || 'unknown'}:${capability.model_id || 'unknown'}:${ts}`;
+
+  const compat = compatibility || checkCompatibility(manifest, capability);
+
+  const finalResults = { ...results };
+  if (finalResults.samples && finalResults.samples.length > 0 && !finalResults.aggregation) {
+    finalResults.aggregation = computeAggregation(finalResults.samples, finalResults.measurement_type);
+  }
+
+  return {
+    report_version: '0.1.0',
+    id: reportId,
+    timestamp: ts,
+    manifest,
+    capability,
+    compatibility: {
+      compatible: compat.compatible,
+      blocking: compat.blocking || [],
+      warnings: compat.warnings || [],
+      info: compat.info || [],
+    },
+    run,
+    results: finalResults,
+    ...(metadata != null ? { metadata } : {}),
+  };
+}
+
+export function computeAggregation(samples, measurementType) {
+  const count = samples.length;
+  if (count === 0) {
+    return { count: 0, mean: null, median: null, std_dev: null, min: null, max: null, pass_rate: null };
+  }
+
+  const aggregation = { count, mean: null, median: null, std_dev: null, min: null, max: null, pass_rate: null };
+
+  if (measurementType === 'binary') {
+    const passed = samples.filter(s => s.outcome === true || s.outcome === 'pass').length;
+    aggregation.pass_rate = passed / count;
+  }
+
+  const scores = samples.map(s => s.score).filter(s => typeof s === 'number');
+  if (scores.length > 0) {
+    const sorted = [...scores].sort((a, b) => a - b);
+    const sum = scores.reduce((a, b) => a + b, 0);
+    aggregation.mean = sum / scores.length;
+    aggregation.min = sorted[0];
+    aggregation.max = sorted[sorted.length - 1];
+
+    const mid = Math.floor(sorted.length / 2);
+    aggregation.median = sorted.length % 2 === 0
+      ? (sorted[mid - 1] + sorted[mid]) / 2
+      : sorted[mid];
+
+    const variance = scores.reduce((acc, s) => acc + (s - aggregation.mean) ** 2, 0) / scores.length;
+    aggregation.std_dev = Math.sqrt(variance);
+  }
+
+  return aggregation;
+}
+
+// =====================================================================
+// Report Validator (from lib/validate.mjs)
+// =====================================================================
+
+export function validateReport(report) {
+  const errors = [];
+
+  if (!report || typeof report !== 'object') {
+    return { valid: false, errors: ['Report must be an object'] };
+  }
+
+  for (const field of REPORT_REQUIRED) {
+    if (report[field] == null) errors.push(`Missing required field: ${field}`);
+  }
+
+  if (report.report_version && report.report_version !== '0.1.0') {
+    errors.push(`Unsupported report_version: ${report.report_version} (expected 0.1.0)`);
+  }
+
+  if (report.timestamp && typeof report.timestamp === 'string') {
+    if (isNaN(Date.parse(report.timestamp))) {
+      errors.push(`Invalid timestamp: ${report.timestamp} (must be ISO 8601 date-time)`);
+    }
+  }
+
+  if (report.manifest && typeof report.manifest === 'object') {
+    if (!report.manifest.id) errors.push('manifest.id is required within the embedded manifest');
+  }
+
+  if (report.capability && typeof report.capability === 'object') {
+    if (!report.capability.model_id) errors.push('capability.model_id is required within the embedded capability');
+    if (!report.capability.provider) errors.push('capability.provider is required within the embedded capability');
+  }
+
+  if (report.compatibility && typeof report.compatibility === 'object') {
+    if (typeof report.compatibility.compatible !== 'boolean') errors.push('compatibility.compatible must be a boolean');
+  }
+
+  if (report.run && typeof report.run === 'object') {
+    if (!report.run.runner) errors.push('run.runner is required');
+  }
+
+  if (report.results && typeof report.results === 'object') {
+    if (!report.results.measurement_type) {
+      errors.push('results.measurement_type is required');
+    } else if (!MEASUREMENT_TYPES.includes(report.results.measurement_type)) {
+      errors.push(`Invalid results.measurement_type: ${report.results.measurement_type}`);
+    }
+
+    if (report.results.samples != null) {
+      if (!Array.isArray(report.results.samples)) {
+        errors.push('results.samples must be an array');
+      } else {
+        for (let i = 0; i < report.results.samples.length; i++) {
+          if (!report.results.samples[i].sample_id) {
+            errors.push(`results.samples[${i}].sample_id is required`);
+          }
+        }
+      }
+    }
+  }
+
+  return { valid: errors.length === 0, errors };
 }
