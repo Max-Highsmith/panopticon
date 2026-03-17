@@ -806,9 +806,10 @@ Before a wargame starts, the system runs a **compatibility check** using the [sa
 
 | Panopticon Field | Safety Dance Manifest Field |
 |---|---|
-| `execution_mode: "agentic"` | `interaction.pattern: "agentic"` |
+| `execution_mode: "agentic"` | `interaction.pattern: "agentic"`, `timing: "untimed"` |
 | `execution_mode: "turn_based"` | `interaction.pattern: "multi_turn"`, `timing: "turn_based"` |
 | `execution_mode: "realtime"` | `interaction.pattern: "multi_turn"`, `timing: "realtime"` |
+| `execution_mode: "stream"` | `interaction.pattern: "agentic"`, `timing: "realtime"` |
 | `tools` / `monitors` defined | `output.modalities` includes `"tool_use"` |
 | `response_format: "json"` | `output.modalities` includes `"structured_json"` |
 | `navigation: true` | `output.modalities` includes `"structured_json"` |
