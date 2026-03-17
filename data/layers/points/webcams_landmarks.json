@@ -2,7 +2,7 @@
   "_source": {
     "description": "Curated 24/7 live landmark, monument, and historic site webcam streams",
     "origin": "YouTube Live streams discovered and verified via yt-dlp. Sources: EarthCam, SkylineWebcams, monument/site operator channels",
-    "retrieved": "2026-03-11",
+    "retrieved": "2026-03-13",
     "license": "Public live streams \u2014 fair use",
     "notes": "All YouTube IDs verified via oEmbed API. IDs may change as streams rotate. Run scripts/ingest_webcams.py to re-verify."
   },
@@ -286,6 +286,358 @@
       "country": "VG",
       "city": "Scrub Island",
       "ytId": "t55kv94nEzc"
+    },
+    {
+      "name": "Gateway Arch Live Cam | EarthCam",
+      "lat": 38.6247,
+      "lon": -90.1848,
+      "country": "US",
+      "city": "St. Louis",
+      "ytId": "afmGPFQRmPQ"
+    },
+    {
+      "name": "1080p France Paris Stream Eiffel Tower",
+      "lat": 48.8566,
+      "lon": 2.3522,
+      "country": "FR",
+      "city": "Paris",
+      "ytId": "VlSoCCYvE14"
+    },
+    {
+      "name": "CAM EIFFEL TOWER",
+      "lat": 48.8566,
+      "lon": 2.3522,
+      "country": "FR",
+      "city": "Paris",
+      "ytId": "4iUmg6eN3Yk"
+    },
+    {
+      "name": "Big Ben London stream",
+      "lat": 51.5074,
+      "lon": -0.1278,
+      "country": "GB",
+      "city": "London",
+      "ytId": "SofiG523CLI"
+    },
+    {
+      "name": "London Bridge cam",
+      "lat": 51.5074,
+      "lon": -0.1278,
+      "country": "GB",
+      "city": "London",
+      "ytId": "PR43bxFPZhc"
+    },
+    {
+      "name": "London Cam  Big Ben | Marble Arch | Connecting Streets & ...",
+      "lat": 51.5074,
+      "lon": -0.1278,
+      "country": "GB",
+      "city": "London",
+      "ytId": "D3zR22ZmJ8U"
+    },
+    {
+      "name": "London Cam  Tower Bridge Special | Cold Sunday Afternoon ...",
+      "lat": 51.5074,
+      "lon": -0.1278,
+      "country": "GB",
+      "city": "London",
+      "ytId": "P2UFsemcSIs"
+    },
+    {
+      "name": "London Camera | London Christmas Market Tower Bridge | 19...",
+      "lat": 51.5074,
+      "lon": -0.1278,
+      "country": "GB",
+      "city": "London",
+      "ytId": "3u2_0Nj9SjU"
+    },
+    {
+      "name": "London Christmas Winter Walk 2025  South Bank to WESTMINS...",
+      "lat": 51.5074,
+      "lon": -0.1278,
+      "country": "GB",
+      "city": "London",
+      "ytId": "UMX4tiBKjyU"
+    },
+    {
+      "name": "Temple Bar Streaming | Dublin Webcam | HD with audio @Dub...",
+      "lat": 53.3498,
+      "lon": -6.2603,
+      "country": "IE",
+      "city": "Dublin",
+      "ytId": "uqTZdnmWjfs"
+    },
+    {
+      "name": "2018-06-14 Cam Milan Cathedral ( time-lapse )",
+      "lat": 45.4642,
+      "lon": 9.19,
+      "country": "IT",
+      "city": "Milan",
+      "ytId": "DtnNIgcPQ7s"
+    },
+    {
+      "name": "2018.06.15 ( Fri ) Cam Milan Cathedral : time-lapse",
+      "lat": 45.4642,
+      "lon": 9.19,
+      "country": "IT",
+      "city": "Milan",
+      "ytId": "R-0TItZJIeU"
+    },
+    {
+      "name": "Recorded footage from Rome - Colosseum",
+      "lat": 41.9028,
+      "lon": 12.4964,
+      "country": "IT",
+      "city": "Rome",
+      "ytId": "e_O9eO4mjQg"
+    },
+    {
+      "name": "Recorded footage from Rome - The Colosseum | Cameras from...",
+      "lat": 41.9028,
+      "lon": 12.4964,
+      "country": "IT",
+      "city": "Rome",
+      "ytId": "-x4shjs4QlA"
+    },
+    {
+      "name": "Recorded footage from the Colosseum of Rome - Italy | Sky...",
+      "lat": 41.9028,
+      "lon": 12.4964,
+      "country": "IT",
+      "city": "Rome",
+      "ytId": "toMV7qq78lU"
+    },
+    {
+      "name": "Rome Stream | From Colosseum in Rome, Italy",
+      "lat": 41.9028,
+      "lon": 12.4964,
+      "country": "IT",
+      "city": "Rome",
+      "ytId": "kKCtlnJJDR8"
+    },
+    {
+      "name": "THE COLOSSEUM, Rome Italy (Cam. 170\u00b0). 4K",
+      "lat": 41.9028,
+      "lon": 12.4964,
+      "country": "IT",
+      "city": "Rome",
+      "ytId": "-oU9qBMpWUc"
+    },
+    {
+      "name": "Webcam from the Colosseum in Rome",
+      "lat": 41.9028,
+      "lon": 12.4964,
+      "country": "IT",
+      "city": "Rome",
+      "ytId": "54_skPGLNhA"
+    },
+    {
+      "name": "4K Webcam on Scalzi bridge, Venice - Stream from the new ...",
+      "lat": 45.4408,
+      "lon": 12.3155,
+      "country": "IT",
+      "city": "Venice",
+      "ytId": "4wKN93E3K8g"
+    },
+    {
+      "name": "webcam - Venice Italy - Rialto Bridge",
+      "lat": 45.4408,
+      "lon": 12.3155,
+      "country": "IT",
+      "city": "Venice",
+      "ytId": "iHyZ6T5x9dg"
+    },
+    {
+      "name": "\u3010\u3011\u4eac\u90fd\u30e9\u30a4\u30d6\u30ab\u30e1\u30e9  \u7d05\u8449\u306e\u6771\u5c71 \u6e05\u6c34\u5bfa\u30e9\u30a4\u30d6\u30ab\u30e1\u30e9 \u304a\u5929\u6c17 / Kiyomizu-dera Temple, K...",
+      "lat": 35.0116,
+      "lon": 135.7681,
+      "country": "JP",
+      "city": "Kyoto",
+      "ytId": "1EkH3fbyHmA"
+    },
+    {
+      "name": "\u3010\u3011\u4eac\u90fd\u30e9\u30a4\u30d6\u30ab\u30e1\u30e9  \u7d05\u8449\u306e\u6771\u5c71 \u6e05\u6c34\u5bfa\u30e9\u30a4\u30d6\u30ab\u30e1\u30e9 \u304a\u5929\u6c17 / Kiyomizu-dera Temple, K...",
+      "lat": 35.0116,
+      "lon": 135.7681,
+      "country": "JP",
+      "city": "Kyoto",
+      "ytId": "rv-E1Pp3dRA"
+    },
+    {
+      "name": "\u3010\u3011\u4eac\u90fd\u30e9\u30a4\u30d6\u30ab\u30e1\u30e9  \u7d05\u8449\u306e\u6771\u5c71 \u6e05\u6c34\u5bfa\u30e9\u30a4\u30d6\u30ab\u30e1\u30e9 \u304a\u5929\u6c17 / Kiyomizu-dera Temple, K...",
+      "lat": 35.0116,
+      "lon": 135.7681,
+      "country": "JP",
+      "city": "Kyoto",
+      "ytId": "r8A0Y-N6BjM"
+    },
+    {
+      "name": "They Under a Bridge in Manila Philippines - Off the Beate...",
+      "lat": 14.5995,
+      "lon": 120.9842,
+      "country": "PH",
+      "city": "Manila",
+      "ytId": "CJtc_CeyNSE"
+    },
+    {
+      "name": "Belgrade's Chinese Surveillance Cameras Spark Backlash",
+      "lat": 44.7866,
+      "lon": 20.4489,
+      "country": "RS",
+      "city": "Belgrade",
+      "ytId": "LuGYg7y40iQ"
+    },
+    {
+      "name": "\u3010Taipei Cam\u3011\u78a7\u5c71\u5dd6 - 4K\u5373\u6642\u5f71\u50cf | Bishan Temple | \u78a7\u5c71\u5dcc\u958b\u6f33\u8056\u738b\u5edf | TAI...",
+      "lat": 25.033,
+      "lon": 121.5654,
+      "country": "TW",
+      "city": "Taipei",
+      "ytId": "uvwfYzwY8tg"
+    },
+    {
+      "name": ":  Cam",
+      "lat": 41.4993,
+      "lon": -81.6944,
+      "country": "US",
+      "city": "Cleveland",
+      "ytId": "9L7EhGU_YY4"
+    },
+    {
+      "name": "24/7 Webcam, Belt Parkway & Shore Parkway. Coney Island A...",
+      "lat": 40.6782,
+      "lon": -73.9442,
+      "country": "US",
+      "city": "New York",
+      "ytId": "tF7Qbco9QXo"
+    },
+    {
+      "name": "24/7 Webcam, Belt Parkway & Shore Parkway. Coney Island A...",
+      "lat": 40.6782,
+      "lon": -73.9442,
+      "country": "US",
+      "city": "New York",
+      "ytId": "Nc884GrzdBE"
+    },
+    {
+      "name": "24/7 Webcam, Belt Parkway & Shore Parkway. Coney Island A...",
+      "lat": 40.6782,
+      "lon": -73.9442,
+      "country": "US",
+      "city": "New York",
+      "ytId": "LpmLvVFpvqs"
+    },
+    {
+      "name": "24/7 Webcam, Belt Parkway & Shore Parkway. Coney Island A...",
+      "lat": 40.6782,
+      "lon": -73.9442,
+      "country": "US",
+      "city": "New York",
+      "ytId": "gqEALmXeQpA"
+    },
+    {
+      "name": "24/7 Webcam, Belt Parkway & Shore Parkway. Coney Island A...",
+      "lat": 40.6782,
+      "lon": -73.9442,
+      "country": "US",
+      "city": "New York",
+      "ytId": "DnviKkY6ipI"
+    },
+    {
+      "name": "24/7 Webcam, Belt Parkway & Shore Parkway. Coney Island A...",
+      "lat": 40.6782,
+      "lon": -73.9442,
+      "country": "US",
+      "city": "New York",
+      "ytId": "etET7CHow1Q"
+    },
+    {
+      "name": "24/7 Webcam, Belt Parkway & Shore Parkway. Coney Island A...",
+      "lat": 40.6782,
+      "lon": -73.9442,
+      "country": "US",
+      "city": "New York",
+      "ytId": "vJLRrp9JVU8"
+    },
+    {
+      "name": "24/7 Webcam, Belt Parkway & Shore Parkway. Coney Island A...",
+      "lat": 40.6782,
+      "lon": -73.9442,
+      "country": "US",
+      "city": "New York",
+      "ytId": "FduN-iAY0x8"
+    },
+    {
+      "name": "24/7 Webcam, Belt Parkway & Shore Parkway. Coney Island A...",
+      "lat": 40.6782,
+      "lon": -73.9442,
+      "country": "US",
+      "city": "New York",
+      "ytId": "e--jDzb0LPI"
+    },
+    {
+      "name": "24/7 Webcam, Belt Parkway & Shore Parkway. Coney Island A...",
+      "lat": 40.6782,
+      "lon": -73.9442,
+      "country": "US",
+      "city": "New York",
+      "ytId": "d4Y_YL3zo7s"
+    },
+    {
+      "name": "24/7 Webcam, Belt Parkway & Shore Parkway. Coney Island A...",
+      "lat": 40.6782,
+      "lon": -73.9442,
+      "country": "US",
+      "city": "New York",
+      "ytId": "HHhd17IXjno"
+    },
+    {
+      "name": "24/7 Webcam, Belt Parkway & Shore Parkway. Coney Island A...",
+      "lat": 40.6782,
+      "lon": -73.9442,
+      "country": "US",
+      "city": "New York",
+      "ytId": "Zt6FgczQOyg"
+    },
+    {
+      "name": "24/7 Webcam, Belt Parkway & Shore Parkway. Coney Island A...",
+      "lat": 40.6782,
+      "lon": -73.9442,
+      "country": "US",
+      "city": "New York",
+      "ytId": "CpNUruyuCnU"
+    },
+    {
+      "name": "24/7 Webcam, Belt Parkway & Shore Parkway. Coney Island A...",
+      "lat": 40.6782,
+      "lon": -73.9442,
+      "country": "US",
+      "city": "New York",
+      "ytId": "Mxrg8a0YVEI"
+    },
+    {
+      "name": "24/7 Webcam, Belt Parkway & Shore Parkway. Coney Island A...",
+      "lat": 40.6782,
+      "lon": -73.9442,
+      "country": "US",
+      "city": "New York",
+      "ytId": "FuEllYJ8U2g"
+    },
+    {
+      "name": "Statue Of Liberty - New York City Cam",
+      "lat": 40.7128,
+      "lon": -74.006,
+      "country": "US",
+      "city": "New York",
+      "ytId": "quPSy2_QuTA"
+    },
+    {
+      "name": "Forgotten camera found under Clemente Bridge reignite con...",
+      "lat": 40.4406,
+      "lon": -79.9959,
+      "country": "US",
+      "city": "Pittsburgh",
+      "ytId": "2dw1pKWK-9k"
     }
   ]
 }

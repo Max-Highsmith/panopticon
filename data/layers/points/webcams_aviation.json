@@ -2,8 +2,8 @@
   "_source": {
     "description": "Curated 24/7 live airport runway, terminal, and aviation webcam streams",
     "origin": "YouTube Live streams discovered and verified via yt-dlp. Sources: AirlineVideosLive+, Flightradar24, airport authority channels",
-    "retrieved": "2026-03-11",
-    "license": "Public live streams — fair use",
+    "retrieved": "2026-03-13",
+    "license": "Public live streams \u2014 fair use",
     "notes": "All YouTube IDs verified via oEmbed API. IDs may change as streams rotate. Run scripts/ingest_webcams.py to re-verify."
   },
   "aviation": [
@@ -32,7 +32,7 @@
       "ytId": "nNcfuDt4Xbs"
     },
     {
-      "name": "Zürich Webcam - cam Zurich Switzerland (near by Airport Z...",
+      "name": "Z\u00fcrich Webcam - cam Zurich Switzerland (near by Airport Z...",
       "lat": 46.8182,
       "lon": 8.2275,
       "country": "CH",
@@ -80,7 +80,7 @@
       "ytId": "fpaqR1d_K0g"
     },
     {
-      "name": ": Israel–Iran War Watch | Tel Aviv & Jerusalem Cameras – ...",
+      "name": ": Israel\u2013Iran War Watch | Tel Aviv & Jerusalem Cameras \u2013 ...",
       "lat": 31.7683,
       "lon": 35.2137,
       "country": "IL",
@@ -112,7 +112,7 @@
       "ytId": "Ad210DlxTlY"
     },
     {
-      "name": "🔴LIVE 24/7 : -Tel aviv-jarusalem-beirut-tehran Non",
+      "name": "\ud83d\udd34LIVE 24/7 : -Tel aviv-jarusalem-beirut-tehran Non",
       "lat": 32.0853,
       "lon": 34.7818,
       "country": "IL",
@@ -144,7 +144,7 @@
       "ytId": "dIeWVuZ3esM"
     },
     {
-      "name": "🔴 LIVE 24/7 Lisbon Airport 01.02.2026 • Livestream",
+      "name": "\ud83d\udd34 LIVE 24/7 Lisbon Airport 01.02.2026 \u2022 Livestream",
       "lat": 38.7223,
       "lon": -9.1393,
       "country": "PT",
@@ -152,7 +152,7 @@
       "ytId": "q4IBSEv3jLk"
     },
     {
-      "name": "🔴 LIVE 24/7 Lisbon Airport 02.01.2026 • Livestream",
+      "name": "\ud83d\udd34 LIVE 24/7 Lisbon Airport 02.01.2026 \u2022 Livestream",
       "lat": 38.7223,
       "lon": -9.1393,
       "country": "PT",
@@ -160,7 +160,7 @@
       "ytId": "aKqCFusFhgE"
     },
     {
-      "name": "🔴 LIVE 24/7 Lisbon Airport 21.12.2025 • Livestream",
+      "name": "\ud83d\udd34 LIVE 24/7 Lisbon Airport 21.12.2025 \u2022 Livestream",
       "lat": 38.7223,
       "lon": -9.1393,
       "country": "PT",
@@ -168,7 +168,7 @@
       "ytId": "apySjkSzmVg"
     },
     {
-      "name": "🔴 LIVE 24/7 Lisbon Airport 22.01.2026 • Livestream",
+      "name": "\ud83d\udd34 LIVE 24/7 Lisbon Airport 22.01.2026 \u2022 Livestream",
       "lat": 38.7223,
       "lon": -9.1393,
       "country": "PT",
@@ -176,7 +176,7 @@
       "ytId": "7EhvNHHeO1w"
     },
     {
-      "name": "🔴 LIVE 24/7 Lisbon Airport 22.02.2026 • Livestream",
+      "name": "\ud83d\udd34 LIVE 24/7 Lisbon Airport 22.02.2026 \u2022 Livestream",
       "lat": 38.7223,
       "lon": -9.1393,
       "country": "PT",
@@ -184,7 +184,7 @@
       "ytId": "SW_KnnhwW5o"
     },
     {
-      "name": "🔴 LIVE 24/7 Lisbon Airport 23.01.2026 • Livestream",
+      "name": "\ud83d\udd34 LIVE 24/7 Lisbon Airport 23.01.2026 \u2022 Livestream",
       "lat": 38.7223,
       "lon": -9.1393,
       "country": "PT",
@@ -192,7 +192,7 @@
       "ytId": "lFCLK4D5nRo"
     },
     {
-      "name": "🔴 LIVE 24/7 Lisbon Airport 28.01.2026 • Livestream",
+      "name": "\ud83d\udd34 LIVE 24/7 Lisbon Airport 28.01.2026 \u2022 Livestream",
       "lat": 38.7223,
       "lon": -9.1393,
       "country": "PT",
@@ -200,7 +200,7 @@
       "ytId": "fISZKlWI6TU"
     },
     {
-      "name": "🔴 LIVE 24/7 Lisbon Airport 30.01.2026 • Livestream",
+      "name": "\ud83d\udd34 LIVE 24/7 Lisbon Airport 30.01.2026 \u2022 Livestream",
       "lat": 38.7223,
       "lon": -9.1393,
       "country": "PT",
@@ -352,12 +352,396 @@
       "ytId": "4wOvgo27Cks"
     },
     {
+      "name": "STL Lambert Airport 24/7 Live",
+      "lat": 38.7487,
+      "lon": -90.372,
+      "country": "US",
+      "city": "St. Louis",
+      "ytId": "Td-agoDvgoU"
+    },
+    {
+      "name": "STL Lambert Airport 24/7 (Alt Feed)",
+      "lat": 38.7487,
+      "lon": -90.368,
+      "country": "US",
+      "city": "St. Louis",
+      "ytId": "E1FvIp8wmHU"
+    },
+    {
       "name": "Hanoi Camera 24/7 | Planes Flying Over the City part 2 | ...",
       "lat": 21.0278,
       "lon": 105.8342,
       "country": "VN",
       "city": "Hanoi",
       "ytId": "4NhM_guEk-g"
+    },
+    {
+      "name": "Iran BOMBS Dubai : Airport, Financial District Targeted |...",
+      "lat": 25.2048,
+      "lon": 55.2708,
+      "country": "AE",
+      "city": "Dubai",
+      "ytId": "FSRONdKtGlw"
+    },
+    {
+      "name": "Barbados International Airport Plane Camera - 11h January...",
+      "lat": 13.1939,
+      "lon": -59.5432,
+      "country": "BB",
+      "city": "Barbados",
+      "ytId": "Juz0r73BIgc"
+    },
+    {
+      "name": "Barbados International Airport \u2013 24/7 Camera Stream",
+      "lat": 13.1939,
+      "lon": -59.5432,
+      "country": "BB",
+      "city": "Barbados",
+      "ytId": "wCzuT2Jisuk"
+    },
+    {
+      "name": "March 19th 2025 from Barbados International Airport\ufe0f by C...",
+      "lat": 13.1939,
+      "lon": -59.5432,
+      "country": "BB",
+      "city": "Barbados",
+      "ytId": "MurZzpANDRU"
+    },
+    {
+      "name": "YYZ :  Toronto Pearson Airport Webcam",
+      "lat": 43.6532,
+      "lon": -79.3832,
+      "country": "CA",
+      "city": "Toronto",
+      "ytId": "Tg4tESSh1NI"
+    },
+    {
+      "name": "Z\u00fcrich Webcam - cam Zurich Switzerland (near by Airport Z...",
+      "lat": 47.3769,
+      "lon": 8.5417,
+      "country": "CH",
+      "city": "Zurich",
+      "ytId": "Jwh2jkS-cTE"
+    },
+    {
+      "name": "prague airport camera 24/7",
+      "lat": 50.0755,
+      "lon": 14.4378,
+      "country": "CZ",
+      "city": "Prague",
+      "ytId": "rL6VNOMwnAo"
+    },
+    {
+      "name": "Planespotting Frankfurt Airport b'mine Hotel Top View 07 ...",
+      "lat": 50.1109,
+      "lon": 8.6821,
+      "country": "DE",
+      "city": "Frankfurt",
+      "ytId": "1nNMaFwCkaI"
+    },
+    {
+      "name": "Planespotting Frankfurt Airport b'mine Hotel Top View | B...",
+      "lat": 50.1109,
+      "lon": 8.6821,
+      "country": "DE",
+      "city": "Frankfurt",
+      "ytId": "bg_le0jH80U"
+    },
+    {
+      "name": "Planespotting Frankfurt Airport mit Top View | 12. Stock ...",
+      "lat": 50.1109,
+      "lon": 8.6821,
+      "country": "DE",
+      "city": "Frankfurt",
+      "ytId": "X7kOFQuTFKs"
+    },
+    {
+      "name": "Sunday Planespotting Frankfurt Airport \ufe0fAdventsstream - W...",
+      "lat": 50.1109,
+      "lon": 8.6821,
+      "country": "DE",
+      "city": "Frankfurt",
+      "ytId": "hJ_Xew3dIZk"
+    },
+    {
+      "name": "\ufe0f 4K Frankfurt Airport (FRA) \u2014 Cloudy Skies: Runway 18 De...",
+      "lat": 50.1109,
+      "lon": 8.6821,
+      "country": "DE",
+      "city": "Frankfurt",
+      "ytId": "sPikghU6fxM"
+    },
+    {
+      "name": "\ufe0f 4K Frankfurt Airport (FRA) \u2014 Runway 18 Wet Departures (...",
+      "lat": 50.1109,
+      "lon": 8.6821,
+      "country": "DE",
+      "city": "Frankfurt",
+      "ytId": "W-idI_j0eVg"
+    },
+    {
+      "name": "\ufe0f 4K Frankfurt Airport (FRA) \u2014 Sunday Morning: Runway 18 ...",
+      "lat": 50.1109,
+      "lon": 8.6821,
+      "country": "DE",
+      "city": "Frankfurt",
+      "ytId": "QZYd94OPG-g"
+    },
+    {
+      "name": "\ufe0f 4K Frankfurt Airport (FRA) \u2014 Tuesday Morning: Foggy Ski...",
+      "lat": 50.1109,
+      "lon": 8.6821,
+      "country": "DE",
+      "city": "Frankfurt",
+      "ytId": "uBNnTQUBy7Q"
+    },
+    {
+      "name": "Tallinn Airport (TLL)  webcam 25.10.2023",
+      "lat": 59.437,
+      "lon": 24.7536,
+      "country": "EE",
+      "city": "Tallinn",
+      "ytId": "MJMVGLssTc8"
+    },
+    {
+      "name": "Tallinn Airport (TLL) webcam 31.05.2023",
+      "lat": 59.437,
+      "lon": 24.7536,
+      "country": "EE",
+      "city": "Tallinn",
+      "ytId": "ozpvIz2Ejp4"
+    },
+    {
+      "name": ": London Heathrow Airport 4K",
+      "lat": 51.5074,
+      "lon": -0.1278,
+      "country": "GB",
+      "city": "London",
+      "ytId": "_EF4OevPrYY"
+    },
+    {
+      "name": "LONDON HEATHROW - GO-AROUND 2:07:41 due to RUNWAY TRAFFIC",
+      "lat": 51.5074,
+      "lon": -0.1278,
+      "country": "GB",
+      "city": "London",
+      "ytId": "Vma6xieTUqI"
+    },
+    {
+      "name": "Airplane 360\u00b0 Camera Landing | Air India Flight Landing |...",
+      "lat": 28.7041,
+      "lon": 77.1025,
+      "country": "IN",
+      "city": "Delhi",
+      "ytId": "R9LUA2X0V-c"
+    },
+    {
+      "name": ": SUPER FRIDAY TAKEOFFS then LANDINGS on ADAM \ud83c\uddf3\ud83c\uddf1 Amsterda...",
+      "lat": 52.3676,
+      "lon": 4.9041,
+      "country": "NL",
+      "city": "Amsterdam",
+      "ytId": "UBOoknbMQW0"
+    },
+    {
+      "name": "Amsterdam Schiphol Airport - Plane Watching",
+      "lat": 52.3676,
+      "lon": 4.9041,
+      "country": "NL",
+      "city": "Amsterdam",
+      "ytId": "X-O5MqSwmlg"
+    },
+    {
+      "name": "Amsterdam Schiphol Airport - Plane Watching",
+      "lat": 52.3676,
+      "lon": 4.9041,
+      "country": "NL",
+      "city": "Amsterdam",
+      "ytId": "RxIBl3lZ2Lk"
+    },
+    {
+      "name": "24/7 Lisbon Airport 02.02.2026 \u2022 stream Plane Spotting \u2022 ...",
+      "lat": 38.7223,
+      "lon": -9.1393,
+      "country": "PT",
+      "city": "Lisbon",
+      "ytId": "_w1LDgcvxyc"
+    },
+    {
+      "name": "24/7 Lisbon Airport 03.03.2026 \u2022 stream Plane Spotting \u2022 ...",
+      "lat": 38.7223,
+      "lon": -9.1393,
+      "country": "PT",
+      "city": "Lisbon",
+      "ytId": "SbWAVl2qXcA"
+    },
+    {
+      "name": "24/7 Lisbon Airport 05.02.2026 \u2022 stream Plane Spotting \u2022 ...",
+      "lat": 38.7223,
+      "lon": -9.1393,
+      "country": "PT",
+      "city": "Lisbon",
+      "ytId": "2cIJNUXzt0w"
+    },
+    {
+      "name": "24/7 Lisbon Airport 05.12.2025 \u2022 stream Plane Spotting \u2022 ...",
+      "lat": 38.7223,
+      "lon": -9.1393,
+      "country": "PT",
+      "city": "Lisbon",
+      "ytId": "Iw3lhefWnaU"
+    },
+    {
+      "name": "24/7 Lisbon Airport 07.03.2026 \u2022 stream Plane Spotting \u2022 ...",
+      "lat": 38.7223,
+      "lon": -9.1393,
+      "country": "PT",
+      "city": "Lisbon",
+      "ytId": "Gg7HEFgg3u0"
+    },
+    {
+      "name": "24/7 Lisbon Airport 10.11.2025 \u2022 stream Plane Spotting \u2022 ...",
+      "lat": 38.7223,
+      "lon": -9.1393,
+      "country": "PT",
+      "city": "Lisbon",
+      "ytId": "b77hmdA4Utw"
+    },
+    {
+      "name": "24/7 Lisbon Airport 11.01.2026 \u2022 stream Plane Spotting \u2022 ...",
+      "lat": 38.7223,
+      "lon": -9.1393,
+      "country": "PT",
+      "city": "Lisbon",
+      "ytId": "VplTHvLn3TE"
+    },
+    {
+      "name": "24/7 Lisbon Airport 13.02.2026 \u2022 stream Plane Spotting \u2022 ...",
+      "lat": 38.7223,
+      "lon": -9.1393,
+      "country": "PT",
+      "city": "Lisbon",
+      "ytId": "PBiG5e1dYl8"
+    },
+    {
+      "name": "24/7 Lisbon Airport 16.12.2025 \u2022 stream Plane Spotting \u2022 ...",
+      "lat": 38.7223,
+      "lon": -9.1393,
+      "country": "PT",
+      "city": "Lisbon",
+      "ytId": "YgXYPrMMcsM"
+    },
+    {
+      "name": "24/7 Lisbon Airport 25.01.2026 \u2022 stream Plane Spotting \u2022 ...",
+      "lat": 38.7223,
+      "lon": -9.1393,
+      "country": "PT",
+      "city": "Lisbon",
+      "ytId": "gWFeQ1BRAf4"
+    },
+    {
+      "name": "24/7 Lisbon Airport 26.10.2025 \u2022 stream Plane Spotting \u2022 ...",
+      "lat": 38.7223,
+      "lon": -9.1393,
+      "country": "PT",
+      "city": "Lisbon",
+      "ytId": "J2NdJDEPrOk"
+    },
+    {
+      "name": "24/7 Lisbon Airport 27.01.2026 \u2022 stream Plane Spotting \u2022 ...",
+      "lat": 38.7223,
+      "lon": -9.1393,
+      "country": "PT",
+      "city": "Lisbon",
+      "ytId": "bfDZtxxtguc"
+    },
+    {
+      "name": "24/7 Lisbon Airport 27.09.2025 \u2022 stream Plane Spotting \u2022 ...",
+      "lat": 38.7223,
+      "lon": -9.1393,
+      "country": "PT",
+      "city": "Lisbon",
+      "ytId": "kPn0WKKJ8pg"
+    },
+    {
+      "name": "24/7 Lisbon Airport 28.01.2026 \u2022 stream Plane Spotting \u2022 ...",
+      "lat": 38.7223,
+      "lon": -9.1393,
+      "country": "PT",
+      "city": "Lisbon",
+      "ytId": "Z4HGJAHOZuQ"
+    },
+    {
+      "name": "camera at Atlanta airport: Heavy downpour",
+      "lat": 33.749,
+      "lon": -84.388,
+      "country": "US",
+      "city": "Atlanta",
+      "ytId": "SUr87aHUv_k"
+    },
+    {
+      "name": "LAS Vegas Airport 24/7 with views of 26R & 26L",
+      "lat": 36.1699,
+      "lon": -115.1398,
+      "country": "US",
+      "city": "Las Vegas",
+      "ytId": "_-Qg5jD-PfA"
+    },
+    {
+      "name": "KLAX |  OCTOBER 30, 2025 | LOS ANGELES INT AIRPORT  STREA...",
+      "lat": 34.0522,
+      "lon": -118.2437,
+      "country": "US",
+      "city": "Los Angeles",
+      "ytId": "lbPWrlZRWAo"
+    },
+    {
+      "name": "Los Angeles International Airport HD Webcam",
+      "lat": 34.0522,
+      "lon": -118.2437,
+      "country": "US",
+      "city": "Los Angeles",
+      "ytId": "U1GxB1BYRmE"
+    },
+    {
+      "name": "JFK STREAM FROM NEW YORK | HEAVIES B747, A380, B777 | SPE...",
+      "lat": 40.7128,
+      "lon": -74.006,
+      "country": "US",
+      "city": "New York",
+      "ytId": "WHF0i_bMXFQ"
+    },
+    {
+      "name": "JFK STREAM | AIRPORT ACTION FROM NEW YORK | AIRPORT",
+      "lat": 40.7128,
+      "lon": -74.006,
+      "country": "US",
+      "city": "New York",
+      "ytId": "3ZPxt-HsL70"
+    },
+    {
+      "name": "KSFO |  DEC 7, 2025 | SAN FRANCISCO INT AIRPORT  STREAM W...",
+      "lat": 37.7749,
+      "lon": -122.4194,
+      "country": "US",
+      "city": "San Francisco",
+      "ytId": "tHnHcRmglfw"
+    },
+    {
+      "name": "KSFO |  JAN 27, 2026 | SAN FRANCISCO INT AIRPORT  STREAM ...",
+      "lat": 37.7749,
+      "lon": -122.4194,
+      "country": "US",
+      "city": "San Francisco",
+      "ytId": "gtdsc-Y6Guo"
+    },
+    {
+      "name": "KSFO |  NOV 7, 2025 | SAN FRANCISCO INT AIRPORT  STREAM W...",
+      "lat": 37.7749,
+      "lon": -122.4194,
+      "country": "US",
+      "city": "San Francisco",
+      "ytId": "5SvmENJ7fJk"
     }
   ]
 }

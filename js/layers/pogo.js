@@ -1,62 +1,28 @@
 /* ===================================================================
-   PANOPTICON — Pokemon GO (POGO) POI Layer via Overpass API
+   PANOPTICON — Pokemon GO PokéStop Layer (Static Point Layer)
    =================================================================== */
 
-import { API, DISPLAY } from '../config.js';
-import { $ } from '../utils.js';
-import { icons } from '../icons.js';
-import { layers, entityMaps } from '../globe.js';
+import { DISPLAY } from '../config.js';
+import { createDataLayer } from './datalayer.js';
 import { registerLayerLoader } from '../layerregistry.js';
 
-const entities = entityMaps.pokemon;
-let loaded = false;
+const layer = createDataLayer({
+  layerKey: 'pokemon',
+  dataUrl: 'data/layers/points/pokestops.json',
+  idPrefix: 'pogo',
+  iconSize: DISPLAY.POGO_ICON_SIZE,
+  countId: 'pokemon-count',
+  logLabel: 'POGO',
+  flyTo: { lon: -74.0, lat: 40.75, alt: 20_000_000 },
+  categories: {
+    pokestops: { icon: 'pogo', color: '#ff4444', label: 'POKESTOP' },
+  },
+  descFn: (item) => `${item.city || ''} // ${item.country || ''}${item.notes ? ' // ' + item.notes : ''}`,
+});
 
-export function isPogoLoaded() { return loaded; }
-export function resetPogo()    { loaded = false; }
+registerLayerLoader('pokemon', { load: layer.load, flyTo: layer.FLY_TO, reset: layer.reset, dataUrl: 'data/layers/points/pokestops.json' });
 
-export async function fetchPogoStops(viewer) {
-  if (loaded) return;
-  try {
-    const query = `[out:json][timeout:25];
-(
-  node["historic"="monument"](40.7,-74.05,40.85,-73.9);
-  node["historic"="monument"](51.45,-0.2,51.55,0.05);
-  node["historic"="monument"](35.6,139.7,35.75,139.8);
-  node["historic"="monument"](48.82,2.28,48.9,2.4);
-  node["historic"="monument"](33.95,-118.35,34.1,-118.2);
-);
-out 300;`;
-
-    const res = await fetch(API.OVERPASS, {
-      method: 'POST',
-      body: 'data=' + encodeURIComponent(query),
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    });
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    const data = await res.json();
-
-    for (const el of (data.elements || [])) {
-      if (!el.lat || !el.lon) continue;
-      const id = String(el.id);
-      if (entities.has(id)) continue;
-
-      const name = (el.tags && (el.tags.name || el.tags.description)) || 'PokéStop';
-      const entity = viewer.entities.add({
-        position: Cesium.Cartesian3.fromDegrees(el.lon, el.lat, 200),
-        billboard: { image: icons.pogo, width: DISPLAY.POGO_ICON_SIZE, height: DISPLAY.POGO_ICON_SIZE, alignedAxis: Cesium.Cartesian3.ZERO, disableDepthTestDistance: 0 },
-      });
-      entity.show = layers.pokemon;
-      entity.acData = { hex: id, r: name, t: 'POKESTOP', flight: name, alt_baro: 0, gs: 0, track: 0, _view: 'site' };
-      entities.set(id, { entity });
-    }
-
-    loaded = true;
-    $('pogo-count').textContent = entities.size;
-    console.log(`POGO: loaded ${entities.size} stops from Overpass`);
-  } catch (err) {
-    console.error('POGO fetch error:', err);
-    $('pogo-count').textContent = 'ERR';
-  }
-}
-
-registerLayerLoader('pokemon', { load: fetchPogoStops, reset: resetPogo, view: 'site', layerType: 'live' });
+export const fetchPogoStops    = layer.load;
+export const isPogoLoaded      = layer.isLoaded;
+export const resetPogo         = layer.reset;
+export const POGO_FLY_TO       = layer.FLY_TO;

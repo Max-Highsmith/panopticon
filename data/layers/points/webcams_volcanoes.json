@@ -2,8 +2,8 @@
   "_source": {
     "description": "Curated 24/7 live volcano monitoring webcam streams",
     "origin": "YouTube Live streams discovered and verified via yt-dlp. Sources: VolcanoYT, USGS HVO, local observatory channels",
-    "retrieved": "2026-03-11",
-    "license": "Public live streams — fair use",
+    "retrieved": "2026-03-13",
+    "license": "Public live streams \u2014 fair use",
     "notes": "All YouTube IDs verified via oEmbed API. IDs may change as streams rotate. Run scripts/ingest_webcams.py to re-verify."
   },
   "volcanoes": [
@@ -64,7 +64,7 @@
       "ytId": "4B-xBkUX4jM"
     },
     {
-      "name": ": 24/7 Iceland Volcanic Eruption at Þorbjörn",
+      "name": ": 24/7 Iceland Volcanic Eruption at \u00deorbj\u00f6rn",
       "lat": 64.9631,
       "lon": -19.0208,
       "country": "IS",
@@ -120,7 +120,7 @@
       "ytId": "tk0tfYDxrUA"
     },
     {
-      "name": "Kilauea Volcano Crater 24/7 | Kīlauea volcano, Hawaii (Ha...",
+      "name": "Kilauea Volcano Crater 24/7 | K\u012blauea volcano, Hawaii (Ha...",
       "lat": 19.4069,
       "lon": -155.2834,
       "country": "US",
@@ -136,12 +136,700 @@
       "ytId": "V0yAsS9Hpdc"
     },
     {
-      "name": "🔴 Live Now: 24/7 Kilauea Volcano Livestream in Haw",
+      "name": "\ud83d\udd34 Live Now: 24/7 Kilauea Volcano Livestream in Haw",
       "lat": 19.4069,
       "lon": -155.2834,
       "country": "US",
       "city": "Hawaii",
       "ytId": "oylWJ-f3S5U"
+    },
+    {
+      "name": "Watch the Volcano Teide in Tenerife covered in snow ! - S...",
+      "lat": 28.2916,
+      "lon": -16.6291,
+      "country": "ES",
+      "city": "Tenerife",
+      "ytId": "GbMEDOS9AQk"
+    },
+    {
+      "name": "En directo: 24/7 Erupci\u00f3n del volc\u00e1n de Fuego en 4K Ultra...",
+      "lat": 14.4747,
+      "lon": -90.8806,
+      "country": "GT",
+      "city": "Guatemala",
+      "ytId": "pN5tc1XIhAo"
+    },
+    {
+      "name": "Mar 3, 2026: Camera Hit by Shockwave from Volcanic Erupti...",
+      "lat": 14.4747,
+      "lon": -90.8806,
+      "country": "GT",
+      "city": "Guatemala",
+      "ytId": "el8-3h15SdQ"
+    },
+    {
+      "name": "Shockwave Hits Camera 26s After Fuego Volcano Erupts (Dec...",
+      "lat": 14.4747,
+      "lon": -90.8806,
+      "country": "GT",
+      "city": "Guatemala",
+      "ytId": "Tj4CFtiZoTg"
+    },
+    {
+      "name": "Dubrovnik - Pile, ljetna ve\u010der u\u017eivo - 19.07.2022",
+      "lat": 42.6507,
+      "lon": 18.0944,
+      "country": "HR",
+      "city": "Dubrovnik",
+      "ytId": "N7dKCJaAPjY"
+    },
+    {
+      "name": "Now: 24/7 Merapi Volcano Erupting in 4K Ultra HD (Indonesia)",
+      "lat": 7.5407,
+      "lon": 110.4457,
+      "country": "ID",
+      "city": "Java",
+      "ytId": "kzTs2Cb42zI"
+    },
+    {
+      "name": "A Breathtaking Eruption of Mount Etna | SkylineWebcams",
+      "lat": 37.751,
+      "lon": 14.9934,
+      "country": "IT",
+      "city": "Mount Etna",
+      "ytId": "gO2-u0LMhcQ"
+    },
+    {
+      "name": "Agira webcam - Panoramica Paese/Etna",
+      "lat": 37.751,
+      "lon": 14.9934,
+      "country": "IT",
+      "city": "Mount Etna",
+      "ytId": "HacMC99wbuM"
+    },
+    {
+      "name": "Etna - Webcam in diretta da Santa Venerina  Panoramica Vu...",
+      "lat": 37.751,
+      "lon": 14.9934,
+      "country": "IT",
+      "city": "Mount Etna",
+      "ytId": "466MeeDzZy0"
+    },
+    {
+      "name": "Etna Webcam By Vincenzo Modica",
+      "lat": 37.751,
+      "lon": 14.9934,
+      "country": "IT",
+      "city": "Mount Etna",
+      "ytId": "uCx5nQlclSo"
+    },
+    {
+      "name": "Etna Webcam by Vincenzo Modica 01/01/26",
+      "lat": 37.751,
+      "lon": 14.9934,
+      "country": "IT",
+      "city": "Mount Etna",
+      "ytId": "8DwOzrHln1I"
+    },
+    {
+      "name": "Etna Webcam by Vincenzo Modica 04/01/26",
+      "lat": 37.751,
+      "lon": 14.9934,
+      "country": "IT",
+      "city": "Mount Etna",
+      "ytId": "FRHTDxEst6A"
+    },
+    {
+      "name": "Etna Webcam by Vincenzo Modica 29/12/25",
+      "lat": 37.751,
+      "lon": 14.9934,
+      "country": "IT",
+      "city": "Mount Etna",
+      "ytId": "gbeUFv_uT1o"
+    },
+    {
+      "name": "Etna sud webcam - Panoramica Piazzale Rifugio Sapienza",
+      "lat": 37.751,
+      "lon": 14.9934,
+      "country": "IT",
+      "city": "Mount Etna",
+      "ytId": "ThX2Znx9zZY"
+    },
+    {
+      "name": "Mt Etna twin degassing yesterday. Watch with us 24/7",
+      "lat": 37.751,
+      "lon": 14.9934,
+      "country": "IT",
+      "city": "Mount Etna",
+      "ytId": "gyk7W6pH1yY"
+    },
+    {
+      "name": "Nature Watch in Vietnam Countryside | Webcam in Vietnam",
+      "lat": 37.751,
+      "lon": 14.9934,
+      "country": "IT",
+      "city": "Mount Etna",
+      "ytId": "rvQToTjaWXQ"
+    },
+    {
+      "name": "Nunziata di Mascali webcam - Panoramica Etna est",
+      "lat": 37.751,
+      "lon": 14.9934,
+      "country": "IT",
+      "city": "Mount Etna",
+      "ytId": "pO2zFFeqiMo"
+    },
+    {
+      "name": "Recorded footage from Etna Volcano - Italy | SkylineWebcams",
+      "lat": 37.751,
+      "lon": 14.9934,
+      "country": "IT",
+      "city": "Mount Etna",
+      "ytId": "cobjWvpghwk"
+    },
+    {
+      "name": "Recorded footage from Volcano Etna - SkylineWebcams",
+      "lat": 37.751,
+      "lon": 14.9934,
+      "country": "IT",
+      "city": "Mount Etna",
+      "ytId": "0URu8O-NTqw"
+    },
+    {
+      "name": "Santa Venerina webcam - Panoramica Etna",
+      "lat": 37.751,
+      "lon": 14.9934,
+      "country": "IT",
+      "city": "Mount Etna",
+      "ytId": "iOR1htkbkNI"
+    },
+    {
+      "name": "UFO coming out of mount Etna volcano on cam",
+      "lat": 37.751,
+      "lon": 14.9934,
+      "country": "IT",
+      "city": "Mount Etna",
+      "ytId": "vV_E5Fbt-FE"
+    },
+    {
+      "name": "Vietnam Village Life stream | Vietnam Village Webcam",
+      "lat": 37.751,
+      "lon": 14.9934,
+      "country": "IT",
+      "city": "Mount Etna",
+      "ytId": "U28CqF_OqqI"
+    },
+    {
+      "name": "Vietnam Village stream | Vietnam Webcam",
+      "lat": 37.751,
+      "lon": 14.9934,
+      "country": "IT",
+      "city": "Mount Etna",
+      "ytId": "-rQ6qhVxKfY"
+    },
+    {
+      "name": "Vietnam War, 1970: CBS camera rolls as platoon comes unde...",
+      "lat": 37.751,
+      "lon": 14.9934,
+      "country": "IT",
+      "city": "Mount Etna",
+      "ytId": "89_3DgW_7mg"
+    },
+    {
+      "name": "Webcam from Vietnam",
+      "lat": 37.751,
+      "lon": 14.9934,
+      "country": "IT",
+      "city": "Mount Etna",
+      "ytId": "j2NDIbC05CY"
+    },
+    {
+      "name": "streaming from Vietnam | Vietnamese countryside Walk | we...",
+      "lat": 37.751,
+      "lon": 14.9934,
+      "country": "IT",
+      "city": "Mount Etna",
+      "ytId": "shmrpn_FJUI"
+    },
+    {
+      "name": "Now: Etna Volcano, Sicily Italy in 4K",
+      "lat": 37.599,
+      "lon": 14.0154,
+      "country": "IT",
+      "city": "Sicily",
+      "ytId": "UsQ0C8xG3wk"
+    },
+    {
+      "name": ": Sakurajima, Japan Multiple Cameras",
+      "lat": 31.5855,
+      "lon": 130.656,
+      "country": "JP",
+      "city": "Kagoshima",
+      "ytId": "67YiphaLLT4"
+    },
+    {
+      "name": ": Sakurajima, Japan Multiple Cameras",
+      "lat": 31.5855,
+      "lon": 130.656,
+      "country": "JP",
+      "city": "Kagoshima",
+      "ytId": "e4lVZCUkRvQ"
+    },
+    {
+      "name": "SAKURAJIMA CAM HUGE ERUPTION 1/23/2016  PT 2",
+      "lat": 31.5855,
+      "lon": 130.656,
+      "country": "JP",
+      "city": "Kagoshima",
+      "ytId": "nCbgSFG_KY0"
+    },
+    {
+      "name": "\u3010\u7d76\u666f\u3011\u685c\u5cf6\u30e9\u30a4\u30d6\u30ab\u30e1\u30e9\uff08\u5674\u706b\u30fb\u7a7a\u96f2\u30fb\u671d\u713c\u3051\u30fb\u661f\u7a7a\uff09Sakurajima Volcano Camera",
+      "lat": 31.5855,
+      "lon": 130.656,
+      "country": "JP",
+      "city": "Kagoshima",
+      "ytId": "I1CflVJMc50"
+    },
+    {
+      "name": "\u3010\u7d76\u666f\u3011\u685c\u5cf6\u30e9\u30a4\u30d6\u30ab\u30e1\u30e9\uff08\u5674\u706b\u30fb\u7a7a\u96f2\u30fb\u671d\u713c\u3051\u30fb\u661f\u7a7a\uff09Sakurajima Volcano Camera",
+      "lat": 31.5855,
+      "lon": 130.656,
+      "country": "JP",
+      "city": "Kagoshima",
+      "ytId": "buQzWxFK15o"
+    },
+    {
+      "name": "\u3010\u7d76\u666f\u3011\u685c\u5cf6\u30e9\u30a4\u30d6\u30ab\u30e1\u30e9\uff08\u5674\u706b\u30fb\u7a7a\u96f2\u30fb\u671d\u713c\u3051\u30fb\u661f\u7a7a\uff09Sakurajima Volcano Camera",
+      "lat": 31.5855,
+      "lon": 130.656,
+      "country": "JP",
+      "city": "Kagoshima",
+      "ytId": "ufcoNopdA4s"
+    },
+    {
+      "name": "\u3010\u7d76\u666f\u3011\u685c\u5cf6\u30e9\u30a4\u30d6\u30ab\u30e1\u30e9\uff08\u5674\u706b\u30fb\u7a7a\u96f2\u30fb\u671d\u713c\u3051\u30fb\u661f\u7a7a\uff09Sakurajima Volcano Camera",
+      "lat": 31.5855,
+      "lon": 130.656,
+      "country": "JP",
+      "city": "Kagoshima",
+      "ytId": "ovKO5yTySLI"
+    },
+    {
+      "name": "\u3010\u7d76\u666f\u3011\u685c\u5cf6\u30e9\u30a4\u30d6\u30ab\u30e1\u30e9\uff08\u5674\u706b\u30fb\u7a7a\u96f2\u30fb\u671d\u713c\u3051\u30fb\u661f\u7a7a\uff09Sakurajima Volcano Camera",
+      "lat": 31.5855,
+      "lon": 130.656,
+      "country": "JP",
+      "city": "Kagoshima",
+      "ytId": "1YR_WH2ogaQ"
+    },
+    {
+      "name": "\u3010\u7d76\u666f\u3011\u685c\u5cf6\u30e9\u30a4\u30d6\u30ab\u30e1\u30e9\uff08\u5674\u706b\u30fb\u7a7a\u96f2\u30fb\u671d\u713c\u3051\u30fb\u661f\u7a7a\uff09Sakurajima Volcano Camera",
+      "lat": 31.5855,
+      "lon": 130.656,
+      "country": "JP",
+      "city": "Kagoshima",
+      "ytId": "Ymg0zxIS8mo"
+    },
+    {
+      "name": "\u3010\u7d76\u666f\u3011\u685c\u5cf6\u30e9\u30a4\u30d6\u30ab\u30e1\u30e9\uff08\u5674\u706b\u30fb\u7a7a\u96f2\u30fb\u671d\u713c\u3051\u30fb\u661f\u7a7a\uff09Sakurajima Volcano Camera",
+      "lat": 31.5855,
+      "lon": 130.656,
+      "country": "JP",
+      "city": "Kagoshima",
+      "ytId": "OtPpM9ae0kE"
+    },
+    {
+      "name": "\u3010\u7d76\u666f\u3011\u685c\u5cf6\u30e9\u30a4\u30d6\u30ab\u30e1\u30e9\uff08\u5674\u706b\u30fb\u7a7a\u96f2\u30fb\u671d\u713c\u3051\u30fb\u661f\u7a7a\uff09Sakurajima Volcano Camera",
+      "lat": 31.5855,
+      "lon": 130.656,
+      "country": "JP",
+      "city": "Kagoshima",
+      "ytId": "aK2gXXlCG58"
+    },
+    {
+      "name": "\u3010\u7d76\u666f\u3011\u685c\u5cf6\u30e9\u30a4\u30d6\u30ab\u30e1\u30e9\uff08\u5674\u706b\u30fb\u7a7a\u96f2\u30fb\u671d\u713c\u3051\u30fb\u661f\u7a7a\uff09Sakurajima Volcano Camera",
+      "lat": 31.5855,
+      "lon": 130.656,
+      "country": "JP",
+      "city": "Kagoshima",
+      "ytId": "SBDmad9Jq-w"
+    },
+    {
+      "name": "\u3010\u7d76\u666f\u3011\u685c\u5cf6\u30e9\u30a4\u30d6\u30ab\u30e1\u30e9\uff08\u5674\u706b\u30fb\u7a7a\u96f2\u30fb\u671d\u713c\u3051\u30fb\u661f\u7a7a\uff09Sakurajima Volcano Camera",
+      "lat": 31.5855,
+      "lon": 130.656,
+      "country": "JP",
+      "city": "Kagoshima",
+      "ytId": "L8hqLzF82M4"
+    },
+    {
+      "name": "\u3010\u7d76\u666f\u3011\u685c\u5cf6\u30e9\u30a4\u30d6\u30ab\u30e1\u30e9\uff08\u5674\u706b\u30fb\u7a7a\u96f2\u30fb\u671d\u713c\u3051\u30fb\u661f\u7a7a\uff09Sakurajima Volcano Camera",
+      "lat": 31.5855,
+      "lon": 130.656,
+      "country": "JP",
+      "city": "Kagoshima",
+      "ytId": "6bU2Mu1mnaQ"
+    },
+    {
+      "name": "\u3010\u7d76\u666f\u3011\u685c\u5cf6\u30e9\u30a4\u30d6\u30ab\u30e1\u30e9\uff08\u5674\u706b\u30fb\u7a7a\u96f2\u30fb\u671d\u713c\u3051\u30fb\u661f\u7a7a\uff09Sakurajima Volcano Camera",
+      "lat": 31.5855,
+      "lon": 130.656,
+      "country": "JP",
+      "city": "Kagoshima",
+      "ytId": "80i5pzV3MoA"
+    },
+    {
+      "name": "\u3010\u7d76\u666f\u3011\u685c\u5cf6\u30e9\u30a4\u30d6\u30ab\u30e1\u30e9\uff08\u5674\u706b\u30fb\u7a7a\u96f2\u30fb\u671d\u713c\u3051\u30fb\u661f\u7a7a\uff09Sakurajima Volcano Camera",
+      "lat": 31.5855,
+      "lon": 130.656,
+      "country": "JP",
+      "city": "Kagoshima",
+      "ytId": "xVgDFRmWql4"
+    },
+    {
+      "name": "\u3010\u7d76\u666f\u3011\u685c\u5cf6\u30e9\u30a4\u30d6\u30ab\u30e1\u30e9\uff08\u5674\u706b\u30fb\u7a7a\u96f2\u30fb\u671d\u713c\u3051\u30fb\u661f\u7a7a\uff09Sakurajima Volcano Camera",
+      "lat": 31.5855,
+      "lon": 130.656,
+      "country": "JP",
+      "city": "Kagoshima",
+      "ytId": "uMywghAW2qk"
+    },
+    {
+      "name": "\u3010\u7d76\u666f\u3011\u685c\u5cf6\u30e9\u30a4\u30d6\u30ab\u30e1\u30e9\uff08\u5674\u706b\u30fb\u7a7a\u96f2\u30fb\u671d\u713c\u3051\u30fb\u661f\u7a7a\uff09Sakurajima Volcano Camera",
+      "lat": 31.5855,
+      "lon": 130.656,
+      "country": "JP",
+      "city": "Kagoshima",
+      "ytId": "F8ffMAFgpvk"
+    },
+    {
+      "name": "Transmisi\u00f3n en directo de CAM POPOCATEPETL",
+      "lat": 19.0226,
+      "lon": -98.6278,
+      "country": "MX",
+      "city": "Puebla",
+      "ytId": "vsjpJkrUiYI"
+    },
+    {
+      "name": "Transmisi\u00f3n en directo de CAM POPOCATEPETL",
+      "lat": 19.0226,
+      "lon": -98.6278,
+      "country": "MX",
+      "city": "Puebla",
+      "ytId": "UK2N9sSkiLc"
+    },
+    {
+      "name": "Transmisi\u00f3n en directo de CAM POPOCATEPETL",
+      "lat": 19.0226,
+      "lon": -98.6278,
+      "country": "MX",
+      "city": "Puebla",
+      "ytId": "f7njTSdJhAw"
+    },
+    {
+      "name": "Transmisi\u00f3n en directo de CAM POPOCATEPETL",
+      "lat": 19.0226,
+      "lon": -98.6278,
+      "country": "MX",
+      "city": "Puebla",
+      "ytId": "5CAkDqp_5Eo"
+    },
+    {
+      "name": "Transmisi\u00f3n en directo de CAM POPOCATEPETL",
+      "lat": 19.0226,
+      "lon": -98.6278,
+      "country": "MX",
+      "city": "Puebla",
+      "ytId": "cn3yoEj9Q_g"
+    },
+    {
+      "name": "Transmisi\u00f3n en directo de CAM POPOCATEPETL",
+      "lat": 19.0226,
+      "lon": -98.6278,
+      "country": "MX",
+      "city": "Puebla",
+      "ytId": "O3wMClK1c1s"
+    },
+    {
+      "name": "Transmisi\u00f3n en directo de CAM POPOCATEPETL",
+      "lat": 19.0226,
+      "lon": -98.6278,
+      "country": "MX",
+      "city": "Puebla",
+      "ytId": "GVaNV9Nf2AQ"
+    },
+    {
+      "name": "Transmisi\u00f3n en directo de CAM POPOCATEPETL",
+      "lat": 19.0226,
+      "lon": -98.6278,
+      "country": "MX",
+      "city": "Puebla",
+      "ytId": "EwMAUqHBeIw"
+    },
+    {
+      "name": "Transmisi\u00f3n en directo de CAM POPOCATEPETL",
+      "lat": 19.0226,
+      "lon": -98.6278,
+      "country": "MX",
+      "city": "Puebla",
+      "ytId": "_iaYIEq-46Y"
+    },
+    {
+      "name": "Transmisi\u00f3n en directo de CAM POPOCATEPETL",
+      "lat": 19.0226,
+      "lon": -98.6278,
+      "country": "MX",
+      "city": "Puebla",
+      "ytId": "5hL8iJrpNFg"
+    },
+    {
+      "name": "Transmisi\u00f3n en directo de CAM POPOCATEPETL",
+      "lat": 19.0226,
+      "lon": -98.6278,
+      "country": "MX",
+      "city": "Puebla",
+      "ytId": "-XiRH0telus"
+    },
+    {
+      "name": "Transmisi\u00f3n en directo de CAM POPOCATEPETL",
+      "lat": 19.0226,
+      "lon": -98.6278,
+      "country": "MX",
+      "city": "Puebla",
+      "ytId": "zAveHX-OpbA"
+    },
+    {
+      "name": "Transmisi\u00f3n en directo de CAM POPOCATEPETL",
+      "lat": 19.0226,
+      "lon": -98.6278,
+      "country": "MX",
+      "city": "Puebla",
+      "ytId": "nBghrU7viWI"
+    },
+    {
+      "name": "Transmisi\u00f3n en directo de CAM POPOCATEPETL",
+      "lat": 19.0226,
+      "lon": -98.6278,
+      "country": "MX",
+      "city": "Puebla",
+      "ytId": "6Ijy4bQtEQM"
+    },
+    {
+      "name": "Transmisi\u00f3n en directo de CAM POPOCATEPETL",
+      "lat": 19.0226,
+      "lon": -98.6278,
+      "country": "MX",
+      "city": "Puebla",
+      "ytId": "qKb_PJjhemo"
+    },
+    {
+      "name": "Transmisi\u00f3n en directo de CAM POPOCATEPETL",
+      "lat": 19.0226,
+      "lon": -98.6278,
+      "country": "MX",
+      "city": "Puebla",
+      "ytId": "FAb4sm975Ls"
+    },
+    {
+      "name": "Transmisi\u00f3n en directo de CAM POPOCATEPETL",
+      "lat": 19.0226,
+      "lon": -98.6278,
+      "country": "MX",
+      "city": "Puebla",
+      "ytId": "tp4qEjDyyos"
+    },
+    {
+      "name": "Transmisi\u00f3n en directo de CAM POPOCATEPETL",
+      "lat": 19.0226,
+      "lon": -98.6278,
+      "country": "MX",
+      "city": "Puebla",
+      "ytId": "VEw5Kspy8FQ"
+    },
+    {
+      "name": "Transmisi\u00f3n en directo de CAM POPOCATEPETL",
+      "lat": 19.0226,
+      "lon": -98.6278,
+      "country": "MX",
+      "city": "Puebla",
+      "ytId": "qVr7dcLj47I"
+    },
+    {
+      "name": "Transmisi\u00f3n en directo de CAM POPOCATEPETL",
+      "lat": 19.0226,
+      "lon": -98.6278,
+      "country": "MX",
+      "city": "Puebla",
+      "ytId": "K_A-GeOFvSY"
+    },
+    {
+      "name": "Transmisi\u00f3n en directo de CAM POPOCATEPETL",
+      "lat": 19.0226,
+      "lon": -98.6278,
+      "country": "MX",
+      "city": "Puebla",
+      "ytId": "ROXTOTXErVs"
+    },
+    {
+      "name": "EarthQuake watch. K\u012blauea Eruption Watch.. Kilauea WebCam",
+      "lat": 19.4069,
+      "lon": -155.2834,
+      "country": "US",
+      "city": "Hawaii",
+      "ytId": "bgV_Fwju1C4"
+    },
+    {
+      "name": "Enormous Lava Fountain Erupts At Kilauea, Destroys Webcam...",
+      "lat": 19.4069,
+      "lon": -155.2834,
+      "country": "US",
+      "city": "Hawaii",
+      "ytId": "TK2N99BDw7A"
+    },
+    {
+      "name": "Eruption Wipes Out Webcam With Lava Fountains! Episode 38...",
+      "lat": 19.4069,
+      "lon": -155.2834,
+      "country": "US",
+      "city": "Hawaii",
+      "ytId": "oc2Pr3YiRO0"
+    },
+    {
+      "name": "Hawaii\u2019s Kilauea Volcano Erupts and Destroys Webcam",
+      "lat": 19.4069,
+      "lon": -155.2834,
+      "country": "US",
+      "city": "Hawaii",
+      "ytId": "ZfMRx__uKI8"
+    },
+    {
+      "name": "Kilauea Camera Captures Its Own Demise During Volcanic Er...",
+      "lat": 19.4069,
+      "lon": -155.2834,
+      "country": "US",
+      "city": "Hawaii",
+      "ytId": "DBsVnz2Hxvk"
+    },
+    {
+      "name": "Now: 24/7 Kilauea Volcano stream in Hawaii (Cam B)",
+      "lat": 19.4069,
+      "lon": -155.2834,
+      "country": "US",
+      "city": "Hawaii",
+      "ytId": "6IaMqotNF_s"
+    },
+    {
+      "name": "Watch Kilauea's Webcam Get Destroyed by Falling Lava",
+      "lat": 19.4069,
+      "lon": -155.2834,
+      "country": "US",
+      "city": "Hawaii",
+      "ytId": "2IeI_1NAmSs"
+    },
+    {
+      "name": "7:30 AM Cam Old Faithful Geyser@Yellowstone 5/5/20 Enjoy!",
+      "lat": 44.4605,
+      "lon": -110.8281,
+      "country": "US",
+      "city": "Yellowstone",
+      "ytId": "KnYHiLhxAdY"
+    },
+    {
+      "name": "Blazing Sunset!  Cam Real Time Old Faithful! 7:20 PM GMT ...",
+      "lat": 44.4605,
+      "lon": -110.8281,
+      "country": "US",
+      "city": "Yellowstone",
+      "ytId": "p0YNPtfY0Go"
+    },
+    {
+      "name": "Castle Went Off Old Faithful Twice -Cam",
+      "lat": 44.4605,
+      "lon": -110.8281,
+      "country": "US",
+      "city": "Yellowstone",
+      "ytId": "DFoGZn5g-70"
+    },
+    {
+      "name": "Coyote on Old Faithful Webcam Yellowstone 1138AM Jan 11, ...",
+      "lat": 44.4605,
+      "lon": -110.8281,
+      "country": "US",
+      "city": "Yellowstone",
+      "ytId": "gdjNEPRI3l4"
+    },
+    {
+      "name": "Old Faithful -streaming Webcam - Yellowstone Nationalpark",
+      "lat": 44.4605,
+      "lon": -110.8281,
+      "country": "US",
+      "city": "Yellowstone",
+      "ytId": "dEteAbgIhII"
+    },
+    {
+      "name": "Old Faithful Geyser Webcam  2015-02-11 10:30 am",
+      "lat": 44.4605,
+      "lon": -110.8281,
+      "country": "US",
+      "city": "Yellowstone",
+      "ytId": "gnEr-9erRio"
+    },
+    {
+      "name": "Old Faithful Streaming webcam 3/2/216",
+      "lat": 44.4605,
+      "lon": -110.8281,
+      "country": "US",
+      "city": "Yellowstone",
+      "ytId": "uuctW7WXTIY"
+    },
+    {
+      "name": "Two unknown objects acting up for the streaming webcam of...",
+      "lat": 44.4605,
+      "lon": -110.8281,
+      "country": "US",
+      "city": "Yellowstone",
+      "ytId": "93O8nzrlU34"
+    },
+    {
+      "name": "Yellowstone Supervolcano Old Faithful Geyser Eruption Upp...",
+      "lat": 44.4605,
+      "lon": -110.8281,
+      "country": "US",
+      "city": "Yellowstone",
+      "ytId": "b-vsyuWVuHs"
+    },
+    {
+      "name": "03/10/26  Kilauea Volcano 24/7 | K\u012blauea volcano, Hawaii ...",
+      "lat": 21.09,
+      "lon": -157.5,
+      "country": "US",
+      "city": "lauea volcano",
+      "ytId": "Tri1p_jqYUg"
+    },
+    {
+      "name": "Hawaii Volcano 24/7 | K\u012blauea volcano, Hawaii (south Hale...",
+      "lat": 21.09,
+      "lon": -157.5,
+      "country": "US",
+      "city": "lauea volcano",
+      "ytId": "XmlB7rQT8Nk"
+    },
+    {
+      "name": "Kilauea 24/7 | K\u012blauea volcano, Hawaii (south Halema\u02bbuma\u02bb...",
+      "lat": 21.09,
+      "lon": -157.5,
+      "country": "US",
+      "city": "lauea volcano",
+      "ytId": "AdiDe8tMLeA"
+    },
+    {
+      "name": "Kilauea Volcano 24/7 | K\u012blauea volcano, Hawaii (west Hale...",
+      "lat": 21.09,
+      "lon": -157.5,
+      "country": "US",
+      "city": "lauea volcano",
+      "ytId": "c6AEh3vznhM"
     }
   ]
 }

@@ -1,7 +1,7 @@
 # Panopticon Architecture Overview
 
-**Version:** 1.0
-**Last updated:** 2026-03-07
+**Version:** 1.1
+**Last updated:** 2026-03-16
 
 ---
 
@@ -49,7 +49,7 @@ panopticon/
 │   │   ├── regionlayer.js  Region layer factory
 │   │   ├── airports.js     Bespoke: airports layer
 │   │   ├── webcams.js      Bespoke: webcam streams layer
-│   │   └── *.js            60+ layer modules (self-registering)
+│   │   └── *.js            105 layer modules (self-registering)
 │   │
 │   ├── wargame.js          Wargame mode controller (browser execution)
 │   ├── simulation.mjs      Shared simulation engine (prompts, parsing, summaries)
@@ -66,8 +66,8 @@ panopticon/
 │   ├── citycatalog.js      City search catalog
 │   └── cityselector.js     City search UI
 │
-├── data/                   Runtime JSON data files (60+ layers)
-├── scenarios/              Wargame scenario definitions (38+ scenarios)
+├── data/                   Runtime JSON data files (94 layer files)
+├── scenarios/              Wargame scenario definitions (45 scenarios)
 ├── playbacks/              Playback manifest files
 ├── scripts/                Data ingestion scripts (Python)
 ├── server/
@@ -229,4 +229,8 @@ Scenario JSON
 - [PLAYBACK_SPEC.md](PLAYBACK_SPEC.md) — Playback manifest format specification
 - [SCENARIO_SPEC.md](SCENARIO_SPEC.md) — Wargame scenario format specification
 - [LAYER_SYSTEM.md](LAYER_SYSTEM.md) — Layer registry, factories, and data format
+- [DATA_SPEC.md](DATA_SPEC.md) — JSON schemas for all data types
+- [CRITICAL_MINERALS_SPEC.md](CRITICAL_MINERALS_SPEC.md) — Schema for critical mineral layers
+- [UNITY_SUBMARINE_SETUP.md](UNITY_SUBMARINE_SETUP.md) — Unity 3D submarine pursuit integration
+- [WARGAME_PLAN.md](WARGAME_PLAN.md) — Original wargame system design document (historical)
 - [CLAUDE.md](../CLAUDE.md) — Project rules (data provenance, code style)

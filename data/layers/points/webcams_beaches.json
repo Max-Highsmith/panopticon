@@ -2,8 +2,8 @@
   "_source": {
     "description": "Curated 24/7 live beach, surf, and coastal webcam streams",
     "origin": "YouTube Live streams discovered and verified via yt-dlp. Sources: EarthCam, SkylineWebcams, surf cam operators, beach tourism channels",
-    "retrieved": "2026-03-11",
-    "license": "Public live streams — fair use",
+    "retrieved": "2026-03-13",
+    "license": "Public live streams \u2014 fair use",
     "notes": "All YouTube IDs verified via oEmbed API. IDs may change as streams rotate. Run scripts/ingest_webcams.py to re-verify."
   },
   "beaches": [
@@ -144,7 +144,7 @@
       "ytId": "_BMi3usEwi8"
     },
     {
-      "name": "Beach Stream · House of Sanskara · Koh Phangan, Thailand",
+      "name": "Beach Stream \u00b7 House of Sanskara \u00b7 Koh Phangan, Thailand",
       "lat": 13.7563,
       "lon": 100.5018,
       "country": "TH",
@@ -550,6 +550,534 @@
       "country": "ZA",
       "city": "South Africa",
       "ytId": "TnI3zvg4yB4"
+    },
+    {
+      "name": "Gold Coast Camera Ch1 HD Broadwater, Wavebreak & South St...",
+      "lat": 28.0167,
+      "lon": 153.4,
+      "country": "AU",
+      "city": "Gold Coast",
+      "ytId": "ZjtHCZeSRyE"
+    },
+    {
+      "name": "Gold Coast webcam",
+      "lat": 28.0167,
+      "lon": 153.4,
+      "country": "AU",
+      "city": "Gold Coast",
+      "ytId": "lCguEr636nM"
+    },
+    {
+      "name": "Gold Coast webcam",
+      "lat": 28.0167,
+      "lon": 153.4,
+      "country": "AU",
+      "city": "Gold Coast",
+      "ytId": "9jvrScVm81s"
+    },
+    {
+      "name": "Gold Coast webcam",
+      "lat": 28.0167,
+      "lon": 153.4,
+      "country": "AU",
+      "city": "Gold Coast",
+      "ytId": "oatUsKp9NN4"
+    },
+    {
+      "name": "Gold Coast, Australia \ud83c\udde6\ud83c\uddfa in 4K HDR ULTRA HD 60 FPS Dolby ...",
+      "lat": 28.0167,
+      "lon": 153.4,
+      "country": "AU",
+      "city": "Gold Coast",
+      "ytId": "VRwyFx5CqNI"
+    },
+    {
+      "name": "Camera Aruba Beach Front Cam Streaming",
+      "lat": 12.5211,
+      "lon": -69.9683,
+      "country": "AW",
+      "city": "Aruba",
+      "ytId": "fwddN7aCpg4"
+    },
+    {
+      "name": "Nassau Bahamas Love Beach streaming cam",
+      "lat": 25.0343,
+      "lon": -77.3963,
+      "country": "BS",
+      "city": "Nassau",
+      "ytId": "QTvGU70Fkkc"
+    },
+    {
+      "name": "Deep Cove, Vancouver Canada Webcam",
+      "lat": 49.2827,
+      "lon": -123.1207,
+      "country": "CA",
+      "city": "Vancouver",
+      "ytId": "T0oUufecXeE"
+    },
+    {
+      "name": "Welcome to Vancouver's 'on top' view spot: introducing ou...",
+      "lat": 49.2827,
+      "lon": -123.1207,
+      "country": "CA",
+      "city": "Vancouver",
+      "ytId": "QkB8LhY33Eo"
+    },
+    {
+      "name": "Dubrovnik, Banje Beach 1.7.2018",
+      "lat": 42.6507,
+      "lon": 18.0944,
+      "country": "HR",
+      "city": "Dubrovnik",
+      "ytId": "JxywvKIh0TQ"
+    },
+    {
+      "name": "Surf Cam: Uluwatu, Bali",
+      "lat": 8.3405,
+      "lon": 115.092,
+      "country": "ID",
+      "city": "Bali",
+      "ytId": "KfoRjw5k3d8"
+    },
+    {
+      "name": "ON CAM: Tel Aviv, Haifa EXPLODING As Iran\u2019s Worst WAVE RA...",
+      "lat": 32.0853,
+      "lon": 34.7818,
+      "country": "IL",
+      "city": "Tel Aviv",
+      "ytId": "TvcV39yC2Wo"
+    },
+    {
+      "name": "Naples Beach Hotel & Golf Club Beachcam  Stream",
+      "lat": 40.8518,
+      "lon": 14.2681,
+      "country": "IT",
+      "city": "Naples",
+      "ytId": "Y4kskw4l3kU"
+    },
+    {
+      "name": "Naples Beach Hotel & Golf Club Beachcam  Stream",
+      "lat": 40.8518,
+      "lon": 14.2681,
+      "country": "IT",
+      "city": "Naples",
+      "ytId": "fobOsX83eZc"
+    },
+    {
+      "name": "Malibu Earthquake from Venice Beach Cam",
+      "lat": 45.4408,
+      "lon": 12.3155,
+      "country": "IT",
+      "city": "Venice",
+      "ytId": "T3bMEqvLGJA"
+    },
+    {
+      "name": "Hurricane Melissa Coverage | Cameras in Jamaica | Landfal...",
+      "lat": 18.1096,
+      "lon": -77.2975,
+      "country": "JM",
+      "city": "Jamaica",
+      "ytId": "GUMW2_p5BBQ"
+    },
+    {
+      "name": "Hurricane Melissa Coverage | Cameras in Jamaica | Landfal...",
+      "lat": 18.1096,
+      "lon": -77.2975,
+      "country": "JM",
+      "city": "Jamaica",
+      "ytId": "9uhdiJD9DU0"
+    },
+    {
+      "name": "Hurricane Melissa Landfall Coverage | Cameras in Jamaica ...",
+      "lat": 18.1096,
+      "lon": -77.2975,
+      "country": "JM",
+      "city": "Jamaica",
+      "ytId": "0fw2jbix2SY"
+    },
+    {
+      "name": "Camera Gwangalli Beach Busan Korea Stream",
+      "lat": 35.1796,
+      "lon": 129.0756,
+      "country": "KR",
+      "city": "Busan",
+      "ytId": "IzacfbB4zXc"
+    },
+    {
+      "name": "Camera Gwangalli Beach Busan Korea Stream CCTV",
+      "lat": 35.1796,
+      "lon": 129.0756,
+      "country": "KR",
+      "city": "Busan",
+      "ytId": "GA9SuDvdXSA"
+    },
+    {
+      "name": "Camera Gwangalli Beach Busan Korea Stream CCTV",
+      "lat": 35.1796,
+      "lon": 129.0756,
+      "country": "KR",
+      "city": "Busan",
+      "ytId": "sK9E9S-2Jag"
+    },
+    {
+      "name": "Mio Beach | Hilton Los Cabos | Mexico Beach & Ocean View Cam",
+      "lat": 22.8905,
+      "lon": -109.9167,
+      "country": "MX",
+      "city": "Cabo San Lucas",
+      "ytId": "4CK0CsimBHs"
+    },
+    {
+      "name": "Beach Cam! Beautiful Cancun Mexico",
+      "lat": 21.1619,
+      "lon": -86.8515,
+      "country": "MX",
+      "city": "Cancun",
+      "ytId": "GE9CaHxW8s4"
+    },
+    {
+      "name": "The Royal Sonesta San Juan Cam | Puerto Rico Beach & Reso...",
+      "lat": 18.4655,
+      "lon": -66.1057,
+      "country": "PR",
+      "city": "San Juan",
+      "ytId": "taI7GiyvDxE"
+    },
+    {
+      "name": "cam: Cannon Beach and Pacific City, Oregon",
+      "lat": 44.57,
+      "lon": -122.07,
+      "country": "US",
+      "city": "Cannon Beach and Pacific City",
+      "ytId": "1fb9LAVzGyY"
+    },
+    {
+      "name": "Webcam: Catalina Island, California",
+      "lat": 36.12,
+      "lon": -119.68,
+      "country": "US",
+      "city": "Catalina Island",
+      "ytId": "Ww7wCqTRaA0"
+    },
+    {
+      "name": "Clearwater Beach Florida Webcam Hurricane Irma",
+      "lat": 27.9659,
+      "lon": -82.8001,
+      "country": "US",
+      "city": "Clearwater",
+      "ytId": "sxE0vVaZmkc"
+    },
+    {
+      "name": "Sand Key to Clearwater Beach Florida. Tampa Bay Area cam 4K",
+      "lat": 27.9659,
+      "lon": -82.8001,
+      "country": "US",
+      "city": "Clearwater",
+      "ytId": "KeRNRUFeAAY"
+    },
+    {
+      "name": "Surf Cam: Cocoa Beach, Florida",
+      "lat": 27.77,
+      "lon": -81.69,
+      "country": "US",
+      "city": "Cocoa Beach",
+      "ytId": "gAvFqhNwZm0"
+    },
+    {
+      "name": "Christopher Columbus Webcam Seven Mile Beach",
+      "lat": 39.9612,
+      "lon": -82.9988,
+      "country": "US",
+      "city": "Columbus",
+      "ytId": "PsRa6WGjbBo"
+    },
+    {
+      "name": "Christopher Columbus Webcam Seven Mile Beach",
+      "lat": 39.9612,
+      "lon": -82.9988,
+      "country": "US",
+      "city": "Columbus",
+      "ytId": "09qDTctegPI"
+    },
+    {
+      "name": "Daytona Beach Cam|Halifax Rive - Short past stream 16 min...",
+      "lat": 29.2108,
+      "lon": -81.0228,
+      "country": "US",
+      "city": "Daytona Beach",
+      "ytId": "49hRWhA7Dvw"
+    },
+    {
+      "name": "Surf Cam: Daytona Beach, Florida",
+      "lat": 27.77,
+      "lon": -81.69,
+      "country": "US",
+      "city": "Daytona Beach",
+      "ytId": "4L1hJ8Tur_A"
+    },
+    {
+      "name": "Webcam: El Porto, CA",
+      "lat": 36.12,
+      "lon": -119.68,
+      "country": "US",
+      "city": "El Porto",
+      "ytId": "zZ5VjrY0JCQ"
+    },
+    {
+      "name": "\"ANGRY BIRDS\" on Fort Lauderdale Beach Cam on 7/28/2024",
+      "lat": 26.1224,
+      "lon": -80.1373,
+      "country": "US",
+      "city": "Fort Lauderdale",
+      "ytId": "CBkGNezFFd0"
+    },
+    {
+      "name": "Fort Lauderdale Beach",
+      "lat": 26.1224,
+      "lon": -80.1373,
+      "country": "US",
+      "city": "Fort Lauderdale",
+      "ytId": "pXx3YQVSUGg"
+    },
+    {
+      "name": "Webcam: Glorietta Bay, CA",
+      "lat": 36.12,
+      "lon": -119.68,
+      "country": "US",
+      "city": "Glorietta Bay",
+      "ytId": "xC-W0ri_w2g"
+    },
+    {
+      "name": "Maui Beach Cam | Napili Kai Beach Resort | Stunning Hawai...",
+      "lat": 19.8968,
+      "lon": -155.5828,
+      "country": "US",
+      "city": "Hawaii",
+      "ytId": "CYledp5ZCsI"
+    },
+    {
+      "name": "Maui Eldorado Cam | Maui Beach Cam 24/7 | Kaanapali Beach...",
+      "lat": 19.8968,
+      "lon": -155.5828,
+      "country": "US",
+      "city": "Hawaii",
+      "ytId": "0uxF10RdTsI"
+    },
+    {
+      "name": "Surf Cams 24/7 | Hawaii, California, Bali & More",
+      "lat": 19.8968,
+      "lon": -155.5828,
+      "country": "US",
+      "city": "Hawaii",
+      "ytId": "YwmX_mMsnYc"
+    },
+    {
+      "name": "The Ward Village Surf Cam is | Hawaii Webcams 24/7",
+      "lat": 19.8968,
+      "lon": -155.5828,
+      "country": "US",
+      "city": "Hawaii",
+      "ytId": "MOlDrnrQ3Cs"
+    },
+    {
+      "name": "Ward Village Cam | Oahu Cam | Hawaii Surf Cam",
+      "lat": 19.8968,
+      "lon": -155.5828,
+      "country": "US",
+      "city": "Hawaii",
+      "ytId": "VhTEUsVUCi8"
+    },
+    {
+      "name": "Surf Cam: Huntington Beach, California",
+      "lat": 33.6595,
+      "lon": -117.9988,
+      "country": "US",
+      "city": "Huntington Beach",
+      "ytId": "xGLtrEj1UJY"
+    },
+    {
+      "name": "Surf Cam: Huntington Beach Pier North, California",
+      "lat": 36.12,
+      "lon": -119.68,
+      "country": "US",
+      "city": "Huntington Beach Pier North",
+      "ytId": "vhVyLqg1L64"
+    },
+    {
+      "name": "Cam Rewind 04.30.2023 [Jacksonville Beach Pier Cam - Sout...",
+      "lat": 30.3322,
+      "lon": -81.6557,
+      "country": "US",
+      "city": "Jacksonville",
+      "ytId": "RNF6l3CcVos"
+    },
+    {
+      "name": "Surf Cam: Jacksonville Pier, Florida",
+      "lat": 27.77,
+      "lon": -81.69,
+      "country": "US",
+      "city": "Jacksonville Pier",
+      "ytId": "jo82nA0txwI"
+    },
+    {
+      "name": "Beach Cam from the Landmark Group at COMPASS in Flagler B...",
+      "lat": 27.77,
+      "lon": -81.69,
+      "country": "US",
+      "city": "Live Beach Cam from the Landmark Group at COMPASS in Flagler Beach",
+      "ytId": "7YlVQj6iPHg"
+    },
+    {
+      "name": "Surf Cam: Long Beach, NY",
+      "lat": 42.17,
+      "lon": -74.95,
+      "country": "US",
+      "city": "Long Beach",
+      "ytId": "td3PwR9DpSs"
+    },
+    {
+      "name": "Webcam: Long Beach, NY",
+      "lat": 42.17,
+      "lon": -74.95,
+      "country": "US",
+      "city": "Long Beach",
+      "ytId": "McS64kfrr5c"
+    },
+    {
+      "name": "We CRASH  the Beach Cam Hollywood Beach ManicBeastBoise &...",
+      "lat": 34.0928,
+      "lon": -118.3287,
+      "country": "US",
+      "city": "Los Angeles",
+      "ytId": "IBLT2az31OI"
+    },
+    {
+      "name": "Webcam: Los Angeles, CA",
+      "lat": 34.0522,
+      "lon": -118.2437,
+      "country": "US",
+      "city": "Los Angeles",
+      "ytId": "EoARdUpNjJ8"
+    },
+    {
+      "name": "Webcam - Miami Beach",
+      "lat": 25.7907,
+      "lon": -80.13,
+      "country": "US",
+      "city": "Miami Beach",
+      "ytId": "B6so3_6-SrQ"
+    },
+    {
+      "name": "EarthCam : Myrtle Beach Cam",
+      "lat": 33.6891,
+      "lon": -78.8867,
+      "country": "US",
+      "city": "Myrtle Beach",
+      "ytId": "xn7t5kQ21Es"
+    },
+    {
+      "name": "cams: Labor Day weekend vacation spots Pacific City, Cann...",
+      "lat": 41.4901,
+      "lon": -71.3128,
+      "country": "US",
+      "city": "Newport",
+      "ytId": "rxuQMF1frik"
+    },
+    {
+      "name": "Surf Cam: Pacific Beach, California",
+      "lat": 36.12,
+      "lon": -119.68,
+      "country": "US",
+      "city": "Pacific Beach",
+      "ytId": "DxvrIxVAn6Y"
+    },
+    {
+      "name": "Surf Cam: Pacific Beach Pier, California",
+      "lat": 36.12,
+      "lon": -119.68,
+      "country": "US",
+      "city": "Pacific Beach Pier",
+      "ytId": "Ky-qvHSTAqQ"
+    },
+    {
+      "name": "Webcam: Pensacola Bay, Florida",
+      "lat": 27.77,
+      "lon": -81.69,
+      "country": "US",
+      "city": "Pensacola Bay",
+      "ytId": "IflUTbqG5pY"
+    },
+    {
+      "name": "Surf Cam: Playa Del Rey, California",
+      "lat": 36.12,
+      "lon": -119.68,
+      "country": "US",
+      "city": "Playa Del Rey",
+      "ytId": "ne8eUY6TnDc"
+    },
+    {
+      "name": "Surf Cam: Point Arena, California",
+      "lat": 36.12,
+      "lon": -119.68,
+      "country": "US",
+      "city": "Point Arena",
+      "ytId": "dNZ49x8S6-o"
+    },
+    {
+      "name": "Webcam: Salt Creek, CA",
+      "lat": 36.12,
+      "lon": -119.68,
+      "country": "US",
+      "city": "Salt Creek",
+      "ytId": "20cXuP8c7mk"
+    },
+    {
+      "name": "Scripps Inn La Jolla CA | California Webcams Coastal View...",
+      "lat": 32.7157,
+      "lon": -117.1611,
+      "country": "US",
+      "city": "San Diego",
+      "ytId": "dkr9F4OniqM"
+    },
+    {
+      "name": "Beach Bar St. John Webcam",
+      "lat": 18.3358,
+      "lon": -64.7282,
+      "country": "VI",
+      "city": "St. John",
+      "ytId": "2wqpy036z24"
+    },
+    {
+      "name": "view from Long Bay Beach Villa - looking over Coral Bay, ...",
+      "lat": 18.3358,
+      "lon": -64.7282,
+      "country": "VI",
+      "city": "St. John",
+      "ytId": "ukAfv6bUUAk"
+    },
+    {
+      "name": "Stunning Phu Quoc beach | Phu Quoc beach by Webcam",
+      "lat": 21.0278,
+      "lon": 105.8342,
+      "country": "VN",
+      "city": "Hanoi",
+      "ytId": "GW2BcsvQb-c"
+    },
+    {
+      "name": "Already packed beach at 10am during Cape Towns' heatwave!...",
+      "lat": 33.9249,
+      "lon": 18.4241,
+      "country": "ZA",
+      "city": "Cape Town",
+      "ytId": "b304Lfvaz1Y"
+    },
+    {
+      "name": "Tsunami style waves hit Cape Town beaches. Captured by ou...",
+      "lat": 33.9249,
+      "lon": 18.4241,
+      "country": "ZA",
+      "city": "Cape Town",
+      "ytId": "QOGS8IOpLMo"
     }
   ]
 }

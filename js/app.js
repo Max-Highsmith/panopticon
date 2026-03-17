@@ -21,7 +21,6 @@ import { startMilitary, stopMilitary, extrapolateMilitaryPositions } from './lay
 import { startCommercial, stopCommercial } from './layers/commercial.js';
 import { loadSatellites, isSatLoaded, getSatRecords, createSatelliteEntities, updateSatellitePositions } from './layers/satellites.js';
 import { startAIS, stopAIS } from './layers/ships.js';
-import { fetchPogoStops, isPogoLoaded, resetPogo } from './layers/pogo.js';
 import { loadCustomDatasets } from './layers/custom.js';
 import { createBlackoutOverlays, removeBlackoutOverlays, createDataBoundsOverlay, removeDataBoundsOverlay } from './overlays.js';
 import { closeAllViews, resizeAllViews, getView, tickAllViews } from './viewregistry.js';
@@ -153,7 +152,6 @@ function handleLayerToggle(layer, enabled) {
         else if (entityMaps.satellites.size === 0) createSatelliteEntities(viewer, activeScenario);
       }
       if (layer === 'ships' && entityMaps.ships.size === 0) startAIS(viewer);
-      if (layer === 'pokemon' && entityMaps.pokemon.size === 0) fetchPogoStops(viewer);
     }
 
     // Data layers with lazy loading + fly-to-entities
@@ -227,7 +225,7 @@ function flyToCity(key) {
 // =====================================================
 function startLive() {
   clearAllLayers(viewer, () => removeDataBoundsOverlay(viewer));
-  $('subtitle').textContent = 'LIVE TRACKING // ADS-B + OPENSKY + CELESTRAK + AIS + POGO';
+  $('subtitle').textContent = 'LIVE TRACKING // ADS-B + OPENSKY + CELESTRAK + AIS';
   $('layer-toggles').style.display = 'flex';
 
   // Only start feeds for layers that are toggled on
@@ -239,8 +237,6 @@ function startLive() {
   if (layers.military) startMilitary(viewer);
   if (layers.commercial) startCommercial(viewer);
   if (layers.ships) startAIS(viewer);
-  if (layers.pokemon) fetchPogoStops(viewer);
-
   liveExtrapolateHandler = () => {
     extrapolateMilitaryPositions();
     updateSatellitePositions(viewer, activeScenario);
@@ -256,7 +252,6 @@ function stopLive() {
     liveExtrapolateHandler = null;
   }
   stopAIS(viewer);
-  resetPogo();
   resetAllLayers(); // resets all registered data layers via registry
 }
 

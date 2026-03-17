@@ -10,7 +10,6 @@ export const LAYER_CATALOG = [
   { key: 'commercial',   label: 'COMMERCIAL',         shortLabel: 'CIV',      category: 'Live Tracking',  color: '#cccccc', defaultOn: false, defaultPinned: false },
   { key: 'satellites',   label: 'SATELLITES',          shortLabel: 'SAT',      category: 'Live Tracking',  color: '#ffaa00', defaultOn: false, defaultPinned: false },
   { key: 'ships',        label: 'AIS SHIPS',           shortLabel: 'SHIPS',    category: 'Live Tracking',  color: '#4488ff', defaultOn: false, defaultPinned: false },
-  { key: 'pokemon',      label: 'POKEMON GO',          shortLabel: 'POGO',     category: 'Live Tracking',  color: '#ff4444', defaultOn: false, defaultPinned: false },
 
   // === MILITARY ===
   { key: 'bases',        label: 'MILITARY BASES',      shortLabel: 'BASES',    category: 'Military',       color: '#ff6644', defaultOn: false, defaultPinned: false },
@@ -164,6 +163,9 @@ export const LAYER_CATALOG = [
 
   // === REFERENCE ===
   { key: 'wikipedia',  label: 'WIKIPEDIA GEO',       shortLabel: 'WIKI',  category: 'Reference', color: '#aaaaaa', defaultOn: false, defaultPinned: false },
+
+  // === RIDICULOUS ===
+  { key: 'pokemon',    label: 'POKEMON GO STOPS',    shortLabel: 'POGO',  category: 'Ridiculous', color: '#ff4444', defaultOn: false, defaultPinned: false },
 ];
 
 // Runtime additions (custom datasets, future layers)

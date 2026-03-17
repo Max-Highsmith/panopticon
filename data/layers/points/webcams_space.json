@@ -2,7 +2,7 @@
   "_source": {
     "description": "Curated 24/7 live space, ISS, NASA, and launch facility webcam streams",
     "origin": "YouTube Live streams discovered and verified via yt-dlp. Sources: NASA Television, NASASpaceflight, SpaceX, Everyday Astronaut",
-    "retrieved": "2026-03-11",
+    "retrieved": "2026-03-13",
     "license": "Public live streams \u2014 fair use",
     "notes": "All YouTube IDs verified via oEmbed API. IDs may change as streams rotate. Run scripts/ingest_webcams.py to re-verify."
   },
@@ -390,6 +390,270 @@
       "country": "XX",
       "city": "ISS",
       "ytId": "M8m9YdxgJ5g"
+    },
+    {
+      "name": "Webcam in Flachau - Snow Space Salzburg",
+      "lat": 47.8095,
+      "lon": 13.055,
+      "country": "AT",
+      "city": "Salzburg",
+      "ytId": "Ov49S1ODKQw"
+    },
+    {
+      "name": ": Hurricane Melissa Cat 5 Landfall in Jamaica \u2013 Real-Time...",
+      "lat": 18.1096,
+      "lon": -77.2975,
+      "country": "JM",
+      "city": "Jamaica",
+      "ytId": "cRuRK6wIn6U"
+    },
+    {
+      "name": ": Hurricane Melissa Cat 5 Onslaught on Jamaica \u2013 Hosted C...",
+      "lat": 18.1096,
+      "lon": -77.2975,
+      "country": "JM",
+      "city": "Jamaica",
+      "ytId": "U8rK8-lrUug"
+    },
+    {
+      "name": ": Hurricane Melissa Cat 5 Threatens Jamaica \u2013 Real-Time C...",
+      "lat": 18.1096,
+      "lon": -77.2975,
+      "country": "JM",
+      "city": "Jamaica",
+      "ytId": "u3yhFsDsdjU"
+    },
+    {
+      "name": "CAM: Hurricane Melissa hits Jamaica",
+      "lat": 18.1096,
+      "lon": -77.2975,
+      "country": "JM",
+      "city": "Jamaica",
+      "ytId": "aFiapmdhZIk"
+    },
+    {
+      "name": "CAMERA IN JAMAICA: Hurricane Melissa makes landfall as Ca...",
+      "lat": 18.1096,
+      "lon": -77.2975,
+      "country": "JM",
+      "city": "Jamaica",
+      "ytId": "NB3larHBYOU"
+    },
+    {
+      "name": "CAMERAS | Hurricane Melissa makes landfall in Jamaica as ...",
+      "lat": 18.1096,
+      "lon": -77.2975,
+      "country": "JM",
+      "city": "Jamaica",
+      "ytId": "VtIai_8BYx8"
+    },
+    {
+      "name": "CAMERAS | Hurricane Melissa to make landfall in Jamaica",
+      "lat": 18.1096,
+      "lon": -77.2975,
+      "country": "JM",
+      "city": "Jamaica",
+      "ytId": "TtaBZ45D6nY"
+    },
+    {
+      "name": "Camera Shakes Violently as Category 5 Hurricane Melissa S...",
+      "lat": 18.1096,
+      "lon": -77.2975,
+      "country": "JM",
+      "city": "Jamaica",
+      "ytId": "obsqFwaFsj8"
+    },
+    {
+      "name": "VIEW: Montego Bay, Jamaica as Hurricane Melissa makes lan...",
+      "lat": 18.1096,
+      "lon": -77.2975,
+      "country": "JM",
+      "city": "Jamaica",
+      "ytId": "PMBPM0KYLgo"
+    },
+    {
+      "name": "Watch : Hurricane Melissa makes landfall in Jamaica",
+      "lat": 18.1096,
+      "lon": -77.2975,
+      "country": "JM",
+      "city": "Jamaica",
+      "ytId": "OQ152HlpmZg"
+    },
+    {
+      "name": "24/7 SpaceX Starbase Launch Site, Boca Chica, TX, Ocean Cam",
+      "lat": 25.997,
+      "lon": -97.1567,
+      "country": "US",
+      "city": "Boca Chica",
+      "ytId": "IlPUKvGQyUY"
+    },
+    {
+      "name": "24/7 SpaceX Starbase Launch Site, Video Provided By Ocean...",
+      "lat": 25.997,
+      "lon": -97.1567,
+      "country": "US",
+      "city": "Boca Chica",
+      "ytId": "tyfpm0BQuPc"
+    },
+    {
+      "name": "24/7 SpaceX Starbase Launch Site, Video Provided By Ocean...",
+      "lat": 25.997,
+      "lon": -97.1567,
+      "country": "US",
+      "city": "Boca Chica",
+      "ytId": "Cbi1PLDZ4IE"
+    },
+    {
+      "name": "24/7 SpaceX Starbase Launch Site, Video Provided By Ocean...",
+      "lat": 25.997,
+      "lon": -97.1567,
+      "country": "US",
+      "city": "Boca Chica",
+      "ytId": "U9v8-7VPW54"
+    },
+    {
+      "name": "24/7 Starbase from RocketCottage HQ",
+      "lat": 25.997,
+      "lon": -97.1567,
+      "country": "US",
+      "city": "Boca Chica",
+      "ytId": "o8tYI4_bP-Y"
+    },
+    {
+      "name": "24/7 Starbase from RocketCottage HQ",
+      "lat": 25.997,
+      "lon": -97.1567,
+      "country": "US",
+      "city": "Boca Chica",
+      "ytId": "co47b16YvHU"
+    },
+    {
+      "name": "STARBASE 24/7 Watch SpaceX's Starship Development Unfold!",
+      "lat": 25.997,
+      "lon": -97.1567,
+      "country": "US",
+      "city": "Boca Chica",
+      "ytId": "ISpOgc-9rls"
+    },
+    {
+      "name": "STARBASE 24/7 Watch SpaceX's Starship Development Unfold!",
+      "lat": 25.997,
+      "lon": -97.1567,
+      "country": "US",
+      "city": "Boca Chica",
+      "ytId": "GyCDHgeVBhM"
+    },
+    {
+      "name": "Sapphire Cam -  Starship At SpaceX Boca Chica Launch Faci...",
+      "lat": 25.997,
+      "lon": -97.1567,
+      "country": "US",
+      "city": "Boca Chica",
+      "ytId": "D3YPH6OH7yY"
+    },
+    {
+      "name": "Starbase Nerdle Cam - SpaceX Starship Launch Facility",
+      "lat": 25.997,
+      "lon": -97.1567,
+      "country": "US",
+      "city": "Boca Chica",
+      "ytId": "GMuCFMnxuaA"
+    },
+    {
+      "name": "Starbase Sapphire Cam - SpaceX Starship Launch Facility",
+      "lat": 25.997,
+      "lon": -97.1567,
+      "country": "US",
+      "city": "Boca Chica",
+      "ytId": "Dr3g-1r9BbI"
+    },
+    {
+      "name": "Starbase Starship & Super Heavy Development From SpaceX's...",
+      "lat": 25.997,
+      "lon": -97.1567,
+      "country": "US",
+      "city": "Boca Chica",
+      "ytId": "VlapcO6kDiM"
+    },
+    {
+      "name": "Watch : SpaceX launches 29 Starlink satellites on Falcon ...",
+      "lat": 28.3922,
+      "lon": -80.6077,
+      "country": "US",
+      "city": "Cape Canaveral",
+      "ytId": "V5A4tCYoHZs"
+    },
+    {
+      "name": "WebCam Crashing w/Matt B - Lexington Kentucky & Columbus,...",
+      "lat": 39.9612,
+      "lon": -82.9988,
+      "country": "US",
+      "city": "Columbus",
+      "ytId": "BB_skme9d7w"
+    },
+    {
+      "name": ": International Space Station \u2014 Earth From Space (NASA IS...",
+      "lat": 28.5721,
+      "lon": -80.648,
+      "country": "US",
+      "city": "Kennedy Space Center",
+      "ytId": "8asGrrsof_8"
+    },
+    {
+      "name": "ISS \u2013 NASA's View of Earth from Space | Cameras 24/7",
+      "lat": 28.5721,
+      "lon": -80.648,
+      "country": "US",
+      "city": "Kennedy Space Center",
+      "ytId": "VxzUEupXpNA"
+    },
+    {
+      "name": "Now: 24/7 NASA Stream of Earth from Space (ISS)",
+      "lat": 28.5721,
+      "lon": -80.648,
+      "country": "US",
+      "city": "Kennedy Space Center",
+      "ytId": "Vtjb4lvWymY"
+    },
+    {
+      "name": "WATCH: NASA Earth from Space Seen From ISS - Views from t...",
+      "lat": 28.5721,
+      "lon": -80.648,
+      "country": "US",
+      "city": "Kennedy Space Center",
+      "ytId": "nZfAE828kgA"
+    },
+    {
+      "name": "PD: Most Viewed Moments from Missoula County, Montana - P...",
+      "lat": 46.92,
+      "lon": -110.45,
+      "country": "US",
+      "city": "Most Viewed Moments from Missoula County",
+      "ytId": "DkuHK1VvtxE"
+    },
+    {
+      "name": "Webcam Captures Avalanche In Swiss Alps",
+      "lat": 40.7128,
+      "lon": -74.006,
+      "country": "US",
+      "city": "New York",
+      "ytId": "eSdcVD2ri6k"
+    },
+    {
+      "name": "Observing how the camera moves at Subaru Telescope, Hawaii",
+      "lat": 21.09,
+      "lon": -157.5,
+      "country": "US",
+      "city": "Observing how the camera moves at Subaru Telescope",
+      "ytId": "-tRUr79DMJs"
+    },
+    {
+      "name": "Game Commission Elk Cam",
+      "lat": 40.4406,
+      "lon": -79.9959,
+      "country": "US",
+      "city": "Pittsburgh",
+      "ytId": "6bx8lyJiN_s"
     }
   ]
 }

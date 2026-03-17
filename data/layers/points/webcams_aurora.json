@@ -2,7 +2,7 @@
   "_source": {
     "description": "Curated 24/7 live aurora borealis and night sky webcam streams",
     "origin": "YouTube Live streams discovered and verified via yt-dlp. Sources: aurora observatory channels, dark sky sites, Mauna Kea observatory",
-    "retrieved": "2026-03-11",
+    "retrieved": "2026-03-13",
     "license": "Public live streams \u2014 fair use",
     "notes": "All YouTube IDs verified via oEmbed API. IDs may change as streams rotate. Run scripts/ingest_webcams.py to re-verify."
   },
@@ -110,6 +110,110 @@
       "country": "US",
       "city": "from CFHT",
       "ytId": "qJ8lYplu1y0"
+    },
+    {
+      "name": "Aurora from Reykjav\u00edk Iceland",
+      "lat": 64.9631,
+      "lon": -19.0208,
+      "country": "IS",
+      "city": "Iceland",
+      "ytId": "QtZvFuzqX_o"
+    },
+    {
+      "name": "Iceland Auroras Northern Lights | Severe geomagnetic storm",
+      "lat": 64.9631,
+      "lon": -19.0208,
+      "country": "IS",
+      "city": "Iceland",
+      "ytId": "GzdFAwFtryQ"
+    },
+    {
+      "name": "Northern Lights NOW \ud83c\uddee\ud83c\uddf8 | 4K Aurora Borealis Real-Time Sky...",
+      "lat": 64.9631,
+      "lon": -19.0208,
+      "country": "IS",
+      "city": "Iceland",
+      "ytId": "puLGeodi4IQ"
+    },
+    {
+      "name": "Northern Lights NOW \ud83c\uddee\ud83c\uddf8 | 4K Aurora Borealis Real-Time Sky...",
+      "lat": 64.9631,
+      "lon": -19.0208,
+      "country": "IS",
+      "city": "Iceland",
+      "ytId": "lCxAnaKAoUo"
+    },
+    {
+      "name": "Northern Lights NOW \ud83c\uddee\ud83c\uddf8 | 4K Aurora Borealis Real-Time Sky...",
+      "lat": 64.9631,
+      "lon": -19.0208,
+      "country": "IS",
+      "city": "Iceland",
+      "ytId": "1mX1KPBYpXk"
+    },
+    {
+      "name": "Northern Lights NOW \ud83c\uddee\ud83c\uddf8 | 4K Aurora Borealis Real-Time Sky...",
+      "lat": 64.9631,
+      "lon": -19.0208,
+      "country": "IS",
+      "city": "Iceland",
+      "ytId": "wss7DWEhXEU"
+    },
+    {
+      "name": "Northern Lights NOW \ud83c\uddee\ud83c\uddf8 | 4K Aurora Borealis Real-Time Sky...",
+      "lat": 64.9631,
+      "lon": -19.0208,
+      "country": "IS",
+      "city": "Iceland",
+      "ytId": "Kg8VPVeVJW0"
+    },
+    {
+      "name": "Northern Lights NOW \ud83c\uddee\ud83c\uddf8 | 4K Aurora Borealis Real-Time Sky...",
+      "lat": 64.9631,
+      "lon": -19.0208,
+      "country": "IS",
+      "city": "Iceland",
+      "ytId": "tc6MUDmLDzw"
+    },
+    {
+      "name": "Surreal video of  Northern Lights in skies over Alaska",
+      "lat": 41.8781,
+      "lon": -87.6298,
+      "country": "US",
+      "city": "Chicago",
+      "ytId": "mxaTj4bu0-w"
+    },
+    {
+      "name": "Aurora police show how Flock cameras work behind the scenes",
+      "lat": 39.7392,
+      "lon": -104.9903,
+      "country": "US",
+      "city": "Denver",
+      "ytId": "IZLsC9ZoDiQ"
+    },
+    {
+      "name": "Northern Lights Fairbanks, Alaska",
+      "lat": 61.37,
+      "lon": -152.4,
+      "country": "US",
+      "city": "LIVE Northern Lights Fairbanks",
+      "ytId": "TSU4rxXLcls"
+    },
+    {
+      "name": "Northern Lights Fairbanks, Alaska 3-29-23",
+      "lat": 61.37,
+      "lon": -152.4,
+      "country": "US",
+      "city": "LIVE Northern Lights Fairbanks",
+      "ytId": "F90Zdc-iPvg"
+    },
+    {
+      "name": "Northern Lights Fairbanks, Alaska",
+      "lat": 61.37,
+      "lon": -152.4,
+      "country": "US",
+      "city": "Live Northern Lights Fairbanks",
+      "ytId": "jxKwPkPAoEw"
     }
   ]
 }

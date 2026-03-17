@@ -1,7 +1,7 @@
 # Panopticon Layer System
 
-**Version:** 2.0
-**Last updated:** 2026-03-07
+**Version:** 2.1
+**Last updated:** 2026-03-16
 
 This document describes the data layer architecture (how layers are defined, registered, loaded, and consumed by the wargame AI) and the view system (how clicking entities opens detail panels).
 
@@ -11,7 +11,7 @@ For detailed JSON schemas of all data types (point, path, region, playback, mani
 
 ## Overview
 
-Panopticon renders 60+ data layers on a CesiumJS globe. Each layer has one of six types: **point** (billboards), **path** (polylines), **region** (polygons), **live** (streaming multi-geometry), **scenario** (ephemeral wargame entities), or **ambient** (sidebar panels for markets, feeds, or other non-globe data). The system uses three patterns:
+Panopticon renders 100+ data layers on a CesiumJS globe. Each layer has one of six types: **point** (billboards), **path** (polylines), **region** (polygons), **live** (streaming multi-geometry), **scenario** (ephemeral wargame entities), or **ambient** (sidebar panels for markets, feeds, or other non-globe data). The system uses three patterns:
 
 1. **Layer Registry** — central registration and data caching
 2. **Layer Factories** — shared logic for the three globe entity types (point, path, region)
@@ -453,12 +453,22 @@ The summarizer handles point, path, and region layers and supports proximity fil
 
 ## Registered Layer Keys
 
-Current layer keys (as of 2026-03-07):
+Current layer keys (as of 2026-03-16, 169 catalog entries across 22 categories):
 
-**Point layers:** `mines`, `infrastructure`, `militarybases`, `arcticmining`, `rareearth`, `drillingleases`, `powerplants`, `nuclearplants`, `refineries`, `platforms`, `radar`, `strategicnuclear`, `volcanoes`, `earthquakes`, `wildfires`, `spacedebris`, `spaceports`, `lightning`, `ports`, `ixps`, `oceantemp`, `meteors`, `cosmic`, `ionosphere`, `arcticdeposits`, `airports`, `webcams`
+**Live layers (4):** `military`, `commercial`, `satellites`, `ships`
+
+**Critical Minerals (42):** `lithium`, `cobalt`, `nickel`, `graphite`, `manganese`, `vanadium`, `reelight`, `reeheavy`, `copper`, `bauxite`, `silicon`, `tin`, `gallium`, `germanium`, `indium`, `tantalum`, `niobium`, `tungsten`, `titanium`, `beryllium`, `chromium`, `antimony`, `platinum`, `palladium`, `uranium`, `tellurium`, `fluorspar`, `magnesium`, `zinc`, `phosphate`, `iridium`, `rhodium`, `molybdenum`, `zirconium`, `hafnium`, `selenium`, `bismuth`, `cadmium`, `silver`, `scandium`
+
+**Point layers:** `mines`, `arcticmining`, `rareearth`, `drilling`, `powerplants`, `nuclearplants`, `refineries`, `platforms`, `radar`, `strategicnuclear`, `bases`, `infra`, `volcanoes`, `earthquakes`, `wildfires`, `lightning`, `meteors`, `spacedebris`, `spaceports`, `ports`, `ixps`, `oceantemp`, `cosmic`, `ionosphere`, `arcticdeposits`, `airports`, `headsofstate`, `wikipedia`
+
+**Webcam layers (13):** `webcams`, `webcams_cities`, `webcams_beaches`, `webcams_landmarks`, `webcams_wildlife`, `webcams_aviation`, `webcams_maritime`, `webcams_volcanoes`, `webcams_rail`, `webcams_space`, `webcams_aurora`, `webcams_nature`, `webcams_traffic`
 
 **Path layers:** `cables`, `pipelines`, `traderoutes`, `arcticroutes`, `electricalgrid`, `whales`, `seaturtles`, `birds`, `elephants`, `oceancurrents`, `cargoroutes`, `commodityflows`
 
 **Region layers:** `chokepoints`, `fisheries`, `seaice`, `fishingfleets`
 
-**Live layers:** `military`, `commercial`, `satellites`, `ships`, `pokemon`
+**Market/Ambient layers (5):** `kalshi`, `crypto`, `commodities`, `news`, `whalebtc`
+
+**Scenario layers (3):** `profiles`, `kalshi_scenario`, `surveillance_cameras_scenario`
+
+**Ridiculous (1):** `pokemon`

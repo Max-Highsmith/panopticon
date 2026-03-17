@@ -120,6 +120,9 @@ import './wikipedialayer.js';
 import './profileslayer.js';
 import './headsofstatelayer.js';
 
+// Ridiculous
+import './pogo.js';
+
 // Scenario-specific ambient layers
 import './kalshiscenario.js';
 

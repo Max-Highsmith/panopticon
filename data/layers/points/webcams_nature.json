@@ -2,8 +2,8 @@
   "_source": {
     "description": "Curated 24/7 live nature, mountain, lake, and scenic webcam streams",
     "origin": "YouTube Live streams discovered and verified via yt-dlp. Sources: EarthCam, national park channels, ski resort operators, weather stations",
-    "retrieved": "2026-03-11",
-    "license": "Public live streams — fair use",
+    "retrieved": "2026-03-13",
+    "license": "Public live streams \u2014 fair use",
     "notes": "All YouTube IDs verified via oEmbed API. IDs may change as streams rotate. Run scripts/ingest_webcams.py to re-verify."
   },
   "nature": [
@@ -88,7 +88,7 @@
       "ytId": "u1HnmqcuUyg"
     },
     {
-      "name": "雪 京都 ライブ カメラ | Massive Snow Storm in Kyoto Japan Camera",
+      "name": "\u96ea \u4eac\u90fd \u30e9\u30a4\u30d6 \u30ab\u30e1\u30e9 | Massive Snow Storm in Kyoto Japan Camera",
       "lat": 35.6762,
       "lon": 139.6503,
       "country": "JP",
@@ -96,7 +96,7 @@
       "ytId": "1kK6Gpj590o"
     },
     {
-      "name": "お天気カメラ 大阪／OSAKA,JAPAN",
+      "name": "\u304a\u5929\u6c17\u30ab\u30e1\u30e9 \u5927\u962a\uff0fOSAKA,JAPAN",
       "lat": 34.6937,
       "lon": 135.5023,
       "country": "JP",
@@ -112,7 +112,7 @@
       "ytId": "jIh2FYqMOw0"
     },
     {
-      "name": "서울 한강 라이브 실시간 한강공원 올림픽대로 반포대교 분수쇼 Seoul Han River Park Fl...",
+      "name": "\uc11c\uc6b8 \ud55c\uac15 \ub77c\uc774\ube0c \uc2e4\uc2dc\uac04 \ud55c\uac15\uacf5\uc6d0 \uc62c\ub9bc\ud53d\ub300\ub85c \ubc18\ud3ec\ub300\uad50 \ubd84\uc218\uc1fc Seoul Han River Park Fl...",
       "lat": 37.5665,
       "lon": 126.978,
       "country": "KR",
@@ -168,7 +168,7 @@
       "ytId": "YmQqVomTgy4"
     },
     {
-      "name": "【Taipei Cam】大佳河濱公園 - 4K即時影像 | Taipei Dajia Riverside Park...",
+      "name": "\u3010Taipei Cam\u3011\u5927\u4f73\u6cb3\u6ff1\u516c\u5712 - 4K\u5373\u6642\u5f71\u50cf | Taipei Dajia Riverside Park...",
       "lat": 25.033,
       "lon": 121.5654,
       "country": "TW",
@@ -440,7 +440,7 @@
       "ytId": "z1PJqpgZccg"
     },
     {
-      "name": "Olifants River | Wildlife Stream – Greater Kruger Nationa...",
+      "name": "Olifants River | Wildlife Stream \u2013 Greater Kruger Nationa...",
       "lat": 24.0112,
       "lon": 31.4847,
       "country": "ZA",
@@ -448,7 +448,7 @@
       "ytId": "NapztoCaKFY"
     },
     {
-      "name": "Langebaan Lagoon Camera | Pearly’s Restaurant",
+      "name": "Langebaan Lagoon Camera | Pearly\u2019s Restaurant",
       "lat": 33.9249,
       "lon": 18.4241,
       "country": "ZA",
@@ -470,6 +470,214 @@
       "country": "ZA",
       "city": "South Africa",
       "ytId": "jOqASqt3vVI"
+    },
+    {
+      "name": "24/7 Bird Feeder Cam \u2014 St. Louis, MO",
+      "lat": 38.535,
+      "lon": -90.345,
+      "country": "US",
+      "city": "St. Louis",
+      "ytId": "TtctgMAgejo"
+    },
+    {
+      "name": "Sturgeon Watch: Mississippi River \u2014 Melvin Price Locks & Dam Cam #1",
+      "lat": 38.8815,
+      "lon": -90.1531,
+      "country": "US",
+      "city": "Alton",
+      "ytId": "VvTLxvP7X6A"
+    },
+    {
+      "name": "Sturgeon Watch: Mississippi River \u2014 Melvin Price Locks & Dam Cam #2",
+      "lat": 38.8815,
+      "lon": -90.1531,
+      "country": "US",
+      "city": "Alton",
+      "ytId": "61UOAAQqEPg"
+    },
+    {
+      "name": "Rio de Janeiro AO VIVO \ud83c\udde7\ud83c\uddf7 Praia do Pepino S\u00e3o Conrado Bea...",
+      "lat": 22.9068,
+      "lon": -43.1729,
+      "country": "BR",
+      "city": "Rio de Janeiro",
+      "ytId": "kSggojqGAa8"
+    },
+    {
+      "name": "Toronto, Canada Cam, | Lake Ontario, Toronto Islands, Rog...",
+      "lat": 43.6532,
+      "lon": -79.3832,
+      "country": "CA",
+      "city": "Toronto",
+      "ytId": "esxQiZ2LRDg"
+    },
+    {
+      "name": "Mystery Peak Webcam | Mt Seymour Ski Area, Vancouver, BC",
+      "lat": 49.2827,
+      "lon": -123.1207,
+      "country": "CA",
+      "city": "Vancouver",
+      "ytId": "vLawo-FrBKk"
+    },
+    {
+      "name": "Winter in Riga Latvia 4K | Snowy Old Town, Frozen River V...",
+      "lat": 56.9496,
+      "lon": 24.1052,
+      "country": "LV",
+      "city": "Riga",
+      "ytId": "5ZmNLV-w8bw"
+    },
+    {
+      "name": "Auckland Skyline, Harbour, &  Weather Camera \u2014 4K 24/7",
+      "lat": 36.8485,
+      "lon": 174.7633,
+      "country": "NZ",
+      "city": "Auckland",
+      "ytId": "eglZKYNuVdU"
+    },
+    {
+      "name": "Watch : Atlanta Weather Camera",
+      "lat": 33.749,
+      "lon": -84.388,
+      "country": "US",
+      "city": "Atlanta",
+      "ytId": "8_mwveUQ5Jo"
+    },
+    {
+      "name": "Crabtree Valley Mall madness caught on cam Raleigh, NC",
+      "lat": 35.63,
+      "lon": -79.81,
+      "country": "US",
+      "city": "Crabtree Valley Mall madness caught on cam Raleigh",
+      "ytId": "IDM57uB56ZU"
+    },
+    {
+      "name": "Gatlinburg TN, Webcams to See the Smoky Mountains From An...",
+      "lat": 35.7143,
+      "lon": -83.5102,
+      "country": "US",
+      "city": "Gatlinburg",
+      "ytId": "8ZZdOWC8PsA"
+    },
+    {
+      "name": "Cam River Bear - Katmai National Park, Alaska powered by ...",
+      "lat": 58.7519,
+      "lon": -155.7847,
+      "country": "US",
+      "city": "Katmai",
+      "ytId": "VjHnw-_ctDk"
+    },
+    {
+      "name": "ChampCam- View of Lake Champlain, Vermont",
+      "lat": 44.05,
+      "lon": -72.71,
+      "country": "US",
+      "city": "Live View of Lake Champlain",
+      "ytId": "m1DoqYKDbyQ"
+    },
+    {
+      "name": "The University of Tampa - Riverfront Webcam",
+      "lat": 27.9506,
+      "lon": -82.4572,
+      "country": "US",
+      "city": "Tampa",
+      "ytId": "QvNWCIOaB4Y"
+    },
+    {
+      "name": "Desert Trail Cam, Tucson, AZ, January 2025 - New Cameras ...",
+      "lat": 32.2226,
+      "lon": -110.9747,
+      "country": "US",
+      "city": "Tucson",
+      "ytId": "J689dxXD6Ic"
+    },
+    {
+      "name": "Wilmington, VT Weather Cam",
+      "lat": 44.05,
+      "lon": -72.71,
+      "country": "US",
+      "city": "Wilmington",
+      "ytId": "7lLfUDX25AY"
+    },
+    {
+      "name": "24/7 St. Johns River Cam  Debary Florida | Alligators, Bi...",
+      "lat": 18.3358,
+      "lon": -64.7282,
+      "country": "VI",
+      "city": "St. John",
+      "ytId": "r6eckNBpo5Q"
+    },
+    {
+      "name": "24/7 St. Johns River Cam  Debary Florida | Alligators, Bi...",
+      "lat": 18.3358,
+      "lon": -64.7282,
+      "country": "VI",
+      "city": "St. John",
+      "ytId": "e2m862Fe26U"
+    },
+    {
+      "name": "24/7 St. Johns River Cam  Debary Florida | Alligators, Bi...",
+      "lat": 18.3358,
+      "lon": -64.7282,
+      "country": "VI",
+      "city": "St. John",
+      "ytId": "FjUZr5EK1Kw"
+    },
+    {
+      "name": "24/7 St. Johns River Cam  Debary Florida | Alligators, Bi...",
+      "lat": 18.3358,
+      "lon": -64.7282,
+      "country": "VI",
+      "city": "St. John",
+      "ytId": "vKLHk-0xUoY"
+    },
+    {
+      "name": "24/7 St. Johns River Cam  Debary Florida | Alligators, Bi...",
+      "lat": 18.3358,
+      "lon": -64.7282,
+      "country": "VI",
+      "city": "St. John",
+      "ytId": "d-AtxXNgB3s"
+    },
+    {
+      "name": "24/7 St. Johns River Cam  Debary Florida | Alligators, Bi...",
+      "lat": 18.3358,
+      "lon": -64.7282,
+      "country": "VI",
+      "city": "St. John",
+      "ytId": "07FoRbGIYtw"
+    },
+    {
+      "name": "24/7 St. Johns River Cam  Debary Florida | Alligators, Bi...",
+      "lat": 18.3358,
+      "lon": -64.7282,
+      "country": "VI",
+      "city": "St. John",
+      "ytId": "RcJpP570NLU"
+    },
+    {
+      "name": "Windswept Point Webcam on Cinnamon, Maho, and Francis Bay...",
+      "lat": 18.3358,
+      "lon": -64.7282,
+      "country": "VI",
+      "city": "St. John",
+      "ytId": "C0e8bpZ-5WY"
+    },
+    {
+      "name": "Table Mountain Stream Bloubergstrand Beach | Cape Town",
+      "lat": 33.9249,
+      "lon": 18.4241,
+      "country": "ZA",
+      "city": "Cape Town",
+      "ytId": "cIkluaXBMkQ"
+    },
+    {
+      "name": "Brass Bell Surf Cam | Kalk Bay Stream South Africa | 24/7...",
+      "lat": 33.9249,
+      "lon": 18.4241,
+      "country": "ZA",
+      "city": "South Africa",
+      "ytId": "ZfiGeTowMWU"
     }
   ]
 }

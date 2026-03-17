@@ -2,7 +2,7 @@
   "_source": {
     "description": "Curated 24/7 live train, railway, and rail crossing webcam streams",
     "origin": "YouTube Live streams discovered and verified via yt-dlp. Sources: Virtual Railfan, RailStream, Steel Highway Railcams, PTZtv",
-    "retrieved": "2026-03-11",
+    "retrieved": "2026-03-13",
     "license": "Public live streams \u2014 fair use",
     "notes": "All YouTube IDs verified via oEmbed API. IDs may change as streams rotate. Run scripts/ingest_webcams.py to re-verify."
   },
@@ -1464,12 +1464,812 @@
       "ytId": "WK46BMR4_jE"
     },
     {
-      "name": "Trains Railcam | St Louis, Missouri",
-      "lat": 0,
-      "lon": 0,
-      "country": "XX",
-      "city": "ISS",
+      "name": "Trains Railcam | St Louis, Missouri (PTZ)",
+      "lat": 38.627,
+      "lon": -90.187,
+      "country": "US",
+      "city": "St. Louis",
       "ytId": "NXmFAhX_3vY"
+    },
+    {
+      "name": "Trains Railcam | St Louis, Missouri (West Cam)",
+      "lat": 38.627,
+      "lon": -90.189,
+      "country": "US",
+      "city": "St. Louis",
+      "ytId": "OHRc7YRmuTk"
+    },
+    {
+      "name": "Pacific Partnership Live Railcam \u2014 Pacific, MO",
+      "lat": 38.4826,
+      "lon": -90.7573,
+      "country": "US",
+      "city": "Pacific",
+      "ytId": "rAvmEN1NYms"
+    },
+    {
+      "name": "Pacific, MO \u2014 UPRR Jefferson City Sub / BNSF Cuba Sub",
+      "lat": 38.4826,
+      "lon": -90.7573,
+      "country": "US",
+      "city": "Pacific",
+      "ytId": "K70jTDrEePk"
+    },
+    {
+      "name": "Webcam at Freights Bay, Barbados",
+      "lat": 13.1939,
+      "lon": -59.5432,
+      "country": "BB",
+      "city": "Barbados",
+      "ytId": "Ywuw8vhDQ9A"
+    },
+    {
+      "name": "O-Train Ottawa | Cyrville Station (Line 1 Trains 24/7)",
+      "lat": 45.4215,
+      "lon": -75.6972,
+      "country": "CA",
+      "city": "Ottawa",
+      "ytId": "_0BHjcVP_ts"
+    },
+    {
+      "name": "RailCam from miniprints HQ in Toronto Canada",
+      "lat": 43.6532,
+      "lon": -79.3832,
+      "country": "CA",
+      "city": "Toronto",
+      "ytId": "s9KSdaPcENA"
+    },
+    {
+      "name": "[] \u6771\u4eac\u30fb\u6d5c\u677e\u753a\u99c5 \u30e9\u30a4\u30d6\u30ab\u30e1\u30e9  Stream of Hamamatsu-cho  railway track...",
+      "lat": 35.6762,
+      "lon": 139.6503,
+      "country": "JP",
+      "city": "Tokyo",
+      "ytId": "W0V8-6WrgBY"
+    },
+    {
+      "name": "Anchorage, Alaska, USA | Train Camera (PTZ)",
+      "lat": 61.2181,
+      "lon": -149.9003,
+      "country": "US",
+      "city": "Anchorage",
+      "ytId": "TfAAleblDIE"
+    },
+    {
+      "name": "Ashland, Virginia, USA | Train Camera (Fixed View \u2014 South)",
+      "lat": 37.77,
+      "lon": -78.17,
+      "country": "US",
+      "city": "Ashland",
+      "ytId": "0u6wBsMlnhg"
+    },
+    {
+      "name": "Ashland, Virginia, USA | Train Camera (PTZ)",
+      "lat": 37.77,
+      "lon": -78.17,
+      "country": "US",
+      "city": "Ashland",
+      "ytId": "wgkdREYOfw0"
+    },
+    {
+      "name": "Austell, Georgia, USA | Train Camera (Fixed View \u2014 North)",
+      "lat": 33.04,
+      "lon": -83.64,
+      "country": "US",
+      "city": "Austell",
+      "ytId": "_sy9as4wVBA"
+    },
+    {
+      "name": "Barrett, MN USA | Fixed Train Cam | CPKC Elbow Lake Sub |...",
+      "lat": 45.69,
+      "lon": -93.9,
+      "country": "US",
+      "city": "Barrett",
+      "ytId": "ENsZTariVY4"
+    },
+    {
+      "name": "Barrett, MN USA | PTZ Train Cam NOW | CPKC Elbow Lake Sub...",
+      "lat": 45.69,
+      "lon": -93.9,
+      "country": "US",
+      "city": "Barrett",
+      "ytId": "zm440ODo0mY"
+    },
+    {
+      "name": "Barstow, CA | BNSF Needles Sub, MP 744.5 - PTZ (Chat) | S...",
+      "lat": 36.12,
+      "lon": -119.68,
+      "country": "US",
+      "city": "Barstow",
+      "ytId": "Hsh-46qLpQE"
+    },
+    {
+      "name": "Battle Creek, Michigan, USA | Train Camera (PTZ)",
+      "lat": 43.33,
+      "lon": -84.54,
+      "country": "US",
+      "city": "Battle Creek",
+      "ytId": "H_gyJtCyWqw"
+    },
+    {
+      "name": "Big Sandy, Texas, USA | Train Camera (Fixed View \u2013 West)",
+      "lat": 31.05,
+      "lon": -97.56,
+      "country": "US",
+      "city": "Big Sandy",
+      "ytId": "iSCU6JMaIt0"
+    },
+    {
+      "name": "Trains Railcam | Blue Island, Illinois (South Cam)",
+      "lat": 40.35,
+      "lon": -88.99,
+      "country": "US",
+      "city": "Blue Island",
+      "ytId": "RDxBH2S1hxs"
+    },
+    {
+      "name": "Burlington, Iowa, USA | Train Camera (PTZ)",
+      "lat": 44.4759,
+      "lon": -73.2121,
+      "country": "US",
+      "city": "Burlington",
+      "ytId": "L_xBQqGzNzY"
+    },
+    {
+      "name": "CSX Henderson Sub near Hopkinsville, KY",
+      "lat": 37.67,
+      "lon": -84.67,
+      "country": "US",
+      "city": "CSX Henderson Sub near Hopkinsville",
+      "ytId": "FS5ZLuqwsKg"
+    },
+    {
+      "name": "CSX Mainline in Cumberland, Maryland, USA | Train Camera ...",
+      "lat": 39.06,
+      "lon": -76.8,
+      "country": "US",
+      "city": "CSX Mainline in Cumberland",
+      "ytId": "r3mtAbl8HKo"
+    },
+    {
+      "name": "Trains Railcam | Caliente, Nevada (PTZ)",
+      "lat": 38.31,
+      "lon": -117.06,
+      "country": "US",
+      "city": "Caliente",
+      "ytId": "RVLqQtrbCT8"
+    },
+    {
+      "name": "Cedar Hill, TN",
+      "lat": 35.75,
+      "lon": -86.69,
+      "country": "US",
+      "city": "Cedar Hill",
+      "ytId": "_3wgKiiukzI"
+    },
+    {
+      "name": "Cedar Hill, TN",
+      "lat": 35.75,
+      "lon": -86.69,
+      "country": "US",
+      "city": "Cedar Hill",
+      "ytId": "_fTY4Vfc3EY"
+    },
+    {
+      "name": "Chehalis, Washington, USA | Train Camera (Fixed View \u2013 No...",
+      "lat": 47.4,
+      "lon": -121.49,
+      "country": "US",
+      "city": "Chehalis",
+      "ytId": "wSZCdFJNkR4"
+    },
+    {
+      "name": "Chesterton, Indiana, USA | Train Camera (Fixed View \u2013 East)",
+      "lat": 39.85,
+      "lon": -86.26,
+      "country": "US",
+      "city": "Chesterton",
+      "ytId": "BDb_sSL-K5k"
+    },
+    {
+      "name": "Cocoa, Florida, USA | Train Camera (Fixed View \u2013 South)",
+      "lat": 27.77,
+      "lon": -81.69,
+      "country": "US",
+      "city": "Cocoa",
+      "ytId": "9sFDtbWz2uc"
+    },
+    {
+      "name": "Cofton, KY",
+      "lat": 37.67,
+      "lon": -84.67,
+      "country": "US",
+      "city": "Cofton",
+      "ytId": "CUCLZYYPXgI"
+    },
+    {
+      "name": "Cordele, Georgia, USA | Train Camera (PTZ)",
+      "lat": 33.04,
+      "lon": -83.64,
+      "country": "US",
+      "city": "Cordele",
+      "ytId": "Sj-TMZX_4_s"
+    },
+    {
+      "name": "Covington, Kentucky, USA | Train Camera (Fixed View \u2013 South)",
+      "lat": 37.67,
+      "lon": -84.67,
+      "country": "US",
+      "city": "Covington",
+      "ytId": "7C9t6xk2LVw"
+    },
+    {
+      "name": "Cowan, TN",
+      "lat": 35.75,
+      "lon": -86.69,
+      "country": "US",
+      "city": "Cowan",
+      "ytId": "wDOAKZHEN7Y"
+    },
+    {
+      "name": "Cowan, TN Railfan Day",
+      "lat": 35.75,
+      "lon": -86.69,
+      "country": "US",
+      "city": "Cowan",
+      "ytId": "T7xgwlzoScI"
+    },
+    {
+      "name": "Crofton, KY",
+      "lat": 37.67,
+      "lon": -84.67,
+      "country": "US",
+      "city": "Crofton",
+      "ytId": "m8bOcfRcCQU"
+    },
+    {
+      "name": "Crossing the swing span at Fort Madison, Iowa!",
+      "lat": 42.01,
+      "lon": -93.21,
+      "country": "US",
+      "city": "Crossing the swing span at Fort Madison",
+      "ytId": "qJLfciFGfJo"
+    },
+    {
+      "name": "Cumberland, Maryland, USA | Train Camera (PTZ \u2014 Downtown)...",
+      "lat": 39.06,
+      "lon": -76.8,
+      "country": "US",
+      "city": "Cumberland",
+      "ytId": "LqPsNV_b-uc"
+    },
+    {
+      "name": "Dalton, Georgia, USA | Train Camera (Fixed View \u2013 North)",
+      "lat": 33.04,
+      "lon": -83.64,
+      "country": "US",
+      "city": "Dalton",
+      "ytId": "DofPCzEUlXk"
+    },
+    {
+      "name": "Deshler, Ohio, USA | Train Camera (PTZ)",
+      "lat": 40.39,
+      "lon": -82.76,
+      "country": "US",
+      "city": "Deshler",
+      "ytId": "514Rw4P0LoI"
+    },
+    {
+      "name": "Elkhart, Indiana, USA | Train Camera (Fixed View \u2013 West)",
+      "lat": 39.85,
+      "lon": -86.26,
+      "country": "US",
+      "city": "Elkhart",
+      "ytId": "3nls-9uh714"
+    },
+    {
+      "name": "Elkhart, Indiana, USA | Train Camera (PTZ)",
+      "lat": 39.85,
+      "lon": -86.26,
+      "country": "US",
+      "city": "Elkhart",
+      "ytId": "YR1PdWaSxgk"
+    },
+    {
+      "name": "Fairport, New York, USA | Train Camera (Fixed View \u2013 East)",
+      "lat": 42.17,
+      "lon": -74.95,
+      "country": "US",
+      "city": "Fairport",
+      "ytId": "rdKTInPj9j8"
+    },
+    {
+      "name": "Amtrak  Fort Madison",
+      "lat": 40.6297,
+      "lon": -91.3149,
+      "country": "US",
+      "city": "Fort Madison",
+      "ytId": "3aAy9O0f-zk"
+    },
+    {
+      "name": "Amtrak in Fort Madison IA",
+      "lat": 40.6297,
+      "lon": -91.3149,
+      "country": "US",
+      "city": "Fort Madison",
+      "ytId": "Koel7SISQww"
+    },
+    {
+      "name": "River and Rail Fort Madison",
+      "lat": 40.6297,
+      "lon": -91.3149,
+      "country": "US",
+      "city": "Fort Madison",
+      "ytId": "paLVgkHBXKE"
+    },
+    {
+      "name": "River and Rail in Fort Madison IA",
+      "lat": 40.6297,
+      "lon": -91.3149,
+      "country": "US",
+      "city": "Fort Madison",
+      "ytId": "jGkXLB-FkZ0"
+    },
+    {
+      "name": "Rail Cam \u2013 Fostoria, Ohio | CSX (ex-B&O) | RailStream",
+      "lat": 40.39,
+      "lon": -82.76,
+      "country": "US",
+      "city": "Fostoria",
+      "ytId": "7zG4uxJjaZI"
+    },
+    {
+      "name": "Rail Cam \u2013 Fostoria, Ohio | CSX (ex-B&O) | RailStream",
+      "lat": 40.39,
+      "lon": -82.76,
+      "country": "US",
+      "city": "Fostoria",
+      "ytId": "NKQyvqTCsKI"
+    },
+    {
+      "name": "Rail Cam \u2013 Fostoria, Ohio | CSX (ex-B&O) | RailStream",
+      "lat": 40.39,
+      "lon": -82.76,
+      "country": "US",
+      "city": "Fostoria",
+      "ytId": "OeZWgN2rBFI"
+    },
+    {
+      "name": "Galesburg, Illinois, USA | Train Camera (Fixed View \u2013 West)",
+      "lat": 40.35,
+      "lon": -88.99,
+      "country": "US",
+      "city": "Galesburg",
+      "ytId": "JsBeRV3BB5s"
+    },
+    {
+      "name": "Galveston Texas  24/7 Camera  BNSF Railroad, Fishing, Sun...",
+      "lat": 29.3013,
+      "lon": -94.7977,
+      "country": "US",
+      "city": "Galveston",
+      "ytId": "R6mgkdG33Do"
+    },
+    {
+      "name": "Glendale, Ohio, USA | Train Camera (PTZ)",
+      "lat": 40.39,
+      "lon": -82.76,
+      "country": "US",
+      "city": "Glendale",
+      "ytId": "qHJF04WdxHo"
+    },
+    {
+      "name": "Colorado Model Railroad Museum, Greeley, CO, USA | Virtua...",
+      "lat": 39.06,
+      "lon": -105.31,
+      "country": "US",
+      "city": "Greeley",
+      "ytId": "1P0feVMNX5s"
+    },
+    {
+      "name": "Greeley, Colorado, USA | Train Camera (Fixed View \u2014 South)",
+      "lat": 39.06,
+      "lon": -105.31,
+      "country": "US",
+      "city": "Greeley",
+      "ytId": "DDHWS4i4eTo"
+    },
+    {
+      "name": "Greencastle, Pennsylvania, USA | Train Camera (Fixed View...",
+      "lat": 40.59,
+      "lon": -77.21,
+      "country": "US",
+      "city": "Greencastle",
+      "ytId": "KuUy6cEuwFw"
+    },
+    {
+      "name": "Guthrie, KY",
+      "lat": 37.67,
+      "lon": -84.67,
+      "country": "US",
+      "city": "Guthrie",
+      "ytId": "2TKzt9FMiRE"
+    },
+    {
+      "name": "Harriman Jct, TN",
+      "lat": 35.75,
+      "lon": -86.69,
+      "country": "US",
+      "city": "Harriman Jct",
+      "ytId": "OCak_7qp-CM"
+    },
+    {
+      "name": "Harriman Junction, TN",
+      "lat": 35.75,
+      "lon": -86.69,
+      "country": "US",
+      "city": "Harriman Junction",
+      "ytId": "Y1myF1guUnE"
+    },
+    {
+      "name": "Trains Railcam | Houston, Texas (Sampson Street North)",
+      "lat": 29.7604,
+      "lon": -95.3698,
+      "country": "US",
+      "city": "Houston",
+      "ytId": "oAJH5nZgrNQ"
+    },
+    {
+      "name": "Trains Railcam | Houston, Texas (Sampson Street South)",
+      "lat": 29.7604,
+      "lon": -95.3698,
+      "country": "US",
+      "city": "Houston",
+      "ytId": "OmWt0efvmNQ"
+    },
+    {
+      "name": "Jonesborough, Tennessee, USA | Train Camera (Fixed View \u2013...",
+      "lat": 35.75,
+      "lon": -86.69,
+      "country": "US",
+      "city": "Jonesborough",
+      "ytId": "3XTk72rPJjQ"
+    },
+    {
+      "name": "Junction City, WI Railcam - Brian & Wendy's Hiawatha",
+      "lat": 44.27,
+      "lon": -89.62,
+      "country": "US",
+      "city": "Junction City",
+      "ytId": "1ECOB_BQ734"
+    },
+    {
+      "name": "Kansas City, Missouri, USA | Train Camera (Doc\u2019s Caboose ...",
+      "lat": 39.0997,
+      "lon": -94.5786,
+      "country": "US",
+      "city": "Kansas City",
+      "ytId": "W02WZ5c02LE"
+    },
+    {
+      "name": "Kearney, Nebraska, USA | Train Camera (Fixed View \u2013 West)",
+      "lat": 41.13,
+      "lon": -98.27,
+      "country": "US",
+      "city": "Kearney",
+      "ytId": "23tmCNeFh7A"
+    },
+    {
+      "name": "Ayer, MA Railcam | Railside",
+      "lat": 42.23,
+      "lon": -71.53,
+      "country": "US",
+      "city": "LIVE Ayer",
+      "ytId": "71YCf0IV-v8"
+    },
+    {
+      "name": "Cozad, NE Railcam | Railside",
+      "lat": 41.13,
+      "lon": -98.27,
+      "country": "US",
+      "city": "LIVE Cozad",
+      "ytId": "ePdG9zr-MzY"
+    },
+    {
+      "name": "Worcester, MA Railcam | Railside",
+      "lat": 42.23,
+      "lon": -71.53,
+      "country": "US",
+      "city": "LIVE Worcester",
+      "ytId": "azMQk5x_xps"
+    },
+    {
+      "name": "La Plata, Missouri, USA | Train Camera (Fixed View \u2013 West)",
+      "lat": 38.46,
+      "lon": -92.29,
+      "country": "US",
+      "city": "La Plata",
+      "ytId": "flEBdsoP4o0"
+    },
+    {
+      "name": "Laramie, Wyoming, USA | Train Camera (Fixed View \u2013 East)",
+      "lat": 42.76,
+      "lon": -107.3,
+      "country": "US",
+      "city": "Laramie",
+      "ytId": "9laISW0jtOo"
+    },
+    {
+      "name": "Lincoln, Nebraska, USA | Train Camera (PTZ)",
+      "lat": 41.13,
+      "lon": -98.27,
+      "country": "US",
+      "city": "Lincoln",
+      "ytId": "gOvke59hGxQ"
+    },
+    {
+      "name": "Little Falls, MN PTZ Cam NOW | BNSF Staples Sub | Norther...",
+      "lat": 45.69,
+      "lon": -93.9,
+      "country": "US",
+      "city": "Little Falls",
+      "ytId": "0R1rkGsWaUU"
+    },
+    {
+      "name": "Fargo/Moorhead, USA | W Train Cam | BNSF KO Sub | Moorhea...",
+      "lat": 45.69,
+      "lon": -93.9,
+      "country": "US",
+      "city": "Moorhead",
+      "ytId": "A1PoDybhDQs"
+    },
+    {
+      "name": "Muncie, Indiana, USA | Train Camera (Fixed View \u2013 East)",
+      "lat": 39.85,
+      "lon": -86.26,
+      "country": "US",
+      "city": "Muncie",
+      "ytId": "FthjafjSKxo"
+    },
+    {
+      "name": "Munger Tavern & Grill Railcam - Munger, MN",
+      "lat": 45.69,
+      "lon": -93.9,
+      "country": "US",
+      "city": "Munger",
+      "ytId": "nSgorbS54WA"
+    },
+    {
+      "name": "Mississippi River Cam | Newport, MN, USA | Mile Marker 830.5",
+      "lat": 41.4901,
+      "lon": -71.3128,
+      "country": "US",
+      "city": "Newport",
+      "ytId": "82QKb8eLLvo"
+    },
+    {
+      "name": "Parkville, Missouri, USA | Train Camera (Fixed View \u2013 West)",
+      "lat": 38.46,
+      "lon": -92.29,
+      "country": "US",
+      "city": "Parkville",
+      "ytId": "x1D0VkJU1r4"
+    },
+    {
+      "name": "Plant City, Florida, USA | Train Camera (Fixed View \u2014 North)",
+      "lat": 27.77,
+      "lon": -81.69,
+      "country": "US",
+      "city": "Plant City",
+      "ytId": "HFV5wXA-CRA"
+    },
+    {
+      "name": "Prescott, WI USA | East Train Cam | BNSF St. Croix Sub | ...",
+      "lat": 44.27,
+      "lon": -89.62,
+      "country": "US",
+      "city": "Prescott",
+      "ytId": "5r9iSCATjs8"
+    },
+    {
+      "name": "Princeton, Indiana, USA | Train Camera (Fixed View \u2013 South)",
+      "lat": 39.85,
+      "lon": -86.26,
+      "country": "US",
+      "city": "Princeton",
+      "ytId": "jRvnO7D-FpA"
+    },
+    {
+      "name": "Quincy, Illinois, USA | Virtual Railfan",
+      "lat": 40.35,
+      "lon": -88.99,
+      "country": "US",
+      "city": "Quincy",
+      "ytId": "oLM0p4_oWLo"
+    },
+    {
+      "name": "Rahm Viaduct, IN",
+      "lat": 39.85,
+      "lon": -86.26,
+      "country": "US",
+      "city": "Rahm Viaduct",
+      "ytId": "U3Nms654NXc"
+    },
+    {
+      "name": "Rahm Viaduct, IN",
+      "lat": 39.85,
+      "lon": -86.26,
+      "country": "US",
+      "city": "Rahm Viaduct",
+      "ytId": "EGGKDVnatLM"
+    },
+    {
+      "name": "Roanoke, Virginia, USA | Train Camera (Fixed View \u2014 East)",
+      "lat": 37.77,
+      "lon": -78.17,
+      "country": "US",
+      "city": "Roanoke",
+      "ytId": "7IEVmX3Ykf0"
+    },
+    {
+      "name": "Rockwood, Tennessee, USA | Train Camera (Fixed View \u2013 North)",
+      "lat": 35.75,
+      "lon": -86.69,
+      "country": "US",
+      "city": "Rockwood",
+      "ytId": "sOFA93jWtvA"
+    },
+    {
+      "name": "Rosenberg, TX Railcam \u2014 Freight Trains & Action (Jan 28th...",
+      "lat": 31.05,
+      "lon": -97.56,
+      "country": "US",
+      "city": "Rosenberg",
+      "ytId": "xRSqWesoQfI"
+    },
+    {
+      "name": "Russellville, Arkansas, USA - North  | Virtual Railfan",
+      "lat": 34.97,
+      "lon": -92.37,
+      "country": "US",
+      "city": "Russellville",
+      "ytId": "f6fezCO3Hcc"
+    },
+    {
+      "name": "Russellville, Arkansas, USA | Train Camera (Fixed View \u2013 ...",
+      "lat": 34.97,
+      "lon": -92.37,
+      "country": "US",
+      "city": "Russellville",
+      "ytId": "SoqD5lVPwpc"
+    },
+    {
+      "name": "RECORDING: SANDWICHES & TRAINS! SHENANDOAH JUNCTION, WV R...",
+      "lat": 38.49,
+      "lon": -80.95,
+      "country": "US",
+      "city": "SHENANDOAH JUNCTION",
+      "ytId": "SBnI59yEW4s"
+    },
+    {
+      "name": "South Casky, KY -  CSX Henderson Sub",
+      "lat": 37.67,
+      "lon": -84.67,
+      "country": "US",
+      "city": "South Casky",
+      "ytId": "FmSEbzXEmUY"
+    },
+    {
+      "name": "Springfield, Massachusetts, USA | Train Camera (PTZ)",
+      "lat": 42.23,
+      "lon": -71.53,
+      "country": "US",
+      "city": "Springfield",
+      "ytId": "8U0M_mionOs"
+    },
+    {
+      "name": "St. Paul, Minnesota, USA | Train Camera (PTZ)",
+      "lat": 45.69,
+      "lon": -93.9,
+      "country": "US",
+      "city": "St. Paul",
+      "ytId": "HYbkx7tlSzA"
+    },
+    {
+      "name": "Steam Trains in Chattanooga, Tennessee, USA | Train Camer...",
+      "lat": 35.75,
+      "lon": -86.69,
+      "country": "US",
+      "city": "Steam Trains in Chattanooga",
+      "ytId": "HSZDWRE5m2o"
+    },
+    {
+      "name": "Hiawatha Bar & Grill Railcam - Sturtevant, WI",
+      "lat": 44.27,
+      "lon": -89.62,
+      "country": "US",
+      "city": "Sturtevant",
+      "ytId": "WkG6ivmGtn0"
+    },
+    {
+      "name": "Texarkana, Arkansas, USA | Train Camera (PTZ)",
+      "lat": 34.97,
+      "lon": -92.37,
+      "country": "US",
+      "city": "Texarkana",
+      "ytId": "6s1KTevqrNY"
+    },
+    {
+      "name": "Thomasville, North Carolina, USA | Train Camera (Fixed Vi...",
+      "lat": 35.63,
+      "lon": -79.81,
+      "country": "US",
+      "city": "Thomasville",
+      "ytId": "JPdUQtZcuk8"
+    },
+    {
+      "name": "Tucson, AZ (Wilmot) | UPRR Lordsburg Sub, MP 994.7 (Chat)...",
+      "lat": 32.2226,
+      "lon": -110.9747,
+      "country": "US",
+      "city": "Tucson",
+      "ytId": "o3CxnP_eMHc"
+    },
+    {
+      "name": "Tucson, Arizona, USA | Train Camera (PTZ)",
+      "lat": 32.2226,
+      "lon": -110.9747,
+      "country": "US",
+      "city": "Tucson",
+      "ytId": "-Q9VQJdqIlk"
+    },
+    {
+      "name": "Viduct at Rahm, IN (CSX Henderson Sub)",
+      "lat": 39.85,
+      "lon": -86.26,
+      "country": "US",
+      "city": "Viduct at Rahm",
+      "ytId": "Z8PCWX2Q0hY"
+    },
+    {
+      "name": "Washington Depot Railcam - Washington, IA",
+      "lat": 38.9072,
+      "lon": -77.0369,
+      "country": "US",
+      "city": "Washington DC",
+      "ytId": "S6qQny6YwMg"
+    },
+    {
+      "name": "Washington Depot Railcam - Washington, IA",
+      "lat": 38.9072,
+      "lon": -77.0369,
+      "country": "US",
+      "city": "Washington DC",
+      "ytId": "akaUSNT6-Do"
+    },
+    {
+      "name": "Washington Terminal",
+      "lat": 38.9072,
+      "lon": -77.0369,
+      "country": "US",
+      "city": "Washington DC",
+      "ytId": "oUFZBLUAYzc"
+    },
+    {
+      "name": "Waycross, Georgia, USA | Train Camera (PTZ \u2014 Diamond)",
+      "lat": 33.04,
+      "lon": -83.64,
+      "country": "US",
+      "city": "Waycross",
+      "ytId": "xMMTDVlQIms"
+    },
+    {
+      "name": "Morton\u2019s Gap, KY",
+      "lat": 37.67,
+      "lon": -84.67,
+      "country": "US",
+      "city": "s Gap",
+      "ytId": "Pwt4sXYSRAA"
     }
   ]
 }

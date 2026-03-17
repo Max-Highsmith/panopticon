@@ -2,8 +2,8 @@
   "_source": {
     "description": "Curated 24/7 live highway, road, and city traffic webcam streams worldwide",
     "origin": "YouTube Live streams discovered and verified via yt-dlp channel scan + search. Sources: state DOT cameras, TrafficWatcha, city transportation departments",
-    "retrieved": "2026-03-11",
-    "license": "Public live streams — fair use",
+    "retrieved": "2026-03-13",
+    "license": "Public live streams \u2014 fair use",
     "notes": "All YouTube IDs verified via oEmbed API. IDs may change as streams rotate. Run scripts/ingest_webcams.py to re-verify."
   },
   "traffic": [
@@ -56,7 +56,7 @@
       "ytId": "PB8-N38arMg"
     },
     {
-      "name": "Middle East Multi-Cams | Israel 🇮🇱 Lebanon | Sky Views",
+      "name": "Middle East Multi-Cams | Israel \ud83c\uddee\ud83c\uddf1 Lebanon | Sky Views",
       "lat": 31.7683,
       "lon": 35.2137,
       "country": "IL",
@@ -176,7 +176,7 @@
       "ytId": "D2tqr5ekXO8"
     },
     {
-      "name": "⭕ Traffic Camera - Car Spotting - Police Scanner - From F...",
+      "name": "\u2b55 Traffic Camera - Car Spotting - Police Scanner - From F...",
       "lat": 36.1162,
       "lon": -119.6816,
       "country": "US",
@@ -184,7 +184,7 @@
       "ytId": "1xl0hX-nF2E"
     },
     {
-      "name": "⭕ Traffic Camera - Police Scanner - From Fresno, California",
+      "name": "\u2b55 Traffic Camera - Police Scanner - From Fresno, California",
       "lat": 36.1162,
       "lon": -119.6816,
       "country": "US",
@@ -262,6 +262,118 @@
       "country": "US",
       "city": "Washington DC",
       "ytId": "0_TwJrJdvEE"
+    },
+    {
+      "name": "Toronto Highway 427 Traffic Cam | 24/7 HD Stream \ud83c\udde8\ud83c\udde6",
+      "lat": 43.6532,
+      "lon": -79.3832,
+      "country": "CA",
+      "city": "Toronto",
+      "ytId": "EOABXPGk8Zg"
+    },
+    {
+      "name": "Toronto Highway 427 Traffic Cam | 24/7 HD Stream \ud83c\udde8\ud83c\udde6",
+      "lat": 43.6532,
+      "lon": -79.3832,
+      "country": "CA",
+      "city": "Toronto",
+      "ytId": "fT-b1hsMfd0"
+    },
+    {
+      "name": "Toronto Highway 427 Traffic Cam | 24/7 HD Stream \ud83c\udde8\ud83c\udde6 (Port...",
+      "lat": 43.6532,
+      "lon": -79.3832,
+      "country": "CA",
+      "city": "Toronto",
+      "ytId": "WXpL-Mhdqkw"
+    },
+    {
+      "name": "Toronto Highway 427 Traffic Cam | 24/7 HD Stream \ud83c\udde8\ud83c\udde6 (Port...",
+      "lat": 43.6532,
+      "lon": -79.3832,
+      "country": "CA",
+      "city": "Toronto",
+      "ytId": "n2UZP5w21Rk"
+    },
+    {
+      "name": "Toronto Highway 427 Traffic Cam | 24/7 HD Stream \ud83c\udde8\ud83c\udde6 (Port...",
+      "lat": 43.6532,
+      "lon": -79.3832,
+      "country": "CA",
+      "city": "Toronto",
+      "ytId": "ciB0rKnuDVY"
+    },
+    {
+      "name": "Toronto Snow Storm Watch Highway 427 Traffic Cam | 24/7 H...",
+      "lat": 43.6532,
+      "lon": -79.3832,
+      "country": "CA",
+      "city": "Toronto",
+      "ytId": "VuZx1mly-Jg"
+    },
+    {
+      "name": "WATCH ISTANBUL 24/7 (Touristic & Traffic Cameras)",
+      "lat": 41.0082,
+      "lon": 28.9784,
+      "country": "TR",
+      "city": "Istanbul",
+      "ytId": "0xFW3MBtpVE"
+    },
+    {
+      "name": "STREAMING | UGA vs Texas in Atlanta; traffic cameras near...",
+      "lat": 33.749,
+      "lon": -84.388,
+      "country": "US",
+      "city": "Atlanta",
+      "ytId": "suy2dbMfsYI"
+    },
+    {
+      "name": "Thunderstorms, showers move through metro Atlanta | radar...",
+      "lat": 33.749,
+      "lon": -84.388,
+      "country": "US",
+      "city": "Atlanta",
+      "ytId": "f017JWJ_-TM"
+    },
+    {
+      "name": "4K Chicago Playpen, Lakefront Trail & LSD 24/7 Cam | Traf...",
+      "lat": 41.8781,
+      "lon": -87.6298,
+      "country": "US",
+      "city": "Chicago",
+      "ytId": "XQnd7k4UCs0"
+    },
+    {
+      "name": "Watch : Traffic cams show delays in Portland metro area",
+      "lat": 45.5152,
+      "lon": -122.6784,
+      "country": "US",
+      "city": "Portland",
+      "ytId": "q2gdFqPCXMk"
+    },
+    {
+      "name": "cam: Traffic still backed up on NB I-5 in Portland as onl...",
+      "lat": 45.5152,
+      "lon": -122.6784,
+      "country": "US",
+      "city": "Portland",
+      "ytId": "RnsBmlevOKQ"
+    },
+    {
+      "name": "[HORROR] Iowa: Tanker Truck, Tractor Trailer And Traffic ...",
+      "lat": 42.01,
+      "lon": -93.21,
+      "country": "US",
+      "city": "Tractor Trailer And Traffic Camera Destroyed By Tornado In Nevada",
+      "ytId": "iPXG1DHaijY"
+    },
+    {
+      "name": "24/7 Stream: George Washington Bridge (GWB) NYC Side",
+      "lat": 38.9072,
+      "lon": -77.0369,
+      "country": "US",
+      "city": "Washington DC",
+      "ytId": "u87vvbwwJE0"
     }
   ]
 }

@@ -2,7 +2,7 @@
   "_source": {
     "description": "Curated 24/7 live port, harbor, and maritime webcam streams",
     "origin": "YouTube Live streams discovered and verified via yt-dlp. Sources: port authority channels, marina cams, SkylineWebcams",
-    "retrieved": "2026-03-11",
+    "retrieved": "2026-03-13",
     "license": "Public live streams \u2014 fair use",
     "notes": "All YouTube IDs verified via oEmbed API. IDs may change as streams rotate. Run scripts/ingest_webcams.py to re-verify."
   },
@@ -406,6 +406,558 @@
       "country": "US",
       "city": "from Portsmouth",
       "ytId": "PoZ1Hy7PQig"
+    },
+    {
+      "name": "Raining and relatively chilly today, clearing. This is Sy...",
+      "lat": 33.8688,
+      "lon": 151.2093,
+      "country": "AU",
+      "city": "Sydney",
+      "ytId": "6oIbsN8_Cg0"
+    },
+    {
+      "name": "webcam view of Sydney Harbour 24/7 from 10.30pm March 3",
+      "lat": 33.8688,
+      "lon": 151.2093,
+      "country": "AU",
+      "city": "Sydney",
+      "ytId": "HfccE4tbSB0"
+    },
+    {
+      "name": "webcam view of Sydney Harbour 24/7 from 10pm May 2",
+      "lat": 33.8688,
+      "lon": 151.2093,
+      "country": "AU",
+      "city": "Sydney",
+      "ytId": "nJ9sRmIH6Dk"
+    },
+    {
+      "name": "webcam view of Sydney Harbour 24/7 from 8.45am May 4",
+      "lat": 33.8688,
+      "lon": 151.2093,
+      "country": "AU",
+      "city": "Sydney",
+      "ytId": "I7GdavmRneM"
+    },
+    {
+      "name": "webcam view of Sydney Harbour 24/7 from 8pm March 4",
+      "lat": 33.8688,
+      "lon": 151.2093,
+      "country": "AU",
+      "city": "Sydney",
+      "ytId": "iVldXtZL1_I"
+    },
+    {
+      "name": "webcam view of Sydney Harbour 24/7 from 9am May 3",
+      "lat": 33.8688,
+      "lon": 151.2093,
+      "country": "AU",
+      "city": "Sydney",
+      "ytId": "ggy1-vP7CIw"
+    },
+    {
+      "name": "Halifax, Nova Scotia \ufe0f Webcam  Streaming from Canada",
+      "lat": 44.6488,
+      "lon": -63.5752,
+      "country": "CA",
+      "city": "Halifax",
+      "ytId": "dRFBYkct-mk"
+    },
+    {
+      "name": "False Creek Ferry Dock & Inlet Cam \u2013 Vancouver Waterfront...",
+      "lat": 49.2827,
+      "lon": -123.1207,
+      "country": "CA",
+      "city": "Vancouver",
+      "ytId": "fR56Uuquol0"
+    },
+    {
+      "name": "False Creek Ferry Dock Cam \u2013 24/7 Vancouver Waterfront St...",
+      "lat": 49.2827,
+      "lon": -123.1207,
+      "country": "CA",
+      "city": "Vancouver",
+      "ytId": "gKCO3fWkLm4"
+    },
+    {
+      "name": "False Creek Ferry Dock Cam \u2013 24/7 Vancouver Waterfront St...",
+      "lat": 49.2827,
+      "lon": -123.1207,
+      "country": "CA",
+      "city": "Vancouver",
+      "ytId": "Zbhug5sOl6Y"
+    },
+    {
+      "name": "False Creek Ferry Dock Cam \u2013 24/7 Vancouver Waterfront St...",
+      "lat": 49.2827,
+      "lon": -123.1207,
+      "country": "CA",
+      "city": "Vancouver",
+      "ytId": "X6WQwtqT7No"
+    },
+    {
+      "name": "Vancouver Seawall Cam \u2013 False Creek Boats, Joggers & Cycl...",
+      "lat": 49.2827,
+      "lon": -123.1207,
+      "country": "CA",
+      "city": "Vancouver",
+      "ytId": "Nb6mIR8Oals"
+    },
+    {
+      "name": "Vancouver Seawall Cam \u2013 False Creek Boats, Joggers & Cycl...",
+      "lat": 49.2827,
+      "lon": -123.1207,
+      "country": "CA",
+      "city": "Vancouver",
+      "ytId": "9DMFrEJKXMo"
+    },
+    {
+      "name": "Vancouver Seawall Cam \u2013 False Creek Boats, Joggers & Cycl...",
+      "lat": 49.2827,
+      "lon": -123.1207,
+      "country": "CA",
+      "city": "Vancouver",
+      "ytId": "p13gcNTv3c8"
+    },
+    {
+      "name": "Vancouver Stream Cam 24/7 Jan 10",
+      "lat": 49.2827,
+      "lon": -123.1207,
+      "country": "CA",
+      "city": "Vancouver",
+      "ytId": "K0nq7o4uIRA"
+    },
+    {
+      "name": "Vancouver Stream Cam 24/7 Jan 7",
+      "lat": 49.2827,
+      "lon": -123.1207,
+      "country": "CA",
+      "city": "Vancouver",
+      "ytId": "t6HFtlpzm-Q"
+    },
+    {
+      "name": "Vancouver Stream Cam 24/7 Jan 7-8 overnight",
+      "lat": 49.2827,
+      "lon": -123.1207,
+      "country": "CA",
+      "city": "Vancouver",
+      "ytId": "foSHLz-sMJg"
+    },
+    {
+      "name": "Vancouver Stream Cam 24/7 Jan 8",
+      "lat": 49.2827,
+      "lon": -123.1207,
+      "country": "CA",
+      "city": "Vancouver",
+      "ytId": "x50HUGh5Qf0"
+    },
+    {
+      "name": "Vancouver Stream Cam 24/7 Jan 8-9 overnight",
+      "lat": 49.2827,
+      "lon": -123.1207,
+      "country": "CA",
+      "city": "Vancouver",
+      "ytId": "eL1lyucrF40"
+    },
+    {
+      "name": "Spectacular View of Grand Canal - view from Hotel San Cas...",
+      "lat": 45.4408,
+      "lon": 12.3155,
+      "country": "IT",
+      "city": "Venice",
+      "ytId": "lFQ_BvxIcnI"
+    },
+    {
+      "name": "Venice Italy WebCam - The View on Canal from Hotel Pausania",
+      "lat": 45.4408,
+      "lon": 12.3155,
+      "country": "IT",
+      "city": "Venice",
+      "ytId": "GgLRWs8OyMs"
+    },
+    {
+      "name": "Kingston Harbour 24/7 \u2013 Jamaica Waterfront View \ud83c\uddef\ud83c\uddf2",
+      "lat": 18.1096,
+      "lon": -77.2975,
+      "country": "JM",
+      "city": "Jamaica",
+      "ytId": "pwlA66hgV3M"
+    },
+    {
+      "name": "view of Kingston Harbor, Jamaica, as Hurricane Melissa ap...",
+      "lat": 18.1096,
+      "lon": -77.2975,
+      "country": "JM",
+      "city": "Jamaica",
+      "ytId": "AfZoRyded7U"
+    },
+    {
+      "name": "Watch 6 Cruise Ships Port in the Cayman Islands - RICH TV",
+      "lat": 19.3133,
+      "lon": -81.2546,
+      "country": "KY",
+      "city": "Grand Cayman",
+      "ytId": "2epwYOADXoI"
+    },
+    {
+      "name": "Lisbon, Portugal Stream",
+      "lat": 38.7223,
+      "lon": -9.1393,
+      "country": "PT",
+      "city": "Lisbon",
+      "ytId": "-hoUoyUdBLQ"
+    },
+    {
+      "name": ": Praia da Alagoa Porto da Cruz HD Webcam \u2013 Madeira Island",
+      "lat": 41.1579,
+      "lon": -8.6291,
+      "country": "PT",
+      "city": "Porto",
+      "ytId": "SIZdJ0RFY8c"
+    },
+    {
+      "name": "A comet lights up the sky over Porto, Portugal, on Saturd...",
+      "lat": 41.1579,
+      "lon": -8.6291,
+      "country": "PT",
+      "city": "Porto",
+      "ytId": "SCCurHXD1yc"
+    },
+    {
+      "name": "Porto Webcam Ribeira and Vila Nova de Gaia \u2013 Oporto, Port...",
+      "lat": 41.1579,
+      "lon": -8.6291,
+      "country": "PT",
+      "city": "Porto",
+      "ytId": "I0KTkT8ZhX4"
+    },
+    {
+      "name": "Webcam Portofino | stream di Hotel Argentina",
+      "lat": 41.1579,
+      "lon": -8.6291,
+      "country": "PT",
+      "city": "Porto",
+      "ytId": "jQ5lQrB-42Q"
+    },
+    {
+      "name": "Webcam Portofino | stream di Hotel Argentina",
+      "lat": 41.1579,
+      "lon": -8.6291,
+      "country": "PT",
+      "city": "Porto",
+      "ytId": "4Dd8CIPBmgI"
+    },
+    {
+      "name": "Charleston SC USA - CAM",
+      "lat": 32.7765,
+      "lon": -79.9311,
+      "country": "US",
+      "city": "Charleston",
+      "ytId": "1mbKiVzdrKg"
+    },
+    {
+      "name": "Hurricane Ian Cam from Charlotte Harbor Home by Floridama...",
+      "lat": 35.2271,
+      "lon": -80.8431,
+      "country": "US",
+      "city": "Charlotte",
+      "ytId": "wRfpXJuaY-g"
+    },
+    {
+      "name": "Flock cameras, drones and quick thinking help Boulder pol...",
+      "lat": 39.7392,
+      "lon": -104.9903,
+      "country": "US",
+      "city": "Denver",
+      "ytId": "c877WswczGs"
+    },
+    {
+      "name": "Woman says police used Flock cameras to wrongfully accuse...",
+      "lat": 39.7392,
+      "lon": -104.9903,
+      "country": "US",
+      "city": "Denver",
+      "ytId": "kzVfXvTQnEQ"
+    },
+    {
+      "name": "\"Blowing in the Wind\" Federal Kamano arrived in Duluth 10...",
+      "lat": 46.7867,
+      "lon": -92.1005,
+      "country": "US",
+      "city": "Duluth",
+      "ytId": "z5O9dF1tvKM"
+    },
+    {
+      "name": "Canal Park Milky Way --- Google Earth",
+      "lat": 46.7867,
+      "lon": -92.1005,
+      "country": "US",
+      "city": "Duluth",
+      "ytId": "NZPns9Tudg8"
+    },
+    {
+      "name": "Duluth Canal Cam",
+      "lat": 46.7867,
+      "lon": -92.1005,
+      "country": "US",
+      "city": "Duluth",
+      "ytId": "HPS48TMmNag"
+    },
+    {
+      "name": "Duluth Cargo Connect",
+      "lat": 46.7867,
+      "lon": -92.1005,
+      "country": "US",
+      "city": "Duluth",
+      "ytId": "E0YlMI4P8Fw"
+    },
+    {
+      "name": "Duluth Superior Aerial Harbor Tour - Summer",
+      "lat": 46.7867,
+      "lon": -92.1005,
+      "country": "US",
+      "city": "Duluth",
+      "ytId": "20PScQ-gocA"
+    },
+    {
+      "name": "Harbor Photographer - Paul Scinocca",
+      "lat": 46.7867,
+      "lon": -92.1005,
+      "country": "US",
+      "city": "Duluth",
+      "ytId": "2BuTqWT82qo"
+    },
+    {
+      "name": "Lighthouse Cam",
+      "lat": 46.7867,
+      "lon": -92.1005,
+      "country": "US",
+      "city": "Duluth",
+      "ytId": "nCf7X2cPDAY"
+    },
+    {
+      "name": "Mesabi Miner maneuvering in the Duluth-Superior Harbor 12...",
+      "lat": 46.7867,
+      "lon": -92.1005,
+      "country": "US",
+      "city": "Duluth",
+      "ytId": "Hhj46YoJu_o"
+    },
+    {
+      "name": "The Barker Boys arrive in Duluth for Thanksgiving!",
+      "lat": 46.7867,
+      "lon": -92.1005,
+      "country": "US",
+      "city": "Duluth",
+      "ytId": "R5avCshOBjM"
+    },
+    {
+      "name": "The Slice | Duluth Harbor Cams",
+      "lat": 46.7867,
+      "lon": -92.1005,
+      "country": "US",
+      "city": "Duluth",
+      "ytId": "TAVySdEIcY0"
+    },
+    {
+      "name": "WOW! - Sunrise 07/02/2019",
+      "lat": 46.7867,
+      "lon": -92.1005,
+      "country": "US",
+      "city": "Duluth",
+      "ytId": "ZI-15rNJFLQ"
+    },
+    {
+      "name": "EarthCam :  Giraffe Paddock  Cam - Greenville, SC",
+      "lat": 33.86,
+      "lon": -80.95,
+      "country": "US",
+      "city": "Greenville",
+      "ytId": "vTaJjIttrZU"
+    },
+    {
+      "name": "EarthCam - Hallmark Channel - Harbor Springs, MI",
+      "lat": 43.33,
+      "lon": -84.54,
+      "country": "US",
+      "city": "Harbor Springs",
+      "ytId": "IZv2YKOM-zU"
+    },
+    {
+      "name": "\ufe0fstream ship American Century departing Duluth, MN | Ship...",
+      "lat": 45.69,
+      "lon": -93.9,
+      "country": "US",
+      "city": "Livestream ship American Century departing Duluth",
+      "ytId": "JSfIgR7GWoQ"
+    },
+    {
+      "name": "\ufe0fstream ship American Mariner arriving Duluth, MN | Harbo...",
+      "lat": 45.69,
+      "lon": -93.9,
+      "country": "US",
+      "city": "Livestream ship American Mariner arriving Duluth",
+      "ytId": "tH0s1IklEJ8"
+    },
+    {
+      "name": "\ufe0fstream ship Arthur M. Anderson departing Duluth, MN | Sh...",
+      "lat": 45.69,
+      "lon": -93.9,
+      "country": "US",
+      "city": "Livestream ship Arthur M. Anderson departing Duluth",
+      "ytId": "gGV6yCo8l3w"
+    },
+    {
+      "name": "\ufe0fstream ship Duluth, MN | Paul R. Tregurtha departing | C...",
+      "lat": 45.69,
+      "lon": -93.9,
+      "country": "US",
+      "city": "Livestream ship Duluth",
+      "ytId": "qV9IK-gY440"
+    },
+    {
+      "name": "\ufe0fstream ship H. Lee White departing through ice Duluth, M...",
+      "lat": 45.69,
+      "lon": -93.9,
+      "country": "US",
+      "city": "Livestream ship H. Lee White departing through ice Duluth",
+      "ytId": "JM4sGYkSZ3Q"
+    },
+    {
+      "name": "\ufe0fstream ship Mark W. Barker arriving Duluth, MN | Harbor Cam",
+      "lat": 45.69,
+      "lon": -93.9,
+      "country": "US",
+      "city": "Livestream ship Mark W. Barker arriving Duluth",
+      "ytId": "q5F5UOFmxMc"
+    },
+    {
+      "name": "\ufe0fstream ship Mesabi Miner arriving Duluth, MN | Harbor Cam",
+      "lat": 45.69,
+      "lon": -93.9,
+      "country": "US",
+      "city": "Livestream ship Mesabi Miner arriving Duluth",
+      "ytId": "K1KqjUmv0iY"
+    },
+    {
+      "name": "Surf Cam: Marina Del Rey, California",
+      "lat": 36.12,
+      "lon": -119.68,
+      "country": "US",
+      "city": "Marina Del Rey",
+      "ytId": "wptp5OFhSiU"
+    },
+    {
+      "name": "Webcam: Mayport Marina, FL",
+      "lat": 27.77,
+      "lon": -81.69,
+      "country": "US",
+      "city": "Mayport Marina",
+      "ytId": "XRpGYQseJnM"
+    },
+    {
+      "name": "'We ain't about rights': Portion of MPD body-camera video...",
+      "lat": 35.1495,
+      "lon": -90.049,
+      "country": "US",
+      "city": "Memphis",
+      "ytId": "13IpsIfxm5k"
+    },
+    {
+      "name": "24/7 MIAMI Airport Action | Miami Plane Spotting with ATC...",
+      "lat": 25.7617,
+      "lon": -80.1918,
+      "country": "US",
+      "city": "Miami",
+      "ytId": "wmatBwP_2hU"
+    },
+    {
+      "name": "Port Miami  Webcam | Cruise Ships, Yachts & Cargo Traffic...",
+      "lat": 25.7617,
+      "lon": -80.1918,
+      "country": "US",
+      "city": "Miami",
+      "ytId": "jknOfdx54FI"
+    },
+    {
+      "name": "Port Miami  Webcam | Cruise Ships, Yachts & Cargo Traffic...",
+      "lat": 25.7617,
+      "lon": -80.1918,
+      "country": "US",
+      "city": "Miami",
+      "ytId": "XG3o2Mgfpfs"
+    },
+    {
+      "name": "\ufe0fstream Ships, Boats & Statue of Liberty | New York/New J...",
+      "lat": 40.7128,
+      "lon": -74.006,
+      "country": "US",
+      "city": "New York",
+      "ytId": "oIf4xceIW3s"
+    },
+    {
+      "name": "Brown-Eye Stream from Portland Oregon",
+      "lat": 45.5152,
+      "lon": -122.6784,
+      "country": "US",
+      "city": "Portland",
+      "ytId": "u5KQjp8uXfs"
+    },
+    {
+      "name": "OTC Watersports Portland Harbour (UK) Webcam",
+      "lat": 45.5152,
+      "lon": -122.6784,
+      "country": "US",
+      "city": "Portland",
+      "ytId": "v1XiBN7VjvM"
+    },
+    {
+      "name": "cam: Hot Portland day",
+      "lat": 45.5152,
+      "lon": -122.6784,
+      "country": "US",
+      "city": "Portland",
+      "ytId": "fOkIU327bwY"
+    },
+    {
+      "name": "cam: Possible thunderstorms in Portland",
+      "lat": 45.5152,
+      "lon": -122.6784,
+      "country": "US",
+      "city": "Portland",
+      "ytId": "V2W8UK_0WkE"
+    },
+    {
+      "name": "cams: Snow falling in Portland area",
+      "lat": 45.5152,
+      "lon": -122.6784,
+      "country": "US",
+      "city": "Portland",
+      "ytId": "SBZaBtYjTgc"
+    },
+    {
+      "name": "Man Who Caught 2 Navy Ships Colliding Ordered To Take Dow...",
+      "lat": 32.7157,
+      "lon": -117.1611,
+      "country": "US",
+      "city": "San Diego",
+      "ytId": "4tTJqr6WDmU"
+    },
+    {
+      "name": "St. Thomas Webcam- Charlotte Amalie Harbor",
+      "lat": 18.3358,
+      "lon": -64.9301,
+      "country": "VI",
+      "city": "St. Thomas",
+      "ytId": "QfXuMZ7BQa4"
+    },
+    {
+      "name": "united states virgin islands, st. thomas, web cam",
+      "lat": 18.3358,
+      "lon": -64.9301,
+      "country": "VI",
+      "city": "St. Thomas",
+      "ytId": "t4p8tQdENWY"
     }
   ]
 }

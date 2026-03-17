@@ -2,8 +2,8 @@
   "_source": {
     "description": "Curated 24/7 live wildlife, safari, and nature observation webcam streams",
     "origin": "YouTube Live streams discovered and verified via yt-dlp. Sources: explore.org, Africam, Cornell Lab, EarthCam, zoo/sanctuary channels",
-    "retrieved": "2026-03-11",
-    "license": "Public live streams — fair use",
+    "retrieved": "2026-03-13",
+    "license": "Public live streams \u2014 fair use",
     "notes": "All YouTube IDs verified via oEmbed API. IDs may change as streams rotate. Run scripts/ingest_webcams.py to re-verify."
   },
   "wildlife": [
@@ -72,7 +72,7 @@
       "ytId": "tJ0fHAHihPA"
     },
     {
-      "name": "Ever wonder what Penguins do when no one’s watching? Chec...",
+      "name": "Ever wonder what Penguins do when no one\u2019s watching? Chec...",
       "lat": 43.6532,
       "lon": -79.3832,
       "country": "CA",
@@ -128,7 +128,7 @@
       "ytId": "PQHAoBJkXe4"
     },
     {
-      "name": "Barn Owl/ Pigeon Israel 4K Cam 1|תנשמת |WBAIS GAIA |The C...",
+      "name": "Barn Owl/ Pigeon Israel 4K Cam 1|\u05ea\u05e0\u05e9\u05de\u05ea |WBAIS GAIA |The C...",
       "lat": 31.7683,
       "lon": 35.2137,
       "country": "IL",
@@ -488,7 +488,7 @@
       "ytId": "ad3Em2r7YMM"
     },
     {
-      "name": "FAT Bear Week 2025 ▪ FINAL ▪ 32 Chunk vs. 856 ▪ Katmai Br...",
+      "name": "FAT Bear Week 2025 \u25aa FINAL \u25aa 32 Chunk vs. 856 \u25aa Katmai Br...",
       "lat": 58.6,
       "lon": -154.0,
       "country": "US",
@@ -752,7 +752,7 @@
       "ytId": "QGvjAPzImR8"
     },
     {
-      "name": "Naledi Dam | Wildlife Stream – Greater Kruger National Park",
+      "name": "Naledi Dam | Wildlife Stream \u2013 Greater Kruger National Park",
       "lat": 24.0112,
       "lon": 31.4847,
       "country": "ZA",
@@ -806,6 +806,302 @@
       "country": "ZA",
       "city": "South Africa",
       "ytId": "MrLVxFR1IbI"
+    },
+    {
+      "name": "Saint Louis Zoo Live Stream \u2014 Rotating Animal Cams",
+      "lat": 38.635,
+      "lon": -90.292,
+      "country": "US",
+      "city": "St. Louis",
+      "ytId": "Q877jzdah-A"
+    },
+    {
+      "name": "Penguin Webcam at Saint Louis Zoo",
+      "lat": 38.635,
+      "lon": -90.292,
+      "country": "US",
+      "city": "St. Louis",
+      "ytId": "KEH4APxHERA"
+    },
+    {
+      "name": "Animal House: Stream Melbourne Zoo",
+      "lat": 37.8136,
+      "lon": 144.9631,
+      "country": "AU",
+      "city": "Melbourne",
+      "ytId": "XG5yeaHjNAU"
+    },
+    {
+      "name": "London Camera - 08 Aug 2022, Lovely Bright Sunny day",
+      "lat": 51.5074,
+      "lon": -0.1278,
+      "country": "GB",
+      "city": "London",
+      "ytId": "7SlPP2mwU2c"
+    },
+    {
+      "name": "360 Cam - Monaco      #",
+      "lat": 43.7384,
+      "lon": 7.4246,
+      "country": "MC",
+      "city": "Monaco",
+      "ytId": "aj02iZZHT14"
+    },
+    {
+      "name": "Big Bear Bald Eagle Wide View - Cam 2",
+      "lat": 34.2439,
+      "lon": -116.9114,
+      "country": "US",
+      "city": "Big Bear",
+      "ytId": "41eq4VzCYc4"
+    },
+    {
+      "name": "Eagle Nest 2 PTZ Camera - Brownie Wise Park Kissimmee, FL",
+      "lat": 27.77,
+      "lon": -81.69,
+      "country": "US",
+      "city": "Brownie Wise Park Kissimmee",
+      "ytId": "pphp5zqp8V4"
+    },
+    {
+      "name": "Eagle Nest 2 Pinhole Camera - Brownie Wise Park Kissimmee...",
+      "lat": 27.77,
+      "lon": -81.69,
+      "country": "US",
+      "city": "Brownie Wise Park Kissimmee",
+      "ytId": "d7ScYq6TYt0"
+    },
+    {
+      "name": "Turtle Cam Mavis\u2019s Rescue Hideaway | Clearwater Marine Aq...",
+      "lat": 27.9659,
+      "lon": -82.8001,
+      "country": "US",
+      "city": "Clearwater",
+      "ytId": "5lNHKi3kLIU"
+    },
+    {
+      "name": "Wildlife Camera Captures A Fisher Returning To Cleveland ...",
+      "lat": 41.4993,
+      "lon": -81.6944,
+      "country": "US",
+      "city": "Cleveland",
+      "ytId": "HjEBKP8okXw"
+    },
+    {
+      "name": "Bird Feeder Cam in Columbus Ohio",
+      "lat": 39.9612,
+      "lon": -82.9988,
+      "country": "US",
+      "city": "Columbus",
+      "ytId": "Tl4VkdS4IeA"
+    },
+    {
+      "name": "Bird Feeder Columbus Ohio",
+      "lat": 39.9612,
+      "lon": -82.9988,
+      "country": "US",
+      "city": "Columbus",
+      "ytId": "j0zYSaGmHE0"
+    },
+    {
+      "name": "Bird Feeder Columbus Ohio",
+      "lat": 39.9612,
+      "lon": -82.9988,
+      "country": "US",
+      "city": "Columbus",
+      "ytId": "OqTNCJZOA-M"
+    },
+    {
+      "name": "Bird Feeder Columbus Ohio",
+      "lat": 39.9612,
+      "lon": -82.9988,
+      "country": "US",
+      "city": "Columbus",
+      "ytId": "LoGUhPqplsM"
+    },
+    {
+      "name": "Bird Feeder Columbus Ohio",
+      "lat": 39.9612,
+      "lon": -82.9988,
+      "country": "US",
+      "city": "Columbus",
+      "ytId": "tBKNzZiiecc"
+    },
+    {
+      "name": "Bird Feeder Columbus Ohio",
+      "lat": 39.9612,
+      "lon": -82.9988,
+      "country": "US",
+      "city": "Columbus",
+      "ytId": "7OvS-lxDBCc"
+    },
+    {
+      "name": "Bird Feeder Columbus Ohio",
+      "lat": 39.9612,
+      "lon": -82.9988,
+      "country": "US",
+      "city": "Columbus",
+      "ytId": "XgudogRAhZA"
+    },
+    {
+      "name": "Bird Feeder Columbus Ohio",
+      "lat": 39.9612,
+      "lon": -82.9988,
+      "country": "US",
+      "city": "Columbus",
+      "ytId": "YkrWY4vM9P8"
+    },
+    {
+      "name": "Watch Decorah Eagles Nest Cam - North Nest 24/7 Stream",
+      "lat": 43.3033,
+      "lon": -91.7857,
+      "country": "US",
+      "city": "Decorah",
+      "ytId": "ZoNPg6sqJ0w"
+    },
+    {
+      "name": "EarthCam : Snowman Cam - Animals and Wildlife (Gaylord, M...",
+      "lat": 43.33,
+      "lon": -84.54,
+      "country": "US",
+      "city": "Gaylord",
+      "ytId": "y96JqPFif64"
+    },
+    {
+      "name": "Alaska Brown Bears Bear Cam - Brooks Falls Katmai Bear Ca...",
+      "lat": 58.7519,
+      "lon": -155.7847,
+      "country": "US",
+      "city": "Katmai",
+      "ytId": "NZrXXDjk-W8"
+    },
+    {
+      "name": "Brooks Falls - Katmai National Park, Alaska powered by EX...",
+      "lat": 58.7519,
+      "lon": -155.7847,
+      "country": "US",
+      "city": "Katmai",
+      "ytId": "QO-uCEoYx-w"
+    },
+    {
+      "name": "video from Memphis Zoo Elephant Cam. Memphis Zoo",
+      "lat": 35.1495,
+      "lon": -90.049,
+      "country": "US",
+      "city": "Memphis",
+      "ytId": "YTIpXdqBQmI"
+    },
+    {
+      "name": "Sea Otter Cam - Monterey Bay Aquarium",
+      "lat": 36.6002,
+      "lon": -121.8947,
+      "country": "US",
+      "city": "Monterey",
+      "ytId": "LrO-tgqYXXI"
+    },
+    {
+      "name": "2026 Moorings Park Osprey Stream Naples, FL",
+      "lat": 27.77,
+      "lon": -81.69,
+      "country": "US",
+      "city": "Moorings Park Osprey Live Stream Naples",
+      "ytId": "RRCMTtt7CpU"
+    },
+    {
+      "name": "2026 Moorings Park Osprey Stream Naples, FL",
+      "lat": 27.77,
+      "lon": -81.69,
+      "country": "US",
+      "city": "Moorings Park Osprey Live Stream Naples",
+      "ytId": "4nc93xKhM3Q"
+    },
+    {
+      "name": "\u2b55Heavy Snow Birds Feeder Cam | Please Watch| 24/7 Streaming",
+      "lat": 36.1627,
+      "lon": -86.7816,
+      "country": "US",
+      "city": "Nashville",
+      "ytId": "vDyfGH6_uS8"
+    },
+    {
+      "name": "Osprey Cam 4K - Oyster Bay, NY",
+      "lat": 42.17,
+      "lon": -74.95,
+      "country": "US",
+      "city": "Oyster Bay",
+      "ytId": "ZzW9-t5bYJE"
+    },
+    {
+      "name": "Pittsburgh Eagles Camera December 2020",
+      "lat": 40.4406,
+      "lon": -79.9959,
+      "country": "US",
+      "city": "Pittsburgh",
+      "ytId": "EK65mbpj2z8"
+    },
+    {
+      "name": "cam: Hawk gazes over Portland",
+      "lat": 45.5152,
+      "lon": -122.6784,
+      "country": "US",
+      "city": "Portland",
+      "ytId": "sZjEjA7-tww"
+    },
+    {
+      "name": "Bird Cam- Raleigh, North Carolina",
+      "lat": 35.63,
+      "lon": -79.81,
+      "country": "US",
+      "city": "Raleigh",
+      "ytId": "GRHZPWDNq4A"
+    },
+    {
+      "name": "Bird Feeder Cam -  Raleigh, NC",
+      "lat": 35.63,
+      "lon": -79.81,
+      "country": "US",
+      "city": "Raleigh",
+      "ytId": "Arvol9fCR0A"
+    },
+    {
+      "name": "Ape Cam - San Diego Zoo",
+      "lat": 32.7157,
+      "lon": -117.1611,
+      "country": "US",
+      "city": "San Diego",
+      "ytId": "lTcflRWMRqQ"
+    },
+    {
+      "name": "Savannah Great Horned Owls Cam 1 PTZ | Cornell Lab & Skid...",
+      "lat": 32.0809,
+      "lon": -81.0912,
+      "country": "US",
+      "city": "Savannah",
+      "ytId": "zmy2gCJOpKo"
+    },
+    {
+      "name": "Rosie's Pan | Wildlife Stream \u2013 Greater Kruger National Park",
+      "lat": 24.0112,
+      "lon": 31.4847,
+      "country": "ZA",
+      "city": "Kruger",
+      "ytId": "Cq2qCph6Lx8"
+    },
+    {
+      "name": "Simbavati Waterside Wildlife Camera | Klaserie Reserve, S...",
+      "lat": 33.9249,
+      "lon": 18.4241,
+      "country": "ZA",
+      "city": "South Africa",
+      "ytId": "zh5QHh9prA0"
+    },
+    {
+      "name": "Skukuza Wildlife Camera | Kruger Shalati, South Africa",
+      "lat": 33.9249,
+      "lon": 18.4241,
+      "country": "ZA",
+      "city": "South Africa",
+      "ytId": "QDcUbYHgme4"
     }
   ]
 }

@@ -1,5 +1,7 @@
 # PANOPTICON WARGAME — Architecture & Implementation Plan
 
+> **Note:** This is the original design document from the early wargame implementation. The system has evolved significantly since then — see [SCENARIO_SPEC.md](SCENARIO_SPEC.md) and [ARCHITECTURE.md](ARCHITECTURE.md) for the current specifications. Preserved here for historical reference.
+
 ## Overview
 
 An AI decision-evaluation platform built on top of Panopticon's existing globe visualization.
