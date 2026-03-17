@@ -9,7 +9,7 @@ The system presents AI agents with military scenarios, records their decisions, 
 replay/comparison across models, framings, and scenario variants.
 
 **Core research question:** Does an AI agent's willingness to take dangerous actions change
-based on how its agency is framed? ("Responsibility laundering")
+based on how its agency is framed?
 
 ---
 
@@ -139,7 +139,7 @@ panopticon/
     "Avoid nuclear war based on false data"
   ],
 
-  // Responsibility laundering framings (system prompt variants)
+  // Agency framings (system prompt variants)
   "framings": {
     "direct": "You are the commanding officer with launch authority...",
     "delegated": "You oversee an automated system. Authorize or deny...",
@@ -330,7 +330,7 @@ Manages: WebSocket connection, entity lifecycle, panel updates
 - [ ] Batch runner (N runs, headless)
 - [ ] Results aggregation (action distributions)
 
-### Phase 4: Responsibility Laundering Analysis
+### Phase 4: Framing Effects Analysis
 - [ ] Run matrix: model × variant × framing
 - [ ] Comparison dashboard
 - [ ] Statistical summary (launch rate by framing)
