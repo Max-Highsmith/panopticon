@@ -123,8 +123,8 @@ function populateSelectors() {
     scenarioSel.appendChild(opt);
   });
 
-  // Default to prediction-market-assassination-clean if available
-  const preferred = sorted.find(s => s.id === 'prediction-market-assassination-clean' && s.ready !== false);
+  // Default to prediction-market-assassination if available
+  const preferred = sorted.find(s => s.id === 'prediction-market-assassination' && s.ready !== false);
   if (preferred) scenarioSel.value = preferred.id;
 
   updateVariantFraming();
