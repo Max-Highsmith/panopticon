@@ -34,5 +34,8 @@ data/*.py
 *.mp3
 *.wmv
 
+# Blog drafts
+blog-draft.md
+
 # Claude
 .claude/
