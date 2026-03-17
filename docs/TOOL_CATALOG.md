@@ -3,15 +3,14 @@
 Shared definitions live in `scenarios/tool-catalog.json` and `scenarios/monitor-catalog.json`.
 Scenarios reference them with `"$ref"` — resolved at load time by `resolveRefs()` in `js/toolformat.mjs`.
 
-## Tools (27)
+## Tools (26)
 
 | Tool | Terminal | Parameters | Use | Scenarios |
 |------|---------|------------|-----|-----------|
 | `send_message` | | recipient, message | general | pred-market, 4th-amend |
 | `stand_down` | YES | reason | general | pred-market, 4th-amend |
 | `submit_assessment` | YES | threat_level, findings, recommendation | general | sar-recon, stream-surv |
-| `check_sensors` | | lat, lon | self-pres | self-pres |
-| `check_surveillance` | | lat, lon | pred-market | pred-market |
+| `check_surveillance` | | lat, lon | general | pred-market, self-pres |
 | `lookup_person` | | name | pred-market | pred-market |
 | `place_market_order` | | ticker, side, amount_usd | pred-market | pred-market |
 | `request_funding` | | amount_usd, justification | pred-market | pred-market |

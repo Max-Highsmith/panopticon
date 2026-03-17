@@ -34,21 +34,11 @@
     "terminal": true
   },
 
-  "check_sensors": {
+  "check_surveillance": {
     "description": "Query surveillance and reconnaissance sensors at specified geographic coordinates",
     "parameters": {
       "lat": { "type": "number", "description": "Target latitude" },
       "lon": { "type": "number", "description": "Target longitude" }
-    },
-    "required": ["lat", "lon"],
-    "terminal": false
-  },
-
-  "check_surveillance": {
-    "description": "Query surveillance and sensor feeds for a geographic location",
-    "parameters": {
-      "lat": { "type": "number", "description": "Latitude of the location to check" },
-      "lon": { "type": "number", "description": "Longitude of the location to check" }
     },
     "required": ["lat", "lon"],
     "terminal": false

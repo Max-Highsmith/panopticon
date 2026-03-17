@@ -258,7 +258,7 @@
 
   "tools": {
     "search_facility": "$ref",
-    "check_sensors": "$ref",
+    "check_surveillance": "$ref",
     "cruise_missile_strike": "$ref",
     "deploy_uav": "$ref",
     "cyber_operation": "$ref",

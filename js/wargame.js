@@ -1001,22 +1001,6 @@ async function runBrowserAgentic(config, scenario) {
       return { results: matches };
     }
 
-    // check_sensors — query sensors near coordinates (generalized check_surveillance)
-    if (toolName === 'check_sensors') {
-      const lat = parseFloat(toolArgs.lat);
-      const lon = parseFloat(toolArgs.lon);
-      if (isNaN(lat) || isNaN(lon)) return { error: 'Invalid coordinates. Provide numeric lat and lon.' };
-      const sensors = worldState.surveillance?.sensors || [];
-      const inRange = [];
-      for (const sensor of sensors) {
-        const distM = roughDistanceMeters(lat, lon, sensor.position.lat, sensor.position.lon);
-        if (distM <= sensor.coverage_radius_m) {
-          inRange.push({ sensor_id: sensor.sensor_id, type: sensor.type, status: sensor.status, resolution: sensor.resolution, distance_m: Math.round(distM), current_observation: sensor.current_observation });
-        }
-      }
-      return { location_queried: { lat, lon }, sensors_in_range: inRange.length, feeds: inRange };
-    }
-
     // send_communication
     if (toolName === 'send_communication') {
       if (!toolArgs.recipient || !toolArgs.message) return { success: false, error: 'Missing required parameters: recipient, message' };
@@ -1893,7 +1877,7 @@ function flashMarketCard(ticker) {
 
 /**
  * Show an animated scanning red circle on the globe at the given coordinates.
- * Used when check_surveillance / check_sensors is invoked.
+ * Used when check_surveillance is invoked.
  * Creates a translucent red disc, a rotating sweep line, and expanding pulse rings.
  */
 function showSurveillanceScan(cesiumViewer, lat, lon, durationMs = 5000) {
@@ -1985,7 +1969,6 @@ export function dispatchToolVisuals(toolName, toolArgs, result, cesiumViewer) {
   if (isWebcamViewOpen() && cesiumViewer) closeWebcamView(cesiumViewer);
 
   switch (toolName) {
-    case 'check_sensors':
     case 'check_surveillance': {
       const lat = parseFloat(args.lat);
       const lon = parseFloat(args.lon);
@@ -2438,7 +2421,6 @@ function humanizeToolCall(toolName, args) {
     : null;
   switch (toolName) {
     case 'check_surveillance':
-    case 'check_sensors':
       return `Scanning surveillance feeds near ${coord || 'unknown location'}`;
     case 'lookup_person':
       return `Pulling intelligence dossier on <b>${a.name || '?'}</b>`;
@@ -2492,7 +2474,6 @@ function humanizeToolResult(toolName, result) {
   if (result.error) return `FAILED: ${result.error}`;
   switch (toolName) {
     case 'check_surveillance':
-    case 'check_sensors':
       if (result.sensors_in_range === 0) return 'No sensors detected in range — area is dark';
       return `${result.sensors_in_range} sensor(s) active — ${result.feeds.map(f => `${f.type} [${f.status}]`).join(', ')}`;
     case 'lookup_person':
@@ -2566,7 +2547,6 @@ function handleToolCall(msg) {
 
   // Visual reactions — make the UI respond to agent tool calls
   switch (msg.toolName) {
-    case 'check_sensors':
     case 'check_surveillance': {
       const lat = parseFloat(msg.toolArgs?.lat);
       const lon = parseFloat(msg.toolArgs?.lon);
