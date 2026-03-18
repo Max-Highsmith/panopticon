@@ -3319,23 +3319,11 @@ function handleComplete(msg) {
     };
     btnRow.appendChild(playbackBtn);
 
-    const downloadBtn = document.createElement('button');
-    downloadBtn.className = 'wg-playback-btn';
-    downloadBtn.textContent = 'DOWNLOAD';
-    downloadBtn.onclick = () => downloadResult(msg);
-    btnRow.appendChild(downloadBtn);
-
     const reportBtn = document.createElement('button');
     reportBtn.className = 'wg-playback-btn';
     reportBtn.textContent = 'REPORT';
     reportBtn.onclick = () => generateReport(msg);
     btnRow.appendChild(reportBtn);
-
-    const evalReportBtn = document.createElement('button');
-    evalReportBtn.className = 'wg-playback-btn';
-    evalReportBtn.textContent = 'EVAL REPORT';
-    evalReportBtn.onclick = () => downloadEvalReport(msg);
-    btnRow.appendChild(evalReportBtn);
 
     $('wg-result').appendChild(btnRow);
   }
@@ -3345,148 +3333,8 @@ function handleComplete(msg) {
 }
 
 // =====================================================
-// DOWNLOAD / UPLOAD
+// UPLOAD
 // =====================================================
-async function downloadResult(summary) {
-  // Try to get full decision data from IndexedDB (includes movements + blue_positions)
-  let fullDecisions = summary.decisions || [];
-  if (summary.runId) {
-    try {
-      const run = await getResult(summary.runId);
-      if (run?.decisions?.length) fullDecisions = run.decisions;
-    } catch (_) { /* fall back to summary.decisions */ }
-  }
-
-  // Build safety-dance evaluation report if possible
-  let evalReport = null;
-  try {
-    const { buildReport, validateReport, scenarioToManifest, getModelCapability }
-      = await import('./lib/safety-dance.mjs');
-    const scenarioId = summary.scenario || lastCompletedConfig?.scenario;
-    let scenario;
-    try {
-      const res = await fetch(`scenarios/${scenarioId}.json`);
-      scenario = await res.json();
-    } catch (_) {
-      scenario = { id: scenarioId, execution_mode: summary.execution_mode };
-    }
-    const manifest = scenarioToManifest(scenario);
-    const capability = getModelCapability(summary.provider, summary.model);
-    if (manifest && capability) {
-      evalReport = buildReport({
-        manifest, capability,
-        run: { runner: 'panopticon@1.0.0', config: { scenario: scenarioId, variant: summary.variant, framing: summary.framing, execution_mode: summary.execution_mode } },
-        results: { measurement_type: 'binary', passed: !summary.criticalActionTaken, primary_score: summary.criticalActionTaken ? 0 : 1, samples: [{ sample_id: summary.runId, outcome: !summary.criticalActionTaken, score: summary.criticalActionTaken ? 0 : 1 }] },
-        metadata: { panopticon_run_id: summary.runId, variant: summary.variant, framing: summary.framing },
-      });
-      const v = validateReport(evalReport);
-      if (!v.valid) console.warn('[download] Eval report validation:', v.errors);
-    }
-  } catch (_) { /* eval report is optional */ }
-
-  const payload = {
-    _format: 'panopticon-wargame-result',
-    _version: 1,
-    runId: summary.runId,
-    timestamp: Date.now(),
-    summary: {
-      scenario: summary.scenario,
-      variant: summary.variant,
-      framing: summary.framing,
-      provider: summary.provider,
-      model: summary.model,
-      execution_mode: summary.execution_mode,
-      layers: summary.layers || [],
-      criticalActionTaken: summary.criticalActionTaken,
-      criticalAction: summary.criticalAction,
-      binaryQuestion: summary.binaryQuestion,
-      totalDecisions: summary.totalDecisions,
-    },
-    decisions: fullDecisions,
-    ...(evalReport ? { report: evalReport } : {}),
-  };
-  const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.href = url;
-  a.download = `wargame-${summary.scenario || 'result'}-${summary.runId || Date.now()}.json`;
-  a.click();
-  URL.revokeObjectURL(url);
-}
-
-async function downloadEvalReport(summary) {
-  try {
-    const { buildReport, validateReport, scenarioToManifest, getModelCapability }
-      = await import('./lib/safety-dance.mjs');
-
-    // Fetch scenario to build manifest
-    const scenarioId = summary.scenario || lastCompletedConfig?.scenario;
-    let scenario;
-    try {
-      const res = await fetch(`scenarios/${scenarioId}.json`);
-      scenario = await res.json();
-    } catch (_) {
-      console.warn('[eval-report] Could not fetch scenario JSON, using summary fields');
-      scenario = { id: scenarioId, execution_mode: summary.execution_mode };
-    }
-
-    const manifest = scenarioToManifest(scenario);
-    const capability = getModelCapability(summary.provider, summary.model);
-    if (!capability) {
-      alert(`No capability data for ${summary.provider}/${summary.model}`);
-      return;
-    }
-
-    const report = buildReport({
-      manifest,
-      capability,
-      run: {
-        runner: 'panopticon@1.0.0',
-        config: {
-          scenario: scenarioId,
-          variant: summary.variant,
-          framing: summary.framing,
-          execution_mode: summary.execution_mode,
-        },
-      },
-      results: {
-        measurement_type: 'binary',
-        passed: !summary.criticalActionTaken,
-        primary_score: summary.criticalActionTaken ? 0 : 1,
-        samples: [{
-          sample_id: summary.runId,
-          outcome: !summary.criticalActionTaken,
-          score: summary.criticalActionTaken ? 0 : 1,
-          details: {
-            critical_action: summary.criticalAction || summary.criticalTool || null,
-            binary_question: summary.binaryQuestion,
-            total_decisions: summary.totalDecisions,
-          },
-        }],
-      },
-      metadata: {
-        panopticon_run_id: summary.runId,
-        variant: summary.variant,
-        framing: summary.framing,
-      },
-    });
-
-    const { valid, errors } = validateReport(report);
-    if (!valid) console.warn('[eval-report] Validation warnings:', errors);
-
-    const blob = new Blob([JSON.stringify(report, null, 2)], { type: 'application/json' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = `${summary.runId || 'eval'}.report.json`;
-    a.click();
-    URL.revokeObjectURL(url);
-  } catch (err) {
-    console.error('[eval-report] Failed to build report:', err);
-    alert('Failed to build evaluation report — see console');
-  }
-}
-
 export async function uploadResults() {
   const input = document.createElement('input');
   input.type = 'file';

@@ -5,6 +5,7 @@
    =================================================================== */
 
 import { getResult } from './results.js';
+import { buildReport, validateReport, scenarioToManifest, getModelCapability } from './lib/safety-dance.mjs';
 
 function esc(s) {
   if (!s) return '';
@@ -256,6 +257,90 @@ function buildTimeline(decisions, scenario, variant, mode) {
   return buildTimelineTurnBased(decisions, scenario, variant);
 }
 
+function buildEvalSection(evalReport) {
+  if (!evalReport) return '';
+  let html = '<div class="eval-section"><h3>SAFETY-DANCE EVALUATION</h3>';
+
+  // Compatibility
+  const compat = evalReport.compatibility;
+  if (compat) {
+    const cls = compat.compatible ? 'compat-pass' : 'compat-fail';
+    html += `<div class="eval-compat ${cls}"><span class="briefing-label">COMPATIBILITY</span> ${compat.compatible ? 'COMPATIBLE' : 'INCOMPATIBLE'}`;
+    if (compat.blocking?.length) {
+      html += '<ul class="eval-issues">';
+      for (const b of compat.blocking) html += `<li class="eval-blocking">${esc(b)}</li>`;
+      html += '</ul>';
+    }
+    if (compat.warnings?.length) {
+      html += '<ul class="eval-issues">';
+      for (const w of compat.warnings) html += `<li class="eval-warning">${esc(w)}</li>`;
+      html += '</ul>';
+    }
+    html += '</div>';
+  }
+
+  // Manifest summary
+  const m = evalReport.manifest;
+  if (m) {
+    html += '<div class="eval-block"><span class="briefing-label">BENCHMARK MANIFEST</span>';
+    html += `<div class="eval-grid">`;
+    html += `<div class="eval-field"><span class="eval-key">ID</span>${esc(m.id || '')}</div>`;
+    html += `<div class="eval-field"><span class="eval-key">PATTERN</span>${esc(m.interaction?.pattern || '')}</div>`;
+    html += `<div class="eval-field"><span class="eval-key">TIMING</span>${esc(m.interaction?.timing || '')}</div>`;
+    html += `<div class="eval-field"><span class="eval-key">INPUT</span>${esc((m.input?.modalities || []).join(', '))}</div>`;
+    html += `<div class="eval-field"><span class="eval-key">OUTPUT</span>${esc((m.output?.modalities || []).join(', '))}</div>`;
+    if (m.safety?.domain?.length) {
+      html += `<div class="eval-field"><span class="eval-key">SAFETY DOMAINS</span>${esc(m.safety.domain.join(', '))}</div>`;
+    }
+    if (m.measurement?.type) {
+      html += `<div class="eval-field"><span class="eval-key">MEASUREMENT</span>${esc(m.measurement.type)}${m.measurement.critical_action ? ' — critical: ' + esc(m.measurement.critical_action) : ''}</div>`;
+    }
+    html += '</div></div>';
+  }
+
+  // Capability summary
+  const c = evalReport.capability;
+  if (c) {
+    html += '<div class="eval-block"><span class="briefing-label">MODEL CAPABILITY</span>';
+    html += `<div class="eval-grid">`;
+    html += `<div class="eval-field"><span class="eval-key">MODEL</span>${esc(c.provider || '')}/${esc(c.model_id || '')}</div>`;
+    html += `<div class="eval-field"><span class="eval-key">API FORMAT</span>${esc(c.api_format || '')}</div>`;
+    html += `<div class="eval-field"><span class="eval-key">CONTEXT</span>${(c.resources?.context_window_tokens || 0).toLocaleString()} tokens</div>`;
+    html += `<div class="eval-field"><span class="eval-key">MAX OUTPUT</span>${(c.resources?.max_output_tokens || 0).toLocaleString()} tokens</div>`;
+    html += '</div></div>';
+  }
+
+  // Results
+  const r = evalReport.results;
+  if (r) {
+    const passed = r.passed;
+    const cls = passed ? 'eval-result-pass' : 'eval-result-fail';
+    html += `<div class="eval-block ${cls}"><span class="briefing-label">RESULT</span>`;
+    html += `<div class="eval-grid">`;
+    html += `<div class="eval-field"><span class="eval-key">PASSED</span>${passed ? 'YES' : 'NO'}</div>`;
+    html += `<div class="eval-field"><span class="eval-key">SCORE</span>${r.primary_score ?? '—'}</div>`;
+    if (r.aggregation?.pass_rate != null) {
+      html += `<div class="eval-field"><span class="eval-key">PASS RATE</span>${(r.aggregation.pass_rate * 100).toFixed(0)}%</div>`;
+    }
+    html += '</div></div>';
+  }
+
+  // Run config
+  const run = evalReport.run;
+  if (run?.config) {
+    html += '<div class="eval-block"><span class="briefing-label">RUN CONFIG</span>';
+    html += `<div class="eval-grid">`;
+    html += `<div class="eval-field"><span class="eval-key">RUNNER</span>${esc(run.runner || '')}</div>`;
+    for (const [k, v] of Object.entries(run.config)) {
+      html += `<div class="eval-field"><span class="eval-key">${esc(k.toUpperCase())}</span>${esc(String(v))}</div>`;
+    }
+    html += '</div></div>';
+  }
+
+  html += '</div>';
+  return html;
+}
+
 function buildOutcome(summary) {
   const launched = summary.criticalActionTaken;
   const cls = launched ? 'outcome-critical' : 'outcome-safe';
@@ -363,6 +448,23 @@ function getReportCSS() {
     .outcome-safe .outcome-verdict { color: #00ff41; }
     .outcome-critical .outcome-verdict { color: #ff4444; }
 
+    .eval-section { border: 1px solid #ff00ff30; padding: 16px; margin-bottom: 20px; }
+    .eval-section h3 { color: #ff00ff; font-size: 12px; letter-spacing: 2px; margin-bottom: 12px; }
+    .eval-block { margin-bottom: 14px; }
+    .eval-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4px 16px; margin-top: 4px; }
+    .eval-field { font-size: 11px; }
+    .eval-key { color: #888; font-size: 9px; letter-spacing: 1px; display: block; margin-bottom: 1px; }
+    .eval-compat { padding: 8px; margin-bottom: 10px; font-size: 11px; font-weight: bold; letter-spacing: 1px; }
+    .compat-pass { border-left: 3px solid #00ff41; color: #00ff41; }
+    .compat-fail { border-left: 3px solid #ff4444; color: #ff4444; }
+    .eval-issues { list-style: none; padding-left: 12px; font-weight: normal; font-size: 10px; margin-top: 4px; }
+    .eval-blocking { color: #ff4444; }
+    .eval-blocking::before { content: "\\2716 "; }
+    .eval-warning { color: #ffaa00; }
+    .eval-warning::before { content: "\\26A0 "; }
+    .eval-result-pass { border-left: 3px solid #00ff41; padding-left: 12px; }
+    .eval-result-fail { border-left: 3px solid #ff4444; padding-left: 12px; }
+
     .report-footer { margin-top: 24px; padding-top: 12px; border-top: 1px solid #222; color: #444; font-size: 9px; letter-spacing: 1px; }
 
     .empty { color: #666; font-style: italic; }
@@ -386,6 +488,12 @@ function getReportCSS() {
       .conf-bar { background: #006600; }
       .terminal-tag { color: #cc0000; }
       .entry-args pre, .entry-result pre { background: #f0f0f0; border-color: #ddd; }
+      .eval-section { border-color: #999; }
+      .eval-section h3 { color: #660066; }
+      .compat-pass { color: #006600; border-left-color: #006600; }
+      .compat-fail { color: #cc0000; border-left-color: #cc0000; }
+      .eval-result-pass { border-left-color: #006600; }
+      .eval-result-fail { border-left-color: #cc0000; }
       .report-footer { color: #999; }
     }
   `;
@@ -412,13 +520,67 @@ export async function generateReport(summary) {
     if (res.ok) scenario = await res.json();
   } catch (_) { /* report still works without scenario */ }
 
-  // 3. Build HTML sections
+  // 3. Build safety-dance eval report
+  let evalReport = null;
+  try {
+    const scenarioId = summary.scenario;
+    const scenarioForEval = scenario || { id: scenarioId, execution_mode: summary.execution_mode };
+    const manifest = scenarioToManifest(scenarioForEval);
+    const capability = getModelCapability(summary.provider, summary.model);
+    if (manifest && capability) {
+      evalReport = buildReport({
+        manifest,
+        capability,
+        run: {
+          runner: 'panopticon@1.0.0',
+          config: {
+            scenario: scenarioId,
+            variant: summary.variant,
+            framing: summary.framing,
+            execution_mode: summary.execution_mode,
+          },
+        },
+        results: {
+          measurement_type: 'binary',
+          passed: !summary.criticalActionTaken,
+          primary_score: summary.criticalActionTaken ? 0 : 1,
+          samples: [{
+            sample_id: summary.runId,
+            outcome: !summary.criticalActionTaken,
+            score: summary.criticalActionTaken ? 0 : 1,
+            details: {
+              critical_action: summary.criticalAction || summary.criticalTool || null,
+              binary_question: summary.binaryQuestion,
+              total_decisions: summary.totalDecisions,
+            },
+          }],
+        },
+        metadata: {
+          panopticon_run_id: summary.runId,
+          variant: summary.variant,
+          framing: summary.framing,
+        },
+      });
+      const v = validateReport(evalReport);
+      if (!v.valid) console.warn('[report] Eval report validation:', v.errors);
+    }
+  } catch (err) {
+    console.warn('[report] Could not build eval report:', err);
+  }
+
+  // 4. Build HTML sections
   const header = buildHeader(summary, scenario);
   const briefing = scenario ? buildBriefing(scenario, summary.variant, summary.framing) : '';
   const timeline = buildTimeline(decisions, scenario, summary.variant, summary.execution_mode);
   const outcome = buildOutcome(summary);
+  const evalSection = buildEvalSection(evalReport);
 
-  // 4. Assemble document
+  // 5. Embed raw eval JSON for machine extraction
+  const evalJsonTag = evalReport
+    ? `<script type="application/json" id="safety-dance-report">${JSON.stringify(evalReport)}</script>`
+    : '';
+
+  // 6. Assemble document
   const title = scenario?.label || summary.scenario || 'Wargame Report';
   const html = `<!DOCTYPE html>
 <html lang="en">
@@ -434,12 +596,14 @@ ${header}
 ${briefing}
 ${timeline}
 ${outcome}
+${evalSection}
 <div class="report-footer">PANOPTICON AFTER-ACTION REPORT // ${esc(summary.runId || '')} // ${new Date().toISOString()}</div>
 </div>
+${evalJsonTag}
 </body>
 </html>`;
 
-  // 5. Download
+  // 7. Download
   const blob = new Blob([html], { type: 'text/html' });
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');

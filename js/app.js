@@ -293,7 +293,8 @@ function selectScenario(id) {
   activeScenario = id;
 
   document.querySelectorAll('.scenario-card').forEach(c => c.classList.remove('active'));
-  document.getElementById('sc-' + id).classList.add('active');
+  const card = document.getElementById('sc-' + id);
+  if (card) card.classList.add('active');
 
   const sc = SCENARIOS[id];
   $('subtitle').textContent = sc.subtitle;
@@ -574,19 +575,23 @@ function switchMode(mode) {
   if (currentMode !== 'wargame') stopWargameMode();
 
   if (mode === 'observe') {
+    // Reset camera to safe default — prevents 3D Tiles crash from degenerate positions
+    // left over by wargame/playback flyTo animations
+    const pos = viewer.camera.positionCartographic;
+    if (!pos || isNaN(pos.longitude) || isNaN(pos.latitude) || isNaN(pos.height) || pos.height < 0) {
+      viewer.camera.setView({ destination: Cesium.Cartesian3.fromDegrees(53, 32, 5_000_000) });
+    }
     startLive();
     $('updated').textContent = '---';
     $('civ-count').textContent = '---';
     $('sat-count').textContent = isSatLoaded() ? entityMaps.satellites.size : '---';
     $('ship-count').textContent = '---';
-    $('pogo-count').textContent = isPogoLoaded() ? entityMaps.pokemon.size : '---';
   } else if (mode === 'playback') {
     const sc = SCENARIOS[activeScenario];
     $('updated').textContent = sc ? sc.dateLabel : '---';
     $('civ-count').textContent = '---';
     $('sat-count').textContent = '---';
     $('ship-count').textContent = '---';
-    $('pogo-count').textContent = '---';
     startReplay();
   } else if (mode === 'wargame') {
     clearAllLayers(viewer, () => removeDataBoundsOverlay(viewer));

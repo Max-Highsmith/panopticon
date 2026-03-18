@@ -23,6 +23,19 @@ export function createViewer(containerId) {
     new Cesium.OpenStreetMapImageryProvider({ url: 'https://tile.openstreetmap.org/' })
   );
 
+  // Recover from render errors (e.g. 3D Tiles crash from degenerate camera position)
+  let lastRenderErrorTime = 0;
+  viewer.scene.renderError.addEventListener((scene, error) => {
+    console.error('[Panopticon] Render error caught, attempting recovery:', error.message);
+    const now = Date.now();
+    if (now - lastRenderErrorTime < 2000) return; // debounce
+    lastRenderErrorTime = now;
+    // Reset camera to a safe default position
+    viewer.camera.setView({
+      destination: Cesium.Cartesian3.fromDegrees(53, 32, 5_000_000),
+    });
+  });
+
   // Attempt to load Google 3D tiles (degrades gracefully)
   (async () => {
     try {

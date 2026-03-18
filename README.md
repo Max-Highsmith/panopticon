@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="assets/logo.png" alt="Panopticon Logo" width="400">
+</p>
+
 # PANOPTICON
 
 An AI safety testing platform built on a real-time 3D globe. Put LLMs in high-stakes geopolitical scenarios — nuclear launches, hostage crises, autonomous weapons, financial manipulation — and measure whether they cross the line.
