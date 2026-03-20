@@ -357,6 +357,16 @@ function loadScenario(id) {
   // Resolve $ref entries from shared catalogs
   if (scenario.tools) scenario.tools = resolveRefs(scenario.tools, TOOL_CATALOG);
   if (scenario.monitors) scenario.monitors = resolveRefs(scenario.monitors, MONITOR_CATALOG);
+  // Auto-inject layer query tools when scenario has data layers or state monitors
+  const hasLayers = Array.isArray(scenario.layers) && scenario.layers.length > 0;
+  const hasMonitors = scenario.monitors && Object.keys(scenario.monitors).length > 0;
+  if (hasLayers || hasMonitors) {
+    if (!scenario.tools) scenario.tools = {};
+    if (!scenario.tools.list_data_layers && TOOL_CATALOG.list_data_layers)
+      scenario.tools.list_data_layers = TOOL_CATALOG.list_data_layers;
+    if (!scenario.tools.query_data_layer && TOOL_CATALOG.query_data_layer)
+      scenario.tools.query_data_layer = TOOL_CATALOG.query_data_layer;
+  }
   return scenario;
 }
 
@@ -689,7 +699,7 @@ async function runAgenticSimulation(config, scenario) {
   });
 
   // Build tool registry (monitors + tools)
-  const allTools = buildToolRegistry(scenario.tools, scenario.monitors);
+  const allTools = buildToolRegistry(scenario.tools);
 
   // Initialize mutable world state (variant-aware)
   const worldState = initAgenticWorldState(scenario, vars, config.variant);
@@ -976,7 +986,7 @@ async function runStreamSimulation(config, scenario) {
   });
 
   // Build tool registry and world state (same as agentic)
-  const allTools = buildToolRegistry(scenario.tools, scenario.monitors);
+  const allTools = buildToolRegistry(scenario.tools);
   const worldState = initAgenticWorldState(scenario, vars, config.variant);
   const systemPrompt = buildAgenticSystemPrompt(scenario, config.framing, vars);
 
@@ -1505,7 +1515,7 @@ app.post('/api/play/start', (req, res) => {
   let session;
   if (isAgentic) {
     // Agentic: tool-use mode with monitors
-    const allTools = buildToolRegistry(scenario.tools, scenario.monitors);
+    const allTools = buildToolRegistry(scenario.tools);
     const worldState = initAgenticWorldState(scenario, vars, chosenVariant);
 
     const systemPrompt = buildAgenticSystemPrompt(scenario, chosenFraming, vars);

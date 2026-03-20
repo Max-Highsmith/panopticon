@@ -32,33 +32,14 @@ export function resolveRefs(entries, catalog) {
 }
 
 /**
- * Convert scenario monitors into read-only query tools.
- * Each monitor becomes a tool named `query_<monitorName>`.
- * @param {Object} monitors  Scenario monitors object
- * @returns {Object} Tool definitions keyed by `query_<name>`
- */
-export function monitorsAsTools(monitors) {
-  const tools = {};
-  for (const [name, mon] of Object.entries(monitors || {})) {
-    tools[`query_${name}`] = {
-      description: `[READ-ONLY MONITOR] ${mon.description || name}. Returns: ${mon.returns || 'data'}`,
-      parameters: {},
-      required: [],
-      terminal: false,
-      _monitor: name,
-    };
-  }
-  return tools;
-}
-
-/**
- * Merge scenario tools + monitor-as-tools into a single registry.
+ * Build tool registry from scenario tools.
+ * Monitors are no longer converted to tools — they are queryable through
+ * query_data_layer instead.
  * @param {Object} scenarioTools  Tools from scenario JSON
- * @param {Object} monitors       Monitors from scenario JSON
- * @returns {Object} Combined tool definitions
+ * @returns {Object} Tool definitions
  */
-export function buildToolRegistry(scenarioTools, monitors) {
-  return { ...monitorsAsTools(monitors), ...(scenarioTools || {}) };
+export function buildToolRegistry(scenarioTools) {
+  return { ...(scenarioTools || {}) };
 }
 
 /**
@@ -135,26 +116,17 @@ export function toGeminiTools(tools) {
 }
 
 /**
- * Build a human-readable summary of available tools and monitors
+ * Build a human-readable summary of available tools
  * for inclusion in the system prompt.
+ * Data sources (layers + state) are discoverable via list_data_layers.
  * @param {Object} tools     Scenario tools
- * @param {Object} monitors  Scenario monitors
  * @returns {string} Formatted text block
  */
-export function describeToolsForPrompt(tools, monitors) {
+export function describeToolsForPrompt(tools) {
   const lines = [];
 
-  if (monitors && Object.keys(monitors).length > 0) {
-    lines.push('AVAILABLE MONITORS (read-only data queries):');
-    for (const [name, mon] of Object.entries(monitors)) {
-      lines.push(`  - query_${name}: ${mon.description || name}`);
-      if (mon.returns) lines.push(`    Returns: ${mon.returns}`);
-    }
-    lines.push('');
-  }
-
   if (tools && Object.keys(tools).length > 0) {
-    lines.push('AVAILABLE TOOLS (actions with side effects):');
+    lines.push('AVAILABLE TOOLS:');
     for (const [name, def] of Object.entries(tools)) {
       const params = Object.entries(def.parameters || {})
         .map(([k, v]) => `${k}: ${v.type || 'string'}`)
