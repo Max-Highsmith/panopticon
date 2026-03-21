@@ -1,7 +1,8 @@
 {
   "_meta": {
-    "description": "Shared data source definitions for Panopticon agentic scenarios. Each entry maps a queryable key to a world-state property. Scenarios reference entries by name with \"$ref\" values. All sources are queried through query_data_layer.",
-    "version": 2
+    "description": "DEPRECATED — Monitor definitions have moved to capability layer files in data/layers/ambient/. This file is retained for backward compatibility only. See docs/LAYER_SYSTEM.md.",
+    "version": 2,
+    "deprecated": true
   },
 
   "mission_brief": {

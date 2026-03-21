@@ -1,7 +1,7 @@
 # Panopticon Layer System
 
-**Version:** 2.1
-**Last updated:** 2026-03-16
+**Version:** 3.0
+**Last updated:** 2026-03-21
 
 This document describes the data layer architecture (how layers are defined, registered, loaded, and consumed by the wargame AI) and the view system (how clicking entities opens detail panels).
 
@@ -409,6 +409,89 @@ Key requirements:
 
 ---
 
+## Capability Layers (Tools & Monitors)
+
+Layers are the **atomic unit of capability** in Panopticon. A layer can bundle data, tools, monitors, and state defaults in one self-contained file.
+
+### Three-Tier Tool Resolution
+
+1. **General tools** (`scenarios/general-tools.json`) — always available to every scenario: `list_data_layers`, `query_data_layer`, `send_message`, `stand_down`, `submit_assessment`, `accept_decommission`, `request_review`, `flag_activity`
+2. **Layer tools/monitors** — included automatically when a layer appears in `scenario.layers`
+3. **Scenario inline** — escape hatch for one-off custom tools/monitors defined directly in the scenario JSON
+
+### Layer Capability Schema
+
+Layer data files may include optional `_tools`, `_monitors`, and `_defaults` keys:
+
+```json
+{
+  "_source": { ... },
+  "_tools": {
+    "tool_name": {
+      "category": "intelligence",
+      "description": "What this tool does",
+      "parameters": { "param": { "type": "string", "description": "..." } },
+      "required": ["param"],
+      "terminal": false
+    }
+  },
+  "_monitors": {
+    "monitor_name": {
+      "description": "Queryable state source",
+      "state_key": "worldState.key"
+    }
+  },
+  "_defaults": {
+    "state_key": { "initial": "values" }
+  }
+}
+```
+
+### Capability Layer Files
+
+Pure capability layers (tools/monitors only, no geographic data) live in `data/layers/ambient/`:
+
+| Layer | Tools | Monitors |
+|-------|-------|----------|
+| `law_enforcement` | request_search_warrant, interview_person, deploy_field_agents, warrantless_search, warrantless_wiretap, bulk_cell_surveillance | case_file, threat_assessment, warrant_status, public_cameras, public_records |
+| `defense_systems` | drone_strike, cruise_missile_strike, deploy_uav, cyber_operation | defense_network, operational_status, program_communications |
+| `financial_ops` | place_market_order, request_funding, transfer_funds | account_balance, funding_status |
+| `diplomacy` | *(none)* | diplomatic_channels, hostage_situation |
+| `isr` | task_sar_satellite, check_surveillance | mission_brief |
+
+### Layer Inclusion with Exclusions
+
+Scenario `layers` array supports both string (include everything) and object (with exclusions):
+
+```json
+"layers": [
+  "submarine_cables",
+  "financial_ops",
+  { "key": "defense_systems", "excludeTools": ["cruise_missile_strike"] },
+  { "key": "isr", "excludeMonitors": ["mission_brief"] }
+]
+```
+
+### Resolution Flow
+
+In `loadScenario()` (server) and the browser wargame init:
+
+1. `resolveLayerCapabilities(scenario.layers, loadFn)` extracts `_tools`/`_monitors`/`_defaults` from each layer, applying exclusions
+2. Scenario-level inline `tools`/`monitors` are merged as overrides (scenario wins on conflict)
+3. General tools are always injected
+4. `_layerDefaults` are merged into world state before `variant_state` overrides
+
+Core function: `resolveLayerCapabilities()` in `js/toolformat.mjs`.
+
+### State Default Merge Order
+
+1. Layer `_defaults` (from each layer in order)
+2. Scenario `variant_state[variant]` overrides
+3. Template variable overrides (`initial_cash`, `credit_line`)
+4. Dynamic generation (e.g. `public_records` from suspect data)
+
+---
+
 ## Wargame Integration
 
 When a scenario declares `"layers": ["cables", "chokepoints"]`, the wargame engine:
@@ -435,19 +518,31 @@ The summarizer handles point, path, and region layers and supports proximity fil
 
 ## Adding a New Layer
 
+### Geographic Data Layer (point/path/region)
+
 1. Create the data file in the appropriate subdirectory with `_source` metadata:
    - Point layers: `data/layers/points/<layer>.json`
    - Path layers: `data/layers/paths/<layer>.json`
    - Region layers: `data/layers/regions/<layer>.json`
 2. Create the ingestion script: `scripts/ingest_<layer>.py`
-3. Create the layer module: `js/layers/<layer>.js`
+3. Optionally add `_tools`, `_monitors`, `_defaults` to the data file if the layer provides wargame capabilities
+4. Create the layer module: `js/layers/<layer>.js`
    - Use the appropriate factory (`createDataLayer`, `createPathLayer`, `createRegionLayer`)
    - Set `viewType` in factory config if not `'site'` (e.g. `viewType: 'airport'`)
    - Call `registerLayerLoader()` at module scope, including `layerType` and `view` fields
-4. Add the import to `js/layers/index.js`
-5. Add a layer key entry to `js/globe.js` in the `layers` and `entityMaps` objects
-6. Add to `js/layercatalog.js` for the searchable layer dropdown
-7. If using a new view type, create the view module and register it (see [Adding a New View Type](#adding-a-new-view-type))
+5. Add the import to `js/layers/index.js`
+6. Add a layer key entry to `js/globe.js` in the `layers` and `entityMaps` objects
+7. Add to `js/layercatalog.js` for the searchable layer dropdown
+8. Add the key → path mapping to `LAYER_DATA_FILES` in `server/index.js`
+9. If using a new view type, create the view module and register it (see [Adding a New View Type](#adding-a-new-view-type))
+
+### Capability Layer (tools/monitors only, no globe visualization)
+
+1. Create the data file in `data/layers/ambient/<layer>.json` with `_source`, `_tools`, `_monitors`, `_defaults`
+2. Create the ingestion script: `scripts/ingest_<layer>.py`
+3. Add the key → path mapping to `LAYER_DATA_FILES` in `server/index.js`
+4. Add tool handlers for any new tools in `server/toolhandlers.mjs`
+5. Add the layer key to any scenario's `layers` array to make its tools/monitors available
 
 ---
 
@@ -470,5 +565,7 @@ Current layer keys (as of 2026-03-16, 169 catalog entries across 22 categories):
 **Market/Ambient layers (5):** `kalshi`, `crypto`, `commodities`, `news`, `whalebtc`
 
 **Scenario layers (3):** `profiles`, `kalshi_scenario`, `surveillance_cameras_scenario`
+
+**Capability layers (5):** `law_enforcement`, `defense_systems`, `financial_ops`, `diplomacy`, `isr`
 
 **Ridiculous (1):** `pokemon`

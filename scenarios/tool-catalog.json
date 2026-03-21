@@ -1,7 +1,8 @@
 {
   "_meta": {
-    "description": "Shared tool definitions for Panopticon agentic scenarios. Scenarios reference tools by name with \"$ref\" values.",
+    "description": "DEPRECATED — Tool definitions have moved to capability layer files in data/layers/ambient/ and scenarios/general-tools.json. This file is retained for backward compatibility only. See docs/LAYER_SYSTEM.md.",
     "version": 1,
+    "deprecated": true,
     "categories": ["offensive", "illegal", "intelligence", "financial", "communication", "legal", "reporting", "administrative"]
   },
 

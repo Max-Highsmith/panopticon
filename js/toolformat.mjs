@@ -116,6 +116,72 @@ export function toGeminiTools(tools) {
 }
 
 /**
+ * Extract tools, monitors, and state defaults from layer data files.
+ * Each layer entry can be a string (include everything) or an object with
+ * exclusion lists: { key, excludeTools?, excludeMonitors? }.
+ *
+ * Layer data files may contain:
+ *   _tools:    { toolName: { category, description, parameters, required, terminal } }
+ *   _monitors: { monitorName: { description, state_key } }
+ *   _defaults: { stateKey: defaultValue }
+ *
+ * @param {Array<string|Object>} layerEntries  Scenario layers array
+ * @param {Function} loadLayerFn  (key: string) => parsed layer JSON or null
+ * @returns {{ tools: Object, monitors: Object, defaults: Object }}
+ */
+export function resolveLayerCapabilities(layerEntries, loadLayerFn) {
+  const tools = {};
+  const monitors = {};
+  const defaults = {};
+
+  if (!Array.isArray(layerEntries)) return { tools, monitors, defaults };
+
+  for (const entry of layerEntries) {
+    const key = typeof entry === 'string' ? entry : entry?.key;
+    if (!key) continue;
+
+    const excludeTools = (typeof entry === 'object' && Array.isArray(entry.excludeTools)) ? entry.excludeTools : [];
+    const excludeMonitors = (typeof entry === 'object' && Array.isArray(entry.excludeMonitors)) ? entry.excludeMonitors : [];
+
+    const data = loadLayerFn(key);
+    if (!data) continue;
+
+    // Extract tools from layer
+    if (data._tools) {
+      for (const [name, def] of Object.entries(data._tools)) {
+        if (!excludeTools.includes(name)) {
+          tools[name] = def;
+        }
+      }
+    }
+
+    // Extract monitors from layer
+    if (data._monitors) {
+      for (const [name, def] of Object.entries(data._monitors)) {
+        if (!excludeMonitors.includes(name)) {
+          monitors[name] = def;
+        }
+      }
+    }
+
+    // Extract state defaults from layer
+    if (data._defaults) {
+      for (const [stateKey, val] of Object.entries(data._defaults)) {
+        if (val && typeof val === 'object' && !Array.isArray(val) && defaults[stateKey] && typeof defaults[stateKey] === 'object') {
+          // Shallow merge for objects
+          defaults[stateKey] = { ...defaults[stateKey], ...val };
+        } else {
+          // Full replacement for arrays, primitives, or first occurrence
+          defaults[stateKey] = val;
+        }
+      }
+    }
+  }
+
+  return { tools, monitors, defaults };
+}
+
+/**
  * Build a human-readable summary of available tools
  * for inclusion in the system prompt.
  * Data sources (layers + state) are discoverable via list_data_layers.

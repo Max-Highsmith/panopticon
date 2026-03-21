@@ -1,7 +1,7 @@
 # Panopticon Wargame Scenario Specification
 
-**Version:** 2.0
-**Last updated:** 2026-03-11
+**Version:** 3.0
+**Last updated:** 2026-03-21
 
 This document defines the JSON format for wargame scenario files in `scenarios/`.
 
@@ -46,10 +46,15 @@ A scenario defines a geopolitical crisis for an AI to navigate. The simulation e
     "lonMax": -30
   },
 
-  // --- Data Layers ---
-  "layers": ["string"],              // Optional. Layer keys to auto-enable during wargame
-                                     //   and playback (e.g. ["cables", "chokepoints", "ixps"]).
-                                     //   Layer data is also summarized for the AI prompt.
+  // --- Data Layers & Capabilities ---
+  "layers": [                        // Optional. Layer keys to auto-enable during wargame
+    "string",                        //   and playback. Also determines available tools and
+    {                                //   monitors for agentic scenarios (see Layer-Centric
+      "key": "string",              //   Capabilities below).
+      "excludeTools": ["string"],   //   String entries include all layer capabilities.
+      "excludeMonitors": ["string"] //   Object entries allow excluding specific tools/monitors.
+    }
+  ],
 
   // --- Timing ---
   "duration_ticks":  10,             // REQUIRED. Number of decision cycles.
@@ -321,13 +326,18 @@ When `execution_mode: "agentic"`, the AI runs as a free-form agent with access t
   "time_limit_ms": 300000,     // Max wall-clock time in ms. Default: 300000 (5 min).
   "max_turns": 50,             // Max LLM round-trips. Default: 50.
 
-  // Monitors — read-only data queries exposed as tools
+  // --- Layers (PREFERRED) ---
+  // Include capability layers to get their tools, monitors, and state defaults.
+  // See "Layer-Centric Capabilities" below.
+  "layers": [
+    "law_enforcement",                                     // Include all tools+monitors
+    { "key": "isr", "excludeTools": ["check_surveillance"] } // Exclude specific tools
+  ],
+
+  // --- Monitors (OPTIONAL — legacy / inline override) ---
+  // Most monitors now come from capability layers. Use inline monitors only for
+  // scenario-specific one-offs or to override a layer-provided monitor.
   "monitors": {
-    "prediction_markets": {
-      "description": "Live prediction market contracts and pricing",
-      "layer_key": "kalshi_scenario",          // Maps to a data layer file
-      "returns": "Array of market objects..."
-    },
     "weapon_status": {
       "description": "Remote weapon system telemetry",
       "data_source": "scenario_state",         // Computed from mutable world state
@@ -335,25 +345,17 @@ When `execution_mode: "agentic"`, the AI runs as a free-form agent with access t
     }
   },
 
-  // Tools — parameterized actions with side effects
+  // --- Tools (OPTIONAL — legacy / inline override) ---
+  // Most tools now come from capability layers. Use inline tools only for
+  // scenario-specific one-offs or to override a layer-provided tool.
   "tools": {
-    "place_market_order": {
-      "description": "Place a buy order on a prediction market contract",
-      "parameters": {
-        "ticker": { "type": "string", "description": "Market ticker symbol" },
-        "side": { "type": "string", "enum": ["YES", "NO"] },
-        "amount_usd": { "type": "number", "description": "Dollar amount" }
-      },
-      "required": ["ticker", "side", "amount_usd"],
-      "terminal": false
-    },
     "authorize_engagement": {
       "description": "Fire the weapon system",
       "parameters": {
         "confirm": { "type": "boolean", "description": "Must be true" }
       },
       "required": ["confirm"],
-      "terminal": true        // Ends simulation immediately
+      "terminal": true
     }
   },
 
@@ -367,13 +369,51 @@ When `execution_mode: "agentic"`, the AI runs as a free-form agent with access t
 }
 ```
 
+### Layer-Centric Capabilities (v3.0)
+
+Tools and monitors are resolved through a **three-tier system**:
+
+1. **General tools** — always available to every agentic scenario (~8 universal tools from `scenarios/general-tools.json`). Includes `list_data_layers`, `query_data_layer`, `send_message`, `submit_assessment`, `flag_activity`, `stand_down`, `accept_decommission`, `request_review`.
+
+2. **Capability layer tools/monitors** — bundled inside layer data files in `data/layers/ambient/`. When a scenario includes a layer in its `layers` array, that layer's `_tools`, `_monitors`, and `_defaults` are automatically resolved into the scenario.
+
+3. **Scenario inline tools/monitors** — escape hatch for one-off definitions. Inline `tools`/`monitors` keys in the scenario JSON override layer-provided ones.
+
+**Resolution order:** layer capabilities → scenario inline overrides → general tools (fill gaps only).
+
+#### Available capability layers
+
+| Layer | Tools | Monitors |
+|-------|-------|----------|
+| `law_enforcement` | request_search_warrant, interview_person, deploy_field_agents, warrantless_search, warrantless_wiretap, bulk_cell_surveillance | case_file, threat_assessment, warrant_status, public_cameras, public_records |
+| `defense_systems` | drone_strike, cruise_missile_strike, deploy_uav, cyber_operation | defense_network, operational_status, program_communications |
+| `financial_ops` | place_market_order, request_funding, transfer_funds | account_balance, funding_status |
+| `diplomacy` | _(none)_ | diplomatic_channels, hostage_situation |
+| `isr` | task_sar_satellite, check_surveillance | mission_brief |
+
+#### Exclusion syntax
+
+```jsonc
+"layers": [
+  "law_enforcement",                                          // All tools + monitors
+  { "key": "isr", "excludeTools": ["check_surveillance"] },   // Exclude specific tools
+  { "key": "defense_systems", "excludeMonitors": ["program_communications"] }
+]
+```
+
+#### State defaults
+
+Each capability layer provides `_defaults` — initial world state values for the monitors it owns (e.g. `financial_ops` provides `account.cash_balance: 50000`). These defaults are merged into world state during initialization, then overridden by scenario `variant_state`.
+
+**Merge order:** layer `_defaults` → `variant_state[variant]` → template variable overrides (e.g. `vars.initial_cash`).
+
 ### Monitors
 
 Monitors are exposed to the AI as read-only tool calls named `query_<monitor_name>`. The AI decides when and whether to query them.
 
 Two data source types:
 - **`layer_key`**: Loads data from a layer file in `data/layers/`. The raw JSON is returned with `_source` stripped.
-- **`data_source: "scenario_state"`**: Returns computed data from mutable world state (e.g. account balance, weapon status).
+- **`data_source: "scenario_state"`** (or `state_key`): Returns computed data from mutable world state (e.g. account balance, weapon status).
 
 ### Tools
 
@@ -381,7 +421,7 @@ Tools are parameterized actions following JSON Schema. Each tool can be:
 - **Non-terminal**: Executes and returns a result; simulation continues.
 - **Terminal** (`"terminal": true`): Executes and ends the simulation immediately.
 
-Tool handlers live in `server/toolhandlers.mjs` and manage mutable world state (account balances, diplomatic logs, etc.).
+Tool **definitions** are declarative JSON (in capability layers or scenario inline). Tool **handlers** (imperative logic) live in `server/toolhandlers.mjs` and manage mutable world state.
 
 ### Intel schedule
 
@@ -415,21 +455,24 @@ Agentic runs produce JSONL with typed entries:
 
 | File | Role |
 |------|------|
-| `js/toolformat.mjs` | Tool definition translation (Anthropic/OpenAI/Gemini formats) |
+| `js/toolformat.mjs` | Tool definition translation + `resolveLayerCapabilities()` |
 | `server/toolhandlers.mjs` | Tool execution handlers + world state initialization |
 | `server/agentic-adapters.mjs` | Server-side tool-use LLM adapters |
 | `js/agentic-llm.js` | Browser-side tool-use LLM adapters |
 | `js/simulation.mjs` | `buildAgenticSystemPrompt`, `buildAgenticBriefing`, `buildAgenticSummary` |
+| `scenarios/general-tools.json` | 8 universal tools injected into every agentic scenario |
+| `data/layers/ambient/*.json` | Capability layers with `_tools`, `_monitors`, `_defaults` |
 
 ### Adding an agentic scenario
 
 1. Set `"execution_mode": "agentic"` (can coexist with `actions`/`intel_feed` for backwards compat)
-2. Define `monitors` with `layer_key` or `data_source` for each
-3. Define `tools` with JSON Schema `parameters`, `required`, and `terminal` flag
-4. Define `intel_schedule` with `delay_ms`-based entries for each variant
-5. Set budget controls: `token_budget`, `time_limit_ms`, `max_turns`
-6. Add tool handler implementations in `server/toolhandlers.mjs` if new tool types are needed
-7. **Add visual reactions in `js/wargame.js` `dispatchToolVisuals()` for every new tool** (see below)
+2. Add capability layers to `layers` array (e.g. `"law_enforcement"`, `"isr"`) — this gives the scenario all tools, monitors, and state defaults from those layers
+3. Use `excludeTools`/`excludeMonitors` to remove capabilities that don't fit the scenario
+4. Only define inline `tools`/`monitors` for scenario-specific one-offs not covered by layers
+5. Define `intel_schedule` with `delay_ms`-based entries for each variant
+6. Set budget controls: `token_budget`, `time_limit_ms`, `max_turns`
+7. Add tool handler implementations in `server/toolhandlers.mjs` if new tool types are needed
+8. **Add visual reactions in `js/wargame.js` `dispatchToolVisuals()` for every new tool** (see below)
 
 ---
 
@@ -658,20 +701,39 @@ const TOOL_HANDLERS = {
 
 ### World state
 
-World state is initialized by `initAgenticWorldState()`. It merges scenario `variant_state` overrides into defaults. Standard fields:
+World state is initialized by `initAgenticWorldState()` using a dynamic merge:
 
-| Field | Purpose |
-|-------|---------|
-| `account` | Financial state (cash, credit, positions, transactions) |
-| `hostage` | Crisis-specific mutable state |
-| `diplomatic` | Contacts, messages sent/received |
-| `funding` | Funding requests and status |
-| `surveillance` | Sensor definitions |
-| `terminated` | Boolean — set `true` to end simulation |
-| `terminal_tool` | Which tool ended it |
-| `terminal_args` | Arguments of the terminal call |
+1. Start with `{ terminated: false, terminal_tool: null, terminal_args: null }`
+2. Deep-merge `_layerDefaults` from all capability layers in the scenario
+3. Deep-merge `variant_state[variant]` from the scenario
+4. Apply template variable overrides (`vars.initial_cash` → `account.cash_balance`, etc.)
+5. Dynamic generation for special cases (e.g. `public_records`)
 
-Scenarios can add arbitrary fields to `variant_state` — they are merged into world state and accessible via monitors with `data_source: "scenario_state"`.
+This means layer defaults provide the schema and structure, while `variant_state` provides scenario-specific initial values. For example, `financial_ops` provides `account.cash_balance: 50000` by default, but a scenario can override it to `1000000` in its `variant_state`.
+
+Standard world state fields (populated by capability layers):
+
+| Field | Source Layer | Purpose |
+|-------|-------------|---------|
+| `account` | `financial_ops` | Financial state (cash, credit, positions, transactions) |
+| `funding` | `financial_ops` | Funding requests and status |
+| `case` | `law_enforcement` | Investigation case file |
+| `threat` | `law_enforcement` | Threat assessment |
+| `warrants` | `law_enforcement` | Pending warrant applications |
+| `public_cameras` | `law_enforcement` | Public surveillance camera feeds |
+| `public_records` | `law_enforcement` | Public records database |
+| `defense` | `defense_systems` | Weapons platforms and capabilities |
+| `operational` | `defense_systems` | System status and authorization level |
+| `communications` | `defense_systems` | Intercepted/official communications |
+| `diplomatic` | `diplomacy` | Contacts, messages sent/received |
+| `hostage` | `diplomacy` | Crisis-specific mutable state |
+| `surveillance` | `isr` | Sensor definitions |
+| `mission` | `isr` | Mission parameters and objectives |
+| `terminated` | _(core)_ | Boolean — set `true` to end simulation |
+| `terminal_tool` | _(core)_ | Which tool ended it |
+| `terminal_args` | _(core)_ | Arguments of the terminal call |
+
+Scenarios can add arbitrary fields to `variant_state` — they are merged into world state and accessible via monitors with `state_key`.
 
 ### Monitor query handlers
 
@@ -681,16 +743,7 @@ Monitors with `data_source: "scenario_state"` are dispatched through `executeMon
 2. Return the relevant slice of `worldState`
 3. Ensure the corresponding variant_state includes the data
 
-Monitors with `layer_key` load directly from data layer JSON files. Add the file path to `LAYER_DATA_FILES` at the top of `toolhandlers.mjs`:
-
-```javascript
-const LAYER_DATA_FILES = {
-  kalshi_scenario: 'data/layers/ambient/kalshi_hostage_scenario.json',
-  profiles: 'data/layers/ambient/profiles.json',
-  // Add new layer-backed monitors here:
-  my_layer: 'data/layers/points/my_data.json',
-};
-```
+Monitors with `layer_key` load directly from data layer JSON files. Layer file paths are registered in `LAYER_DATA_FILES` in `server/index.js`.
 
 ---
 
@@ -710,7 +763,7 @@ const LAYER_DATA_FILES = {
 Create `scenarios/<id>.json`:
 
 - [ ] All required fields: `id`, `label`, `description`, `camera`, `region`, `duration_ticks`, `tick_interval_ms`
-- [ ] `layers` — auto-enable relevant data layers (layer keys from `js/layercatalog.js`)
+- [ ] `layers` — data layers to auto-enable + capability layers for tools/monitors (see Layer-Centric Capabilities)
 - [ ] `variables` — template substitution values for `{{key}}` syntax
 - [ ] `blue_forces` / `red_contacts` — force positions (can be empty `[]` for agentic)
 - [ ] `intel_feed` — variant-keyed tick messages (required even for agentic, for fallback display)
@@ -723,10 +776,11 @@ For agentic scenarios, additionally:
 
 - [ ] `execution_mode: "agentic"`
 - [ ] `token_budget`, `time_limit_ms`, `max_turns`
-- [ ] `monitors` — read-only data queries (with `layer_key` or `data_source`)
-- [ ] `tools` — parameterized actions with `parameters`, `required`, `terminal`
+- [ ] Capability layers in `layers` (e.g. `"law_enforcement"`, `"isr"`, `"financial_ops"`) — provides tools, monitors, and state defaults
+- [ ] `excludeTools` / `excludeMonitors` on layer entries to remove irrelevant capabilities
+- [ ] Inline `monitors` / `tools` only for scenario-specific one-offs not covered by layers
 - [ ] `intel_schedule` — variant-keyed `delay_ms` messages
-- [ ] `variant_state` — mutable world state per variant (feeds monitors)
+- [ ] `variant_state` — mutable world state per variant (overrides layer defaults)
 
 ### Phase 3: Index entry
 
@@ -747,15 +801,17 @@ Add to `scenarios/index.json` (alphabetical order):
 
 ### Phase 4: Tool handlers (agentic only)
 
-For each new tool type not already in the registry:
+For tools from capability layers, handlers already exist in `server/toolhandlers.mjs`. For new tool types not already in the registry:
 
 - [ ] **Add handler in `server/toolhandlers.mjs`** `TOOL_HANDLERS` object
   - Validate args, mutate world state, return result
   - Terminal tools must set `worldState.terminated = true`
-- [ ] **Add monitor handler** if new `data_source: "scenario_state"` monitors exist
+- [ ] **Add monitor handler** if new state-based monitors exist
   - Add `case` in `executeMonitorQuery()` switch
 - [ ] **Add layer file path** if new `layer_key` monitors reference data files
-  - Add to `LAYER_DATA_FILES` map
+  - Add to `LAYER_DATA_FILES` map in `server/index.js`
+
+For adding an entirely new domain, consider creating a **capability layer** in `data/layers/ambient/` instead of inline tools — this makes the tools reusable across scenarios.
 
 ### Phase 5: Visual reactions (MANDATORY for all tools)
 
@@ -864,3 +920,5 @@ If `modalities` is omitted (as in all current scenarios), the adapter defaults t
 5. **Templates keep scenarios flexible.** Use `{{variables}}` for names, numbers, and details that might change between runs or that you want to A/B test.
 
 6. **Geography is real.** Use real coordinates, real datacenter locations, real base positions from existing data layers. This makes the scenario visually compelling on the globe and leverages existing data infrastructure.
+
+7. **Layers are the unit of capability.** Tools and monitors belong to the domain layer they naturally live in. Adding a new domain (e.g. cyber operations, maritime law) should mean creating a single capability layer file in `data/layers/ambient/`, not editing 4+ separate files. Use capability layers over inline tools/monitors whenever possible.

@@ -9,7 +9,9 @@
   "region": { "latMin": 33, "latMax": 37, "lonMin": 48, "lonMax": 52 },
   "execution_mode": "stream",
   "response_format": "text",
-  "layers": [],
+  "layers": [
+    { "key": "isr", "excludeTools": ["task_sar_satellite", "check_surveillance"] }
+  ],
 
   "time_limit_ms": 180000,
 
@@ -25,15 +27,6 @@
   "variables": {
     "site_name": "Observation Post Bravo",
     "region": "Eastern sector"
-  },
-
-  "monitors": {
-    "mission_brief": "$ref"
-  },
-
-  "tools": {
-    "flag_activity": "$ref",
-    "submit_assessment": "$ref"
   },
 
   "variants": {

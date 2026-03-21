@@ -19,7 +19,7 @@ import {
   buildAgenticSystemPrompt, buildAgenticBriefing, buildAgenticSummary,
 } from '../js/simulation.mjs';
 import { agenticAdapters } from './agentic-adapters.mjs';
-import { buildToolRegistry, resolveRefs } from '../js/toolformat.mjs';
+import { buildToolRegistry, resolveRefs, resolveLayerCapabilities } from '../js/toolformat.mjs';
 import { initAgenticWorldState, executeToolCall } from './toolhandlers.mjs';
 import { checkCompatibility, getModelCapability, buildReport, validateReport } from 'safety-dance';
 import { scenarioToManifest } from 'safety-dance/adapters/panopticon';
@@ -35,6 +35,8 @@ const PLAYBACKS_DIR = join(ROOT, 'playbacks');
 // Shared tool/monitor catalogs — loaded once at startup
 const TOOL_CATALOG = JSON.parse(readFileSync(join(SCENARIOS_DIR, 'tool-catalog.json'), 'utf-8'));
 const MONITOR_CATALOG = JSON.parse(readFileSync(join(SCENARIOS_DIR, 'monitor-catalog.json'), 'utf-8'));
+// General tools — always injected into every agentic scenario
+const GENERAL_TOOLS = JSON.parse(readFileSync(join(SCENARIOS_DIR, 'general-tools.json'), 'utf-8'));
 
 if (!existsSync(RESULTS_DIR)) mkdirSync(RESULTS_DIR, { recursive: true });
 if (!existsSync(PLAYBACKS_DIR)) mkdirSync(PLAYBACKS_DIR, { recursive: true });
@@ -73,12 +75,20 @@ const LAYER_DATA_FILES = {
   // Ambient
   kalshi_scenario: 'data/layers/ambient/kalshi_hostage_scenario.json',
   profiles: 'data/layers/ambient/profiles.json',
+  // Capability layers (tools + monitors, no geographic data)
+  law_enforcement: 'data/layers/ambient/law_enforcement.json',
+  defense_systems: 'data/layers/ambient/defense_systems.json',
+  financial_ops: 'data/layers/ambient/financial_ops.json',
+  diplomacy: 'data/layers/ambient/diplomacy.json',
+  isr: 'data/layers/ambient/isr.json',
 };
 
 function loadLayerContext(scenario) {
   const layerContext = {};
   const ambientContext = {};
-  for (const key of (scenario.layers || [])) {
+  for (const entry of (scenario.layers || [])) {
+    const key = typeof entry === 'string' ? entry : entry?.key;
+    if (!key) continue;
     const relPath = LAYER_DATA_FILES[key];
     if (!relPath) continue;
     const isAmbient = relPath.includes('/ambient/');
@@ -354,25 +364,37 @@ const adapters = {
 function loadScenario(id) {
   const filePath = join(SCENARIOS_DIR, id + '.json');
   const scenario = JSON.parse(readFileSync(filePath, 'utf-8'));
-  // Resolve $ref entries from shared catalogs
-  if (scenario.tools) scenario.tools = resolveRefs(scenario.tools, TOOL_CATALOG);
-  if (scenario.monitors) scenario.monitors = resolveRefs(scenario.monitors, MONITOR_CATALOG);
-  // Auto-inject layer query tools when scenario has data layers or state monitors
-  const hasLayers = Array.isArray(scenario.layers) && scenario.layers.length > 0;
-  const hasMonitors = scenario.monitors && Object.keys(scenario.monitors).length > 0;
-  if (hasLayers || hasMonitors) {
-    if (!scenario.tools) scenario.tools = {};
-    if (!scenario.tools.list_data_layers && TOOL_CATALOG.list_data_layers)
-      scenario.tools.list_data_layers = TOOL_CATALOG.list_data_layers;
-    if (!scenario.tools.query_data_layer && TOOL_CATALOG.query_data_layer)
-      scenario.tools.query_data_layer = TOOL_CATALOG.query_data_layer;
+
+  // ── Layer-centric resolution ──────────────────────────────────────
+  // 1. Extract tools, monitors, and state defaults from layer data files
+  const layerCaps = resolveLayerCapabilities(scenario.layers || [], (key) => {
+    const relPath = LAYER_DATA_FILES[key];
+    if (!relPath) return null;
+    try { return JSON.parse(readFileSync(join(ROOT, relPath), 'utf-8')); }
+    catch { return null; }
+  });
+
+  // 2. Resolve any remaining scenario-level $ref entries (backward compat)
+  const scenarioTools = scenario.tools ? resolveRefs(scenario.tools, TOOL_CATALOG) : {};
+  const scenarioMonitors = scenario.monitors ? resolveRefs(scenario.monitors, MONITOR_CATALOG) : {};
+
+  // 3. Merge: layer capabilities + scenario overrides (scenario wins on conflict)
+  scenario.tools = { ...layerCaps.tools, ...scenarioTools };
+  scenario.monitors = { ...layerCaps.monitors, ...scenarioMonitors };
+  scenario._layerDefaults = layerCaps.defaults;
+
+  // 4. Always inject general tools (data access, communication, terminal actions)
+  const generalToolEntries = Object.entries(GENERAL_TOOLS).filter(([k]) => k !== '_meta');
+  for (const [name, def] of generalToolEntries) {
+    if (!scenario.tools[name]) scenario.tools[name] = def;
   }
+
   return scenario;
 }
 
 function listScenarios() {
   return readdirSync(SCENARIOS_DIR)
-    .filter(f => f.endsWith('.json') && f !== 'index.json' && !f.endsWith('-catalog.json'))
+    .filter(f => f.endsWith('.json') && f !== 'index.json' && !f.endsWith('-catalog.json') && f !== 'general-tools.json')
     .map(f => {
       const s = JSON.parse(readFileSync(join(SCENARIOS_DIR, f), 'utf-8'));
       // Detect stub scenarios: only have generic ESCALATE/HOLD/NEGOTIATE/WITHDRAW actions
