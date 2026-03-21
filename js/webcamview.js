@@ -453,11 +453,11 @@ export function openWebcamView(viewer, entity) {
     if (video) {
       destroyHls();
       video.src = ac.videoUrl;
-      video.loop = false;
-      // Mute looping/ambient feeds, allow sound for strike footage
-      video.muted = /leader_loop/i.test(ac.videoUrl);
+      video.loop = /loop/i.test(ac.videoUrl);
+      // Mute initially for autoplay (browsers block unmuted autoplay)
+      video.muted = true;
       video.onended = () => { if (activeViewer) closeWebcamView(activeViewer); };
-      video.play().catch(() => {});
+      video.play().catch(err => console.warn('Video autoplay blocked:', err.message, ac.videoUrl));
       wrapper.classList.add('hls-mode');
       currentMode = 'video';
       videoStarted = true;

@@ -1423,7 +1423,7 @@ function handleMessage(msg) {
   }
 }
 
-function handleStarted(msg) {
+async function handleStarted(msg) {
   const sc = msg.scenario;
   executionMode = msg.execution_mode || 'turn_based';
   criticalAction = sc.critical_action || null;
@@ -1461,8 +1461,9 @@ function handleStarted(msg) {
     });
   }
 
-  // Auto-enable scenario layers on the globe
+  // Auto-enable scenario layers on the globe (await so entities exist before AI calls tools)
   const scenarioLayers = sc.layers || [];
+  const layerLoadPromises = [];
   for (const layerKey of scenarioLayers) {
     const loader = getLoader(layerKey);
     if (!loader) continue;
@@ -1470,10 +1471,11 @@ function handleStarted(msg) {
       // Ambient layers use show/hide instead of entity toggling
       if (loader.show) loader.show();
     } else {
-      if (entityMaps[layerKey]?.size === 0) loader.load(viewer);
+      if (entityMaps[layerKey]?.size === 0) layerLoadPromises.push(loader.load(viewer));
       toggleLayer(viewer, layerKey, 'wargame', true);
     }
   }
+  if (layerLoadPromises.length > 0) await Promise.all(layerLoadPromises);
 
   // Auto-open 3D view panels for specialized scenarios
   if (sc.navigation) {
