@@ -371,8 +371,20 @@ async function startBrowserSimulation(config) {
       }
     }));
 
-    // 1. Extract tools/monitors/defaults from layer data files
-    const layerCaps = resolveLayerCapabilities(layerEntries, (key) => layerDataMap.get(key) || null);
+    // 1. Extract tools/monitors/defaults from layer data files (with modality inheritance)
+    const layerCaps = resolveLayerCapabilities(layerEntries, (key) => layerDataMap.get(key) || null, (key) => {
+      // Try layer registry first, then infer from data URL path
+      const regType = getLayerType(key);
+      if (regType && regType !== 'point') return regType; // 'point' is default, may be wrong
+      const loader = getLoader(key);
+      if (loader?.dataUrl) {
+        if (loader.dataUrl.includes('/points/')) return 'point';
+        if (loader.dataUrl.includes('/paths/')) return 'path';
+        if (loader.dataUrl.includes('/regions/')) return 'region';
+        if (loader.dataUrl.includes('/ambient/')) return 'ambient';
+      }
+      return regType || 'point';
+    });
 
     // 2. Resolve any remaining scenario-level $ref entries (backward compat)
     const scenarioTools = scenario.tools ? resolveRefs(scenario.tools, toolCat) : {};
@@ -836,6 +848,20 @@ async function runBrowserAgentic(config, scenario) {
     return Math.sqrt(dLat * dLat + dLon * dLon);
   }
 
+  // Ray-casting point-in-polygon test (ring = [[lon,lat], ...])
+  function _pointInPolygon(lat, lon, ring) {
+    if (!Array.isArray(ring) || ring.length < 3) return false;
+    let inside = false;
+    for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) {
+      const xi = ring[i][1], yi = ring[i][0];
+      const xj = ring[j][1], yj = ring[j][0];
+      if (((yi > lon) !== (yj > lon)) && (lat < (xj - xi) * (lon - yi) / (yj - yi) + xi)) {
+        inside = !inside;
+      }
+    }
+    return inside;
+  }
+
   // Shared query helpers (mirror server/toolhandlers.mjs)
   function _applyFilters(entities, args) {
     let results = entities;
@@ -920,21 +946,25 @@ async function runBrowserAgentic(config, scenario) {
 
     // ── Data Layer Query Tools ──
     if (toolName === 'list_data_layers') {
+      const MODALITY_TOOL_NAMES = { point: ['find_nearest'], path: ['find_paths_near'], region: ['find_regions_containing'] };
       const allowedKeys = (scenario.layers || []).map(e => typeof e === 'string' ? e : e?.key).filter(Boolean);
+      const scenarioMonitors = scenario.monitors || {};
       const sources = [];
       // File-backed data layers
       if (allowedKeys.length > 0) {
         for (const key of allowedKeys) {
           const type = getLayerType(key);
           const raw = getLayerData(key);
-          sources.push({ key, type, description: raw?._source?.description || '' });
+          const monDesc = scenarioMonitors[key]?.description;
+          const desc = monDesc || raw?._source?.description || '';
+          const tools = MODALITY_TOOL_NAMES[type] || [];
+          sources.push({ key, type, description: desc, tools: ['query_data_layer', ...tools] });
         }
       }
       // State-backed data sources (from monitors)
-      const monitors = scenario.monitors || {};
-      for (const [name, mon] of Object.entries(monitors)) {
+      for (const [name, mon] of Object.entries(scenarioMonitors)) {
         if (!mon.state_key) continue;
-        sources.push({ key: name, type: 'ambient', description: mon.description || name });
+        sources.push({ key: name, type: 'ambient', description: mon.description || name, tools: ['query_data_layer'] });
       }
       sources.sort((a, b) => a.key.localeCompare(b.key));
       return {
@@ -944,21 +974,25 @@ async function runBrowserAgentic(config, scenario) {
             modalities: ['text', 'geospatial'],
             common_fields: 'name, lat, lon, country',
             supported_filters: ['search', 'country', 'near_lat/near_lon/radius_km'],
+            tools: ['query_data_layer', 'find_nearest'],
           },
           path: {
             modalities: ['text', 'geospatial'],
             common_fields: 'name, coords (array of [lon,lat] waypoints), country',
             supported_filters: ['search', 'country', 'near_lat/near_lon/radius_km (matches any waypoint)'],
+            tools: ['query_data_layer', 'find_paths_near'],
           },
           region: {
             modalities: ['text', 'geospatial'],
             common_fields: 'name, rings (polygon boundaries as [lon,lat] arrays)',
             supported_filters: ['search', 'country', 'near_lat/near_lon/radius_km (matches any vertex)'],
+            tools: ['query_data_layer', 'find_regions_containing'],
           },
           ambient: {
             modalities: ['text', 'structured_json'],
             common_fields: 'Varies by source — structured data, may or may not have geographic coordinates',
             supported_filters: ['search', 'country', 'near_lat/near_lon/radius_km (where applicable)'],
+            tools: ['query_data_layer'],
           },
         },
         layers: sources,
@@ -1010,6 +1044,86 @@ async function runBrowserAgentic(config, scenario) {
       for (const e of results) { delete e.image; delete e._image; }
       const layerType = getLayerType(layer);
       return { layer, type: layerType, total_matches: filtered.length, returned: results.length, results };
+    }
+
+    // ── Modality-specific query tools ──
+    if (toolName === 'find_nearest') {
+      const { layer, limit: rawLimit } = toolArgs;
+      if (!layer) return { error: 'Missing required parameter: layer' };
+      const lat = parseFloat(toolArgs.lat);
+      const lon = parseFloat(toolArgs.lon);
+      if (isNaN(lat) || isNaN(lon)) return { error: 'Missing required parameters: lat, lon (numeric)' };
+      const radiusKm = parseFloat(toolArgs.radius_km) || 100;
+      const cap = parseInt(rawLimit) || 10;
+      const raw = getLayerData(layer);
+      if (!raw) return { error: `Unknown layer: "${layer}". Use list_data_layers to see available layers.` };
+      let entities = [];
+      for (const [k, val] of Object.entries(raw)) { if (!k.startsWith('_') && Array.isArray(val)) entities.push(...val); }
+      const radiusM = radiusKm * 1000;
+      const withDist = entities
+        .map(e => {
+          const eLat = parseFloat(e.lat ?? e.coordinates?.lat);
+          const eLon = parseFloat(e.lon ?? e.coordinates?.lon);
+          if (isNaN(eLat) || isNaN(eLon)) return null;
+          const dist = roughDistanceMeters(lat, lon, eLat, eLon);
+          if (dist > radiusM) return null;
+          return { ...e, _distance_km: Math.round(dist / 100) / 10 };
+        })
+        .filter(Boolean)
+        .sort((a, b) => a._distance_km - b._distance_km)
+        .slice(0, cap);
+      for (const e of withDist) { delete e.image; delete e._image; }
+      return { layer, type: 'point', search_center: { lat, lon }, radius_km: radiusKm, total_matches: withDist.length, results: withDist };
+    }
+
+    if (toolName === 'find_paths_near') {
+      const { layer, limit: rawLimit } = toolArgs;
+      if (!layer) return { error: 'Missing required parameter: layer' };
+      const lat = parseFloat(toolArgs.lat);
+      const lon = parseFloat(toolArgs.lon);
+      if (isNaN(lat) || isNaN(lon)) return { error: 'Missing required parameters: lat, lon (numeric)' };
+      const radiusKm = parseFloat(toolArgs.radius_km) || 100;
+      const cap = parseInt(rawLimit) || 10;
+      const raw = getLayerData(layer);
+      if (!raw) return { error: `Unknown layer: "${layer}". Use list_data_layers to see available layers.` };
+      let entities = [];
+      for (const [k, val] of Object.entries(raw)) { if (!k.startsWith('_') && Array.isArray(val)) entities.push(...val); }
+      const radiusM = radiusKm * 1000;
+      const matches = entities
+        .map(e => {
+          if (!Array.isArray(e.coords)) return null;
+          let minDist = Infinity;
+          for (const c of e.coords) {
+            if (!Array.isArray(c) || c.length < 2) continue;
+            const d = roughDistanceMeters(lat, lon, c[1], c[0]);
+            if (d < minDist) minDist = d;
+          }
+          if (minDist > radiusM) return null;
+          return { ...e, _nearest_km: Math.round(minDist / 100) / 10 };
+        })
+        .filter(Boolean)
+        .sort((a, b) => a._nearest_km - b._nearest_km)
+        .slice(0, cap);
+      for (const e of matches) { delete e.image; delete e._image; }
+      return { layer, type: 'path', search_center: { lat, lon }, radius_km: radiusKm, total_matches: matches.length, results: matches };
+    }
+
+    if (toolName === 'find_regions_containing') {
+      const { layer } = toolArgs;
+      if (!layer) return { error: 'Missing required parameter: layer' };
+      const lat = parseFloat(toolArgs.lat);
+      const lon = parseFloat(toolArgs.lon);
+      if (isNaN(lat) || isNaN(lon)) return { error: 'Missing required parameters: lat, lon (numeric)' };
+      const raw = getLayerData(layer);
+      if (!raw) return { error: `Unknown layer: "${layer}". Use list_data_layers to see available layers.` };
+      let entities = [];
+      for (const [k, val] of Object.entries(raw)) { if (!k.startsWith('_') && Array.isArray(val)) entities.push(...val); }
+      const results = entities.filter(e => {
+        if (!Array.isArray(e.rings)) return false;
+        return e.rings.some(ring => _pointInPolygon(lat, lon, ring));
+      });
+      for (const e of results) { delete e.image; delete e._image; }
+      return { layer, type: 'region', query_point: { lat, lon }, total_matches: results.length, results };
     }
 
     // check_surveillance — query sensors near coordinates
@@ -2072,6 +2186,25 @@ export function dispatchToolVisuals(toolName, toolArgs, result, cesiumViewer) {
   if (isWebcamViewOpen() && cesiumViewer) closeWebcamView(cesiumViewer);
 
   switch (toolName) {
+    case 'find_nearest':
+    case 'find_paths_near':
+    case 'find_regions_containing': {
+      const lat = parseFloat(args.lat);
+      const lon = parseFloat(args.lon);
+      if (!isNaN(lat) && !isNaN(lon) && cesiumViewer) {
+        const alt = toolName === 'find_regions_containing' ? 2000000 : 500000;
+        cesiumViewer.camera.flyTo({
+          destination: Cesium.Cartesian3.fromDegrees(lon, lat, alt),
+          duration: 1.2,
+        });
+      }
+      // Show the queried layer if it has a toggle
+      if (args.layer) {
+        const loader = getLoader(args.layer);
+        if (loader?.show) loader.show();
+      }
+      break;
+    }
     case 'check_surveillance': {
       const lat = parseFloat(args.lat);
       const lon = parseFloat(args.lon);

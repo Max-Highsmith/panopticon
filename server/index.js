@@ -372,6 +372,14 @@ function loadScenario(id) {
     if (!relPath) return null;
     try { return JSON.parse(readFileSync(join(ROOT, relPath), 'utf-8')); }
     catch { return null; }
+  }, (key) => {
+    // Derive layer type from file path
+    const relPath = LAYER_DATA_FILES[key];
+    if (!relPath) return null;
+    if (relPath.includes('/points/')) return 'point';
+    if (relPath.includes('/paths/')) return 'path';
+    if (relPath.includes('/regions/')) return 'region';
+    return 'ambient';
   });
 
   // 2. Resolve any remaining scenario-level $ref entries (backward compat)

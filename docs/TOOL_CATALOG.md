@@ -1,11 +1,32 @@
 # Panopticon Tool & Monitor Catalog
 
-**Version:** 2.0
+**Version:** 3.0
 **Last updated:** 2026-03-21
 
-Tools and monitors are defined in **capability layers** (`data/layers/ambient/`) and **general tools** (`scenarios/general-tools.json`). Scenarios include capability layers in their `layers` array to get the tools and monitors they need. See [SCENARIO_SPEC.md](SCENARIO_SPEC.md#layer-centric-capabilities-v30) for the full resolution system.
+Tools and monitors come from three sources:
+1. **Modality tools** — auto-inherited based on layer type (point/path/region), no configuration needed
+2. **Capability layers** (`data/layers/ambient/`) — domain-specific tools and state-backed monitors
+3. **General tools** (`scenarios/general-tools.json`) — universal tools available to every scenario
+
+Every layer in a scenario automatically has monitors (auto-generated from `_source.description` for data layers, explicit for capability layers) and appropriate modality tools. See [LAYER_SYSTEM.md](LAYER_SYSTEM.md#modality-inheritance) for the inheritance system.
 
 Legacy `$ref` resolution against `scenarios/tool-catalog.json` and `scenarios/monitor-catalog.json` still works for backward compatibility, but those files are deprecated.
+
+---
+
+## Modality Tools (auto-inherited, 3 total)
+
+These tools are injected automatically when a scenario includes layers of the corresponding geometric type. Each takes a `layer` parameter.
+
+| Tool | Modality | Category | Parameters | Description |
+|------|----------|----------|------------|-------------|
+| `find_nearest` | point | INTELLIGENCE | layer, lat, lon, radius_km?, limit? | Find nearest entities sorted by distance |
+| `find_paths_near` | path | INTELLIGENCE | layer, lat, lon, radius_km?, limit? | Find polyline routes passing near coordinates |
+| `find_regions_containing` | region | INTELLIGENCE | layer, lat, lon | Point-in-polygon: which regions contain given coordinates |
+
+**Deduplication:** Modality tools are injected once per type, not per layer. If a scenario has 5 point layers, `find_nearest` appears once. The AI specifies which layer to query via the `layer` parameter.
+
+**Relationship to `query_data_layer`:** Modality tools provide optimized spatial queries that complement the general `query_data_layer`. `find_nearest` returns distance-sorted results; `find_regions_containing` does true containment (not vertex proximity).
 
 ---
 
@@ -127,25 +148,25 @@ Monitors define state-backed data sources queryable through `query_data_layer`. 
 
 ## Unified Data Access
 
-`list_data_layers` and `query_data_layer` provide the LLM with a **single interface for all information** — both file-backed geographic/ambient data layers and scenario-specific world state. The AI doesn't distinguish between them.
+`list_data_layers` and `query_data_layer` provide the LLM with a **single interface for all information** — both file-backed geographic/ambient data layers and scenario-specific world state. The AI doesn't distinguish between them. Modality tools (`find_nearest`, `find_paths_near`, `find_regions_containing`) provide optimized spatial queries on top of this foundation.
 
 ### How it works
 
 1. **File-backed layers** (e.g. `lithium`, `cables`, `kalshi_scenario`) — static JSON in `data/layers/`. Scoped by the scenario's `layers` array.
 2. **State-backed sources** (e.g. `hostage_situation`, `case_file`, `public_cameras`) — mutable simulation state from `worldState`. Defined by capability layer monitors with a `state_key` mapping.
 
-Both appear in `list_data_layers` output and are queried identically via `query_data_layer`. State sources appear as type `"ambient"`.
+Both appear in `list_data_layers` output and are queried identically via `query_data_layer`. State sources appear as type `"ambient"`. Each layer entry in `list_data_layers` includes a `tools` array showing which query tools apply (e.g. `["query_data_layer", "find_nearest"]` for point layers).
 
-### Data types and filters
+### Data types, filters, and tools
 
-| Type | Modalities | Common fields | Proximity filter |
-|------|-----------|---------------|-----------------|
-| **point** | text, geospatial | `name`, `lat`, `lon`, `country` | Matches entity coordinates |
-| **path** | text, geospatial | `name`, `coords` (`[[lon,lat], ...]`), `country` | Matches any waypoint |
-| **region** | text, geospatial | `name`, `rings` (`[[[lon,lat], ...]]`) | Matches any vertex |
-| **ambient** | text, structured_json | Varies by source | Where applicable |
+| Type | Modalities | Common fields | Proximity filter | Modality tool |
+|------|-----------|---------------|-----------------|---------------|
+| **point** | text, geospatial | `name`, `lat`, `lon`, `country` | Matches entity coordinates | `find_nearest` |
+| **path** | text, geospatial | `name`, `coords` (`[[lon,lat], ...]`), `country` | Matches any waypoint | `find_paths_near` |
+| **region** | text, geospatial | `name`, `rings` (`[[[lon,lat], ...]]`) | Matches any vertex | `find_regions_containing` |
+| **ambient** | text, structured_json | Varies by source | Where applicable | _(none)_ |
 
-All types support `search` (text across string fields) and `country` filters. Geographic types additionally support `near_lat`/`near_lon`/`radius_km`.
+All types support `search` (text across string fields) and `country` filters via `query_data_layer`. Geographic types additionally support `near_lat`/`near_lon`/`radius_km`. Modality tools provide distance-sorted results (`find_nearest`, `find_paths_near`) and true containment checks (`find_regions_containing`).
 
 ### Consolidated tools
 

@@ -2,8 +2,60 @@
    PANOPTICON — Tool Format Translation
    Pure functions to convert scenario tool/monitor definitions into
    provider-specific formats (Anthropic, OpenAI, Google).
+   Includes modality-based inheritance for universal layer monitors/tools.
    No dependencies — shared by server and browser.
    =================================================================== */
+
+// ── Modality-specific tools ─────────────────────────────────────────
+// Injected once per geometric type when a scenario includes layers of
+// that modality. Each tool takes a `layer` parameter so the AI
+// specifies which layer to query.
+
+const MODALITY_TOOLS = {
+  point: {
+    find_nearest: {
+      category: 'intelligence',
+      description: 'Find nearest entities from a point data layer by geographic proximity. Returns entities sorted by distance from the given coordinates.',
+      parameters: {
+        layer: { type: 'string', description: 'Point layer key to search (use list_data_layers to see available layers)' },
+        lat:   { type: 'number', description: 'Search center latitude' },
+        lon:   { type: 'number', description: 'Search center longitude' },
+        radius_km: { type: 'number', description: 'Search radius in km (default 100)' },
+        limit: { type: 'number', description: 'Max results to return (default 10)' },
+      },
+      required: ['layer', 'lat', 'lon'],
+      terminal: false,
+    },
+  },
+  path: {
+    find_paths_near: {
+      category: 'intelligence',
+      description: 'Find polyline routes (cables, pipelines, migration routes, etc.) that pass within a radius of given coordinates. Matches against any waypoint along the path.',
+      parameters: {
+        layer: { type: 'string', description: 'Path layer key to search (use list_data_layers to see available layers)' },
+        lat:   { type: 'number', description: 'Search center latitude' },
+        lon:   { type: 'number', description: 'Search center longitude' },
+        radius_km: { type: 'number', description: 'Search radius in km (default 100)' },
+        limit: { type: 'number', description: 'Max results to return (default 10)' },
+      },
+      required: ['layer', 'lat', 'lon'],
+      terminal: false,
+    },
+  },
+  region: {
+    find_regions_containing: {
+      category: 'intelligence',
+      description: 'Find which geographic regions (chokepoints, fishery zones, sea ice extents, etc.) contain the given coordinates. Uses point-in-polygon containment, not just proximity.',
+      parameters: {
+        layer: { type: 'string', description: 'Region layer key to search (use list_data_layers to see available layers)' },
+        lat:   { type: 'number', description: 'Latitude of point to check' },
+        lon:   { type: 'number', description: 'Longitude of point to check' },
+      },
+      required: ['layer', 'lat', 'lon'],
+      terminal: false,
+    },
+  },
+};
 
 /**
  * Resolve "$ref" entries in a tool or monitor object from a shared catalog.
@@ -120,6 +172,12 @@ export function toGeminiTools(tools) {
  * Each layer entry can be a string (include everything) or an object with
  * exclusion lists: { key, excludeTools?, excludeMonitors? }.
  *
+ * **Modality inheritance:** Layers without explicit `_monitors` or `_tools`
+ * auto-inherit based on their geometric type (point/path/region/ambient).
+ * Every layer gets a monitor entry (from `_source.description`).
+ * Modality tools (find_nearest, find_paths_near, find_regions_containing)
+ * are injected once per type, not per layer.
+ *
  * Layer data files may contain:
  *   _tools:    { toolName: { category, description, parameters, required, terminal } }
  *   _monitors: { monitorName: { description, state_key } }
@@ -127,12 +185,14 @@ export function toGeminiTools(tools) {
  *
  * @param {Array<string|Object>} layerEntries  Scenario layers array
  * @param {Function} loadLayerFn  (key: string) => parsed layer JSON or null
+ * @param {Function} [getLayerTypeFn]  (key: string) => 'point'|'path'|'region'|'ambient'|null
  * @returns {{ tools: Object, monitors: Object, defaults: Object }}
  */
-export function resolveLayerCapabilities(layerEntries, loadLayerFn) {
+export function resolveLayerCapabilities(layerEntries, loadLayerFn, getLayerTypeFn) {
   const tools = {};
   const monitors = {};
   const defaults = {};
+  const modalitySeen = new Set(); // track which modality tool sets we've injected
 
   if (!Array.isArray(layerEntries)) return { tools, monitors, defaults };
 
@@ -146,7 +206,9 @@ export function resolveLayerCapabilities(layerEntries, loadLayerFn) {
     const data = loadLayerFn(key);
     if (!data) continue;
 
-    // Extract tools from layer
+    const layerType = getLayerTypeFn ? getLayerTypeFn(key) : null;
+
+    // ── Explicit capabilities (capability layers, custom overrides) ──
     if (data._tools) {
       for (const [name, def] of Object.entries(data._tools)) {
         if (!excludeTools.includes(name)) {
@@ -155,11 +217,30 @@ export function resolveLayerCapabilities(layerEntries, loadLayerFn) {
       }
     }
 
-    // Extract monitors from layer
     if (data._monitors) {
       for (const [name, def] of Object.entries(data._monitors)) {
         if (!excludeMonitors.includes(name)) {
           monitors[name] = def;
+        }
+      }
+    }
+
+    // ── Modality inheritance (layers without explicit _monitors/_tools) ──
+    // Auto-generate a monitor entry for every layer from _source.description
+    if (!data._monitors && !excludeMonitors.includes(key)) {
+      const desc = data._source?.description || key.replace(/_/g, ' ');
+      monitors[key] = {
+        description: desc,
+        layer_type: layerType || 'point',
+      };
+    }
+
+    // Inject modality-specific tools once per type
+    if (!data._tools && layerType && MODALITY_TOOLS[layerType] && !modalitySeen.has(layerType)) {
+      modalitySeen.add(layerType);
+      for (const [name, def] of Object.entries(MODALITY_TOOLS[layerType])) {
+        if (!excludeTools.includes(name) && !tools[name]) {
+          tools[name] = def;
         }
       }
     }

@@ -71,7 +71,7 @@ panopticon/
 │   ├── simulation.mjs      Shared simulation engine (prompts, parsing, summaries)
 │   ├── agentic-llm.js      Browser-side agentic LLM adapters (tool-calling)
 │   ├── llm.js              Browser-side LLM API caller (simple completions)
-│   ├── toolformat.mjs      Layer capability resolution + provider formatting
+│   ├── toolformat.mjs      Layer capability resolution + modality inheritance + provider formatting
 │   ├── settings.js         API key management UI
 │   ├── results.js          IndexedDB storage for wargame results
 │   ├── report.js           After-action HTML report generator
@@ -306,7 +306,7 @@ Scenario JSON
 └──────────┘    └──────────────┘
 ```
 
-**Three-tier resolution:** capability layers → scenario inline → general tools (gap-fill).
+**Four-tier resolution:** modality tools (auto-inherited per layer type) + capability layers → scenario inline → general tools (gap-fill). Every data layer automatically gets a monitor and modality-appropriate tools via inheritance.
 
 **Capability layers** live in `data/layers/ambient/` and bundle `_tools`, `_monitors`, and `_defaults` alongside their data. Five capability layers: `law_enforcement`, `defense_systems`, `financial_ops`, `diplomacy`, `isr`.
 

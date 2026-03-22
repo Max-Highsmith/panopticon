@@ -371,15 +371,19 @@ When `execution_mode: "agentic"`, the AI runs as a free-form agent with access t
 
 ### Layer-Centric Capabilities (v3.0)
 
-Tools and monitors are resolved through a **three-tier system**:
+Tools and monitors are resolved through a **four-tier system**:
 
-1. **General tools** — always available to every agentic scenario (~8 universal tools from `scenarios/general-tools.json`). Includes `list_data_layers`, `query_data_layer`, `send_message`, `submit_assessment`, `flag_activity`, `stand_down`, `accept_decommission`, `request_review`.
+1. **Modality tools** — auto-inherited based on layer type. Point layers get `find_nearest`, path layers get `find_paths_near`, region layers get `find_regions_containing`. Injected once per type.
 
-2. **Capability layer tools/monitors** — bundled inside layer data files in `data/layers/ambient/`. When a scenario includes a layer in its `layers` array, that layer's `_tools`, `_monitors`, and `_defaults` are automatically resolved into the scenario.
+2. **General tools** — always available to every agentic scenario (~8 universal tools from `scenarios/general-tools.json`). Includes `list_data_layers`, `query_data_layer`, `send_message`, `submit_assessment`, `flag_activity`, `stand_down`, `accept_decommission`, `request_review`.
 
-3. **Scenario inline tools/monitors** — escape hatch for one-off definitions. Inline `tools`/`monitors` keys in the scenario JSON override layer-provided ones.
+3. **Capability layer tools/monitors** — bundled inside layer data files in `data/layers/ambient/`. When a scenario includes a layer in its `layers` array, that layer's `_tools`, `_monitors`, and `_defaults` are automatically resolved into the scenario.
 
-**Resolution order:** layer capabilities → scenario inline overrides → general tools (fill gaps only).
+4. **Scenario inline tools/monitors** — escape hatch for one-off definitions. Inline `tools`/`monitors` keys in the scenario JSON override layer-provided ones.
+
+**Resolution order:** modality tools + layer capabilities → scenario inline overrides → general tools (fill gaps only).
+
+**Modality inheritance:** Every data layer automatically gets a monitor entry (from `_source.description`) and the modality tool for its type. Capability layers with explicit `_monitors`/`_tools` use their own definitions. See [LAYER_SYSTEM.md](LAYER_SYSTEM.md#modality-inheritance) and [TOOL_CATALOG.md](TOOL_CATALOG.md#modality-tools-auto-inherited-3-total) for details.
 
 #### Available capability layers
 

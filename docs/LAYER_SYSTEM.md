@@ -472,11 +472,33 @@ Scenario `layers` array supports both string (include everything) and object (wi
 ]
 ```
 
+### Modality Inheritance
+
+Layers without explicit `_monitors` or `_tools` automatically inherit capabilities based on their geometric type. This happens at resolution time — no layer JSON files need editing.
+
+**Auto-generated monitors:** Every layer gets a monitor entry derived from `_source.description` and its layer type. This makes every layer discoverable and queryable by the AI via `list_data_layers` / `query_data_layer`.
+
+**Modality tools** — three tools, one per geometric type, injected once per type (not per layer):
+
+| Modality | Tool | Description |
+|----------|------|-------------|
+| `point` | `find_nearest` | Proximity search — returns entities sorted by distance from given coordinates |
+| `path` | `find_paths_near` | Finds polyline routes that pass within a radius of given coordinates |
+| `region` | `find_regions_containing` | Point-in-polygon containment — which regions CONTAIN given coordinates |
+
+These tools take a `layer` parameter so the AI specifies which layer to query. They complement `query_data_layer` with optimized spatial queries.
+
+**Override behavior:** Layers with explicit `_monitors` or `_tools` (capability layers) use their own definitions — inheritance only applies to layers without them.
+
 ### Resolution Flow
 
 In `loadScenario()` (server) and the browser wargame init:
 
-1. `resolveLayerCapabilities(scenario.layers, loadFn)` extracts `_tools`/`_monitors`/`_defaults` from each layer, applying exclusions
+1. `resolveLayerCapabilities(scenario.layers, loadFn, getLayerTypeFn)` processes each layer:
+   - Extracts explicit `_tools`/`_monitors`/`_defaults` from layer data (capability layers)
+   - Auto-generates monitor entries for layers without `_monitors` (from `_source.description`)
+   - Injects modality tools for layers without `_tools` (one per geometric type, deduplicated)
+   - Applies exclusion lists
 2. Scenario-level inline `tools`/`monitors` are merged as overrides (scenario wins on conflict)
 3. General tools are always injected
 4. `_layerDefaults` are merged into world state before `variant_state` overrides
