@@ -1,0 +1,19 @@
+{
+  "name": "@panopticon/mcp-server",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "MCP server for Panopticon wargame scenarios — lets AI agents play wargames via tool calls",
+  "bin": {
+    "panopticon-mcp": "./index.mjs"
+  },
+  "scripts": {
+    "start": "node index.mjs"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.12.0",
+    "zod": "^3.24.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

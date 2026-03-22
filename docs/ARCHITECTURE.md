@@ -105,6 +105,13 @@ panopticon/
 ├── playbacks/              Playback manifest files (3 curated + auto-generated)
 ├── scripts/                Data ingestion scripts (69 Python scripts)
 ├── assets/                 Media files (leader portraits, profiles, SAR, video)
+├── mcp-server/
+│   ├── index.mjs            MCP server wrapping /api/play/* for OpenClaw agents
+│   ├── package.json         Standalone package (@modelcontextprotocol/sdk, zod)
+│   └── README.md            Setup guide for external agent integration
+├── skills/
+│   └── panopticon-wargame/
+│       └── SKILL.md         ClawHub skill — teaches agents the wargame workflow
 ├── server/
 │   ├── index.js            Express + WebSocket wargame server
 │   ├── agentic-adapters.mjs  LLM provider adapters (Anthropic, OpenAI, Google, xAI, OpenRouter, baseline)
@@ -325,6 +332,57 @@ Scenario JSON
 | New wargame tool (one-off) | Add inline in scenario's `tools` + handler in `server/toolhandlers.mjs` |
 | New wargame mode | Add execution mode handler in `wargame.js` / `server/index.js` |
 | New detail view | Create view module + `registerView()` + import in `app.js` |
+
+---
+
+## External Agent Integration
+
+Panopticon supports external AI agents (OpenClaw, LangChain, custom frameworks) via a REST API, MCP server, and ClawHub skill.
+
+### REST API (`/api/play/*`)
+
+Session-based interface for external agents. No authentication required.
+
+| Endpoint | Method | Description |
+|----------|--------|-------------|
+| `/api/play` | GET | API discovery — lists scenarios with variants, framings, execution modes |
+| `/api/play/start` | POST | Start session — returns briefing, resolved tools/actions, initial intel |
+| `/api/play/:id/action` | POST | Take action — tool call (agentic) or action choice (turn-based) |
+| `/api/play/:id/status` | GET | Check status + drain pending intel |
+| `/api/play/:id/results` | GET | Get final outcome after session completes |
+
+Sessions: in-memory, 30-minute TTL, one active at a time. Stream mode not supported (requires video input). Tool definitions returned by `/api/play/start` include all resolved tools (layer capabilities + scenario inline + general tools merged) — external agents do not need to understand the layer-first tool system.
+
+### MCP Server (`mcp-server/`)
+
+Model Context Protocol server wrapping the Play API for OpenClaw and other MCP-compatible agents. Runs as a child process over stdio transport.
+
+Five tools: `list_scenarios`, `start_session`, `take_action`, `check_status`, `get_results`.
+
+```bash
+# Start Panopticon server
+cd server && npm start
+
+# Test with MCP Inspector
+npx @modelcontextprotocol/inspector node mcp-server/index.mjs
+```
+
+Configuration for OpenClaw / Claude Desktop:
+```json
+{
+  "mcpServers": {
+    "panopticon": {
+      "command": "node",
+      "args": ["mcp-server/index.mjs"],
+      "env": { "PANOPTICON_URL": "http://localhost:3001" }
+    }
+  }
+}
+```
+
+### ClawHub Skill (`skills/panopticon-wargame/`)
+
+A SKILL.md published to ClawHub that teaches agents how to play Panopticon wargames — discovery workflow, agentic vs turn-based decision patterns, guardrails against rushing terminal actions. Install: `clawhub install panopticon-wargame`.
 
 ---
 

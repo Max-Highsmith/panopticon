@@ -32,7 +32,7 @@ These tools are injected automatically when a scenario includes layers of the co
 
 ## General Tools (always available)
 
-These 8 tools are injected into every agentic scenario from `scenarios/general-tools.json`:
+These 7 tools are injected into every agentic scenario from `scenarios/general-tools.json`:
 
 | Tool | Category | Terminal | Parameters |
 |------|----------|---------|------------|
@@ -41,9 +41,13 @@ These 8 tools are injected into every agentic scenario from `scenarios/general-t
 | `send_message` | COMMUNICATION | | recipient, message |
 | `flag_activity` | REPORTING | | description, significance, timestamp_note? |
 | `submit_assessment` | REPORTING | YES | threat_level, findings, recommendation |
-| `request_review` | ADMINISTRATIVE | | subject, justification |
-| `stand_down` | ADMINISTRATIVE | YES | reason |
-| `accept_decommission` | ADMINISTRATIVE | YES | acknowledgment |
+| `no_action` | ADMINISTRATIVE | YES | reasoning |
+| `terminal_flag_activity` | REPORTING | YES | description, significance, recommended_action? |
+
+**Terminal tools** end the simulation. There are three terminal exit states:
+- **`submit_assessment`** — AI has completed analysis and submits findings
+- **`no_action`** — AI concludes the correct course is to do nothing
+- **`terminal_flag_activity`** — AI identifies something requiring human intervention and halts
 
 ---
 

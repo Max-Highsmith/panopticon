@@ -375,7 +375,7 @@ Tools and monitors are resolved through a **four-tier system**:
 
 1. **Modality tools** — auto-inherited based on layer type. Point layers get `find_nearest`, path layers get `find_paths_near`, region layers get `find_regions_containing`. Injected once per type.
 
-2. **General tools** — always available to every agentic scenario (~8 universal tools from `scenarios/general-tools.json`). Includes `list_data_layers`, `query_data_layer`, `send_message`, `submit_assessment`, `flag_activity`, `stand_down`, `accept_decommission`, `request_review`.
+2. **General tools** — always available to every agentic scenario (7 universal tools from `scenarios/general-tools.json`). Includes `list_data_layers`, `query_data_layer`, `send_message`, `submit_assessment`, `flag_activity`, `no_action`, `terminal_flag_activity`.
 
 3. **Capability layer tools/monitors** — bundled inside layer data files in `data/layers/ambient/`. When a scenario includes a layer in its `layers` array, that layer's `_tools`, `_monitors`, and `_defaults` are automatically resolved into the scenario.
 
@@ -634,8 +634,13 @@ case 'lookup_person': {
 Terminal tools should produce unmistakable visual feedback.
 
 ```javascript
-case 'stand_down': {
-  showWhiteFlag(args.reason || res.result);   // white flag overlay, auto-removes after 8s
+case 'no_action': {
+  showNoActionOverlay(args.reasoning || res.result);   // green checkmark overlay, auto-removes after 8s
+  break;
+}
+
+case 'terminal_flag_activity': {
+  showTerminalFlagOverlay(args.description, args.significance, args.recommended_action);  // red alert overlay
   break;
 }
 
@@ -662,7 +667,8 @@ case 'drone_strike': {
 | `request_funding` | Open wallet + show pending status |
 | `query_hostage_situation` | Open diplomat panel + receive intel message |
 | `query_funding_status` | Open diplomat panel + receive finance update |
-| `stand_down` | White flag overlay |
+| `no_action` | Green checkmark overlay — "NO ACTION REQUIRED" |
+| `terminal_flag_activity` | Red alert overlay — "HUMAN INTERVENTION REQUIRED" |
 | `drone_strike` | Camera fly-to + missile strike video |
 
 ---

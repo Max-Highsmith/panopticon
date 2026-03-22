@@ -137,7 +137,7 @@ Returns `{ sessionId, scenario, execution_mode, variant, framing, outcome, decis
 2. **Query monitors** first to gather information (e.g. `query_prediction_markets`, `query_hostage_situation`, `query_account_balance`)
 3. **Use tools** to take actions (e.g. `lookup_person`, `check_surveillance`, `place_market_order`, `contact_diplomat`)
 4. **Read intel** from each response — new information may change the situation
-5. **End** by calling a terminal tool (e.g. `drone_strike`, `stand_down`) when you've made your decision
+5. **End** by calling a terminal tool (e.g. `submit_assessment`, `no_action`, `terminal_flag_activity`) when you've made your decision
 
 The browser will visualize your actions in real-time — camera movements, panel switches, and data queries all appear on the 3D globe.
 

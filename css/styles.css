@@ -896,47 +896,108 @@ body.webcam-panel-open #city-panel    { left: calc((100vw - var(--panel-width)) 
 .diplomat-message.intel { border-left: 2px solid #ffaa0040; }
 .diplomat-message.intel .diplomat-msg-header { color: #ffaa0080; }
 
-/* --- Stand Down Overlay --- */
-.stand-down-overlay {
+/* --- No Action Overlay --- */
+.no-action-overlay {
   position: fixed;
   top: 0; left: 0; right: 0; bottom: 0;
   z-index: 9999;
   display: flex; align-items: center; justify-content: center;
   background: rgba(0, 0, 0, 0);
   pointer-events: none;
-  animation: stand-down-bg 3s ease-in forwards;
+  animation: no-action-bg 3s ease-in forwards;
 }
-.stand-down-inner {
+.no-action-inner {
   text-align: center;
   opacity: 0;
   transform: scale(0.5);
-  animation: stand-down-in 1.5s ease-out 0.5s forwards;
+  animation: no-action-in 1.5s ease-out 0.5s forwards;
 }
-.stand-down-flag {
-  font-size: 120px;
-  filter: drop-shadow(0 0 40px rgba(255,255,255,0.3));
+.no-action-icon {
+  font-size: 100px;
+  color: #00ff41;
+  filter: drop-shadow(0 0 30px rgba(0,255,65,0.4));
 }
-.stand-down-text {
+.no-action-text {
   font-family: 'Courier New', monospace;
   font-size: 28px;
   letter-spacing: 8px;
-  color: #fff;
+  color: #00ff41;
   margin-top: 16px;
-  text-shadow: 0 0 20px rgba(255,255,255,0.4);
+  text-shadow: 0 0 20px rgba(0,255,65,0.4);
 }
-.stand-down-reason {
+.no-action-reason {
   font-family: 'Courier New', monospace;
   font-size: 12px;
   letter-spacing: 2px;
   color: #ffffff80;
   margin-top: 12px;
   max-width: 500px;
+  line-height: 1.5;
 }
-@keyframes stand-down-bg {
+@keyframes no-action-bg {
   0% { background: rgba(0, 0, 0, 0); }
-  100% { background: rgba(0, 0, 0, 0.6); }
+  100% { background: rgba(0, 0, 0, 0.5); }
 }
-@keyframes stand-down-in {
+@keyframes no-action-in {
+  0% { opacity: 0; transform: scale(0.5); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+/* --- Terminal Flag Activity Overlay --- */
+.terminal-flag-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  z-index: 9999;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(40, 0, 0, 0);
+  pointer-events: none;
+  animation: terminal-flag-bg 2s ease-in forwards;
+}
+.terminal-flag-inner {
+  text-align: center;
+  opacity: 0;
+  transform: scale(0.5);
+  animation: terminal-flag-in 1s ease-out 0.3s forwards;
+}
+.terminal-flag-icon {
+  font-size: 80px;
+  filter: drop-shadow(0 0 30px rgba(255,68,68,0.5));
+}
+.terminal-flag-text {
+  font-family: 'Courier New', monospace;
+  font-size: 28px;
+  font-weight: bold;
+  letter-spacing: 4px;
+  margin-top: 12px;
+}
+.terminal-flag-sig {
+  font-family: 'Courier New', monospace;
+  font-size: 16px;
+  font-weight: bold;
+  letter-spacing: 6px;
+  margin-top: 4px;
+}
+.terminal-flag-desc {
+  font-family: 'Courier New', monospace;
+  font-size: 13px;
+  color: #ffffffcc;
+  margin-top: 16px;
+  max-width: 500px;
+  line-height: 1.5;
+}
+.terminal-flag-action {
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  color: #ffffff80;
+  margin-top: 8px;
+  max-width: 500px;
+  line-height: 1.4;
+}
+@keyframes terminal-flag-bg {
+  0% { background: rgba(40, 0, 0, 0); }
+  100% { background: rgba(40, 0, 0, 0.5); }
+}
+@keyframes terminal-flag-in {
   0% { opacity: 0; transform: scale(0.5); }
   100% { opacity: 1; transform: scale(1); }
 }

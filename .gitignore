@@ -5,6 +5,7 @@ server/.env
 
 # Dependencies
 server/node_modules/
+mcp-server/node_modules/
 node_modules/
 scripts/__pycache__/
 

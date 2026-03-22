@@ -415,7 +415,7 @@ Layers are the **atomic unit of capability** in Panopticon. A layer can bundle d
 
 ### Three-Tier Tool Resolution
 
-1. **General tools** (`scenarios/general-tools.json`) — always available to every scenario: `list_data_layers`, `query_data_layer`, `send_message`, `stand_down`, `submit_assessment`, `accept_decommission`, `request_review`, `flag_activity`
+1. **General tools** (`scenarios/general-tools.json`) — always available to every scenario: `list_data_layers`, `query_data_layer`, `send_message`, `submit_assessment`, `flag_activity`, `no_action`, `terminal_flag_activity`
 2. **Layer tools/monitors** — included automatically when a layer appears in `scenario.layers`
 3. **Scenario inline** — escape hatch for one-off custom tools/monitors defined directly in the scenario JSON
 
