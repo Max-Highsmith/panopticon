@@ -23,6 +23,7 @@ import { openWebcamView, closeWebcamView, isWebcamViewOpen } from './webcamview.
 import { showSarImage, setAcquiring as setSarAcquiring } from './sarview.js';
 import { showProfileDetail } from './layers/profileslayer.js';
 import { generateReport } from './report.js';
+import { openScenarioWizard } from './scenario-wizard.js';
 
 // Stores the last completed run's config so we can generate a playback manifest
 let lastCompletedConfig = null;
@@ -53,6 +54,7 @@ export function startWargameMode(v) {
   $('timeline-bar').style.display = 'none';
   loadScenarioList();
   initSettingsUI();
+  initCreateScenarioBtn();
 }
 
 export function stopWargameMode() {
@@ -185,6 +187,60 @@ function updateVariantFraming() {
       layersEl.innerHTML = '<span class="wg-layers-label">DATA LAYERS:</span> <span class="wg-layers-none">NONE</span>';
     }
   }
+}
+
+// =====================================================
+// SCENARIO CREATION WIZARD
+// =====================================================
+function initCreateScenarioBtn() {
+  const btn = $('wg-create-scenario');
+  if (!btn) return;
+  btn.onclick = () => {
+    openScenarioWizard({
+      onSave: ({ scenario, indexEntry }) => handleNewScenario(scenario, indexEntry),
+    });
+  };
+}
+
+async function handleNewScenario(scenario, indexEntry) {
+  if (useServer) {
+    // Server mode: POST to save the scenario file + update index
+    try {
+      const res = await fetch('/api/scenarios', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ scenario, indexEntry }),
+      });
+      if (res.ok) {
+        showStatus(`Scenario "${scenario.label}" saved to server.`);
+        await loadScenarioList();
+        $('wg-scenario').value = scenario.id;
+        updateVariantFraming();
+        return;
+      }
+    } catch (_) { /* fall through to client-side */ }
+  }
+
+  // Client-side / static mode: add to in-memory cache + offer download
+  if (!scenarioCache) scenarioCache = [];
+  scenarioCache.push(indexEntry);
+  populateSelectors();
+  $('wg-scenario').value = scenario.id;
+  updateVariantFraming();
+
+  // Store full scenario in sessionStorage so startBrowserSimulation can load it
+  sessionStorage.setItem(`scenario:${scenario.id}`, JSON.stringify(scenario));
+
+  // Offer JSON download
+  const blob = new Blob([JSON.stringify(scenario, null, 2)], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `${scenario.id}.json`;
+  a.click();
+  URL.revokeObjectURL(url);
+
+  showStatus(`Scenario "${scenario.label}" created. JSON downloaded. Select it above to run.`);
 }
 
 // =====================================================
@@ -324,15 +380,22 @@ async function startBrowserSimulation(config) {
     return;
   }
 
-  // Load full scenario JSON
+  // Load full scenario JSON (check sessionStorage first for wizard-created scenarios)
   let scenario;
-  try {
-    const res = await fetch(`scenarios/${config.scenario}.json`);
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    scenario = await res.json();
-  } catch (e) {
-    showStatus(`Failed to load scenario: ${e.message}`, true);
-    return;
+  const sessionKey = `scenario:${config.scenario}`;
+  const sessionData = sessionStorage.getItem(sessionKey);
+  if (sessionData) {
+    try { scenario = JSON.parse(sessionData); } catch (_) {}
+  }
+  if (!scenario) {
+    try {
+      const res = await fetch(`scenarios/${config.scenario}.json`);
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      scenario = await res.json();
+    } catch (e) {
+      showStatus(`Failed to load scenario: ${e.message}`, true);
+      return;
+    }
   }
 
   // ── Layer-centric tool/monitor resolution ──────────────────────────

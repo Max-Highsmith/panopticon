@@ -631,6 +631,7 @@
     </div>
     <div class="wg-config">
       <label>SCENARIO<select id="wg-scenario"></select></label>
+      <button id="wg-create-scenario" class="wg-create-btn">+ CREATE NEW SCENARIO</button>
       <div id="wg-briefing" class="wg-briefing"></div>
       <div id="wg-layers" class="wg-layers"></div>
       <label>VARIANT<select id="wg-variant"></select></label>
@@ -701,6 +702,9 @@
     <div id="wg-result" class="wg-result"></div>
     <div id="wg-feed" class="wg-feed"></div>
   </div>
+
+  <!-- Scenario Creation Wizard (fullscreen overlay) -->
+  <div id="scenario-wizard"></div>
 
   <!-- Application Logic (ES Modules) -->
   <script type="module" src="js/app.js"></script>

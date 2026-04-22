@@ -1392,6 +1392,32 @@ app.get('/api/scenarios', (_req, res) => {
   }
 });
 
+// Save a new scenario created by the wizard
+app.post('/api/scenarios', (req, res) => {
+  try {
+    const { scenario, indexEntry } = req.body;
+    if (!scenario || !scenario.id) return res.status(400).json({ error: 'Missing scenario or id' });
+    const id = scenario.id.replace(/[^a-z0-9-]/g, '');
+    const filePath = join(SCENARIOS_DIR, id + '.json');
+    writeFileSync(filePath, JSON.stringify(scenario, null, 2));
+
+    // Update index.json if it exists
+    const indexPath = join(SCENARIOS_DIR, 'index.json');
+    let index = [];
+    if (existsSync(indexPath)) {
+      try { index = JSON.parse(readFileSync(indexPath, 'utf-8')); } catch (_) {}
+    }
+    // Remove existing entry with same id, then push the new one
+    index = index.filter(e => e.id !== id);
+    if (indexEntry) index.push(indexEntry);
+    writeFileSync(indexPath, JSON.stringify(index, null, 2));
+
+    res.json({ ok: true, id });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
 app.post('/api/wargame/start', async (req, res) => {
   if (activeSim) return res.status(409).json({ error: 'Simulation already running' });
   const { scenario, variant, framing, provider, model, execution_mode, variables } = req.body;
